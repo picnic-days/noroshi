@@ -26,7 +26,8 @@ class Vuln:
     epss_percentile: Optional[float] = None
     x_mentions: Optional[int] = None
     sources: list = field(default_factory=list)
-    category: str = "vuln"  # "vuln" / "pki"
+    category: str = "vuln"  # "vuln" / "pki" / "outage" / "malware" / "jp-alert"
+    resolved_at: str = ""  # 障害の復旧時刻（outage のみ）
     first_seen: str = ""  # 狼煙が初めて記録した時刻（日次まとめの新着判定に使う）
     # マッチング・スコアリング結果
     matched: list = field(default_factory=list)

@@ -2,6 +2,12 @@
 PUSH_URL = "https://api.line.me/v2/bot/message/push"
 MAX_ITEMS = 5
 MAX_CHARS = 5000
+CATEGORY_LABELS = {
+    "pki": "認証局（CA）事案",
+    "outage": "クラウド・SaaS 障害",
+    "malware": "悪性パッケージ",
+    "jp-alert": "国内の注意喚起",
+}
 MAX_BUBBLES = 5  # 1 回の push に入れられる吹き出しの上限（何個でも 1 通と数えられる）
 
 
@@ -12,7 +18,8 @@ def summary(v, limit: int = 100) -> str:
 
 
 def format_message(vulns: list, dashboard_url: str = "") -> str:
-    lines = [f"🚨 脆弱性アラート {len(vulns)}件"]
+    head = "脆弱性アラート" if all(v.category == "vuln" for v in vulns) else "狼煙アラート"
+    lines = [f"🚨 {head} {len(vulns)}件"]
     for v in vulns[:MAX_ITEMS]:
         tags = []
         if v.kev:
@@ -26,8 +33,8 @@ def format_message(vulns: list, dashboard_url: str = "") -> str:
         if v.x_mentions:
             tags.append(f"X {v.x_mentions}件")
         title = summary(v)
-        if v.category == "pki":
-            kind = "種別: 認証局（CA）事案"
+        if v.category in CATEGORY_LABELS:
+            kind = f"種別: {CATEGORY_LABELS[v.category]}"
         else:
             kind = f"CVSS: {v.cvss if v.cvss is not None else '未評価'}  {' / '.join(tags)}".rstrip()
         lines += [

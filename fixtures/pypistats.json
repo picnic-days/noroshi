@@ -1,0 +1,10 @@
+{
+ "mid-lib": {
+  "data": {
+   "last_day": 400,
+   "last_week": 3000,
+   "last_month": 12000
+  },
+  "package": "mid-lib"
+ }
+}

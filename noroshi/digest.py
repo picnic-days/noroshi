@@ -14,24 +14,39 @@ def due(state: dict, now: datetime) -> bool:
     return local.hour >= SEND_HOUR_JST and state.get("digest_sent") != local.date().isoformat()
 
 
-def build(items: list, since: str, now: datetime, names: dict) -> str:
+GROUP_LABELS = {
+    "pki": "認証局（CA）事案",
+    "outage": "クラウド・SaaS 障害",
+    "malware": "悪性パッケージ",
+    "jp-alert": "国内の注意喚起",
+    "kev": "監視リスト外（KEV 掲載）",
+}
+MAX_EOL_LINES = 15
+
+
+def build(items: list, since: str, now: datetime, names: dict, eol_lines: list = ()) -> str:
     """since 以降に初めて見つかった案件を、製品ごとに件数と代表例でまとめる。"""
     fresh = [v for v in items if v.first_seen > since and v.level in LEVELS]
     counts = {lv: sum(1 for v in fresh if v.level == lv) for lv in LEVELS}
     local = now.astimezone(JST)
     lines = [f"📋 狼煙 日次まとめ（{local.month}/{local.day}）",
              f"新着: critical {counts['critical']} / high {counts['high']} / medium {counts['medium']}"]
+    eol_part = []
+    if eol_lines:
+        eol_part = ["", "🗓 サポート終了の予告"] + list(eol_lines[:MAX_EOL_LINES])
+        if len(eol_lines) > MAX_EOL_LINES:
+            eol_part.append(f"ほか {len(eol_lines) - MAX_EOL_LINES}件")
     if not fresh:
-        return "\n".join(lines + ["", "目立った新着はありません。"])
+        return "\n".join(lines + ["", "目立った新着はありません。"] + eol_part)[:MAX_CHARS]
 
     groups = defaultdict(list)
     for v in fresh:
-        key = "pki" if v.category == "pki" else (v.matched[0] if v.matched else "kev")
+        key = v.category if v.category != "vuln" else (v.matched[0] if v.matched else "kev")
         groups[key].append(v)
     ordered = sorted(groups.items(), key=lambda kv: max(v.score for v in kv[1]), reverse=True)
     for key, vs in ordered[:MAX_GROUPS]:
         vs.sort(key=lambda v: v.score, reverse=True)
-        label = {"pki": "認証局（CA）事案", "kev": "監視リスト外（KEV 掲載）"}.get(key, names.get(key, key))
+        label = GROUP_LABELS.get(key, names.get(key, key))
         by_level = " / ".join(f"{lv} {n}" for lv in LEVELS if (n := sum(1 for v in vs if v.level == lv)))
         top = vs[0]
         lines += ["", f"■ {label}  {by_level}（最高 {top.score:g}）",
@@ -40,4 +55,4 @@ def build(items: list, since: str, now: datetime, names: dict) -> str:
             lines.append(f"  ほか {len(vs) - 1}件")
     if len(ordered) > MAX_GROUPS:
         lines.append(f"\nほか {len(ordered) - MAX_GROUPS} 製品")
-    return "\n".join(lines)[:MAX_CHARS]
+    return "\n".join(lines + eol_part)[:MAX_CHARS]

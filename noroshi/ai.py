@@ -9,6 +9,8 @@ from datetime import date
 MODEL = "claude-opus-5-5"
 MAX_ITEMS = 4  # LINE の吹き出し上限（5）から見出し 1 つを引いた数
 MAX_CONTINUATIONS = 5
+# 障害と国内の注意喚起は、それ自体が状況説明なので分析しない
+ANALYZED = {"vuln", "pki", "malware"}
 WEB_SEARCH = {"type": "web_search_20260209", "name": "web_search", "max_uses": 8}
 # references にあるアドバイザリを検索を経ずに直接読ませる（会話中に出た URL だけ取得できる）
 WEB_FETCH = {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 5}
@@ -20,6 +22,7 @@ SYSTEM = """あなたは日本企業のセキュリティ担当者を支援す�
 - まず references にあるベンダーのアドバイザリを web_fetch で読み、足りない情報（修正版・回避策・悪用状況）を web_search で補ってください。一次情報を優先してください。
 - 防御に必要な情報だけを書き、攻撃手順やエクスプロイトの詳細は書かないでください。
 - 認証局（CA）事案（id が MOZ-CA- で始まるもの）では、影響を受ける証明書と、利用者が確認すべきこと（自社がその CA の証明書を使っているか、差し替えや失効の要否）を書いてください。
+- 悪性パッケージ（category が malware）では、該当するパッケージとバージョン、自社で使っていないかの確認方法（lockfile や CI の履歴）、使っていた場合の対処（秘密情報の再発行など）を書いてください。
 - 確認できなかった事項は推測で埋めず「未確認」と書いてください。特に修正バージョンは出典で確認できたものだけを書いてください。
 - LINE で読むため、前置きなしで次の形式だけを出力し、全体で 600 文字以内に収めてください。
 
@@ -34,6 +37,7 @@ SYSTEM = """あなたは日本企業のセキュリティ担当者を支援す�
 def _payload(v) -> str:
     return json.dumps({
         "id": v.id,
+        "category": v.category,
         "aliases": v.aliases,
         "title": v.title,
         "description": v.description,
@@ -115,7 +119,7 @@ def analyze_all(vulns: list) -> str:
     import anthropic
 
     client = anthropic.Anthropic()
-    for v in vulns[:MAX_ITEMS]:
+    for v in [v for v in vulns if v.category in ANALYZED][:MAX_ITEMS]:
         try:
             v.ai_analysis = analyze(v, client)
         except anthropic.AuthenticationError:

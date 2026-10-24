@@ -1,0 +1,36 @@
+{
+ "php": {
+  "result": {
+   "name": "php",
+   "releases": [
+    {
+     "name": "8.5",
+     "eolFrom": "2029-12-31"
+    },
+    {
+     "name": "8.2",
+     "eolFrom": "2026-12-31"
+    },
+    {
+     "name": "8.1",
+     "eolFrom": "2025-12-31"
+    }
+   ]
+  }
+ },
+ "nodejs": {
+  "result": {
+   "name": "nodejs",
+   "releases": [
+    {
+     "name": "20",
+     "eolFrom": "2026-10-30"
+    },
+    {
+     "name": "24",
+     "eolFrom": "2028-04-30"
+    }
+   ]
+  }
+ }
+}

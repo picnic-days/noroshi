@@ -1,0 +1,197 @@
+{
+ "_comment": "サポート終了（EOL）を予告する製品。id は endoflife.date の製品 ID",
+ "products": [
+  {
+   "id": "php",
+   "name": "PHP"
+  },
+  {
+   "id": "nodejs",
+   "name": "Node.js"
+  },
+  {
+   "id": "python",
+   "name": "Python"
+  },
+  {
+   "id": "go",
+   "name": "Go"
+  },
+  {
+   "id": "ruby",
+   "name": "Ruby"
+  },
+  {
+   "id": "oracle-jdk",
+   "name": "Oracle JDK"
+  },
+  {
+   "id": "eclipse-temurin",
+   "name": "Eclipse Temurin (OpenJDK)"
+  },
+  {
+   "id": "dotnet",
+   "name": ".NET"
+  },
+  {
+   "id": "postgresql",
+   "name": "PostgreSQL"
+  },
+  {
+   "id": "mysql",
+   "name": "MySQL"
+  },
+  {
+   "id": "mariadb",
+   "name": "MariaDB"
+  },
+  {
+   "id": "mssqlserver",
+   "name": "SQL Server"
+  },
+  {
+   "id": "redis",
+   "name": "Redis"
+  },
+  {
+   "id": "mongodb",
+   "name": "MongoDB"
+  },
+  {
+   "id": "elasticsearch",
+   "name": "Elasticsearch"
+  },
+  {
+   "id": "nginx",
+   "name": "nginx"
+  },
+  {
+   "id": "apache-http-server",
+   "name": "Apache HTTP Server"
+  },
+  {
+   "id": "tomcat",
+   "name": "Apache Tomcat"
+  },
+  {
+   "id": "wordpress",
+   "name": "WordPress"
+  },
+  {
+   "id": "drupal",
+   "name": "Drupal"
+  },
+  {
+   "id": "laravel",
+   "name": "Laravel"
+  },
+  {
+   "id": "django",
+   "name": "Django"
+  },
+  {
+   "id": "rails",
+   "name": "Ruby on Rails"
+  },
+  {
+   "id": "spring-framework",
+   "name": "Spring Framework"
+  },
+  {
+   "id": "spring-boot",
+   "name": "Spring Boot"
+  },
+  {
+   "id": "nextjs",
+   "name": "Next.js"
+  },
+  {
+   "id": "angular",
+   "name": "Angular"
+  },
+  {
+   "id": "react",
+   "name": "React"
+  },
+  {
+   "id": "vue",
+   "name": "Vue.js"
+  },
+  {
+   "id": "kubernetes",
+   "name": "Kubernetes"
+  },
+  {
+   "id": "docker-engine",
+   "name": "Docker Engine"
+  },
+  {
+   "id": "ubuntu",
+   "name": "Ubuntu"
+  },
+  {
+   "id": "rhel",
+   "name": "Red Hat Enterprise Linux"
+  },
+  {
+   "id": "debian",
+   "name": "Debian"
+  },
+  {
+   "id": "almalinux",
+   "name": "AlmaLinux"
+  },
+  {
+   "id": "rocky-linux",
+   "name": "Rocky Linux"
+  },
+  {
+   "id": "amazon-linux",
+   "name": "Amazon Linux"
+  },
+  {
+   "id": "windows-server",
+   "name": "Windows Server"
+  },
+  {
+   "id": "windows",
+   "name": "Windows"
+  },
+  {
+   "id": "macos",
+   "name": "macOS"
+  },
+  {
+   "id": "msexchange",
+   "name": "Exchange Server"
+  },
+  {
+   "id": "office",
+   "name": "Microsoft Office"
+  },
+  {
+   "id": "esxi",
+   "name": "VMware ESXi"
+  },
+  {
+   "id": "vcenter",
+   "name": "VMware vCenter"
+  },
+  {
+   "id": "fortios",
+   "name": "FortiOS"
+  },
+  {
+   "id": "panos",
+   "name": "PAN-OS"
+  },
+  {
+   "id": "cisco-ios-xe",
+   "name": "Cisco IOS XE"
+  },
+  {
+   "id": "openssl",
+   "name": "OpenSSL"
+  }
+ ]
+}

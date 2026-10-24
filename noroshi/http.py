@@ -19,6 +19,9 @@ class Fetcher:
     def is_mock(self) -> bool:
         return self.mock_dir is not None
 
+    def has_mock(self, name: str, ext: str = "json") -> bool:
+        return bool(self.mock_dir) and (self.mock_dir / f"{name}.{ext}").exists()
+
     def get_json(self, name: str, url: str, params: Optional[dict] = None,
                  headers: Optional[dict] = None, mock_key: Optional[str] = None):
         if self.mock_dir:
@@ -30,7 +33,15 @@ class Fetcher:
             url = f"{url}?{urllib.parse.urlencode(params)}"
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
         with urllib.request.urlopen(req, timeout=self.timeout) as res:
-            return json.loads(res.read().decode("utf-8"))
+            # AWS のステータスは UTF-16 で返るので、応答ヘッダーの文字コードに従う
+            return json.loads(res.read().decode(res.headers.get_content_charset() or "utf-8"))
+
+    def get_text(self, name: str, url: str, ext: str = "xml") -> str:
+        if self.mock_dir:
+            return (self.mock_dir / f"{name}.{ext}").read_text(encoding="utf-8")
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=self.timeout) as res:
+            return res.read().decode(res.headers.get_content_charset() or "utf-8")
 
     def get_text_range(self, name: str, url: str, nbytes: int) -> str:
         """先頭 nbytes だけ取得する。mock では fixtures/<name>.json を丸ごと返す。"""

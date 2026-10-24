@@ -1,0 +1,10 @@
+{
+ "popular-lib": {
+  "downloads": 2500000,
+  "package": "popular-lib"
+ },
+ "typo-lib": {
+  "downloads": 12,
+  "package": "typo-lib"
+ }
+}

@@ -46,3 +46,13 @@ python3 -m unittest discover -s tests  # テスト
 - **即時（LINE）**: critical の脆弱性と、認証局（CA）の鍵侵害・ルート証明書の信頼取り消し
 - **日次まとめ（LINE、毎朝 9 時台）**: 過去 24 時間に新しく見つかった critical / high / medium を製品ごとに集計
 - 認証局（CA）事案は Mozilla CA Program（Bugzilla）から取得し、誤発行・失効遅延は日次まとめ、監査遅延・文書不備は記録のみ
+
+## 脆弱性以外の監視
+
+| 種類 | 取得元 | 即時通知 | 日次まとめ |
+|---|---|---|---|
+| 認証局（CA）事案 | Mozilla CA Program（Bugzilla） | 鍵侵害・信頼取り消し | 誤発行・失効遅延 |
+| クラウド・SaaS 障害 | 各社の公式ステータスページ（`config/status.json`） | major / critical（復旧時も通知） | minor、短時間で解決済みのもの |
+| 悪性パッケージ | GitHub マルウェア勧告 + npm / PyPI のダウンロード数 | 週 1 万 DL 以上 | 週 1,000 DL 以上 |
+| 国内の注意喚起 | JPCERT/CC 注意喚起・IPA 重要なセキュリティ情報 | 狼煙が未通知の事案、事前告知 | 通知済み CVE の注意喚起・更新 |
+| サポート終了（EOL） | endoflife.date（`config/eol.json`） | - | 90・30・7 日前と当日 |

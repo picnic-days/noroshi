@@ -10,7 +10,7 @@ from noroshi import __main__ as cli
 from types import SimpleNamespace
 
 from noroshi import ai, digest, notify_line, scoring
-from noroshi.sources import cvelist, nvd, pki
+from noroshi.sources import cvelist, eol, jp_alerts, malware, nvd, pki, status
 from noroshi.matcher import Watchlist
 from noroshi.models import Vuln
 
@@ -152,6 +152,63 @@ class DigestTest(unittest.TestCase):
         self.assertNotIn("CVE-old", text)
 
 
+class StatusTest(unittest.TestCase):
+    def test_new_and_watched_incidents(self):
+        from datetime import datetime, timezone
+        from noroshi.http import Fetcher
+        providers = [{"id": "cloudflare", "name": "Cloudflare", "type": "statuspage", "url": "https://x"}]
+        since = datetime(2026, 10, 23, 6, tzinfo=timezone.utc)
+        items, _ = status.fetch(Fetcher(ROOT / "fixtures"), since, {"OUT-cloudflare-mockcf3"}, providers)
+        levels = {v.id: v.level for v in items}
+        # 新しい major は即時、解決済みの minor は日次、古い障害は通知済みで追跡中のものだけ返す
+        self.assertEqual(levels, {"OUT-cloudflare-mockcf1": "critical", "OUT-cloudflare-mockcf2": "medium",
+                                  "OUT-cloudflare-mockcf3": "medium"})
+
+    def test_recovered(self):
+        resolved = Vuln(id="OUT-gcp-1", resolved_at="2026-10-24T01:00:00Z")
+        ongoing = Vuln(id="OUT-gcp-2")
+        open_ = {"OUT-gcp-1": {"provider": "gcp"}, "OUT-gcp-2": {"provider": "gcp"},
+                 "OUT-aws-1": {"provider": "aws"}, "OUT-azure-1": {"provider": "azure"}}
+        # スナップショット型は一覧から消えたら復旧。取得に失敗した azure は判定しない
+        done = status.recovered(open_, [resolved, ongoing], {"aws"})
+        self.assertEqual(sorted(done), ["OUT-aws-1", "OUT-gcp-1"])
+
+
+class JpAlertTest(unittest.TestCase):
+    def test_levels(self):
+        from datetime import datetime, timezone
+        xml = (ROOT / "fixtures" / "jp_jpcert.xml").read_text()
+        since = datetime(2026, 10, 23, 6, tzinfo=timezone.utc)
+        items = {v.id: v.level for v in jp_alerts.parse(jp_alerts.FEEDS[0], xml, since, {"CVE-2026-90001"})}
+        self.assertEqual(items, {"JP-jpcert-at269001": "medium", "JP-jpcert-at269002": "critical",
+                                 "JP-jpcert-at269000": "medium"})
+
+
+class MalwareTest(unittest.TestCase):
+    def test_popularity_filter(self):
+        from datetime import datetime, timezone
+        from noroshi.http import Fetcher
+        items = malware.fetch(Fetcher(ROOT / "fixtures"), datetime(2026, 10, 23, tzinfo=timezone.utc))
+        self.assertEqual({v.id: v.level for v in items},
+                         {"GHSA-mock-mal1-0001": "critical", "GHSA-mock-mal2-0002": "medium"})
+
+
+class EolTest(unittest.TestCase):
+    def test_bucket(self):
+        self.assertEqual([eol.bucket(d) for d in (120, 90, 31, 30, 8, 7, 1, 0, -3, -30)],
+                         [None, 90, 90, 30, 30, 7, 7, 0, 0, None])
+
+    def test_notified_once_per_threshold(self):
+        from datetime import date
+        from noroshi.http import Fetcher
+        products = [{"id": "php", "name": "PHP"}, {"id": "nodejs", "name": "Node.js"}]
+        notified = {}
+        lines = eol.upcoming(Fetcher(ROOT / "fixtures"), products, date(2026, 10, 24), notified)
+        self.assertEqual(lines, ["・Node.js 20: 2026-10-30 にサポート終了（あと6日）",
+                                 "・PHP 8.2: 2026-12-31 にサポート終了（あと68日）"])
+        self.assertEqual(eol.upcoming(Fetcher(ROOT / "fixtures"), products, date(2026, 10, 25), notified), [])
+
+
 class NotifyTest(unittest.TestCase):
     def test_summary_uses_first_sentence_and_ellipsis(self):
         v = Vuln(id="X", description="PHP uses longjmp() for OOM errors. Second sentence.")
@@ -248,7 +305,10 @@ class EndToEndMockTest(unittest.TestCase):
             self.assertEqual(ids["CVE-2026-90008"]["sources"], ["cve.org"])
             self.assertEqual(ids["CVE-2026-90001"]["sources"], ["nvd", "kev"])
             self.assertEqual({i for i, v in ids.items() if v["level"] == "critical"},
-                             {"CVE-2026-90001", "CVE-2026-90006", "MOZ-CA-9000001"})
+                             {"CVE-2026-90001", "CVE-2026-90006", "MOZ-CA-9000001",
+                              "OUT-aws-AWS_EC2_OPERATIONAL_ISSUE_MOCK1", "OUT-cloudflare-mockcf1",
+                              "GHSA-mock-mal1-0001", "JP-jpcert-at269002", "JP-ipa-pre-alert20261024"})
+            self.assertIn("🗓 サポート終了の予告", out)
             self.assertIn("種別: 認証局（CA）事案", out)
             self.assertIn("📋 狼煙 日次まとめ", out)
             self.assertIn("ドライラン", out)

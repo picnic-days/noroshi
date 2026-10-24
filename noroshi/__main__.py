@@ -3,6 +3,7 @@
 既定はドライラン（LINE には送らず標準出力に表示）。実送信は --send を付ける。
 """
 import argparse
+import json
 import os
 import sys
 from datetime import datetime, timedelta, timezone
@@ -11,7 +12,7 @@ from pathlib import Path
 from . import ai, digest, notify_line, scoring
 from .http import Fetcher
 from .matcher import Watchlist
-from .sources import cvelist, epss, ghsa, kev, nvd, pki, x_buzz
+from .sources import cvelist, eol, epss, ghsa, jp_alerts, kev, malware, nvd, pki, status, x_buzz
 from .store import Store
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -19,6 +20,11 @@ MOCK_NOW = datetime(2026, 10, 24, 6, 0, tzinfo=timezone.utc)
 DEFAULT_LOOKBACK = timedelta(hours=24)
 MAX_LOOKBACK = timedelta(days=7)
 FRESH_DAYS = 30  # これより古く公開された CVE は NVD の再解析で更新されても候補にしない
+OUTAGE_WATCH_DAYS = 7  # 復旧を確認できないまま、これ以上経った障害は追跡をやめる
+
+
+def load_config(name: str) -> dict:
+    return json.loads((ROOT / "config" / name).read_text(encoding="utf-8"))
 
 
 def collect(fetcher, since, now) -> list:
@@ -92,10 +98,15 @@ def run(args) -> int:
     x_buzz.enrich(fetcher, vulns, os.environ.get("X_BEARER_TOKEN", ""))
     for v in vulns:
         scoring.score(v)
-    # CA 事案は CVE と違って照合・スコアリングを通さず、分類だけで重要度を決める
+    # CVE 以外の事案は照合・スコアリングを通さず、各ソースの分類だけで重要度を決める
+    open_outages = store.state.setdefault("open_outages", {})
     from_pki = pki.fetch(fetcher, since)
-    print(f"fetched mozilla-ca={len(from_pki)}")
-    vulns += from_pki
+    from_status, snapshot_ok = status.fetch(fetcher, since, set(open_outages), load_config("status.json")["providers"])
+    from_malware = malware.fetch(fetcher, since, os.environ.get("GITHUB_TOKEN", ""))
+    known = set(store.state["notified"]) | {v.id for v in vulns if v.level == "critical"}
+    from_jp = jp_alerts.fetch(fetcher, since, known)
+    print(f"fetched mozilla-ca={len(from_pki)} status={len(from_status)} malware={len(from_malware)} jp-alert={len(from_jp)}")
+    vulns += from_pki + from_status + from_malware + from_jp
     vulns.sort(key=lambda v: v.score, reverse=True)
 
     alerts = store.unnotified([v for v in vulns if v.level == "critical"])
@@ -116,13 +127,28 @@ def run(args) -> int:
         push(args, fetcher, texts)
         if args.send:
             store.mark_notified(alerts, now)
+            for v in alerts:
+                if v.category == "outage":
+                    open_outages[v.id] = {"title": v.title, "provider": v.matched[0], "since": now.isoformat()}
     if warnings:
         push(args, fetcher, warnings)
+
+    done = status.recovered(open_outages, from_status, snapshot_ok)
+    if done:
+        push(args, fetcher, ["\n".join(f"✅ 復旧: {open_outages[i]['title']}" for i in done)])
+        if args.send:
+            for i in done:
+                del open_outages[i]
+    stale = (now - timedelta(days=OUTAGE_WATCH_DAYS)).isoformat()
+    for i in [i for i, o in open_outages.items() if o["since"] < stale]:
+        del open_outages[i]
 
     items = store.save(vulns, now)
     if digest.due(store.state, now):
         since_digest = store.state.get("digest_since") or (now - timedelta(days=1)).isoformat()
-        push(args, fetcher, [digest.build(items, since_digest, now, watchlist.names)])
+        eol_lines = eol.upcoming(fetcher, load_config("eol.json")["products"],
+                                 now.astimezone(digest.JST).date(), store.state.setdefault("eol_notified", {}))
+        push(args, fetcher, [digest.build(items, since_digest, now, watchlist.names, eol_lines)])
         store.state["digest_sent"] = now.astimezone(digest.JST).date().isoformat()
         store.state["digest_since"] = now.isoformat()
         store.save_state()

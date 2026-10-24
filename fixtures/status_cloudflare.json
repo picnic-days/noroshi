@@ -1,0 +1,34 @@
+{
+ "page": {
+  "id": "mock"
+ },
+ "incidents": [
+  {
+   "id": "mockcf1",
+   "name": "[MOCK] Elevated errors for Cloudflare Dashboard and API",
+   "status": "investigating",
+   "impact": "major",
+   "created_at": "2026-10-24T05:00:00.000Z",
+   "resolved_at": null,
+   "shortlink": "https://stspg.io/mockcf1"
+  },
+  {
+   "id": "mockcf2",
+   "name": "[MOCK] Network Performance Issues in Ashburn",
+   "status": "resolved",
+   "impact": "minor",
+   "created_at": "2026-10-23T10:00:00.000Z",
+   "resolved_at": "2026-10-23T11:00:00.000Z",
+   "shortlink": "https://stspg.io/mockcf2"
+  },
+  {
+   "id": "mockcf3",
+   "name": "[MOCK] Old incident",
+   "status": "resolved",
+   "impact": "major",
+   "created_at": "2026-10-20T10:00:00.000Z",
+   "resolved_at": "2026-10-20T11:00:00.000Z",
+   "shortlink": "https://stspg.io/mockcf3"
+  }
+ ]
+}

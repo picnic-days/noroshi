@@ -1,0 +1,87 @@
+{
+ "_comment": "クラウド・SaaS の公式ステータスページ。type: statuspage（Atlassian Statuspage 系）/ gcp / aws / rss / slack",
+ "providers": [
+  {
+   "id": "aws",
+   "name": "AWS",
+   "type": "aws",
+   "url": "https://health.aws.amazon.com/public/currentevents",
+   "page": "https://health.aws.amazon.com/health/status"
+  },
+  {
+   "id": "azure",
+   "name": "Azure",
+   "type": "rss",
+   "url": "https://azure.status.microsoft/en-us/status/feed/",
+   "page": "https://azure.status.microsoft/en-us/status"
+  },
+  {
+   "id": "gcp",
+   "name": "Google Cloud",
+   "type": "gcp",
+   "url": "https://status.cloud.google.com/incidents.json",
+   "page": "https://status.cloud.google.com/"
+  },
+  {
+   "id": "cloudflare",
+   "name": "Cloudflare",
+   "type": "statuspage",
+   "url": "https://www.cloudflarestatus.com"
+  },
+  {
+   "id": "github",
+   "name": "GitHub",
+   "type": "statuspage",
+   "url": "https://www.githubstatus.com"
+  },
+  {
+   "id": "slack",
+   "name": "Slack",
+   "type": "slack",
+   "url": "https://slack-status.com/api/v2.0.0/current",
+   "page": "https://slack-status.com/"
+  },
+  {
+   "id": "zoom",
+   "name": "Zoom",
+   "type": "statuspage",
+   "url": "https://status.zoom.us"
+  },
+  {
+   "id": "atlassian",
+   "name": "Atlassian",
+   "type": "statuspage",
+   "url": "https://status.atlassian.com"
+  },
+  {
+   "id": "datadog",
+   "name": "Datadog",
+   "type": "statuspage",
+   "url": "https://status.datadoghq.com"
+  },
+  {
+   "id": "box",
+   "name": "Box",
+   "type": "statuspage",
+   "url": "https://status.box.com"
+  },
+  {
+   "id": "vercel",
+   "name": "Vercel",
+   "type": "statuspage",
+   "url": "https://www.vercel-status.com"
+  },
+  {
+   "id": "openai",
+   "name": "OpenAI",
+   "type": "statuspage",
+   "url": "https://status.openai.com"
+  },
+  {
+   "id": "anthropic",
+   "name": "Anthropic Claude",
+   "type": "statuspage",
+   "url": "https://status.claude.com"
+  }
+ ]
+}
