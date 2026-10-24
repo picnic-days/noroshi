@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T01:59:32.649835+00:00",
+  "generated_at": "2026-10-24T02:32:34.575817+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -37,6 +37,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "panos",
         "php"
@@ -96,6 +99,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "panos",
         "php"
@@ -144,6 +150,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -191,6 +200,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -238,6 +250,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -285,6 +300,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -332,6 +350,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -382,6 +403,9 @@
         "nvd",
         "kev"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
@@ -427,6 +451,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -473,6 +500,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -519,6 +549,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -565,6 +598,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -611,6 +647,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -657,6 +696,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -703,6 +745,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -749,6 +794,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -795,6 +843,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -841,6 +892,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -887,6 +941,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -933,6 +990,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -979,6 +1039,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -1025,6 +1088,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -1071,6 +1137,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -1116,6 +1185,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -1162,6 +1234,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -1220,6 +1295,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1276,6 +1354,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1320,6 +1401,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -1366,6 +1450,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -1416,6 +1503,9 @@
         "nvd",
         "kev"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
@@ -1459,6 +1549,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -1504,6 +1597,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "chrome"
       ],
@@ -1554,6 +1650,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1609,6 +1708,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1665,6 +1767,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1720,6 +1825,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1776,6 +1884,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1824,6 +1935,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1872,6 +1986,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1920,6 +2037,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -1965,6 +2085,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -2021,6 +2144,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2071,6 +2197,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "glibc"
       ],
@@ -2128,6 +2257,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2169,6 +2301,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -2221,6 +2356,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2270,6 +2408,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2323,6 +2464,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2379,6 +2523,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -2429,6 +2576,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -2474,6 +2624,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -2518,6 +2671,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -2564,6 +2720,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -2615,6 +2774,9 @@
         "nvd",
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2665,6 +2827,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "laravel"
       ],
@@ -2709,6 +2874,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2754,6 +2922,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2798,6 +2969,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -2844,6 +3018,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2895,6 +3072,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2946,6 +3126,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -2997,6 +3180,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3047,6 +3233,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -3097,6 +3286,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -3145,6 +3337,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -3195,6 +3390,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -3245,6 +3443,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -3289,6 +3490,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3330,6 +3534,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3371,6 +3578,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3412,6 +3622,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3469,6 +3682,9 @@
         "nvd",
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3511,6 +3727,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "php"
       ],
@@ -3552,6 +3771,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -3595,6 +3817,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nginx",
         "kubernetes"
@@ -3638,6 +3863,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -3695,6 +3923,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "windows"
       ],
@@ -3736,6 +3967,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "imagemagick"
       ],
@@ -3778,6 +4012,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "kubernetes"
       ],
@@ -3820,6 +4057,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -3862,6 +4102,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -3916,6 +4159,9 @@
         "nvd",
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "laravel"
       ],
@@ -3958,6 +4204,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -4001,6 +4250,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "kubernetes"
       ],
@@ -4047,6 +4299,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4089,6 +4344,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4139,6 +4397,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "glibc"
       ],
@@ -4180,6 +4441,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "redis"
       ],
@@ -4222,6 +4486,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "glibc",
         "nodejs"
@@ -4267,6 +4534,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4310,6 +4580,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "django"
       ],
@@ -4352,6 +4625,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -4394,6 +4670,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs",
         "zlib"
@@ -4436,6 +4715,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -4481,6 +4763,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4523,6 +4808,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -4565,6 +4853,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "java"
       ],
@@ -4611,6 +4902,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "postgresql"
       ],
@@ -4656,6 +4950,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4701,6 +4998,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -4742,6 +5042,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "postgresql"
       ],
@@ -4792,6 +5095,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "python"
       ],
@@ -4834,6 +5140,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "postgresql"
       ],
@@ -4883,6 +5192,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "python"
       ],
@@ -4933,6 +5245,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "kubernetes"
       ],
@@ -4974,6 +5289,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -5014,6 +5332,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "nodejs"
       ],
@@ -5063,6 +5384,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "python"
       ],
@@ -5106,6 +5430,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "kubernetes"
       ],
@@ -5156,6 +5483,9 @@
       "sources": [
         "ghsa"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "python"
       ],
@@ -5197,6 +5527,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "kubernetes"
       ],
@@ -5242,6 +5575,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5284,6 +5620,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5329,6 +5668,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5374,6 +5716,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5414,6 +5759,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5455,6 +5803,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5499,6 +5850,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5544,6 +5898,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5584,6 +5941,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5629,6 +5989,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5671,6 +6034,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5716,6 +6082,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5757,6 +6126,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5797,6 +6169,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5841,6 +6216,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5886,6 +6264,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5931,6 +6312,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -5976,6 +6360,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6021,6 +6408,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6065,6 +6455,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6110,6 +6503,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6155,6 +6551,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6200,6 +6599,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6244,6 +6646,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6284,6 +6689,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6325,6 +6733,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6370,6 +6781,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6410,6 +6824,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6455,6 +6872,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6500,6 +6920,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6545,6 +6968,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6587,6 +7013,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6632,6 +7061,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6673,6 +7105,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6714,6 +7149,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6755,6 +7193,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6796,6 +7237,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6840,6 +7284,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6882,6 +7329,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6927,6 +7377,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -6969,6 +7422,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7013,6 +7469,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7058,6 +7517,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7101,6 +7563,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7141,6 +7606,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7184,6 +7652,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7226,6 +7697,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7267,6 +7741,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7307,6 +7784,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7348,6 +7828,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7389,6 +7872,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7429,6 +7915,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7469,6 +7958,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7512,6 +8004,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7553,6 +8048,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7597,6 +8095,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7637,6 +8138,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7679,6 +8183,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7720,6 +8227,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7761,6 +8271,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7803,6 +8316,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7846,6 +8362,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7887,6 +8406,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7930,6 +8452,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -7973,6 +8498,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8016,6 +8544,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8059,6 +8590,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8101,6 +8635,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8140,6 +8677,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8181,6 +8721,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8224,6 +8767,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8263,6 +8809,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8303,6 +8852,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8346,6 +8898,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8389,6 +8944,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8432,6 +8990,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8472,6 +9033,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8514,6 +9078,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8557,6 +9124,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8599,6 +9169,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8642,6 +9215,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8682,6 +9258,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8724,6 +9303,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8766,6 +9348,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8806,6 +9391,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8849,6 +9437,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8892,6 +9483,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8934,6 +9528,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -8975,6 +9572,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9018,6 +9618,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9058,6 +9661,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9099,6 +9705,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9140,6 +9749,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9181,6 +9793,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9224,6 +9839,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9265,6 +9883,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9305,6 +9926,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9348,6 +9972,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9391,6 +10018,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9434,6 +10064,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9477,6 +10110,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9520,6 +10156,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9560,6 +10199,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9600,6 +10242,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9642,6 +10287,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9684,6 +10332,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9724,6 +10375,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9767,6 +10421,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9808,6 +10465,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9851,6 +10511,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9893,6 +10556,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9936,6 +10602,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -9978,6 +10647,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10018,6 +10690,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10061,6 +10736,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10104,6 +10782,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10145,6 +10826,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10186,6 +10870,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10226,6 +10913,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10267,6 +10957,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10310,6 +11003,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10351,6 +11047,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10394,6 +11093,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10437,6 +11139,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10477,6 +11182,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10518,6 +11226,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10559,6 +11270,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10600,6 +11314,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10640,6 +11357,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10681,6 +11401,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10722,6 +11445,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10763,6 +11489,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10806,6 +11535,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10848,6 +11580,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10890,6 +11625,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10933,6 +11671,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -10976,6 +11717,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11019,6 +11763,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11062,6 +11809,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11105,6 +11855,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11148,6 +11901,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11189,6 +11945,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11232,6 +11991,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11274,6 +12036,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11317,6 +12082,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11360,6 +12128,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11401,6 +12172,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11442,6 +12216,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11484,6 +12261,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11527,6 +12307,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11570,6 +12353,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11611,6 +12397,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11654,6 +12443,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11694,6 +12486,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11737,6 +12532,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11780,6 +12578,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11821,6 +12622,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11864,6 +12668,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11906,6 +12713,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11948,6 +12758,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -11990,6 +12803,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12033,6 +12849,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12076,6 +12895,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12119,6 +12941,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12162,6 +12987,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12205,6 +13033,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12248,6 +13079,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12291,6 +13125,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12334,6 +13171,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12377,6 +13217,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12420,6 +13263,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12463,6 +13309,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12503,6 +13352,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12546,6 +13398,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12588,6 +13443,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12631,6 +13489,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12672,6 +13533,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12713,6 +13577,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12754,6 +13621,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12797,6 +13667,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12838,6 +13711,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12878,6 +13754,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12921,6 +13800,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -12964,6 +13846,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13007,6 +13892,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13049,6 +13937,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13092,6 +13983,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13135,6 +14029,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13178,6 +14075,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13221,6 +14121,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13264,6 +14167,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13307,6 +14213,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13349,6 +14258,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13392,6 +14304,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13434,6 +14349,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13475,6 +14393,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13515,6 +14436,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13558,6 +14482,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13599,6 +14526,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13641,6 +14571,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13684,6 +14617,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13727,6 +14663,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13770,6 +14709,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13812,6 +14754,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13855,6 +14800,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13896,6 +14844,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13936,6 +14887,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -13976,6 +14930,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14019,6 +14976,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14062,6 +15022,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14105,6 +15068,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14148,6 +15114,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14191,6 +15160,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14234,6 +15206,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14274,6 +15249,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14316,6 +15294,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14357,6 +15338,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14398,6 +15382,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "linux-kernel"
       ],
@@ -14438,6 +15425,9 @@
       "sources": [
         "nvd"
       ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "",
       "matched": [
         "postgresql"
       ],
