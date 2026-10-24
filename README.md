@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" width="120" alt="狼煙のアイコン（海賊旗）">
+  <img src="assets/icon.png" width="120" alt="狼煙のアイコン（レーダー）">
 </p>
 
 <h1 align="center">noroshi（狼煙）</h1>
