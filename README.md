@@ -2,7 +2,9 @@
 
 広く使われているソフトウェアの脆弱性を一次情報（NVD / GitHub Security Advisories / CISA KEV / EPSS）と X の言及量から収集・スコアリングし、緊急案件を LINE に通知する。結果は `data/vulns.json` に出力し、ダッシュボードから読む。
 
-外部依存なし（Python 3.9+ 標準ライブラリのみ）。
+緊急案件は Claude（Opus 5.5 + Web 検索）が一次情報を確認し、「状況」と「対応策」を日本語でまとめて LINE に添える。
+
+収集・スコアリング部分は外部依存なし（Python 3.9+ 標準ライブラリのみ）。AI 分析には `anthropic` SDK（Python 3.10+）が必要。
 
 ## 使い方
 
@@ -19,6 +21,8 @@ python3 -m unittest discover -s tests  # テスト
 |---|---|---|
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE Messaging API のチャネルアクセストークン | `--send` 時 |
 | `LINE_TO` | 送信先の userId / groupId | `--send` 時 |
+| `ANTHROPIC_API_KEY` | 緊急案件の AI 分析（未設定ならスキップ、`--no-ai` でも無効化） | 任意 |
+| `ANTHROPIC_KEY_EXPIRES` | API キーの有効期限（YYYY-MM-DD、GitHub の Variables）。7 日前から毎日 LINE で知らせる | 任意 |
 | `NVD_API_KEY` | NVD のレート制限緩和 | 任意 |
 | `GITHUB_TOKEN` | GHSA のレート制限緩和 | 任意 |
 | `X_BEARER_TOKEN` | X の言及件数取得（未設定なら X 軸はスキップ） | 任意 |

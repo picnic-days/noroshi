@@ -2,6 +2,7 @@
 PUSH_URL = "https://api.line.me/v2/bot/message/push"
 MAX_ITEMS = 5
 MAX_CHARS = 5000
+MAX_BUBBLES = 5  # 1 回の push に入れられる吹き出しの上限（何個でも 1 通と数えられる）
 
 
 def summary(v, limit: int = 100) -> str:
@@ -38,6 +39,16 @@ def format_message(vulns: list, dashboard_url: str = "") -> str:
     return "\n".join(l for l in lines if l is not None)[:MAX_CHARS]
 
 
-def send(fetcher, text: str, token: str, to: str) -> None:
-    fetcher.post_json(PUSH_URL, {"to": to, "messages": [{"type": "text", "text": text}]},
+def build_messages(vulns: list, dashboard_url: str = "") -> list:
+    """一覧の吹き出しに続けて、AI 分析がある案件ごとに吹き出しを 1 つずつ足す。"""
+    texts = [format_message(vulns, dashboard_url)]
+    for v in vulns:
+        if v.ai_analysis and len(texts) < MAX_BUBBLES:
+            texts.append(f"🤖 {v.id}\n\n{v.ai_analysis}"[:MAX_CHARS])
+    return texts
+
+
+def send(fetcher, texts: list, token: str, to: str) -> None:
+    messages = [{"type": "text", "text": t} for t in texts[:MAX_BUBBLES]]
+    fetcher.post_json(PUSH_URL, {"to": to, "messages": messages},
                       headers={"Authorization": f"Bearer {token}"})

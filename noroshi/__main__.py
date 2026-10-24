@@ -8,7 +8,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import notify_line, scoring
+from . import ai, notify_line, scoring
 from .http import Fetcher
 from .matcher import Watchlist
 from .sources import epss, ghsa, kev, nvd, x_buzz
@@ -46,6 +46,27 @@ def collect(fetcher, since, now) -> list:
     return list(merged.values())
 
 
+def key_warnings(store, now) -> list:
+    """API キーの期限と有効性を 1 日 1 回だけ確認する。"""
+    today = now.date()
+    if store.state.get("ai_key_checked") == today.isoformat():
+        return []
+    store.state["ai_key_checked"] = today.isoformat()
+    expires = os.environ.get("ANTHROPIC_KEY_EXPIRES", "")
+    warnings = [ai.expiry_warning(expires, today)] if expires else []
+    warnings.append(ai.check_key())
+    return [w for w in warnings if w]
+
+
+def push(args, fetcher, texts) -> None:
+    if args.send:
+        notify_line.send(fetcher, texts, os.environ["LINE_CHANNEL_ACCESS_TOKEN"], os.environ["LINE_TO"])
+        print("LINE に送信しました")
+    else:
+        print("--- LINE メッセージ（ドライラン・未送信） ---")
+        print("\n\n---\n\n".join(texts))
+
+
 def run(args) -> int:
     mock = args.mock
     now = datetime.fromisoformat(args.now) if args.now else (MOCK_NOW if mock else datetime.now(timezone.utc))
@@ -75,15 +96,21 @@ def run(args) -> int:
     for v in vulns:
         print(f"  {v.level:8} {v.score:5.1f}  {v.id:18} tier={v.tier} {v.match_type:8} {','.join(v.matched)}")
 
+    use_ai = not args.no_ai and not mock
+    warnings = key_warnings(store, now) if use_ai else []
     if alerts:
-        text = notify_line.format_message(alerts, os.environ.get("DASHBOARD_URL", ""))
+        warning = ai.analyze_all(alerts) if use_ai else ""
+        if warning and warning not in warnings:
+            warnings.append(warning)
+        texts = notify_line.build_messages(alerts, os.environ.get("DASHBOARD_URL", ""))
+        # 警告は吹き出しの空きがあれば同じ通知に添え、なければ別に送る
+        while warnings and len(texts) < notify_line.MAX_BUBBLES:
+            texts.append(warnings.pop(0))
+        push(args, fetcher, texts)
         if args.send:
-            notify_line.send(fetcher, text, os.environ["LINE_CHANNEL_ACCESS_TOKEN"], os.environ["LINE_TO"])
             store.mark_notified(alerts, now)
-            print("LINE に送信しました")
-        else:
-            print("--- LINE メッセージ（ドライラン・未送信） ---")
-            print(text)
+    if warnings:
+        push(args, fetcher, warnings)
 
     store.save(vulns, now)
     return 0
@@ -95,6 +122,7 @@ def main(argv=None) -> int:
     p.add_argument("--send", action="store_true", help="LINE に実送信する（既定はドライラン）")
     p.add_argument("--now", help="現在時刻を上書き（ISO 8601）")
     p.add_argument("--data-dir", default=str(ROOT / "data"))
+    p.add_argument("--no-ai", action="store_true", help="Claude による分析を行わない")
     p.add_argument("--ping", action="store_true", help="LINE にテストメッセージを 1 通送って終了する")
     args = p.parse_args(argv)
     if args.mock and (args.send or args.ping):
@@ -102,7 +130,7 @@ def main(argv=None) -> int:
     if (args.send or args.ping) and not (os.environ.get("LINE_CHANNEL_ACCESS_TOKEN") and os.environ.get("LINE_TO")):
         p.error("--send / --ping には LINE_CHANNEL_ACCESS_TOKEN と LINE_TO が必要")
     if args.ping:
-        notify_line.send(Fetcher(), "🔥 狼煙: テスト通知です。この通知が届けば設定は完了です。",
+        notify_line.send(Fetcher(), ["🔥 狼煙: テスト通知です。この通知が届けば設定は完了です。"],
                          os.environ["LINE_CHANNEL_ACCESS_TOKEN"], os.environ["LINE_TO"])
         print("LINE にテスト通知を送信しました")
         return 0

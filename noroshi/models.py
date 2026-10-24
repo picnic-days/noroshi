@@ -32,6 +32,7 @@ class Vuln:
     score: float = 0.0
     level: str = ""
     score_breakdown: dict = field(default_factory=dict)
+    ai_analysis: str = ""  # Claude による「状況」と「対応策」
 
     def merge(self, other: "Vuln") -> None:
         """同一脆弱性の別ソース情報を取り込む。"""
