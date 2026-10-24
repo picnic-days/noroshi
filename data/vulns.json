@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T09:54:16.902129+00:00",
+  "generated_at": "2026-10-24T13:41:07.608675+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -3874,6 +3874,46 @@
         "unauth_network": 5,
         "epss": 0.0
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-pij2josz3rvz",
+      "aliases": [],
+      "title": "Cloudflare: Increased error rate in Workflow Operations",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-24T13:13:49.728Z",
+      "updated": "2026-10-24T13:13:49.728Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/pij2josz3rvz"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T13:41:07.608675+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
