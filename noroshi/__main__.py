@@ -32,12 +32,13 @@ def collect(fetcher, since, now) -> list:
             merged[v.id] = v
 
     fresh = (now - timedelta(days=FRESH_DAYS)).date().isoformat()
-    for v in cvelist.fetch(fetcher, since, now):
+    from_cve = cvelist.fetch(fetcher, since, now)
+    from_nvd = nvd.fetch(fetcher, since, now, os.environ.get("NVD_API_KEY", ""))
+    from_ghsa = ghsa.fetch(fetcher, since, os.environ.get("GITHUB_TOKEN", ""))
+    print(f"fetched cve.org={len(from_cve)} nvd={len(from_nvd)} ghsa={len(from_ghsa)} kev={len(kev_all)}")
+    for v in from_cve:
         add(v)
-    for v in nvd.fetch(fetcher, since, now, os.environ.get("NVD_API_KEY", "")):
-        if v.published[:10] >= fresh:
-            add(v)
-    for v in ghsa.fetch(fetcher, since, os.environ.get("GITHUB_TOKEN", "")):
+    for v in from_nvd + from_ghsa:
         if v.published[:10] >= fresh:
             add(v)
     for cve, v in kev_all.items():
