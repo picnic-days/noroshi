@@ -20,6 +20,9 @@ MOCK_NOW = datetime(2026, 10, 24, 6, 0, tzinfo=timezone.utc)
 DEFAULT_LOOKBACK = timedelta(hours=24)
 MAX_LOOKBACK = timedelta(days=7)
 FRESH_DAYS = 30  # これより古く公開された CVE は NVD の再解析で更新されても候補にしない
+# 配信側のキャッシュや登録の遅れで取りこぼさないよう、取得範囲を前回実行より少しさかのぼらせる。
+# 重複して拾ったものは統合され、通知済みの判定で二重通知もしない
+FETCH_OVERLAP = timedelta(minutes=30)
 OUTAGE_WATCH_DAYS = 7  # 復旧を確認できないまま、これ以上経った障害は追跡をやめる
 
 
@@ -86,7 +89,8 @@ def run(args) -> int:
     last = store.last_run()
     since = max(last, now - MAX_LOOKBACK) if last and not mock else now - DEFAULT_LOOKBACK
 
-    vulns = collect(fetcher, since, now)
+    fetch_since = since - FETCH_OVERLAP
+    vulns = collect(fetcher, fetch_since, now)
     for v in vulns:
         watchlist.match(v)
     vulns = [v for v in vulns if v.matched or v.match_type == "kev-only"]
@@ -100,11 +104,11 @@ def run(args) -> int:
         scoring.score(v)
     # CVE 以外の事案は照合・スコアリングを通さず、各ソースの分類だけで重要度を決める
     open_outages = store.state.setdefault("open_outages", {})
-    from_pki = pki.fetch(fetcher, since)
-    from_status, snapshot_ok = status.fetch(fetcher, since, set(open_outages), load_config("status.json")["providers"])
-    from_malware = malware.fetch(fetcher, since, os.environ.get("GITHUB_TOKEN", ""))
+    from_pki = pki.fetch(fetcher, fetch_since)
+    from_status, snapshot_ok = status.fetch(fetcher, fetch_since, set(open_outages), load_config("status.json")["providers"])
+    from_malware = malware.fetch(fetcher, fetch_since, os.environ.get("GITHUB_TOKEN", ""))
     known = set(store.state["notified"]) | {v.id for v in vulns if v.level == "critical"}
-    from_jp = jp_alerts.fetch(fetcher, since, known)
+    from_jp = jp_alerts.fetch(fetcher, fetch_since, known)
     print(f"fetched mozilla-ca={len(from_pki)} status={len(from_status)} malware={len(from_malware)} jp-alert={len(from_jp)}")
     vulns += from_pki + from_status + from_malware + from_jp
     vulns.sort(key=lambda v: v.score, reverse=True)
