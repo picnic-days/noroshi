@@ -10,7 +10,7 @@ from noroshi import __main__ as cli
 from types import SimpleNamespace
 
 from noroshi import ai, digest, notify_line, scoring
-from noroshi.sources import cvelist, eol, jp_alerts, malware, nvd, pki, status
+from noroshi.sources import ai_vendors, cvelist, eol, jp_alerts, malware, nvd, pki, status
 from noroshi.matcher import Watchlist
 from noroshi.models import Vuln
 
@@ -209,6 +209,37 @@ class EolTest(unittest.TestCase):
         self.assertEqual(eol.upcoming(Fetcher(ROOT / "fixtures"), products, date(2026, 10, 25), notified), [])
 
 
+class AiVendorTest(unittest.TestCase):
+    def test_repo_advisory_matches_watchlist(self):
+        from datetime import datetime, timezone
+        from noroshi.http import Fetcher
+        items = ai_vendors.repo_advisories(Fetcher(ROOT / "fixtures"), ["anthropics/claude-code"],
+                                           datetime(2026, 10, 23, tzinfo=timezone.utc))
+        self.assertEqual([v.id for v in items], ["GHSA-mock-cc01-0001"])
+        Watchlist.load(ROOT / "config" / "watchlist.json").match(items[0])
+        self.assertEqual((items[0].matched, items[0].match_type), (["claude-code"], "exact"))
+
+    def test_news_levels(self):
+        from datetime import datetime, timezone
+        from noroshi.http import Fetcher
+        feeds = json.loads((ROOT / "config" / "ai.json").read_text())["feeds"]
+        since = datetime(2026, 10, 23, tzinfo=timezone.utc)
+        now = datetime(2026, 10, 24, tzinfo=timezone.utc)
+        state = {}
+        levels = {v.title: v.level for v in ai_vendors.news(Fetcher(ROOT / "fixtures"), feeds, since, now, state)}
+        self.assertEqual(levels, {
+            "OpenAI: [MOCK] Security incident involving a third-party analytics provider": "critical",
+            "OpenAI: [MOCK] Securing our frontier model training environment": "medium",
+            "Google Security Blog: [MOCK] AI threats in the wild: prompt injections on the web": "medium",
+        })
+        # サイトマップは初回に記録だけし、2 回目以降に現れた URL を新着とする
+        state["sitemap_urls"]["anthropic"].remove("https://www.anthropic.com/news/mock-detecting-countering-misuse-oct-2026")
+        state["sitemap_urls"]["anthropic"].append("https://www.anthropic.com/news/old")
+        again = ai_vendors.news(Fetcher(ROOT / "fixtures"), feeds, now, now, state)
+        self.assertEqual([(v.id, v.level) for v in again],
+                         [("AI-anthropic-mock-detecting-countering-misuse-oct-2026", "medium")])
+
+
 class NotifyTest(unittest.TestCase):
     def test_summary_uses_first_sentence_and_ellipsis(self):
         v = Vuln(id="X", description="PHP uses longjmp() for OOM errors. Second sentence.")
@@ -307,7 +338,8 @@ class EndToEndMockTest(unittest.TestCase):
             self.assertEqual({i for i, v in ids.items() if v["level"] == "critical"},
                              {"CVE-2026-90001", "CVE-2026-90006", "MOZ-CA-9000001",
                               "OUT-aws-AWS_EC2_OPERATIONAL_ISSUE_MOCK1", "OUT-cloudflare-mockcf1",
-                              "GHSA-mock-mal1-0001", "JP-jpcert-at269002", "JP-ipa-pre-alert20261024"})
+                              "GHSA-mock-mal1-0001", "JP-jpcert-at269002", "JP-ipa-pre-alert20261024",
+                              "AI-openai-mock-security-incident"})
             self.assertIn("🗓 サポート終了の予告", out)
             self.assertIn("種別: 認証局（CA）事案", out)
             self.assertIn("📋 狼煙 日次まとめ", out)

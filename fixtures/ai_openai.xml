@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>OpenAI News</title>
+<item><title>[MOCK] Security incident involving a third-party analytics provider</title><link>https://openai.com/index/mock-security-incident/</link><category>Security</category><pubDate>Fri, 23 Oct 2026 20:00:00 GMT</pubDate></item>
+<item><title>[MOCK] Securing our frontier model training environment</title><link>https://openai.com/index/mock-securing-training/</link><category>Security</category><pubDate>Fri, 23 Oct 2026 10:00:00 GMT</pubDate></item>
+<item><title>[MOCK] Build more responsive apps with the Decisions API</title><link>https://openai.com/index/mock-decisions-api/</link><category>Product</category><pubDate>Thu, 23 Oct 2026 19:00:00 GMT</pubDate></item>
+</channel></rss>

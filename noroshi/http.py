@@ -1,3 +1,4 @@
+import gzip
 import json
 import urllib.error
 import urllib.parse
@@ -6,6 +7,15 @@ from pathlib import Path
 from typing import Optional
 
 USER_AGENT = "noroshi/0.1"
+
+
+def _body(res) -> str:
+    """応答本文を文字列にする。頼んでいなくても gzip で返すサーバがあるので展開する。"""
+    raw = res.read()
+    if raw[:2] == b"\x1f\x8b":
+        raw = gzip.decompress(raw)
+    # AWS のステータスは UTF-16 で返るので、応答ヘッダーの文字コードに従う
+    return raw.decode(res.headers.get_content_charset() or "utf-8")
 
 
 class Fetcher:
@@ -33,15 +43,14 @@ class Fetcher:
             url = f"{url}?{urllib.parse.urlencode(params)}"
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
         with urllib.request.urlopen(req, timeout=self.timeout) as res:
-            # AWS のステータスは UTF-16 で返るので、応答ヘッダーの文字コードに従う
-            return json.loads(res.read().decode(res.headers.get_content_charset() or "utf-8"))
+            return json.loads(_body(res))
 
     def get_text(self, name: str, url: str, ext: str = "xml") -> str:
         if self.mock_dir:
             return (self.mock_dir / f"{name}.{ext}").read_text(encoding="utf-8")
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         with urllib.request.urlopen(req, timeout=self.timeout) as res:
-            return res.read().decode(res.headers.get_content_charset() or "utf-8")
+            return _body(res)
 
     def get_text_range(self, name: str, url: str, nbytes: int) -> str:
         """先頭 nbytes だけ取得する。mock では fixtures/<name>.json を丸ごと返す。"""

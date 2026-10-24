@@ -57,9 +57,10 @@ https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp
 | クラウド・SaaS 障害 | AWS、Azure、Google Cloud、Cloudflare、GitHub、Slack、Zoom ほか計 13 社の公式ステータスページ | 大規模障害（復旧時も通知） | 軽微な障害 |
 | 悪性パッケージ | GitHub のマルウェア勧告 + npm / PyPI のダウンロード数 | 週 1 万 DL 以上のパッケージ | 週 1,000 DL 以上 |
 | 国内の注意喚起 | JPCERT/CC、IPA | 未通知の事案、事前告知 | 通知済みの CVE に関するもの |
+| AI 企業のセキュリティ情報 | OpenAI・Anthropic・Google のセキュリティ関連の発表、Claude Code・Codex・Gemini CLI・MCP SDK・LangChain など 15 リポジトリのセキュリティアドバイザリ | インシデント・脆弱性の発表（アドバイザリは脆弱性と同じスコアで判定） | その他のセキュリティ関連の発表 |
 | サポート終了（EOL） | endoflife.date（48 製品） | なし | 90・30・7 日前と当日 |
 
-脆弱性は、確度を優先して CVE 番号が確定したものだけを扱います。監視対象の製品（48）は [`config/watchlist.json`](config/watchlist.json) で、OS、VPN 機器、言語ランタイム、Web サーバ、CMS、主要ライブラリなどを含みます。
+脆弱性は、確度を優先して CVE 番号が確定したものだけを扱います。監視対象の製品（57）は [`config/watchlist.json`](config/watchlist.json) で、OS、VPN 機器、言語ランタイム、Web サーバ、CMS、主要ライブラリ、AI 開発ツールなどを含みます。
 
 ## しくみ
 
@@ -68,7 +69,7 @@ flowchart LR
   subgraph 収集["収集（15 分ごと・GitHub Actions）"]
     A[CVE.org / NVD / GHSA]
     B[CISA KEV / EPSS]
-    C[CA 事案・障害・<br>悪性パッケージ・国内注意喚起]
+    C[CA 事案・障害・悪性パッケージ・<br>国内注意喚起・AI 企業の発表]
   end
   A --> M[監視リストと照合]
   B --> S
@@ -148,6 +149,7 @@ python3 -m unittest discover -s tests
 | [`config/watchlist.json`](config/watchlist.json) | 脆弱性の監視対象製品と tier、照合に使う CPE・パッケージ名・キーワード |
 | [`config/status.json`](config/status.json) | 障害を監視するクラウド・SaaS のステータスページ |
 | [`config/eol.json`](config/eol.json) | サポート終了を予告する製品（endoflife.date の ID） |
+| [`config/ai.json`](config/ai.json) | セキュリティアドバイザリを監視する AI 関連リポジトリと、AI 企業の発表フィード |
 
 ### コマンドラインオプション
 
@@ -175,7 +177,7 @@ python3 -m unittest discover -s tests
 ```
 noroshi/
   __main__.py      収集 → 照合 → スコアリング → 通知の流れ
-  sources/         取得元ごとの取得と解析（cvelist, nvd, ghsa, kev, epss, pki, status, malware, jp_alerts, eol, x_buzz）
+  sources/         取得元ごとの取得と解析（cvelist, nvd, ghsa, kev, epss, pki, status, malware, jp_alerts, ai_vendors, eol, x_buzz）
   matcher.py       監視リストとの照合
   scoring.py       スコアリング
   ai.py            Claude による状況・対応策の生成

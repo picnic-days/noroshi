@@ -1,0 +1,48 @@
+{
+ "_comment": "AI 企業・AI ツールのセキュリティ情報。repos は GitHub のリポジトリのセキュリティアドバイザリ（1 時間ごと）、feeds は各社の発表",
+ "repos": [
+  "anthropics/claude-code",
+  "anthropics/anthropic-sdk-python",
+  "anthropics/anthropic-sdk-typescript",
+  "openai/codex",
+  "openai/openai-python",
+  "openai/openai-node",
+  "google-gemini/gemini-cli",
+  "modelcontextprotocol/typescript-sdk",
+  "modelcontextprotocol/python-sdk",
+  "langchain-ai/langchain",
+  "langchain-ai/langchainjs",
+  "run-llama/llama_index",
+  "ollama/ollama",
+  "vllm-project/vllm",
+  "huggingface/transformers"
+ ],
+ "feeds": [
+  {
+   "id": "openai",
+   "name": "OpenAI",
+   "type": "rss",
+   "url": "https://openai.com/news/rss.xml",
+   "category": "Security"
+  },
+  {
+   "id": "anthropic",
+   "name": "Anthropic",
+   "type": "sitemap",
+   "url": "https://www.anthropic.com/sitemap.xml"
+  },
+  {
+   "id": "google-security",
+   "name": "Google Security Blog",
+   "type": "atom",
+   "url": "https://security.googleblog.com/feeds/posts/default"
+  },
+  {
+   "id": "deepmind",
+   "name": "Google DeepMind",
+   "type": "rss",
+   "url": "https://deepmind.google/blog/rss.xml",
+   "keyword_filter": true
+  }
+ ]
+}

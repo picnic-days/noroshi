@@ -7,6 +7,7 @@ CATEGORY_LABELS = {
     "outage": "クラウド・SaaS 障害",
     "malware": "悪性パッケージ",
     "jp-alert": "国内の注意喚起",
+    "ai-news": "AI 企業のセキュリティ発表",
 }
 MAX_BUBBLES = 5  # 1 回の push に入れられる吹き出しの上限（何個でも 1 通と数えられる）
 

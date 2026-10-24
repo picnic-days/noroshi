@@ -19,6 +19,7 @@ GROUP_LABELS = {
     "outage": "クラウド・SaaS 障害",
     "malware": "悪性パッケージ",
     "jp-alert": "国内の注意喚起",
+    "ai-news": "AI 企業のセキュリティ発表",
     "kev": "監視リスト外（KEV 掲載）",
 }
 MAX_EOL_LINES = 15

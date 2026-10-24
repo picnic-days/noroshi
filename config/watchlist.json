@@ -60,6 +60,15 @@
     {"id": "firefox", "name": "Mozilla Firefox", "tier": 2, "cpe": ["mozilla:firefox"], "kev": ["Mozilla Firefox"], "keywords": []},
     {"id": "apple-webkit", "name": "Apple Safari / WebKit", "tier": 2, "cpe": ["apple:safari", "webkitgtk:webkitgtk"], "kev": ["Apple Multiple Products", "Apple WebKit"], "keywords": []},
     {"id": "kubernetes", "name": "Kubernetes", "tier": 2, "cpe": ["kubernetes:kubernetes"], "packages": ["go:k8s.io/kubernetes"], "kev": ["Kubernetes"], "keywords": ["Kubernetes"]},
-    {"id": "docker", "name": "Docker / runc / containerd", "tier": 2, "cpe": ["docker:docker", "mobyproject:moby", "linuxfoundation:runc", "linuxfoundation:containerd"], "packages": ["go:github.com/opencontainers/runc", "go:github.com/containerd/containerd"], "kev": ["Docker"], "keywords": ["runc", "containerd", "Docker Engine"]}
+    {"id": "docker", "name": "Docker / runc / containerd", "tier": 2, "cpe": ["docker:docker", "mobyproject:moby", "linuxfoundation:runc", "linuxfoundation:containerd"], "packages": ["go:github.com/opencontainers/runc", "go:github.com/containerd/containerd"], "kev": ["Docker"], "keywords": ["runc", "containerd", "Docker Engine"]},
+    {"id": "claude-code", "name": "Claude Code / Anthropic SDK", "tier": 2, "cpe": ["anthropic:claude_code"], "packages": ["npm:@anthropic-ai/claude-code", "npm:@anthropic-ai/sdk", "pip:anthropic"], "kev": ["anthropic"], "keywords": ["Claude Code", "Claude Desktop"]},
+    {"id": "openai-tools", "name": "OpenAI Codex / SDK", "tier": 2, "packages": ["npm:@openai/codex", "npm:openai", "pip:openai"], "kev": ["openai"], "keywords": ["Codex CLI", "OpenAI Codex"]},
+    {"id": "gemini-cli", "name": "Gemini CLI", "tier": 2, "packages": ["npm:@google/gemini-cli"], "kev": ["gemini-cli"], "keywords": ["Gemini CLI"]},
+    {"id": "mcp", "name": "Model Context Protocol SDK", "tier": 2, "packages": ["npm:@modelcontextprotocol/sdk", "pip:mcp"], "kev": ["modelcontextprotocol"], "keywords": ["MCP (?:TypeScript|Python) SDK", "Model Context Protocol (?:TypeScript|Python) SDK"]},
+    {"id": "langchain", "name": "LangChain", "tier": 2, "packages": ["pip:langchain", "pip:langchain-core", "pip:langchain-community", "npm:langchain", "npm:@langchain/core"], "kev": ["langchain"], "keywords": ["LangChain"]},
+    {"id": "ollama", "name": "Ollama", "tier": 2, "cpe": ["ollama:ollama"], "packages": ["go:github.com/ollama/ollama"], "kev": ["ollama"], "keywords": ["Ollama"]},
+    {"id": "llamaindex", "name": "LlamaIndex", "tier": 3, "packages": ["pip:llama-index", "pip:llama-index-core"], "kev": ["llama_index", "llamaindex"], "keywords": ["LlamaIndex"]},
+    {"id": "vllm", "name": "vLLM", "tier": 3, "cpe": ["vllm:vllm"], "packages": ["pip:vllm"], "kev": ["vllm"], "keywords": ["vLLM"]},
+    {"id": "transformers", "name": "Hugging Face Transformers", "tier": 3, "packages": ["pip:transformers"], "kev": ["huggingface/transformers"], "keywords": ["Hugging Face Transformers"]}
   ]
 }
