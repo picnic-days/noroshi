@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T19:11:33.488648+00:00",
+  "generated_at": "2026-10-24T21:35:36.506810+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1310,7 +1310,7 @@
       "title": "",
       "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and  21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
       "published": "2026-10-24T18:42:04.571Z",
-      "updated": "2026-10-24T18:42:04.571Z",
+      "updated": "2026-10-24T20:16:29.897",
       "cvss": 9.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "severity": "critical",
@@ -1328,12 +1328,13 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "",
+      "ssvc_exploitation": "none",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -2679,7 +2680,7 @@
       "title": "",
       "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511, 8u511-perf, 11.0.33, 17.0.21, 21.0.13, 25.0.5, 27.0.1; Oracle GraalVM for JDK: 17.0.21 and  21.0.13; Oracle GraalVM Enterprise Edition: 21.3.20. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
       "published": "2026-10-21T22:16:50.243",
-      "updated": "2026-10-23T12:18:17.197",
+      "updated": "2026-10-24T20:16:30.970",
       "cvss": 9.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "severity": "critical",
@@ -2694,15 +2695,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00392,
-      "epss_percentile": 0.32169,
+      "epss": 0.00371,
+      "epss_percentile": 0.29947,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-24T21:35:36.506810+00:00",
       "matched": [
         "java"
       ],
