@@ -1,46 +1,6 @@
 {
-  "generated_at": "2026-10-24T05:46:52.109242+00:00",
+  "generated_at": "2026-10-24T07:02:43.313591+00:00",
   "items": [
-    {
-      "id": "OUT-anthropic-0ns5clsk8p2x",
-      "aliases": [],
-      "title": "Anthropic Claude: Elevated errors for Claude Fable 5 and Claude Fable 5.1",
-      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
-      "published": "2026-10-24T05:16:50.587Z",
-      "updated": "2026-10-24T05:16:50.587Z",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://stspg.io/7n1wgb6qsfly"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "status:anthropic"
-      ],
-      "category": "outage",
-      "resolved_at": "",
-      "first_seen": "2026-10-24T05:46:52.109242+00:00",
-      "matched": [
-        "anthropic"
-      ],
-      "match_type": "status",
-      "tier": null,
-      "score": 90.0,
-      "level": "critical",
-      "score_breakdown": {},
-      "ai_analysis": ""
-    },
     {
       "id": "CVE-2026-109618",
       "aliases": [],
@@ -3782,6 +3742,46 @@
         "cvss": 19.2,
         "epss": 0.0
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-0ns5clsk8p2x",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Fable 5 and Claude Fable 5.1",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-24T05:16:50.587Z",
+      "updated": "2026-10-24T05:53:30.600Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/7n1wgb6qsfly"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-24T05:53:30.600Z",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
