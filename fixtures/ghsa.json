@@ -1,0 +1,32 @@
+[
+  {
+    "ghsa_id": "GHSA-mock-0001-lrvl",
+    "cve_id": "CVE-2026-90007",
+    "summary": "[MOCK] Laravel framework signed URL validation bypass",
+    "description": "[MOCK] Signed URL validation in laravel/framework can be bypassed by a crafted query string.",
+    "severity": "high",
+    "cvss_severities": {"cvss_v3": {"score": 8.1, "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"}, "cvss_v4": {"score": null, "vector_string": null}},
+    "html_url": "https://github.com/advisories/GHSA-mock-0001-lrvl",
+    "published_at": "2026-10-23T08:00:00Z",
+    "updated_at": "2026-10-23T08:00:00Z",
+    "references": [],
+    "vulnerabilities": [
+      {"package": {"ecosystem": "composer", "name": "laravel/framework"}, "vulnerable_version_range": "< 12.30.1", "first_patched_version": "12.30.1"}
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-mock-0002-tlpd",
+    "cve_id": null,
+    "summary": "[MOCK] tiny-left-pad prototype pollution",
+    "description": "[MOCK] Prototype pollution in tiny-left-pad.",
+    "severity": "medium",
+    "cvss_severities": {"cvss_v3": {"score": 5.6, "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"}},
+    "html_url": "https://github.com/advisories/GHSA-mock-0002-tlpd",
+    "published_at": "2026-10-23T07:00:00Z",
+    "updated_at": "2026-10-23T07:00:00Z",
+    "references": [],
+    "vulnerabilities": [
+      {"package": {"ecosystem": "npm", "name": "tiny-left-pad"}, "vulnerable_version_range": "<= 1.0.2", "first_patched_version": null}
+    ]
+  }
+]

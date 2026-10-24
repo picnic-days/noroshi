@@ -1,0 +1,65 @@
+{
+  "_comment": "監視対象リスト。tier: 1=社会インフラ級 / 2=広く普及 / 3=パッケージ上位。cpe は NVD の vendor:product（* でワイルドカード）、packages は GHSA の ecosystem:name、kev は CISA KEV の vendorProject+product に対する部分一致（大文字小文字無視）、keywords は説明文に対する正規表現（大文字小文字を区別、前後に単語境界を自動付与）。",
+  "global_keyword_excludes": [
+    "plugin for WordPress",
+    "WordPress plugin",
+    "theme for WordPress",
+    "WordPress theme"
+  ],
+  "entries": [
+    {"id": "linux-kernel", "name": "Linux kernel", "tier": 1, "cpe": ["linux:linux_kernel"], "kev": ["Linux Kernel"], "keywords": ["Linux kernel"]},
+    {"id": "glibc", "name": "glibc", "tier": 1, "cpe": ["gnu:glibc"], "kev": ["GNU C Library", "glibc"], "keywords": ["glibc", "GNU C Library"]},
+    {"id": "openssl", "name": "OpenSSL", "tier": 1, "cpe": ["openssl:openssl"], "kev": ["OpenSSL"], "keywords": ["OpenSSL"]},
+    {"id": "openssh", "name": "OpenSSH", "tier": 1, "cpe": ["openbsd:openssh"], "kev": ["OpenSSH"], "keywords": ["OpenSSH"]},
+    {"id": "sudo", "name": "sudo", "tier": 1, "cpe": ["sudo_project:sudo", "todd_miller:sudo"], "kev": ["Sudo"], "keywords": ["Sudo before", "sudo before"]},
+    {"id": "windows", "name": "Microsoft Windows", "tier": 1, "cpe": ["microsoft:windows_*"], "kev": ["Microsoft Windows", "Microsoft Win32k"], "keywords": ["Microsoft Windows", "Windows Server"]},
+    {"id": "exchange", "name": "Microsoft Exchange", "tier": 1, "cpe": ["microsoft:exchange_server"], "kev": ["Microsoft Exchange"], "keywords": ["Exchange Server"]},
+    {"id": "esxi", "name": "VMware ESXi / vCenter", "tier": 1, "cpe": ["vmware:esxi", "vmware:vcenter_server"], "kev": ["VMware ESXi", "VMware vCenter"], "keywords": ["ESXi", "vCenter Server"]},
+
+    {"id": "fortinet", "name": "Fortinet FortiOS / FortiGate", "tier": 1, "cpe": ["fortinet:fortios", "fortinet:fortiproxy"], "kev": ["Fortinet"], "keywords": ["FortiOS", "FortiGate", "FortiProxy"]},
+    {"id": "panos", "name": "Palo Alto PAN-OS", "tier": 1, "cpe": ["paloaltonetworks:pan-os"], "kev": ["Palo Alto Networks"], "keywords": ["PAN-OS", "GlobalProtect"]},
+    {"id": "ivanti", "name": "Ivanti Connect Secure", "tier": 1, "cpe": ["ivanti:connect_secure", "ivanti:policy_secure"], "kev": ["Ivanti"], "keywords": ["Ivanti Connect Secure", "Ivanti Policy Secure"]},
+    {"id": "cisco-asa", "name": "Cisco ASA / IOS XE", "tier": 1, "cpe": ["cisco:adaptive_security_appliance_software", "cisco:ios_xe", "cisco:firepower_threat_defense"], "kev": ["Cisco Adaptive Security", "Cisco IOS XE"], "keywords": ["Cisco Adaptive Security Appliance", "Cisco IOS XE"]},
+    {"id": "citrix", "name": "Citrix NetScaler", "tier": 1, "cpe": ["citrix:netscaler_*"], "kev": ["Citrix NetScaler", "Citrix ADC"], "keywords": ["NetScaler", "Citrix ADC"]},
+
+    {"id": "php", "name": "PHP", "tier": 1, "cpe": ["php:php"], "kev": ["PHP PHP"], "keywords": ["PHP (?:before|versions?|[0-9])", "PHP-FPM", "php-src"]},
+    {"id": "java", "name": "Java (JDK / OpenJDK)", "tier": 1, "cpe": ["oracle:jdk", "oracle:jre", "oracle:openjdk"], "kev": ["Oracle Java"], "keywords": ["OpenJDK", "Java SE"]},
+    {"id": "nodejs", "name": "Node.js", "tier": 1, "cpe": ["nodejs:node.js"], "kev": ["Node.js"], "keywords": ["Node\\.js"]},
+    {"id": "python", "name": "Python (CPython)", "tier": 1, "cpe": ["python:python"], "kev": ["Python"], "keywords": ["CPython"]},
+    {"id": "dotnet", "name": ".NET", "tier": 2, "cpe": ["microsoft:.net", "microsoft:.net_framework", "microsoft:asp.net_core"], "kev": ["Microsoft .NET"], "keywords": ["ASP\\.NET Core"]},
+    {"id": "go", "name": "Go", "tier": 2, "cpe": ["golang:go"], "packages": ["go:stdlib"], "keywords": []},
+    {"id": "ruby", "name": "Ruby", "tier": 2, "cpe": ["ruby-lang:ruby"], "keywords": []},
+
+    {"id": "apache-httpd", "name": "Apache HTTP Server", "tier": 1, "cpe": ["apache:http_server"], "kev": ["Apache HTTP Server"], "keywords": ["Apache HTTP Server"]},
+    {"id": "nginx", "name": "nginx", "tier": 1, "cpe": ["f5:nginx", "nginx:nginx", "f5:nginx_open_source", "f5:nginx_plus"], "kev": ["nginx"], "keywords": ["nginx", "NGINX"]},
+    {"id": "iis", "name": "Microsoft IIS", "tier": 2, "cpe": ["microsoft:internet_information_services"], "kev": ["Microsoft Internet Information Services"], "keywords": ["Internet Information Services"]},
+    {"id": "tomcat", "name": "Apache Tomcat", "tier": 2, "cpe": ["apache:tomcat"], "packages": ["maven:org.apache.tomcat.embed:tomcat-embed-core"], "kev": ["Apache Tomcat"], "keywords": ["Apache Tomcat"]},
+    {"id": "mysql", "name": "MySQL", "tier": 2, "cpe": ["oracle:mysql", "oracle:mysql_server"], "kev": ["Oracle MySQL"], "keywords": ["MySQL Server"]},
+    {"id": "postgresql", "name": "PostgreSQL", "tier": 2, "cpe": ["postgresql:postgresql"], "kev": ["PostgreSQL"], "keywords": ["PostgreSQL"]},
+    {"id": "redis", "name": "Redis", "tier": 2, "cpe": ["redis:redis"], "kev": ["Redis"], "keywords": ["Redis"]},
+    {"id": "elasticsearch", "name": "Elasticsearch", "tier": 2, "cpe": ["elastic:elasticsearch"], "kev": ["Elastic Elasticsearch"], "keywords": ["Elasticsearch"]},
+
+    {"id": "wordpress", "name": "WordPress (core)", "tier": 1, "cpe": ["wordpress:wordpress"], "kev": ["WordPress"], "keywords": ["WordPress (?:before|versions?|[0-9]|core)"]},
+    {"id": "drupal", "name": "Drupal", "tier": 2, "cpe": ["drupal:drupal"], "packages": ["composer:drupal/core"], "kev": ["Drupal"], "keywords": ["Drupal core"]},
+    {"id": "laravel", "name": "Laravel", "tier": 2, "cpe": ["laravel:framework", "laravel:laravel"], "packages": ["composer:laravel/framework"], "keywords": ["Laravel"]},
+    {"id": "spring", "name": "Spring Framework", "tier": 2, "cpe": ["vmware:spring_framework", "pivotal_software:spring_framework"], "packages": ["maven:org.springframework:spring-core", "maven:org.springframework:spring-web", "maven:org.springframework:spring-webmvc"], "kev": ["Spring Framework", "VMware Spring"], "keywords": ["Spring Framework"]},
+    {"id": "struts", "name": "Apache Struts", "tier": 2, "cpe": ["apache:struts"], "packages": ["maven:org.apache.struts:struts2-core"], "kev": ["Apache Struts"], "keywords": ["Apache Struts"]},
+    {"id": "django", "name": "Django", "tier": 2, "cpe": ["djangoproject:django"], "packages": ["pip:django"], "keywords": ["Django"]},
+    {"id": "rails", "name": "Ruby on Rails", "tier": 2, "cpe": ["rubyonrails:rails"], "packages": ["rubygems:rails", "rubygems:actionpack", "rubygems:activerecord"], "kev": ["Ruby on Rails"], "keywords": ["Ruby on Rails"]},
+    {"id": "nextjs", "name": "Next.js", "tier": 2, "cpe": ["vercel:next.js"], "packages": ["npm:next"], "keywords": ["Next\\.js"]},
+
+    {"id": "log4j", "name": "Apache Log4j", "tier": 1, "cpe": ["apache:log4j"], "packages": ["maven:org.apache.logging.log4j:log4j-core"], "kev": ["Log4j"], "keywords": ["Log4j", "Log4j2"]},
+    {"id": "curl", "name": "curl / libcurl", "tier": 2, "cpe": ["haxx:curl", "haxx:libcurl", "curl:curl"], "keywords": ["libcurl"]},
+    {"id": "zlib", "name": "zlib", "tier": 2, "cpe": ["zlib:zlib"], "keywords": ["zlib"]},
+    {"id": "xz", "name": "XZ Utils", "tier": 2, "cpe": ["tukaani:xz"], "keywords": ["XZ Utils", "liblzma"]},
+    {"id": "imagemagick", "name": "ImageMagick", "tier": 2, "cpe": ["imagemagick:imagemagick"], "kev": ["ImageMagick"], "keywords": ["ImageMagick"]},
+    {"id": "libwebp", "name": "libwebp", "tier": 2, "cpe": ["webmproject:libwebp", "google:libwebp"], "kev": ["libwebp"], "keywords": ["libwebp"]},
+    {"id": "jquery", "name": "jQuery", "tier": 2, "cpe": ["jquery:jquery"], "packages": ["npm:jquery"], "kev": ["jQuery"], "keywords": ["jQuery"]},
+
+    {"id": "chrome", "name": "Google Chrome / Chromium", "tier": 1, "cpe": ["google:chrome"], "kev": ["Google Chromium"], "keywords": ["Google Chrome"]},
+    {"id": "firefox", "name": "Mozilla Firefox", "tier": 2, "cpe": ["mozilla:firefox"], "kev": ["Mozilla Firefox"], "keywords": []},
+    {"id": "apple-webkit", "name": "Apple Safari / WebKit", "tier": 2, "cpe": ["apple:safari", "webkitgtk:webkitgtk"], "kev": ["Apple Multiple Products", "Apple WebKit"], "keywords": []},
+    {"id": "kubernetes", "name": "Kubernetes", "tier": 2, "cpe": ["kubernetes:kubernetes"], "packages": ["go:k8s.io/kubernetes"], "kev": ["Kubernetes"], "keywords": ["Kubernetes"]},
+    {"id": "docker", "name": "Docker / runc / containerd", "tier": 2, "cpe": ["docker:docker", "mobyproject:moby", "linuxfoundation:runc", "linuxfoundation:containerd"], "packages": ["go:github.com/opencontainers/runc", "go:github.com/containerd/containerd"], "kev": ["Docker"], "keywords": ["runc", "containerd", "Docker Engine"]}
+  ]
+}

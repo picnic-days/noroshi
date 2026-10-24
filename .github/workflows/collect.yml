@@ -1,0 +1,41 @@
+# 15分ごとに収集し、緊急案件を LINE に通知、data/ をコミットする。
+# 必要な Secrets: LINE_CHANNEL_ACCESS_TOKEN, LINE_TO（任意: NVD_API_KEY, X_BEARER_TOKEN, DASHBOARD_URL）
+name: collect
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests
+      - name: collect and notify
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO: ${{ secrets.LINE_TO }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: python -m noroshi --send
+      - name: commit data
+        run: |
+          git config user.name "noroshi-bot"
+          git config user.email "noroshi-bot@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: update $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push

@@ -1,0 +1,43 @@
+{
+  "title": "[MOCK] CISA Catalog of Known Exploited Vulnerabilities",
+  "catalogVersion": "2026.10.23",
+  "count": 3,
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2026-90001",
+      "vendorProject": "PHP",
+      "product": "PHP",
+      "vulnerabilityName": "[MOCK] PHP Multipart Parser Remote Code Execution Vulnerability",
+      "dateAdded": "2026-10-23",
+      "shortDescription": "[MOCK] PHP contains a flaw in the multipart form parser that allows remote code execution.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-13",
+      "knownRansomwareCampaignUse": "Unknown",
+      "notes": ""
+    },
+    {
+      "cveID": "CVE-2026-90006",
+      "vendorProject": "Fortinet",
+      "product": "FortiOS",
+      "vulnerabilityName": "[MOCK] Fortinet FortiOS SSL-VPN Heap-Based Buffer Overflow Vulnerability",
+      "dateAdded": "2026-10-23",
+      "shortDescription": "[MOCK] Fortinet FortiOS SSL-VPN contains a heap-based buffer overflow that may allow a remote unauthenticated attacker to execute arbitrary code.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-13",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": ""
+    },
+    {
+      "cveID": "CVE-2021-44228",
+      "vendorProject": "Apache",
+      "product": "Log4j2",
+      "vulnerabilityName": "Apache Log4j2 Remote Code Execution Vulnerability",
+      "dateAdded": "2021-12-10",
+      "shortDescription": "Apache Log4j2 contains a vulnerability where JNDI features do not protect against attacker-controlled JNDI-related endpoints, allowing for remote code execution.",
+      "requiredAction": "Apply updates per vendor instructions.",
+      "dueDate": "2021-12-24",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": ""
+    }
+  ]
+}

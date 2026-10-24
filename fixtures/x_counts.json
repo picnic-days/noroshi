@@ -1,0 +1,5 @@
+{
+  "CVE-2026-90001": {"meta": {"total_tweet_count": 4200}},
+  "CVE-2026-90005": {"meta": {"total_tweet_count": 800}},
+  "CVE-2026-90006": {"meta": {"total_tweet_count": 150}}
+}
