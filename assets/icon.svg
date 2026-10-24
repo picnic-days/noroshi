@@ -1,93 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2F7BEA"/>
-      <stop offset="1" stop-color="#9ED4FF"/>
+      <stop offset="0" stop-color="#1B1E3C"/>
+      <stop offset="0.6" stop-color="#7A2A3A"/>
+      <stop offset="1" stop-color="#E4572E"/>
     </linearGradient>
-    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#4CD964"/>
-      <stop offset="1" stop-color="#1F8A3B"/>
+    <linearGradient id="flag" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#16161C"/>
+      <stop offset="0.45" stop-color="#2A2A33"/>
+      <stop offset="0.7" stop-color="#121217"/>
+      <stop offset="1" stop-color="#24242C"/>
     </linearGradient>
-    <linearGradient id="pile" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#8A5E3C"/>
-      <stop offset="1" stop-color="#4A2F1F"/>
+    <linearGradient id="pole" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8A5A34"/>
+      <stop offset="1" stop-color="#5A3820"/>
     </linearGradient>
-    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#FF3B30"/>
-      <stop offset="0.5" stop-color="#FF9F0A"/>
-      <stop offset="1" stop-color="#FFD60A"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#FF9F0A" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#FF9F0A" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.5"/>
-    </filter>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0B3A7A" flood-opacity="0.25"/>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.45"/>
     </filter>
   </defs>
 
   <rect width="640" height="640" fill="url(#sky)"/>
 
-  <!-- 煙：同色の円を重ねて一つの塊に見せ、明るい層を左上にずらして立体感を出す -->
-  <g filter="url(#shadow)">
-    <g fill="#D8D2C8" filter="url(#soft)">
-      <circle cx="320" cy="372" r="16"/>
-      <circle cx="318" cy="352" r="20"/>
-      <circle cx="322" cy="322" r="28"/>
-      <circle cx="312" cy="292" r="30"/>
-      <circle cx="334" cy="284" r="30"/>
-      <circle cx="320" cy="250" r="40"/>
-      <circle cx="346" cy="236" r="38"/>
-      <circle cx="326" cy="200" r="48"/>
-      <circle cx="360" cy="190" r="46"/>
-      <circle cx="338" cy="150" r="56"/>
-      <circle cx="378" cy="140" r="52"/>
-      <circle cx="352" cy="106" r="62"/>
-      <circle cx="396" cy="108" r="50"/>
-    </g>
-    <g fill="#FFFFFF" filter="url(#soft)">
-      <circle cx="309" cy="343" r="14.4"/>
-      <circle cx="313" cy="313" r="20.2"/>
-      <circle cx="303" cy="283" r="21.6"/>
-      <circle cx="325" cy="275" r="21.6"/>
-      <circle cx="311" cy="241" r="28.8"/>
-      <circle cx="337" cy="227" r="27.4"/>
-      <circle cx="317" cy="191" r="34.6"/>
-      <circle cx="351" cy="181" r="33.1"/>
-      <circle cx="329" cy="141" r="40.3"/>
-      <circle cx="369" cy="131" r="37.4"/>
-      <circle cx="343" cy="97" r="44.6"/>
-      <circle cx="387" cy="99" r="36.0"/>
-    </g>
-  </g>
-
   <!-- 丘 -->
-  <path d="M0 500 Q 320 440, 640 500 V640 H0 Z" fill="url(#hill)"/>
-  <ellipse cx="320" cy="522" rx="140" ry="14" fill="#145C27" opacity="0.5"/>
+  <path d="M0 540 Q 320 480, 640 540 V640 H0 Z" fill="#0E0F1A"/>
 
-  <!-- 火の照り返し -->
-  <circle cx="310" cy="490" r="120" fill="url(#glow)"/>
+  <!-- 旗竿 -->
+  <rect x="200" y="112" width="14" height="420" rx="7" fill="url(#pole)"/>
+  <circle cx="207" cy="108" r="13" fill="#F2B544"/>
 
-  <!-- 積み上げた枝 -->
-  <path d="M200 520 Q 252 440, 306 376 Q 320 360, 334 376 Q 388 440, 440 520 Z" fill="url(#pile)"/>
-  <g stroke="#A97A52" stroke-width="7" stroke-linecap="round">
-    <line x1="246" y1="500" x2="330" y2="380"/>
-    <line x1="394" y1="500" x2="308" y2="382"/>
-    <line x1="222" y1="512" x2="362" y2="420"/>
-    <line x1="272" y1="470" x2="350" y2="410"/>
-    <line x1="420" y1="512" x2="278" y2="420"/>
-    <line x1="330" y1="384" x2="352" y2="350"/>
-    <line x1="310" y1="384" x2="292" y2="354"/>
+  <!-- 旗 -->
+  <g filter="url(#shadow)">
+    <path d="M214 132 C 290 108, 362 156, 476 126 L 476 362 C 384 390, 302 340, 214 366 Z" fill="url(#flag)"/>
   </g>
 
-  <!-- 炎 -->
-  <g fill="url(#flame)">
-    <path d="M306 426 C 336.6 469.2, 340 502.8, 324.7 522 L287.3 522 C 272 502.8, 275.4 469.2, 306 426 Z"/>
-    <path d="M362 460 C 383.6 487.9, 386 509.6, 375.2 522 L348.8 522 C 338 509.6, 340.4 487.9, 362 460 Z"/>
-    <path d="M252 470 C 270.0 493.4, 272 511.6, 263.0 522 L241.0 522 C 232 511.6, 234.0 493.4, 252 470 Z"/>
+  <!-- 骨（髑髏の下で交差） -->
+  <g stroke="#F5F1E8" stroke-width="14" stroke-linecap="round">
+    <line x1="292" y1="288" x2="392" y2="330"/>
+    <line x1="292" y1="330" x2="392" y2="288"/>
   </g>
-  <path d="M306 478 C 319.5 497.8, 321 513.2, 314.25 522 L297.75 522 C 291 513.2, 292.5 497.8, 306 478 Z" fill="#FFF3C4" opacity="0.9"/>
+  <g fill="#F5F1E8">
+    <circle cx="286" cy="280" r="10"/><circle cx="282" cy="294" r="10"/>
+    <circle cx="398" cy="338" r="10"/><circle cx="402" cy="324" r="10"/>
+    <circle cx="286" cy="338" r="10"/><circle cx="282" cy="324" r="10"/>
+    <circle cx="398" cy="280" r="10"/><circle cx="402" cy="294" r="10"/>
+  </g>
+
+  <!-- 髑髏 -->
+  <g fill="#F5F1E8">
+    <circle cx="342" cy="210" r="46"/>
+    <rect x="314" y="232" width="56" height="40" rx="12"/>
+  </g>
+  <g fill="#16161C">
+    <ellipse cx="324" cy="212" rx="13" ry="14"/>
+    <ellipse cx="360" cy="212" rx="13" ry="14"/>
+    <path d="M342 230 L 334 246 L 350 246 Z"/>
+    <rect x="327" y="258" width="4" height="14" rx="2"/>
+    <rect x="340" y="258" width="4" height="14" rx="2"/>
+    <rect x="353" y="258" width="4" height="14" rx="2"/>
+  </g>
 </svg>

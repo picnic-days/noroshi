@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" width="120" alt="狼煙のアイコン">
+  <img src="assets/icon.png" width="120" alt="狼煙のアイコン（海賊旗）">
 </p>
 
 <h1 align="center">noroshi（狼煙）</h1>
@@ -196,3 +196,7 @@ tests/             テスト
 - Microsoft 365 の障害は、公開 API がないため監視していません。
 - CVE 番号が付く前の段階の情報（SNS 上の未確認の 0day の噂など）は、確度を優先して扱っていません。
 - GitHub Actions の定期実行は、混雑時に数分〜十数分遅れることがあります。
+
+## ライセンス
+
+[MIT License](LICENSE)
