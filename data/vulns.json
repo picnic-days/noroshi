@@ -1,6 +1,46 @@
 {
-  "generated_at": "2026-10-24T02:32:34.575817+00:00",
+  "generated_at": "2026-10-24T05:46:52.109242+00:00",
   "items": [
+    {
+      "id": "OUT-anthropic-0ns5clsk8p2x",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Fable 5 and Claude Fable 5.1",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-24T05:16:50.587Z",
+      "updated": "2026-10-24T05:16:50.587Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/7n1wgb6qsfly"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
     {
       "id": "CVE-2026-109618",
       "aliases": [],
@@ -376,7 +416,7 @@
       "title": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability",
       "description": "Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September and October 2026, a different vulnerability than CVE-2025-66208. This is an OS command injection in proxy.php when the CODE server isn't running (e.g., the product was recently restarted). The vulnerability is not present in standalone Collabora Online servers; only this deployment with CODE Server is affected.",
       "published": "2026-10-14T03:17:20.683",
-      "updated": "2026-10-23T21:17:21.117",
+      "updated": "2026-10-24T04:18:17.157",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -405,7 +445,7 @@
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
@@ -1475,7 +1515,7 @@
       "title": "Arista VeloCloud Orchestrator SQL Injection Vulnerability",
       "description": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator.\n\nOn an affected system, any authenticated user can gain operator privileges and masquerade as a local \"superuser operator\" user. This includes access to functionality that is intended for internal use only and which is not intended to be remotely accessible.\n\nHosted, including Dedicated, versions of VCO were impacted and have already been patched.",
       "published": "2026-10-22T21:17:16.870",
-      "updated": "2026-10-23T19:29:01.287",
+      "updated": "2026-10-24T04:18:17.510",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -1505,7 +1545,7 @@
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
@@ -4269,6 +4309,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-91462",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JGSS).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27;    Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1;   Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 5.9 (Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).",
+      "published": "2026-10-20T22:20:49.857",
+      "updated": "2026-10-24T04:18:22.037",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00281,
+      "epss_percentile": 0.195,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 37.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 11.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112954",
       "aliases": [],
       "title": "",
@@ -4318,6 +4403,140 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-91463",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JGSS).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. This vulnerability does not apply to Java deployments, typically in servers, that load and run only trusted code (e.g., code installed by an administrator). CVSS 3.1 Base Score 5.3 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).",
+      "published": "2026-10-20T22:20:49.977",
+      "updated": "2026-10-24T04:18:22.190",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00227,
+      "epss_percentile": 0.12734,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-91464",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JGSS).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. This vulnerability does not apply to Java deployments, typically in servers, that load and run only trusted code (e.g., code installed by an administrator). CVSS 3.1 Base Score 5.3 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).",
+      "published": "2026-10-20T22:20:50.100",
+      "updated": "2026-10-24T04:18:22.347",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00281,
+      "epss_percentile": 0.19597,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-91484",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in Oracle Java SE (component: Java plugin).  Supported versions that are affected are Oracle Java SE: 8u503 and  8u503-perf. Difficult to exploit vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Java SE executes to compromise Oracle Java SE.  While the vulnerability is in Oracle Java SE, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE accessible data. Note: This vulnerability applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. This vulnerability does not apply to Java deployments, typically in servers, that load and run only trusted code (e.g., code installed by an administrator). CVSS 3.1 Base Score 7.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N).",
+      "published": "2026-10-20T22:20:52.800",
+      "updated": "2026-10-24T04:18:24.580",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0012,
+      "epss_percentile": 0.01759,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106074",
       "aliases": [],
       "title": "",
@@ -4358,6 +4577,51 @@
         "popularity": 21.0,
         "cvss": 9.6,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-91487",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in Oracle Java SE (component: Compiler).  Supported versions that are affected are Oracle Java SE: 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE accessible data as well as  unauthorized read access to a subset of Oracle Java SE accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 4.8 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).",
+      "published": "2026-10-20T22:20:53.160",
+      "updated": "2026-10-24T04:18:25.067",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00177,
+      "epss_percentile": 0.06926,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 35.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 9.6,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -4689,6 +4953,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-91461",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via TLS to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 3.7 (Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N).",
+      "published": "2026-10-20T22:20:49.740",
+      "updated": "2026-10-24T04:18:21.870",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.08988,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 33.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 7.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91397",
       "aliases": [],
       "title": "",
@@ -4856,6 +5165,51 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 32.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 6.2,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-91477",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle JavaFX product of Oracle Java SE (component: JavaFX).  Supported versions that are affected are Oracle JavaFX: 25.0.4 and  27. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle JavaFX.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in  unauthorized read access to a subset of Oracle JavaFX accessible data. Note: This vulnerability applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. This vulnerability does not apply to Java deployments, typically in servers, that load and run only trusted code (e.g., code installed by an administrator). CVSS 3.1 Base Score 3.1 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N).",
+      "published": "2026-10-20T22:20:51.237",
+      "updated": "2026-10-24T04:18:23.693",
+      "cvss": 3.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00228,
+      "epss_percentile": 0.12848,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
       "matched": [
         "java"
       ],
@@ -15439,6 +15793,46 @@
         "popularity": 14.0,
         "cvss": 4.8
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085495",
+      "aliases": [],
+      "title": "DigiCert: Manual data entry error in CCADB",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-24T03:20:58Z",
+      "updated": "2026-10-24T03:20:58Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085495"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T05:46:52.109242+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
       "ai_analysis": ""
     }
   ]
