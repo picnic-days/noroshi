@@ -44,6 +44,7 @@ def _payload(v) -> str:
         "cisa_kev": v.kev,
         "kev_date_added": v.kev_date_added,
         "ransomware": v.ransomware,
+        "cisa_ssvc_exploitation": v.ssvc_exploitation,
         "epss": v.epss,
         "exploit_reference": v.exploit_ref,
         "x_mentions_24h": v.x_mentions,

@@ -32,6 +32,15 @@ class Fetcher:
         with urllib.request.urlopen(req, timeout=self.timeout) as res:
             return json.loads(res.read().decode("utf-8"))
 
+    def get_text_range(self, name: str, url: str, nbytes: int) -> str:
+        """先頭 nbytes だけ取得する。mock では fixtures/<name>.json を丸ごと返す。"""
+        if self.mock_dir:
+            return (self.mock_dir / f"{name}.json").read_text(encoding="utf-8")
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Range": f"bytes=0-{nbytes - 1}"})
+        with urllib.request.urlopen(req, timeout=self.timeout) as res:
+            # 途中で切れたマルチバイト文字は捨てる
+            return res.read().decode("utf-8", "ignore")
+
     def post_json(self, url: str, body: dict, headers: Optional[dict] = None):
         if self.mock_dir:
             raise RuntimeError("mock モードでは POST しない")

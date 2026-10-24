@@ -21,6 +21,7 @@ class Vuln:
     kev: bool = False
     kev_date_added: str = ""
     ransomware: bool = False
+    ssvc_exploitation: str = ""  # CISA ADP の SSVC: active / poc / none
     epss: Optional[float] = None
     epss_percentile: Optional[float] = None
     x_mentions: Optional[int] = None
@@ -52,6 +53,7 @@ class Vuln:
         self.exploit_ref = self.exploit_ref or other.exploit_ref
         self.kev = self.kev or other.kev
         self.ransomware = self.ransomware or other.ransomware
+        self.ssvc_exploitation = self.ssvc_exploitation or other.ssvc_exploitation
 
     def text(self) -> str:
         return "\n".join([self.title, self.description] + self.vendor_products)

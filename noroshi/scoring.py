@@ -39,6 +39,8 @@ def score(v) -> None:
 
     if v.kev:
         b["kev"] = 20
+    elif v.ssvc_exploitation == "active":
+        b["ssvc_active"] = 15  # CISA が悪用を確認済み（KEV 掲載の前段階であることが多い）
     if v.ransomware:
         b["ransomware"] = 5
     if v.exploit_ref:

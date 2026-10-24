@@ -22,7 +22,7 @@
     {"id": "cisco-asa", "name": "Cisco ASA / IOS XE", "tier": 1, "cpe": ["cisco:adaptive_security_appliance_software", "cisco:ios_xe", "cisco:firepower_threat_defense"], "kev": ["Cisco Adaptive Security", "Cisco IOS XE"], "keywords": ["Cisco Adaptive Security Appliance", "Cisco IOS XE"]},
     {"id": "citrix", "name": "Citrix NetScaler", "tier": 1, "cpe": ["citrix:netscaler_*"], "kev": ["Citrix NetScaler", "Citrix ADC"], "keywords": ["NetScaler", "Citrix ADC"]},
 
-    {"id": "php", "name": "PHP", "tier": 1, "cpe": ["php:php"], "kev": ["PHP PHP"], "keywords": ["PHP (?:before|versions?|[0-9])", "PHP-FPM", "php-src"]},
+    {"id": "php", "name": "PHP", "tier": 1, "cpe": ["php:php"], "kev": ["PHP PHP", "PHP Group PHP"], "keywords": ["PHP (?:before|versions?|[0-9])", "PHP-FPM", "php-src"]},
     {"id": "java", "name": "Java (JDK / OpenJDK)", "tier": 1, "cpe": ["oracle:jdk", "oracle:jre", "oracle:openjdk"], "kev": ["Oracle Java"], "keywords": ["OpenJDK", "Java SE"]},
     {"id": "nodejs", "name": "Node.js", "tier": 1, "cpe": ["nodejs:node.js"], "kev": ["Node.js"], "keywords": ["Node\\.js"]},
     {"id": "python", "name": "Python (CPython)", "tier": 1, "cpe": ["python:python"], "kev": ["Python"], "keywords": ["CPython"]},

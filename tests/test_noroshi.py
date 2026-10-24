@@ -10,7 +10,7 @@ from noroshi import __main__ as cli
 from types import SimpleNamespace
 
 from noroshi import ai, notify_line, scoring
-from noroshi.sources import nvd
+from noroshi.sources import cvelist, nvd
 from noroshi.matcher import Watchlist
 from noroshi.models import Vuln
 
@@ -81,6 +81,31 @@ class NvdParseTest(unittest.TestCase):
             {"criteria": "cpe:2.3:o:paloaltonetworks:pan-os:*:*:*:*:*:*:*:*", "vulnerable": False},
         ]}]}]}}
         self.assertEqual(nvd.parse(item).cpes, ["php:php"])
+
+
+class CveListTest(unittest.TestCase):
+    def test_truncated_delta_log_and_cutoff(self):
+        from datetime import datetime, timezone
+        text = (ROOT / "fixtures" / "cvelist_delta.json").read_text()
+        links = cvelist.new_cve_links(text, datetime(2026, 10, 23, 6, tzinfo=timezone.utc))
+        self.assertEqual(list(links), ["CVE-2026-90008"])
+        # 期間を広げても、切れた末尾の要素は読まずに止まる
+        links = cvelist.new_cve_links(text, datetime(2026, 10, 1, tzinfo=timezone.utc))
+        self.assertEqual(list(links), ["CVE-2026-90008", "CVE-2026-90009"])
+
+    def test_parse_record(self):
+        rec = json.loads((ROOT / "fixtures" / "cvelist_record.json").read_text())["CVE-2026-90008"]
+        v = cvelist.parse(rec)
+        self.assertEqual((v.cvss, v.ssvc_exploitation, v.exploit_ref), (7.5, "poc", True))
+        self.assertEqual(v.vendor_products, ["OpenSSL OpenSSL"])
+
+    def test_rejected_record_is_skipped(self):
+        self.assertIsNone(cvelist.parse({"cveMetadata": {"state": "REJECTED"}}))
+
+    def test_php_group_matches_php(self):
+        v = Vuln(id="X", vendor_products=["PHP Group PHP", "php-src"])
+        Watchlist.load(ROOT / "config" / "watchlist.json").match(v)
+        self.assertEqual((v.matched, v.match_type), (["php"], "exact"))
 
 
 class NotifyTest(unittest.TestCase):
@@ -174,7 +199,8 @@ class EndToEndMockTest(unittest.TestCase):
             items = json.loads((Path(d) / "vulns.json").read_text())["items"]
             ids = {i["id"]: i for i in items}
             self.assertEqual(set(ids), {"CVE-2026-90001", "CVE-2026-90002", "CVE-2026-90005",
-                                        "CVE-2026-90006", "CVE-2026-90007"})
+                                        "CVE-2026-90006", "CVE-2026-90007", "CVE-2026-90008"})
+            self.assertEqual(ids["CVE-2026-90008"]["sources"], ["cve.org"])
             self.assertEqual(ids["CVE-2026-90001"]["sources"], ["nvd", "kev"])
             self.assertEqual({i for i, v in ids.items() if v["level"] == "critical"},
                              {"CVE-2026-90001", "CVE-2026-90006"})

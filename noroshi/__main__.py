@@ -11,7 +11,7 @@ from pathlib import Path
 from . import ai, notify_line, scoring
 from .http import Fetcher
 from .matcher import Watchlist
-from .sources import epss, ghsa, kev, nvd, x_buzz
+from .sources import cvelist, epss, ghsa, kev, nvd, x_buzz
 from .store import Store
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -32,6 +32,8 @@ def collect(fetcher, since, now) -> list:
             merged[v.id] = v
 
     fresh = (now - timedelta(days=FRESH_DAYS)).date().isoformat()
+    for v in cvelist.fetch(fetcher, since, now):
+        add(v)
     for v in nvd.fetch(fetcher, since, now, os.environ.get("NVD_API_KEY", "")):
         if v.published[:10] >= fresh:
             add(v)

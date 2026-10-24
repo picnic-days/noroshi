@@ -1,6 +1,6 @@
 # noroshi（狼煙）
 
-広く使われているソフトウェアの脆弱性を一次情報（NVD / GitHub Security Advisories / CISA KEV / EPSS）と X の言及量から収集・スコアリングし、緊急案件を LINE に通知する。結果は `data/vulns.json` に出力し、ダッシュボードから読む。
+広く使われているソフトウェアの脆弱性を一次情報（CVE.org / NVD / GitHub Security Advisories / CISA KEV / EPSS）と X の言及量から収集・スコアリングし、緊急案件を LINE に通知する。結果は `data/vulns.json` に出力し、ダッシュボードから読む。
 
 緊急案件は Claude（Opus 5.5 + Web 検索）が一次情報を確認し、「状況」と「対応策」を日本語でまとめて LINE に添える。
 
@@ -34,7 +34,7 @@ python3 -m unittest discover -s tests  # テスト
 |---|---|---|
 | 利用規模 | 監視リストの tier 1 / 2 / 3（キーワード一致は ×0.7）、リスト外の KEV は 10 | 30 / 20 / 10 |
 | 深刻度 | CVSS×2、未認証ネットワーク +5、RCE +5、tier1 の未認証 RCE（CVSS 9.0 以上）+15 | 〜45 |
-| 悪用状況 | KEV +20、ランサムウェア利用 +5、Exploit 参照 +5、EPSS×15 | 〜45 |
+| 悪用状況 | KEV +20（未掲載で CISA の SSVC が active なら +15）、ランサムウェア利用 +5、Exploit 参照 +5、EPSS×15 | 〜45 |
 | X 言及量 | 5×log10(1+件数) | 〜15 |
 
 70 以上が critical で LINE 即時通知、50 以上 high、30 以上 medium。

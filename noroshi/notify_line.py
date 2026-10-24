@@ -17,6 +17,8 @@ def format_message(vulns: list, dashboard_url: str = "") -> str:
         tags = []
         if v.kev:
             tags.append("KEV")
+        if v.ssvc_exploitation == "active" and not v.kev:
+            tags.append("悪用確認(CISA)")
         if v.ransomware:
             tags.append("ランサム")
         if v.exploit_ref:
