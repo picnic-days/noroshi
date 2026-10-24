@@ -9,8 +9,8 @@ from pathlib import Path
 from noroshi import __main__ as cli
 from types import SimpleNamespace
 
-from noroshi import ai, notify_line, scoring
-from noroshi.sources import cvelist, nvd
+from noroshi import ai, digest, notify_line, scoring
+from noroshi.sources import cvelist, nvd, pki
 from noroshi.matcher import Watchlist
 from noroshi.models import Vuln
 
@@ -102,10 +102,54 @@ class CveListTest(unittest.TestCase):
     def test_rejected_record_is_skipped(self):
         self.assertIsNone(cvelist.parse({"cveMetadata": {"state": "REJECTED"}}))
 
+    def test_nodejs_core_only(self):
+        wl = Watchlist.load(ROOT / "config" / "watchlist.json")
+        core = Vuln(id="X", description="A flaw in Node.js TLS hostname verification allows ...")
+        lib = Vuln(id="Y", description="follow-redirects is a Node.js HTTP and HTTPS client wrapper ...")
+        cna = Vuln(id="Z", vendor_products=["nodejs node"])
+        for v in (core, lib, cna):
+            wl.match(v)
+        self.assertEqual(core.matched, ["nodejs"])
+        self.assertEqual(lib.matched, [])
+        self.assertEqual((cna.matched, cna.match_type), (["nodejs"], "exact"))
+
     def test_php_group_matches_php(self):
         v = Vuln(id="X", vendor_products=["PHP Group PHP", "php-src"])
         Watchlist.load(ROOT / "config" / "watchlist.json").match(v)
         self.assertEqual((v.matched, v.match_type), (["php"], "exact"))
+
+
+class PkiTest(unittest.TestCase):
+    def test_classify(self):
+        self.assertEqual(pki.classify("eMudhra: Private key compromise of Intermediate Certificates", "")[0], "critical")
+        self.assertEqual(pki.classify("X: Removal of Root Certificate", "")[0], "critical")
+        self.assertEqual(pki.classify("X: certs with wrong O", "[ca-compliance] [ov-misissuance]")[0], "medium")
+        self.assertEqual(pki.classify("X: audit delay", "[ca-compliance] [audit-delay]")[0], "low")
+
+
+class DigestTest(unittest.TestCase):
+    def test_due_once_after_9_jst(self):
+        from datetime import datetime, timezone
+        before = datetime(2026, 10, 24, 23, 0, tzinfo=timezone.utc).replace(day=23)  # 10/24 08:00 JST
+        after = datetime(2026, 10, 24, 0, 5, tzinfo=timezone.utc)  # 10/24 09:05 JST
+        self.assertFalse(digest.due({}, before))
+        self.assertTrue(digest.due({}, after))
+        self.assertFalse(digest.due({"digest_sent": "2026-10-24"}, after))
+
+    def test_groups_by_product(self):
+        from datetime import datetime, timezone
+        now = datetime(2026, 10, 24, 0, 5, tzinfo=timezone.utc)
+        vs = [Vuln(id=f"CVE-{i}", matched=["chrome"], level="high", score=60 - i, first_seen="2026-10-23T12:00:00+00:00")
+              for i in range(3)]
+        vs += [Vuln(id="CVE-old", matched=["php"], level="high", score=70, first_seen="2026-10-20T00:00:00+00:00"),
+               Vuln(id="MOZ-CA-1", category="pki", matched=["pki"], level="medium", score=40,
+                    title="X: misissuance", first_seen="2026-10-23T12:00:00+00:00")]
+        text = digest.build(vs, "2026-10-23T00:00:00+00:00", now, {"chrome": "Google Chrome"})
+        self.assertIn("high 3", text)
+        self.assertIn("■ Google Chrome  high 3（最高 60）", text)
+        self.assertIn("ほか 2件", text)
+        self.assertIn("認証局（CA）事案", text)
+        self.assertNotIn("CVE-old", text)
 
 
 class NotifyTest(unittest.TestCase):
@@ -198,12 +242,15 @@ class EndToEndMockTest(unittest.TestCase):
             out = self.run_cli(d)
             items = json.loads((Path(d) / "vulns.json").read_text())["items"]
             ids = {i["id"]: i for i in items}
-            self.assertEqual(set(ids), {"CVE-2026-90001", "CVE-2026-90002", "CVE-2026-90005",
-                                        "CVE-2026-90006", "CVE-2026-90007", "CVE-2026-90008"})
+            self.assertEqual({i for i in ids if i.startswith("CVE-")},
+                             {"CVE-2026-90001", "CVE-2026-90002", "CVE-2026-90005",
+                              "CVE-2026-90006", "CVE-2026-90007", "CVE-2026-90008"})
             self.assertEqual(ids["CVE-2026-90008"]["sources"], ["cve.org"])
             self.assertEqual(ids["CVE-2026-90001"]["sources"], ["nvd", "kev"])
             self.assertEqual({i for i, v in ids.items() if v["level"] == "critical"},
-                             {"CVE-2026-90001", "CVE-2026-90006"})
+                             {"CVE-2026-90001", "CVE-2026-90006", "MOZ-CA-9000001"})
+            self.assertIn("種別: 認証局（CA）事案", out)
+            self.assertIn("📋 狼煙 日次まとめ", out)
             self.assertIn("ドライラン", out)
             self.assertNotIn("CVE-2021-44228", out)  # 古い KEV 掲載は新着扱いしない
 

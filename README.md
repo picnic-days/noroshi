@@ -40,3 +40,9 @@ python3 -m unittest discover -s tests  # テスト
 70 以上が critical で LINE 即時通知、50 以上 high、30 以上 medium。
 
 監視対象は `config/watchlist.json` を編集する。
+
+## 通知
+
+- **即時（LINE）**: critical の脆弱性と、認証局（CA）の鍵侵害・ルート証明書の信頼取り消し
+- **日次まとめ（LINE、毎朝 9 時台）**: 過去 24 時間に新しく見つかった critical / high / medium を製品ごとに集計
+- 認証局（CA）事案は Mozilla CA Program（Bugzilla）から取得し、誤発行・失効遅延は日次まとめ、監査遅延・文書不備は記録のみ

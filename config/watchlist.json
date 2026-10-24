@@ -24,7 +24,7 @@
 
     {"id": "php", "name": "PHP", "tier": 1, "cpe": ["php:php"], "kev": ["PHP PHP", "PHP Group PHP"], "keywords": ["PHP (?:before|versions?|[0-9])", "PHP-FPM", "php-src"]},
     {"id": "java", "name": "Java (JDK / OpenJDK)", "tier": 1, "cpe": ["oracle:jdk", "oracle:jre", "oracle:openjdk"], "kev": ["Oracle Java"], "keywords": ["OpenJDK", "Java SE"]},
-    {"id": "nodejs", "name": "Node.js", "tier": 1, "cpe": ["nodejs:node.js"], "kev": ["Node.js"], "keywords": ["Node\\.js"]},
+    {"id": "nodejs", "name": "Node.js", "tier": 1, "cpe": ["nodejs:node.js"], "kev": ["Node.js Node.js", "nodejs node"], "keywords": ["A flaw in Node\\.js", "Node\\.js (?:before|versions?|v?[0-9])", "Node\\.js (?:core|runtime)"]},
     {"id": "python", "name": "Python (CPython)", "tier": 1, "cpe": ["python:python"], "kev": ["Python"], "keywords": ["CPython"]},
     {"id": "dotnet", "name": ".NET", "tier": 2, "cpe": ["microsoft:.net", "microsoft:.net_framework", "microsoft:asp.net_core"], "kev": ["Microsoft .NET"], "keywords": ["ASP\\.NET Core"]},
     {"id": "go", "name": "Go", "tier": 2, "cpe": ["golang:go"], "packages": ["go:stdlib"], "keywords": []},

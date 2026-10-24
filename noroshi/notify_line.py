@@ -26,11 +26,15 @@ def format_message(vulns: list, dashboard_url: str = "") -> str:
         if v.x_mentions:
             tags.append(f"X {v.x_mentions}件")
         title = summary(v)
+        if v.category == "pki":
+            kind = "種別: 認証局（CA）事案"
+        else:
+            kind = f"CVSS: {v.cvss if v.cvss is not None else '未評価'}  {' / '.join(tags)}".rstrip()
         lines += [
             "",
             f"■ {v.id}  score {v.score:g}",
             f"対象: {', '.join(v.matched) or '監視リスト外(KEV)'}",
-            f"CVSS: {v.cvss if v.cvss is not None else '未評価'}  {' / '.join(tags)}".rstrip(),
+            kind,
             title,
             v.references[0] if v.references else "",
         ]

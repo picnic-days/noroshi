@@ -12,6 +12,7 @@ def _compile(pattern: str):
 class Watchlist:
     def __init__(self, data: dict):
         self.entries = data["entries"]
+        self.names = {e["id"]: e["name"] for e in self.entries}
         self.global_excludes = data.get("global_keyword_excludes", [])
         for e in self.entries:
             e["_kw"] = [_compile(k) for k in e.get("keywords", [])]

@@ -38,6 +38,8 @@ class Store:
         """既存データに今回分を上書きマージし、保持期間を過ぎたものを落として保存する。"""
         existing = {d["id"]: Vuln.from_dict(d) for d in _read(self.vulns_path, {"items": []})["items"]}
         for v in vulns:
+            old = existing.get(v.id)
+            v.first_seen = (old.first_seen if old else "") or now.isoformat()
             existing[v.id] = v
         cutoff = (now - timedelta(days=RETENTION_DAYS)).isoformat()
         # ソースごとに日付の形式が違うので日付部分だけで比較する
@@ -47,5 +49,8 @@ class Store:
 
         self.state["last_run"] = now.isoformat()
         self.state["notified"] = {k: t for k, t in self.state["notified"].items() if t >= cutoff}
-        _write(self.state_path, self.state)
+        self.save_state()
         return items
+
+    def save_state(self) -> None:
+        _write(self.state_path, self.state)

@@ -8,10 +8,10 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ai, notify_line, scoring
+from . import ai, digest, notify_line, scoring
 from .http import Fetcher
 from .matcher import Watchlist
-from .sources import cvelist, epss, ghsa, kev, nvd, x_buzz
+from .sources import cvelist, epss, ghsa, kev, nvd, pki, x_buzz
 from .store import Store
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -92,6 +92,10 @@ def run(args) -> int:
     x_buzz.enrich(fetcher, vulns, os.environ.get("X_BEARER_TOKEN", ""))
     for v in vulns:
         scoring.score(v)
+    # CA 事案は CVE と違って照合・スコアリングを通さず、分類だけで重要度を決める
+    from_pki = pki.fetch(fetcher, since)
+    print(f"fetched mozilla-ca={len(from_pki)}")
+    vulns += from_pki
     vulns.sort(key=lambda v: v.score, reverse=True)
 
     alerts = store.unnotified([v for v in vulns if v.level == "critical"])
@@ -115,7 +119,13 @@ def run(args) -> int:
     if warnings:
         push(args, fetcher, warnings)
 
-    store.save(vulns, now)
+    items = store.save(vulns, now)
+    if digest.due(store.state, now):
+        since_digest = store.state.get("digest_since") or (now - timedelta(days=1)).isoformat()
+        push(args, fetcher, [digest.build(items, since_digest, now, watchlist.names)])
+        store.state["digest_sent"] = now.astimezone(digest.JST).date().isoformat()
+        store.state["digest_since"] = now.isoformat()
+        store.save_state()
     return 0
 
 

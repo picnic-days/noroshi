@@ -1,0 +1,31 @@
+{
+  "bugs": [
+    {
+      "id": 9000001,
+      "summary": "[MOCK] ExampleCA: Private key compromise of Intermediate Certificates",
+      "creation_time": "2026-10-23T12:00:00Z",
+      "last_change_time": "2026-10-23T13:00:00Z",
+      "status": "ASSIGNED",
+      "whiteboard": "[ca-compliance] [external]",
+      "component": "CA Certificate Compliance"
+    },
+    {
+      "id": 9000002,
+      "summary": "[MOCK] ExampleCA: OV TLS certificates issued with wrong organization name",
+      "creation_time": "2026-10-23T09:00:00Z",
+      "last_change_time": "2026-10-23T09:00:00Z",
+      "status": "ASSIGNED",
+      "whiteboard": "[ca-compliance] [ov-misissuance]",
+      "component": "CA Certificate Compliance"
+    },
+    {
+      "id": 9000003,
+      "summary": "[MOCK] ExampleCA: Delay of WebTrust audit report",
+      "creation_time": "2026-10-23T08:00:00Z",
+      "last_change_time": "2026-10-23T08:00:00Z",
+      "status": "ASSIGNED",
+      "whiteboard": "[ca-compliance] [audit-delay]",
+      "component": "CA Certificate Compliance"
+    }
+  ]
+}
