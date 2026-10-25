@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T01:37:36.688073+00:00",
+  "generated_at": "2026-10-25T10:10:19.985577+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1300,55 +1300,6 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 18.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114820",
-      "aliases": [],
-      "title": "",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and  21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "published": "2026-10-24T18:42:04.571Z",
-      "updated": "2026-10-24T20:16:29.897",
-      "cvss": 9.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Oracle Corporation Oracle Java SE",
-        "Oracle Corporation Oracle GraalVM for JDK",
-        "Oracle Corporation Oracle GraalVM Enterprise Edition"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-24T19:11:33.488648+00:00",
-      "matched": [
-        "java"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.2,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -2716,6 +2667,50 @@
         "cvss": 18.2,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114820",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and  21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "published": "2026-10-24T19:17:04.413",
+      "updated": "2026-10-25T04:17:07.843",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T19:11:33.488648+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -5239,6 +5234,86 @@
       "first_seen": "2026-10-24T13:41:07.608675+00:00",
       "matched": [
         "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-vx06kp8wfpq2",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Fable 5.1",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-25T08:17:08.285Z",
+      "updated": "2026-10-25T08:49:29.501Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/y0gkl12ztjst"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-25T08:49:29.501Z",
+      "first_seen": "2026-10-25T10:10:19.985577+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-334jvgbrc4ff",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Sonnet 5.5 and other models",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-25T06:14:18.095Z",
+      "updated": "2026-10-25T07:53:39.004Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/s3wd6gmdsdhn"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-25T07:53:39.004Z",
+      "first_seen": "2026-10-25T10:10:19.985577+00:00",
+      "matched": [
+        "anthropic"
       ],
       "match_type": "status",
       "tier": null,
@@ -18452,6 +18527,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-24T16:57:17.235614+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085612",
+      "aliases": [],
+      "title": "eMudhra: Access to CRLs blocked for certain User-Agent headers",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-25T09:57:32Z",
+      "updated": "2026-10-25T09:57:32Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085612"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T10:10:19.985577+00:00",
       "matched": [
         "pki"
       ],
