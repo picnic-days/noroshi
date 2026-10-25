@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T17:52:29.396304+00:00",
+  "generated_at": "2026-10-25T20:52:14.496712+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -5323,6 +5323,48 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-7xwf-5j6m-rjff",
+      "aliases": [],
+      "title": "Malicious code in event-bus-lite-testmetest (npm)",
+      "description": "## Source: amazon-inspector (038b62e6040cef7e651f3cf89c146290f391c28977fe206410408e85ccbe4721)\nThe package ships a binding.gyp whose target has type \"none\" and no C/C++ source files; its only purpose is a GYP `<!(...)` command-expansion that runs `node index.js` during the automatic `node-gyp rebuild` triggered by `npm install`. index.js is multi-layer obfuscated: a char-code array is Caesar-decoded (shift 21) and passed to eval; the decoded body reads the bundled lib_native.dat (~312 KB, high-entropy, sha256 e1ab1e330d3db532d511d4af4386ab2d2c6245ca807410f51c1211ae48814d73), brotli-decompresses and AES-128-GCM-decrypts it with hardcoded key/IV/AAD, writes the plaintext to a `mkdtempSync('.b-')/index.js` temp path, and spawns the Bun runtime (`Bun.spawn`, or `getBunPath()` via child_process.spawn) to execute the decrypted payload. Executing under Bun bypasses Node-only analysis. The contents of the executed payload are not inspectable from the shipped artifact.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/01084f0336ff5489308aeadf45facfcb3ceab9ec/osv/malicious/npm/event-bus-lite-testmetest/MAL-2026-18292.json))\n\n週間ダウンロード数: 約 1,376",
+      "published": "2026-10-25T18:30:23Z",
+      "updated": "2026-10-25T18:30:28Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:event-bus-lite-testmetest"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7xwf-5j6m-rjff"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T20:52:14.496712+00:00",
+      "matched": [
+        "npm:event-bus-lite-testmetest"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91398",
       "aliases": [],
       "title": "",
@@ -6415,6 +6457,51 @@
         "popularity": 21.0,
         "cvss": 16.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102870",
+      "aliases": [],
+      "title": "",
+      "description": "Improper control of generation of code ('code injection') in ASP.NET Core allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:17:51.617",
+      "updated": "2026-10-25T18:16:42.253",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102870"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00906,
+      "epss_percentile": 0.5959,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T20:52:14.496712+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
