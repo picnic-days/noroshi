@@ -25,13 +25,20 @@ GROUP_LABELS = {
 MAX_EOL_LINES = 15
 
 
-def build(items: list, since: str, now: datetime, names: dict, eol_lines: list = ()) -> str:
-    """since 以降に初めて見つかった案件を、製品ごとに件数と代表例でまとめる。"""
-    fresh = [v for v in items if v.first_seen > since and v.level in LEVELS]
+def fresh_items(items: list, since: str) -> list:
+    """since 以降に初めて見つかった、日次まとめに載せる案件。"""
+    return [v for v in items if v.first_seen > since and v.level in LEVELS]
+
+
+def build(items: list, since: str, now: datetime, names: dict, eol_lines: list = (), summary: str = "") -> str:
+    """since 以降に初めて見つかった案件を、製品ごとに件数と代表例でまとめる。summary は AI の要点。"""
+    fresh = fresh_items(items, since)
     counts = {lv: sum(1 for v in fresh if v.level == lv) for lv in LEVELS}
     local = now.astimezone(JST)
     lines = [f"📋 狼煙 日次まとめ（{local.month}/{local.day}）",
              f"新着: critical {counts['critical']} / high {counts['high']} / medium {counts['medium']}"]
+    if summary:
+        lines += ["", "🤖 今日の要点", summary]
     eol_part = []
     if eol_lines:
         eol_part = ["", "🗓 サポート終了の予告"] + list(eol_lines[:MAX_EOL_LINES])

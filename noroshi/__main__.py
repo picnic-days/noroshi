@@ -165,7 +165,8 @@ def run(args) -> int:
         since_digest = store.state.get("digest_since") or (now - timedelta(days=1)).isoformat()
         eol_lines = eol.upcoming(fetcher, load_config("eol.json")["products"],
                                  now.astimezone(digest.JST).date(), store.state.setdefault("eol_notified", {}))
-        push(args, fetcher, [digest.build(items, since_digest, now, watchlist.names, eol_lines)])
+        summary = ai.summarize_digest(digest.fresh_items(items, since_digest)) if use_ai else ""
+        push(args, fetcher, [digest.build(items, since_digest, now, watchlist.names, eol_lines, summary)])
         store.state["digest_sent"] = now.astimezone(digest.JST).date().isoformat()
         store.state["digest_since"] = now.isoformat()
         store.save_state()
