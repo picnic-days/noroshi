@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T14:23:39.971301+00:00",
+  "generated_at": "2026-10-25T17:52:29.396304+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -5655,198 +5655,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116141",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Policy Bypass in UHDR Decoder",
-      "description": "ImageMagick before 7.1.2-33 contains a policy bypass vulnerability in the UHDR decoder that allows attackers to evade image width and height limits because extent checks occur after decoding. Attackers can supply crafted UHDR images with oversized dimensions that are fully decoded before policy limits are enforced, causing excessive resource consumption.",
-      "published": "2026-10-25T13:19:53.057Z",
-      "updated": "2026-10-25T14:16:51.940",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h3qx-937j-245g",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-policy-bypass-in-uhdr-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116152",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Memory Leak in MAT Decoder Error Path",
-      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the MAT decoder that fails to release allocated memory in a specific error path. Attackers can supply crafted MAT files that trigger this error path repeatedly, causing small memory leaks that gradually consume process memory.",
-      "published": "2026-10-25T13:20:00.370Z",
-      "updated": "2026-10-25T14:16:53.563",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-83w9-w85j-h9jc",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-mat-decoder-error-path"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116154",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak via XML Parsing Depth Limit",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in its XML parsing code, where allocated memory is not released when parsing reaches the nesting depth limit. Attackers can supply crafted, deeply nested XML data to trigger the leak, causing memory exhaustion and denial of service.",
-      "published": "2026-10-25T13:20:01.714Z",
-      "updated": "2026-10-25T14:16:53.857",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8ghq-p369-g395",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-xml-parsing-depth-limit"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116155",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak via Crafted XMP Profile",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of XMP profiles by various decoders. Attackers can supply images with a crafted XMP profile that leak memory each time they are processed, leading to resource exhaustion and denial of service.",
-      "published": "2026-10-25T13:20:02.349Z",
-      "updated": "2026-10-25T14:16:53.993",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5jf2-9gcp-q234",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-crafted-xmp-profile"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-116070",
       "aliases": [],
       "title": "Docker-Proxy through 5.1.9 Missing Authentication via hubcmdui /api/config",
@@ -6510,150 +6318,6 @@
         "popularity": 21.0,
         "cvss": 16.8,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116146",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak in MSL Decoder",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the MSL decoder that fails to release allocated memory when processing a crafted MSL image. Attackers can supply crafted MSL files for processing to repeatedly leak memory, causing resource exhaustion and denial of service.",
-      "published": "2026-10-25T13:19:56.440Z",
-      "updated": "2026-10-25T14:16:52.690",
-      "cvss": 6.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-j657-rmv3-4m94",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-in-msl-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 37.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 12.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116147",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Null Pointer Dereference in DJVU Decoder",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a null pointer dereference in the DJVU decoder because the result of a memory allocation is not checked before use. Attackers can supply a DJVU image that, when processed under conditions where the allocation fails, crashes the process and causes a denial of service.",
-      "published": "2026-10-25T13:19:57.089Z",
-      "updated": "2026-10-25T14:16:52.840",
-      "cvss": 6.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v5f5-4v9x-p3f2",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-null-pointer-dereference-in-djvu-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 37.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 12.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116151",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak in JNG Encoder",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the JNG encoder that fails to release allocated memory when processing a crafted image. Attackers can supply crafted images that are encoded to JNG to leak memory, potentially causing resource exhaustion and a limited denial of service.",
-      "published": "2026-10-25T13:19:59.697Z",
-      "updated": "2026-10-25T14:16:53.423",
-      "cvss": 6.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v9q4-cm37-q2jm",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-in-jng-encoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 37.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 12.6,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -10206,53 +9870,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116149",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Stack Buffer Overflow via bzip2 Compressed Images",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a stack-based buffer overflow in the handling of bzip2 compressed images. Attackers can supply a crafted image using bzip2 compression to overwrite stack memory during decoding, causing crashes or memory corruption.",
-      "published": "2026-10-25T13:19:58.386Z",
-      "updated": "2026-10-25T14:16:53.123",
-      "cvss": 7.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pwpf-8799-94cj",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-stack-buffer-overflow-via-bzip2-compressed-images"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 34.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 14.4
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-113649",
       "aliases": [],
       "title": "",
@@ -10528,23 +10145,21 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116176",
+      "id": "CVE-2026-116141",
       "aliases": [],
-      "title": "vLLM 0.9.2 before 0.24.0 SSRF via X-Request-Id in P2pNcclConnector",
-      "description": "vLLM from 0.9.2 before 0.24.0 contains a server-side request forgery vulnerability that allows API callers to force outbound connections by embedding a decode address in the X-Request-Id header. Attackers can make a P2pNcclConnector prefill worker ZMQ-connect to an attacker host, leaking the NCCL unique_id and KV-cache tensors or blocking the worker.",
-      "published": "2026-10-25T13:20:16.476Z",
-      "updated": "2026-10-25T14:16:57.160",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "high",
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a policy bypass vulnerability in the UHDR decoder that allows attackers to evade image width and height limits because extent checks occur after decoding. Attackers can supply crafted UHDR images with oversized dimensions that are fully decoded before policy limits are enforced, causing excessive resource consumption.",
+      "published": "2026-10-25T14:16:51.940",
+      "updated": "2026-10-25T14:16:51.940",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vfp2-c8pq-v6h6",
-        "https://www.vulncheck.com/advisories/vllm-0.9.2-before-0.24.0-ssrf-via-x-request-id-in-p2pncclconnector"
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h3qx-937j-245g",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-policy-bypass-in-uhdr-decoder"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -10555,44 +10170,41 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "vllm"
+        "imagemagick"
       ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 32.6,
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.8,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 10,
-        "cvss": 17.6,
+        "popularity": 14.0,
+        "cvss": 13.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116177",
+      "id": "CVE-2026-116152",
       "aliases": [],
-      "title": "vLLM 0.10.2 before 0.25.0 DoS via Nemotron-VL Processor Decompression-Bomb Guard Bypass",
-      "description": "vLLM from 0.10.2 before 0.25.0 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust memory because the Nemotron-VL processors globally set Image.MAX_IMAGE_PIXELS to None. Attackers can submit a pathological decompression-bomb image to /v1/chat/completions to OOM-kill the worker and deny service to co-tenants.",
-      "published": "2026-10-25T13:20:17.160Z",
-      "updated": "2026-10-25T14:16:57.317",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the MAT decoder that fails to release allocated memory in a specific error path. Attackers can supply crafted MAT files that trigger this error path repeatedly, causing small memory leaks that gradually consume process memory.",
+      "published": "2026-10-25T14:16:53.563",
+      "updated": "2026-10-25T14:16:53.563",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-mm38-5g96-7j6x",
-        "https://www.vulncheck.com/advisories/vllm-0.10.2-before-0.25.0-dos-via-nemotron-vl-processor-decompression-bomb-guard-bypass"
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-83w9-w85j-h9jc",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-mat-decoder-error-path"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -10603,44 +10215,41 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "vllm"
+        "imagemagick"
       ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 32.4,
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.8,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 10,
-        "cvss": 17.4,
+        "popularity": 14.0,
+        "cvss": 13.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116179",
+      "id": "CVE-2026-116154",
       "aliases": [],
-      "title": "vLLM 0.18.0 before 0.31.0 Memory Exhaustion via media_io_kwargs num_frames Override",
-      "description": "vLLM from 0.18.0 before 0.31.0 contains a resource exhaustion vulnerability that allows API clients to bypass the video/jpeg frame-count cap by overriding num_frames through media_io_kwargs. Attackers can set num_frames to -1 with a large inline video so VideoMediaIO.load_base64 decodes every frame, exhausting memory and crashing the API frontend.",
-      "published": "2026-10-25T13:20:18.520Z",
-      "updated": "2026-10-25T14:16:57.620",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in its XML parsing code, where allocated memory is not released when parsing reaches the nesting depth limit. Attackers can supply crafted, deeply nested XML data to trigger the leak, causing memory exhaustion and denial of service.",
+      "published": "2026-10-25T14:16:53.857",
+      "updated": "2026-10-25T14:16:53.857",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-4m6g-h9mv-wqjc",
-        "https://www.vulncheck.com/advisories/vllm-0.18.0-before-0.31.0-memory-exhaustion-via-media-io-kwargs-num-frames-override"
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8ghq-p369-g395",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-xml-parsing-depth-limit"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -10651,22 +10260,66 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "vllm"
+        "imagemagick"
       ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 32.4,
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.8,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 10,
-        "cvss": 17.4,
+        "popularity": 14.0,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116155",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of XMP profiles by various decoders. Attackers can supply images with a crafted XMP profile that leak memory each time they are processed, leading to resource exhaustion and denial of service.",
+      "published": "2026-10-25T14:16:53.993",
+      "updated": "2026-10-25T14:16:53.993",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5jf2-9gcp-q234",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-crafted-xmp-profile"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -10999,6 +10652,141 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116146",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the MSL decoder that fails to release allocated memory when processing a crafted MSL image. Attackers can supply crafted MSL files for processing to repeatedly leak memory, causing resource exhaustion and denial of service.",
+      "published": "2026-10-25T14:16:52.690",
+      "updated": "2026-10-25T14:16:52.690",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-j657-rmv3-4m94",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-in-msl-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116147",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a null pointer dereference in the DJVU decoder because the result of a memory allocation is not checked before use. Attackers can supply a DJVU image that, when processed under conditions where the allocation fails, crashes the process and causes a denial of service.",
+      "published": "2026-10-25T14:16:52.840",
+      "updated": "2026-10-25T14:16:52.840",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v5f5-4v9x-p3f2",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-null-pointer-dereference-in-djvu-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116151",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the JNG encoder that fails to release allocated memory when processing a crafted image. Attackers can supply crafted images that are encoded to JNG to leak memory, potentially causing resource exhaustion and a limited denial of service.",
+      "published": "2026-10-25T14:16:53.423",
+      "updated": "2026-10-25T14:16:53.423",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v9q4-cm37-q2jm",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-in-jng-encoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-76298",
       "aliases": [],
       "title": "",
@@ -11092,198 +10880,6 @@
         "popularity": 21.0,
         "cvss": 10.6,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116172",
-      "aliases": [],
-      "title": "vLLM 0.22.0 before 0.24.0 DoS via Rust gRPC CandidateTokens.top_n",
-      "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC converter that allows remote attackers to bypass max_logprobs limits via CandidateTokens.top_n. Attackers can send Generate or GenerateStream requests with oversized or integer-wrapping top_n values to trigger torch.topk failures that terminate EngineCore.",
-      "published": "2026-10-25T13:20:13.759Z",
-      "updated": "2026-10-25T14:16:56.570",
-      "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-rwfw-xvg3-3937",
-        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-dos-via-rust-grpc-candidatetokens-top-n"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 31.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116173",
-      "aliases": [],
-      "title": "vLLM 0.22.0 before 0.24.0 Denial of Service via gRPC output_candidates.token_ids",
-      "description": "vLLM from 0.22.0 before 0.24.0 contains a denial of service vulnerability that allows remote attackers to terminate EngineCore by bypassing logprob_token_ids limits in the Rust gRPC frontend. Attackers can send Generate or GenerateStream requests with output_logprobs enabled and more than 128 output_candidates.token_ids, triggering a fatal sampler exception that crashes the engine.",
-      "published": "2026-10-25T13:20:14.431Z",
-      "updated": "2026-10-25T14:16:56.720",
-      "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-6pgw-f3pv-4h8q",
-        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-denial-of-service-via-grpc-output-candidates-token-ids"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 31.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116174",
-      "aliases": [],
-      "title": "vLLM 0.22.0 before 0.24.0 Denial of Service via Rust gRPC Generate",
-      "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC Generate and GenerateStream service that forwards unchecked prompt token IDs to EngineCore. Attackers can submit requests with out-of-vocabulary prompt.token_ids values to trigger a fatal embedding lookup failure that terminates EngineCore and leaves the server unhealthy.",
-      "published": "2026-10-25T13:20:15.109Z",
-      "updated": "2026-10-25T14:16:56.877",
-      "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w2v2-5662-8v5q",
-        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-denial-of-service-via-rust-grpc-generate"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 31.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116178",
-      "aliases": [],
-      "title": "vLLM 0.20.0 before 0.30.0 DoS via /inference/v1/generate mm_placeholders",
-      "description": "vLLM from 0.20.0 before 0.30.0 contains a denial of service vulnerability that allows remote attackers to crash the engine by sending inconsistent multimodal metadata to the disaggregated /inference/v1/generate endpoint. Attackers can replay a valid multimodal item with repeated or overlapping mm_placeholders ranges or mismatched kwargs_data and mm_hashes lists, producing a negative text span in Qwen2.5-VL position construction that terminates the engine.",
-      "published": "2026-10-25T13:20:17.838Z",
-      "updated": "2026-10-25T14:16:57.483",
-      "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-34qw-q2h2-jp3m",
-        "https://www.vulncheck.com/advisories/vllm-0.20.0-before-0.30.0-dos-via-inference-v1-generate-mm-placeholders"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 31.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.4,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -11385,23 +10981,21 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116140",
+      "id": "CVE-2026-116176",
       "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Policy Bypass via Delegate Invocation Parsing",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 incorrectly parses delegate invocations, which can allow an executable blocked in policy.xml to still run. An attacker who gets ImageMagick to process input that triggers a delegate invocation can bypass the administrator-defined policy and execute the blocked program.",
-      "published": "2026-10-25T13:19:52.372Z",
-      "updated": "2026-10-25T14:16:51.783",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
+      "title": "",
+      "description": "vLLM from 0.9.2 before 0.24.0 contains a server-side request forgery vulnerability that allows API callers to force outbound connections by embedding a decode address in the X-Request-Id header. Attackers can make a P2pNcclConnector prefill worker ZMQ-connect to an attacker host, leaking the NCCL unique_id and KV-cache tensors or blocking the worker.",
+      "published": "2026-10-25T14:16:57.160",
+      "updated": "2026-10-25T14:16:57.160",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-528x-2384-jmxp",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-policy-bypass-via-delegate-invocation-parsing"
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vfp2-c8pq-v6h6",
+        "https://www.vulncheck.com/advisories/vllm-0.9.2-before-0.24.0-ssrf-via-x-request-id-in-p2pncclconnector"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -11412,279 +11006,41 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "imagemagick"
+        "vllm"
       ],
-      "match_type": "exact",
-      "tier": 2,
+      "match_type": "keyword",
+      "tier": 3,
       "score": 29.6,
       "level": "low",
       "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116142",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Heap Buffer Over-Read via Minimum-Bounding-Box",
-      "description": "ImageMagick before 7.1.2-33 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory when printing a minimum-bounding-box. Attackers can supply a crafted image that triggers the over-read during minimum-bounding-box output, causing crashes or exposing adjacent heap memory.",
-      "published": "2026-10-25T13:19:53.714Z",
-      "updated": "2026-10-25T14:16:52.097",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5222-mhv9-26rg",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-heap-buffer-over-read-via-minimum-bounding-box"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116143",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Policy Bypass in PS, PDF and XPS Decoders",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a policy bypass in the PS, PDF and XPS decoders that allows the security policy's list length limit on scene selection to be circumvented. Attackers supplying a specific argument can cause ImageMagick to process more scenes than permitted, potentially exhausting resources.",
-      "published": "2026-10-25T13:19:54.384Z",
-      "updated": "2026-10-25T14:16:52.257",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-fp46-842c-2v83",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-policy-bypass-in-ps-pdf-and-xps-decoders"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116144",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Stack Overflow via MVG Decoder",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains uncontrolled recursion in the MVG decoder that can lead to a stack overflow. Attackers can supply a crafted MVG file that, when read with specific arguments, exhausts the stack and crashes the process, causing a denial of service.",
-      "published": "2026-10-25T13:19:55.066Z",
-      "updated": "2026-10-25T14:16:52.400",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-x258-xjqf-6j3f",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-stack-overflow-via-mvg-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116148",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Code Injection via MVG Encoder Drawing Options",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains an injection vulnerability in the MVG encoder, which does not properly neutralize user-specified drawing options before writing them into generated MVG output. Attackers who can supply drawing options can inject arbitrary MVG drawing commands into the resulting MVG file.",
-      "published": "2026-10-25T13:19:57.729Z",
-      "updated": "2026-10-25T14:16:52.983",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qq8x-fq3x-43h4",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-code-injection-via-mvg-encoder-drawing-options"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116150",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Memory Leak in FPX Encoder",
-      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the FPX encoder that allows attackers to exhaust memory by supplying a crafted image. Attackers can submit crafted images for FPX encoding to leak memory repeatedly, causing resource exhaustion and denial of service.",
-      "published": "2026-10-25T13:19:59.036Z",
-      "updated": "2026-10-25T14:16:53.267",
-      "cvss": 2.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8w9c-hj38-8pf9",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-fpx-encoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 4.6,
+        "popularity": 7.0,
+        "cvss": 17.6,
         "unauth_network": 5
       },
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116156",
+      "id": "CVE-2026-116177",
       "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak via -set profile Option",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak caused by a missing cleanup when the -set profile option is used. An attacker who induces a user to process images with the -set profile option can leak memory, potentially exhausting resources and causing a denial of service.",
-      "published": "2026-10-25T13:20:02.956Z",
-      "updated": "2026-10-25T14:16:54.133",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
+      "title": "",
+      "description": "vLLM from 0.10.2 before 0.25.0 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust memory because the Nemotron-VL processors globally set Image.MAX_IMAGE_PIXELS to None. Attackers can submit a pathological decompression-bomb image to /v1/chat/completions to OOM-kill the worker and deny service to co-tenants.",
+      "published": "2026-10-25T14:16:57.317",
+      "updated": "2026-10-25T14:16:57.317",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7r5g-p7ff-jgcp",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-set-profile-option"
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-mm38-5g96-7j6x",
+        "https://www.vulncheck.com/advisories/vllm-0.10.2-before-0.25.0-dos-via-nemotron-vl-processor-decompression-bomb-guard-bypass"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -11695,43 +11051,41 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "imagemagick"
+        "vllm"
       ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 29.4,
       "level": "low",
       "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
+        "popularity": 7.0,
+        "cvss": 17.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116157",
+      "id": "CVE-2026-116179",
       "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Memory Leak in PerlMagick Property Reading",
-      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in PerlMagick that fails to free values returned when reading image properties. Attackers can repeatedly trigger property reads through five affected PerlMagick code locations to exhaust memory and cause denial of service.",
-      "published": "2026-10-25T13:20:03.602Z",
-      "updated": "2026-10-25T14:16:54.270",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
+      "title": "",
+      "description": "vLLM from 0.18.0 before 0.31.0 contains a resource exhaustion vulnerability that allows API clients to bypass the video/jpeg frame-count cap by overriding num_frames through media_io_kwargs. Attackers can set num_frames to -1 with a large inline video so VideoMediaIO.load_base64 decodes every frame, exhausting memory and crashing the API frontend.",
+      "published": "2026-10-25T14:16:57.620",
+      "updated": "2026-10-25T14:16:57.620",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pj4h-g4pf-66v3",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-perlmagick-property-reading"
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-4m6g-h9mv-wqjc",
+        "https://www.vulncheck.com/advisories/vllm-0.18.0-before-0.31.0-memory-exhaustion-via-media-io-kwargs-num-frames-override"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -11742,116 +11096,22 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-25T14:23:39.971301+00:00",
       "matched": [
-        "imagemagick"
+        "vllm"
       ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 29.4,
       "level": "low",
       "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116159",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Memory Leak via -cdl Option",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of the -cdl (color decision list) option, where allocated memory is not cleaned up after use. Attackers can supply input that causes the -cdl option to be processed, repeatedly leaking memory and degrading availability through resource exhaustion.",
-      "published": "2026-10-25T13:20:04.937Z",
-      "updated": "2026-10-25T14:16:54.557",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-c2qq-jqw7-q4mx",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-cdl-option"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116160",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 Heap Buffer Overflow via X11 Animate",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a heap-based buffer overflow in the X11 animate operation when processing crafted images. Attackers can supply a malicious image that, when a user runs an X11 animate operation on it, overwrites heap memory and can crash the application.",
-      "published": "2026-10-25T13:20:05.634Z",
-      "updated": "2026-10-25T14:16:54.703",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6p6q-wfrv-ffhh",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-heap-buffer-overflow-via-x11-animate"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 9.6
+        "popularity": 7.0,
+        "cvss": 17.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -11905,6 +11165,230 @@
         "popularity": 14.0,
         "cvss": 14.8,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116149",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a stack-based buffer overflow in the handling of bzip2 compressed images. Attackers can supply a crafted image using bzip2 compression to overwrite stack memory during decoding, causing crashes or memory corruption.",
+      "published": "2026-10-25T14:16:53.123",
+      "updated": "2026-10-25T14:16:53.123",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pwpf-8799-94cj",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-stack-buffer-overflow-via-bzip2-compressed-images"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116172",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC converter that allows remote attackers to bypass max_logprobs limits via CandidateTokens.top_n. Attackers can send Generate or GenerateStream requests with oversized or integer-wrapping top_n values to trigger torch.topk failures that terminate EngineCore.",
+      "published": "2026-10-25T14:16:56.570",
+      "updated": "2026-10-25T14:16:56.570",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-rwfw-xvg3-3937",
+        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-dos-via-rust-grpc-candidatetokens-top-n"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116173",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.22.0 before 0.24.0 contains a denial of service vulnerability that allows remote attackers to terminate EngineCore by bypassing logprob_token_ids limits in the Rust gRPC frontend. Attackers can send Generate or GenerateStream requests with output_logprobs enabled and more than 128 output_candidates.token_ids, triggering a fatal sampler exception that crashes the engine.",
+      "published": "2026-10-25T14:16:56.720",
+      "updated": "2026-10-25T14:16:56.720",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-6pgw-f3pv-4h8q",
+        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-denial-of-service-via-grpc-output-candidates-token-ids"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116174",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC Generate and GenerateStream service that forwards unchecked prompt token IDs to EngineCore. Attackers can submit requests with out-of-vocabulary prompt.token_ids values to trigger a fatal embedding lookup failure that terminates EngineCore and leaves the server unhealthy.",
+      "published": "2026-10-25T14:16:56.877",
+      "updated": "2026-10-25T14:16:56.877",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w2v2-5662-8v5q",
+        "https://www.vulncheck.com/advisories/vllm-0.22.0-before-0.24.0-denial-of-service-via-rust-grpc-generate"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116178",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.20.0 before 0.30.0 contains a denial of service vulnerability that allows remote attackers to crash the engine by sending inconsistent multimodal metadata to the disaggregated /inference/v1/generate endpoint. Attackers can replay a valid multimodal item with repeated or overlapping mm_placeholders ranges or mismatched kwargs_data and mm_hashes lists, producing a negative text span in Qwen2.5-VL position construction that terminates the engine.",
+      "published": "2026-10-25T14:16:57.483",
+      "updated": "2026-10-25T14:16:57.483",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-34qw-q2h2-jp3m",
+        "https://www.vulncheck.com/advisories/vllm-0.20.0-before-0.30.0-dos-via-inference-v1-generate-mm-placeholders"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -12094,53 +11578,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116180",
-      "aliases": [],
-      "title": "vLLM from 0.8.5 before 0.31.0 Cross-Tenant DoS via Uninitialized LogprobsTensors",
-      "description": "vLLM from 0.8.5 before 0.31.0 has a denial of service flaw. LogprobsTensors.empty_cpu() in vllm/v1/outputs.py allocates an uninitialized int32 tensor, and the V1 model runner leaves prompt positions reported as computed by a KV connector unwritten. A client sharing the engine can send prompt_logprobs (or echo with logprobs) against a connector-cached prefix, making tokenizer decode raise OverflowError, which crashes EngineCore and drops all co-tenant requests.",
-      "published": "2026-10-25T13:20:19.199Z",
-      "updated": "2026-10-25T14:16:57.760",
-      "cvss": 8.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-rhcx-5729-88vg",
-        "https://www.vulncheck.com/advisories/vllm-from-0.8.5-before-0.31.0-cross-tenant-dos-via-uninitialized-logprobstensors"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 26.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-112907",
       "aliases": [
         "GHSA-567q-5qvw-pf92"
@@ -12238,20 +11675,503 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116175",
+      "id": "CVE-2026-116140",
       "aliases": [],
-      "title": "vLLM 0.19.0 before 0.24.0 Audio Decompression Bomb DoS via Chat Completions",
-      "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
-      "published": "2026-10-25T13:20:15.794Z",
-      "updated": "2026-10-25T14:16:57.017",
-      "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 incorrectly parses delegate invocations, which can allow an executable blocked in policy.xml to still run. An attacker who gets ImageMagick to process input that triggers a delegate invocation can bypass the administrator-defined policy and execute the blocked program.",
+      "published": "2026-10-25T14:16:51.783",
+      "updated": "2026-10-25T14:16:51.783",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-528x-2384-jmxp",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-policy-bypass-via-delegate-invocation-parsing"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116142",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory when printing a minimum-bounding-box. Attackers can supply a crafted image that triggers the over-read during minimum-bounding-box output, causing crashes or exposing adjacent heap memory.",
+      "published": "2026-10-25T14:16:52.097",
+      "updated": "2026-10-25T14:16:52.097",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5222-mhv9-26rg",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-heap-buffer-over-read-via-minimum-bounding-box"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116143",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a policy bypass in the PS, PDF and XPS decoders that allows the security policy's list length limit on scene selection to be circumvented. Attackers supplying a specific argument can cause ImageMagick to process more scenes than permitted, potentially exhausting resources.",
+      "published": "2026-10-25T14:16:52.257",
+      "updated": "2026-10-25T14:16:52.257",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-fp46-842c-2v83",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-policy-bypass-in-ps-pdf-and-xps-decoders"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116144",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains uncontrolled recursion in the MVG decoder that can lead to a stack overflow. Attackers can supply a crafted MVG file that, when read with specific arguments, exhausts the stack and crashes the process, causing a denial of service.",
+      "published": "2026-10-25T14:16:52.400",
+      "updated": "2026-10-25T14:16:52.400",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-x258-xjqf-6j3f",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-stack-overflow-via-mvg-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116148",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains an injection vulnerability in the MVG encoder, which does not properly neutralize user-specified drawing options before writing them into generated MVG output. Attackers who can supply drawing options can inject arbitrary MVG drawing commands into the resulting MVG file.",
+      "published": "2026-10-25T14:16:52.983",
+      "updated": "2026-10-25T14:16:52.983",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qq8x-fq3x-43h4",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-code-injection-via-mvg-encoder-drawing-options"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116150",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the FPX encoder that allows attackers to exhaust memory by supplying a crafted image. Attackers can submit crafted images for FPX encoding to leak memory repeatedly, causing resource exhaustion and denial of service.",
+      "published": "2026-10-25T14:16:53.267",
+      "updated": "2026-10-25T14:16:53.267",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8w9c-hj38-8pf9",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-fpx-encoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116156",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak caused by a missing cleanup when the -set profile option is used. An attacker who induces a user to process images with the -set profile option can leak memory, potentially exhausting resources and causing a denial of service.",
+      "published": "2026-10-25T14:16:54.133",
+      "updated": "2026-10-25T14:16:54.133",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7r5g-p7ff-jgcp",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-set-profile-option"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116157",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in PerlMagick that fails to free values returned when reading image properties. Attackers can repeatedly trigger property reads through five affected PerlMagick code locations to exhaust memory and cause denial of service.",
+      "published": "2026-10-25T14:16:54.270",
+      "updated": "2026-10-25T14:16:54.270",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pj4h-g4pf-66v3",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-perlmagick-property-reading"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116159",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of the -cdl (color decision list) option, where allocated memory is not cleaned up after use. Attackers can supply input that causes the -cdl option to be processed, repeatedly leaking memory and degrading availability through resource exhaustion.",
+      "published": "2026-10-25T14:16:54.557",
+      "updated": "2026-10-25T14:16:54.557",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-c2qq-jqw7-q4mx",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-memory-leak-via-cdl-option"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116160",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a heap-based buffer overflow in the X11 animate operation when processing crafted images. Attackers can supply a malicious image that, when a user runs an X11 animate operation on it, overwrites heap memory and can crash the application.",
+      "published": "2026-10-25T14:16:54.703",
+      "updated": "2026-10-25T14:16:54.703",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6p6q-wfrv-ffhh",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-33-heap-buffer-overflow-via-x11-animate"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116180",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.8.5 before 0.31.0 has a denial of service flaw. LogprobsTensors.empty_cpu() in vllm/v1/outputs.py allocates an uninitialized int32 tensor, and the V1 model runner leaves prompt positions reported as computed by a KV connector unwritten. A client sharing the engine can send prompt_logprobs (or echo with logprobs) against a connector-cached prefix, making tokenizer decode raise OverflowError, which crashes EngineCore and drops all co-tenant requests.",
+      "published": "2026-10-25T14:16:57.760",
+      "updated": "2026-10-25T14:16:57.760",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-rhcx-5729-88vg",
+        "https://www.vulncheck.com/advisories/vllm-from-0.8.5-before-0.31.0-cross-tenant-dos-via-uninitialized-logprobstensors"
       ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 23.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116175",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
+      "published": "2026-10-25T14:16:57.017",
+      "updated": "2026-10-25T14:16:57.017",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://github.com/vllm-project/vllm/security/advisories/GHSA-r45p-7qwx-qwjw",
         "https://www.vulncheck.com/advisories/vllm-0.19.0-before-0.24.0-audio-decompression-bomb-dos-via-chat-completions"
@@ -12265,7 +12185,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -12274,12 +12193,12 @@
       "matched": [
         "vllm"
       ],
-      "match_type": "exact",
+      "match_type": "keyword",
       "tier": 3,
-      "score": 24.2,
+      "score": 21.2,
       "level": "low",
       "score_breakdown": {
-        "popularity": 10,
+        "popularity": 7.0,
         "cvss": 14.2
       },
       "ai_analysis": ""
@@ -12287,18 +12206,16 @@
     {
       "id": "CVE-2026-116181",
       "aliases": [],
-      "title": "vLLM 0.20.1 before 0.29.0 DoS and GPU Out-of-Bounds Write via stop_token_ids",
+      "title": "",
       "description": "vLLM from 0.20.1 before 0.29.0 contains an improper input validation vulnerability that allows remote attackers to crash the engine by supplying out-of-vocabulary stop_token_ids. Attackers can send OpenAI chat, completion, generate, or batch requests with invalid IDs to terminate the engine or write outside the V2 runner's logits buffer.",
-      "published": "2026-10-25T13:20:19.874Z",
+      "published": "2026-10-25T14:16:57.907",
       "updated": "2026-10-25T14:16:57.907",
       "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
+      "vendor_products": [],
       "references": [
         "https://github.com/vllm-project/vllm/security/advisories/GHSA-w9r6-29q4-pvpr",
         "https://www.vulncheck.com/advisories/vllm-0.20.1-before-0.29.0-dos-and-gpu-out-of-bounds-write-via-stop-token-ids"
@@ -12312,7 +12229,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -12321,154 +12237,13 @@
       "matched": [
         "vllm"
       ],
-      "match_type": "exact",
+      "match_type": "keyword",
       "tier": 3,
-      "score": 24.2,
+      "score": 21.2,
       "level": "low",
       "score_breakdown": {
-        "popularity": 10,
+        "popularity": 7.0,
         "cvss": 14.2
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116153",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Heap Buffer Overflow via Convex-Hull on 32-bit",
-      "description": "ImageMagick before 7.1.2-33 contains a heap buffer overflow vulnerability on 32-bit systems that allows attackers to overwrite heap memory when convex-hull information is requested. Attackers can supply crafted images processed with convex-hull calculations to corrupt heap memory, causing crashes or potential code execution.",
-      "published": "2026-10-25T13:20:01.069Z",
-      "updated": "2026-10-25T14:16:53.713",
-      "cvss": 2,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7438-vh5v-v52h",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-heap-buffer-overflow-via-convex-hull-on-32-bit"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 24,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 4
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116158",
-      "aliases": [],
-      "title": "ImageMagick before 7.1.2-33 Memory Leak in magick compare",
-      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the magick compare command caused by missing cleanup when an operation fails. Attackers can supply inputs that trigger repeated failed compare operations to exhaust memory and cause denial of service.",
-      "published": "2026-10-25T13:20:04.263Z",
-      "updated": "2026-10-25T14:16:54.413",
-      "cvss": 2,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-m938-565c-h9qf",
-        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-magick-compare"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 24,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 4
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116145",
-      "aliases": [],
-      "title": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-32 Security Policy Bypass via Incomplete Fix",
-      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-32 contains a security policy bypass caused by an incomplete fix for the policy bypass reported in GHSA-jjp4-3fwf-393j. An attacker able to supply input to ImageMagick can evade configured security policy restrictions, allowing operations the policy was intended to block.",
-      "published": "2026-10-25T13:19:55.780Z",
-      "updated": "2026-10-25T14:16:52.543",
-      "cvss": 1.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
-      ],
-      "references": [
-        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-4wfv-467j-fqh9",
-        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-32-security-policy-bypass-via-incomplete-fix"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "imagemagick"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 23.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 3.6
       },
       "ai_analysis": ""
     },
@@ -19977,6 +19752,138 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 4.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116153",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a heap buffer overflow vulnerability on 32-bit systems that allows attackers to overwrite heap memory when convex-hull information is requested. Attackers can supply crafted images processed with convex-hull calculations to corrupt heap memory, causing crashes or potential code execution.",
+      "published": "2026-10-25T14:16:53.713",
+      "updated": "2026-10-25T14:16:53.713",
+      "cvss": 2.0,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7438-vh5v-v52h",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-heap-buffer-overflow-via-convex-hull-on-32-bit"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 18.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116158",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the magick compare command caused by missing cleanup when an operation fails. Attackers can supply inputs that trigger repeated failed compare operations to exhaust memory and cause denial of service.",
+      "published": "2026-10-25T14:16:54.413",
+      "updated": "2026-10-25T14:16:54.413",
+      "cvss": 2.0,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-m938-565c-h9qf",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-33-memory-leak-in-magick-compare"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 18.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116145",
+      "aliases": [],
+      "title": "",
+      "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-32 contains a security policy bypass caused by an incomplete fix for the policy bypass reported in GHSA-jjp4-3fwf-393j. An attacker able to supply input to ImageMagick can evade configured security policy restrictions, allowing operations the policy was intended to block.",
+      "published": "2026-10-25T14:16:52.543",
+      "updated": "2026-10-25T14:16:52.543",
+      "cvss": 1.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-4wfv-467j-fqh9",
+        "https://www.vulncheck.com/advisories/imagemagick-before-6.9.13-58-and-7-x-before-7.1.2-32-security-policy-bypass-via-incomplete-fix"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 17.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 3.6
       },
       "ai_analysis": ""
     },
