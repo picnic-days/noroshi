@@ -1,9 +1,10 @@
-# 15分ごとに収集し、緊急案件を LINE に通知、data/ をコミットする。
+# 30 分ごと（GitHub の混雑で間引かれることがある）に収集し、緊急案件を LINE に通知、data/ をコミットする。
 # 必要な Secrets: LINE_CHANNEL_ACCESS_TOKEN, LINE_TO（任意: ANTHROPIC_API_KEY, NVD_API_KEY, X_BEARER_TOKEN, DASHBOARD_URL）
 name: collect
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    # 毎時 0 分前後は混雑して間引かれやすいので、時刻をずらす
+    - cron: "17,47 * * * *"
   workflow_dispatch:
     inputs:
       ping:
