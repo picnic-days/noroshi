@@ -18,7 +18,7 @@ def summary(v, limit: int = 100) -> str:
     return text if len(text) <= limit else text[:limit - 1].rstrip() + "…"
 
 
-def format_message(vulns: list, dashboard_url: str = "") -> str:
+def format_message(vulns: list) -> str:
     head = "脆弱性アラート" if all(v.category == "vuln" for v in vulns) else "狼煙アラート"
     lines = [f"🚨 {head} {len(vulns)}件"]
     for v in vulns[:MAX_ITEMS]:
@@ -48,14 +48,12 @@ def format_message(vulns: list, dashboard_url: str = "") -> str:
         ]
     if len(vulns) > MAX_ITEMS:
         lines.append(f"\nほか {len(vulns) - MAX_ITEMS}件")
-    if dashboard_url:
-        lines.append(f"\nダッシュボード: {dashboard_url}")
     return "\n".join(l for l in lines if l is not None)[:MAX_CHARS]
 
 
-def build_messages(vulns: list, dashboard_url: str = "") -> list:
+def build_messages(vulns: list) -> list:
     """一覧の吹き出しに続けて、AI 分析がある案件ごとに吹き出しを 1 つずつ足す。"""
-    texts = [format_message(vulns, dashboard_url)]
+    texts = [format_message(vulns)]
     for v in vulns:
         if v.ai_analysis and len(texts) < MAX_BUBBLES:
             texts.append(f"🤖 {v.id}\n\n{v.ai_analysis}"[:MAX_CHARS])

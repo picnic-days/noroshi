@@ -1,4 +1,4 @@
-"""ダッシュボード用の vulns.json と、通知済み管理の state.json を読み書きする。"""
+"""収集結果の vulns.json と、通知済み管理の state.json を読み書きする。"""
 import json
 from datetime import datetime, timedelta
 from pathlib import Path

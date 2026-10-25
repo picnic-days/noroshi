@@ -137,7 +137,7 @@ def run(args) -> int:
         warning = ai.analyze_all(alerts) if use_ai else ""
         if warning and warning not in warnings:
             warnings.append(warning)
-        texts = notify_line.build_messages(alerts, os.environ.get("DASHBOARD_URL", ""))
+        texts = notify_line.build_messages(alerts)
         # 警告は吹き出しの空きがあれば同じ通知に添え、なければ別に送る
         while warnings and len(texts) < notify_line.MAX_BUBBLES:
             texts.append(warnings.pop(0))

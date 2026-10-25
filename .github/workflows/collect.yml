@@ -1,5 +1,5 @@
 # 30 分ごと（GitHub の混雑で間引かれることがある）に収集し、緊急案件を LINE に通知、data/ をコミットする。
-# 必要な Secrets: LINE_CHANNEL_ACCESS_TOKEN, LINE_TO（任意: ANTHROPIC_API_KEY, NVD_API_KEY, X_BEARER_TOKEN, DASHBOARD_URL）
+# 必要な Secrets: LINE_CHANNEL_ACCESS_TOKEN, LINE_TO（任意: ANTHROPIC_API_KEY, NVD_API_KEY, X_BEARER_TOKEN）
 name: collect
 on:
   schedule:
@@ -47,7 +47,6 @@ jobs:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_TO: ${{ secrets.LINE_TO }}
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: python -m noroshi --send
       - name: commit data
         if: ${{ !inputs.ping }}
