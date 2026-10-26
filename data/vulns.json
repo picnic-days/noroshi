@@ -1,13 +1,55 @@
 {
-  "generated_at": "2026-10-26T07:03:03.264049+00:00",
+  "generated_at": "2026-10-26T14:16:58.363768+00:00",
   "items": [
+    {
+      "id": "JP-jpcert-at260034",
+      "aliases": [
+        "CVE-2026-111497"
+      ],
+      "title": "BrotliのC言語実装における境界外書き込みの脆弱性（CVE-2026-111497）に関する注意喚起  (公開)",
+      "description": "JPCERT/CC の注意喚起",
+      "published": "2026-10-26T16:25:00+09:00",
+      "updated": "2026-10-26T16:25:00+09:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.jpcert.or.jp/at/2026/at260034.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "jpcert"
+      ],
+      "category": "jp-alert",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "jpcert"
+      ],
+      "match_type": "jp-alert",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
     {
       "id": "CVE-2026-109618",
       "aliases": [],
       "title": "",
       "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.357",
-      "updated": "2026-10-23T16:26:54.713",
+      "updated": "2026-10-26T10:10:00.140",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -31,22 +73,22 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.1162,
-      "epss_percentile": 0.96047,
+      "epss": 0.99981,
+      "epss_percentile": 0.99981,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "panos",
         "php"
       ],
       "match_type": "exact",
       "tier": 1,
-      "score": 75.1,
+      "score": 88.4,
       "level": "critical",
       "score_breakdown": {
         "popularity": 30,
@@ -54,9 +96,9 @@
         "unauth_network": 5,
         "rce": 5,
         "tier1_critical": 15,
-        "epss": 1.7
+        "epss": 15.0
       },
-      "ai_analysis": "【状況】PHPのメモリ不足（OOM）処理に不具合があり、ネットワーク経由で遠隔コード実行（RCE）につながるおそれがあります。CVSS 9.2、EPSS 11.6%。CISA KEV（悪用確認済み脆弱性の一覧）には未登録で、公開エクスプロイトの情報もありません。実際の悪用状況は未確認です。※検索ツールの利用上限に達したため、ベンダーのアドバイザリを読めていません。以下は脆弱性DBのデータのみに基づきます。\n\n【影響範囲】PHP（影響バージョンは未確認）。DB上はPAN-OS、Panorama仮想アプライアンス、Siemens RUGGEDCOM APE1808も対象とされています（各バージョンは未確認）。\n\n【対応策】\n1. 今日中に、社内でPHPを使っているサーバーとPAN-OS/Panorama機器を洗い出し、インターネットに公開されているものから優先して確認してください。そのうえで下記の出典で修正版を確認し、すぐ更新してください（修正版は未確認）。PAN-OSについてはPalo Altoの公式アドバイザリも確認してください。\n2. 公式の回避策は未確認です。一般的な暫定策として、PHPアプリや機器の管理画面へのアクセス元を制限し、ログでプロセスの異常終了やメモリ不足エラーを監視してください。\n\n【出典】\nhttps://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w\nhttps://cert-portal.siemens.com/productcert/html/ssa-566512.html"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-109619",
@@ -64,7 +106,7 @@
       "title": "",
       "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.823",
-      "updated": "2026-10-23T16:06:48.917",
+      "updated": "2026-10-26T10:10:00.140",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -93,22 +135,22 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.05991,
-      "epss_percentile": 0.933,
+      "epss": 0.99997,
+      "epss_percentile": 0.99989,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "panos",
         "php"
       ],
       "match_type": "exact",
       "tier": 1,
-      "score": 74.3,
+      "score": 88.4,
       "level": "critical",
       "score_breakdown": {
         "popularity": 30,
@@ -116,9 +158,77 @@
         "unauth_network": 5,
         "rce": 5,
         "tier1_critical": 15,
-        "epss": 0.9
+        "epss": 15.0
       },
-      "ai_analysis": "【状況】PHP本体に解放後メモリ使用（UAF）の欠陥があり、認証なしでリモートからコードを実行される恐れがあります（CVSS 9.2）。修正版は10/21に公開済みです。PoC（実証コード）が複数公開されています。民間ベンダー1社が「10/22から実際に悪用されている」と報告していますが、一次情報では未確認です。CISA KEV（悪用確認済み脆弱性リスト）には未掲載です。\n\n【影響範囲】PHP 8.2.35／8.3.36／8.4.27／8.5.12より前のすべての版。8.1以前はサポート終了のため修正版がありません。Webリクエストを処理する全構成（PHP-FPM、mod_php、php-cgi、FrankenPHP、LiteSpeed）が対象で、mod_phpが最も危険です。PAN-OSとSiemens製品への影響は未確認なので、各社の発表を確認してください。\n\n【対応策】\n1. 今日中に8.2.35／8.3.36／8.4.27／8.5.12以降へ更新してください（OS配布版はディストリの修正パッケージ）。8.1以前はサポート版へ移行が必要です。外部公開中のmod_php環境から優先してください。\n2. 公式の回避策は未確認です。完全な対策は更新だけです。すぐ更新できない場合は、リスクを評価したうえで外部公開を止めるかオフラインにすることを検討してください（英NHS推奨）。\n\n【出典】\nhttps://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp\nhttps://cert.europa.eu/publications/security-advisories/2026-018"
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-21589",
+      "aliases": [],
+      "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
+      "description": "This is a vulnerability in Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center. Crowd Data Center, Crucible and Fisheye. This Arbitrary File Access vulnerability allows an unauthenticated attacker to access specific files within the web application root directory in affected versions. Exploitation requires prior knowledge of the target file's exact name and path; this vulnerability does not allow attackers to enumerate or list directory contents. In some configurations, there may be some sensitive files that make this highly severe. This vulnerability allows an unauthenticated remote attacker to access specific files within the web application root directory in affected versions. The vulnerability must be addressed for affected versions of: -- Bitbucket Data Center, introduced in version >= 4.6.0, fix versions: 9.4.26, 10.2.8, 10.5.1 -- Confluence Data Center, introduced in version >= 5.10.0, fix versions 9.2.26, 10.2.19 -- Crowd Data Center, introduced in version >= 2.11.0, fix versions 6.3.7, 7.0.3, 7.1.7, 7.2.4 -- Jira Software Data Center, introduced in version >= 7.1.0, fix versions 9.12.40, 10.3.26, 11.3.12 -- Jira Service Management Data Center, introduced in version >= 3.1.0, fix versions 5.12.40, 10.3.26, 11.3.12 -- Bamboo Data Center >= 7.0.1, fix versions 10.2.24, 12.1.12 -- Crucible, fix versions 4.9.15 -- Fisheye, fix version 4.9.15 -- Exploitation requires prior knowledge of the target file's exact name and path. The vulnerability does not include the capability to enumerate or list directory contents.",
+      "published": "2026-10-05T22:16:58.423",
+      "updated": "2026-10-26T10:10:00.140",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [
+        "atlassian:bitbucket_data_center",
+        "atlassian:bitbucket_server",
+        "atlassian:confluence_data_center",
+        "atlassian:crowd",
+        "atlassian:jira_data_center",
+        "atlassian:jira_service_desk",
+        "atlassian:jira_service_management",
+        "atlassian:bamboo",
+        "atlassian:crucible",
+        "atlassian:fisheye"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Atlassian Multiple Products"
+      ],
+      "references": [
+        "https://jira.atlassian.com/browse/BAM-26567",
+        "https://jira.atlassian.com/browse/BSERV-20604",
+        "https://jira.atlassian.com/browse/CONFSERVER-104488",
+        "https://jira.atlassian.com/browse/CRUC-8741",
+        "https://jira.atlassian.com/browse/CWD-6610",
+        "https://jira.atlassian.com/browse/FE-7583",
+        "https://jira.atlassian.com/browse/JRASERVER-79546",
+        "https://jira.atlassian.com/browse/JSDSERVER-16809",
+        "https://github.com/watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-21589",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-21589"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-15",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.99477,
+      "epss_percentile": 0.99943,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 68.5,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 18.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 14.9
+      },
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-112994",
@@ -371,12 +481,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113220",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Extensions in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:15.220",
+      "updated": "2026-10-26T12:58:17.310",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/501875966"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00369,
+      "epss_percentile": 0.30501,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 62.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-110447",
       "aliases": [],
       "title": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability",
       "description": "Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September and October 2026, a different vulnerability than CVE-2025-66208. This is an OS command injection in proxy.php when the CODE server isn't running (e.g., the product was recently restarted). The vulnerability is not present in standalone Collabora Online servers; only this deployment with CODE Server is affected.",
       "published": "2026-10-14T03:17:20.683",
-      "updated": "2026-10-24T04:18:17.157",
+      "updated": "2026-10-26T12:01:31.130",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -396,8 +556,8 @@
       "kev_date_added": "2026-10-23",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.01225,
-      "epss_percentile": 0.68615,
+      "epss": 0.12328,
+      "epss_percentile": 0.96163,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -409,7 +569,7 @@
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
-      "score": 58.6,
+      "score": 60.2,
       "level": "high",
       "score_breakdown": {
         "popularity": 10,
@@ -417,7 +577,7 @@
         "unauth_network": 5,
         "rce": 5,
         "kev": 20,
-        "epss": 0.2
+        "epss": 1.8
       },
       "ai_analysis": ""
     },
@@ -1205,6 +1365,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107656",
+      "aliases": [],
+      "title": "",
+      "description": "An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiSandbox 4.2 all versions, FortiSandbox PaaS 5.0.0 through 5.0.6, FortiSandbox PaaS 4.4 all versions, FortiSandbox PaaS 4.2 all versions may allow attacker to execute unauthorized code or commands via crafted HTTP requests",
+      "published": "2026-10-26T13:45:03.962Z",
+      "updated": "2026-10-26T14:16:24.147",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "fortinet:fortisandbox",
+        "fortinet:fortisandboxpaas"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Fortinet FortiSandbox",
+        "Fortinet FortiSandbox PaaS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-185"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-17545",
       "aliases": [],
       "title": "",
@@ -1301,6 +1512,104 @@
         "popularity": 30,
         "cvss": 18.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113209",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Navigation in Google Chrome on on iOS prior to 156.0.8078.47 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:13.993",
+      "updated": "2026-10-26T12:59:01.003",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/503774403"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00301,
+      "epss_percentile": 0.22657,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "exploit_ref": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113224",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in WebAppInstalls in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:15.650",
+      "updated": "2026-10-26T12:56:54.083",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/518108422"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00267,
+      "epss_percentile": 0.18699,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "exploit_ref": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -1424,6 +1733,66 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83929",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds write in Windows GDI allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:20:49.403",
+      "updated": "2026-10-26T13:28:05.117",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83929"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00607,
+      "epss_percentile": 0.48753,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91766",
       "aliases": [],
       "title": "",
@@ -1526,7 +1895,7 @@
       "title": "Arista VeloCloud Orchestrator SQL Injection Vulnerability",
       "description": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator.\n\nOn an affected system, any authenticated user can gain operator privileges and masquerade as a local \"superuser operator\" user. This includes access to functionality that is intended for internal use only and which is not intended to be remotely accessible.\n\nHosted, including Dedicated, versions of VCO were impacted and have already been patched.",
       "published": "2026-10-22T21:17:16.870",
-      "updated": "2026-10-24T04:18:17.510",
+      "updated": "2026-10-26T13:10:00.140",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -1547,8 +1916,8 @@
       "kev_date_added": "2026-10-23",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00555,
-      "epss_percentile": 0.45586,
+      "epss": 0.01025,
+      "epss_percentile": 0.63324,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -1560,13 +1929,13 @@
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
-      "score": 48.9,
+      "score": 49.0,
       "level": "medium",
       "score_breakdown": {
         "popularity": 10,
         "cvss": 18.8,
         "kev": 20,
-        "epss": 0.1
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -1704,6 +2073,65 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83928",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds write in Windows Local Security Authority Subsystem Service (LSASS) allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:20:49.227",
+      "updated": "2026-10-26T13:28:29.360",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83928"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00577,
+      "epss_percentile": 0.4727,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "windows"
       ],
@@ -2091,6 +2519,119 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83927",
+      "aliases": [],
+      "title": "",
+      "description": "Improper link resolution before file access ('link following') in Windows Registry allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:49.087",
+      "updated": "2026-10-26T13:39:09.797",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83927"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00395,
+      "epss_percentile": 0.33428,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83932",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Group Policy allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:49.833",
+      "updated": "2026-10-26T13:13:36.970",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83932"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00341,
+      "epss_percentile": 0.27365,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "windows"
       ],
@@ -2508,6 +3049,58 @@
         "popularity": 21.0,
         "cvss": 19.6,
         "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83931",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Hyper-V allows an authorized attacker to execute code locally.",
+      "published": "2026-10-13T19:20:49.703",
+      "updated": "2026-10-26T13:17:30.813",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83931"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23259,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -2985,6 +3578,116 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83924",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:48.570",
+      "updated": "2026-10-26T13:50:49.493",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83924"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23264,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83930",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Update Orchestrator Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:49.570",
+      "updated": "2026-10-26T13:27:44.830",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83930"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00276,
+      "epss_percentile": 0.19873,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [],
       "title": "",
@@ -3433,6 +4136,53 @@
         "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115955",
+      "aliases": [],
+      "title": "WordPress Advanced Post Block - Post Grid for WordPress block editor plugin <= 2.5.1 - Cross Site Scripting (XSS) vulnerability",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in bPlugins Advanced Post Block - Post Grid for WordPress block editor advanced-post-block allows Stored XSS.This issue affects Advanced Post Block - Post Grid for WordPress block editor: from n/a through 2.5.1.",
+      "published": "2026-10-26T10:35:04.514Z",
+      "updated": "2026-10-26T14:16:33.130",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "bPlugins Advanced Post Block - Post Grid for WordPress block editor",
+        "advanced-post-block"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/advanced-post-block/vulnerability/wordpress-advanced-post-block-post-grid-for-wordpress-block-editor-plugin-2-5-1-cross-site-scripting-xss-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
       },
       "ai_analysis": ""
     },
@@ -5026,6 +5776,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-88968",
+      "aliases": [
+        "GHSA-5xjx-9qx6-jcrv"
+      ],
+      "title": "TOCTOU Race in Edit Tool Allows File Writes Outside the Workspace",
+      "description": "Claude Code validated Edit tool targets using point-in-time pathname and symlink resolution that was not bound to the underlying directory inodes or file descriptors. On macOS, a process running inside Claude Code's Bash sandbox could exploit the resulting time-of-check to time-of-use window by atomically swapping an in-workspace parent directory with a symlink after validation completed, causing the unsandboxed Edit implementation to overwrite an attacker-selected user-writable file outside the workspace. Exploiting this required the ability to run attacker-controlled code inside the sandbox, such as through a malicious repository or dependency script.\r\n\r\nUsers on standard Claude Code auto-update have received this fix automatically. Users performing manual updates are advised to update to the latest version.\r\n\r\nThank you to hackerone.com/mahoraga007 (Sunder Singh) for reporting this issue.",
+      "published": "2026-10-26T11:43:04Z",
+      "updated": "2026-10-26T11:43:04Z",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:@anthropic-ai/claude-code"
+      ],
+      "vendor_products": [
+        "anthropics/claude-code"
+      ],
+      "references": [
+        "https://github.com/anthropics/claude-code/security/advisories/GHSA-5xjx-9qx6-jcrv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "claude-code"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-54630",
       "aliases": [],
       "title": "",
@@ -5407,6 +6207,89 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-s5io0kegzlsz",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Chicago (ORD)",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-26T09:21:56.911Z",
+      "updated": "2026-10-26T09:03:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/s5io0kegzlsz"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-26T09:03:00.000Z",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "JP-jpcert-at260033",
+      "aliases": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "title": "PHPにおける複数の脆弱性（CVE-2026-109618、CVE-2026-109619）に関する注意喚起  (更新)",
+      "description": "JPCERT/CC の注意喚起",
+      "published": "2026-10-26T16:25:00+09:00",
+      "updated": "2026-10-26T16:25:00+09:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.jpcert.or.jp/at/2026/at260033.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "jpcert"
+      ],
+      "category": "jp-alert",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "jpcert"
+      ],
+      "match_type": "jp-alert",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91398",
       "aliases": [],
       "title": "",
@@ -5501,6 +6384,64 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83925",
+      "aliases": [],
+      "title": "",
+      "description": "Use of uninitialized resource in Windows Kernel allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:20:48.753",
+      "updated": "2026-10-26T13:44:41.183",
+      "cvss": 4.7,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83925"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00735,
+      "epss_percentile": 0.54138,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 39.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.4,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69506",
       "aliases": [],
       "title": "",
@@ -5565,7 +6506,7 @@
       "title": "",
       "description": "Apache Traffic Server's experimental magick plugin lets an unauthenticated client control ImageMagick convert arguments in its default (unsigned) configuration.\n\n\n\nThis issue affects Apache Traffic Server: from 8.0.1 through 8.1.11, from 9.0.0 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0.\n\n\n\nUsers are recommended to upgrade to version 9.2.16, 10.1.5, or 10.2.1, which fix the issue.",
       "published": "2026-10-21T19:16:59.167",
-      "updated": "2026-10-23T12:18:09.080",
+      "updated": "2026-10-26T10:10:00.140",
       "cvss": 10.0,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -5580,15 +6521,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00347,
-      "epss_percentile": 0.27034,
+      "epss": 0.00489,
+      "epss_percentile": 0.41776,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "imagemagick"
       ],
@@ -5610,7 +6551,7 @@
       "title": "",
       "description": "Missing authentication for critical function in Azure Kubernetes Configuration Service allows an unauthorized attacker to elevate privileges over a network.",
       "published": "2026-10-22T22:19:18.540",
-      "updated": "2026-10-23T19:43:46.190",
+      "updated": "2026-10-26T11:16:38.430",
       "cvss": 10.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -5625,15 +6566,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00668,
-      "epss_percentile": 0.51344,
+      "epss": 0.00707,
+      "epss_percentile": 0.53123,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "kubernetes"
       ],
@@ -5739,6 +6680,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83926",
+      "aliases": [],
+      "title": "",
+      "description": "Improper certificate validation in Windows Hello allows an authorized attacker to bypass a security feature locally.",
+      "published": "2026-10-13T19:20:48.933",
+      "updated": "2026-10-26T13:42:10.730",
+      "cvss": 4.4,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83926"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00397,
+      "epss_percentile": 0.33667,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116070",
       "aliases": [],
       "title": "Docker-Proxy through 5.1.9 Missing Authentication via hubcmdui /api/config",
@@ -5786,6 +6783,54 @@
         "popularity": 20,
         "cvss": 13.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99083",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix heap out-of-bounds write in krb5_authenticate()\n\nIn krb5_authenticate(), out_len is calculated to determine available\nheadroom in response_buf for the incoming Kerberos AP-REP token. However,\nwhen SMB2_SESSION_SETUP is processed as a non-first element of a compounded\nSMB2 request, the calculation omits work->next_smb2_rsp_hdr_off.\n\nThis causes out_len to overstate remaining buffer headroom by\nthe cumulative size of prior responses in the compound chain. Consequently,\nthe length check in ksmbd_krb5_authenticate()\n(*out_len <= resp->spnego_blob_len) passes erroneously, allowing memcpy()\nto write the AP-REP blob past the end of response_buf into adjacent kernel\nheap memory.\n\nFix this by subtracting work->next_smb2_rsp_hdr_off when computing out_len,\nensuring it accurately reflects physical remaining buffer space.",
+      "published": "2026-10-23T13:17:32.577",
+      "updated": "2026-10-26T07:17:18.627",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/23a0be6a84a38ac169eeab49017934e8e27c65f0",
+        "https://git.kernel.org/stable/c/4722d06b2907585074252061b1024a696c1cfc23",
+        "https://git.kernel.org/stable/c/517404e157395d0f8da125ca956c566895dfcd06",
+        "https://git.kernel.org/stable/c/59c6dcc5dd9dafe764ca0d40525933b2be69b059",
+        "https://git.kernel.org/stable/c/80af1bde97d5a85ad6f2c40ca894ccc8fa75a27a"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00408,
+      "epss_percentile": 0.34784,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T16:57:17.235614+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 38.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.6,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -6026,60 +7071,12 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-99083",
-      "aliases": [],
-      "title": "",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix heap out-of-bounds write in krb5_authenticate()\n\nIn krb5_authenticate(), out_len is calculated to determine available\nheadroom in response_buf for the incoming Kerberos AP-REP token. However,\nwhen SMB2_SESSION_SETUP is processed as a non-first element of a compounded\nSMB2 request, the calculation omits work->next_smb2_rsp_hdr_off.\n\nThis causes out_len to overstate remaining buffer headroom by\nthe cumulative size of prior responses in the compound chain. Consequently,\nthe length check in ksmbd_krb5_authenticate()\n(*out_len <= resp->spnego_blob_len) passes erroneously, allowing memcpy()\nto write the AP-REP blob past the end of response_buf into adjacent kernel\nheap memory.\n\nFix this by subtracting work->next_smb2_rsp_hdr_off when computing out_len,\nensuring it accurately reflects physical remaining buffer space.",
-      "published": "2026-10-23T13:17:32.577",
-      "updated": "2026-10-24T14:16:55.413",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://git.kernel.org/stable/c/23a0be6a84a38ac169eeab49017934e8e27c65f0",
-        "https://git.kernel.org/stable/c/4722d06b2907585074252061b1024a696c1cfc23",
-        "https://git.kernel.org/stable/c/517404e157395d0f8da125ca956c566895dfcd06",
-        "https://git.kernel.org/stable/c/59c6dcc5dd9dafe764ca0d40525933b2be69b059",
-        "https://git.kernel.org/stable/c/80af1bde97d5a85ad6f2c40ca894ccc8fa75a27a"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00209,
-      "epss_percentile": 0.10498,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-24T16:57:17.235614+00:00",
-      "matched": [
-        "linux-kernel"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 38.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2023-7356",
       "aliases": [],
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Copy BASE if service data matches EIR_BAA_SERVICE_UUID\n\nCopy the content of a Periodic Advertisement Report to BASE only if\nthe service UUID is Basic Audio Announcement Service UUID.",
       "published": "2026-10-21T15:17:12.440",
-      "updated": "2026-10-24T14:16:37.647",
+      "updated": "2026-10-26T07:17:05.437",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -6096,8 +7093,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00166,
-      "epss_percentile": 0.05579,
+      "epss": 0.00285,
+      "epss_percentile": 0.2086,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6692,7 +7689,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: fix sched scan IE sizing\n\nScheduled scan built the probe request before iwl_mvm_scan_fits(),\nso oversized IEs could be copied into the fixed preq buffer before\nlength validation. Move iwl_mvm_build_scan_probe() after the fits\ncheck.\n\nAlso advertise max_sched_scan_ie_len using iwl_mvm_max_scan_ie_len()\nso userspace limits account for driver-inserted DS/TPC bytes.",
       "published": "2026-10-23T12:18:22.717",
-      "updated": "2026-10-24T14:16:47.920",
+      "updated": "2026-10-26T07:17:14.010",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -6712,8 +7709,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00215,
-      "epss_percentile": 0.11279,
+      "epss": 0.00169,
+      "epss_percentile": 0.06282,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6741,7 +7738,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: mark the rcu locked areas properly\n\nWhen we bump the uref counter, there's no need to keep\nthe rcu lock because the referred hash table can't\ndisappear. Also, from the same reason in mtype_gc we\nneed the rcu lock and not a spinlock.",
       "published": "2026-10-23T12:18:23.897",
-      "updated": "2026-10-24T14:16:48.187",
+      "updated": "2026-10-26T07:17:15.190",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -6762,8 +7759,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00215,
-      "epss_percentile": 0.11281,
+      "epss": 0.00169,
+      "epss_percentile": 0.06282,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6791,7 +7788,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Refactor registration\n\nThis refactors and simplifies the registration/unregistration flow. Since\nwe now only perform registration when the client isn't opened anymore, the\nlogic for handling that can be removed, and the rest of the function\nstreamlined.\n\nWe also remove the previous assumption that we have a serial number to show\nwe're registered, replacing it with a single purpose boolean.\n\nIn a previous refactor the code for unregistering a battery if later\nregistration steps failed was accidentally left out. As a result, a\nlingering power_supply object could get left over after the steam object\nwas torn down. This is also fixed here.",
       "published": "2026-10-23T13:17:15.417",
-      "updated": "2026-10-24T14:16:48.897",
+      "updated": "2026-10-26T07:17:18.120",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -6810,8 +7807,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00209,
-      "epss_percentile": 0.10492,
+      "epss": 0.00175,
+      "epss_percentile": 0.0694,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6839,7 +7836,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Rearrange teardown sequence\n\nThis fixes a narrow window during the teardown sequence where callbacks\ncould still be scheduled during cleanup that would then have a dangling\npointer to the now-freed steam struct.\n\nThis also puts work canceling for rumble and mode switch in\nsteam_unregister, as that shouldn't persist while the client hdev is open.",
       "published": "2026-10-23T13:17:15.533",
-      "updated": "2026-10-24T14:16:49.033",
+      "updated": "2026-10-26T07:17:18.260",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -6858,8 +7855,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00209,
-      "epss_percentile": 0.10503,
+      "epss": 0.00163,
+      "epss_percentile": 0.05457,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -8161,7 +9158,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Disable device buffer exporting\n\nDevice buffers are never intended to be exported. Disable exporting\nsupport explicitly.",
       "published": "2026-10-18T15:16:53.397",
-      "updated": "2026-10-24T14:16:41.643",
+      "updated": "2026-10-26T07:17:10.860",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8177,8 +9174,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00145,
-      "epss_percentile": 0.03413,
+      "epss": 0.00112,
+      "epss_percentile": 0.0139,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -8826,7 +9823,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: fix the error path in dpaa2_switch_rx()\n\nIn case of an error in dpaa2_switch_rx(), the dpaa2_switch_free_fd()\nfunction is called in order to free the FD. This is incorrect since the\ndpaa2_switch_free_fd() is intended to be used on Tx frame descriptors,\nmeaning that it expects in the software annotation area of the FD data\nto find a valid skb pointer on which to call dev_kfree_skb().\n\nFix this by extracting the dma_unmap_page() from\ndpaa2_switch_build_linear_skb() directly into the dpaa2_switch_rx()\nfunction. This allows us to directly use free_pages() in case of an\nerror before an SKB was created and kfree_skb() afterwards.",
       "published": "2026-10-23T12:18:25.240",
-      "updated": "2026-10-24T14:16:48.350",
+      "updated": "2026-10-26T07:17:16.467",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8846,8 +9843,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00215,
-      "epss_percentile": 0.11289,
+      "epss": 0.00318,
+      "epss_percentile": 0.24454,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -9200,6 +10197,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-97200",
+      "aliases": [],
+      "title": "Unbounded response body buffering and decompression in hackney",
+      "description": "Allocation of Resources Without Limits or Throttling vulnerability in hackney_conn in benoitc hackney allows a malicious HTTP server to exhaust client memory via an oversized or highly compressed response body. hackney:request/5 and hackney:body/1 return the whole response body, and nothing bounds how much the connection process buffers. Any server the client requests can trigger it.\n\nhackney_conn:read_full_body/2 and the HTTP/2 and HTTP/3 accumulators append every chunk until the body ends. With {auto_decompress, true} the buffered body is then inflated in one step with zlib:gunzip/1 or zlib:inflate/2, which return the whole output at once.\n\nThis issue affects hackney: from 2.0.0-beta.1 before 4.9.0.",
+      "published": "2026-10-26T13:49:40.392Z",
+      "updated": "2026-10-26T14:16:42.180",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [
+        "benoitc:hackney"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "benoitc hackney",
+        "hackney",
+        "benoitc/hackney"
+      ],
+      "references": [
+        "https://github.com/benoitc/hackney/releases/tag/4.9.0",
+        "https://cna.erlef.org/cves/CVE-2026-97200.html",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-97200",
+        "https://github.com/benoitc/hackney/pull/980",
+        "https://github.com/benoitc/hackney/commit/dc41b79339ca0c41e16d3f2dd17172bc2de855d6",
+        "https://github.com/benoitc/hackney/commit/493e8bf83a391548e5101792276ab3fc428fa76c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113718",
       "aliases": [
         "GHSA-394h-qwmc-48pf"
@@ -9545,7 +10598,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: HWS, Handle destroying table that has a miss table\n\nIf a table has a miss table that was created by\n'mlx5hws_table_set_default_miss' API function, its miss_tbl\nkeeps the table that points to it in a list.\nIf such table is deleted, we need to also remove it from the\nmiss_tbl list, otherwise the node in miss_tbl list will contain\ngarbage.",
       "published": "2026-10-23T12:18:23.433",
-      "updated": "2026-10-24T14:16:48.063",
+      "updated": "2026-10-26T07:17:14.743",
       "cvss": 7.0,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -9553,7 +10606,6 @@
       "packages": [],
       "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/16b81428f7b5f253ab30a998bc4f4ecd1c8823f8",
         "https://git.kernel.org/stable/c/60e9e82f162ab7399373ff2185119289e4f6dc06",
         "https://git.kernel.org/stable/c/6efdc212627cecf33b594256ae4460b4c52a126a"
       ],
@@ -9562,8 +10614,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00206,
-      "epss_percentile": 0.10168,
+      "epss": 0.00169,
+      "epss_percentile": 0.06218,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -10331,7 +11383,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a policy bypass vulnerability in the UHDR decoder that allows attackers to evade image width and height limits because extent checks occur after decoding. Attackers can supply crafted UHDR images with oversized dimensions that are fully decoded before policy limits are enforced, causing excessive resource consumption.",
       "published": "2026-10-25T14:16:51.940",
-      "updated": "2026-10-25T14:16:51.940",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10376,7 +11428,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the MAT decoder that fails to release allocated memory in a specific error path. Attackers can supply crafted MAT files that trigger this error path repeatedly, causing small memory leaks that gradually consume process memory.",
       "published": "2026-10-25T14:16:53.563",
-      "updated": "2026-10-25T14:16:53.563",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10421,7 +11473,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in its XML parsing code, where allocated memory is not released when parsing reaches the nesting depth limit. Attackers can supply crafted, deeply nested XML data to trigger the leak, causing memory exhaustion and denial of service.",
       "published": "2026-10-25T14:16:53.857",
-      "updated": "2026-10-25T14:16:53.857",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10466,7 +11518,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of XMP profiles by various decoders. Attackers can supply images with a crafted XMP profile that leak memory each time they are processed, leading to resource exhaustion and denial of service.",
       "published": "2026-10-25T14:16:53.993",
-      "updated": "2026-10-25T14:16:53.993",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10838,7 +11890,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the MSL decoder that fails to release allocated memory when processing a crafted MSL image. Attackers can supply crafted MSL files for processing to repeatedly leak memory, causing resource exhaustion and denial of service.",
       "published": "2026-10-25T14:16:52.690",
-      "updated": "2026-10-25T14:16:52.690",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10883,7 +11935,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a null pointer dereference in the DJVU decoder because the result of a memory allocation is not checked before use. Attackers can supply a DJVU image that, when processed under conditions where the allocation fails, crashes the process and causes a denial of service.",
       "published": "2026-10-25T14:16:52.840",
-      "updated": "2026-10-25T14:16:52.840",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -10928,7 +11980,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the JNG encoder that fails to release allocated memory when processing a crafted image. Attackers can supply crafted images that are encoded to JNG to leak memory, potentially causing resource exhaustion and a limited denial of service.",
       "published": "2026-10-25T14:16:53.423",
-      "updated": "2026-10-25T14:16:53.423",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 6.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -11167,7 +12219,7 @@
       "title": "",
       "description": "vLLM from 0.9.2 before 0.24.0 contains a server-side request forgery vulnerability that allows API callers to force outbound connections by embedding a decode address in the X-Request-Id header. Attackers can make a P2pNcclConnector prefill worker ZMQ-connect to an attacker host, leaking the NCCL unique_id and KV-cache tensors or blocking the worker.",
       "published": "2026-10-25T14:16:57.160",
-      "updated": "2026-10-25T14:16:57.160",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.8,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11212,7 +12264,7 @@
       "title": "",
       "description": "vLLM from 0.10.2 before 0.25.0 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust memory because the Nemotron-VL processors globally set Image.MAX_IMAGE_PIXELS to None. Attackers can submit a pathological decompression-bomb image to /v1/chat/completions to OOM-kill the worker and deny service to co-tenants.",
       "published": "2026-10-25T14:16:57.317",
-      "updated": "2026-10-25T14:16:57.317",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11257,7 +12309,7 @@
       "title": "",
       "description": "vLLM from 0.18.0 before 0.31.0 contains a resource exhaustion vulnerability that allows API clients to bypass the video/jpeg frame-count cap by overriding num_frames through media_io_kwargs. Attackers can set num_frames to -1 with a large inline video so VideoMediaIO.load_base64 decodes every frame, exhausting memory and crashing the API frontend.",
       "published": "2026-10-25T14:16:57.620",
-      "updated": "2026-10-25T14:16:57.620",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11355,7 +12407,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a stack-based buffer overflow in the handling of bzip2 compressed images. Attackers can supply a crafted image using bzip2 compression to overwrite stack memory during decoding, causing crashes or memory corruption.",
       "published": "2026-10-25T14:16:53.123",
-      "updated": "2026-10-25T14:16:53.123",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 7.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11399,7 +12451,7 @@
       "title": "",
       "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC converter that allows remote attackers to bypass max_logprobs limits via CandidateTokens.top_n. Attackers can send Generate or GenerateStream requests with oversized or integer-wrapping top_n values to trigger torch.topk failures that terminate EngineCore.",
       "published": "2026-10-25T14:16:56.570",
-      "updated": "2026-10-25T14:16:56.570",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11444,7 +12496,7 @@
       "title": "",
       "description": "vLLM from 0.22.0 before 0.24.0 contains a denial of service vulnerability that allows remote attackers to terminate EngineCore by bypassing logprob_token_ids limits in the Rust gRPC frontend. Attackers can send Generate or GenerateStream requests with output_logprobs enabled and more than 128 output_candidates.token_ids, triggering a fatal sampler exception that crashes the engine.",
       "published": "2026-10-25T14:16:56.720",
-      "updated": "2026-10-25T14:16:56.720",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11489,7 +12541,7 @@
       "title": "",
       "description": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC Generate and GenerateStream service that forwards unchecked prompt token IDs to EngineCore. Attackers can submit requests with out-of-vocabulary prompt.token_ids values to trigger a fatal embedding lookup failure that terminates EngineCore and leaves the server unhealthy.",
       "published": "2026-10-25T14:16:56.877",
-      "updated": "2026-10-25T14:16:56.877",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11534,7 +12586,7 @@
       "title": "",
       "description": "vLLM from 0.20.0 before 0.30.0 contains a denial of service vulnerability that allows remote attackers to crash the engine by sending inconsistent multimodal metadata to the disaggregated /inference/v1/generate endpoint. Attackers can replay a valid multimodal item with repeated or overlapping mm_placeholders ranges or mismatched kwargs_data and mm_hashes lists, producing a negative text span in Qwen2.5-VL position construction that terminates the engine.",
       "published": "2026-10-25T14:16:57.483",
-      "updated": "2026-10-25T14:16:57.483",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -11613,6 +12665,51 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 7.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115453",
+      "aliases": [],
+      "title": "",
+      "description": "Authorization Bypass Through User-Controlled Key (CWE-639) in the cart and wishlist repositories of MarcosCamara01 Ecommerce Template allows any authenticated user to delete and modify the cart and wishlist rows of any other user, because cartRepository.delete(), cartRepository.updateQuantityInternal() and wishlistRepository.delete() in src/lib/db/drizzle/repositories/ match rows by primary key alone, with no predicate on the owning user, and the per user authorization for those three operations rests on PostgreSQL row level security. The migrations run ALTER TABLE ... ENABLE ROW LEVEL SECURITY and create policies comparing app.current_user_id() with user_id, but never ALTER TABLE ... FORCE ROW LEVEL SECURITY, and PostgreSQL does not apply policies to the role that owns a table. The template uses one DATABASE_URL both to run the migrations, which create the tables, and for the application at runtime, so the application connects as the owner of the tables and the policies do not apply to it. cart_items.id and wishlist.id are sequential bigserial values, so the identifiers of rows belonging to other users can be enumerated, and the update path returns the modified row, which carries the identifier of the user it belongs to. This results in the destruction and modification of cart and wishlist contents belonging to other accounts of the installation.",
+      "published": "2026-10-22T16:17:35.183",
+      "updated": "2026-10-26T12:17:04.640",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/MarcosCamara01/ecommerce-template/commit/adf7dedbb41894c0bad0b33a26999b0da7e967b7",
+        "https://secur0.com/en/cna/cve-list/cve-2026-115453-cross-user-cart-wishlist-idor"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00249,
+      "epss_percentile": 0.16116,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11861,7 +12958,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 incorrectly parses delegate invocations, which can allow an executable blocked in policy.xml to still run. An attacker who gets ImageMagick to process input that triggers a delegate invocation can bypass the administrator-defined policy and execute the blocked program.",
       "published": "2026-10-25T14:16:51.783",
-      "updated": "2026-10-25T14:16:51.783",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -11905,7 +13002,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory when printing a minimum-bounding-box. Attackers can supply a crafted image that triggers the over-read during minimum-bounding-box output, causing crashes or exposing adjacent heap memory.",
       "published": "2026-10-25T14:16:52.097",
-      "updated": "2026-10-25T14:16:52.097",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -11949,7 +13046,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a policy bypass in the PS, PDF and XPS decoders that allows the security policy's list length limit on scene selection to be circumvented. Attackers supplying a specific argument can cause ImageMagick to process more scenes than permitted, potentially exhausting resources.",
       "published": "2026-10-25T14:16:52.257",
-      "updated": "2026-10-25T14:16:52.257",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -11993,7 +13090,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains uncontrolled recursion in the MVG decoder that can lead to a stack overflow. Attackers can supply a crafted MVG file that, when read with specific arguments, exhausts the stack and crashes the process, causing a denial of service.",
       "published": "2026-10-25T14:16:52.400",
-      "updated": "2026-10-25T14:16:52.400",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12037,7 +13134,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains an injection vulnerability in the MVG encoder, which does not properly neutralize user-specified drawing options before writing them into generated MVG output. Attackers who can supply drawing options can inject arbitrary MVG drawing commands into the resulting MVG file.",
       "published": "2026-10-25T14:16:52.983",
-      "updated": "2026-10-25T14:16:52.983",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12081,7 +13178,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the FPX encoder that allows attackers to exhaust memory by supplying a crafted image. Attackers can submit crafted images for FPX encoding to leak memory repeatedly, causing resource exhaustion and denial of service.",
       "published": "2026-10-25T14:16:53.267",
-      "updated": "2026-10-25T14:16:53.267",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 2.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "low",
@@ -12126,7 +13223,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak caused by a missing cleanup when the -set profile option is used. An attacker who induces a user to process images with the -set profile option can leak memory, potentially exhausting resources and causing a denial of service.",
       "published": "2026-10-25T14:16:54.133",
-      "updated": "2026-10-25T14:16:54.133",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12170,7 +13267,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in PerlMagick that fails to free values returned when reading image properties. Attackers can repeatedly trigger property reads through five affected PerlMagick code locations to exhaust memory and cause denial of service.",
       "published": "2026-10-25T14:16:54.270",
-      "updated": "2026-10-25T14:16:54.270",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12214,7 +13311,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of the -cdl (color decision list) option, where allocated memory is not cleaned up after use. Attackers can supply input that causes the -cdl option to be processed, repeatedly leaking memory and degrading availability through resource exhaustion.",
       "published": "2026-10-25T14:16:54.557",
-      "updated": "2026-10-25T14:16:54.557",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12258,7 +13355,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a heap-based buffer overflow in the X11 animate operation when processing crafted images. Attackers can supply a malicious image that, when a user runs an X11 animate operation on it, overwrites heap memory and can crash the application.",
       "published": "2026-10-25T14:16:54.703",
-      "updated": "2026-10-25T14:16:54.703",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -12302,7 +13399,7 @@
       "title": "",
       "description": "vLLM from 0.8.5 before 0.31.0 has a denial of service flaw. LogprobsTensors.empty_cpu() in vllm/v1/outputs.py allocates an uninitialized int32 tensor, and the V1 model runner leaves prompt positions reported as computed by a KV connector unwritten. A client sharing the engine can send prompt_logprobs (or echo with logprobs) against a connector-cached prefix, making tokenizer decode raise OverflowError, which crashes EngineCore and drops all co-tenant requests.",
       "published": "2026-10-25T14:16:57.760",
-      "updated": "2026-10-25T14:16:57.760",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 8.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -12346,7 +13443,7 @@
       "title": "",
       "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
       "published": "2026-10-25T14:16:57.017",
-      "updated": "2026-10-25T14:16:57.017",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 7.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -12390,7 +13487,7 @@
       "title": "",
       "description": "vLLM from 0.20.1 before 0.29.0 contains an improper input validation vulnerability that allows remote attackers to crash the engine by supplying out-of-vocabulary stop_token_ids. Attackers can send OpenAI chat, completion, generate, or batch requests with invalid IDs to terminate the engine or write outside the V2 runner's logits buffer.",
       "published": "2026-10-25T14:16:57.907",
-      "updated": "2026-10-25T14:16:57.907",
+      "updated": "2026-10-26T14:03:56.640",
       "cvss": 7.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -12479,7 +13576,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfreevxfs: don't BUG() on unknown typed-extent type\n\nvxfs_bmap_typed() handles four typed-extent types and calls BUG() in\nits default case, so an on-disk typed extent with any other type value\ncrashes the kernel. It is reachable from ioctl(FIBMAP) on a regular\nfile:\n\n  kernel BUG at fs/freevxfs/vxfs_bmap.c:230!\n  RIP: vxfs_bmap_typed fs/freevxfs/vxfs_bmap.c:230 [inline]\n       vxfs_bmap1+0x128a/0x12d0 fs/freevxfs/vxfs_bmap.c:257\n\nReplace the BUG() with WARN_ON_ONCE() and return 0 -- the value\nvxfs_bmap_typed() already returns on failure (and from the DEV4 case\nabove); vxfs_getblk() maps 0 to -EIO, so the ioctl fails cleanly.",
       "published": "2026-10-23T12:18:20.623",
-      "updated": "2026-10-23T12:18:20.623",
+      "updated": "2026-10-26T07:17:11.603",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12500,15 +13597,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00213,
+      "epss_percentile": 0.11498,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12517,7 +13614,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12527,7 +13625,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_expect: zero at allocation time\n\nThere are occasional LLM hints wrt. leaking uninitialized data to\nuserspace via ctnetlink.  Just zero at allocation time,\nexpectations are not frequently used these days.\n\nIntentionally keeps _init as-is because we could theoretically\nsupport re-init, so add the missing exp->dir there.",
       "published": "2026-10-23T12:18:20.753",
-      "updated": "2026-10-23T12:18:20.753",
+      "updated": "2026-10-26T07:17:11.740",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12548,15 +13646,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07398,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12565,7 +13663,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12575,7 +13674,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: don't WARN on WoWLAN suspend w/o netdetect\n\nClearly, from a user perspective, it must be valid to configure\nWoWLAN and then suspend while not connected to a network. Since\nmac80211 doesn't distinguish these cases and simply calls the\ndriver to suspend whenever WoWLAN is configured, the driver has\nto cleanly handle the case where it's called for WoWLAN, it's\nnot connected but there's also no netdetect configured.\n\nRemove the WARN_ON() and keep returning 1 to disconnect and\nthen suspend.",
       "published": "2026-10-23T12:18:20.880",
-      "updated": "2026-10-23T12:18:20.880",
+      "updated": "2026-10-26T07:17:11.860",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12591,15 +13690,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00192,
+      "epss_percentile": 0.08784,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12608,7 +13707,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12618,7 +13718,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau/gsp: add SEC2 to GA100 chip table\n\nThe booter-load and booter-unload firmware run on the SEC2 falcon.\nDuring tu102_gsp_oneinit(), the booter constructor needs device->sec2\nto access the SEC2 falcon.\n\nWithout the .sec2 entry, device->sec2 is NULL and this dereference\ncrashes during GSP-RM boot.",
       "published": "2026-10-23T12:18:20.987",
-      "updated": "2026-10-23T12:18:20.987",
+      "updated": "2026-10-26T07:17:11.953",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12627,23 +13727,22 @@
       "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/604d0efb17cc0dd197e089134736ac2698d5fca7",
-        "https://git.kernel.org/stable/c/f29267ace04283e76f92a74d9a7f4fcfcb32f484",
-        "https://git.kernel.org/stable/c/feb1ad41281aed00e8a741942e56a1cd774e8342"
+        "https://git.kernel.org/stable/c/f29267ace04283e76f92a74d9a7f4fcfcb32f484"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00172,
+      "epss_percentile": 0.0657,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12652,7 +13751,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12662,7 +13762,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhost1x: bus: Fix missing ops null check in error teardown\n\nIn host1x_device_init(), the error teardown paths do not check\nclient->ops before dereferencing it, unlike the forward init paths\nwhich correctly guard with 'client->ops &&'. This can result in a\nNULL pointer dereference if client->ops is NULL.\n\nFix by adding the missing client->ops check in both the teardown\nand teardown_late labels.",
       "published": "2026-10-23T12:18:21.090",
-      "updated": "2026-10-23T12:18:21.090",
+      "updated": "2026-10-26T07:17:12.047",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12682,15 +13782,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07397,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12699,7 +13799,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12709,7 +13810,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/gic-v4: Don't advertise VLPIs if no ITS is probed\n\nWhen accidentally setting “kvm-arm.vgic_v4_enable=1” on a system that has\nno MSI controller device tree node and GICv4, it results a panic as\n“gic_domain” is NULL and the kernel attempts to access it.\n\n    Unable to handle kernel NULL pointer dereference at virtual address 0000000000000028\n    Mem abort info:\n      ESR = 0x0000000096000006\n\n    CPU: 1 UID: 0 PID: 295 Comm: lkvm-static Not tainted 7.1.0-rc4-ge3f15ad3970e #5 PREEMPT\n    Hardware name: linux,dummy-virt (DT)\n    pstate: 81402005 (Nzcv daif +PAN -UAO -TCO +DIT -SSBS BTYPE=--)\n    pc : __irq_domain_instantiate+0x1d4/0x578\n    lr : __irq_domain_instantiate+0x1cc/0x578\n\nSet vLPI support to false at init time if the host has no ITS, so it\npropagates properly to kvm_vgic_global_state.has_gicv4.",
       "published": "2026-10-23T12:18:21.203",
-      "updated": "2026-10-23T12:18:21.203",
+      "updated": "2026-10-26T07:17:12.160",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12730,15 +13831,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07397,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12747,7 +13848,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12757,7 +13859,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/gic-v5: Immediately exec priority drop following activate\n\nWith GICv5 an interrupt of equal or lower priority cannot be signalled\nuntil there has been a priority drop. This is done via the GIC CDEOI\nsystem instruction. Once this has been executed, the hardware is able\nto signal the next interrupt if there is one.\n\nAs all interrupts are programmed to have the same priority, no new\ninterrupts can be signalled until the priority drop has happened. This\ncan cause issues when, for example, an interrupt remains active while\na long running process takes place, such as when injecting a physical\ninterrupt into a guest VM in software.\n\nThe GICv5 driver has so far done the priority drop as part of\nirq_eoi(), i.e., at the same time as deactivating the interrupt. This\nmeans that any long running process (or VM) could block incoming\ninterrupts, effectively causing a denial of service for all other\ninterrupts.\n\nRather than doing the EOI as part of irq_eoi() (which the name would\nsuggest would be a good place for it), move it to happen immediately\nafter acknowledging an interrupt in the main GICv5 interrupt\nhandler. The deactivation of interrupts (GIC CDDI) remains implemented\nas part of irq_eoi(), which means that the same interrupt cannot be\nsignalled a second time until deactivated by software.",
       "published": "2026-10-23T12:18:21.330",
-      "updated": "2026-10-23T12:18:21.330",
+      "updated": "2026-10-26T07:17:12.297",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12773,15 +13875,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00192,
+      "epss_percentile": 0.0876,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12790,7 +13892,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12800,7 +13903,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nisofs: handle set_blocksize failures\n\nisofs uses buffer_heads, which don't handle block size > PAGE_SIZE well.\nWithout this, mounting we will hit the\n\n        BUG_ON(offset >= folio_size(folio));\n\nin folio_set_bh on the first __bread_gfp call.",
       "published": "2026-10-23T12:18:21.440",
-      "updated": "2026-10-23T12:18:21.440",
+      "updated": "2026-10-26T07:17:12.420",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12821,15 +13924,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07397,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12838,7 +13941,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12848,7 +13952,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: handle set_blocksize failures\n\nntfs3 uses buffer_heads, which don't handle block size > PAGE_SIZE well.\nWithout this, mounting we will hit the\n\n        BUG_ON(offset >= folio_size(folio));\n\nin folio_set_bh on the first __bread_gfp call.",
       "published": "2026-10-23T12:18:21.560",
-      "updated": "2026-10-23T12:18:21.560",
+      "updated": "2026-10-26T07:17:12.887",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12866,15 +13970,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06839,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12883,7 +13987,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12893,7 +13998,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: remove stale rcu_barrier() in br_multicast_dev_del()\n\nThis rcu_barrier() came from a time call_rcu() calls were used in\nnet/bridge/br_multicast.c.\n\nNow kfree_rcu() is there, we can remove this problematic rcu_barrier()\nwhich causes extreme RTNL pressure in many syzbot reports.\n\nINFO: task syz-executor:77945 is blocked on a mutex likely owned by task kworker/u1024:5:36537.\ntask:kworker/u1024:5 state:D stack:24616 pid:36537 tgid:36537 ppid:2      task_flags:0x4208060 flags:0x00080000 last_sleep:612797637337\nWorkqueue: netns cleanup_net\nCall Trace:\n <TASK>\n  [<ffffffff81914eaa>] context_switch+0xf2a/0x1730 kernel/sched/core.c:6483\n  [<ffffffff81201143>] __schedule+0x1133/0x43a0 kernel/sched/core.c:8411\n  [<ffffffff8120446b>] __schedule_loop kernel/sched/core.c:8514 [inline]\n  [<ffffffff8120446b>] schedule+0xab/0x260 kernel/sched/core.c:8529\n  [<ffffffff8121a093>] schedule_timeout+0xc3/0x2b0 kernel/time/sleep_timeout.c:75\n  [<ffffffff81205347>] do_wait_for_common kernel/sched/completion.c:100 [inline]\n  [<ffffffff81205347>] __wait_for_common kernel/sched/completion.c:121 [inline]\n  [<ffffffff81205347>] wait_for_common kernel/sched/completion.c:132 [inline]\n  [<ffffffff81205347>] wait_for_completion+0x2c7/0x5d0 kernel/sched/completion.c:153\n  [<ffffffff81b8f27f>] rcu_barrier+0x49f/0x620 kernel/rcu/tree.c:3888\n  [<ffffffff860091b3>] br_multicast_dev_del+0x303/0x350 net/bridge/br_multicast.c:4459\n  [<ffffffff85fb5dbc>] br_dev_uninit+0x1c/0x40 net/bridge/br_device.c:157\n  [<ffffffff8568058c>] unregister_netdevice_many_notify+0x1c1c/0x2300 net/core/dev.c:12599\n  [<ffffffff8562be43>] ops_exit_rtnl_list net/core/net_namespace.c:187 [inline]\n  [<ffffffff8562be43>] ops_undo_list+0x3d3/0x940 net/core/net_namespace.c:248",
       "published": "2026-10-23T12:18:21.670",
-      "updated": "2026-10-23T12:18:21.670",
+      "updated": "2026-10-26T07:17:12.987",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12914,15 +14019,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07398,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12931,7 +14036,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12941,7 +14047,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: chips-media: wave5: Add range checks for dec_output_info\n\nIf the driver's dec_output_info contains invalid data the driver can\nwrite in invalid memory. Add a range check for that.\n\nThis fixes this smatch error:\ndrivers/media/platform/chips-media/wave5/wave5-vpuapi.c:588 wave5_vpu_dec_get_output_info() error: buffer overflow 'inst->frame_buf' 64 <= 127",
       "published": "2026-10-23T12:18:21.823",
-      "updated": "2026-10-23T12:18:21.823",
+      "updated": "2026-10-26T07:17:13.127",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -12958,15 +14064,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0019,
+      "epss_percentile": 0.08563,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -12975,7 +14081,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12985,7 +14092,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: 8250_port: recognize UPIO_AU\n\nMy MIPS Alchemy systems generate the following warning during\nprobe of the 8250 driver:\n\nWARNING: drivers/tty/serial/8250/8250_port.c:462 at set_io_from_upio+0xfc/0x124, CPU#0: swapper/0/1\nUnsupported UART type 4\n[...]\n[<80521d40>] set_io_from_upio+0xfc/0x124\n[<80521dfc>] serial8250_set_defaults+0x94/0xe0\n[<80520fb4>] serial8250_register_8250_port+0x288/0x51c\n[<805214ec>] serial8250_probe+0x160/0x1e8\n[<8053b5f0>] platform_probe+0x64/0x90\n\nThe least invasive fix is to recognize UPIO_AU (type 4) in set_io_from_upio()\nand do nothing, since all parameters have already been set up in\n8250_rt288x.c::au_platform_setup().\n\nRun-tested on Alchemy Au1300 platform.",
       "published": "2026-10-23T12:18:21.970",
-      "updated": "2026-10-23T12:18:21.970",
+      "updated": "2026-10-26T07:17:13.227",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13001,15 +14108,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00161,
+      "epss_percentile": 0.05258,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13018,7 +14125,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13028,7 +14136,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: core: Add validation for host-provided max_segs\n\nThe max_segs field is of type unsigned short, and if a host driver\nsets an excessively large value, it may be truncated to zero. This\ncan cause mmc_alloc_sg() to call kmalloc_objs() with a zero size\nallocation request, which leads to undefined behavior.\n\nUnder the SLUB allocator, kmalloc(0) returns a special pointer\n(ZERO_SIZE_PTR). The subsequent 'if (sg)' check will evaluate to\ntrue, and sg_init_table() will then attempt to access invalid memory,\nresulting in a crash:\n\ndwmmc_rockchip 2a310000.mmc: Successfully tuned phase to 133\nmmc1: new UHS-I speed SDR104 SDHC card at address aaaa\nUnable to handle kernel paging request at virtual address 0000001ffffffff0\nMem abort info:\nESR = 0x0000000096000004\nEC = 0x25: DABT (current EL), IL = 32 bits\nSET = 0, FnV = 0\nEA = 0, S1PTW = 0\nFSC = 0x04: level 0 translation fault\nData abort info:\nISV = 0, ISS = 0x00000004, ISS2 = 0x00000000\nCM = 0, WnR = 0, TnD = 0, TagAccess = 0\nGCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0\nuser pgtable: 4k pages, 48-bit VAs, pgdp=0000000102c88000\n[0000001ffffffff0] pgd=0000000000000000, p4d=0000000000000000\nInternal error: Oops: 0000000096000004 [#1] SMP\nModules linked in:\nCPU: 2 UID: 0 PID: 102 Comm: kworker/2:1 Not tainted 7.0.0-rc6-next-20260331-00013-g4d93c25963c5-dirty #80 PREEMPT\nHardware name: Rockchip RK3576 EVB V10 Board (DT)\nWorkqueue: events_freezable mmc_rescan\npstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)\npc : sg_init_table+0x2c/0x50\nlr : sg_init_table+0x24/0x50\nsp : ffff8000837db710\nx29: ffff8000837db710 x28: 000000000000c000 x27: 0000000000000300\nx26: 0000000000000000 x25: 0000000000000040 x24: ffff0000c46a0000\nx23: 0000000000000000 x22: ffff0000c0c73c00 x21: 0000000000000010\nx20: 0000000000000010 x19: 0000000000000000 x18: 000000000000002c\nx17: 0000000000000000 x16: 0000000000000001 x15: 0000000000000000\nx14: 0000000000000400 x13: ffff8000837dc000 x12: 0000000000000000\nx11: ffff0000c0c73ca0 x10: 0000000000000040 x9 : 459ec1f0abbdbb00\nx8 : 0000001fffffffe0 x7 : 0000000000000000 x6 : 000000000000003f\nx5 : 0000000000035579 x4 : 0000000000000901 x3 : 0000000000000000\nx2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000010\nCall trace:\nsg_init_table+0x2c/0x50 (P)\nmmc_mq_init_request+0x64/0x90\nblk_mq_alloc_map_and_rqs+0x3ac/0x480\nblk_mq_alloc_set_map_and_rqs+0x98/0x1e0\nblk_mq_alloc_tag_set+0x1c0/0x290\nmmc_init_queue+0x120/0x370\nmmc_blk_alloc_req+0x150/0x420\n\nTo prevent this, add a validation check in mmc_mq_init_request() to\ndetect when sg_len (derived from max_segs) is zero. If sg_len is zero,\nwe return an error and print an error message, allowing host driver\ndevelopers to identify and fix incorrect max_segs configuration.\n\nThis is a defensive measure that ensures the MMC core fails gracefully\nwhen host drivers provide invalid max_segs values, rather than crashing\nwith a page fault.",
       "published": "2026-10-23T12:18:22.073",
-      "updated": "2026-10-23T12:18:22.073",
+      "updated": "2026-10-26T07:17:13.327",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13048,15 +14156,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08198,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13065,7 +14173,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13075,7 +14184,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nima: return error early if file xattr cannot be changed\n\nDuring early boot, the filesystem is read-only and any changes\nto xattrs are not allowed. This fails in case of ext4 because\nchanging xattr starts an ext4 transaction which fails with the\nfollowing warning.\n\nWARNING: fs/ext4/ext4_jbd2.c:75 at ext4_journal_check_start+0x63/0xa0 [ext4], CPU#1: systemd-sysroot/561\nCPU: 1 UID: 0 PID: 561 Comm: systemd-sysroot Not tainted 6.19.12-1-default #1 PREEMPT(voluntary) openSUSE Tumbleweed  c2dfc3c9d9f6f1233251c5d4410574fe82a348ee\nHardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS unknown 02/02/2022\nRIP: 0010:ext4_journal_check_start+0x63/0xa0 [ext4]\nCall Trace:\n  __ext4_journal_start_sb+0x3e/0x180 [ext4 6d025f3bc52c89a957b89a89d211fadf5e9434e1]\n  ext4_xattr_set+0x104/0x150 [ext4 6d025f3bc52c89a957b89a89d211fadf5e9434e1]\n  __vfs_setxattr+0x9a/0xd0\n  __vfs_setxattr_noperm+0x76/0x1f0\n  ima_appraise_measurement+0x23e/0xe40\n  ima_d_path+0x5a/0xd0\n  process_measurement+0xb29/0xc40\n  ? copy_from_kernel_nofault+0x21/0xe0\n  ? fscrypt_file_open+0xc0/0xe0\n  ? ext4_file_open+0x60/0x490 [ext4 6d025f3bc52c89a957b89a89d211fadf5e9434e1]\n  ? bpf_prog_31efb7c56239148b_restrict_filesystems+0xab/0x126\n  ? __bpf_prog_exit+0x23/0xd0\n  ? __bpf_tramp_exit+0xd/0x50\n  ? bpf_trampoline_6442530367+0x9f/0xea\n  ima_file_check+0x57/0x80\n  security_file_post_open+0x50/0xf0\n  path_openat+0x493/0x1650\n  do_filp_open+0xc7/0x170\n\nDetect the state of the file early and return the error.",
       "published": "2026-10-23T12:18:22.213",
-      "updated": "2026-10-23T12:18:22.213",
+      "updated": "2026-10-26T07:17:13.470",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13096,15 +14205,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07398,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13113,7 +14222,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13123,7 +14233,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gma500: return errors from Oaktrail HDMI I2C reads\n\nxfer_read() waits for the HDMI I2C transaction to reach\nI2C_TRANSACTION_DONE, but it ignores both timeout and signal returns from\nwait_for_completion_interruptible_timeout().  If the interrupt never\nadvances the transaction state, the loop can wait forever.\n\nReturn -ETIMEDOUT when the completion wait expires, propagate interrupted\nwaits, and make the I2C master_xfer callback return the first transfer\nerror instead of reporting a successful message count.",
       "published": "2026-10-23T12:18:22.340",
-      "updated": "2026-10-23T12:18:22.340",
+      "updated": "2026-10-26T07:17:13.610",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13144,15 +14254,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08198,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13161,7 +14271,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13171,7 +14282,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211_hwsim: reject undersized HWSIM_ATTR_TX_INFO\n\nhwsim_tx_info_frame_received_nl() casts the HWSIM_ATTR_TX_INFO payload\nto a struct hwsim_tx_rate * and unconditionally reads\nIEEE80211_TX_MAX_RATES entries (8 bytes) from it. The policy only bounds\nthe attribute from above (NLA_BINARY .len is a maximum) and the op sets\nGENL_DONT_VALIDATE_STRICT, so a short or zero-length attribute is\naccepted and the loop reads past the payload.\n\nRequire the exact length in the policy, so a malformed attribute is\nrejected before the handler runs.",
       "published": "2026-10-23T12:18:22.460",
-      "updated": "2026-10-23T12:18:22.460",
+      "updated": "2026-10-26T07:17:13.743",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13192,15 +14303,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00213,
+      "epss_percentile": 0.11498,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13209,7 +14320,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13219,7 +14331,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: kprobes: Allow reentering kprobes while single-stepping\n\nA kprobe can be hit while another kprobe is in KPROBE_HIT_SS state. This\ncan happen when tracing or perf code runs from the debug exception path\nwhile the first kprobe is preparing or executing its out-of-line\nsingle-step instruction.\n\nCurrently arm64 treats a kprobe hit in KPROBE_HIT_SS as unrecoverable,\nthe same as a hit in KPROBE_REENTER. This is too strict. A hit in\nKPROBE_HIT_SS is still a one-level reentry and can be handled by saving\nthe current kprobe state and setting up single-step for the new probe,\njust like reentry from KPROBE_HIT_ACTIVE or KPROBE_HIT_SSDONE.\n\nThe truly unrecoverable case is hitting another kprobe while already in\nKPROBE_REENTER, because the reentry save area has already been consumed.\n\nMove KPROBE_HIT_SS to the recoverable reentry cases and leave\nKPROBE_REENTER as the unrecoverable nested reentry case.\n\nThis change also requires saving saved_irqflag in struct prev_kprobe.\nWhen a nested kprobe calls kprobes_save_local_irqflag(), it overwrites\nkcb->saved_irqflag with the currently masked DAIF value, losing the\nouter kprobe's original DAIF state. Without this fix, when the outer\nkprobe's single-step finishes, kprobes_restore_local_irqflag() applies\nthe wrong DAIF mask and leaves interrupts permanently disabled.\n\nExtend struct prev_kprobe with a saved_irqflag field and save/restore it\nalongside kp and status. This ensures the outer kprobe's original\ninterrupt state is preserved across reentry.\n\nThis mirrors the x86 fix in commit 6a5022a56ac3\n(\"kprobes/x86: Allow to handle reentered kprobe on single-stepping\").",
       "published": "2026-10-23T12:18:22.583",
-      "updated": "2026-10-23T12:18:22.583",
+      "updated": "2026-10-26T07:17:13.870",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13240,15 +14352,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08197,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13257,7 +14369,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13267,7 +14380,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libertas: reject short monitor TX frames\n\nIn monitor mode, lbs_hard_start_xmit() casts skb->data to a\nradiotap TX header, skips that header, and then copies the 802.11\ndestination address from offset 4 in the remaining frame.  The\ngeneric length check only rejects zero-length and oversized skbs, so\na short monitor frame can be read past the end of the skb data.\n\nRequire enough bytes for the radiotap TX header and the destination\naddress field before using the monitor-mode header layout.",
       "published": "2026-10-23T12:18:22.840",
-      "updated": "2026-10-23T12:18:22.840",
+      "updated": "2026-10-26T07:17:14.153",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13288,15 +14401,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08198,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13305,7 +14418,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13315,7 +14429,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: validate deauth frame length before reason access\n\nieee80211_rx_mgmt_deauth() reads the deauth reason code before checking\nthat the fixed field is actually present in the received frame.\n\nValidate the deauth frame length first and only then read the reason\ncode.",
       "published": "2026-10-23T12:18:22.967",
-      "updated": "2026-10-23T12:18:22.967",
+      "updated": "2026-10-26T07:17:14.280",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13336,15 +14450,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13353,7 +14467,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13363,7 +14478,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Validate BASE_ERROR_EVENT payload size\n\nBASE_ERROR_EVENT carries a variable number of message reports,\nwith the count encoded in error_status. The notification parser used\nthat count without checking whether the received payload contained all\nreported entries.\n\nReject truncated payloads before copying the report array.",
       "published": "2026-10-23T12:18:23.090",
-      "updated": "2026-10-23T12:18:23.090",
+      "updated": "2026-10-26T07:17:14.403",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13384,15 +14499,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08197,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13401,7 +14516,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13411,7 +14527,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Validate SENSOR_UPDATE payload size\n\nSENSOR_UPDATE carries one or more sensor readings after the fixed\nnotification header. The parser derives the expected reading count\nfrom the sensor description, but it did not verify that the received\npayload contains those entries before parsing them.\n\nReject truncated update notifications before reading the variable\narray.",
       "published": "2026-10-23T12:18:23.207",
-      "updated": "2026-10-23T12:18:23.207",
+      "updated": "2026-10-26T07:17:14.523",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13431,15 +14547,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00181,
+      "epss_percentile": 0.07581,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13448,7 +14564,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13458,7 +14575,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/ras: reset CPER ring on corrupt entry size\n\nWhen CPER ring overflow handling advances the read pointer, it trusts the\nparsed entry size from the current ring contents. Corrupt CPER data can\nproduce an entry size that does not advance rptr after dword conversion\nand pointer masking.\n\nIn that case the recovery loop keeps testing the same location while\nholding the CPER ring mutex. This can hang the worker that is writing the\nnext CPER record.\n\nDetect a no-progress rptr update and reset the CPER ring to an empty\nstate instead. This drops the corrupt contents and lets the writer leave\nthe recovery path without spinning.",
       "published": "2026-10-23T12:18:23.327",
-      "updated": "2026-10-23T12:18:23.327",
+      "updated": "2026-10-26T07:17:14.640",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13474,15 +14591,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00161,
+      "epss_percentile": 0.05274,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13491,7 +14608,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13501,7 +14619,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Keep the domain reference while processing hotplug\n\nWe process hotplug events in a workqueue that may run after the domain\nhas been removed by tb_domain_remove(). For example if user unloads the\ndriver while at the same time plugging  a device router we may have\nscheduled tb_handle_hotplug() to run. Avoid possible UAF in this case by\ntaking the domain reference before scheduling the hotplug handler in\ntb_queue_hotplug().",
       "published": "2026-10-23T12:18:23.547",
-      "updated": "2026-10-23T12:18:23.547",
+      "updated": "2026-10-26T07:17:14.857",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13522,15 +14640,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08199,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13539,7 +14657,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13549,7 +14668,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: don't hold ci->m_lock while waiting for a lease break ack\n\nWhen a cifs.ko client caches a read-handle (RH) lease via deferred close\nand a conflicting open arrives, ksmbd breaks the lease and waits for the\nacknowledgment in wait_for_break_ack() for up to OPLOCK_WAIT_TIME (35s).\n__smb_break_all_levII_oplock() runs that wait while holding ci->m_lock\nfor read.\n\ncifs.ko reacts to a handle-lease break by closing the deferred handle\nrather than sending a lease break acknowledgment. That close path\n(close_id_del_oplock() -> opinfo_del()) takes ci->m_lock for write and\nis exactly what would wake the waiter, but it blocks on the read lock\nheld by the waiting thread. The break is then resolved only by the 35s\ntimeout, so xfstests generic/001 takes ~78s with leases enabled versus\n~4s with oplocks only.\n\nCollect the target opinfos (each pinned with a reference) while holding\nci->m_lock, then break them after releasing it, matching how\nsmb_grant_oplock() already breaks a conflicting lease using only a\nreference.  The reference keeps the opinfo (and its conn and lease)\nalive across the unlocked window, and a close racing the break is\nhandled by the existing OPLOCK_CLOSING state check. Apply the same fix\nto the parent lease break paths.",
       "published": "2026-10-23T12:18:23.670",
-      "updated": "2026-10-23T12:18:23.670",
+      "updated": "2026-10-26T07:17:14.980",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13565,15 +14684,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00161,
+      "epss_percentile": 0.05274,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13582,7 +14701,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13592,7 +14712,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm/si: Don't schedule thermal work when queue isn't initialized\n\nWhen DPM is turned off with the amdgpu.dpm=0 module parameter,\nthe thermal work queue isn't initialized so we shouldn't\nschedule any work on it.\n\n(cherry picked from commit bd018d36171a695952c6d391471c279c9e05c8b2)",
       "published": "2026-10-23T12:18:23.777",
-      "updated": "2026-10-23T12:18:23.777",
+      "updated": "2026-10-26T07:17:15.073",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13613,15 +14733,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07398,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13630,7 +14750,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13640,7 +14761,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/gntalloc: validate grant count before allocation\n\ngntalloc_ioctl_alloc() allocates the grant-id array before checking\nwhether the requested count fits within the global grant limit. Counts\nabove that limit cannot succeed, so reject them before the\nuser-controlled allocation reaches kcalloc().\n\nUse a subtraction-based check while holding gref_mutex so adding the\nrequested count cannot wrap. Also cast the count before advancing the\nper-file index so the page-size multiplication is performed in 64-bit\narithmetic.",
       "published": "2026-10-23T12:18:24.020",
-      "updated": "2026-10-23T12:18:24.020",
+      "updated": "2026-10-26T07:17:15.340",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13661,15 +14782,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13678,7 +14799,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13688,7 +14810,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix lease break and ack state handling\n\nDo not skip valid lease states containing WRITE_CACHING when breaking\nlevel-II/read leases for writes and truncates.\n\nHandle lease break acknowledgments according to the SMB2 rule that the\nacknowledged state must be a subset of the server's break target. Apply\nthe acknowledged state directly and keep the break pending on failed ACKs.",
       "published": "2026-10-23T12:18:24.143",
-      "updated": "2026-10-23T12:18:24.143",
+      "updated": "2026-10-26T07:17:15.457",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13706,15 +14828,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06821,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13723,7 +14845,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13733,7 +14856,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid5: let stripe batch bm_seq comparison wrap-safe\n\nOnce the 32-bit seq wraps, a newer bm_seq can look smaller\nthan old, so .. covert to wrap-safe calculate way.",
       "published": "2026-10-23T12:18:24.253",
-      "updated": "2026-10-23T12:18:24.253",
+      "updated": "2026-10-26T07:17:15.553",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13754,15 +14877,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07397,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13771,7 +14894,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13781,7 +14905,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: imx: Add a channel shutdown field\n\nsashiko complained about possible teardown problem. The scenario\n\n CPU 0                              CPU 1\n  imx_mu_isr()                   imx_mu_shutdown()\n                                   imx_mu_xcr_rmw(priv, IMX_MU_RCR, 0, IMX_MU_xCR_RIEn(priv->dcfg->type, cp->idx));\n    imx_mu_specific_rx()\n      imx_mu_xcr_rmw(priv, IMX_MU_RCR, IMX_MU_xCR_RIEn(priv->dcfg->type, 0), 0);\n                                   free_irq()\n\nThe RX event remains enabled because in this short window the RX event\nwas disabled in ->shutdown() while the interrupt was active and then\nenabled again by the ISR while ->shutdown waited in free_irq().\n\nThis race requires timing and if happens can be problematic on shared\nhandlers if the \"removed\" channel triggers an interrupt. In this case\nthe irq-core will shutdown the interrupt with the \"nobody cared\"\nmessage.\n\nIntroduce imx_mu_con_priv::shutdown to signal that the channel is\nshutting down. This flag is set with the lock held (by\nimx_mu_xcr_clr_shut()). The unmask side uses imx_mu_xcr_set_act() which\nonly enables the event if the channel has not been shutdown and\nserialises on the same lock.",
       "published": "2026-10-23T12:18:24.370",
-      "updated": "2026-10-23T12:18:24.370",
+      "updated": "2026-10-26T07:17:15.670",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13798,15 +14922,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00172,
+      "epss_percentile": 0.0657,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13815,7 +14939,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13825,7 +14950,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: imx: Use devm_pm_runtime_enable()\n\nsashiko complained about early usage of the device while probe isn't\ncompleted. This can be mitigated by delaying the pm_runtime_enable()\ninto the removal path instead doing it early. This ensures that in an\nerror case the device is removed (and imx_mu_shutdown()) before\npm_runtime_disable() so we don't have to do this manually.\n\nFor the order to work, lets move devm_mbox_controller_register() until\nafter the pm-runtime part. So the reverse order will be mbox-controller\nremoval followed by disabling pm runtime.\n\nUse devm_pm_runtime_enable(), remove manual pm_runtime_disable()\ninvocations and move the pm_runtime handling in probe before\ndevm_mbox_controller_register().",
       "published": "2026-10-23T12:18:24.477",
-      "updated": "2026-10-23T12:18:24.477",
+      "updated": "2026-10-26T07:17:15.770",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13842,15 +14967,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00172,
+      "epss_percentile": 0.06549,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13859,7 +14984,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13869,7 +14995,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Properly acquire queue buffers in CRIU restore\n\nWhen kfd_queue_acquire_buffers() was split off from\nset_queue_properties_from_user(), set_queue_properties_from_criu()\nwas missed. Thus, set_queue_properties_from_criu() is not\nfilling out the buffer fields of queue_properties, which\ncan come up when subsequent code expects them to be non-null.\n\nAdd the proper call to kfd_queue_acquire_buffers(), and also\nuse the right cast types in set_queue_properties_from_criu()\n(which were missed at the same time)\n\n(cherry picked from commit 88ed96abbbe27b70193544fbc1ee06448c274714)",
       "published": "2026-10-23T12:18:24.580",
-      "updated": "2026-10-23T12:18:24.580",
+      "updated": "2026-10-26T07:17:15.863",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13886,15 +15012,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00172,
+      "epss_percentile": 0.06549,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13903,7 +15029,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13913,7 +15040,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: lan966x: restore RX state on reload failure\n\nlan966x_fdma_reload() backs up rx->page_pool and rx->fdma before\nreallocating the RX resources for the new MTU. If the allocation fails,\nthe restore path puts these fields back before restarting RX.\n\nHowever, the reload path also updates rx->page_order and rx->max_mtu\nbefore calling lan966x_fdma_rx_alloc(). These fields are not restored on\nfailure, so RX can be restarted with the old pages, old FDMA state and\nold page pool, but with the page geometry from the failed new MTU.\n\nThis can make the XDP path advertise a frame size derived from the new\npage_order while the actual RX pages still come from the old allocation.\nFor example, after a failed reload to a jumbo MTU, xdp_init_buff() may be\ncalled with a frame size larger than the restored RX pages.\n\nlan966x_fdma_rx_alloc_page_pool() also registers the newly allocated page\npool with each port's XDP RXQ before fdma_alloc_coherent() is called. If\nfdma_alloc_coherent() fails, the new page pool is destroyed, but the\nrollback path does not restore the per-port XDP RXQ mem model\nregistration either.\n\nSave and restore rx->page_order and rx->max_mtu, and restore the old page\npool registration for each port's XDP RXQ before RX is started again.\nThis keeps the restored RX state consistent after a failed reload.",
       "published": "2026-10-23T12:18:24.680",
-      "updated": "2026-10-23T12:18:24.680",
+      "updated": "2026-10-26T07:17:15.960",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13930,15 +15057,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00172,
+      "epss_percentile": 0.0657,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13947,7 +15074,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13957,7 +15085,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: protect sb_write_pointer() with invalidate lock\n\nsb_write_pointer() reads the super block from the block device page cache\nusing read_cache_page_gfp(). This has the same race with BLKBSZSET as the\none fixed by commit 3f29d661e568 (\"btrfs: sync read disk super and set\nblock size\").\n\nTake the mapping invalidate lock around read_cache_page_gfp() to\nserialize the read against block size changes.",
       "published": "2026-10-23T12:18:24.793",
-      "updated": "2026-10-23T12:18:24.793",
+      "updated": "2026-10-26T07:17:16.060",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -13966,26 +15094,22 @@
       "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/123b9a545f4d0348e81f558a032bf2a93ee5722f",
-        "https://git.kernel.org/stable/c/1a6c92aa7242a04e4349c0ea213dbf703a1c9891",
-        "https://git.kernel.org/stable/c/80cd97c5e90096d040a623851795eac92fbd0ff1",
-        "https://git.kernel.org/stable/c/a0dc28359a8a26f970ccd250b126a2e0bd4118a5",
-        "https://git.kernel.org/stable/c/a58cab4535f085adc0f93d7efd7952ef437371da",
-        "https://git.kernel.org/stable/c/c9b38f2eab5a9bd74087390318d93ccdd8d2deff"
+        "https://git.kernel.org/stable/c/80cd97c5e90096d040a623851795eac92fbd0ff1"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00179,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -13994,7 +15118,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14004,7 +15129,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: microchip: sparx5: clean up PSFP resources on flower setup failure\n\nsparx5_tc_flower_psfp_setup() allocates PSFP stream gate, flow meter and\nstream filter resources before adding VCAP actions. If a later step\nfails, the resources allocated earlier in the function are not unwound.\n\nAdd error paths to release the stream filter, flow meter and stream gate\nwhen setup fails after they have been acquired.\n\nAlso make sparx5_psfp_fm_add() return the acquired flow-meter id before\nthe existing-flow-meter early return. When an existing flow meter is\nreused, sparx5_psfp_fm_get() increments its pool reference count, but the\ncaller previously kept psfp_fmid as 0. If a later setup step failed, the\nerror path could try to delete flow-meter id 0 instead of the reused flow\nmeter, leaving the incremented reference behind.",
       "published": "2026-10-23T12:18:24.907",
-      "updated": "2026-10-23T12:18:24.907",
+      "updated": "2026-10-26T07:17:16.150",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14022,15 +15147,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06837,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14039,7 +15164,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14049,7 +15175,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: cpsw_new: unregister devlink on port registration failure\n\ncpsw_probe() registers devlink before registering the CPSW ports.\n\nIf cpsw_register_ports() fails, the error path only unregisters the\nnotifiers and then releases the lower level resources. It does not undo\nthe successful cpsw_register_devlink() call, leaving the devlink instance\nand its parameters registered after probe has failed.\n\nAdd a devlink cleanup label for the path where devlink registration has\nalready succeeded, and use it when port registration fails.",
       "published": "2026-10-23T12:18:25.013",
-      "updated": "2026-10-23T12:18:25.013",
+      "updated": "2026-10-26T07:17:16.250",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14070,15 +15196,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08198,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14087,7 +15213,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14097,7 +15224,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Unwind debug trap enable on copy_to_user failure\n\nIf kfd_dbg_trap_enable() fails while copying runtime_info to userspace,\nit had already activated the trap, set debug_trap_enabled, taken an extra\nprocess reference, and opened the debug event file. Return -EFAULT without\nunwinding that state, leaving inconsistent trap state and a refcount\nimbalance that could break later DISABLE/ENABLE.\n\nOn copy_to_user failure, deactivate the trap and undo the rest of the\nenable setup before returning.",
       "published": "2026-10-23T12:18:25.130",
-      "updated": "2026-10-23T12:18:25.130",
+      "updated": "2026-10-26T07:17:16.370",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14115,15 +15242,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06837,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14132,7 +15259,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14142,7 +15270,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: oss: Reject reads that cannot fit the next event\n\nsnd_seq_oss_read() checks whether the next queued OSS sequencer event\nfits in the remaining userspace buffer before removing it from the read\nqueue.\n\nThe check is inverted. It currently stops when the event is smaller than\nthe remaining buffer, so a normal 4-byte event is not copied for an\n8-byte read buffer. Conversely, an 8-byte event can be copied for a\nsmaller read count.\n\nBreak only when the remaining userspace buffer is smaller than the next\nevent, and report -EINVAL if no complete event has been copied. This\nprevents an undersized read from looking like end-of-file while leaving\nthe event queued for a later read with a large enough buffer.",
       "published": "2026-10-23T12:18:25.350",
-      "updated": "2026-10-23T12:18:25.350",
+      "updated": "2026-10-26T07:17:16.610",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14163,15 +15291,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00187,
+      "epss_percentile": 0.08197,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14180,7 +15308,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14190,7 +15319,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderx: fix PTP device ref leak in nicvf_probe()\n\ncavium_ptp_get() acquires a reference to the PTP PCI device\nthrough pci_get_device(). If any initialization step fails\nafter cavium_ptp_get(), the PTP PCI device reference is leaked.\nAdd a common error path to release the PTP reference before\nreturning from probe failures.",
       "published": "2026-10-23T12:18:25.473",
-      "updated": "2026-10-23T12:18:25.473",
+      "updated": "2026-10-26T07:17:17.157",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14209,15 +15338,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06822,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14226,7 +15355,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14236,7 +15366,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: cap ATOM command table nesting depth\n\nCap nesting at 32 levels with execute_depth and\nreturn -ELOOP when exceeded.",
       "published": "2026-10-23T12:18:25.587",
-      "updated": "2026-10-23T12:18:25.587",
+      "updated": "2026-10-26T07:17:17.277",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14252,15 +15382,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00161,
+      "epss_percentile": 0.05274,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14269,7 +15399,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14279,7 +15410,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: video-i2c: use vb2_video_unregister_device on driver removal\n\nThe driver uses vb2_fop_release() as its file release operation, so\nvb2_video_unregister_device() should be used instead of\nvideo_unregister_device() during driver removal.\n\nThis ensures that the vb2 queue is properly disconnected before the\nvideo device is unregistered.",
       "published": "2026-10-23T12:18:25.683",
-      "updated": "2026-10-23T12:18:25.683",
+      "updated": "2026-10-26T07:17:17.397",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14298,15 +15429,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06822,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14315,7 +15446,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14325,7 +15457,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: check link is beaconing for color change\n\nWhen trying to do a color change, validate that the link is\nbeaconing first, to avoid calling the driver with an invalid\nlink.",
       "published": "2026-10-23T12:18:25.797",
-      "updated": "2026-10-23T12:18:25.797",
+      "updated": "2026-10-26T07:17:17.513",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14343,15 +15475,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00174,
+      "epss_percentile": 0.06837,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14360,7 +15492,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14370,7 +15503,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nparisc: Increase kernel stack size to 32kb\n\nFor 64-bit Linux kernels, increase the default kernel stack size\n(THREAD_SIZE_ORDER) to 32 kB, in order to avoid kernel crashes which have been\ntriggered recently when building the debian vtk9 package with gcc 17:\n\nstackcheck: kworker/u128:0 will most likely overflow kernel stack (sp:179a83af0, stk bottom-top:179a80000-179a84000)\nKernel panic - not syncing: low stack detected by irq handler - check messages\nCPU: 2 UID: 0 PID: 30760 Comm: kworker/u128:0 Tainted: G W 6.18.46-dirty #1 NONE\nTainted: [W]=WARN\nHardware name: 9000/800/rp3440\nWorkqueue: writeback wb_workfn (flush-259:0)\nBacktrace:\n [<000000004022f050>] show_stack+0x70/0x90\n [<000000004022378c>] dump_stack_lvl+0x124/0x190\n [<000000004022382c>] dump_stack+0x34/0x48\n [<000000004020212c>] vpanic+0x204/0x648\n [<00000000402025c4>] panic+0x54/0x58\n [<0000000040232230>] do_cpu_irq_mask+0x3f8/0x440\n [<0000000040227070>] intr_return+0x0/0xc",
       "published": "2026-10-23T13:17:12.247",
-      "updated": "2026-10-23T13:17:12.247",
+      "updated": "2026-10-26T07:17:17.630",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14387,15 +15520,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00167,
+      "epss_percentile": 0.05861,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14404,7 +15537,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14768,7 +15902,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Remove sink usage from DPMS\n\n[Why]\nstream->sink is optional and can be null, so should always be checked\nbefore dereference. Additionally, most of its usage in DPMS sequences\nis for stream->sink->link, which can be replaced with stream->link,\nas the two should always be the same.\n\n[How]\n* Replace stream->sink->link in DPMS on/off\n* Add assert to USB4 BW allocation where sink is required\n* Avoid inconsistencies in resource access, e.g. don't repeat\nstream->link after it was already saved to a local variable\n* Pull out effective VPG calculation to helper getter\n* Formatting fixes",
       "published": "2026-10-23T13:17:13.343",
-      "updated": "2026-10-23T13:17:13.343",
+      "updated": "2026-10-26T07:17:17.737",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -14784,15 +15918,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00156,
+      "epss_percentile": 0.04673,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -14801,7 +15935,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -15174,7 +16309,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/core: Check kernel access when kernel callchains are requested\n\nperf_event_open() currently gates perf_allow_kernel() only on\n!attr.exclude_kernel.\n\nHowever, users can still request kernel callchain collection with\nattr.exclude_callchain_kernel == 0 even when attr.exclude_kernel == 1.\nThat still requires kernel profiling privilege, but the existing check\ndoes not enforce it.\n\nUpdate the permission check to call perf_allow_kernel() when either\nkernel sampling is requested or kernel callchains are requested.\n\nThis keeps permission checks aligned with requested data and prevents\nunprivileged use of kernel callchain capture.",
       "published": "2026-10-23T13:17:14.613",
-      "updated": "2026-10-23T13:17:14.613",
+      "updated": "2026-10-26T07:17:17.870",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -15192,15 +16327,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00168,
+      "epss_percentile": 0.06155,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -15209,7 +16344,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -15351,7 +16487,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Build the cid tables privately and publish them with RCU\n\nThe cid tables are visible to the cid kfuncs while being modified: the\nfirst enable publishes the global pointers before filling them,\nops.init_cids() overrides rewrite them in place, and re-enables rebuild\nthem in place. A racing TRACING or SYSCALL program can read unfilled\nentries, including uninitialized memory in the kmalloc'd tables, or torn\ntopo updates.\n\nTie the tables' lifetimes to the root sched instead: each root enable\nbuilds a fresh set privately and publishes the per-table __rcu globals once\nthe layout is final, and root disable unpublishes and RCU-frees the set. A\nnon-NULL global is now always a fully built table which stays valid for the\nreader's RCU read section, and lookups stay two loads. Kfuncs treat NULL as\nno-mapping, also after the scheduler exits instead of reporting the stale\nlast mapping.\n\nThe cid kfuncs are available whether the root scheduler is cid-form or\ncpu-form, the latter to allow gradual migration to cids. Every root\ntherefore builds and publishes a default mapping.\n\nEvery reader must either be gated on scheduler liveness or NULL-check\ninside an RCU read section. Fix the two kfuncs that were neither:\nscx_bpf_this_cid() read the table with no RCU or preemption protection and\nscx_bpf_task_cid() relied on KF_RCU, which doesn't put a sleepable program\nin an RCU read section. The hotplug callbacks are instead serialized by\nretiring the tables inside the cpus_read_lock() section that clears\nscx_root.\n\nv2: Document why every root builds the tables (desc + cid.c comment).",
       "published": "2026-10-23T13:17:15.193",
-      "updated": "2026-10-23T13:17:15.193",
+      "updated": "2026-10-26T07:17:18.007",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -15367,15 +16503,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00163,
+      "epss_percentile": 0.05444,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -15384,7 +16520,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -18225,7 +19362,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm: fix reading free memory in do_resume\n\nWhen do_resume calls dm_table_get_mode(new_map), the call is done without\nholding any locks (it only holds a reference to the md). It may be\npossible that another concurrent ioctl on the same device will swap table\nafter dm_swap_table and before dm_table_get_mode. In this case,\ndm_table_get_mode(new_map) reads freed memory.\n\nThis race condition was triggered by syzbot.\n\nThis commit fixes the race by reading mode of the new table before\ndm_swap_table. Note that new_map is also passed to dm_ima_need_measure,\nbut this function doesn't attempt to dereference it, so this call should\nbe safe.\n\nNote that this is not a security bug because only root can trigger it and\nthe commonly used tools such as lvm or cryptsetup do not call the ioctls\nconcurrently, so that they can't trigger it acceidentally.",
       "published": "2026-10-23T13:17:26.820",
-      "updated": "2026-10-23T13:17:26.820",
+      "updated": "2026-10-26T07:17:18.397",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -18244,15 +19381,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00176,
+      "epss_percentile": 0.07066,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -18261,7 +19398,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -19676,7 +20814,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: Free any excess xarray nodes in clear_inode()\n\nFor many years we've had a hard to hit leak of xarray nodes.  Hugh\ndocumented it well in commit 786b31121a2c.  Recently people and\nsyzbot have found ways to force it to happen with madvise.  Rather\nthan fix the leaks where they happen, just call xa_destroy() which\nhas the side-effect of cycling the i_pages lock.",
       "published": "2026-10-23T13:17:32.160",
-      "updated": "2026-10-23T13:17:32.160",
+      "updated": "2026-10-26T07:17:18.513",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -19695,15 +20833,15 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00157,
+      "epss_percentile": 0.04789,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "linux-kernel"
       ],
@@ -19712,7 +20850,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -19893,6 +21032,372 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-98389",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: skip gfx switch_power_profile during GPU reset\n\nDuring resume from GPU reset, the gfx idle work may invoke switch_power_profile\nbefore the reset completes. This causes the following assert error because the\nregister access occurs without first releasing the GPU reset semaphore:\n\n[ 1576.768935] CR2: 0000559ea133ead0 CR3: 00000002e6c42000 CR4: 0000000000350ef0\n[ 1576.768940] Call Trace:\n[ 1576.768944]  <TASK>\n[ 1576.768953]  amdgpu_device_rreg+0x21/0x50 [amdgpu]\n[ 1576.769158]  smu_msg_v1_send_msg+0x1a4/0x6e0 [amdgpu]\n[ 1576.769437]  smu_cmn_send_smc_msg_with_params_ext+0xba/0x120 [amdgpu]\n[ 1576.769721]  smu_cmn_send_smc_msg_with_param+0x33/0x40 [amdgpu]\n[ 1576.769993]  smu_v13_0_0_set_power_profile_mode+0x192/0x2b0 [amdgpu]\n[ 1576.770267]  smu_bump_power_profile_mode+0x5d/0x80 [amdgpu]\n[ 1576.770538]  smu_switch_power_profile+0xa4/0xf0 [amdgpu]\n[ 1576.770839]  amdgpu_dpm_switch_power_profile+0x6f/0x90 [amdgpu]\n[ 1576.771210]  amdgpu_gfx_profile_idle_work_handler+0xe9/0x130 [amdgpu]\n[ 1576.771460]  process_one_work+0x23e/0x6f0\n[ 1576.771491]  worker_thread+0x1c4/0x380\n[ 1576.771506]  kthread+0x10c/0x150\n[ 1576.771512]  ? __pfx_worker_thread+0x10/0x10\n[ 1576.771518]  ? __pfx_kthread+0x10/0x10\n[ 1576.771530]  ret_from_fork+0x314/0x390\n[ 1576.771537]  ? __pfx_kthread+0x10/0x10\n[ 1576.771546]  ret_from_fork_asm+0x1a/0x30\n\n(cherry picked from commit d93b1ff538ce9750c01e0dd0aa62575579c0fc08)",
+      "published": "2026-10-14T14:17:49.760",
+      "updated": "2026-10-26T07:17:10.617",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/054022c8e74fe9b6cde63e636146b87cfe40f107",
+        "https://git.kernel.org/stable/c/1f1d43418d61c8511779e0f63a954a78b9433b43",
+        "https://git.kernel.org/stable/c/52947c09c41cfab4d3d802581b9acf8dbc142fc5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09477,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98428",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb: 6fire: Avoid embedded URBs\n\nThe USB 6fire driver uses URBs embedded in different structs for PCM,\nMIDI and communication, and this is basically a buggy implementation\nnowadays; since a URB is managed with a refcount, this may lead to a\nUAF when the URB is released asynchronously.\n\nFor addressing the problem, this patch converts those embedded URBs to\nones that are properly allocated via usb_alloc_urb().  The\npcm_urb.packets[] is gone, as it's allocated by usb_alloc_urb(), hence\nit's found in urb.iso_frame_desc[] instead.\n\nThe conversions are rather straightforward; each embedded struct urb\nis changed to a pointer, and its callers are updated accordingly.\nThe resource for those structs are released in the common destructor\nfunctions (usb6fire_comm_free(), etc), which are called at both the\ninit error path and the disconnect.\n\nNo functional changes, only compile-tested.",
+      "published": "2026-10-14T14:17:54.460",
+      "updated": "2026-10-26T07:17:10.737",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/3ef9093d83ffecb8e5f6c9d5769a52d39df74f7a",
+        "https://git.kernel.org/stable/c/52a43c2d57e774489ac3fbbac06ff02f19bd9a52",
+        "https://git.kernel.org/stable/c/8b8559aeaba2e51cfee1779b2383b085991f7d81",
+        "https://git.kernel.org/stable/c/999f433c09e4668412bd68ca207ae2b4af863862",
+        "https://git.kernel.org/stable/c/9fe49dbc023e82dfaee7b245997d820d01742a9a",
+        "https://git.kernel.org/stable/c/d181434549b3da668110a25d743848cce9897f4e"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00215,
+      "epss_percentile": 0.11786,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98439",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: cancel async requests when closing connection\n\nAn async request may still be waiting when a connection is closed.\nThis can stop the connection from closing.\n\nCancel active async requests before waiting for them to finish.",
+      "published": "2026-10-18T15:16:53.687",
+      "updated": "2026-10-26T07:17:10.973",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/0947087678f465b64eba2acebe808d5c6cfea036",
+        "https://git.kernel.org/stable/c/4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00145,
+      "epss_percentile": 0.03708,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98714",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Update control fields on #VMEXIT if and only if VMRUN succeeded\n\nLeave control.erap_ctl and control.clean as-is in the VMCS if VMRUN fails,\nbecause as per AMD:\n\n  there's no explicit architectural guarantee about the behavior in the\n  presence of VMRUN failures. So the best thing to do would be to assume\n  that if VMRUN fails, the actions requested in the control fields may not\n  have been performed.",
+      "published": "2026-10-18T16:17:24.953",
+      "updated": "2026-10-26T07:17:11.067",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/8676b29d186fcb5c1251d8152fc91d19421e5600",
+        "https://git.kernel.org/stable/c/e27fc915c8f575ab5630e27d97465c2077d4b9d1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00155,
+      "epss_percentile": 0.04621,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98754",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: hold port lock when clearing tty pointer in vcc_cleanup\n\nvcc_cleanup() sets port->tty to NULL without holding port->lock, racing\nwith vcc_event() LDC callbacks that read port->tty under port->lock and\nthen use tty->port. This can cause a use-after-free when the callback\ndereferences tty->port after cleanup has already destroyed and freed it.",
+      "published": "2026-10-18T16:17:29.203",
+      "updated": "2026-10-26T07:17:11.167",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/03b49c991abb8d021ca6fe51cd173447236b0552",
+        "https://git.kernel.org/stable/c/1a9fb9eaeb69b1f6c00bed09289a33d9fe1e7ae4",
+        "https://git.kernel.org/stable/c/57753441ef84bee3bf0e9ee1e3778d119c44aa32",
+        "https://git.kernel.org/stable/c/821050631750e982007c0856c119346edba51cae",
+        "https://git.kernel.org/stable/c/88f6ecb058801e9ce7b9aabc966530118d7cd53c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00168,
+      "epss_percentile": 0.05982,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98755",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: zero-initialize control packet in vcc_send_ctl()\n\nThe stack-allocated struct vio_vcc pkt was partially initialized,\nleaving the tag.stype_env field uninitialized before being sent via\nldc_write(), potentially leaking kernel stack data to the LDC peer.",
+      "published": "2026-10-18T16:17:29.300",
+      "updated": "2026-10-26T07:17:11.273",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185",
+        "https://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca",
+        "https://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936",
+        "https://git.kernel.org/stable/c/4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed",
+        "https://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00168,
+      "epss_percentile": 0.05981,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98784",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx6: fix firmware leak on teardown\n\nThe firmware requested in gfx_v6_0_init_microcode() is not released\nwhen the GFX block is torn down, leaking the firmware resources.\n\nAdd gfx_v6_0_free_microcode() and call it from gfx_v6_0_sw_fini()\nto release the PFP, ME, CE and RLC firmware.\n\n(cherry picked from commit 386e81346f95ab0be5a82c5535de932e7a456924)",
+      "published": "2026-10-18T16:17:32.367",
+      "updated": "2026-10-26T07:17:11.377",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/2aee72150b0ea92804f0f2799efb129f10e46e8d",
+        "https://git.kernel.org/stable/c/3a86ebf6aa8b0a845e6188daaa6f530fe67ff00e",
+        "https://git.kernel.org/stable/c/4b70c6b34912ca0b4066f56fd627d785dfbfe1fa",
+        "https://git.kernel.org/stable/c/652f631e2e3a8d3b11ad72dd0b8e59b5183de0d9",
+        "https://git.kernel.org/stable/c/cc172e177795c5f87bc2d71768d077e1c10633e8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00168,
+      "epss_percentile": 0.05966,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-98815",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: fix cdev lifetime\n\nSashiko bot reported a potential problem for the cdev lifetime in [0]\n- the code there is heavily based on the NVMe code.\n\nCurrently the NS head .open and .release file_operations methods take and\nput a reference to the nvme_ns_head to ensure that this structure does not\ndisappear while we open fds for that cdev.\n\nIn multipath mode, when we teardown the NS head, we call nvme_cdev_del() ->\ncdev_device_del() -> cdev_del(). However after cdev_del() returns, cdevs\nalready open will remain and their fops will still be callable. As such,\nwe can still reference the cdev after the nvme_ns_head reference count\ndrops to 0 (and is freed).\n\nThis can be shown with an application which delays between opening the cdev\nand issuing the ioctl while the NS head is being torn down:\n\n# ./ioctl_file /dev/ng1n1 &\n# waiting 10 seconds ....\n\n# ./ini_nvme_teardown.sh\n[   21.221718] nvme nvme1: Removing ctrl: NQN \"nvme-test-target\"\n[   21.274609] nvme nvme2: Removing ctrl: NQN \"nvme-test-target\"\n# now going to issue ioctl ....\n[   26.549285] ==================================================================\n[   26.550841] BUG: KASAN: slab-use-after-free in cdev_put.part.0+0x3d/0x40\n[   26.552352] Read of size 8 at addr ffff88811e7fa170 by task ioctl_file/237\n[   26.553805]\n[   26.554227] CPU: 3 UID: 0 PID: 237 Comm: ioctl_file Not tainted 7.2.0-rc1-00004-g6852a10e32d4 #921 PREEMPT(lazy)\n[   26.554236] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014\n[   26.554241] Call Trace:\n[   26.554245]  <TASK>\n[   26.554248]  dump_stack_lvl+0x68/0xa0\n[   26.554266]  print_report+0x10d/0x5d0\n[   26.554276]  ? __virt_addr_valid+0x21d/0x3f0\n[   26.554287]  ? cdev_put.part.0+0x3d/0x40\n[   26.554292]  kasan_report+0x96/0xd0\n[   26.554300]  ? cdev_put.part.0+0x3d/0x40\n[   26.554307]  cdev_put.part.0+0x3d/0x40\n[   26.554313]  __fput+0x7bc/0xa70\n[   26.554322]  fput_close_sync+0xd8/0x190\n[   26.554328]  ? __pfx_fput_close_sync+0x10/0x10\n[   26.554337]  __x64_sys_close+0x79/0xd0\n[   26.554344]  do_syscall_64+0x117/0x6b0\n[   26.554351]  entry_SYSCALL_64_after_hwframe+0x77/0x7f\n[   26.554358] RIP: 0033:0x7f938c067727\n[   26.554364] Code: 48 89 fa 4c 89 df e8 28 ad 00 00 8b 93 08 03 00 00 59 5e 48 83 f8 fc 74 1a 5b c3 0f 1f 84 00 00 00 00 00 48 8b 44 24 10 0f 05 <5bf\n[   26.554369] RSP: 002b:00007fff49f05980 EFLAGS: 00000202 ORIG_RAX: 0000000000000003\n[   26.554376] RAX: ffffffffffffffda RBX: 00007f938bfd7780 RCX: 00007f938c067727\n[   26.554380] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000003\n[   26.554383] RBP: 00007fff49f05a10 R08: 0000000000000000 R09: 0000000000000000\n[   26.554386] R10: 0000000000000000 R11: 0000000000000202 R12: 0000000000000000\n[   26.554389] R13: 00007fff49f05b40 R14: 00007f938c207000 R15: 000055c148471d78\n[   26.554397]  </TASK>\n[   26.554399]\n[   26.575612] Allocated by task 100:\n[   26.575871]  kasan_save_stack+0x24/0x50\n[   26.576157]  kasan_save_track+0x14/0x30\n[   26.576418]  __kasan_kmalloc+0x7f/0x90\n[   26.576668]  __kmalloc_noprof+0x281/0x6c0\n[   26.576938]  nvme_alloc_ns+0x7f7/0x3170\n[   26.577206]  nvme_scan_ns+0x508/0x880\n[   26.577449]  async_run_entry_fn+0x8c/0x350\n[   26.577723]  process_scheduled_works+0xb6f/0x1a00\n[   26.578034]  worker_thread+0x4ad/0xb40\n[   26.578283]  kthread+0x34f/0x450\n[   26.578501]  ret_from_fork+0x563/0x800\n[   26.578752]  ret_from_fork_asm+0x1a/0x30\n[   26.579012]\n[   26.579124] Freed by task 237:\n[   26.579335]  kasan_save_stack+0x24/0x50\n[   26.579596]  kasan_save_track+0x14/0x30\n[   26.579855]  kasan_save_free_info+0x3a/0x60\n[   26.580131]  __kasan_slab_free+0x43/0x70\n[   26.580388]  kfree+0x321/0x500\n[   26.580591]  nvme_ns_head_chr_release+0x39/0x50\n[   26.580883]  __fput+0x352/0xa70\n[   26.581095]  fput_close_sync+0xd8/0x190\n[   26.581350]  __x64_sys_close+0x79/0xd0\n[   26.581595]  do_syscall_64+0x117/0x6b0\n[   26.581842]  entry_SYSCAL\n---truncated---",
+      "published": "2026-10-18T16:17:35.640",
+      "updated": "2026-10-26T07:17:11.483",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/98b09ad7934482e64db4b4477d91e3bbf43adf4c",
+        "https://git.kernel.org/stable/c/9952f3882ecba709092379b71e02b09762b26f96"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09408,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-54711",
       "aliases": [],
       "title": "",
@@ -19942,7 +21447,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a heap buffer overflow vulnerability on 32-bit systems that allows attackers to overwrite heap memory when convex-hull information is requested. Attackers can supply crafted images processed with convex-hull calculations to corrupt heap memory, causing crashes or potential code execution.",
       "published": "2026-10-25T14:16:53.713",
-      "updated": "2026-10-25T14:16:53.713",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 2.0,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "low",
@@ -19986,7 +21491,7 @@
       "title": "",
       "description": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the magick compare command caused by missing cleanup when an operation fails. Attackers can supply inputs that trigger repeated failed compare operations to exhaust memory and cause denial of service.",
       "published": "2026-10-25T14:16:54.413",
-      "updated": "2026-10-25T14:16:54.413",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 2.0,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "low",
@@ -20030,7 +21535,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-32 contains a security policy bypass caused by an incomplete fix for the policy bypass reported in GHSA-jjp4-3fwf-393j. An attacker able to supply input to ImageMagick can evade configured security policy restrictions, allowing operations the policy was intended to block.",
       "published": "2026-10-25T14:16:52.543",
-      "updated": "2026-10-25T14:16:52.543",
+      "updated": "2026-10-26T13:49:46.657",
       "cvss": 1.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "low",
@@ -20178,6 +21683,166 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-25T10:10:19.985577+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085712",
+      "aliases": [],
+      "title": "Atos: OCSP Responder certificate contains subjectAltName extension",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-26T08:39:10Z",
+      "updated": "2026-10-26T08:39:10Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085712"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085769",
+      "aliases": [],
+      "title": "Certigna: Serial number of a cross-signed CA certificate generated with java.util.Random",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-26T12:25:52Z",
+      "updated": "2026-10-26T12:26:20Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085769"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085782",
+      "aliases": [],
+      "title": "PKIoverheid: Delayed reporting of CCADB documentation non-compliance",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-26T13:44:16Z",
+      "updated": "2026-10-26T13:44:16Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085782"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2085787",
+      "aliases": [],
+      "title": "IZENPE: ocsp requests filtered by user-agent",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-26T13:58:35Z",
+      "updated": "2026-10-26T13:58:35Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2085787"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "pki"
       ],
