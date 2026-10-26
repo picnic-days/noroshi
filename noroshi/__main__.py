@@ -134,7 +134,7 @@ def run(args) -> int:
     use_ai = not args.no_ai and not mock
     warnings = key_warnings(store, now) if use_ai else []
     if alerts:
-        warning = ai.analyze_all(alerts) if use_ai else ""
+        warning = ai.analyze_all(alerts, vulns) if use_ai else ""
         if warning and warning not in warnings:
             warnings.append(warning)
         texts = notify_line.build_messages(alerts)

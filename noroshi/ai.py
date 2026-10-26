@@ -200,8 +200,12 @@ def check_key() -> str:
     return ""
 
 
-def analyze_all(vulns: list) -> str:
-    """分析結果を各 Vuln に書き込む。キーが無効なら警告文を返す。"""
+def analyze_all(vulns: list, context: list = ()) -> str:
+    """分析結果を各 Vuln に書き込む。キーが無効なら警告文を返す。
+
+    context は今回の候補全体。通知対象と同じ CVE を持つ案件（例: 注意喚起が紹介している CVE 本体）を
+    関連告知として分析に渡す。
+    """
     if not os.environ.get("ANTHROPIC_API_KEY"):
         return ""
     import anthropic
@@ -209,12 +213,15 @@ def analyze_all(vulns: list) -> str:
     client = anthropic.Anthropic()
     for group in group_by_cve([v for v in vulns if v.category in ANALYZED])[:MAX_ITEMS]:
         # CVE 本体の情報が最も詳しいので、あればそれを主にして残りを関連告知として渡す
+        keys = set().union(*(_cves(x) for x in group))
+        group += [c for c in context if c not in group and keys & _cves(c)]
         group.sort(key=lambda x: x.category != "vuln")
         v, related = group[0], group[1:]
         try:
             text = analyze(v, client, related)
             for member in group:
-                member.ai_analysis = text
+                if member in vulns:  # 通知しない関連案件には分析を書き込まない
+                    member.ai_analysis = text
         except anthropic.AuthenticationError:
             print("AI: ANTHROPIC_API_KEY が無効のため分析を中止")
             return KEY_INVALID

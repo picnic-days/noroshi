@@ -353,6 +353,23 @@ class AiTest(unittest.TestCase):
         self.assertEqual([[v.id for v in g] for g in groups],
                          [["CVE-2026-1", "JP-jpcert-at1", "GHSA-node", "JP-ipa-x"], ["MOZ-CA-1"]])
 
+    def test_context_cve_is_passed_as_related(self):
+        client, messages = fake_client(text_response("end_turn", "【状況】Brotli"))
+        jp = Vuln(id="JP-jpcert-at1", category="jp-alert", aliases=["CVE-2026-111497"], level="critical")
+        cve = Vuln(id="CVE-2026-111497", title="Brotli out-of-bounds write", level="medium")
+        unrelated = Vuln(id="CVE-2026-9", level="medium")
+        with unittest.mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "x"}), \
+                unittest.mock.patch.dict("sys.modules", {"anthropic": SimpleNamespace(
+                    Anthropic=lambda: client, AuthenticationError=Exception, RateLimitError=Exception,
+                    APIStatusError=Exception, APIConnectionError=Exception)}):
+            ai.analyze_all([jp], [jp, cve, unrelated])
+        content = messages.calls[0]["messages"][0]["content"]
+        # CVE 本体を主にし、注意喚起を関連告知として 1 回だけ分析する
+        self.assertIn('"id": "CVE-2026-111497"', content.split("related_notices")[0])
+        self.assertIn("JP-jpcert-at1", content.split("related_notices")[1])
+        self.assertNotIn("CVE-2026-9", content)
+        self.assertEqual((jp.ai_analysis, cve.ai_analysis), ("【状況】Brotli", ""))
+
     def test_related_notices_in_payload(self):
         client, messages = fake_client(text_response("end_turn", "ok"))
         jp = Vuln(id="JP-jpcert-at1", category="jp-alert", title="Brotli の注意喚起",
