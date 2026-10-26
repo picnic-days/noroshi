@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T23:17:21.492284+00:00",
+  "generated_at": "2026-10-26T01:45:34.599014+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -9102,6 +9102,58 @@
         "popularity": 21.0,
         "cvss": 14.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116102",
+      "aliases": [],
+      "title": "QuantGeekDev docker-mcp docker_executor.py _build_windows_command os command injection",
+      "description": "A vulnerability was determined in QuantGeekDev docker-mcp 0.1.0/0.2.0. The impacted element is the function _build_windows_command of the file docker_executor.py. This manipulation of the argument project_name causes os command injection. It is possible to initiate the attack remotely.",
+      "published": "2026-10-26T00:30:20.752Z",
+      "updated": "2026-10-26T01:17:15.377",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X",
+      "severity": "medium",
+      "cpes": [
+        "quantgeekdev:docker-mcp"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "QuantGeekDev docker-mcp"
+      ],
+      "references": [
+        "https://vuldb.com/vuln/426170",
+        "https://vuldb.com/vuln/426170/cti",
+        "https://vuldb.com/cve/CVE-2026-116102",
+        "https://vuldb.com/submit/1002791"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T01:45:34.599014+00:00",
+      "matched": [
+        "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
