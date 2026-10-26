@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T14:16:58.363768+00:00",
+  "generated_at": "2026-10-26T15:33:11.752934+00:00",
   "items": [
     {
       "id": "JP-jpcert-at260034",
@@ -41,7 +41,7 @@
       "score": 90.0,
       "level": "critical",
       "score_breakdown": {},
-      "ai_analysis": ""
+      "ai_analysis": "【状況】Google製の圧縮ライブラリBrotliに境界外書き込みの脆弱性（CVE-2026-111497、通称Node2Shell/HTTP2Shell）。細工したデータを展開するとクラッシュ・情報漏えい・任意コード実行の恐れ。検証コードは公開済み。10/26時点で実際の悪用報告なし\n【原因の部品】Brotli（Google、C言語実装）。Node.js、Bun、Python、.NET、Java、Envoy/Istio、curl、Linuxのlibbrotliが組み込んでいる\n【影響範囲】Brotli 1.0.3〜1.2.0、Node.js 22/24/26系、組み込み製品の未修正版\n【対応策】\n1. 更新：Brotli 1.2.1/1.1.1/1.0.10、Node.js 22.23.4/24.22.1/26.12.1。Aikidoの調べではBun 1.4.4、brotlicffi 1.2.1.0、.NET 8.0.33/9.0.22/10.0.14。Ubuntu・SUSE・RHEL標準リポジトリは未修正。更新後は再ビルド・再起動し、侵入されていないかも調査\n2. 回避策：Content-Encodingにbrを含む要求をプロキシで拒否。クライアント側はbr応答の展開を無効化（Accept-Encodingの変更だけでは不十分）\n【各告知の関係】\nGoogle：元の部品の修正\nNode.js：組み込み製品の更新\nGitHub/NVD：CVE登録\nJPCERT/CC：国内の注意喚起\n【出典】\nhttps://www.jpcert.or.jp/at/2026/at260034.html\nhttps://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497"
     },
     {
       "id": "CVE-2026-109618",
@@ -227,6 +227,62 @@
         "unauth_network": 5,
         "kev": 20,
         "epss": 14.9
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105134",
+      "aliases": [],
+      "title": "Ahsay AhsayCBS Command Injection Vulnerability",
+      "description": "A flaw has been found in Ahsay AhsayCBS up to 9.15.2.69/10.3.4.44. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 9.15.2.70 and 10.3.4.45 is able to resolve this issue. Upgrading the affected component is advised. The initial patch did not fix the security vulnerability properly. An update of the CVE entry to reflect this became necessary.",
+      "published": "2026-10-04T07:16:33.480",
+      "updated": "2026-10-26T15:16:34.530",
+      "cvss": 10.0,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [
+        "ahsay:cloud_backup_suite"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Ahsay AhsayCBS"
+      ],
+      "references": [
+        "https://vuldb.com/cve/CVE-2026-105134",
+        "https://vuldb.com/submit/942743",
+        "https://vuldb.com/vuln/413351",
+        "https://vuldb.com/vuln/413351/cti",
+        "https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update",
+        "https://www.huntress.com/blog/ahsaycbs-flaws-exploit",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-105134",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-105134"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-14",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.86266,
+      "epss_percentile": 0.99731,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 67.9,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 20.0,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 12.9
       },
       "ai_analysis": ""
     },
@@ -505,7 +561,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00369,
-      "epss_percentile": 0.30501,
+      "epss_percentile": 0.30534,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -527,6 +583,62 @@
         "rce": 5,
         "exploit_ref": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105133",
+      "aliases": [],
+      "title": "Ahsay AhsayCBS Improper Authentication Vulnerability",
+      "description": "A vulnerability was detected in Ahsay AhsayCBS up to 9.15.2.69/10.3.4.44. This affects the function checkSysPwd of the file com/ahsay/obs/api/ApiStructsAction.java of the component API. Performing a manipulation of the argument random results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading to version 9.15.2.70 and 10.3.4.45 is able to mitigate this issue. It is recommended to upgrade the affected component. The initial patch did not fix the security vulnerability properly. An update of the CVE entry to reflect this became necessary.",
+      "published": "2026-10-04T07:16:33.087",
+      "updated": "2026-10-26T15:16:34.180",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [
+        "ahsay:cloud_backup_suite"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Ahsay AhsayCBS"
+      ],
+      "references": [
+        "https://vuldb.com/cve/CVE-2026-105133",
+        "https://vuldb.com/submit/942688",
+        "https://vuldb.com/vuln/413350",
+        "https://vuldb.com/vuln/413350/cti",
+        "https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update",
+        "https://www.huntress.com/blog/ahsaycbs-flaws-exploit",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-105133",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-105133"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-14",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.79236,
+      "epss_percentile": 0.99596,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 60.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 11.9
       },
       "ai_analysis": ""
     },
@@ -557,7 +669,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.12328,
-      "epss_percentile": 0.96163,
+      "epss_percentile": 0.96165,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -1317,6 +1429,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113344",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Performance in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:29.110",
+      "updated": "2026-10-26T15:30:52.907",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/561926123"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00425,
+      "epss_percentile": 0.36562,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91765",
       "aliases": [],
       "title": "",
@@ -1365,12 +1526,72 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105010",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Microsoft Windows Search Component allows an unauthorized attacker to elevate privileges over a network.",
+      "published": "2026-10-13T19:17:57.433",
+      "updated": "2026-10-26T15:30:09.657",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105010"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01011,
+      "epss_percentile": 0.62921,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-107656",
       "aliases": [],
       "title": "",
       "description": "An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiSandbox 4.2 all versions, FortiSandbox PaaS 5.0.0 through 5.0.6, FortiSandbox PaaS 4.4 all versions, FortiSandbox PaaS 4.2 all versions may allow attacker to execute unauthorized code or commands via crafted HTTP requests",
       "published": "2026-10-26T13:45:03.962Z",
-      "updated": "2026-10-26T14:16:24.147",
+      "updated": "2026-10-26T15:16:35.490",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -1390,7 +1611,7 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "",
+      "ssvc_exploitation": "none",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
@@ -1540,7 +1761,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00301,
-      "epss_percentile": 0.22657,
+      "epss_percentile": 0.22673,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -1589,7 +1810,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00267,
-      "epss_percentile": 0.18699,
+      "epss_percentile": 0.18713,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -1769,7 +1990,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00607,
-      "epss_percentile": 0.48753,
+      "epss_percentile": 0.48768,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -1777,6 +1998,66 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102225",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Text Shaping allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:17:48.117",
+      "updated": "2026-10-26T14:47:19.623",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102225"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00904,
+      "epss_percentile": 0.59539,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "windows"
       ],
@@ -1890,6 +2171,113 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105005",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds write in Windows Schannel allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:17:56.567",
+      "updated": "2026-10-26T14:53:15.767",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_26h1"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105005"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00763,
+      "epss_percentile": 0.55109,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103569",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows IKE Extension allows an unauthorized attacker to disclose information over a network.",
+      "published": "2026-10-13T19:17:53.123",
+      "updated": "2026-10-26T15:09:40.573",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103569"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01138,
+      "epss_percentile": 0.66344,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114625",
       "aliases": [],
       "title": "Arista VeloCloud Orchestrator SQL Injection Vulnerability",
@@ -1917,7 +2305,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.01025,
-      "epss_percentile": 0.63324,
+      "epss_percentile": 0.63335,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -2036,6 +2424,61 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111497",
+      "aliases": [],
+      "title": "",
+      "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
+      "published": "2026-10-22T14:17:37.190",
+      "updated": "2026-10-26T14:16:28.143",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high",
+        "http://www.openwall.com/lists/oss-security/2026/10/23/25",
+        "http://www.openwall.com/lists/oss-security/2026/10/24/6",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/12",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/13",
+        "https://broccoli2shell.com",
+        "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
+        "https://github.com/dotnet/announcements/issues/494",
+        "https://github.com/google/brotli/releases/tag/v1.0.10",
+        "https://github.com/google/brotli/releases/tag/v1.1.1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.36027,
+      "epss_percentile": 0.98463,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "brotli"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 47.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 5.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83862",
       "aliases": [],
       "title": "",
@@ -2124,7 +2567,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00577,
-      "epss_percentile": 0.4727,
+      "epss_percentile": 0.47286,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -2565,7 +3008,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00395,
-      "epss_percentile": 0.33428,
+      "epss_percentile": 0.33458,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -2624,7 +3067,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00341,
-      "epss_percentile": 0.27365,
+      "epss_percentile": 0.27399,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -2632,6 +3075,241 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102218",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Universal Disk Format File System Driver (UDFS) allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:47.583",
+      "updated": "2026-10-26T14:50:15.897",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102218"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00374,
+      "epss_percentile": 0.31095,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102220",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows VHD miniport driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:47.763",
+      "updated": "2026-10-26T14:49:28.337",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102220"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00374,
+      "epss_percentile": 0.31095,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102227",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Resilient File System (ReFS) allows an authorized attacker to execute code locally.",
+      "published": "2026-10-13T19:17:48.417",
+      "updated": "2026-10-26T14:42:25.180",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102227"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29714,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105004",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Overlay Filter allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:56.343",
+      "updated": "2026-10-26T15:08:03.017",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105004"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29706,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "windows"
       ],
@@ -3083,7 +3761,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00307,
-      "epss_percentile": 0.23259,
+      "epss_percentile": 0.2328,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -3101,6 +3779,115 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103568",
+      "aliases": [],
+      "title": "",
+      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Credential Providers allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:52.943",
+      "updated": "2026-10-26T15:10:08.077",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103568"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00219,
+      "epss_percentile": 0.1233,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105009",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect default permissions in Windows Server Update Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:57.277",
+      "updated": "2026-10-26T15:29:00.777",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105009"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00327,
+      "epss_percentile": 0.25572,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -3614,7 +4401,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00307,
-      "epss_percentile": 0.23264,
+      "epss_percentile": 0.2328,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -3665,7 +4452,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00276,
-      "epss_percentile": 0.19873,
+      "epss_percentile": 0.1989,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -3673,6 +4460,55 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96868",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:22:01.383",
+      "updated": "2026-10-26T15:29:30.107",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96868"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00252,
+      "epss_percentile": 0.16493,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "windows"
       ],
@@ -3737,6 +4573,52 @@
         "popularity": 21.0,
         "cvss": 17.6,
         "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103578",
+      "aliases": [],
+      "title": "",
+      "description": "Untrusted pointer dereference in Windows Kernel allows an unauthorized attacker to elevate privileges with a physical attack.",
+      "published": "2026-10-13T19:17:53.870",
+      "updated": "2026-10-26T15:08:33.483",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_11_26h1"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103578"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00474,
+      "epss_percentile": 0.40728,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.6,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -4235,6 +5117,112 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116539",
+      "aliases": [],
+      "title": "Netty netty-tcnative before 2.0.84.Final Heap Buffer Overflow via OpenSSL BIO",
+      "description": "Netty netty-tcnative before 2.0.84.Final contains a heap buffer overflow vulnerability in the tcn_write_to_bytebuffer BIO callback caused by failing to wrap the non-application ring buffer write index. Remote TLS peers can drive handshake, renegotiation, or post-handshake messages into this buffer, triggering an out-of-bounds memcpy that crashes the JVM process.",
+      "published": "2026-10-26T14:59:39.460Z",
+      "updated": "2026-10-26T14:59:39.460Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "netty netty-tcnative",
+        "io.netty:netty-tcnative",
+        "netty netty-tcnative-boringssl-static",
+        "io.netty:netty-tcnative-boringssl-static"
+      ],
+      "references": [
+        "https://github.com/netty/netty-tcnative/security/advisories/GHSA-gf9q-9mg7-g5qh",
+        "https://github.com/netty/netty-tcnative/commit/92dd66fd1243d85c05a61288f96367a70260b6b8",
+        "https://github.com/netty/netty-tcnative/blob/netty-tcnative-parent-2.0.83.Final/openssl-dynamic/src/main/c/ssl.c#L199",
+        "https://github.com/netty/netty-tcnative/releases/tag/netty-tcnative-parent-2.0.84.Final",
+        "https://github.com/netty/netty-tcnative",
+        "https://www.vulncheck.com/advisories/netty-netty-tcnative-before-2.0.84-final-heap-buffer-overflow-via-openssl-bio"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116540",
+      "aliases": [],
+      "title": "netty-tcnative 2.0.66.Final before 2.0.84.Final Use-After-Free in Session Ticket Callback",
+      "description": "netty-tcnative 2.0.66.Final before 2.0.84.Final built against OpenSSL 3.x contains a use-after-free vulnerability in ssl_tlsext_ticket_key_cb during session ticket key rotation. Remote clients performing TLS handshakes while setSessionTicketKeys0 frees the shared key array cause OpenSSL to read freed HMAC keys, crashing or corrupting ticket processing.",
+      "published": "2026-10-26T14:59:40.154Z",
+      "updated": "2026-10-26T14:59:40.154Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "netty netty-tcnative",
+        "io.netty:netty-tcnative"
+      ],
+      "references": [
+        "https://github.com/netty/netty-tcnative/security/advisories/GHSA-mmc8-vg2v-fvvw",
+        "https://github.com/netty/netty-tcnative/commit/59662a8b07a9a7623ae1bc472f5751f31c81a118",
+        "https://github.com/netty/netty-tcnative/blob/netty-tcnative-parent-2.0.83.Final/openssl-dynamic/src/main/c/sslcontext.c#L1365",
+        "https://github.com/netty/netty-tcnative/releases/tag/netty-tcnative-parent-2.0.84.Final",
+        "https://github.com/netty/netty-tcnative",
+        "https://www.vulncheck.com/advisories/netty-tcnative-2.0.66-final-before-2.0.84-final-use-after-free-in-session-ticket-callback"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98968",
       "aliases": [],
       "title": "",
@@ -4578,6 +5566,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115930",
+      "aliases": [],
+      "title": "MongoDB Shell (mongosh) bundled with Node.js trusts certificates issued by recoverable eMudhra intermediate CAs",
+      "description": "The MongoDB Shell (mongosh) relies on Node.js as a third-party runtime that carries its own TLS root certificate store. This certificate store has the recoverable eMudhra intermediate CA certificates. This issue impacts MongoDB Shell (mongosh) versions prior to 2.14.0 and can be resolved by updating to mongosh 2.14.0 which bundles Node.js 24.22.1 or later. If mongosh is installed through npm, it uses the Node.js runtime installed on the host; update that runtime separately.",
+      "published": "2026-10-26T14:02:51.248Z",
+      "updated": "2026-10-26T15:16:39.480",
+      "cvss": 7.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "MongoDB, Inc. mongosh"
+      ],
+      "references": [
+        "https://www.mongodb.com/docs/mongodb-shell/changelog/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113658",
       "aliases": [],
       "title": "",
@@ -4784,6 +5819,119 @@
         "popularity": 21.0,
         "cvss": 15.0,
         "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103567",
+      "aliases": [],
+      "title": "",
+      "description": "Buffer over-read in Windows Broadcast DVR User Service allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:17:52.703",
+      "updated": "2026-10-26T15:24:06.807",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103567"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0045,
+      "epss_percentile": 0.38884,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96910",
+      "aliases": [],
+      "title": "",
+      "description": "Untrusted pointer dereference in Microsoft Windows Search Component allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:22:01.677",
+      "updated": "2026-10-26T15:28:04.393",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96910"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0045,
+      "epss_percentile": 0.38882,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -6290,6 +7438,46 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-dv2vbq9kbgxn",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Workers build delays",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-26T15:12:34.756Z",
+      "updated": "2026-10-26T15:12:34.756Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/dv2vbq9kbgxn"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91398",
       "aliases": [],
       "title": "",
@@ -6419,7 +7607,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00735,
-      "epss_percentile": 0.54138,
+      "epss_percentile": 0.54148,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6522,7 +7710,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00489,
-      "epss_percentile": 0.41776,
+      "epss_percentile": 0.41795,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6567,7 +7755,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00707,
-      "epss_percentile": 0.53123,
+      "epss_percentile": 0.53132,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6713,7 +7901,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00397,
-      "epss_percentile": 0.33667,
+      "epss_percentile": 0.33699,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -6721,6 +7909,64 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-102221",
+      "aliases": [],
+      "title": "",
+      "description": "No cwe for this issue in Windows Secure Boot allows an authorized attacker to bypass a security feature locally.",
+      "published": "2026-10-13T19:17:47.943",
+      "updated": "2026-10-26T14:48:56.777",
+      "cvss": 4.4,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102221"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00362,
+      "epss_percentile": 0.29824,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "windows"
       ],
@@ -6812,7 +8058,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00408,
-      "epss_percentile": 0.34784,
+      "epss_percentile": 0.34813,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -7094,7 +8340,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00285,
-      "epss_percentile": 0.2086,
+      "epss_percentile": 0.20876,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -7710,7 +8956,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00169,
-      "epss_percentile": 0.06282,
+      "epss_percentile": 0.06285,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -7760,7 +9006,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00169,
-      "epss_percentile": 0.06282,
+      "epss_percentile": 0.06284,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -7808,7 +9054,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00175,
-      "epss_percentile": 0.0694,
+      "epss_percentile": 0.06941,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -7856,7 +9102,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00163,
-      "epss_percentile": 0.05457,
+      "epss_percentile": 0.05461,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -9175,7 +10421,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00112,
-      "epss_percentile": 0.0139,
+      "epss_percentile": 0.01388,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -9844,7 +11090,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00318,
-      "epss_percentile": 0.24454,
+      "epss_percentile": 0.24476,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -10614,8 +11860,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00169,
-      "epss_percentile": 0.06218,
+      "epss": 0.00152,
+      "epss_percentile": 0.04345,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11151,6 +12397,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-74757",
+      "aliases": [],
+      "title": "",
+      "description": "Uncontrolled resource allocation in the mcpack2pb component in Apache bRPC (version < 1.18.0) on all platforms allows remote attackers to make the server allocate a large amount of memory via sending a crafted mcpack request with a huge array item count.\n\nRoot Cause:\nThe bRPC mcpack2pb parser trusts the item count stored in the mcpack array header without validating it against the actual payload size. The code generated by the mcpack2pb protoc plugin uses this count to preallocate memory for repeated protobuf fields via Reserve(). A malformed request declaring item_count = 0x7fffffff can force the server to preallocate about 16GB of virtual memory, which may abort the process (SIGABRT) on memory-constrained hosts.\n\nAffected Scenarios:\nUse a bRPC server that wires a NsheadService to UbrpcMcpack2Adaptor (the Baidu ubrpc deployment pattern) and parses requests with code generated by the mcpack2pb protoc plugin. The request body is parsed before authentication.\n\nHow to Fix:\n(Choose one of the following options)\n1. Upgrade bRPC to version 1.18.0, which fixes this issue.\n2. Apply this patch:  https://github.com/apache/brpc/pull/3451 \n\nNote:\nNo matter which option you choose, you should know that the fix caps the array item count to the remaining bytes of the array payload.",
+      "published": "2026-10-21T12:17:22.700",
+      "updated": "2026-10-26T14:16:39.890",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://lists.apache.org/thread/2pf15ojj0vr7rtx95677kgtl1mx3gdgb"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00242,
+      "epss_percentile": 0.15244,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "protobuf"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114137",
       "aliases": [],
       "title": "",
@@ -11399,8 +12690,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00333,
+      "epss_percentile": 0.26311,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11418,7 +12709,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 13.8,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11444,8 +12736,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00305,
+      "epss_percentile": 0.23032,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11463,7 +12755,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 13.8,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11489,8 +12782,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00304,
+      "epss_percentile": 0.23004,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11508,7 +12801,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 13.8,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11534,8 +12828,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00304,
+      "epss_percentile": 0.23005,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11553,7 +12847,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 13.8,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11906,8 +13201,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00273,
+      "epss_percentile": 0.19531,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11925,7 +13220,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 12.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11951,8 +13247,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00273,
+      "epss_percentile": 0.19531,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -11970,7 +13266,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 12.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -11996,8 +13293,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00273,
+      "epss_percentile": 0.19531,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12015,7 +13312,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 12.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12235,8 +13533,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00318,
+      "epss_percentile": 0.24577,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12254,7 +13552,8 @@
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 17.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12280,8 +13579,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00291,
+      "epss_percentile": 0.21455,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12299,7 +13598,8 @@
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 17.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12325,8 +13625,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00304,
+      "epss_percentile": 0.23014,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12344,7 +13644,8 @@
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 17.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12423,8 +13724,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00348,
+      "epss_percentile": 0.28222,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12437,11 +13738,12 @@
       ],
       "match_type": "keyword",
       "tier": 2,
-      "score": 28.4,
+      "score": 28.5,
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 14.4
+        "cvss": 14.4,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -12467,8 +13769,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00348,
+      "epss_percentile": 0.2812,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12481,12 +13783,13 @@
       ],
       "match_type": "keyword",
       "tier": 3,
-      "score": 28.4,
+      "score": 28.5,
       "level": "low",
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 16.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -12512,8 +13815,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00348,
+      "epss_percentile": 0.28119,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12526,12 +13829,13 @@
       ],
       "match_type": "keyword",
       "tier": 3,
-      "score": 28.4,
+      "score": 28.5,
       "level": "low",
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 16.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -12557,8 +13861,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00267,
+      "epss_percentile": 0.18628,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12576,7 +13880,8 @@
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 16.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12602,8 +13907,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00318,
+      "epss_percentile": 0.24529,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12621,7 +13926,8 @@
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 16.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -12691,7 +13997,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00249,
-      "epss_percentile": 0.16116,
+      "epss_percentile": 0.1613,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12974,8 +14280,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00129,
+      "epss_percentile": 0.02554,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12992,7 +14298,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13018,8 +14325,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00118,
+      "epss_percentile": 0.01692,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13036,7 +14343,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13062,8 +14370,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00116,
+      "epss_percentile": 0.01579,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13080,7 +14388,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13106,8 +14415,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00123,
+      "epss_percentile": 0.02051,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13124,7 +14433,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13150,8 +14460,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00138,
+      "epss_percentile": 0.03177,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13168,7 +14478,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13194,8 +14505,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00215,
+      "epss_percentile": 0.11808,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13213,7 +14524,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 4.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13239,8 +14551,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00111,
+      "epss_percentile": 0.0133,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13257,7 +14569,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13283,8 +14596,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00111,
+      "epss_percentile": 0.0133,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13301,7 +14614,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13327,8 +14641,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00111,
+      "epss_percentile": 0.01331,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13345,7 +14659,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13371,8 +14686,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00123,
+      "epss_percentile": 0.02051,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13389,7 +14704,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13415,8 +14731,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00249,
+      "epss_percentile": 0.1605,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13433,51 +14749,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 7.0,
-        "cvss": 16.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116175",
-      "aliases": [],
-      "title": "",
-      "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
-      "published": "2026-10-25T14:16:57.017",
-      "updated": "2026-10-26T14:03:56.640",
-      "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-r45p-7qwx-qwjw",
-        "https://www.vulncheck.com/advisories/vllm-0.19.0-before-0.24.0-audio-decompression-bomb-dos-via-chat-completions"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-25T14:23:39.971301+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "keyword",
-      "tier": 3,
-      "score": 21.2,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 7.0,
-        "cvss": 14.2
+        "cvss": 16.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13503,8 +14776,53 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00366,
+      "epss_percentile": 0.30171,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-25T14:23:39.971301+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 21.3,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 14.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116175",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
+      "published": "2026-10-25T14:16:57.017",
+      "updated": "2026-10-26T14:03:56.640",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-r45p-7qwx-qwjw",
+        "https://www.vulncheck.com/advisories/vllm-0.19.0-before-0.24.0-audio-decompression-bomb-dos-via-chat-completions"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23254,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13521,7 +14839,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 7.0,
-        "cvss": 14.2
+        "cvss": 14.2,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -13598,7 +14917,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00213,
-      "epss_percentile": 0.11498,
+      "epss_percentile": 0.11506,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13647,7 +14966,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07398,
+      "epss_percentile": 0.07397,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13734,8 +15053,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00172,
-      "epss_percentile": 0.0657,
+      "epss": 0.00161,
+      "epss_percentile": 0.05276,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13876,7 +15195,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00192,
-      "epss_percentile": 0.0876,
+      "epss_percentile": 0.08761,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -13971,7 +15290,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06839,
+      "epss_percentile": 0.06838,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14020,7 +15339,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07398,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14065,7 +15384,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0019,
-      "epss_percentile": 0.08563,
+      "epss_percentile": 0.0856,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14109,7 +15428,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00161,
-      "epss_percentile": 0.05258,
+      "epss_percentile": 0.05261,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14157,7 +15476,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08198,
+      "epss_percentile": 0.08193,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14206,7 +15525,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07398,
+      "epss_percentile": 0.07395,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14255,7 +15574,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08198,
+      "epss_percentile": 0.08194,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14304,7 +15623,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00213,
-      "epss_percentile": 0.11498,
+      "epss_percentile": 0.11506,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14353,7 +15672,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08197,
+      "epss_percentile": 0.08194,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14402,7 +15721,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08198,
+      "epss_percentile": 0.08193,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14500,7 +15819,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08197,
+      "epss_percentile": 0.08194,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14548,7 +15867,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00181,
-      "epss_percentile": 0.07581,
+      "epss_percentile": 0.07579,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14592,7 +15911,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00161,
-      "epss_percentile": 0.05274,
+      "epss_percentile": 0.05277,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14641,7 +15960,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08199,
+      "epss_percentile": 0.08193,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14685,7 +16004,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00161,
-      "epss_percentile": 0.05274,
+      "epss_percentile": 0.05277,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14734,7 +16053,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07398,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14783,7 +16102,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07396,
+      "epss_percentile": 0.07395,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14829,7 +16148,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06821,
+      "epss_percentile": 0.06822,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14878,7 +16197,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00179,
-      "epss_percentile": 0.07397,
+      "epss_percentile": 0.07396,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14923,7 +16242,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00172,
-      "epss_percentile": 0.0657,
+      "epss_percentile": 0.06575,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -14968,7 +16287,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00172,
-      "epss_percentile": 0.06549,
+      "epss_percentile": 0.06553,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15013,7 +16332,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00172,
-      "epss_percentile": 0.06549,
+      "epss_percentile": 0.06553,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15058,7 +16377,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00172,
-      "epss_percentile": 0.0657,
+      "epss_percentile": 0.06575,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15101,8 +16420,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00179,
-      "epss_percentile": 0.07396,
+      "epss": 0.00161,
+      "epss_percentile": 0.05261,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15148,7 +16467,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06837,
+      "epss_percentile": 0.06841,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15197,7 +16516,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08198,
+      "epss_percentile": 0.08193,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15243,7 +16562,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06837,
+      "epss_percentile": 0.06838,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15292,7 +16611,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00187,
-      "epss_percentile": 0.08197,
+      "epss_percentile": 0.08192,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15339,7 +16658,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06822,
+      "epss_percentile": 0.06823,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15383,7 +16702,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00161,
-      "epss_percentile": 0.05274,
+      "epss_percentile": 0.05276,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15430,7 +16749,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06822,
+      "epss_percentile": 0.06823,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15476,7 +16795,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00174,
-      "epss_percentile": 0.06837,
+      "epss_percentile": 0.06839,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15521,7 +16840,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00167,
-      "epss_percentile": 0.05861,
+      "epss_percentile": 0.05863,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15919,7 +17238,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00156,
-      "epss_percentile": 0.04673,
+      "epss_percentile": 0.04675,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -16328,7 +17647,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00168,
-      "epss_percentile": 0.06155,
+      "epss_percentile": 0.06152,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -16504,7 +17823,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00163,
-      "epss_percentile": 0.05444,
+      "epss_percentile": 0.05447,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -20834,7 +22153,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00157,
-      "epss_percentile": 0.04789,
+      "epss_percentile": 0.0479,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21055,7 +22374,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00198,
-      "epss_percentile": 0.09477,
+      "epss_percentile": 0.09479,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21103,7 +22422,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00215,
-      "epss_percentile": 0.11786,
+      "epss_percentile": 0.11793,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21147,7 +22466,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00145,
-      "epss_percentile": 0.03708,
+      "epss_percentile": 0.03713,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21191,7 +22510,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00155,
-      "epss_percentile": 0.04621,
+      "epss_percentile": 0.04623,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21238,7 +22557,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00168,
-      "epss_percentile": 0.05982,
+      "epss_percentile": 0.05967,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21285,7 +22604,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00168,
-      "epss_percentile": 0.05981,
+      "epss_percentile": 0.05967,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21332,7 +22651,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00168,
-      "epss_percentile": 0.05966,
+      "epss_percentile": 0.05981,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21393,6 +22712,636 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 21.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99088",
+      "aliases": [],
+      "title": "net: openvswitch: validate transport header presence in set_ipv6_addr",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: validate transport header presence in set_ipv6_addr\n\nWhen executing IPv6 address rewrite actions on IPv6 fragments,\nset_ipv6_addr() calls update_ipv6_checksum(). If parse_ipv6hdr()\nprocesses a non-first IPv6 fragment, it sets key->ip.proto to\nNEXTHDR_FRAGMENT and returns early without calling\nskb_set_transport_header().\n\nupdate_ipv6_checksum() unconditionally evaluates skb_transport_offset()\non entry before checking l4_proto.  Because skb->transport_header is\nuninitialized, this triggers a warning under CONFIG_DEBUG_NET=y although\nit is completely harmless.\n\nFix this by returning early in update_ipv6_checksum() if l4_proto is\nNEXTHDR_FRAGMENT. This avoids reading the uninitialized transport offset\nfor fragments while preserving the debug warning for any other protocol\nwhere the transport header is unexpectedly missing.\n\nSee the syzbot trace:\n\n!skb_transport_header_was_set(skb)\nWARNING: ./include/linux/skbuff.h:3075 at skb_transport_header include/linux/skbuff.h:3075 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at skb_transport_offset include/linux/skbuff.h:3250 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at update_ipv6_checksum net/openvswitch/actions.c:361 [inline], CPU#1: syz-executor463/5635\nWARNING: ./include/linux/skbuff.h:3075 at set_ipv6_addr+0x462/0x660 net/openvswitch/actions.c:399, CPU#1: syz-executor463/5635\n[...]\nRIP: 0010:skb_transport_header include/linux/skbuff.h:3075 [inline]\nRIP: 0010:skb_transport_offset include/linux/skbuff.h:3250 [inline]\nRIP: 0010:update_ipv6_checksum net/openvswitch/actions.c:361 [inline]\nRIP: 0010:set_ipv6_addr+0x462/0x660 net/openvswitch/actions.c:399\n[...]\nCall Trace:\n <TASK>\n set_ipv6 net/openvswitch/actions.c:531 [inline]\n do_execute_actions+0x557e/0x8600 net/openvswitch/actions.c:1366\n ovs_execute_actions+0xde/0x520 net/openvswitch/actions.c:1592\n ovs_packet_cmd_execute+0xb4f/0xf10 net/openvswitch/datapath.c:705\n genl_family_rcv_msg_doit+0x233/0x340 net/netlink/genetlink.c:1114\n genl_rcv_msg+0x614/0x7a0 net/netlink/genetlink.c:1209\n netlink_rcv_skb+0x226/0x4a0 net/netlink/af_netlink.c:2572\n genl_rcv+0x28/0x40 net/netlink/genetlink.c:1218\n netlink_unicast+0x7bd/0x940 net/netlink/af_netlink.c:1361\n netlink_sendmsg+0x813/0xb40 net/netlink/af_netlink.c:1916\n sock_sendmsg_nosec+0x14e/0x190 net/socket.c:800",
+      "published": "2026-10-26T14:51:58.460Z",
+      "updated": "2026-10-26T15:16:47.517",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/b7b80d204abdc258006f9e17c92b363ab13bb599",
+        "https://git.kernel.org/stable/c/6774af7cd17be8f0d0f70de3a749d381b4f2e9da",
+        "https://git.kernel.org/stable/c/2594795fd832f0253826d64ff8976b8ff5fbfe9f",
+        "https://git.kernel.org/stable/c/6b8897ba0733f88f0360ea48a970f373f9142de0",
+        "https://git.kernel.org/stable/c/3c6a4b11330fe424557538a98fca9f0a4c5bf313"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99089",
+      "aliases": [],
+      "title": "ASoC: samsung: i2s: enable op_clk in probe to balance runtime PM",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: samsung: i2s: enable op_clk in probe to balance runtime PM\n\nThe probe function puts the device into the runtime PM active state with\nonly the \"iis\" bus clock enabled, but it also sets priv->op_clk to the\nparent of the RCLK_SRC mux without enabling it. The runtime PM suspend\ncallback disables both clocks, so the first runtime suspend after probe\ndisables op_clk once more than it was enabled.\n\nOn Exynos5250 Arndale both clocks resolve to the same EXYNOS_I2S_BUS gate,\nso this triggers the following warning during boot:\n\n WARNING: drivers/clk/clk.c:1270 at clk_core_disable+0xe4/0x23c, CPU#0: kworker/u8:3/45\n i2s_bus already disabled\n ...\n Workqueue: pm pm_runtime_work\n Call trace:\n  ...\n  clk_core_disable from clk_disable+0x28/0x34\n  clk_disable from i2s_runtime_suspend+0x58/0x68 [snd_soc_i2s]\n  i2s_runtime_suspend [snd_soc_i2s] from genpd_runtime_suspend+0xc4/0x298\n  genpd_runtime_suspend from __rpm_callback+0x48/0x18c\n  __rpm_callback from rpm_callback+0x4c/0x50\n  rpm_callback from rpm_suspend+0xf4/0x718\n  rpm_suspend from pm_runtime_work+0x9c/0xa0\n  ...\n\nFix this by enabling op_clk in probe right after getting it, so the clock\nstate matches the runtime PM active state, and by disabling it in remove.",
+      "published": "2026-10-26T14:51:59.055Z",
+      "updated": "2026-10-26T15:16:47.673",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2c64c30d493d82d5edc95811cede0083e1195822",
+        "https://git.kernel.org/stable/c/5dac6bf09b5a4fff2433629801309c3884c3e94a",
+        "https://git.kernel.org/stable/c/64bb35079dcbc67901da1fe8c52c234cbcd17df3",
+        "https://git.kernel.org/stable/c/a728c12f8bd89947894e227d0f4f83a895ac9ab7",
+        "https://git.kernel.org/stable/c/7529254014764ae0b8c33d5c61a58f36c65b1a1c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99090",
+      "aliases": [],
+      "title": "drm/amdgpu: serialize vblank counter reads against GPU reset",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: serialize vblank counter reads against GPU reset\n\nThe vblank counter callback reads display registers and scanout\nposition without holding reset_domain->sem. During GPU recovery,\ndisplay commit work can call the callback while reset owns the\nsemaphore for writing. The hardware access then triggers the\nlockdep_assert_held() in amdgpu_device_skip_hw_access() and sets\nTAINT_WARN when lockdep is enabled.\n\nTry to acquire the reset semaphore for reading before accessing the\nhardware, and hold it across the counter and scanout-position reads.\nIf reset is already in progress, return DRM's cached software vblank\ncount instead. This avoids blocking behind reset and avoids accessing\ndisplay hardware while it is being reset.\n\nThe cached count is less accurate than the hardware count, but is\nused only when reset prevents a safe hardware read. This addresses\nthe reset-time warning from this vblank path; it does not suppress or\nfix unrelated lockdep warnings.\n\n(cherry picked from commit 51a4359f7431a4be5e42803c8bdaf7e0e5be2934)",
+      "published": "2026-10-26T14:51:59.654Z",
+      "updated": "2026-10-26T15:16:47.817",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/037796d9ca1da97978deaefd88ca5649f6cb69f5",
+        "https://git.kernel.org/stable/c/11b6193c8841a052b7907006ffb1e02468b1448e",
+        "https://git.kernel.org/stable/c/8d6f773d7479034a574ecc3b585bcd07d46b4824",
+        "https://git.kernel.org/stable/c/f4a0a1ce147d1a6e428d7cb5e3b99fd695139fc7",
+        "https://git.kernel.org/stable/c/1a6023edfbb5673f55fab6348f135fb3b1428ea5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99091",
+      "aliases": [],
+      "title": "Bluetooth: MGMT: Fix status of pending commands flushed on power off",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix status of pending commands flushed on power off\n\ncmd_complete_rsp() receives a struct cmd_lookup and, for a pending\ncommand that has no cmd_complete callback, falls through to\ncmd_status_rsp(cmd, data). cmd_status_rsp() reads data as a u8 *, so\nthe status sent comes from the first byte of match->sk's\nrepresentation, not from match->mgmt_status.\n\ncommit f53e1c9c726d (\"Bluetooth: MGMT: Fix possible crash on\nmgmt_index_removed\") changed the callers' data from &status to &match\nand updated the cmd_complete branch to match->mgmt_status, but left\nthe fall-through passing data unchanged.\n\nIn mgmt_index_removed() match->sk is NULL, so every such command is\nanswered with status 0x00 (Success) instead of\nMGMT_STATUS_INVALID_INDEX. In __mgmt_power_off() it is NULL too,\nunless a Set Powered command was pending: then settings_rsp() has\nstored that command's socket in match->sk, and the byte sent comes\nfrom the socket pointer. Either way the status the caller set,\nMGMT_STATUS_NOT_POWERED (or MGMT_STATUS_INVALID_INDEX when the device\nis being unregistered), is lost.\n\nPass the status the callers set.\n\nThis was seen on a QCA9377 laptop: bluetoothd's Start Discovery,\npending when the adapter was powered off, was answered with Command\nStatus 0x00 and no parameters, and bluetoothd 5.72 crashed on the\nzero-length success. BlueZ master has since added the length check\non that path (\"adapter: Fix crash on short start discovery reply\",\nBlueZ a734b06059cb), but userspace should still be told Not Powered,\nnot Success.\n\nTested on Ubuntu 7.0.0-31 with a virtual controller (hci_vhci):\npower off is held in HCI Write Scan Enable while a Start Discovery is\nsubmitted, and the flush answers it with status 0x00 before this\nchange and 0x0f (Not Powered) after.",
+      "published": "2026-10-26T14:52:00.262Z",
+      "updated": "2026-10-26T15:16:47.960",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/44ce36c5789ac84e65de1e98c32db9a5ac04ed47",
+        "https://git.kernel.org/stable/c/7ed7e038b520cf0dfa12d61c2caddb95e2f6922d",
+        "https://git.kernel.org/stable/c/ec227cddd13cd7ac9077d263a73473ac370a055d",
+        "https://git.kernel.org/stable/c/07976405a3c71253e50533ee7b7a8b0dc16ab6ba",
+        "https://git.kernel.org/stable/c/86ef0f58bdecdedb3a1240971c56d71b7e4ce3fc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99092",
+      "aliases": [],
+      "title": "riscv: patch: fix handling of bpf-jit execmem addresses",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: patch: fix handling of bpf-jit execmem addresses\n\nCommit 8718e5a3090b (\"riscv: patch: skip fixmap mapping when kernel text\nis already writable\") gated the core_kernel_text() branch of patch_map()\non CONFIG_STRICT_KERNEL_RWX, and explicitly left the vmalloc branch\nunchanged. That branch has a separate problem.\n\nThat branch only creates a temporary writable fixmap alias when\nCONFIG_STRICT_MODULE_RWX is enabled, and otherwise assumes the target is\ndirectly writable and returns the address unchanged. That assumption no\nlonger holds: bpf_prog_pack_alloc calls set_memory_rox() on every pack\nunconditionally in alloc_new_pack(), independently of any\nCONFIG_STRICT_*_RWX option, so BPF text in the vmalloc area is read-only\nregardless of what CONFIG_STRICT_MODULE_RWX says.\n\nWith CONFIG_STRICT_MODULE_RWX=n, patch_map() returns the read-only\naddress directly, the subsequent copy_to_kernel_nofault() takes a\npage fault and returns -EFAULT. bpf_arch_text_copy() turns that into\n-EINVAL, which propagates through bpf_jit_binary_pack_finalize() to the\nWARN_ON() in bpf_int_jit_compile() and leaves the program un-JITed.\n\nNote that BPF cannot be fixed the way kprobes was in\ncommit bdc46e507b59 (\"riscv: mm: make EXECMEM_KPROBES writable without\nCONFIG_STRICT_MODULE_RWX\"). EXECMEM_BPF is already PAGE_KERNEL, i.e.\nwritable at allocation time; the read-only mapping is established\nafterwards by generic code in alloc_new_pack(), which arch code cannot\ninfluence. The only place this can be handled is patch_map().\n\nThis is the same problem that was fixed on arm64 by commit b1480ed230ac\n(\"arm64: patching: fix handling of execmem addresses\"), and the fix is\nthe same: CONFIG_EXECMEM is what actually tracks whether the vmalloc\narea can hold executable memory that needs a temporary alias to be\nwritten. CONFIG_BPF_JIT, CONFIG_KPROBES and CONFIG_MODULES all select\nit.\n\nNote that this is not limited to CONFIG_MODULES=n. Unlike arm64, riscv\nselects CONFIG_ARCH_OPTIONAL_KERNEL_RWX, so CONFIG_STRICT_MODULE_RWX can\nbe disabled with CONFIG_MODULES=y as well, and the bug is reachable in\nthat configuration too.\n\nThe !CONFIG_MMU build is unaffected: it has its own __patch_insn_set()\nand __patch_insn_write() implementations and never calls patch_map().",
+      "published": "2026-10-26T14:52:00.860Z",
+      "updated": "2026-10-26T15:16:48.110",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/562a35b9e0b3d9483d9472995219cadb3592db3d",
+        "https://git.kernel.org/stable/c/9e8fc7972b398e9dc2415ece283d8f64edac3858",
+        "https://git.kernel.org/stable/c/f71d6ea3843c8038c431c2699482f246aea37ca0",
+        "https://git.kernel.org/stable/c/a510e1ae8c9030750c2edf7b0bc9b186cd8c7a06"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99093",
+      "aliases": [],
+      "title": "mm: don't schedule deferred kernel page table freeing while booting",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: don't schedule deferred kernel page table freeing while booting\n\nBooting with a boot-time function tracer and a filter, for example\n\n  ftrace=function ftrace_filter=pud_free_pmd_page\n\npanics on 7.3-rc4 as soon as the tracer starts:\n\n  [   23.531178] Starting tracer 'function'\n  [   23.675800] Oops: general protection fault, probably for non-canonical address 0xdffffc0000000038: 0000 [#1] SMP KASAN NOPTI\n  [   23.819917] KASAN: null-ptr-deref in range [0x00000000000001c0-0x00000000000001c7]\n  [   23.964025] CPU: 0 UID: 0 PID: 0 Comm: swapper Not tainted 7.3.0-rc4-fe2ec83746e5-with-fixes-v2+ #195 PREEMPT(undef)\n  [   24.252248] RIP: 0010:__queue_work+0xab/0xf00\n  [   25.981629] Call Trace:\n  [   26.125727]  <TASK>\n  [   26.413912]  ? pagetable_free_kernel+0x20/0x120\n  [   26.990283]  queue_work_on+0x97/0xf0\n  [   27.134382]  __cpa_collapse_large_pages+0x501/0x6f0\n  [   27.566662]  cpa_flush+0x394/0x620\n  [   27.998953]  change_page_attr_set_clr+0x321/0x4a0\n  [   29.151729]  set_memory_rox+0xa2/0xf0\n  [   29.584018]  create_trampoline+0x431/0x6f0\n  ...\n  [   44.343347] Kernel panic - not syncing: Attempted to kill the idle task!\n\nThe boot-time tracer is started from early_trace_init(), which runs\nbefore workqueue_init_early().  Making its trampoline read-only splits a\nlarge page, and CPA collapses it again right away.  The split table has\nbeen a kernel page table since commit 9e4a3ec3411b\n(\"x86/mm/pat: Allocate split page tables as kernel page tables\"), so the\ncollapse frees it through pagetable_free_kernel(), which queues work on\nsystem_percpu_wq - still NULL at that point.  That commit is correct in\nitself; it only lets CPA reach pagetable_free_kernel() before the\nworkqueue that function relies on exists.\n\nKeep putting the table on the list, but don't schedule the work while\nthe system is still booting.  A core_initcall schedules it once to free\nwhatever was queued by then.",
+      "published": "2026-10-26T14:52:01.450Z",
+      "updated": "2026-10-26T15:16:48.253",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/7a25ca170c12a9328f6fcf4410713beb516b01c0",
+        "https://git.kernel.org/stable/c/df6c704a08bc0925d5db047b0a6221f962bda4d9",
+        "https://git.kernel.org/stable/c/2fb552b0bee70c24c092720028ab4620f5eb2646"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99094",
+      "aliases": [],
+      "title": "Bluetooth: btintel_pcie: fix TX descriptor bounds check",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel_pcie: fix TX descriptor bounds check\n\nbtintel_pcie_prepare_tx() uses tfd_index to access the TFD and data\nbuffer arrays before the index is advanced modulo txq->count. An index\nequal to txq->count is one past the end of both arrays, so reject it in\nthe bounds check.",
+      "published": "2026-10-26T14:52:02.053Z",
+      "updated": "2026-10-26T15:16:48.380",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/08704ec6d4bf69725e7815b09a9b5c7af83e255b",
+        "https://git.kernel.org/stable/c/39ab048cce70d50af48015f5f294c4cf80d6ba89",
+        "https://git.kernel.org/stable/c/2669567615215d52fb306053cbcc1f53dc386158",
+        "https://git.kernel.org/stable/c/baa53af641c9e3644e717b8dfd1b95a55a0c111b"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99095",
+      "aliases": [],
+      "title": "drm/vc4: drain the hangcheck timer and works on V3D unbind",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: drain the hangcheck timer and works on V3D unbind\n\nNothing stops the hangcheck timer that submitted jobs arm, or the\njob_done_work that the render-done interrupt queues, at teardown:\nvc4_irq_disable() cancels only overflow_mem_work, and vc4_gem_destroy()\nruns from the drm-managed release, after vc4_v3d_unbind() has already\nuninstalled the V3D interrupt and cleared vc4->v3d. A timer still armed\nby then reads V3D registers through the NULL vc4->v3d pointer, and the\nlate callbacks run on the vc4_dev embedding them after it has been\nfreed.\n\nDrain them in vc4_v3d_unbind(): shut the timer down and cancel\nreset_work before the interrupt is taken down, because its\nvc4_irq_reset() re-enables it, then flush job_done_work so that\ncompletions queued at teardown still release their jobs.\n\nThis issue was found by an in-house static analysis tool.",
+      "published": "2026-10-26T14:52:02.647Z",
+      "updated": "2026-10-26T15:16:48.500",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/17c5fa371de2d5508755cd4cd227cc8e2bb99240",
+        "https://git.kernel.org/stable/c/a046cd60ff3f4a8c8e672b3b18902682c1f91731",
+        "https://git.kernel.org/stable/c/e61465d3e0292daebf4dbb34e0add635e2439569",
+        "https://git.kernel.org/stable/c/ade226dfd28cf2fd1dce143c556d1ee77d953696",
+        "https://git.kernel.org/stable/c/94cf5971b1d04c6382437387c4dc3836cc7a1437"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99096",
+      "aliases": [],
+      "title": "io_uring/register: don't exempt disabled rings from task restrictions",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/register: don't exempt disabled rings from task restrictions\n\nA ring created with IORING_SETUP_R_DISABLED is exempt from its register\nrestrictions until it is enabled. This lets the creator register the\nrestrictions and then enable the ring with IORING_REGISTER_ENABLE_RINGS,\nwhether or not that opcode is in the allowed set.\n\nSince commit ed82f35b926b (\"io_uring: allow registration of per-task\nrestrictions\"), a ring also inherits restrictions from the task that\ncreates it, and the same exemption applies to those. A task whose\nregister opcodes are restricted can therefore create a disabled ring,\nissue any register opcode on it, and then enable it.\n\nMark rings whose restrictions were inherited from the task, and keep\nchecking register opcodes for them while the ring is disabled. Enabling\nsuch a ring now requires IORING_REGISTER_ENABLE_RINGS to be in the\ntask's allowed set. Per-ring restrictions registered on a disabled ring\nwork as before.\n\n[axboe: amend with inheritance flag fixup]",
+      "published": "2026-10-26T14:52:03.236Z",
+      "updated": "2026-10-26T15:16:48.633",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/f55c240192ded562386de843bfa067671d2731d5",
+        "https://git.kernel.org/stable/c/6da8f402e362b2f546e2efb7167fc9597aef6faf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99097",
+      "aliases": [],
+      "title": "tee: shm: reject zero-sized allocations in tee_dyn_shm_alloc_helper()",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: shm: reject zero-sized allocations in tee_dyn_shm_alloc_helper()\n\ntee_dyn_shm_alloc_helper() derives nr_pages from a caller-supplied size\nand passes it to alloc_pages_exact() without checking it. For size == 0\nnr_pages is 0, and alloc_pages_exact(0) calls get_order(0), which is\ndocumented as undefined and returns BITS_PER_LONG - PAGE_SHIFT. The page\nallocator then trips its order > MAX_PAGE_ORDER warning and fails the\nallocation; on a panic_on_warn kernel that ends the boot.\n\nThis can be triggered by TEE_IOC_SHM_ALLOC with struct\ntee_ioctl_shm_alloc_data where size is 0.\n\nReject a zero page count, as register_shm_helper() already does for the\nregister path.",
+      "published": "2026-10-26T14:52:03.824Z",
+      "updated": "2026-10-26T15:16:48.750",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/e5dc7af9c3a5373ee7a84959126e7dfa9e4ad50d",
+        "https://git.kernel.org/stable/c/65cb86860a80ffc6af897d53f5bd4b1733bca0ec",
+        "https://git.kernel.org/stable/c/c2a97703359e25ec7ef8b2b0ef32fb3982add90a",
+        "https://git.kernel.org/stable/c/b7f925fd5226deb953c8dcdc9677d3fcc2717c00"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99098",
+      "aliases": [],
+      "title": "dm-integrity: fix buffer overflow in inline mode with large tag size",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix buffer overflow in inline mode with large tag size\n\nIn inline mode, dm_integrity_check and dm_integrity_inline_recheck\ncompute the checksum of each block into an on-stack buffer of\nHASH_MAX_DIGESTSIZE bytes. integrity_sector_checksum pads its result\nwith zeroes up to the tag size, so if the tag size is larger than\nHASH_MAX_DIGESTSIZE, the padding runs past the end of the buffer. With\nCONFIG_STACKPROTECTOR the kernel panics in dm_integrity_check on the\nfirst read.\n\nEnlarge both buffers to hold MAX_TAG_SIZE bytes, as commit b93b6643e9b5\n(\"dm integrity: fix a crash with unusually large tag size\") did for\nintegrity_metadata.\n\nNote that this is not a security bug because the buffer overflow can only\nbe triggered by root.",
+      "published": "2026-10-26T14:52:04.416Z",
+      "updated": "2026-10-26T15:16:48.870",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3c7aad85aeb9e28386672e3a009aa2e61f751b86",
+        "https://git.kernel.org/stable/c/4f0ee735dc68e3e6c4dd9a666d7f7047163c4165",
+        "https://git.kernel.org/stable/c/f49cd7820cd0a96f20e1aa2708adb002124e38a7",
+        "https://git.kernel.org/stable/c/764b683a6180fd72c931c13fea98d383506a3475"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99099",
+      "aliases": [],
+      "title": "x86/CPU/AMD: Fix AMD TLBI Erratum #1718",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Fix AMD TLBI Erratum #1718\n\nThe processor may fail to invalidate a TLB entry while executing an\nINVLPGB/TLBSYNC instruction pair.\n\nDetect the erratum and apply a software workaround when a microcode fix\nis not present.",
+      "published": "2026-10-26T14:52:04.997Z",
+      "updated": "2026-10-26T15:16:48.990",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/e3e6779f77ab6f0a1aa80e24868d2d89f31053fe",
+        "https://git.kernel.org/stable/c/098d80b04d0fe02889c332d061db968f070b83a6",
+        "https://git.kernel.org/stable/c/87db7795cbaaf636ae22ae031f4906db7bb77803"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-77564",
+      "aliases": [
+        "GHSA-7cxh-94cf-mfp6"
+      ],
+      "title": "Talos Linux: Support bundle does not redact registry credentials",
+      "description": "### Summary\nWhen generating a support bundle with `talosctl support` the credentials entered for private registries are included in the bundle.\n\n\n### Details\n\nWithin the generated support bundle, inside `resources/registryconfigs.cri.talos.dev.yaml` the `auth` field of the spec is retained.\nThe same, potentially sensitive information is present within `etcfilespecs.files.talos.dev.yaml`.\n\n### PoC\n\nSimply run `talosctl -n [...] support` on a cluster with a `RegistryAuthConfig` resource \n\n### Impact\n\nThe problem itself is minor, however, anyone who has ever uploaded a support.zip bundle on a github issue, slack thread or public forum could have potentially leaked their internal authentication parameters for a private registry.\n\nIn most situations, if the network and credentials are set correctly, this should not be a problem. On the other hand, if the affected registry is publicly accessible, and the provided credentials have write access to it, this could lead to possibly serious consequences, from denial of service, to data loss and possibly existing tag hijacking leading to supply chain compromise, for the affected parties which were under the impression that the support bundle is redacted of sensitive information and thus can be shared publicly.\n\n\n### Notes\n\nTalos 1.14+ by default encrypts the support bundle to the age recipients specified (defaulting to siderolabs GitHub org members), so the impact is even lower.\n\n### Environment\n\n- Talos version: v1.13.0\n- Kubernetes version: 1.35.3\n- Platform: amd64",
+      "published": "2026-10-15T20:20:16Z",
+      "updated": "2026-10-26T14:41:05Z",
+      "cvss": 3.3,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [
+        "go:github.com/siderolabs/talos"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7cxh-94cf-mfp6",
+        "https://github.com/siderolabs/talos/security/advisories/GHSA-7cxh-94cf-mfp6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-77564",
+        "https://github.com/siderolabs/talos/pull/13345",
+        "https://github.com/siderolabs/talos/pull/13434",
+        "https://github.com/siderolabs/talos/pull/13611"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00131,
+      "epss_percentile": 0.02669,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 20.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 6.6,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -21463,8 +23412,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00123,
+      "epss_percentile": 0.02076,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21481,7 +23430,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 4.0
+        "cvss": 4.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -21507,8 +23457,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00103,
+      "epss_percentile": 0.0098,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21525,7 +23475,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 4.0
+        "cvss": 4.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -21551,8 +23502,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00112,
+      "epss_percentile": 0.01339,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -21569,7 +23520,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 3.6
+        "cvss": 3.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
