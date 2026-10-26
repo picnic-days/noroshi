@@ -52,11 +52,16 @@ def format_message(vulns: list) -> str:
 
 
 def build_messages(vulns: list) -> list:
-    """一覧の吹き出しに続けて、AI 分析がある案件ごとに吹き出しを 1 つずつ足す。"""
+    """一覧の吹き出しに続けて、AI 分析ごとに吹き出しを 1 つずつ足す。同じ分析を共有する案件は 1 つにまとめる。"""
     texts = [format_message(vulns)]
+    by_analysis = {}
     for v in vulns:
-        if v.ai_analysis and len(texts) < MAX_BUBBLES:
-            texts.append(f"🤖 {v.id}\n\n{v.ai_analysis}"[:MAX_CHARS])
+        if v.ai_analysis:
+            by_analysis.setdefault(v.ai_analysis, []).append(v.id)
+    for analysis, ids in by_analysis.items():
+        if len(texts) >= MAX_BUBBLES:
+            break
+        texts.append(f"🤖 {' / '.join(ids)}\n\n{analysis}"[:MAX_CHARS])
     return texts
 
 

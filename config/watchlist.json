@@ -69,6 +69,24 @@
     {"id": "ollama", "name": "Ollama", "tier": 2, "cpe": ["ollama:ollama"], "packages": ["go:github.com/ollama/ollama"], "kev": ["ollama"], "keywords": ["Ollama"]},
     {"id": "llamaindex", "name": "LlamaIndex", "tier": 3, "packages": ["pip:llama-index", "pip:llama-index-core"], "kev": ["llama_index", "llamaindex"], "keywords": ["LlamaIndex"]},
     {"id": "vllm", "name": "vLLM", "tier": 3, "cpe": ["vllm:vllm"], "packages": ["pip:vllm"], "kev": ["vllm"], "keywords": ["vLLM"]},
-    {"id": "transformers", "name": "Hugging Face Transformers", "tier": 3, "packages": ["pip:transformers"], "kev": ["huggingface/transformers"], "keywords": ["Hugging Face Transformers"]}
+    {"id": "transformers", "name": "Hugging Face Transformers", "tier": 3, "packages": ["pip:transformers"], "kev": ["huggingface/transformers"], "keywords": ["Hugging Face Transformers"]},
+
+    {"id":  "brotli", "name":  "Brotli", "tier":  2, "cpe":  ["google:brotli"], "packages":  ["pip:brotli"], "kev":  ["brotli"], "keywords":  ["Brotli"]},
+    {"id":  "libxml2", "name":  "libxml2", "tier":  2, "cpe":  ["xmlsoft:libxml2"], "kev":  ["libxml2"], "keywords":  ["libxml2"]},
+    {"id":  "expat", "name":  "Expat (libexpat)", "tier":  2, "cpe":  ["libexpat_project:libexpat"], "kev":  ["libexpat"], "keywords":  ["libexpat", "Expat (?:before|versions?|[0-9])"]},
+    {"id":  "sqlite", "name":  "SQLite", "tier":  2, "cpe":  ["sqlite:sqlite"], "kev":  ["SQLite SQLite"], "keywords":  ["SQLite (?:before|versions?|[0-9])"]},
+    {"id":  "libpng", "name":  "libpng", "tier":  2, "cpe":  ["libpng:libpng"], "kev":  ["libpng"], "keywords":  ["libpng"]},
+    {"id":  "libjpeg-turbo", "name":  "libjpeg-turbo", "tier":  2, "cpe":  ["libjpeg-turbo:libjpeg-turbo"], "kev":  ["libjpeg-turbo"], "keywords":  ["libjpeg-turbo"]},
+    {"id":  "freetype", "name":  "FreeType", "tier":  2, "cpe":  ["freetype:freetype"], "kev":  ["FreeType"], "keywords":  ["FreeType"]},
+    {"id":  "zstd", "name":  "Zstandard (zstd)", "tier":  2, "cpe":  ["facebook:zstandard"], "kev":  ["zstd", "Zstandard"], "keywords":  ["zstd", "Zstandard"]},
+    {"id":  "nghttp2", "name":  "nghttp2", "tier":  2, "cpe":  ["nghttp2:nghttp2"], "kev":  ["nghttp2"], "keywords":  ["nghttp2"]},
+    {"id":  "c-ares", "name":  "c-ares", "tier":  2, "cpe":  ["c-ares:c-ares", "c-ares_project:c-ares"], "kev":  ["c-ares"], "keywords":  ["c-ares"]},
+    {"id":  "undici", "name":  "undici", "tier":  2, "packages":  ["npm:undici"], "kev":  ["undici"], "keywords":  ["undici"]},
+    {"id":  "libssh", "name":  "libssh / libssh2", "tier":  2, "cpe":  ["libssh:libssh", "libssh2:libssh2"], "kev":  ["libssh"], "keywords":  ["libssh2?"]},
+    {"id":  "gnutls", "name":  "GnuTLS", "tier":  2, "cpe":  ["gnu:gnutls"], "kev":  ["GnuTLS"], "keywords":  ["GnuTLS"]},
+    {"id":  "icu", "name":  "ICU", "tier":  2, "cpe":  ["icu-project:international_components_for_unicode", "unicode:international_components_for_unicode"], "kev":  ["International Components for Unicode"], "keywords":  ["International Components for Unicode", "ICU4C"]},
+    {"id":  "protobuf", "name":  "Protocol Buffers", "tier":  2, "cpe":  ["google:protobuf"], "packages":  ["pip:protobuf", "maven:com.google.protobuf:protobuf-java", "go:google.golang.org/protobuf"], "kev":  ["protobuf"], "keywords":  ["Protocol Buffers", "protobuf"]},
+    {"id":  "libarchive", "name":  "libarchive", "tier":  2, "cpe":  ["libarchive:libarchive"], "kev":  ["libarchive"], "keywords":  ["libarchive"]},
+    {"id":  "ffmpeg", "name":  "FFmpeg", "tier":  2, "cpe":  ["ffmpeg:ffmpeg"], "kev":  ["FFmpeg"], "keywords":  ["FFmpeg (?:before|versions?|n?[0-9])"]}
   ]
 }
