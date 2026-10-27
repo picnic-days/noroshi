@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T16:01:42.628652+00:00",
+  "generated_at": "2026-10-27T20:42:26.685313+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -174,6 +174,106 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】Google製の圧縮ライブラリBrotliに境界外書き込みの脆弱性（CVE-2026-111497、通称Node2Shell/HTTP2Shell）。細工したデータを展開するとクラッシュ・情報漏えい・任意コード実行の恐れ。検証コードは公開済み。10/26時点で実際の悪用報告なし\n【原因の部品】Brotli（Google、C言語実装）。Node.js、Bun、Python、.NET、Java、Envoy/Istio、curl、Linuxのlibbrotliが組み込んでいる\n【影響範囲】Brotli 1.0.3〜1.2.0、Node.js 22/24/26系、組み込み製品の未修正版\n【対応策】\n1. 更新：Brotli 1.2.1/1.1.1/1.0.10、Node.js 22.23.4/24.22.1/26.12.1。Aikidoの調べではBun 1.4.4、brotlicffi 1.2.1.0、.NET 8.0.33/9.0.22/10.0.14。Ubuntu・SUSE・RHEL標準リポジトリは未修正。更新後は再ビルド・再起動し、侵入されていないかも調査\n2. 回避策：Content-Encodingにbrを含む要求をプロキシで拒否。クライアント側はbr応答の展開を無効化（Accept-Encodingの変更だけでは不十分）\n【各告知の関係】\nGoogle：元の部品の修正\nNode.js：組み込み製品の更新\nGitHub/NVD：CVE登録\nJPCERT/CC：国内の注意喚起\n【出典】\nhttps://www.jpcert.or.jp/at/2026/at260034.html\nhttps://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497"
+    },
+    {
+      "id": "AI-anthropic-discovering-vulnerabilities-with-claude",
+      "aliases": [],
+      "title": "Anthropic: discovering vulnerabilities with claude",
+      "description": "Anthropic のセキュリティ関連の発表",
+      "published": "2026-10-27T20:42:26.685313+00:00",
+      "updated": "2026-10-27T20:42:26.685313+00:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ai:anthropic"
+      ],
+      "category": "ai-news",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "ai-news",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": "【状況】AnthropicがCVD（協調的な脆弱性開示）の手順で報告した脆弱性について、詳細を公開しました（2026/10/27）。未公開の社内モデルで主要ソフトの重大な脆弱性を見つけ、5つの攻撃チェーンを実証したものです。各社とも修正済みと説明しています。実際の悪用は未確認です。\nClaude自体の脆弱性ではないため、Claude利用者側の対応は不要です。\n\n【原因の部品】\n・Chrome（V8、FedCMなど）\n・Safari（WebKit/JavaScriptCore）\n・Android（ロック画面とGoogle Play開発者サービス）\n・Windows HTTP.sys（HTTP/3・QUIC）\n・Linuxカーネルのネットワーク部分\n\n【影響範囲】\n・Chrome：156より前（CVE 62件）\n・iOS/iPadOS：26.5.2より前。macOS版Safariは未確認\n・Windows：CVE-2026-33096（2026年4月の更新で修正）\n・Linux：CVE-2026-98432（CVSS 9.8）。認証なしで遠隔からroot権限で任意のコマンドを実行できる。修正は保守中の全stable版に反映済み。ディストリ別の修正版は未確認\n・Android：修正版は未確認\n\n【対応策】\n1. 次を最優先で適用してください。\n ・Chrome 156.0.8078.47以降（Windows/Macは.47/.48）\n ・iOS/iPadOS 26.5.2以降\n ・Windowsの2026年4月以降の累積更新\n ・Linuxはディストリのカーネル更新を入れて再起動\n Chromiumベースのブラウザ（Edgeなど）の対応版は未確認です。\n2. すぐ更新できない場合\n ・WindowsのHTTP/3を無効にするか、外部からの到達を制限する\n ・Linuxは、不要なMPTCPリスナー（マルチパスTCPの待受け）を止める\n\n【各告知の関係】\n・Anthropic：発見者として詳細を公開\n・Google：Chrome 156で修正、Androidも修正済み\n・Apple：iOS 26.5.2で修正\n・Microsoft：CVE-2026-33096で修正\n・Linuxカーネル：上流で修正\n\n【出典】\nhttps://www.anthropic.com/research/discovering-vulnerabilities-with-claude\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html\nhttps://support.apple.com/en-us/127594"
+    },
+    {
+      "id": "CVE-2026-111497",
+      "aliases": [],
+      "title": "Google Brotli Unchecked Return Value Vulnerability",
+      "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
+      "published": "2026-10-22T14:17:37.190",
+      "updated": "2026-10-27T20:17:12.527",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Brotli"
+      ],
+      "references": [
+        "https://github.com/andybalholm/brotli/releases/tag/v1.2.7",
+        "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high",
+        "http://www.openwall.com/lists/oss-security/2026/10/23/25",
+        "http://www.openwall.com/lists/oss-security/2026/10/24/6",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/12",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/13",
+        "http://www.openwall.com/lists/oss-security/2026/10/26/16",
+        "https://broccoli2shell.com",
+        "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
+        "https://github.com/dotnet/announcements/issues/494",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111497"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.55483,
+      "epss_percentile": 0.9903,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "brotli"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 76.7,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
+        "epss": 8.3
+      },
+      "ai_analysis": "【状況】Google Brotli の C デコーダに範囲外書き込み（CVSS 9.2）。細工データの展開でクラッシュ・メモリ漏えい・RCE の恐れ。CISA KEV に登録済（10/27、悪用あり）\n【原因の部品】Google Brotli（c/dec/decode.c）。組み込み先：Node.js（独自同梱）、Python Brotli、.NET、OS の libbrotli など\n【影響範囲】\n・Brotli 1.0.3〜1.2.0\n・Node.js 22/24/26 系の修正前版と、サポート終了の 20/23/25 系（修正なし）\n・fetch/requests が br 応答を自動で展開するため、HTTP 通信経由でも影響\n【対応策】\n1. Node.js を 22.23.4/24.22.1/26.12.1、Brotli を 1.0.10/1.1.1/1.2.1 に更新。OS の libbrotli はディストリの更新を適用。Python Brotli 1.2.1・brotlicffi 1.2.1.0・.NET 8.0.33/9.0.22/10.0.14 は第三者まとめの記載のみ（一次情報は未確認）。更新後はプロセス再起動、コンテナはイメージ再作成\n2. 信頼できない br データを展開しない（Accept-Encoding から br を外すなど）。公式の回避策は未確認\n【各告知の関係】\n・Google：元の部品の修正（告知本文は未確認）\n・Node.js／.NET：組み込み製品の更新（.NET は本文未確認）\n・andybalholm/brotli：Go 移植版の同種修正（影響はクラッシュのみ）\n・GHSA/NVD：CVE 登録、CISA KEV：注意喚起\n【出典】\nhttps://nodejs.org/en/blog/vulnerability/october-2026-security-releases\nhttps://broccoli2shell.com"
     },
     {
       "id": "CVE-2026-113078",
@@ -2177,6 +2277,66 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105008",
+      "aliases": [],
+      "title": "",
+      "description": "No cwe for this issue in Windows Schannel allows an unauthorized attacker to perform spoofing over a network.",
+      "published": "2026-10-13T19:17:57.093",
+      "updated": "2026-10-27T18:42:56.013",
+      "cvss": 9.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105008"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00679,
+      "epss_percentile": 0.52147,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113209",
       "aliases": [],
       "title": "",
@@ -2776,6 +2936,183 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103575",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Remote Desktop Client allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:17:53.413",
+      "updated": "2026-10-27T17:35:36.137",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103575"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00869,
+      "epss_percentile": 0.58577,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105007",
+      "aliases": [],
+      "title": "",
+      "description": "An elevation of privilege vulnerability exists in the Network Driver Interface Specification (NDIS) when ndis.sys fails to check the length of a buffer prior to copying memory to it.\nTo exploit the vulnerability, in a local attack scenario, an attacker could run a specially crafted application to elevate the attacker's privilege level. An attacker who successfully exploited this vulnerability could run processes in an elevated context. However, an attacker must first gain access to the local system with the ability to execute a malicious application in order to exploit this vulnerability.\nThe security update addresses the vulnerability by changing how ndis.sys validates buffer length.",
+      "published": "2026-10-13T19:17:56.893",
+      "updated": "2026-10-27T18:45:27.333",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105007"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00869,
+      "epss_percentile": 0.58577,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83797",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Partition Management Driver allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:20:29.803",
+      "updated": "2026-10-27T20:19:03.410",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83797"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00869,
+      "epss_percentile": 0.58578,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91766",
       "aliases": [],
       "title": "",
@@ -3135,61 +3472,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111497",
-      "aliases": [],
-      "title": "",
-      "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
-      "published": "2026-10-22T14:17:37.190",
-      "updated": "2026-10-27T15:16:31.287",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/andybalholm/brotli/releases/tag/v1.2.7",
-        "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high",
-        "http://www.openwall.com/lists/oss-security/2026/10/23/25",
-        "http://www.openwall.com/lists/oss-security/2026/10/24/6",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/12",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/13",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/16",
-        "https://broccoli2shell.com",
-        "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
-        "https://github.com/dotnet/announcements/issues/494"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.55483,
-      "epss_percentile": 0.9903,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-26T15:33:11.752934+00:00",
-      "matched": [
-        "brotli"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 50.7,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 8.3
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-103569",
       "aliases": [],
       "title": "",
@@ -3343,6 +3625,66 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83795",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows IKE Extension allows an unauthorized attacker to deny service over a network.",
+      "published": "2026-10-13T19:20:29.477",
+      "updated": "2026-10-27T20:22:19.763",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83795"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01301,
+      "epss_percentile": 0.70312,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "windows"
       ],
@@ -3643,6 +3985,59 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103577",
+      "aliases": [],
+      "title": "",
+      "description": "Insecure default variable initialization in Microsoft QUIC allows an unauthorized attacker to bypass a security feature over a network.",
+      "published": "2026-10-13T19:17:53.723",
+      "updated": "2026-10-27T17:26:13.760",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103577"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00587,
+      "epss_percentile": 0.47863,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "windows"
       ],
@@ -3978,6 +4373,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103576",
+      "aliases": [],
+      "title": "",
+      "description": "Url redirection to untrusted site ('open redirect') in Active Directory Federation Services (AD FS) allows an unauthorized attacker to perform spoofing over a network.",
+      "published": "2026-10-13T19:17:53.587",
+      "updated": "2026-10-27T17:31:30.437",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103576"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00875,
+      "epss_percentile": 0.5877,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113157",
       "aliases": [],
       "title": "",
@@ -4070,6 +4517,60 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116686",
+      "aliases": [],
+      "title": "Model Context Protocol Python SDK: Client fetched server-chosen $ref URLs while validating tool results against output schemas",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, ClientSession, ClientSessionGroup, and Client tool calls validate server-declared outputSchema documents with jsonschema's default resolver, causing an unresolved $ref value to fetch an HTTP, HTTPS, or file URL from the client's network and filesystem context. A server can trigger blind requests or local-file reads and can stall every session in the process because resolution runs synchronously on the event loop without a timeout. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T19:29:16.001Z",
+      "updated": "2026-10-27T20:17:13.740",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol python-sdk"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-rwrf-2pqf-9j8j",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3394",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3396",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/5ebdfed4060d8e5b11b8e2348f86bad4d1fb8836",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/6705402e246dc4eb1fcdf4d9902b78d3c9c36e1b",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "python",
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -4291,6 +4792,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116694",
+      "aliases": [],
+      "title": "OpenTelemetry Python: Unbounded memory allocation in Jaeger baggage propagation",
+      "description": "OpenTelemetry Python provides the Python API and SDK for OpenTelemetry. Prior to 1.45.0, JaegerPropagator.extract() in opentelemetry-propagator-jaeger processes inbound uberctx-* baggage values without entry, per-entry byte, or total-byte limits. Services that enable the optional Jaeger propagator can perform unnecessary CPU work and short-lived heap allocations when an untrusted carrier supplies numerous or oversized values, contributing to denial of service when transport-level limits do not constrain the input. Common default Python HTTP server limits reduce the practical impact, while custom getters, non-HTTP transports, or raised header limits increase exposure. This issue is fixed in version 1.45.0.",
+      "published": "2026-10-27T20:09:06.484Z",
+      "updated": "2026-10-27T20:09:06.484Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "open-telemetry opentelemetry-python"
+      ],
+      "references": [
+        "https://github.com/open-telemetry/opentelemetry-python/security/advisories/GHSA-f5m9-jfrj-jjj7",
+        "https://github.com/open-telemetry/opentelemetry-python/pull/5556",
+        "https://github.com/open-telemetry/opentelemetry-python/commit/65c4eeb87cd3815dc795d3b5485e9ea0d5affcc7",
+        "https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.45.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69982",
       "aliases": [],
       "title": "",
@@ -4344,6 +4894,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116685",
+      "aliases": [],
+      "title": "Model Context Protocol Python SDK: HTTP client transports followed cross-origin redirects carrying custom headers and bodies",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.8.0 until 1.30.0 and 2.2.0, streamable_http_client, streamablehttp_client, sse_client, ClientSessionGroup, OAuth, and create_mcp_http_client client paths enable follow_redirects and follow redirects to a different origin, forwarding caller-supplied custom credential headers and, for 307 or 308 responses, the request body. An attacker who can influence a trusted endpoint's redirect destination can receive that material. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T19:26:46.926Z",
+      "updated": "2026-10-27T20:17:13.493",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol python-sdk"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-5h93-6whr-6q8j",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3397",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3448",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/2106335745563b2321b8c73fef2c12903d00aa6e",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/c6762e821c527925f0b617db216d00fbd1d0bf99",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "python",
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69363",
       "aliases": [],
       "title": "",
@@ -4387,6 +4991,64 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83838",
+      "aliases": [],
+      "title": "",
+      "description": "Integer underflow (wrap or wraparound) in Windows Bluetooth A2DP driver allows an authorized attacker to elevate privileges over an adjacent network.",
+      "published": "2026-10-13T19:20:31.923",
+      "updated": "2026-10-27T20:06:13.937",
+      "cvss": 8.0,
+      "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83838"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00554,
+      "epss_percentile": 0.46062,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "windows"
       ],
@@ -5879,6 +6541,683 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105003",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in HID class driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:56.157",
+      "updated": "2026-10-27T17:19:31.520",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105003"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00348,
+      "epss_percentile": 0.28193,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83796",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:29.667",
+      "updated": "2026-10-27T20:19:33.030",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83796"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29772,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83826",
+      "aliases": [],
+      "title": "",
+      "description": "Untrusted pointer dereference in Windows Error Reporting allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.130",
+      "updated": "2026-10-27T20:16:39.620",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83826"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29777,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83828",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows MIDI Service Module allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.423",
+      "updated": "2026-10-27T20:15:02.113",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83828"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29776,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83829",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.547",
+      "updated": "2026-10-27T20:14:30.787",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83829"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29776,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83830",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows COM+ Event System Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.720",
+      "updated": "2026-10-27T20:13:35.080",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83830"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0042,
+      "epss_percentile": 0.36102,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83832",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Spaceport.sys allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.900",
+      "updated": "2026-10-27T20:12:44.630",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83832"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29779,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83833",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:31.043",
+      "updated": "2026-10-27T20:11:47.787",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83833"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29774,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83836",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Event Tracing allows an unauthorized attacker to execute code locally.",
+      "published": "2026-10-13T19:20:31.580",
+      "updated": "2026-10-27T20:08:21.920",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83836"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00505,
+      "epss_percentile": 0.42953,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83840",
+      "aliases": [],
+      "title": "",
+      "description": "Weak authentication in Windows Error Reporting allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:32.243",
+      "updated": "2026-10-27T19:47:30.690",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83840"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00442,
+      "epss_percentile": 0.38209,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87694",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:21.980",
+      "updated": "2026-10-27T17:02:40.627",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87694"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29773,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87699",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Winlogon allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:22.693",
+      "updated": "2026-10-27T16:55:58.843",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87699"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29771,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98093",
       "aliases": [],
       "title": "",
@@ -6456,6 +7795,108 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83837",
+      "aliases": [],
+      "title": "",
+      "description": "Improper access control in Windows Kernel-Mode Drivers allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:31.763",
+      "updated": "2026-10-27T20:07:20.043",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83837"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00323,
+      "epss_percentile": 0.25117,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87695",
+      "aliases": [],
+      "title": "",
+      "description": "Inclusion of functionality from untrusted control sphere in Microsoft Exchange Server allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:22.153",
+      "updated": "2026-10-27T17:02:06.013",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:exchange_server",
+        "microsoft:exchange_server_subscription_edition"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87695"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00299,
+      "epss_percentile": 0.22421,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "exchange"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69789",
       "aliases": [],
       "title": "",
@@ -6501,6 +7942,53 @@
       "first_seen": "2026-10-27T16:01:42.628652+00:00",
       "matched": [
         "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87696",
+      "aliases": [],
+      "title": "",
+      "description": "Improper verification of cryptographic signature in Microsoft Exchange Server allows an authorized attacker to elevate privileges over a network.",
+      "published": "2026-10-13T19:21:22.273",
+      "updated": "2026-10-27T17:01:25.990",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:exchange_server",
+        "microsoft:exchange_server_subscription_edition"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87696"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00429,
+      "epss_percentile": 0.36971,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "exchange"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -8102,6 +9590,293 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103555",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Virtual Hard Disk (VHD) Miniport Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:17:52.037",
+      "updated": "2026-10-27T17:36:55.900",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103555"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.21003,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83827",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Bluetooth Port Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:30.260",
+      "updated": "2026-10-27T20:16:01.273",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83827"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.20999,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83834",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Kernel-Mode Drivers allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:31.227",
+      "updated": "2026-10-27T20:10:45.653",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83834"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00298,
+      "epss_percentile": 0.22356,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83839",
+      "aliases": [],
+      "title": "",
+      "description": "Time-of-check time-of-use (toctou) race condition in Windows Hyper-V allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:32.090",
+      "updated": "2026-10-27T19:48:57.727",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83839"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00219,
+      "epss_percentile": 0.12358,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83841",
+      "aliases": [],
+      "title": "",
+      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Win32K allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:32.407",
+      "updated": "2026-10-27T19:44:01.073",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83841"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00219,
+      "epss_percentile": 0.12357,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -8506,6 +10281,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116684",
+      "aliases": [],
+      "title": "Model Context Protocol Python SDK: Server bearer-token authentication accepts tokens issued for a different resource server",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, server-side bearer authentication configured through AuthSettings with token_verifier accepts a valid token issued for another service when the authorization server serves multiple resources and the TokenVerifier does not independently validate the aud audience. This resource-confusion flaw lets a token holder authenticate to the wrong MCP server and exercise that token's resulting access. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T19:12:24.255Z",
+      "updated": "2026-10-27T20:17:13.307",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol python-sdk"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-w4fh-qvv9-3v23",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3447",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3451",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/0c9136841ff092987a20700ff9c2c9789bda2f40",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/8c2fa6eabacde869d75568e33b9d466b58c2f512",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "python",
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114509",
       "aliases": [
         "GHSA-f9x3-7vq9-cph6"
@@ -8554,6 +10382,116 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 18.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109413",
+      "aliases": [
+        "GHSA-2v3c-qxhr-7vpv"
+      ],
+      "title": "Symfony: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+      "description": "### Description\n\n`Yaml\\Parser::lexInlineStructure()` recursed through `lexInlineMapping()` and `lexInlineSequence()` for every `{` and `[` of an inline collection, without entering the nesting level that the rest of the parser bounds with `maxNestingLevel`. A document made of deeply nested inline collections, such as `[[[[...]]]]`, exhausted the stack while it was being lexed: depending on the PHP version and its stack settings, the process crashed or the request ended with a fatal error.\n\nAny code parsing untrusted YAML is affected. That includes `#[MapRequestPayload]` when the Yaml component is installed and the endpoint does not restrict `acceptFormat`: a single unauthenticated request with a YAML content type is enough.\n\n### Resolution\n\nThe inline lexer now enters and leaves the same nesting level as the rest of the parser, so nested inline collections are bounded by `maxNestingLevel`, and the parser raises a `ParseException` beyond it.\n\nThe patches for this issue are available [here](https://github.com/symfony/symfony/commit/2a8bf9c58d862b0c76a35ce288d1ba6a27223aad) for branch 5.4 (and forward-ported to 6.4, 7.4, 8.1 and 8.2).\n\n### Credits\n\nWe would like to thank Nicolas Grekas for reporting the issue and providing the fix.\n\n### References\n\n- Fix: [#65688](https://github.com/symfony/symfony/pull/65688)",
+      "published": "2026-10-27T19:01:50Z",
+      "updated": "2026-10-27T19:01:52Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "composer:symfony/symfony",
+        "composer:symfony/yaml"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-2v3c-qxhr-7vpv",
+        "https://github.com/symfony/symfony/security/advisories/GHSA-2v3c-qxhr-7vpv",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109413",
+        "https://github.com/symfony/symfony/pull/65688",
+        "https://github.com/symfony/symfony/commit/116287c3b5bc057e7a0420d2e52d384e14ea9417",
+        "https://github.com/symfony/symfony/commit/2a8bf9c58d862b0c76a35ce288d1ba6a27223aad"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00395,
+      "epss_percentile": 0.33582,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108082",
+      "aliases": [
+        "GHSA-r925-mgvr-h9cc"
+      ],
+      "title": "Symfony: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header",
+      "description": "### Description\n\n`HeaderUtils::split()` parsed header values with a pattern whose token alternative also matched whitespace, followed by a `(?<!\\s)` lookbehind. A run of whitespace placed before a separator could be divided among the iterations of the enclosing repetition in exponentially many ways, and the engine tried all of them before settling. `HeaderBag` calls it for the `Cache-Control` header whenever a `Request` is built, so any application handling HTTP requests is reachable, with no authentication.\n\nA single request carrying such a header costs close to a second of CPU (813 ms for a run of 17 spaces in an 8 KB header on PHP 8.5, doubling with each extra space). From 18 spaces on, `preg_match_all()` gives up at `pcre.backtrack_limit` and `split()` returns an empty array, so every directive of the header is silently dropped.\n\n### Resolution\n\nThe pattern now consumes whitespace only when more of the value follows it, so a value can no longer end on whitespace, nothing has to be given back, and every quantifier is possessive. The first release of this fix broke splitting on a whitespace separator: `HeaderUtils::split('foo bar', ' ')` returned a single value in 6.4.46 to 6.4.47, 7.4.19 to 7.4.20 and 8.1.7 to 8.1.8. Whitespace characters used as separators are now left out of the whitespace branch, which 6.4.48, 7.4.21 and 8.1.9 contain.\n\nThe patches for this issue are available [here](https://github.com/symfony/symfony/commit/343a1772ce6ac03e48b228d2d7168d19750e3f36) for branch 5.4 (and forward-ported to 6.4, 7.4, 8.1 and 8.2).\n\n### Credits\n\nSymfony would like to thank [r3verii](https://github.com/r3verii) for reporting the issue and Nicolas Grekas for providing the fix.\n\nSymfony would also like to thank [Bruno Dias](https://github.com/cx-bruno-dias) from Checkmarx for his help getting a CVE assigned.",
+      "published": "2026-10-27T19:01:39Z",
+      "updated": "2026-10-27T19:01:40Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "composer:symfony/http-foundation",
+        "composer:symfony/symfony"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-r925-mgvr-h9cc",
+        "https://github.com/symfony/symfony/security/advisories/GHSA-r925-mgvr-h9cc",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-108082",
+        "https://github.com/symfony/symfony/pull/66048",
+        "https://github.com/symfony/symfony/pull/66491",
+        "https://github.com/symfony/symfony/commit/343a1772ce6ac03e48b228d2d7168d19750e3f36"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0048,
+      "epss_percentile": 0.41239,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.1
       },
@@ -8823,9 +10761,9 @@
       "id": "CVE-2026-100801",
       "aliases": [],
       "title": "",
-      "description": "Privilege escalation in the DLL Services component. This vulnerability was fixed in Firefox ESR 153.4, Thunderbird 157, Thunderbird 140.17, Thunderbird 153.4, Firefox 159, Firefox ESR 153.6, Firefox 157, and Firefox ESR 140.17.",
+      "description": "Privilege escalation in the DLL Services component. This vulnerability was fixed in Firefox ESR 153.4, Thunderbird 157, Thunderbird 140.17, Thunderbird 153.4, Firefox 159, Firefox ESR 153.6, Thunderbird 159, Thunderbird 153.6, Firefox 157, and Firefox ESR 140.17.",
       "published": "2026-09-29T13:17:45.180",
-      "updated": "2026-10-27T14:16:32.170",
+      "updated": "2026-10-27T19:17:09.110",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8843,8 +10781,9 @@
         "https://www.mozilla.org/security/advisories/mfsa2026-103/",
         "https://www.mozilla.org/security/advisories/mfsa2026-118/",
         "https://www.mozilla.org/security/advisories/mfsa2026-120/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-97/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-99/"
+        "https://www.mozilla.org/security/advisories/mfsa2026-121/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-122/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-97/"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -10325,6 +12264,183 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83794",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Portable Device MTP Driver allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:20:29.293",
+      "updated": "2026-10-27T20:23:09.500",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83794"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0045,
+      "epss_percentile": 0.38953,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83835",
+      "aliases": [],
+      "title": "",
+      "description": "Buffer over-read in Windows Common Log File System Driver allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:20:31.397",
+      "updated": "2026-10-27T20:09:23.187",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83835"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00914,
+      "epss_percentile": 0.5992,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87698",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Remote Access Service Infrastructure allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:21:22.523",
+      "updated": "2026-10-27T16:58:49.663",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87698"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00386,
+      "epss_percentile": 0.3253,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106174",
       "aliases": [],
       "title": "",
@@ -11066,6 +13182,65 @@
         "popularity": 21.0,
         "cvss": 15.0,
         "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83798",
+      "aliases": [],
+      "title": "",
+      "description": "Improper verification of cryptographic signature in Windows Update Stack allows an authorized attacker to perform spoofing locally.",
+      "published": "2026-10-13T19:20:29.953",
+      "updated": "2026-10-27T20:17:38.873",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83798"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00244,
+      "epss_percentile": 0.15526,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -12563,6 +14738,358 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-87018",
+      "aliases": [
+        "GHSA-qrxm-fqhp-jwvm"
+      ],
+      "title": "undici vulnerable to Denial of Service via TLS 1.2 certificate-changing renegotiation",
+      "description": "## Impact\n\nundici crashes the client process when a TLS 1.2 server renegotiates after the connection is established and presents a different, CA-trusted certificate whose hostname does not match the requested host. Node.js re-runs hostname verification on the renegotiated handshake and destroys the socket with `ERR_TLS_CERT_ALTNAME_INVALID`. undici's established socket error handler asserted that this error code could never occur, so the peer-controlled error became an uncaught `AssertionError` that terminates the Node.js process. Both the HTTP/1.1 and HTTP/2 paths are affected.\n\nA malicious or compromised HTTPS endpoint reached through undici or the global `fetch()` can crash the client with a single server-initiated renegotiation, taking down all in-flight requests and background work in the process. Only TLS 1.2 is affected, because TLS 1.3 does not support renegotiation. Exploitation does not require a CA compromise: the attacker controls the endpoint and can present two ordinary valid certificates, the first matching the requested URL and the second intentionally not matching it.\n\n## Patches\n\nUpgrade to undici 6.29.1, 7.30.1, or 8.12.2.\n\n## Workarounds\n\nRestrict outbound connections to TLS 1.3, for example by setting `connect: { minVersion: 'TLSv1.3', maxVersion: 'TLSv1.3' }` on the client or agent, so that renegotiation cannot occur, when the target endpoints support TLS 1.3.",
+      "published": "2026-10-27T19:02:21Z",
+      "updated": "2026-10-27T19:02:22Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-qrxm-fqhp-jwvm",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-qrxm-fqhp-jwvm",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-87018",
+        "https://github.com/nodejs/undici/commit/12cfd96c3f430897656e3edc1c5e02be8c1cd309",
+        "https://github.com/nodejs/undici/commit/b40fbfc0651703cf9fa9f6ced68b679f28d8bb28",
+        "https://github.com/nodejs/undici/commit/e257e9f8fb42eedd50727b9cf65e548c8925e4a8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00187,
+      "epss_percentile": 0.08244,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-f897-62hf-6gxq",
+      "aliases": [],
+      "title": "MCP TypeScript SDK: HTTP server transports and handlers did not limit request body size or JSON-RPC batch length",
+      "description": "### Summary\nIn affected versions, MCP servers reachable over HTTP put no limit on the size of a POST body or on the number of messages in a JSON-RPC batch. Large requests could exhaust the server's memory, and one long batch could block it from serving anyone else. No credentials were needed, unless your application authenticates requests before they reach the SDK.\n\n### Am I affected?\nYes, if clients you do not fully trust can reach your server over Streamable HTTP. A body parser such as `express.json()` does not protect you, because it does not limit batch length. Servers that only use stdio are not affected.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` 1.10.0 through 1.30.0\n- `@modelcontextprotocol/server` 2.0.0\n- `@modelcontextprotocol/node` 2.0.0\n- `@modelcontextprotocol/hono` 2.0.0\n\n### Fix\nUpgrade to:\n\n- 1.x: `@modelcontextprotocol/sdk` 1.30.1 or later\n- 2.x: `@modelcontextprotocol/server` 2.1.0, `@modelcontextprotocol/node` 2.1.0 and `@modelcontextprotocol/hono` 2.0.1 or later. Upgrade every one you have installed.\n\nBodies over 4 MiB now get `413`, and batches over 100 messages get `400`. If your clients send larger bodies, raise the new `maxRequestBodySize` option.\n\nIf you cannot upgrade yet, cap request body size in a reverse proxy.",
+      "published": "2026-10-27T19:02:00Z",
+      "updated": "2026-10-27T19:02:02Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:@modelcontextprotocol/sdk",
+        "npm:@modelcontextprotocol/server",
+        "npm:@modelcontextprotocol/node",
+        "npm:@modelcontextprotocol/hono"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-f897-62hf-6gxq",
+        "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-f897-62hf-6gxq",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2698",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2717",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/7b781ed4e25355a25d15974f3c76de81299694ed",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/a9f6eb709b85459d01e8f2a9e881fef2621756c1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109855",
+      "aliases": [
+        "GHSA-qq8j-7v2v-3rwp"
+      ],
+      "title": "undici WebSocket client vulnerable to Denial of Service via failed HTTP/2 handshake",
+      "description": "### Impact\n\nundici's experimental WebSocket client (enabled by default via `allowH2: true`) crashes the Node.js process when it connects to a malicious server over HTTP/2. If the server answers the WebSocket upgrade with a response that fails handshake validation, undici aborts the request, but the abort is a no-op because the request is already marked completed, so the underlying `ClientHttp2Stream` is left open with no error listener. When the server then destroys the connection, the orphaned stream emits an unhandled `error` and the process exits. A remote, unauthenticated server can therefore deny service to any client that opens a WebSocket to it over HTTP/2. undici 8.11.0 and 8.11.1 are affected; the regression was introduced in 8.11.0.\n\n### Patches\n\nUpgrade to `8.11.2`.\n\n### Workarounds\n\nSet `allowH2: false` to disable HTTP/2 for WebSocket connections, or avoid opening WebSocket connections to untrusted servers, until upgrading.",
+      "published": "2026-10-27T16:09:45Z",
+      "updated": "2026-10-27T16:09:47Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-qq8j-7v2v-3rwp",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-qq8j-7v2v-3rwp",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109855",
+        "https://github.com/nodejs/undici/pull/5873",
+        "https://github.com/nodejs/undici/commit/dd28c5c55f4a25f7c441fd4365b1191f96c3b8bf",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00279,
+      "epss_percentile": 0.20213,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-mbq512v9oe4s",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Stream performance issues impacting certain Live Broadcasts and On-Demand Uploads",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-27T16:10:53.999Z",
+      "updated": "2026-10-27T17:02:14.998Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/mbq512v9oe4s"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-27T17:02:14.998Z",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-84fw-gj66-p5v3",
+      "aliases": [],
+      "title": "Malware in dsh-vm-tester",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,164",
+      "published": "2026-10-27T20:02:26Z",
+      "updated": "2026-10-27T20:04:08Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:dsh-vm-tester"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-84fw-gj66-p5v3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "npm:dsh-vm-tester"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109829",
+      "aliases": [
+        "GHSA-4w7w-5xrc-9h26"
+      ],
+      "title": "undici vulnerable to cache poisoning and cross-user disclosure via cross-origin redirects",
+      "description": "### Impact\n\nWhen an originless `Agent` composes the redirect and cache interceptors as `compose(redirect(), cache())` with a shared cache (`type: 'shared'`), the cache builds its key from the original request URL before the redirect handler changes the origin. The response produced after a redirect is then stored under the original key, even when the redirect crossed to a different origin.\n\nAn attacker who controls the target of a redirect from a trusted URL can have their response cached under that trusted URL. A later caller requesting the trusted URL receives the attacker's body from the shared cache without either origin being contacted, allowing persistent cache poisoning. The same key confusion also discloses private data: when an authenticated request returns a `private, no-store` redirect to a user-specific resource, the final response is stored under the original URL and can be served to a later unauthenticated caller.\n\nThe cache interceptor was introduced in undici 7.0.0, and all 7.x and 8.x releases before the patched versions are affected. Applications are affected only when an originless `Agent`, a shared `MemoryCacheStore` or `SqliteCacheStore`, and the composition `compose(redirect(), cache())` are all used. Origin-bound `Client` and `Pool` dispatchers, and the reverse composition `compose(cache(), redirect())`, are not affected.\n\n### Patches\n\nUpgrade to `7.30.1` or `8.12.2`. Before storing a response, undici now verifies that the origin that produced it still matches the cache key, and preserves each redirect hop's cache-control policy, so cross-origin redirect responses and responses behind a `no-store` or `private` hop are no longer cached under the original key.\n\n### Workarounds\n\nCompose the interceptors as `compose(cache(), redirect())`, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
+      "published": "2026-10-27T19:02:31Z",
+      "updated": "2026-10-27T19:02:32Z",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-4w7w-5xrc-9h26",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-4w7w-5xrc-9h26",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109829",
+        "https://github.com/nodejs/undici/commit/26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+        "https://github.com/nodejs/undici/commit/b20b82ad80a405a12b6ce1f341bcd418de390aa0",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00149,
+      "epss_percentile": 0.04039,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109383",
+      "aliases": [
+        "GHSA-2m5v-pch6-74hx"
+      ],
+      "title": "undici vulnerable to TLS certificate validation bypass via dropped tls options in Agent",
+      "description": "### Impact\n\nundici's `Agent` passes its constructor options through a JSON-based deep clone (`JSON.parse(JSON.stringify(...))`) before forwarding them to each per-origin `Pool`. JSON cannot represent functions, so a caller-supplied `tls` option containing a `checkServerIdentity` callback is silently dropped before it reaches the TLS layer. As a result, a TLS peer whose certificate a custom `checkServerIdentity` was written to reject, but which passes Node's default hostname and chain checks, is silently accepted when the request is made through `Agent`. Because `Agent` is the default dispatcher behind `request`, `fetch`, and `setGlobalDispatcher`, this is the path most applications use. `EnvHttpProxyAgent` is also affected on its direct and `NO_PROXY` routes, which delegate to an internal `Agent`.\n\nOnly applications that pass a function-valued `tls` option (such as a custom `checkServerIdentity` for certificate or public-key pinning) are affected. Passing the same options through `connect` is not affected. This is the `Agent` counterpart of the `BalancedPool` certificate validation bypass fixed in CVE-2026-84961.\n\n### Patches\n\nUpgrade to undici `6.29.1`, `7.30.1`, or `8.12.2`. `Agent` now preserves the `tls` option outside the JSON clone, so custom TLS verification callbacks are forwarded to each origin unchanged.\n\n### Workarounds\n\nPass the TLS options through `connect` instead of `tls`. For proxied `EnvHttpProxyAgent` destinations, use `requestTls` / `proxyTls`.",
+      "published": "2026-10-27T19:02:26Z",
+      "updated": "2026-10-27T19:02:27Z",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-2m5v-pch6-74hx",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-2m5v-pch6-74hx",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109383",
+        "https://github.com/nodejs/undici/commit/04cb74b1db131ff8f5b4557dce811cbf5f4664b4",
+        "https://github.com/nodejs/undici/commit/8c59f6b302898cb2e9b0f7962cd7212b6e597c9f",
+        "https://github.com/nodejs/undici/commit/f75eac00ac177f7b2e6c8bfbd52d4113164286e6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00184,
+      "epss_percentile": 0.07932,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91398",
       "aliases": [],
       "title": "",
@@ -13059,6 +15586,51 @@
         "popularity": 21.0,
         "cvss": 13.0,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87294",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Security).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27;    Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1;   Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized read access to a subset of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 6.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).",
+      "published": "2026-10-20T22:20:06.387",
+      "updated": "2026-10-27T19:17:31.480",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00277,
+      "epss_percentile": 0.19987,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -14083,6 +16655,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-87290",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JAXP).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 5.9 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+      "published": "2026-10-20T22:20:05.930",
+      "updated": "2026-10-27T20:17:15.383",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00327,
+      "epss_percentile": 0.25655,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 37.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 11.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98466",
       "aliases": [],
       "title": "",
@@ -14180,25 +16797,22 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-117560",
+      "id": "CVE-2026-106076",
       "aliases": [],
-      "title": "ATXP Gemini CLI Extension through 1.0.0 OS Command Injection via MCP Tools",
-      "description": "ATXP Gemini CLI extension through 1.0.0 contains an OS command injection vulnerability in runAtxp() that allows attackers to execute shell commands through unsanitized MCP tool parameters. Attackers can plant instructions in email or SMS content to inject $() or backtick substitutions into parameters like message_id, subject, or query, running commands as the user.",
-      "published": "2026-10-27T13:07:55.594Z",
-      "updated": "2026-10-27T14:16:38.133",
-      "cvss": 8.5,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
+      "title": "",
+      "description": "A vulnerability allowing an authenticated organization-transfer peer to inject SQL into the configuration database of the source Veeam Backup for Microsoft 365 server, leading to cross-tenant read and write of configuration data and remote code execution as the PostgreSQL service account.",
+      "published": "2026-10-27T16:16:58.882Z",
+      "updated": "2026-10-27T17:16:56.553",
+      "cvss": 9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
       "cpes": [],
       "packages": [],
       "vendor_products": [
-        "atxp gemini-cli-extension"
+        "Veeam Backup for Microsoft 365"
       ],
       "references": [
-        "https://github.com/atxp-dev/atxp/issues/15",
-        "https://github.com/atxp-dev/atxp",
-        "https://github.com/atxp-dev/atxp/blob/4e88b0282b51ae7c22ea1b6ca4476a39298299ff/src/server.ts#L28-L40",
-        "https://www.vulncheck.com/advisories/atxp-gemini-cli-extension-through-1.0.0-os-command-injection-via-mcp-tools"
+        "https://www.veeam.com/kb4957"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -14214,17 +16828,171 @@
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
-        "gemini-cli"
+        "postgresql"
       ],
-      "match_type": "exact",
+      "match_type": "keyword",
       "tier": 2,
       "score": 37.0,
       "level": "medium",
       "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87293",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in Oracle Java SE (component: RMI).  Supported versions that are affected are Oracle Java SE: 8u503 and  8u503-perf; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  While the vulnerability is in Oracle Java SE, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE accessible data as well as  unauthorized read access to a subset of Oracle Java SE accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N).",
+      "published": "2026-10-20T22:20:06.277",
+      "updated": "2026-10-27T19:17:31.353",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00226,
+      "epss_percentile": 0.13194,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109932",
+      "aliases": [
+        "GHSA-9fm3-97px-rjf6"
+      ],
+      "title": "undici WebSocket client vulnerable to Denial of Service via unbounded automatic PONG buffering",
+      "description": "### Impact\n\nundici's WebSocket client (including Node.js's bundled `globalThis.WebSocket`) can be driven to exhaust process memory by a malicious or compromised WebSocket server. For every PING frame received, the receiver automatically writes a PONG response to the socket and ignores the `false` return value from `socket.write()`, which is a backpressure signal, so a server that streams small PING frames while never reading the client's PONGs makes the outbound write queue and heap grow without bound until the Node.js process runs out of memory and terminates. The attack is remote and unauthenticated, needs only a normal WebSocket connection, and is asymmetric: small inbound PINGs produce a much larger retained outbound queue. Availability is the only impact. undici 5.x, 6.x, 7.x, and 8.x are affected; the WebSocket client was introduced in 5.15.0.\n\n### Patches\n\nUpgrade to `6.29.1`, `7.30.1`, or `8.12.2`, which pause WebSocket frame parsing when the automatic PONG response hits socket backpressure and resume on drain, bounding the outbound queue.\n\n### Workarounds\n\nNone.",
+      "published": "2026-10-27T19:02:15Z",
+      "updated": "2026-10-27T19:02:17Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-9fm3-97px-rjf6",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-9fm3-97px-rjf6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109932",
+        "https://github.com/nodejs/undici/commit/39f93e142df03e559fe7c3d1fc7fba9beee2c185",
+        "https://github.com/nodejs/undici/commit/53944624462b6797560288c55dbd8c66857bb495",
+        "https://github.com/nodejs/undici/commit/b217373bb024cd93f85eb5b3ffd25684855f60f8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00321,
+      "epss_percentile": 0.2494,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
         "popularity": 20,
-        "cvss": 17.0
+        "cvss": 11.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87029",
+      "aliases": [
+        "GHSA-55wc-3pg8-jfw6"
+      ],
+      "title": "undici vulnerable to Denial of Service via unhandled exception in the decompress interceptor",
+      "description": "## Impact\n\nundici's `decompress` interceptor forwards decompressed response data to the downstream handler from zlib stream event callbacks without catching exceptions those callbacks may throw. undici's engine converts a synchronous throw from a downstream handler into a per-request failure, but that protection is not in place when the throw happens asynchronously from a zlib callback. As a result, a downstream handler that throws by design, for example the built-in `dump` interceptor which throws when a response exceeds its `maxSize`, escapes as an uncaught exception and terminates the Node.js process.\n\nA malicious or compromised HTTP server can crash any client that composes the `decompress` interceptor with `dump` (or another response handler that throws), by returning a small compressed body that decompresses to more than the configured limit. The compressed bytes on the wire are tiny, so only the decompressed size matters. If the application keeps the process alive with a global uncaught-exception handler, the affected request instead hangs until the body timeout.\n\n## Patches\n\nUpgrade to undici 7.30.1 or 8.12.2.\n\n## Workarounds\n\nAvoid composing the `decompress` interceptor with a response handler that throws during response processing (such as `dump` with a `maxSize`) until upgrading.",
+      "published": "2026-10-27T19:02:10Z",
+      "updated": "2026-10-27T19:02:12Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "npm:undici"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-55wc-3pg8-jfw6",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-55wc-3pg8-jfw6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-87029",
+        "https://github.com/nodejs/undici/commit/63cba7712ca012b2603c6aeeb4c72d8692332cd0",
+        "https://github.com/nodejs/undici/commit/f851f315db1f2acce0ea668f88d9d0fa61c8420c",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0026,
+      "epss_percentile": 0.17671,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -16645,6 +19413,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-87291",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in Oracle Java SE (component: Networking).  Supported versions that are affected are Oracle Java SE: 21.0.12.1, 25.0.4.1 and  27. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  Successful attacks of this vulnerability can result in  unauthorized read access to a subset of Oracle Java SE accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 5.3 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).",
+      "published": "2026-10-20T22:20:06.047",
+      "updated": "2026-10-27T19:17:31.040",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00325,
+      "epss_percentile": 0.25395,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116591",
       "aliases": [
         "GHSA-fpmh-frq8-7rj8"
@@ -16652,7 +19465,7 @@
       "title": "compress zstd: Panic on two-block frames",
       "description": "compress provides various compression algorithms. Prior to 1.20.2, the zstd DecodeAll and streaming decoder paths can panic when a crafted two-block frame reaches huff0.ReadTable with an FSE normalized count of 32768 that readNCount stores in int16 as -32768. The wrapped count allows buildDtable to retain stale fse.Scratch decode-table state from the prior block, and nextFast then derives an out-of-range state and indexes beyond the table instead of returning a decode error. Both blocks are required to preserve and then reuse the stale state, allowing untrusted zstd input to crash an application. This issue is fixed in version 1.20.2.",
       "published": "2026-10-26T22:16:55.783",
-      "updated": "2026-10-27T15:38:16Z",
+      "updated": "2026-10-27T16:03:45.247",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -18267,6 +21080,50 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-48356",
+      "aliases": [],
+      "title": "Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "description": "Adobe Commerce and Magento contain an unrestricted upload of file with dangerous type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session.",
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Adobe Commerce and Magento"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-48356"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.30582,
+      "epss_percentile": 0.98231,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "kev": 20,
+        "epss": 4.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106072",
       "aliases": [],
       "title": "",
@@ -18503,6 +21360,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103995",
+      "aliases": [],
+      "title": "Lenient parsing of integers for response body and chunk framing",
+      "description": "Response body and chunk parsing would handle non-hex or negative integers incorrectly which could result in misinterpreting HTTP response contents.",
+      "published": "2026-10-27T19:58:52.521Z",
+      "updated": "2026-10-27T20:17:11.137",
+      "cvss": 2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:P/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Python Software Foundation CPython"
+      ],
+      "references": [
+        "https://github.com/python/cpython/pull/150752",
+        "https://github.com/python/cpython/issues/150751"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 34,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114137",
       "aliases": [],
       "title": "",
@@ -18714,6 +21618,96 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 33.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 7.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87255",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in Oracle Java SE (component: Compiler).  Supported versions that are affected are Oracle Java SE: 25.0.4.1 and  27. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  Successful attacks of this vulnerability can result in  unauthorized read access to a subset of Oracle Java SE accessible data. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 3.7 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).",
+      "published": "2026-10-20T22:20:05.710",
+      "updated": "2026-10-27T19:17:30.777",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00325,
+      "epss_percentile": 0.25434,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 33.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 7.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-87292",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Networking).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 3.7 (Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N).",
+      "published": "2026-10-20T22:20:06.160",
+      "updated": "2026-10-27T19:17:31.190",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00252,
+      "epss_percentile": 0.16555,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "java"
       ],
@@ -19761,12 +22755,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-117560",
+      "aliases": [],
+      "title": "",
+      "description": "ATXP Gemini CLI extension through 1.0.0 contains an OS command injection vulnerability in runAtxp() that allows attackers to execute shell commands through unsanitized MCP tool parameters. Attackers can plant instructions in email or SMS content to inject $() or backtick substitutions into parameters like message_id, subject, or query, running commands as the user.",
+      "published": "2026-10-27T14:16:38.133",
+      "updated": "2026-10-27T16:04:22.707",
+      "cvss": 8.5,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/atxp-dev/atxp",
+        "https://github.com/atxp-dev/atxp/blob/4e88b0282b51ae7c22ea1b6ca4476a39298299ff/src/server.ts#L28-L40",
+        "https://github.com/atxp-dev/atxp/issues/15",
+        "https://www.vulncheck.com/advisories/atxp-gemini-cli-extension-through-1.0.0-os-command-injection-via-mcp-tools"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "matched": [
+        "gemini-cli"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116579",
       "aliases": [],
       "title": "",
       "description": "Autobahn Python is a WebSocket and WAMP implementation for Python that supports Twisted and asyncio. From 26.7.1 until 26.10.1, PerMessageBrotli.decompress_message_data in compress_brotli.py calls the Brotli decompressor without an output limit and checks maxMessagePayloadSize only after a complete frame has been inflated. An unauthenticated WebSocket client can send a small, highly compressed frame that allocates hundreds of MiB before rejection, causing memory-exhaustion denial of service on servers that enable the opt-in permessage-brotli feature through the compress extra. Deflate and bzip2 already enforce the remaining output budget and are outside this residual vulnerability. This issue is fixed in version 26.10.1.",
       "published": "2026-10-26T21:18:15.117",
-      "updated": "2026-10-27T15:16:39.060",
+      "updated": "2026-10-27T16:03:45.247",
       "cvss": 5.9,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "medium",
@@ -20897,6 +23937,57 @@
       "first_seen": "2026-10-27T16:01:42.628652+00:00",
       "matched": [
         "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 26.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 7.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-h2v8-394m-p7vv",
+      "aliases": [],
+      "title": "Rustls: Brotli certificate decompression can allocate an attacker-controlled amount of memory up to 1 GiB before authentication.",
+      "description": "### Summary\n\nThe built-in (but disabled by default) Brotli certificate decoder bounds the output buffer but accepts an input-selected history window. A header of five bytes can specify a 1 GiB window allocation. A peer can abort a process whose allocator cannot satisfy that request. A client must enable Brotli and connect to the peer; a server must enable Brotli and request a client certificate. Neither direction requires a trusted attacker certificate.\n\n### Details\n\nrustls calls `BrotliDecompress` which enables Brotli's large-window extension. rustls applies a limit to certificates, but this applies to the decompressed result, and not to any internal allocations the process requires.\n\n### Impact\n\nClient applications that enable the `brotli` feature will be vulnerable to malicious servers. Server applications that enable the `brotli` feature and enable client authentication will be vulnerable to malicious clients.\n\nPotential for denial of service due to memory exhaustion from peers sending malicious Brotli-encoded certificates, for applications that enable Brotli decompression.\n\n### Acknowledgement\nThanks to OpenAI [OutboundDisclosures@openai.com](mailto:OutboundDisclosures@openai.com) for the disclosure.",
+      "published": "2026-10-27T16:08:36Z",
+      "updated": "2026-10-27T16:08:36Z",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [
+        "rust:rustls"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-h2v8-394m-p7vv",
+        "https://github.com/rustls/rustls/security/advisories/GHSA-h2v8-394m-p7vv",
+        "https://github.com/rustls/rustls/pull/3297",
+        "https://github.com/rustls/rustls/pull/3354",
+        "https://github.com/rustls/rustls/commit/1aa987af37d0d79b98781d345895ac0059ce345c",
+        "https://github.com/rustls/rustls/commit/402b7b78b7ae87d59e19cf07ee07f3fc19e6537e"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "brotli"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -29714,7 +32805,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: serialize vblank counter reads against GPU reset\n\nThe vblank counter callback reads display registers and scanout\nposition without holding reset_domain->sem. During GPU recovery,\ndisplay commit work can call the callback while reset owns the\nsemaphore for writing. The hardware access then triggers the\nlockdep_assert_held() in amdgpu_device_skip_hw_access() and sets\nTAINT_WARN when lockdep is enabled.\n\nTry to acquire the reset semaphore for reading before accessing the\nhardware, and hold it across the counter and scanout-position reads.\nIf reset is already in progress, return DRM's cached software vblank\ncount instead. This avoids blocking behind reset and avoids accessing\ndisplay hardware while it is being reset.\n\nThe cached count is less accurate than the hardware count, but is\nused only when reset prevents a safe hardware read. This addresses\nthe reset-time warning from this vblank path; it does not suppress or\nfix unrelated lockdep warnings.\n\n(cherry picked from commit 51a4359f7431a4be5e42803c8bdaf7e0e5be2934)",
       "published": "2026-10-26T15:16:47.817",
-      "updated": "2026-10-26T15:16:47.817",
+      "updated": "2026-10-27T16:17:33.167",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -29733,8 +32824,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00164,
+      "epss_percentile": 0.05557,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -29750,7 +32841,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -39002,6 +42094,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-27T10:35:36.230099+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2086195",
+      "aliases": [],
+      "title": "Microsoft PKI Services: Access to CRLs on www.microsoft.com blocked for Wget User-Agent",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-27T17:05:51Z",
+      "updated": "2026-10-27T17:45:56Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2086195"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "pki"
       ],

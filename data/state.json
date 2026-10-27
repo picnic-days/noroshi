@@ -1,11 +1,13 @@
 {
-  "last_run": "2026-10-27T16:01:42.628652+00:00",
+  "last_run": "2026-10-27T20:42:26.685313+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
     "OUT-anthropic-0ns5clsk8p2x": "2026-10-24T05:46:52.109242+00:00",
     "JP-jpcert-at260034": "2026-10-26T15:33:11.752934+00:00",
-    "CVE-2026-113078": "2026-10-26T19:59:36.444930+00:00"
+    "CVE-2026-113078": "2026-10-26T19:59:36.444930+00:00",
+    "AI-anthropic-discovering-vulnerabilities-with-claude": "2026-10-27T20:42:26.685313+00:00",
+    "CVE-2026-111497": "2026-10-27T20:42:26.685313+00:00"
   },
   "ai_key_checked": "2026-10-27",
   "open_outages": {},
@@ -35,7 +37,7 @@
   },
   "digest_sent": "2026-10-27",
   "digest_since": "2026-10-27T05:06:34.190631+00:00",
-  "repo_adv_checked": "2026-10-27T16:01:42.628652+00:00",
+  "repo_adv_checked": "2026-10-27T20:42:26.685313+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -620,7 +622,10 @@
       "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "https://www.anthropic.com/transparency",
       "https://www.anthropic.com/vc-partner-program-official-terms",
-      "https://www.anthropic.com/news/s1-sec"
+      "https://www.anthropic.com/news/s1-sec",
+      "https://www.anthropic.com/research/agents-judgment-calls",
+      "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
+      "https://www.anthropic.com/research/early-progress-drug-development"
     ]
   }
 }
