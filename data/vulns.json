@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T05:06:34.190631+00:00",
+  "generated_at": "2026-10-27T10:35:36.230099+00:00",
   "items": [
     {
       "id": "JP-jpcert-at260034",
@@ -3285,6 +3285,103 @@
         "cvss": 15.0,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-106174",
+      "aliases": [],
+      "title": "",
+      "description": "A improper locking vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.4 through 7.6.6 may allow an unauthenticated attacker with network access to the device to cause a denial of service of the HTTPS management interface via crafted HTTP requests.",
+      "published": "2026-10-27T06:54:54.066Z",
+      "updated": "2026-10-27T10:13:38.390Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [
+        "fortinet:fortios"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Fortinet FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-181"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T10:35:36.230099+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111820",
+      "aliases": [],
+      "title": "Analytics Insights <= 6.3.12 - Unauthenticated Stored Cross-Site Scripting via GA4 Realtime Page Title",
+      "description": "The Analytics Insights – Google Analytics Dashboard for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Page Title in all versions up to, and including, 6.3.12 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-27T05:30:30.909Z",
+      "updated": "2026-10-27T06:17:23.437",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "deconf Analytics Insights – Google Analytics Dashboard for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2164289e-dc9a-4659-85fe-0818092466c4?source=cve",
+        "https://plugins.trac.wordpress.org/browser/analytics-insights/trunk?rev=3755146"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T10:35:36.230099+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -11361,6 +11458,86 @@
       "first_seen": "2026-10-26T23:54:18.921850+00:00",
       "matched": [
         "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-j3llzsq3m17a",
+      "aliases": [],
+      "title": "Cloudflare: Some customers may notice their Pages and/or workers builds are intermittently failing.",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-27T08:04:03.697Z",
+      "updated": "2026-10-27T08:17:26.151Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/j3llzsq3m17a"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-27T08:17:26.151Z",
+      "first_seen": "2026-10-27T10:35:36.230099+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-0q89dylg9vjk",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Sonnet 5.5",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-27T09:14:35.052Z",
+      "updated": "2026-10-27T09:56:46.355Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/rql9h590npxd"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-27T09:56:46.355Z",
+      "first_seen": "2026-10-27T10:35:36.230099+00:00",
+      "matched": [
+        "anthropic"
       ],
       "match_type": "status",
       "tier": null,
@@ -28969,6 +29146,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-26T23:54:18.921850+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2086000",
+      "aliases": [],
+      "title": "IZENPE: CRL not published within 24 hours of revocation",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-27T05:44:21Z",
+      "updated": "2026-10-27T05:44:21Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2086000"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T10:35:36.230099+00:00",
       "matched": [
         "pki"
       ],
