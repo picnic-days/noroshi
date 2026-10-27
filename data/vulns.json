@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T23:54:18.921850+00:00",
+  "generated_at": "2026-10-27T05:06:34.190631+00:00",
   "items": [
     {
       "id": "JP-jpcert-at260034",
@@ -10598,6 +10598,60 @@
         "cvss": 14.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116608",
+      "aliases": [],
+      "title": "DAMO Academy VideoLLaMA2 Model Loading __init__.py load_pretrained_model integrity check",
+      "description": "A security vulnerability has been detected in DAMO Academy VideoLLaMA2 up to 1.1. Affected by this issue is the function load_pretrained_model of the file videollama2/model/__init__.py of the component Model Loading. The manipulation of the argument _name_or_path leads to improper validation of integrity check value. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-10-27T00:15:18.298Z",
+      "updated": "2026-10-27T01:19:05.897",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P",
+      "severity": "medium",
+      "cpes": [
+        "damo_academy:videollama2"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "DAMO Academy VideoLLaMA2"
+      ],
+      "references": [
+        "https://vuldb.com/vuln/426516",
+        "https://vuldb.com/vuln/426516/cti",
+        "https://vuldb.com/cve/CVE-2026-116608",
+        "https://vuldb.com/submit/1022955",
+        "https://github.com/DAMO-NLP-SG/VideoLLaMA2/issues/182"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T05:06:34.190631+00:00",
+      "matched": [
+        "ollama"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
