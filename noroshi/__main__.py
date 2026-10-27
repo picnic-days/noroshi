@@ -23,8 +23,8 @@ FRESH_DAYS = 30  # これより古く公開された CVE は NVD の再解析で
 # 配信側のキャッシュや登録の遅れで取りこぼさないよう、取得範囲を前回実行より少しさかのぼらせる。
 # 重複して拾ったものは統合され、通知済みの判定で二重通知もしない
 FETCH_OVERLAP = timedelta(minutes=30)
-OUTAGE_WATCH_DAYS = 7
-REPO_ADVISORY_INTERVAL = timedelta(hours=1)  # リポジトリごとに API を呼ぶので 1 時間に 1 回に抑える  # 復旧を確認できないまま、これ以上経った障害は追跡をやめる
+OUTAGE_WATCH_DAYS = 7  # 復旧を確認できないまま、これ以上経った障害は追跡をやめる
+REPO_ADVISORY_INTERVAL = timedelta(hours=1)  # リポジトリごとに API を呼ぶので 1 時間に 1 回に抑える
 
 
 def load_config(name: str) -> dict:
@@ -146,13 +146,15 @@ def run(args) -> int:
             store.mark_notified(alerts, now)
             for v in alerts:
                 if v.category == "outage":
-                    open_outages[v.id] = {"title": v.title, "provider": v.matched[0], "since": now.isoformat()}
+                    open_outages[v.id] = {"title": v.title, "provider": v.matched[0], "since": now.isoformat(),
+                                          "url": v.url}
     if warnings:
         push(args, fetcher, warnings)
 
     done = status.recovered(open_outages, from_status, snapshot_ok)
     if done:
-        push(args, fetcher, ["\n".join(f"✅ 復旧: {open_outages[i]['title']}" for i in done)])
+        push(args, fetcher, ["\n\n".join(f"✅ 復旧: {open_outages[i]['title']}\n{open_outages[i].get('url', '')}".rstrip()
+                                         for i in done)])
         if args.send:
             for i in done:
                 del open_outages[i]

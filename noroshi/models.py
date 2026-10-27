@@ -58,6 +58,21 @@ class Vuln:
         self.ransomware = self.ransomware or other.ransomware
         self.ssvc_exploitation = self.ssvc_exploitation or other.ssvc_exploitation
 
+    @property
+    def url(self) -> str:
+        """この案件の代表の参照先。CVE は CVE.org の記録（NVD より早く公開され、全参照先が載る）。"""
+        if self.id.startswith("CVE-"):
+            return f"https://www.cve.org/CVERecord?id={self.id}"
+        return self.references[0] if self.references else ""
+
+    def urls(self) -> list:
+        """通知に載せる参照先（最大 2 件）。開発元などの告知と、代表の参照先。"""
+        out = []
+        for u in (self.references[0] if self.references else "", self.url):
+            if u and u not in out:
+                out.append(u)
+        return out
+
     def text(self) -> str:
         return "\n".join([self.title, self.description] + self.vendor_products)
 

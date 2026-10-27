@@ -2,6 +2,7 @@
 from datetime import date
 
 URL = "https://endoflife.date/api/v1/products/{}"
+PAGE = "https://endoflife.date/{}"
 THRESHOLDS = (0, 7, 30, 90)
 STALE_DAYS = 7  # これより前に終了したものは、初回実行でも知らせない
 
@@ -14,7 +15,7 @@ def bucket(days: int):
 
 
 def upcoming(fetcher, products: list, today: date, notified: dict) -> list:
-    """まだ知らせていない予告文の一覧を返し、notified に記録する。"""
+    """まだ知らせていない予告文の一覧を返し、notified に記録する。製品ごとに endoflife.date のページを添える。"""
     lines = []
     for p in products:
         try:
@@ -33,5 +34,13 @@ def upcoming(fetcher, products: list, today: date, notified: dict) -> list:
                 continue
             notified[key] = today.isoformat()
             when = f"あと{days}日" if days > 0 else ("本日" if days == 0 else "終了済み")
-            lines.append((days, f"・{p['name']} {r['name']}: {eol} にサポート終了（{when}）"))
-    return [text for _, text in sorted(lines)]
+            lines.append((days, p["id"], f"・{p['name']} {r['name']}: {eol} にサポート終了（{when}）"))
+    out, linked = [], set()
+    ordered = sorted(lines)
+    for i, (_, pid, text) in enumerate(ordered):
+        out.append(text)
+        # 同じ製品が続く場合は、最後の行の後にだけページを付ける
+        if pid not in linked and all(pid != later for _, later, _ in ordered[i + 1:]):
+            out.append(f"  {PAGE.format(pid)}")
+            linked.add(pid)
+    return out

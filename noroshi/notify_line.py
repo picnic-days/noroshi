@@ -44,8 +44,7 @@ def format_message(vulns: list) -> str:
             f"対象: {', '.join(v.matched) or '監視リスト外(KEV)'}",
             kind,
             title,
-            v.references[0] if v.references else "",
-        ]
+        ] + v.urls()
     if len(vulns) > MAX_ITEMS:
         lines.append(f"\nほか {len(vulns) - MAX_ITEMS}件")
     return "\n".join(l for l in lines if l is not None)[:MAX_CHARS]

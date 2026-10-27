@@ -6,7 +6,9 @@ JST = timezone(timedelta(hours=9))
 SEND_HOUR_JST = 9
 LEVELS = ("critical", "high", "medium")
 MAX_GROUPS = 15
+ITEMS_PER_GROUP = 3  # 製品ごとに URL 付きで載せる件数
 MAX_CHARS = 5000
+CHAR_BUDGET = 4700  # URL の途中で切れないよう、上限より手前で製品の追加をやめる
 
 
 def due(state: dict, now: datetime) -> bool:
@@ -22,7 +24,7 @@ GROUP_LABELS = {
     "ai-news": "AI 企業のセキュリティ発表",
     "kev": "監視リスト外（KEV 掲載）",
 }
-MAX_EOL_LINES = 15
+MAX_EOL_LINES = 30  # 製品ページの URL 行を含む
 
 
 def fresh_items(items: list, since: str) -> list:
@@ -52,15 +54,23 @@ def build(items: list, since: str, now: datetime, names: dict, eol_lines: list =
         key = v.category if v.category != "vuln" else (v.matched[0] if v.matched else "kev")
         groups[key].append(v)
     ordered = sorted(groups.items(), key=lambda kv: max(v.score for v in kv[1]), reverse=True)
+    budget = CHAR_BUDGET - len("\n".join(eol_part))
+    shown = 0
     for key, vs in ordered[:MAX_GROUPS]:
         vs.sort(key=lambda v: v.score, reverse=True)
         label = GROUP_LABELS.get(key, names.get(key, key))
         by_level = " / ".join(f"{lv} {n}" for lv in LEVELS if (n := sum(1 for v in vs if v.level == lv)))
-        top = vs[0]
-        lines += ["", f"■ {label}  {by_level}（最高 {top.score:g}）",
-                  f"  {top.id} {(top.title or top.description.split('. ')[0])[:70]}"]
-        if len(vs) > 1:
-            lines.append(f"  ほか {len(vs) - 1}件")
-    if len(ordered) > MAX_GROUPS:
-        lines.append(f"\nほか {len(ordered) - MAX_GROUPS} 製品")
+        block = ["", f"■ {label}  {by_level}（最高 {vs[0].score:g}）"]
+        for v in vs[:ITEMS_PER_GROUP]:
+            block.append(f"  {v.id} {(v.title or v.description.split('. ')[0])[:60]}")
+            if v.url:
+                block.append(f"  {v.url}")
+        if len(vs) > ITEMS_PER_GROUP:
+            block.append(f"  ほか {len(vs) - ITEMS_PER_GROUP}件")
+        if len("\n".join(lines + block)) > budget:
+            break
+        lines += block
+        shown += 1
+    if len(ordered) > shown:
+        lines.append(f"\nほか {len(ordered) - shown} 製品")
     return "\n".join(lines + eol_part)[:MAX_CHARS]

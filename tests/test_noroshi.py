@@ -147,8 +147,9 @@ class DigestTest(unittest.TestCase):
         text = digest.build(vs, "2026-10-23T00:00:00+00:00", now, {"chrome": "Google Chrome"})
         self.assertIn("high 3", text)
         self.assertIn("■ Google Chrome  high 3（最高 60）", text)
-        self.assertIn("ほか 2件", text)
+        self.assertIn("  https://www.cve.org/CVERecord?id=CVE-2", text)  # 3 件目まで URL 付きで載る
         self.assertIn("認証局（CA）事案", text)
+        self.assertIn("  https://www.cve.org/CVERecord?id=CVE-0", text)
         self.assertNotIn("CVE-old", text)
         with_summary = digest.build(vs, "2026-10-23T00:00:00+00:00", now, {}, summary="・Chrome を更新")
         self.assertIn("🤖 今日の要点\n・Chrome を更新", with_summary)
@@ -207,7 +208,9 @@ class EolTest(unittest.TestCase):
         notified = {}
         lines = eol.upcoming(Fetcher(ROOT / "fixtures"), products, date(2026, 10, 24), notified)
         self.assertEqual(lines, ["・Node.js 20: 2026-10-30 にサポート終了（あと6日）",
-                                 "・PHP 8.2: 2026-12-31 にサポート終了（あと68日）"])
+                                 "  https://endoflife.date/nodejs",
+                                 "・PHP 8.2: 2026-12-31 にサポート終了（あと68日）",
+                                 "  https://endoflife.date/php"])
         self.assertEqual(eol.upcoming(Fetcher(ROOT / "fixtures"), products, date(2026, 10, 25), notified), [])
 
 
@@ -240,6 +243,22 @@ class AiVendorTest(unittest.TestCase):
         again = ai_vendors.news(Fetcher(ROOT / "fixtures"), feeds, now, now, state)
         self.assertEqual([(v.id, v.level) for v in again],
                          [("AI-anthropic-mock-detecting-countering-misuse-oct-2026", "medium")])
+
+
+class UrlTest(unittest.TestCase):
+    def test_cve_has_advisory_and_cve_record(self):
+        v = Vuln(id="CVE-2026-1", references=["https://github.com/php/php-src/security/advisories/GHSA-x"])
+        self.assertEqual(v.urls(), ["https://github.com/php/php-src/security/advisories/GHSA-x",
+                                    "https://www.cve.org/CVERecord?id=CVE-2026-1"])
+        self.assertEqual(Vuln(id="CVE-2026-2").urls(), ["https://www.cve.org/CVERecord?id=CVE-2026-2"])
+
+    def test_non_cve_uses_first_reference(self):
+        v = Vuln(id="JP-jpcert-at1", references=["https://www.jpcert.or.jp/at/2026/at1.html"])
+        self.assertEqual((v.url, v.urls()), (v.references[0], [v.references[0]]))
+
+    def test_alert_lists_urls(self):
+        text = notify_line.format_message([Vuln(id="CVE-2026-1", references=["https://vendor/adv"])])
+        self.assertIn("https://vendor/adv\nhttps://www.cve.org/CVERecord?id=CVE-2026-1", text)
 
 
 class NotifyTest(unittest.TestCase):

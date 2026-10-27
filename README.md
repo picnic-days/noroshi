@@ -49,7 +49,7 @@ flowchart LR
   D --> G[digest<br>JST 9 時以降の初回] --> L2[LINE push]
 ```
 
-1 回の実行（`python -m noroshi --send`）で、収集 → 照合 → スコアリング → 通知 → 保存 → 日次まとめを行う。同一 ID（CVE ID、無ければ GHSA ID）は `Vuln.merge` で統合する。
+1 回の実行（`python -m noroshi --send`）で、収集 → 照合 → スコアリング → 通知 → 保存 → 日次まとめを行う。通知には案件ごとに参照先 URL を付ける（`Vuln.urls()`。CVE は開発元などの最初の参照先と CVE.org の記録、それ以外は取得元のページ）。日次まとめは製品ごとに上位 3 件まで URL 付きで載せ、障害の復旧通知と EOL の予告にもページを付ける。同一 ID（CVE ID、無ければ GHSA ID）は `Vuln.merge` で統合する。
 
 ## データソース
 
