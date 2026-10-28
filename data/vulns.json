@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T20:42:26.685313+00:00",
+  "generated_at": "2026-10-28T00:02:40.554138+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -273,7 +273,7 @@
         "kev": 20,
         "epss": 8.3
       },
-      "ai_analysis": "【状況】Google Brotli の C デコーダに範囲外書き込み（CVSS 9.2）。細工データの展開でクラッシュ・メモリ漏えい・RCE の恐れ。CISA KEV に登録済（10/27、悪用あり）\n【原因の部品】Google Brotli（c/dec/decode.c）。組み込み先：Node.js（独自同梱）、Python Brotli、.NET、OS の libbrotli など\n【影響範囲】\n・Brotli 1.0.3〜1.2.0\n・Node.js 22/24/26 系の修正前版と、サポート終了の 20/23/25 系（修正なし）\n・fetch/requests が br 応答を自動で展開するため、HTTP 通信経由でも影響\n【対応策】\n1. Node.js を 22.23.4/24.22.1/26.12.1、Brotli を 1.0.10/1.1.1/1.2.1 に更新。OS の libbrotli はディストリの更新を適用。Python Brotli 1.2.1・brotlicffi 1.2.1.0・.NET 8.0.33/9.0.22/10.0.14 は第三者まとめの記載のみ（一次情報は未確認）。更新後はプロセス再起動、コンテナはイメージ再作成\n2. 信頼できない br データを展開しない（Accept-Encoding から br を外すなど）。公式の回避策は未確認\n【各告知の関係】\n・Google：元の部品の修正（告知本文は未確認）\n・Node.js／.NET：組み込み製品の更新（.NET は本文未確認）\n・andybalholm/brotli：Go 移植版の同種修正（影響はクラッシュのみ）\n・GHSA/NVD：CVE 登録、CISA KEV：注意喚起\n【出典】\nhttps://nodejs.org/en/blog/vulnerability/october-2026-security-releases\nhttps://broccoli2shell.com"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-113078",
@@ -4521,60 +4521,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116686",
-      "aliases": [],
-      "title": "Model Context Protocol Python SDK: Client fetched server-chosen $ref URLs while validating tool results against output schemas",
-      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, ClientSession, ClientSessionGroup, and Client tool calls validate server-declared outputSchema documents with jsonschema's default resolver, causing an unresolved $ref value to fetch an HTTP, HTTPS, or file URL from the client's network and filesystem context. A server can trigger blind requests or local-file reads and can stall every session in the process because resolution runs synchronously on the event loop without a timeout. This issue is fixed in versions 1.30.0 and 2.2.0.",
-      "published": "2026-10-27T19:29:16.001Z",
-      "updated": "2026-10-27T20:17:13.740",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "modelcontextprotocol python-sdk"
-      ],
-      "references": [
-        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-rwrf-2pqf-9j8j",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3394",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3396",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/5ebdfed4060d8e5b11b8e2348f86bad4d1fb8836",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/6705402e246dc4eb1fcdf4d9902b78d3c9c36e1b",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-27T20:42:26.685313+00:00",
-      "matched": [
-        "python",
-        "mcp"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 48.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 13.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-108467",
       "aliases": [],
       "title": "",
@@ -4890,60 +4836,6 @@
         "cvss": 11.8,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116685",
-      "aliases": [],
-      "title": "Model Context Protocol Python SDK: HTTP client transports followed cross-origin redirects carrying custom headers and bodies",
-      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.8.0 until 1.30.0 and 2.2.0, streamable_http_client, streamablehttp_client, sse_client, ClientSessionGroup, OAuth, and create_mcp_http_client client paths enable follow_redirects and follow redirects to a different origin, forwarding caller-supplied custom credential headers and, for 307 or 308 responses, the request body. An attacker who can influence a trusted endpoint's redirect destination can receive that material. This issue is fixed in versions 1.30.0 and 2.2.0.",
-      "published": "2026-10-27T19:26:46.926Z",
-      "updated": "2026-10-27T20:17:13.493",
-      "cvss": 5.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "modelcontextprotocol python-sdk"
-      ],
-      "references": [
-        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-5h93-6whr-6q8j",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3397",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3448",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/2106335745563b2321b8c73fef2c12903d00aa6e",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/c6762e821c527925f0b617db216d00fbd1d0bf99",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-27T20:42:26.685313+00:00",
-      "matched": [
-        "python",
-        "mcp"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 46.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 11.8,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -10281,59 +10173,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116684",
-      "aliases": [],
-      "title": "Model Context Protocol Python SDK: Server bearer-token authentication accepts tokens issued for a different resource server",
-      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, server-side bearer authentication configured through AuthSettings with token_verifier accepts a valid token issued for another service when the authorization server serves multiple resources and the TokenVerifier does not independently validate the aud audience. This resource-confusion flaw lets a token holder authenticate to the wrong MCP server and exercise that token's resulting access. This issue is fixed in versions 1.30.0 and 2.2.0.",
-      "published": "2026-10-27T19:12:24.255Z",
-      "updated": "2026-10-27T20:17:13.307",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "modelcontextprotocol python-sdk"
-      ],
-      "references": [
-        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-w4fh-qvv9-3v23",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3447",
-        "https://github.com/modelcontextprotocol/python-sdk/pull/3451",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/0c9136841ff092987a20700ff9c2c9789bda2f40",
-        "https://github.com/modelcontextprotocol/python-sdk/commit/8c2fa6eabacde869d75568e33b9d466b58c2f512",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
-        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-27T20:42:26.685313+00:00",
-      "matched": [
-        "python",
-        "mcp"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 43.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-114509",
       "aliases": [
         "GHSA-f9x3-7vq9-cph6"
@@ -14982,6 +14821,103 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-104016",
+      "aliases": [],
+      "title": "jackson-dataformat-protobuf: signed integer overflow in string-length paths allows unbounded array allocation and OutOfMemoryError",
+      "description": "ProtobufParser parses length-prefixed protobuf string and bytes fields by checking (_inputPtr + len) <= _inputEnd and then, on the fast path, calling _finishShortText(len). Both use 32-bit signed integer arithmetic. When an attacker supplies a varint decoding to a length near Integer.MAX_VALUE, _inputPtr + len overflows to a negative value, the bounds check passes, and _finishShortText(len) reaches TextBuffer.expandCurrentSegment(len), which performs Arrays.copyOf with no cap and throws OutOfMemoryError: Requested array size exceeds VM limit.\n\n\n\nThe JVM refuses arrays larger than Integer.MAX_VALUE - 8 before consulting available heap, so -Xmx tuning does not mitigate the issue. StreamReadConstraints.maxStringLength and maxDocumentLength do not gate this path: a 33-byte payload is far below any document-length cap and the string-length check does not fire before the allocation. This was confirmed empirically against shipping artifacts with maxStringLength, maxDocumentLength and maxNestingDepth all configured.\n\n\n\nA February 2026 hardening commit added the equivalent overflow guard to the packed-array-length and message-length paths but left the string-length call sites unguarded. No privileges or user interaction beyond the ability to submit data for parsing are required.",
+      "published": "2026-10-27T23:52:20.141Z",
+      "updated": "2026-10-27T23:52:20.141Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FasterXML jackson-dataformat-protobuf",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-protobuf",
+        "tools.jackson.dataformat:jackson-dataformat-protobuf"
+      ],
+      "references": [
+        "https://github.com/FasterXML/jackson-dataformats-binary/security/advisories/GHSA-c2rq-mcfv-jw29"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "protobuf"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-59158",
+      "aliases": [],
+      "title": "Nuxt Ollama: public runtime configuration discloses the configured cloud API key",
+      "description": "Nuxt Ollama integrates the official Ollama JavaScript library into Nuxt applications. Prior to 1.3.1, `src/module.ts` unconditionally merges all module options, including a configured cloud `api_key`, into `runtimeConfig.public.ollama`. Nuxt serializes this public configuration into the server-rendered HTML `window.__NUXT__` payload, exposing the API key in plaintext to any unauthenticated client that fetches a page. `src/runtime/composables/useOllama.ts` also reads the public key and sends it as an `Authorization` `Bearer` credential in browser-side Ollama requests. Following the documented cloud configuration is sufficient; the visible application template need not make an Ollama request for the secret to leak. A stolen key permits unauthorized cloud API requests at the operator's expense, quota or rate-limit exhaustion, and access to stored models or conversations if the key grants those permissions. This issue is fixed in version 1.3.1.",
+      "published": "2026-10-27T22:36:09.750Z",
+      "updated": "2026-10-27T23:17:06.570",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "thoda-dev nuxt-ollama"
+      ],
+      "references": [
+        "https://github.com/thoda-dev/nuxt-ollama/security/advisories/GHSA-fxg7-897c-57mp",
+        "https://github.com/thoda-dev/nuxt-ollama/commit/156e813783ef322ee10dbbdd6bf446a449e1a04f",
+        "https://github.com/thoda-dev/nuxt-ollama/releases/tag/v1.3.1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "ollama"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -16228,6 +16164,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116686",
+      "aliases": [
+        "GHSA-rwrf-2pqf-9j8j"
+      ],
+      "title": "Model Context Protocol Python SDK: Client fetched server-chosen $ref URLs while validating tool results against output schemas",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, ClientSession, ClientSessionGroup, and Client tool calls validate server-declared outputSchema documents with jsonschema's default resolver, causing an unresolved $ref value to fetch an HTTP, HTTPS, or file URL from the client's network and filesystem context. A server can trigger blind requests or local-file reads and can stall every session in the process because resolution runs synchronously on the event loop without a timeout. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T20:17:13.740",
+      "updated": "2026-10-27T21:05:30Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:mcp"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/commit/5ebdfed4060d8e5b11b8e2348f86bad4d1fb8836",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/6705402e246dc4eb1fcdf4d9902b78d3c9c36e1b",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3394",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3396",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0",
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-rwrf-2pqf-9j8j",
+        "https://github.com/advisories/GHSA-rwrf-2pqf-9j8j"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114508",
       "aliases": [
         "GHSA-5wcm-3v2w-8362"
@@ -16840,6 +16832,62 @@
         "popularity": 14.0,
         "cvss": 18,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116685",
+      "aliases": [
+        "GHSA-5h93-6whr-6q8j"
+      ],
+      "title": "Model Context Protocol Python SDK: HTTP client transports followed cross-origin redirects carrying custom headers and bodies",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.8.0 until 1.30.0 and 2.2.0, streamable_http_client, streamablehttp_client, sse_client, ClientSessionGroup, OAuth, and create_mcp_http_client client paths enable follow_redirects and follow redirects to a different origin, forwarding caller-supplied custom credential headers and, for 307 or 308 responses, the request body. An attacker who can influence a trusted endpoint's redirect destination can receive that material. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T20:17:13.493",
+      "updated": "2026-10-27T21:05:36Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:mcp"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/commit/2106335745563b2321b8c73fef2c12903d00aa6e",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/c6762e821c527925f0b617db216d00fbd1d0bf99",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3397",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3448",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0",
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-5h93-6whr-6q8j",
+        "https://github.com/advisories/GHSA-5h93-6whr-6q8j"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -19512,61 +19560,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-114053",
-      "aliases": [
-        "GHSA-h3rc-6mm3-gc2m"
-      ],
-      "title": "vLLM: Request-controlled mm_processor_kwargs.code_revision allows remote code execution",
-      "description": "## Summary\n\nAn untrusted multimodal request can set `mm_processor_kwargs.code_revision`. When vLLM serves a model whose Hugging Face processor uses dynamic `auto_map` code and the operator enabled `--trust-remote-code`, this request value reaches `AutoProcessor.from_pretrained` and selects the Python revision imported by Transformers.\n\nThis lets a client replace the operator-reviewed processor module with code from another revision of the same model repository. The operator-selected model/data `revision` remains pinned; only the executed processor code changes.\n\nImporting a Python module is arbitrary code execution in the vLLM API/renderer process. The PoC below demonstrates this with an import-time filesystem write. It is fully offline and does not require a GPU, model weights, or changes to a real Hub repository.\n\n## Affected snapshot\n\n- Repository: [`vllm-project/vllm`](https://github.com/vllm-project/vllm)\n- Verified commit: [`570735520942b6428ae98f1eb442c6d88adae55e`](https://github.com/vllm-project/vllm/commit/570735520942b6428ae98f1eb442c6d88adae55e)\n- Verified with Transformers 5.15.0 and 5.16.1\n- Affected release range has not been bisected\n\n## Affected configuration\n\nThe vulnerable path exists when all of the following are true:\n\n1. The served model's processor uses dynamic `auto_map.AutoProcessor` code.\n2. The operator enabled `trust_remote_code`.\n3. The server can fetch the request-selected revision, or it is already cached.\n4. The attacker can create or otherwise control a revision in the served model repository. An example is a [Hugging Face community pull-request ref](https://huggingface.co/docs/hub/en/repositories-pull-requests-discussions#where-in-the-git-repo-are-changes-stored) when that repository permits them.\n5. A multimodal request reaches the processor path.\n\nThe default `trust_remote_code=False` configuration is not affected.\n\n## Attack surface\n\n`mm_processor_kwargs` is accepted directly by public request models:\n\n- [`TokenizeChatRequest.mm_processor_kwargs`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/entrypoints/serve/tokenize/protocol.py#L111-L114)\n- [`ChatCompletionRequest.mm_processor_kwargs`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/entrypoints/openai/chat_completion/protocol.py#L372-L375)\n\n`/tokenize` is particularly relevant because vLLM's authentication middleware guards only `/v1`, `/v2`, `/inference`, and `/cohere` prefixes:\n\n- [`AuthenticationMiddleware`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/entrypoints/serve/middleware/authenticate.py#L11-L62)\n\nConsequently, `/tokenize` remains unauthenticated even when `--api-key` is configured, unless an external proxy protects it. The vLLM [Security Guide](https://docs.vllm.ai/en/latest/usage/security/#unprotected-endpoints-no-api-key-required) documents `/tokenize` as an unprotected endpoint.\n\n## Root cause\n\nThe request value follows this path:\n\n1. [`OnlineRenderer.preprocess_chat`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/renderers/online_renderer.py#L406-L435) places request `mm_processor_kwargs` in prompt extras.\n2. Multimodal rendering forwards those kwargs into processor construction through [`MMProcessorInputs`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/renderers/base.py#L751-L760) and [`_process_multimodal_async`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/renderers/base.py#L831-L847).\n3. [`MultiModalConfig.merge_mm_processor_kwargs`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/config/multimodal.py#L506-L518) overlays inference values on startup values, so the request wins.\n4. [`cached_get_processor_without_dynamic_kwargs`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/transformers_utils/processor.py#L344-L375) filters only recognized processor-call keys. `code_revision` is retained as a processor-construction kwarg.\n5. [`cached_processor_from_config`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/transformers_utils/processor.py#L380-L390) pins `revision` and `trust_remote_code`, but forwards the remaining kwargs without reserving `code_revision`.\n6. [`get_processor`](https://github.com/vllm-project/vllm/blob/570735520942b6428ae98f1eb442c6d88adae55e/vllm/transformers_utils/processor.py#L205-L245) calls `AutoProcessor.from_pretrained(..., revision=revision, trust_remote_code=trust_remote_code, **kwargs)`.\n7. Transformers [`AutoProcessor.from_pretrained`](https://github.com/huggingface/transformers/blob/v5.15.0/src/transformers/models/auto/processing_auto.py#L294-L302) uses `code_revision` to retrieve and import the dynamic module through [`get_class_from_dynamic_module`](https://github.com/huggingface/transformers/blob/v5.15.0/src/transformers/dynamic_module_utils.py#L474-L575), then removes it before loading processor data. This is why code comes from the attacker revision while configuration/data remain operator-pinned.\n\nRequest-time processor arguments are not separated from processor-construction arguments, and `code_revision` is not reserved.\n\n## Suggested remediation\n\n1. Separate processor-construction arguments from untrusted processor-call arguments. An allowlist of supported request-time preprocessing controls is safest.\n2. Reject `code_revision` and other loader/source controls in request `mm_processor_kwargs`, and pass `model_config.code_revision` explicitly as the only permitted processor-code revision.\n3. Add a regression test proving a request cannot change the loaded module revision while operator pins remain effective.\n4. Protect `/tokenize` with the configured authentication policy as defense in depth.\n\nExpected safe behavior is either a 4xx response for reserved request keys or silently ignoring them before processor construction. Rejection is preferable because it makes attempted misuse visible.\n\nA patch for this was merged here: https://github.com/vllm-project/vllm/pull/58830",
-      "published": "2026-10-27T15:36:17Z",
-      "updated": "2026-10-27T15:36:19Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [
-        "pip:vllm"
-      ],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/advisories/GHSA-h3rc-6mm3-gc2m",
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-h3rc-6mm3-gc2m",
-        "https://github.com/vllm-project/vllm/pull/58830",
-        "https://github.com/vllm-project/vllm/commit/31f2e70cd3e403aaa471fb7fe3d33a7207aaf3cc",
-        "https://github.com/vllm-project/vllm/releases/tag/v0.31.0",
-        "https://nvd.nist.gov/vuln/detail/cve-2026-114053"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00462,
-      "epss_percentile": 0.39847,
-      "x_mentions": null,
-      "sources": [
-        "ghsa"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-27T16:01:42.628652+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 36.3,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-91484",
       "aliases": [],
       "title": "",
@@ -21454,6 +21447,61 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116684",
+      "aliases": [
+        "GHSA-w4fh-qvv9-3v23"
+      ],
+      "title": "Model Context Protocol Python SDK: Server bearer-token authentication accepts tokens issued for a different resource server",
+      "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, server-side bearer authentication configured through AuthSettings with token_verifier accepts a valid token issued for another service when the authorization server serves multiple resources and the TokenVerifier does not independently validate the aud audience. This resource-confusion flaw lets a token holder authenticate to the wrong MCP server and exercise that token's resulting access. This issue is fixed in versions 1.30.0 and 2.2.0.",
+      "published": "2026-10-27T20:17:13.307",
+      "updated": "2026-10-27T21:07:01Z",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:mcp"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/modelcontextprotocol/python-sdk/commit/0c9136841ff092987a20700ff9c2c9789bda2f40",
+        "https://github.com/modelcontextprotocol/python-sdk/commit/8c2fa6eabacde869d75568e33b9d466b58c2f512",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3447",
+        "https://github.com/modelcontextprotocol/python-sdk/pull/3451",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.30.0",
+        "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.2.0",
+        "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-w4fh-qvv9-3v23",
+        "https://github.com/advisories/GHSA-w4fh-qvv9-3v23"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T20:42:26.685313+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91409",
       "aliases": [],
       "title": "",
@@ -21813,6 +21861,64 @@
         "cvss": 14.0,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-57190",
+      "aliases": [],
+      "title": "Asterisk: SQL Injection in cel_pgsql and cel_tds via CELGenUserEvent eventtype Field",
+      "description": "Asterisk is an open source private branch exchange and telephony toolkit. Prior to Asterisk 20.20.1, 21.12.3, 22.10.1, 23.4.1 and Certified Asterisk 20.7-cert11, 22.8-cert3, the `PostgreSQL` and `TDS/MSSQL` Channel Event Log backends `cel_pgsql` and `cel_tds` may permit arbitrary SQL execution when untrusted data is set in the CEL `eventtype` column by the `CELGenUserEvent` dialplan application. The `cel_pgsql` or `cel_tds` backend must be loaded and configured, and the administrator must call `CELGenUserEvent` in the dialplan without ensuring that only valid data is passed to the application. This issue is fixed in Asterisk 20.20.1, 21.12.3, 22.10.1, 23.4.1 and Certified Asterisk 20.7-cert11, 22.8-cert3.",
+      "published": "2026-10-27T21:45:50.075Z",
+      "updated": "2026-10-27T22:17:27.197",
+      "cvss": 7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:H/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "asterisk asterisk",
+        "asterisk certified-asterisk"
+      ],
+      "references": [
+        "https://github.com/asterisk/asterisk/security/advisories/GHSA-ph27-3m5q-mj5m",
+        "https://github.com/asterisk/asterisk/commit/046a8b0b50623d80926c1adc2eca1c9c17e258ed",
+        "https://github.com/asterisk/asterisk/commit/0a86e45e8cde7630276f8363de45f71d1635d2f4",
+        "https://github.com/asterisk/asterisk/commit/88c65757b56c716b5a175f35941be22e038b256f",
+        "https://github.com/asterisk/asterisk/commit/8bf7746d01221d6d2bcfcd46ba7a1cff066a1a8b",
+        "https://github.com/asterisk/asterisk/commit/8cb6dfd41debb2259ec3a33ccfa78f1d902e4c22",
+        "https://github.com/asterisk/asterisk/commit/a04bee3992c28e1681457370e46f30494b7c6619",
+        "https://github.com/asterisk/asterisk/commit/ff21d90e61d199db9b963c671d125a1e917d41ac",
+        "https://github.com/asterisk/asterisk/releases/tag/20.20.1",
+        "https://github.com/asterisk/asterisk/releases/tag/21.12.3",
+        "https://github.com/asterisk/asterisk/releases/tag/22.10.1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -22893,6 +22999,102 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-m9fg-w9qh-67pc",
+      "aliases": [],
+      "title": "sanitize_message() address regex is lowercase-only and does not match PIL's uppercase __repr__, leaking live heap addresses to unauthenticated clients",
+      "description": "### Summary\r\n\r\n`sanitize_message()` scrubs heap addresses from error messages with the regex `r\" at 0x[0-9a-f]+>\"` - lowercase only, no `IGNORECASE`. `PIL.Image.Image.__repr__` formats its address as `0x{id(self):X}` - uppercase. The scrubber structurally cannot match the one object class both parent advisories are about.\r\n\r\nA 564-byte PNG sent to an unauthenticated endpoint returns a live heap address of the running server process.\r\n\r\nThis is not a new hardening proposal. The CVE-2026-54236 advisory explicitly recommended widening this exact regex to `[0-9a-fA-F]`; three months on it is byte-identical.\r\n\r\n### Details\r\n\r\n#### The mismatch\r\n\r\n```python\r\n# the scrubber\r\nr\" at 0x[0-9a-f]+>\"\r\n\r\n# what PIL actually emits\r\n# PIL/Image.py — Image.__repr__\r\n\"<%s.%s image mode=%s size=%dx%d at 0x%X>\" % (..., id(self))\r\n```\r\n\r\nThe parent CVE's own lowercase `BytesIO` shape is scrubbed correctly today. PIL's uppercase form is not.\r\n\r\n#### The sink\r\n\r\n`vllm/multimodal/processing/context.py:347` f-strings the PIL objects into any HF-processor failure message, which is returned to the client.\r\n\r\n#### Why the recommendation was dropped - the in-tree answer\r\n\r\n`test_error_sanitization.py` already contains a case with the id `pil-image-repr`, asserting that the PIL form is scrubbed. Its input is a hand-written **lowercase** literal that PIL never emits. I ran both halves against the same object class: the test passes, and a real `repr()` leaks.\r\n\r\nThat is why a documented, accepted recommendation looked already-covered and was never implemented. Any fix must include a test built from a real `repr()`, not from a literal.\r\n\r\n#### Related PRs inspected at diff level (neither closes this)\r\n\r\n* **PR #35492** adds `sanitize_message` to a new Responses-API WebSocket path, continuing the CVE-2026-54236 remediation - but does not widen the regex, and its new test also uses a lowercase literal.\r\n* **PR #52120** patches a stale path (`serve/utils/api_utils.py`) and only touches the path regex's backtracking.\r\n\r\n### Reachability - default configuration, no authentication\r\n\r\n* `api_key` defaults to `None`, and `AuthenticationMiddleware` is installed only when a key is configured - a default `vllm serve` is entirely unauthenticated.\r\n* Even with `--api-key` set, `GUARDED_PREFIX = (\"/v1\", \"/v2\", \"/inference\", \"/cohere\")`, so `/tokenize` remains unauthenticated.\r\n* Default-on for any multimodal deployment.\r\n\r\n### Impact\r\n\r\nInformation disclosure: a live heap address of the API-server process, to an unauthenticated remote client. CWE-532.\r\n\r\n**Scope, stated plainly.** This is information disclosure, not memory corruption. It is Stage 1 of the chain CVE-2026-22778 was rated 9.8 for - an ASLR defeat that made the second stage reliable. **Stage 2 is patched at the current OpenCV floor, so I am not claiming RCE.** The value of the fix is that the disclosure primitive the chain depended on is still live, and the advisory that recommended closing it was never acted on.\r\n\r\n**Proposed CVSS v3.1:** `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N` (5.3, Medium). Severity is proposed, not insisted on.\r\n\r\n### Suggested fix\r\n\r\n1. Widen the regex to `[0-9a-fA-F]` and add `re.IGNORECASE`, as CVE-2026-54236's advisory recommended.\r\n2. Replace the `pil-image-repr` test case's hand-written literal with a string produced by calling `repr()` on a real `PIL.Image.Image`, so the case cannot pass while the production path leaks. Apply the same to PR #35492's new test.\r\n\r\nItem 2 matters as much as item 1 here: the test is the reason the first recommendation was lost.\r\n\r\n### Weaknesses of this report, stated upfront\r\n\r\n* No GPU was used. Results come from the in-tree GPU-less render server (`vllm launch render`), which runs the real frontend, the real request model and the real `/tokenize` route. Media processing happens entirely in the frontend, so I do not believe the engine's presence changes the result - but I have not confirmed it under a full `vllm serve`.\r\n* The disclosed value is an address, not memory contents. No read primitive is claimed.\r\n* I did not attempt to chain this to anything.\r\n\r\n---\r\n\r\n*Prepared with AI assistance (Claude), per the repository's contributing guidance on disclosing AI-assisted contributions. All findings were verified by executing vLLM's own code at the commits cited; the analysis and the claims are my own.*\r\n\r\n*Reported by Eva Crystal / 0xiviel (XSource Security).*\r\n\r\n## Affected versions\r\n\r\n- Package: `vllm` (PyPI).\r\n- Affected versions: `>= 0.14.0rc1, < 0.31.0`.\r\n- First stable patched version: `0.31.0`.\r\n\r\nAdvisory fixed in [#58832](https://github.com/vllm-project/vllm/pull/58832).\r\n",
+      "published": "2026-10-27T22:14:15Z",
+      "updated": "2026-10-27T22:14:15Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-m9fg-w9qh-67pc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114053",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.7.3 before 0.31.0 forwards the request-supplied mm_processor_kwargs.code_revision to Transformers AutoProcessor.from_pretrained, letting clients select which revision of a model's dynamic processor code is imported when trust_remote_code is enabled. An attacker controlling a revision in the served model repository can send a multimodal request to the unauthenticated /tokenize endpoint to execute arbitrary Python in the vLLM API process.",
+      "published": "2026-10-21T01:17:28.083",
+      "updated": "2026-10-27T22:17:23.940",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/commit/570735520942b6428ae98f1eb442c6d88adae55e",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-h3rc-6mm3-gc2m",
+        "https://www.vulncheck.com/advisories/vllm-0.7.3-before-0.31.0-rce-via-mm-processor-kwargs-code-revision"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00462,
+      "epss_percentile": 0.39847,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-27T16:01:42.628652+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 30.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112906",
       "aliases": [
         "GHSA-2g95-wg33-c5x2"
@@ -23607,6 +23809,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-vxqj-p4gw-9h4c",
+      "aliases": [],
+      "title": "Incomplete CVE-2026-34755 remediation can be bypassed by request-level num_frames",
+      "description": "### Summary\n\nThe frame-count protection added by PR #38636 for GHSA-pq5c-rjhq-qp7p / CVE-2026-34755 is incomplete in vLLM v0.19.0 through v0.27.1 and current `main` at commit `6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce`.\n\nAn inference client can set `media_io_kwargs.video.num_frames=-1` in a stock `ChatCompletionRequest`. The production merge lets that request value replace the engine-level frame setting. `VideoMediaIO.load_base64(\"video/jpeg\", ...)` treats a negative value as unlimited and decodes every comma-separated JPEG frame before combining them with `np.stack`.\n\nIn a safe exact-path reproduction, the same 256-frame payload loaded 8 frames when the server value was 8, but all 256 frames when the request supplied `-1`. This restores request-controlled, linearly scalable memory allocation at the same decoder addressed by the parent advisory. I assess the issue as Moderate (CVSS 3.1: 6.5). The safe run demonstrates the limit bypass and allocation growth; it does not claim a reproduced service crash or RCE.\n\n### Details\n\nThe request field is exposed without a numeric security bound in [`ChatCompletionRequest`](https://github.com/vllm-project/vllm/blob/6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce/vllm/entrypoints/openai/chat_completion/protocol.py#L364-L370). `ChatParams.with_defaults()` performs the engine/request merge ([`renderers/params.py`](https://github.com/vllm-project/vllm/blob/6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce/vllm/renderers/params.py#L99-L122)), and the base merge gives runtime values precedence ([`media/base.py`](https://github.com/vllm-project/vllm/blob/6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce/vllm/multimodal/media/base.py#L65-L80)).\n\n`VideoMediaIO.merge_kwargs()` removes unsafe request-level GPU backend settings but does not reject or clamp `num_frames` ([`media/video.py`](https://github.com/vllm-project/vllm/blob/6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce/vllm/multimodal/media/video.py#L28-L66)). The resulting value reaches the following decoder branch ([`media/video.py`](https://github.com/vllm-project/vllm/blob/6c95a641e95c0faa6f3aa802d1fd3cce3f3bc3ce/vllm/multimodal/media/video.py#L103-L121)):\n\n```python\nif self.num_frames > 0:\n    frame_parts = data.split(\",\", self.num_frames)[: self.num_frames]\nelif self.num_frames == 0:\n    raise ValueError(\"num_frames must be greater than 0 or -1\")\nelse:\n    frame_parts = data.split(\",\")\n\nframes = np.stack(\n    [np.asarray(load_frame(frame_data)) for frame_data in frame_parts]\n)\n```\n\nThe effective policy is therefore:\n\n```text\nserver value:  {\"video\": {\"num_frames\": 8}}\nrequest value: {\"video\": {\"num_frames\": -1}}\neffective:     {\"video\": {\"num_frames\": -1}}\n```\n\nThe source-traced actor-to-sink chain is:\n\n```text\nPOST /v1/chat/completions\n  -> ChatCompletionRequest.media_io_kwargs\n  -> ChatCompletionRequest.build_chat_params()\n  -> ChatParams.with_defaults()\n  -> merge_media_io_kwargs() / VideoMediaIO.merge_kwargs()\n  -> MediaConnector data-URL handling\n  -> VideoMediaIO.load_base64(\"video/jpeg\", ...)\n  -> all-frame JPEG decode and np.stack\n```\n\nThe `-1` sentinel is an intentional “all frames” sampling preference and was shown in the runtime API example for PR #34778. PR #38636 also retained a negative-value unlimited test. This report does not claim that the sentinel itself is new. The security issue is the absence of a trust separation between an operator preference and the server-side ceiling introduced to remediate GHSA-pq5c. A low-privilege request can disable that ceiling. A very large positive request value has the same policy problem because the client selects the effective maximum.\n\n`VLLM_MAX_IMAGE_PIXELS` applies independently to each JPEG and does not bound aggregate frames or decoded pixels. Downstream model limits run after media loading and cannot prevent the split, per-frame allocations, and combined stack.\n\nThe report confirmed this behavior in v0.27.1 (`6e448d0ea9bf3d88d898b65449ca6dc2aec170ac`) and the then-current main revision. The online request-boundary fix is available in v0.31.0.\n\nThe recommended fix is a positive server-enforced maximum frame or aggregate decoded-work budget that is independent of request and startup sampling preferences. On the online API, request `num_frames <= 0` and values above the maximum should be rejected or mapped to the server limit.\n\n### Impact\n\nThis is an availability/resource-exhaustion issue affecting deployments that expose a video-capable multimodal model to inference clients. An actor who can submit a video request can replace the operator's frame setting with `-1` or an attacker-selected large value. Memory consumption then scales with every supplied frame, including individual decoded frame arrays and the combined `np.stack` allocation.\n\nIf `--api-key` is configured, the actor needs a valid inference API key. Without a configured key, the stock `/v1/chat/completions` route has no API-key middleware. I retain the parent advisory's conservative `PR:L` vector.\n\nIn a memory-constrained deployment, a sufficiently large request can cause allocation failure or API/renderer process termination through container or host OOM handling. The retained safe run does not itself demonstrate a service crash. No confidentiality, integrity, or code-execution impact is claimed.\n\n## Affected versions\n\n- Package: `vllm` (PyPI).\n- Affected versions: `>= 0.19.0, < 0.31.0`.\n- First stable patched version: `0.31.0`.\n\nPR #58830 blocks untrusted per-request `mm_processor_kwargs` and `media_io_kwargs` by default before preprocessing. Keep `--trust-request-mm-kwargs` disabled for untrusted clients. Explicitly enabling it restores trusted override behavior; the underlying processor/sampler is not independently bounded by this fix.\n\nAdvisory fixed in [#58830](https://github.com/vllm-project/vllm/pull/58830).\n",
+      "published": "2026-10-27T22:22:11Z",
+      "updated": "2026-10-27T22:22:11Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vxqj-p4gw-9h4c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 28.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-65627",
       "aliases": [],
       "title": "",
@@ -23851,6 +24101,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-5q78-j82c-2vr2",
+      "aliases": [],
+      "title": "vLLM denial of service via prompt embeds on XD-RoPE models (incomplete fix of CVE-2026-55514)",
+      "description": "### Summary\n\nAn unauthenticated remote attacker can crash the entire vLLM engine and API server with a single `/v1/completions` request that contains only `prompt_embeds` (no `prompt` text and no `prompt_token_ids`) when the server runs an XD-RoPE model (HF config with `rope_scaling.type == \"xdrope\"`, e.g. `tencent/HunyuanOCR`) with `--enable-prompt-embeds` on the V1 (MRV1) GPU model runner. The crash is caused by a reachable type-narrowing `assert` in `GPUModelRunner._init_xdrope_positions` that is the **unpatched XD-RoPE sibling of CVE-2026-55514 / GHSA-33cg-gxv8-3p8g** (\"vLLM DoS via prompt embeds on M-RoPE models\", fixed in v0.24.0 by commit `470229c37`): that fix removed the identical assertion from `_init_mrope_positions` and added a regression test, but the XD-RoPE path was missed and still asserted on `main` at the time of this report. Verified end-to-end on the released `vllm==0.28.0` wheel on a real GPU: one attack request makes the whole server process terminate (all concurrent clients disconnected).\n\n### Details\n\n**Affected code** (`vllm/v1/worker/gpu_model_runner.py`, V1 GPU model runner; lines 1742–1746 in v0.28.0, 1689–1694 in `main` @ `6f7df92a8`):\n\n```python\ndef _init_xdrope_positions(self, req_state: CachedRequestState):\n    model = self.get_model()\n    xdrope_model = cast(SupportsXDRoPE, model)\n    assert req_state.prompt_token_ids is not None, (      # <- fatal assert\n        \"XD-RoPE requires prompt_token_ids to be available.\"\n    )\n    ...\n```\n\nIt is invoked for **every newly scheduled request** whenever the model is detected as XD-RoPE (`model_config.uses_xdrope_dim > 0`, derived from the HF config fields `xdrope_section` or `rope_scaling.xdrope_section`; see `vllm/transformers_utils/config.py:580-594`):\n\n```python\n# update_requests() in gpu_model_runner.py\nif self.uses_xdrope_dim > 0:\n    self._init_xdrope_positions(req_state)\n```\n\n**Root cause.** The assertion is a mypy type-narrowing guard that is not always true: an embeddings-only request legitimately reaches the worker with `prompt_token_ids = None`. This is the exact defect described by GHSA-33cg-gxv8-3p8g for the M-RoPE sibling; the June 2026 fix (commit `470229c37`, released in v0.24.0) removed the assertion only on the M-RoPE path and its regression test (`tests/v1/worker/test_mrope_prompt_embeds.py`) covers only M-RoPE.\n\n**Why the request reaches the assertion (verified call chain):**\n1. `vllm/renderers/embed_utils.py:17-38` — `safe_load_prompt_embeds` validates only tensor shape/dtype (requires the server flag `--enable-prompt-embeds`), no token ids required.\n2. `vllm/v1/engine/input_processor.py:343-346` — the \"embeds\" input type is accepted with `prompt_token_ids = None`; `_validate_model_input` imposes no token-id requirement.\n3. `vllm/v1/request.py:145-146` — embeddings-only requests are first-class (`_all_token_ids` is a zero-filled placeholder list).\n4. On first scheduling, `_update_states()` → `update_requests()` → `_init_xdrope_positions(req_state)` raises `AssertionError` inside the EngineCore execution loop. In the default in-process worker deployment the EngineCore dies; the API server then shuts down, dropping every in-flight request of all tenants.\n\n**Affected configuration surface.** The V1 model runner is selected (and the assertion thus reachable) in many supported configurations, including: `VLLM_USE_V2_MODEL_RUNNER=0`, environments without Triton, ROCm-specific architectures, `--speculative-config \"method=ngram_gpu\"`, P-EAGLE parallel drafting, EAGLE3 with pipeline parallelism > 1, PP with `external_launcher`, sequence parallelism with TP > 1, `stock torch.compile`, DBO, elastic expert parallelism, custom logits-processor plugins, and KV-sharing fast prefill (selection logic: `vllm/config/vllm.py:620-652, 2396-2490`).\n\n**End-to-end observation (2026-08-28, NVIDIA RTX PRO 6000, `vllm==0.28.0` PyPI wheel).** Real server log excerpt on a single attack request:\n\n```\n(EngineCore) ERROR [core.py:1348]   File \".../vllm/v1/worker/gpu_model_runner.py\", line 1745, in _init_xdrope_positions\n(EngineCore) ERROR [core.py:1348]     assert req_state.prompt_token_ids is not None, (\n(EngineCore) ERROR [core.py:1348]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n(EngineCore) ERROR [core.py:1348] AssertionError: XD-RoPE requires prompt_token_ids to be available.\n(APIServer) ERROR [async_llm.py:744] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue...\n(APIServer) INFO  [async_llm.py] ... Application shutdown complete\n(APIServer) INFO  [api_server.py] Finished server process\n```\n\nImmediately after the request: `GET /health` fails — the whole server process is dead. Control group on the same server: a normal request with `prompt` token ids completes and the server stays alive.\n\n### Impact\n\n- **Vulnerability type:** reachable assertion leading to full denial of service (CWE-617). One request kills the EngineCore and terminates the API server process; every concurrent client is disconnected and the service must be restarted.\n- **Impact:** availability of the entire serving instance; for multi-tenant deployments, all tenants are affected simultaneously.\n- **Who is impacted:** any deployment that (a) serves an XD-RoPE model (`rope_scaling.type == \"xdrope\"`), (b) enables `--enable-prompt-embeds`, and (c) uses the V1 model runner (common supported configurations listed in Details). The attack needs no authentication when the API is exposed without `--api-key` and also works on unauthenticated inference aliases (e.g. `/invocations`); with `--api-key`, any authorized API caller can trigger it.\n- **Same-class reference:** CVE-2026-55514 / GHSA-33cg-gxv8-3p8g (M-RoPE variant, rated High); this report is the incomplete-fix variant of that advisory.\n\n### Suggested fix (for the maintainer)\n\nMirror commit `470229c37` in `_init_xdrope_positions` — replace the assertion with embeddings-aware handling:\n\n```python\nif req_state.prompt_token_ids is not None:\n    input_tokens = req_state.prompt_token_ids\nelif req_state.prompt_embeds is not None:\n    seq_len = req_state.prompt_embeds.shape[0]\n    input_tokens = list(range(seq_len))\nelse:\n    raise ValueError(\"XD-RoPE requires either prompt_token_ids or prompt_embeds.\")\n```\n\nand add a regression test equivalent to `tests/v1/worker/test_mrope_prompt_embeds.py` for the XD-RoPE path (optionally, raise `ValueError` instead of asserting so the request fails cleanly without killing the engine).\n\n## Affected versions\n\n- Package: `vllm` (PyPI).\n- Affected versions: `>= 0.28.0, < 0.30.0`.\n- First stable patched version: `0.30.0`.\n\nThe range covers the verified affected release and subsequent releases before the fix; earlier releases were not comprehensively assessed. PR #56078 removed the separate XD-RoPE path by unifying it with M-RoPE.\n\nAdvisory fixed in [#56078](https://github.com/vllm-project/vllm/pull/56078).\n",
+      "published": "2026-10-27T22:18:41Z",
+      "updated": "2026-10-27T22:18:41Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-5q78-j82c-2vr2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 26.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115919",
       "aliases": [],
       "title": "",
@@ -24049,6 +24347,2311 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 5.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118304",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in SVG in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:17.508Z",
+      "updated": "2026-10-27T23:16:58.863",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574101376"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118305",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Turbolev in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:11.199Z",
+      "updated": "2026-10-27T23:16:58.987",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568348290"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118306",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in FileSystem in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-10-27T23:03:08.662Z",
+      "updated": "2026-10-27T23:16:59.097",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/571156746"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118307",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Paint in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:13.760Z",
+      "updated": "2026-10-27T23:16:59.203",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/570675085"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118308",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in SVG in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:18.858Z",
+      "updated": "2026-10-27T23:16:59.323",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574791952"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118309",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in UI in Google Chrome on on Android prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:20.473Z",
+      "updated": "2026-10-27T23:16:59.433",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/576133777"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118310",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Views in Google Chrome on on Windows prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:18.388Z",
+      "updated": "2026-10-27T23:16:59.543",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574516887"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118311",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Media in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:16.341Z",
+      "updated": "2026-10-27T23:16:59.650",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/573938968"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118312",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Paint in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-27T23:03:20.918Z",
+      "updated": "2026-10-27T23:16:59.757",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/540025369"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118313",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Video in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:17.021Z",
+      "updated": "2026-10-27T23:16:59.863",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574032795"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118314",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in UI in Google Chrome on on Android prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:19.094Z",
+      "updated": "2026-10-27T23:16:59.970",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574803484"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118315",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in SVG in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:20.026Z",
+      "updated": "2026-10-27T23:17:00.087",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/575184164"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118316",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:17.720Z",
+      "updated": "2026-10-27T23:17:00.193",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574223268"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118317",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in HTML in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:11.418Z",
+      "updated": "2026-10-27T23:17:00.303",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568730797"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118320",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:11.628Z",
+      "updated": "2026-10-27T23:17:00.637",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568894515"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118321",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Core in Google Chrome on on Android prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:12.843Z",
+      "updated": "2026-10-27T23:17:00.733",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568937139"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118327",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Media in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:15.662Z",
+      "updated": "2026-10-27T23:17:00.943",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572878518"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118328",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in WebRTC in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:14.278Z",
+      "updated": "2026-10-27T23:17:01.053",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/570927027"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118329",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in ANGLE in Google Chrome on on Mac prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:12.181Z",
+      "updated": "2026-10-27T23:17:01.157",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568900535"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118330",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Browser in Google Chrome on on Windows prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:19.788Z",
+      "updated": "2026-10-27T23:17:01.267",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/575090745"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118331",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in FileAPI in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-10-27T23:03:09.097Z",
+      "updated": "2026-10-27T23:17:01.370",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572193211"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118332",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Compositing in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:16.794Z",
+      "updated": "2026-10-27T23:17:01.477",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574030524"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118334",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in ImageCapture in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:16.569Z",
+      "updated": "2026-10-27T23:17:01.687",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574027204"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118335",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Metrics in Google Chrome on on Mac prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:18.612Z",
+      "updated": "2026-10-27T23:17:01.790",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574606539"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118336",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Headless in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:14.746Z",
+      "updated": "2026-10-27T23:17:01.907",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572111820"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118338",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Animation in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-27T23:03:21.158Z",
+      "updated": "2026-10-27T23:17:02.753",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/575826638"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118339",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Animation in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:10.980Z",
+      "updated": "2026-10-27T23:17:02.863",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/567645136"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118340",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:12.611Z",
+      "updated": "2026-10-27T23:17:02.973",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568936530"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118341",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Modularization in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:19.541Z",
+      "updated": "2026-10-27T23:17:03.077",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574911701"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118342",
+      "aliases": [],
+      "title": "",
+      "description": "Out of bounds write in Editing in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:18.174Z",
+      "updated": "2026-10-27T23:17:03.180",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574412629"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118343",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in ReadingList in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:16.113Z",
+      "updated": "2026-10-27T23:17:03.283",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/573389782"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118344",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Layout in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-10-27T23:03:09.848Z",
+      "updated": "2026-10-27T23:17:03.393",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574852698"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118345",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in PDFium in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:17.254Z",
+      "updated": "2026-10-27T23:17:03.503",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574061024"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118346",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Compositing in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:17.935Z",
+      "updated": "2026-10-27T23:17:03.613",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574382050"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118347",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:19.320Z",
+      "updated": "2026-10-27T23:17:03.723",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574911589"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118348",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-10-27T23:03:09.516Z",
+      "updated": "2026-10-27T23:17:03.833",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/574776938"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118349",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Payments in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:15.427Z",
+      "updated": "2026-10-27T23:17:03.943",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572422506"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118350",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Turbolev in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:10.539Z",
+      "updated": "2026-10-27T23:17:04.050",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/567129324"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118351",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:13.982Z",
+      "updated": "2026-10-27T23:17:04.157",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/570825067"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118352",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Cache in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:13.321Z",
+      "updated": "2026-10-27T23:17:04.263",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/569674221"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118353",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Paint in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:15.202Z",
+      "updated": "2026-10-27T23:17:04.380",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572312175"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118354",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:12.396Z",
+      "updated": "2026-10-27T23:17:04.507",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568936430"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118355",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Command in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:13.548Z",
+      "updated": "2026-10-27T23:17:04.630",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/570638833"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118356",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in WTF in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:20.252Z",
+      "updated": "2026-10-27T23:17:04.750",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/575851252"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118357",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:10.088Z",
+      "updated": "2026-10-27T23:17:04.907",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/562191732"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118358",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in WebAudio in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:14.971Z",
+      "updated": "2026-10-27T23:17:05.017",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/572191610"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118359",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:15.892Z",
+      "updated": "2026-10-27T23:17:05.130",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/573378812"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-894j-wg8m-63h8",
+      "aliases": [],
+      "title": "vLLM OpenCVDynamicOpenPanguVideoBackend: request-level num_frames without a ceiling — unauthenticated memory/CPU exhaustion (OOM-kill) on any video-capable deployment",
+      "description": "\n## Summary\n\n`OpenCVDynamicOpenPanguVideoBackend` (`vllm/multimodal/video.py:1222-1260`) drives its frame-index computation from the request-controlled `num_frames` with **no ceiling**. The backend is registered without a `video_processor` binding, so no model selects it by default — but `VideoMediaIO` honors request-level `media_io_kwargs.video.video_backend` for any registered **CPU** loader (`merge_kwargs`, `vllm/multimodal/media/video.py:42-90`, strips only `hw_decoders`/`pool_size`/`device`/unconfigured-GPU backends and clamps none of the sampling knobs). One unauthenticated `POST /v1/chat/completions` (or `/tokenize`) with `\"video_backend\": \"openpangu\"` routes any video through this sampler on **any video-capable deployment** — no GLM/OpenPangu model required, no non-default flags, no auth.\n\n## Root cause\n\n```python\nnum_frames = target.num_frames          # request-controlled, unclamped\nfps = target.fps                        # request-controlled\nif fps > 0:\n    if num_frames >= int(total_duration * fps) + 1:\n        num_frames = int(total_duration * fps) + 1   # clamp only fires when ABOVE duration*fps\n...\nsample_frame_timestamps = np.linspace(0, total_duration, num_frames, dtype=float)\nframes_indices = [min(total_frames_num - 1, round(t * original_fps))\n                  for t in sample_frame_timestamps]\n```\n\nThe only clamp fires when `num_frames >= int(duration*fps)+1`. Choosing `num_frames` just below that bound — or `fps=-1`, which skips the branch entirely — leaves the request value untouched: `np.linspace(0, d, num_frames)` allocates `8 × num_frames` bytes and the Python comprehension walks every element, inside the API-server process.\n\nMeasured in-process (official CPU image, `vllm/vllm-openai-cpu:latest` v0.30.0):\n\n- `num_frames=1e7` → 462 MB peak, 118 s CPU\n- `num_frames=1e9` → ~46 GB / hours (linear extrapolation) → OOM-kill\n\nThis is an instance of the published unclamped-`num_frames` family (GHSA-vxqj-p4gw-9h4c; central clamp PR #51969 subsequently superseded by #58830), with two aggravating differences: the sink is a distinct `np.linspace` + list-comprehension allocation, and the backend is reachable via request-level backend selection **without any model opting into it**.\n\n## Suggested fix\n\n- Backend: clamp `num_frames` before `np.linspace` (e.g. `min(num_frames, total_frames_num)` or a class-level cap) and treat `fps=-1` the same.\n- Central: land the `num_frames` clamp in `VideoMediaIO.merge_kwargs` (where PR #51969 is adding it) so per-backend audits stop missing siblings, and consider gating request-level `video_backend` selection to an allowlist.\n\n## Static reach\n\n`vllm/multimodal/media/video.py:42-90` (`merge_kwargs`: no clamp on `num_frames`/`fps`; GPU-only gating for `video_backend`); sink at `vllm/multimodal/video.py:1222-1260`.\n\n## Affected versions\n\n- Package: `vllm` (PyPI).\n- Affected versions: `>= 0.30.0, < 0.31.0`.\n- First stable patched version: `0.31.0`.\n\nPR #58830 blocks untrusted per-request `mm_processor_kwargs` and `media_io_kwargs` by default before preprocessing. Keep `--trust-request-mm-kwargs` disabled for untrusted clients. Explicitly enabling it restores trusted override behavior; the underlying processor/sampler is not independently bounded by this fix.\n\nThe lower bound records the verified affected v0.30.0 release. The backend predates that release; earlier request-path exposure has not been comprehensively assessed.\n\nAdvisory fixed in [#58830](https://github.com/vllm-project/vllm/pull/58830).\n",
+      "published": "2026-10-27T22:24:06Z",
+      "updated": "2026-10-27T22:24:07Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-894j-wg8m-63h8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 25.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-w4cg-mhc7-mgw3",
+      "aliases": [],
+      "title": "MiniMax M3 video preprocessing permits request-driven CPU resource exhaustion through min_pixels",
+      "description": "Description\n\n### Summary\n\nA client allowed to call the OpenAI-compatible API can pass request-level `mm_processor_kwargs` to the MiniMax M3 VL video processor. The processor accepts `min_pixels` without a numeric range or relationship check. A large value can enlarge every decoded frame well beyond the default per-frame `max_pixels` value.\n\nThe processor has a fixed width × height × frame-count budget, but it applies that check only when `max_long_side_pixel` is set. Its default value is `None`, so the normal area-based resize path skips the video-wide budget and proceeds to resize, normalize, reshape, and concatenate the enlarged tensors before later engine validation.\n\nThis can cause disproportionate host-memory allocation and CPU work from one video request and may disrupt the worker or service. I confirmed the complete request-to-allocation path by static source review. I did not run vLLM, a model, a server, a GPU workload, or an executable proof of concept, so I am not claiming a measured out-of-memory threshold or a guaranteed process crash.\n\nI assessed vLLM `v0.28.0`. The same vulnerable conditions are present in every inspected release from `v0.24.0` through `v0.29.0`; no patched release was available when I checked on 2026-09-09.\n\n### Details\n\nThe public chat and responses request schemas expose `mm_processor_kwargs` as `dict[str, Any]`:\n\n- [`vllm/entrypoints/openai/chat_completion/protocol.py`, lines 372-375](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/entrypoints/openai/chat_completion/protocol.py#L372-L375)\n- [`vllm/entrypoints/openai/responses/protocol.py`, lines 238-241](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/entrypoints/openai/responses/protocol.py#L238-L241)\n\nThe renderer forwards this dictionary as the request's multimodal processor defaults, and inference-time values override the startup values:\n\n- [`vllm/renderers/online_renderer.py`, lines 406-413](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/renderers/online_renderer.py#L406-L413)\n- [`vllm/config/multimodal.py`, lines 503-515](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/config/multimodal.py#L503-L515)\n\nThe common processor wrapper filters keyword names but does not validate the numeric value or require `min_pixels <= max_pixels`. MiniMax's vLLM adapter then forces `do_resize=True` and passes the merged values to the processor:\n\n- [`vllm/transformers_utils/processor.py`, lines 117-142](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/transformers_utils/processor.py#L117-L142)\n- [`vllm/models/minimax_m3/common/mm_preprocess.py`, lines 306-352](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/models/minimax_m3/common/mm_preprocess.py#L306-L352)\n\n`smart_resize` first checks whether the current frame is above `max_pixels`. If it is not, the `elif` branch may enlarge it to the request-controlled `min_pixels`. The function does not reject `min_pixels > max_pixels`:\n\n```python\nif h_bar * w_bar > max_pixels:\n    beta = math.sqrt((height * width) / max_pixels)\n    h_bar = floor_by_factor(height / beta, factor)\n    w_bar = floor_by_factor(width / beta, factor)\nelif h_bar * w_bar < min_pixels:\n    beta = math.sqrt(min_pixels / (height * width))\n    h_bar = ceil_by_factor(height * beta, factor)\n    w_bar = ceil_by_factor(width * beta, factor)\n```\n\nSource: [`vllm/transformers_utils/processors/minimax_m3.py`, lines 108-148](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/transformers_utils/processors/minimax_m3.py#L108-L148)\n\nThe video processor sets `max_long_side_pixel = None` and `max_total_pixels = VIDEO_MAX_TOTAL_PIXELS`. During preprocessing it deliberately passes `max_total_pixels=None` to the per-frame resize helper, intending to enforce the volumetric limit after the frame count is known. That later check is incorrectly conditional on `max_long_side_pixel is not None`:\n\n```python\nresized_height, resized_width = smart_resize(\n    height,\n    width,\n    factor=factor,\n    min_pixels=min_pixels,\n    max_pixels=max_pixels,\n    max_long_side_pixel=max_long_side_pixel,\n    min_short_side_pixel=self.min_short_side_pixel,\n    max_total_pixels=None,\n)\nif (\n    max_long_side_pixel is not None\n    and resized_height * resized_width * num_frames\n    > self.max_total_pixels\n):\n    raise ValueError(...)\n```\n\nSource: [`vllm/transformers_utils/processors/minimax_m3.py`, lines 342-424](https://github.com/vllm-project/vllm/blob/2cf0a6915ce544dc493a0990f2ea38d81601128a/vllm/transformers_utils/processors/minimax_m3.py#L342-L424)\n\nWith the default `None` value, the processor skips this check and materializes resized and normalized tensors before concatenating the processed videos at line 491. The v1 engine's prompt and encoder-cache checks run after multimodal preprocessing, so they cannot prevent this allocation.\n\nThe decode-time `VLLM_MAX_IMAGE_PIXELS` check also does not close the path: it constrains the dimensions of an input frame before decoding, while the vulnerable processor enlarges that frame afterward.\n\n#### Public overlap checked\n\nPublic PR [#51449](https://github.com/vllm-project/vllm/pull/51449), `Bound request-controlled image and video geometry`, reports the same broad class for 16 other multimodal processors. It does not list MiniMax M3 or the `min_pixels`, `max_total_pixels`, and `max_long_side_pixel` fields, and its patch does not modify either MiniMax file cited above. Its shared changes cap request-level frame count and a generic sampling loop; they do not reject `min_pixels > max_pixels` or make the MiniMax volumetric check unconditional. PR #51449 was closed without merge on 2026-08-10.\n\nPublic PR [#53610](https://github.com/vllm-project/vllm/pull/53610) refactors the MiniMax adapter but continues forwarding the processor kwargs without these checks. PR [#54935](https://github.com/vllm-project/vllm/pull/54935) fixes request-driven video sampling work in GLMGA, a different processor and sink. I therefore consider this report a MiniMax M3 sibling omitted from the public geometry-amplification work, rather than a separate vulnerability class. It may belong under the same advisory family at the maintainers' discretion.\n\nSuggested remediation is to validate the merged processor values before allocation, including positive numeric bounds and `min_pixels <= max_pixels`, and to enforce `resized_height * resized_width * num_frames <= max_total_pixels` regardless of the selected resize mode. The check should run before `self.resize`.\n\n### Impact\n\nThe established impact is attacker-influenced CPU allocation and computation before request-level engine validation. On an exposed MiniMax M3 VL deployment, a permitted inference client can submit video work that consumes memory and CPU far out of proportion to the decoded input. Depending on available memory and process supervision, this may cause allocation failure, worker termination, restart, or temporary loss of service.\n\nThe finding does not establish confidentiality or integrity impact. It also does not establish a reliable crash threshold for every deployment. API authentication, proxy request limits, and host memory affect attack cost, but they do not enforce the missing relationship and volumetric checks inside the processor.\n\n## Affected versions\n\n- Package: `vllm` (PyPI).\n- Affected versions: `>= 0.24.0, < 0.31.0`.\n- First stable patched version: `0.31.0`.\n\nPR #58830 blocks untrusted per-request `mm_processor_kwargs` and `media_io_kwargs` by default before preprocessing. Keep `--trust-request-mm-kwargs` disabled for untrusted clients. Explicitly enabling it restores trusted override behavior; the underlying processor/sampler is not independently bounded by this fix.\n\nAdvisory fixed in [#58830](https://github.com/vllm-project/vllm/pull/58830).\n",
+      "published": "2026-10-27T22:22:44Z",
+      "updated": "2026-10-27T22:22:44Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w4cg-mhc7-mgw3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 25.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -33250,6 +35853,236 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-118318",
+      "aliases": [],
+      "title": "",
+      "description": "Improper access control in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:10.313Z",
+      "updated": "2026-10-27T23:17:00.410",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/565133743"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118319",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:20.699Z",
+      "updated": "2026-10-27T23:17:00.527",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/576194994"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118322",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in ANGLE in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:11.846Z",
+      "updated": "2026-10-27T23:17:00.840",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568895029"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118333",
+      "aliases": [],
+      "title": "",
+      "description": "Missing authorization in Video in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:14.507Z",
+      "updated": "2026-10-27T23:17:01.580",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/571147583"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118337",
+      "aliases": [],
+      "title": "",
+      "description": "Improper access control in Forms in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:03:13.074Z",
+      "updated": "2026-10-27T23:17:02.067",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/569286605"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-77564",
       "aliases": [
         "GHSA-7cxh-94cf-mfp6"
@@ -42142,6 +44975,52 @@
       "score": 10.0,
       "level": "low",
       "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-9g3c-x747-c6wr",
+      "aliases": [],
+      "title": "Quadratic Cohere2 Vision preprocessing DoS via request-controlled max_patches",
+      "description": "## Summary\n\nThe Python OpenAI-compatible server accepts a request-controlled\n`mm_processor_kwargs.max_patches` value when serving Cohere2 Vision models.\nvLLM forwards the value to the Hugging Face processor without applying a\nserver-side upper bound. The processor enumerates candidate tile aspect ratios\nwith two loops whose bounds are both controlled by `max_patches`, causing\nquadratic CPU work before normal inference limits can protect the service.\n\nA client that can access the chat-completions endpoint can submit a small,\nvalid image together with a large `max_patches` value. Varying the value across\nrequests also avoids reuse of the helper's small LRU cache. This can occupy\nmultimodal preprocessing workers, substantially increase request latency, and\ndeny service to other clients.\n\nNo code execution, confidentiality impact, or integrity impact was\ndemonstrated.\n\n## Confirmed Affected Revision\n\nThe issue was rechecked on 2026-09-08 against the then-current upstream\n`main` commit:\n\n```text\nf6326f53bda46898a331c2d24500332c285d9a2b\n```\n\nCommit permalink:\nhttps://github.com/vllm-project/vllm/commit/f6326f53bda46898a331c2d24500332c285d9a2b\n\nThe original audited revision was:\n\n```text\n7ca49fbe4bab019e55d57cdc4b7fd3d55c67c1a6\n```\n\nThe vulnerable data flow was present at the revision assessed in this report.\n\n## Why This Is a Security Issue\n\n`max_patches` is a computational budget, but the Python serving path lets a\nremote request choose it. The expensive enumeration occurs during request\npreprocessing, before the request reaches normal model execution. A small\nrequest body can therefore trigger work disproportionate to its size.\n\nThe default server does not require an API key. If an operator configures API\nauthentication, exploitation instead requires a client authorized to call the\naffected endpoint.\n\n## Pre-requisites\n\n- vLLM is serving a Cohere2 Vision model through the Python OpenAI-compatible\n  frontend.\n- The caller can submit an image chat request.\n- The request supplies a large positive integer as\n  `mm_processor_kwargs.max_patches`.\n\nNo special build flag, remote model code, malformed image, or unsafe runtime\noption is required. The issue is model-specific and is not a claim that every\nvLLM deployment is affected.\n\n## Technical Details\n\nThe request-to-sink chain at the confirmed revision is:\n\n1. `ChatCompletionRequest.mm_processor_kwargs` is an unrestricted\n   `dict[str, Any]`:\n   https://github.com/vllm-project/vllm/blob/f6326f53bda46898a331c2d24500332c285d9a2b/vllm/entrypoints/openai/chat_completion/protocol.py#L372-L375\n2. `OnlineRenderer.preprocess_chat` copies the request value into both the chat\n   parameters and prompt extras:\n   https://github.com/vllm-project/vllm/blob/f6326f53bda46898a331c2d24500332c285d9a2b/vllm/renderers/online_renderer.py#L675-L704\n3. `BaseRenderer` applies the extras and constructs `MMProcessorInputs` with\n   the same processor kwargs:\n   https://github.com/vllm-project/vllm/blob/f6326f53bda46898a331c2d24500332c285d9a2b/vllm/renderers/base.py#L769-L779\n   https://github.com/vllm-project/vllm/blob/f6326f53bda46898a331c2d24500332c285d9a2b/vllm/renderers/base.py#L846-L880\n4. `Cohere2VisionProcessingInfo.get_num_patches` passes the merged mapping to\n   `get_number_of_image_patches` without bounding `max_patches`:\n   https://github.com/vllm-project/vllm/blob/f6326f53bda46898a331c2d24500332c285d9a2b/vllm/model_executor/models/cohere2_vision.py#L170-L188\n5. In Transformers 5.16.1, `get_number_of_image_patches` reads\n   `max_patches` from that mapping and calls `get_optimal_tiled_canvas`:\n   https://github.com/huggingface/transformers/blob/v5.16.1/src/transformers/models/cohere2_vision/image_processing_cohere2_vision.py#L257-L285\n6. The aspect-ratio helper loops from 1 through the attacker-selected value in\n   both dimensions:\n   https://github.com/huggingface/transformers/blob/v5.16.1/src/transformers/models/cohere2_vision/image_processing_cohere2_vision.py#L53-L80\n\nThe relevant operation is equivalent to:\n\n```python\nfor width in range(1, max_image_tiles + 1):\n    for height in range(1, max_image_tiles + 1):\n        if width * height <= max_image_tiles:\n            aspect_ratios.append((width, height))\n```\n\nThe nested loops perform Theta(`max_patches` squared) iterations. The helper\nhas an LRU cache of only ten argument values, so requests using distinct large\nvalues continue to force cold computations.\n\n## Expected Result\n\nRequest-level processor overrides must not be able to raise a server-owned\npreprocessing budget beyond a safe configured limit. An excessive value should\nbe rejected before invoking the Hugging Face processor.\n\n## Security Impact\n\nA remote or API-authorized caller can consume disproportionate CPU time in the\nmultimodal preprocessing path. Repeated cold computations can delay image\nrequests and reduce or deny availability for other clients. The demonstrated\nimpact is limited to availability.\n\n## Severity Assessment\n\n- Severity: Moderate\n- CWE-407: Inefficient Algorithmic Complexity\n- CWE-400: Uncontrolled Resource Consumption\n- CVSS v3.1: 5.3\n- Vector: `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L`\n\n`PR:N` reflects the default server configuration without an API key. An\nauthenticated deployment changes the required access conditions, and the vLLM\nteam should assign the final severity and version range.\n\n## Duplicate Search\n\nOn 2026-09-08, public vLLM issues, pull requests, and published GitHub Security\nAdvisories were searched using combinations of `max_patches`, `Cohere2\nVision`, `get_all_supported_aspect_ratios`, `mm_processor_kwargs`, `quadratic`,\nand `denial of service`. No public report with this specific model, request\nparameter, and root cause was found.\n\nPrivate vulnerability reports are not searchable, so this does not rule out a\nprivate duplicate.\n\n## Suggested Remediation\n\n- Treat the server/model configuration as the authority for the maximum\n  permitted patch count.\n- Reject request-level `max_patches` values that are not strict positive\n  integers or that exceed that server-owned limit.\n- Apply the validation to both flat and modality-scoped processor kwargs where\n  supported.\n- Add tests proving that an oversized value is rejected before Cohere2 Vision\n  preprocessing and that safe values continue to work.\n- Consider improving the upstream Transformers enumeration independently, but\n  do not rely on that optimization as the request-boundary security control.\n\n## Disclosure Coordination\n\nPlease handle this report through vLLM's private vulnerability-reporting\nworkflow. No public issue or pull request has been created for this finding.\nThe reporter can provide additional source traces or help validate a proposed\nfix. Public disclosure and any public remediation pull request should follow\nthe maintainers' triage and coordination guidance.\n\n## Affected versions\n\n- Package: `vllm` (PyPI).\n- Affected versions: `>= 0.10.1, < 0.31.0`.\n- First stable patched version: `0.31.0`.\n\nPR #58830 blocks untrusted per-request `mm_processor_kwargs` and `media_io_kwargs` by default before preprocessing. Keep `--trust-request-mm-kwargs` disabled for untrusted clients. Explicitly enabling it restores trusted override behavior; the underlying processor/sampler is not independently bounded by this fix.\n\nAdvisory fixed in [#58830](https://github.com/vllm-project/vllm/pull/58830).\n",
+      "published": "2026-10-27T22:20:43Z",
+      "updated": "2026-10-27T22:20:43Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-9g3c-x747-c6wr"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 10,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10
+      },
       "ai_analysis": ""
     }
   ]
