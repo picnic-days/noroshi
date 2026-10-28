@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T00:02:40.554138+00:00",
+  "generated_at": "2026-10-28T05:43:29.714316+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -7,7 +7,7 @@
       "title": "PHP Memory Corruption Vulnerability",
       "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.357",
-      "updated": "2026-10-27T13:43:51.433",
+      "updated": "2026-10-28T04:17:46.930",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -72,7 +72,7 @@
       "title": "PHP Stale Internal Request-State Vulnerability",
       "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.823",
-      "updated": "2026-10-27T13:43:34.837",
+      "updated": "2026-10-28T04:17:54.320",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -221,7 +221,7 @@
       "title": "Google Brotli Unchecked Return Value Vulnerability",
       "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
       "published": "2026-10-22T14:17:37.190",
-      "updated": "2026-10-27T20:17:12.527",
+      "updated": "2026-10-28T04:17:56.950",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -4054,6 +4054,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-15323",
+      "aliases": [],
+      "title": "Product Designer for WooCommerce WordPress | Lumise <= 2.1.2 - Unauthenticated Arbitrary File Read via 'design.stages[*].image' Parameter in Cart JSON Upload",
+      "description": "The Product Designer for WooCommerce WordPress | Lumise plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.1.2 via the process_checkout function. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information. The lumise_security nonce required to reach the vulnerable /?lumise=cart endpoint is freely obtainable by any unauthenticated visitor via the /?lumise=ajax action=init handler, making this exploitable with no prior access or credentials.",
+      "published": "2026-10-28T05:33:31.729Z",
+      "updated": "2026-10-28T05:33:31.729Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "King-Theme Product Designer for WooCommerce WordPress | Lumise"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a4a1fb57-84b2-4849-a4d5-9381baf43ff5?source=cve",
+        "https://plugins.trac.wordpress.org/browser/lumise/trunk/core/cart.php#L209"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-111820",
       "aliases": [],
       "title": "Analytics Insights <= 6.3.12 - Unauthenticated Stored Cross-Site Scripting via GA4 Realtime Page Title",
@@ -7789,6 +7836,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115522",
+      "aliases": [],
+      "title": "Cross-Application Artifact Namespace Isolation in Google Agent Development Kit (ADK) for Python",
+      "description": "Exposure of Resource to Wrong Sphere (CWE-668) in FileArtifactService in Google Agent Development Kit (ADK) for Python (google-adk) versions 1.19.0 before 1.39.1 and 2.0.0a1 before 2.7.0 allows a caller in one application to list, read, overwrite, or delete artifacts belonging to another application when both applications share a FileArtifactService root directory and use the same user_id (and session_id for session-scoped artifacts). FileArtifactService accepted app_name across its public API methods but omitted app_name when constructing on-disk paths (root/users/{user_id}/... instead of root/apps/{app_name}/users/{user_id}/...). Version 2.6.0 scoped writes by app_name but retained a legacy root/users/{user_id} fallback for reads and deletes; version 2.7.0 and the 1.x backport in version 1.39.1 removed the fallback and enforce full per-app path scoping.",
+      "published": "2026-10-28T04:36:49.927Z",
+      "updated": "2026-10-28T05:16:59.833",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Agent Development Kit (ADK) for Python",
+        "google-adk"
+      ],
+      "references": [
+        "https://github.com/google/adk-python/issues/5618",
+        "https://github.com/google/adk-python/pull/5619",
+        "https://github.com/google/adk-python/commit/f72f0db58c5c1f4e8b8d4f04b8c592c9e49cbe9e",
+        "https://github.com/google/adk-python/commit/c27d8688ed9ea619587ad96cbfd641c34dd7340c",
+        "https://github.com/google/adk-python/commit/0ae2bffdd2628af6c8643bc4fd40c2f49f0c6bd4",
+        "https://github.com/google/adk-python/releases/tag/v1.39.1",
+        "https://github.com/google/adk-python/releases/tag/v2.7.0"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69789",
       "aliases": [],
       "title": "",
@@ -11245,6 +11346,109 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-117610",
+      "aliases": [],
+      "title": "libexpat through 2.9.0 NULL Pointer Dereference via External Entity Subparser",
+      "description": "libexpat through 2.9.0 contains a NULL pointer dereference vulnerability in externalEntityInitProcessor2() in lib/xmlparse.c that mishandles the XML_TOK_NONE token from empty input. Attackers who control stream chunking can force an empty non-final first parse on an external entity subparser, causing a later parse to crash the application.",
+      "published": "2026-10-28T02:03:18.766Z",
+      "updated": "2026-10-28T03:17:12.777",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1444",
+        "https://github.com/libexpat/libexpat/commit/7b0d50e4b1d16fafd55876260701e04279a7489d",
+        "https://github.com/libexpat/libexpat/blob/a76b1174c1ea52abb639a4c69d52b630a8a106a2/expat/lib/xmlparse.c#L3468-L3510",
+        "https://github.com/libexpat/libexpat",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.9.0-null-pointer-dereference-via-external-entity-subparser"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 41.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118370",
+      "aliases": [],
+      "title": "libexpat through 2.9.0 Integer Overflow in storeAtts via attIndex and nPrefixes",
+      "description": "libexpat through 2.9.0 contains a signed integer overflow vulnerability in storeAtts() in lib/xmlparse.c that allows attackers to trigger out-of-bounds writes via oversized attribute counts. Attackers can supply a multi-gigabyte document with a start tag carrying over 2^30 attributes to overflow attIndex and nPrefixes, crashing applications or corrupting heap memory.",
+      "published": "2026-10-28T02:03:19.447Z",
+      "updated": "2026-10-28T03:17:13.293",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1450",
+        "https://github.com/libexpat/libexpat/commit/1bac53c4fc460a03cd9860f39501c7979f6750ae",
+        "https://github.com/libexpat/libexpat/commit/621cb2c78b253ee023a86bc91d6ddb048481c04c",
+        "https://github.com/libexpat/libexpat/blob/a76b1174c1ea52abb639a4c69d52b630a8a106a2/expat/lib/xmlparse.c#L4138-L4140",
+        "https://github.com/libexpat/libexpat",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.9.0-integer-overflow-in-storeatts-via-attindex-and-nprefixes"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 41.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69978",
       "aliases": [],
       "title": "",
@@ -14333,7 +14537,7 @@
       "title": "",
       "description": "Traefik v3.7.13 before v3.7.14 contains an access-control bypass in the Kubernetes Ingress NGINX provider, where the HTTP router generated for ssl-passthrough Ingresses on non-TLS entry points never applies the Ingress's access-control annotations. Unauthenticated attackers reaching the HTTP entry point with the Ingress host can access backends protected by auth-type, auth-url, or whitelist-source-range annotations, with nothing logged.",
       "published": "2026-10-22T02:16:56.310",
-      "updated": "2026-10-27T14:17:32.827",
+      "updated": "2026-10-28T03:17:10.280",
       "cvss": 7.0,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -14826,7 +15030,7 @@
       "title": "jackson-dataformat-protobuf: signed integer overflow in string-length paths allows unbounded array allocation and OutOfMemoryError",
       "description": "ProtobufParser parses length-prefixed protobuf string and bytes fields by checking (_inputPtr + len) <= _inputEnd and then, on the fast path, calling _finishShortText(len). Both use 32-bit signed integer arithmetic. When an attacker supplies a varint decoding to a length near Integer.MAX_VALUE, _inputPtr + len overflows to a negative value, the bounds check passes, and _finishShortText(len) reaches TextBuffer.expandCurrentSegment(len), which performs Arrays.copyOf with no cap and throws OutOfMemoryError: Requested array size exceeds VM limit.\n\n\n\nThe JVM refuses arrays larger than Integer.MAX_VALUE - 8 before consulting available heap, so -Xmx tuning does not mitigate the issue. StreamReadConstraints.maxStringLength and maxDocumentLength do not gate this path: a 33-byte payload is far below any document-length cap and the string-length check does not fire before the allocation. This was confirmed empirically against shipping artifacts with maxStringLength, maxDocumentLength and maxNestingDepth all configured.\n\n\n\nA February 2026 hardening commit added the equivalent overflow guard to the packed-array-length and message-length paths but left the string-length call sites unguarded. No privileges or user interaction beyond the ability to submit data for parsing are required.",
       "published": "2026-10-27T23:52:20.141Z",
-      "updated": "2026-10-27T23:52:20.141Z",
+      "updated": "2026-10-28T00:17:10.530",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
@@ -14849,7 +15053,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -14915,6 +15120,175 @@
         "cvss": 15.0,
         "unauth_network": 5
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110747",
+      "aliases": [],
+      "title": "jackson-dataformat-protobuf: integer overflow in ProtobufParser._readStringKey() allows OutOfMemoryError from an 8-byte payload",
+      "description": "ProtobufParser._readStringKey() reads the length prefix of a protobuf map entry's string key into an attacker-controlled int and then checks (_inputPtr + len) <= _inputEnd using signed arithmetic. For values near Integer.MAX_VALUE the addition overflows to a negative value and the check passes even when the input contains no key data. The parser then calls _finishShortText(len), which expands the text buffer to the declared length via TextBuffer.expandCurrentSegment and Arrays.copyOf, throwing OutOfMemoryError: Requested array size exceeds VM limit.\n\n\n\nAn 8-byte malformed message containing a map entry with a declared key length of 0x7FFFFFFF is sufficient. Configured StreamReadConstraints, including maxStringLength, maxNameLength, maxDocumentLength and maxNestingDepth, do not prevent the failure. Applications running with -XX:+ExitOnOutOfMemoryError terminate the JVM.\n\n\n\nThis is the same integer-overflow pattern addressed for other call sites in the remediation associated with CVE-2026-104016 and CVE-2026-104017; the map-key call site was corrected on the 3.x branches only, leaving the corresponding 2.x branches unguarded. Release lines 2.18, 2.19 and 2.20 do not contain _readStringKey() and are not affected by this vector. No privileges or user interaction beyond the ability to submit data for parsing are required. The 3.0 release line and 3.1.0-3.1.5 / 3.2.0-3.2.1 do not contain _readStringKey() and are therefore not affected; the method first appears in 3.1.6 and 3.2.2, mirroring its introduction at 2.21.6 on the 2.x side.",
+      "published": "2026-10-28T00:02:32.462Z",
+      "updated": "2026-10-28T01:16:55.017",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FasterXML jackson-dataformat-protobuf",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-protobuf",
+        "tools.jackson.dataformat:jackson-dataformat-protobuf"
+      ],
+      "references": [
+        "https://github.com/FasterXML/jackson-dataformats-binary/security/advisories/GHSA-fv7v-rrmh-4qcv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "protobuf"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-snth5ero95rz",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Ashburn, IAD",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-28T04:39:13.459Z",
+      "updated": "2026-10-28T04:39:13.459Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/snth5ero95rz"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-klub12zy71b4",
+      "aliases": [],
+      "title": "Cloudflare: Increased Errors for Durable Objects in the Eastern North America region",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-28T00:17:25.893Z",
+      "updated": "2026-10-28T03:28:57.623Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/klub12zy71b4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-28T03:28:57.623Z",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-9ftx658xtd5z",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors affecting the Gmail connector",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-10-28T03:59:32.234Z",
+      "updated": "2026-10-28T03:59:32.234Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/j86c100s8tqm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
@@ -16160,6 +16534,58 @@
         "cvss": 18.4,
         "unauth_network": 5,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107745",
+      "aliases": [],
+      "title": "AI Engine <= 3.8.4 - Authenticated (Subscriber+) Limited Media File Deletion via 'metadata' Parameter",
+      "description": "The AI Engine – The Chatbot, AI Framework & MCP for WordPress plugin for WordPress is vulnerable to limited media file deletion due to insufficient file path validation in the upload_file function in all versions up to, and including, 3.8.4 This makes it possible for authenticated attackers, with subscriber-level access and above, to delete arbitrary media files on the server. This requires the administrator to have enabled the Public API option, and exploitation depends on the hourly cleanup_files task running after the malicious upload.",
+      "published": "2026-10-28T02:29:59.766Z",
+      "updated": "2026-10-28T03:17:09.037",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "tigroumeow AI Engine – MCP Server & AI Chatbot for WordPress, with Claude, ChatGPT & Gemini"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d4f8607c-711e-4d0e-8379-49346033a837?source=cve",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.8.3/classes/modules/files.php#L470",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.8.3/classes/modules/files.php#L62",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.8.3/classes/modules/files.php#L1071",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.8.3/classes/api.php#L689",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.8.3/classes/api.php#L1040",
+        "https://plugins.trac.wordpress.org/changeset?old_path=%2Fai-engine%2Ftags%2F3.8.4%2Fclasses%2Fmodules%2Ffiles.php&new_path=%2Fai-engine%2Ftags%2F3.8.5%2Fclasses%2Fmodules%2Ffiles.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.4
       },
       "ai_analysis": ""
     },
@@ -21822,7 +22248,7 @@
       "title": "",
       "description": "Traefik from v3.7.0 before v3.7.14 contains an authentication bypass vulnerability in its Kubernetes Ingress-NGINX provider that forwards client-supplied Ssl-Client-* headers on the plaintext HTTP router. When ssl-redirect is disabled alongside auth-tls-pass-certificate-to-upstream, unauthenticated attackers can send Ssl-Client-Verify: SUCCESS with a chosen certificate subject and issuer to impersonate mTLS identities.",
       "published": "2026-10-22T02:16:56.947",
-      "updated": "2026-10-27T14:16:47.697",
+      "updated": "2026-10-28T03:17:10.420",
       "cvss": 7.0,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -36072,6 +36498,53 @@
       "first_seen": "2026-10-28T00:02:40.554138+00:00",
       "matched": [
         "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99100",
+      "aliases": [],
+      "title": "wifi: p54: validate firmware record lengths",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: p54: validate firmware record lengths\n\nThe p54 firmware parser accesses component ID and component version\nrecords without checking that their lengths cover the fields being read.\nA malformed record can therefore make the parser read past the record.\n\nValidate the component ID and component version record lengths before\naccessing their data. The descriptor record is also checked against the\nshortest descriptor length found in the supported firmware images.\n\nReject descriptor values that underflow the RX offset or produce an empty\nRX range before updating the driver state.",
+      "published": "2026-10-28T03:55:38.898Z",
+      "updated": "2026-10-28T04:18:07.417",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/f641066b0ddcd1b0cf007c0d04f9c966f6e888ae",
+        "https://git.kernel.org/stable/c/8c4f962f368d5e17481f3c2c5a43028953e137a5",
+        "https://git.kernel.org/stable/c/db7b86bd97b380ece8fa39cfdd7502a9fd35e56f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T05:43:29.714316+00:00",
+      "matched": [
+        "linux-kernel"
       ],
       "match_type": "keyword",
       "tier": 1,
