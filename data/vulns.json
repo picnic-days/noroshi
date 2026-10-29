@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T08:30:11.381172+00:00",
+  "generated_at": "2026-10-29T15:34:30.523090+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -135,86 +135,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111497",
-      "aliases": [],
-      "title": "Google Brotli Unchecked Return Value Vulnerability",
-      "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
-      "published": "2026-10-22T14:17:37.190",
-      "updated": "2026-10-28T17:47:31.370",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [
-        "google:brotli",
-        "nodejs:node.js",
-        "python-hyper:brotlicffi",
-        "microsoft:.net",
-        "debian:debian_linux",
-        "istio:istio",
-        "anthropic:bun",
-        "envoyproxy:envoy",
-        "tianocore:edk2",
-        "google:woff2",
-        "duckdb:duckdb",
-        "clickhouse:clickhouse",
-        "apache:arrow",
-        "mcmilk:7-zip-zstd",
-        "7-zip:p7zip",
-        "andybalholm:brotli"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Google Brotli"
-      ],
-      "references": [
-        "https://github.com/andybalholm/brotli/releases/tag/v1.2.7",
-        "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high",
-        "http://www.openwall.com/lists/oss-security/2026/10/23/25",
-        "http://www.openwall.com/lists/oss-security/2026/10/24/6",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/12",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/13",
-        "http://www.openwall.com/lists/oss-security/2026/10/26/16",
-        "https://broccoli2shell.com",
-        "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
-        "https://github.com/dotnet/announcements/issues/494",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111497"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-10-27",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.87988,
-      "epss_percentile": 0.99763,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-26T15:33:11.752934+00:00",
-      "matched": [
-        "nodejs",
-        "dotnet",
-        "brotli"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 100,
-      "level": "critical",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5,
-        "tier1_critical": 15,
-        "kev": 20,
-        "epss": 13.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "JP-jpcert-at260034",
       "aliases": [
         "CVE-2026-111497"
@@ -295,6 +215,108 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】AnthropicがCVD（協調的な脆弱性開示）の手順で報告した脆弱性について、詳細を公開しました（2026/10/27）。未公開の社内モデルで主要ソフトの重大な脆弱性を見つけ、5つの攻撃チェーンを実証したものです。各社とも修正済みと説明しています。実際の悪用は未確認です。\nClaude自体の脆弱性ではないため、Claude利用者側の対応は不要です。\n\n【原因の部品】\n・Chrome（V8、FedCMなど）\n・Safari（WebKit/JavaScriptCore）\n・Android（ロック画面とGoogle Play開発者サービス）\n・Windows HTTP.sys（HTTP/3・QUIC）\n・Linuxカーネルのネットワーク部分\n\n【影響範囲】\n・Chrome：156より前（CVE 62件）\n・iOS/iPadOS：26.5.2より前。macOS版Safariは未確認\n・Windows：CVE-2026-33096（2026年4月の更新で修正）\n・Linux：CVE-2026-98432（CVSS 9.8）。認証なしで遠隔からroot権限で任意のコマンドを実行できる。修正は保守中の全stable版に反映済み。ディストリ別の修正版は未確認\n・Android：修正版は未確認\n\n【対応策】\n1. 次を最優先で適用してください。\n ・Chrome 156.0.8078.47以降（Windows/Macは.47/.48）\n ・iOS/iPadOS 26.5.2以降\n ・Windowsの2026年4月以降の累積更新\n ・Linuxはディストリのカーネル更新を入れて再起動\n Chromiumベースのブラウザ（Edgeなど）の対応版は未確認です。\n2. すぐ更新できない場合\n ・WindowsのHTTP/3を無効にするか、外部からの到達を制限する\n ・Linuxは、不要なMPTCPリスナー（マルチパスTCPの待受け）を止める\n\n【各告知の関係】\n・Anthropic：発見者として詳細を公開\n・Google：Chrome 156で修正、Androidも修正済み\n・Apple：iOS 26.5.2で修正\n・Microsoft：CVE-2026-33096で修正\n・Linuxカーネル：上流で修正\n\n【出典】\nhttps://www.anthropic.com/research/discovering-vulnerabilities-with-claude\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html\nhttps://support.apple.com/en-us/127594"
+    },
+    {
+      "id": "GHSA-h3fw-vmw2-h9xc",
+      "aliases": [],
+      "title": "Malicious code in pxnpm (npm)",
+      "description": "pxnpm 7.0.0-beta.6, 7.0.0-beta.8 and 7.0.0 (published 2026-10-06 by user nfjbill) are a 10-file, 16 KB launcher for a native executable that is not contained in the package. The postinstall script (bin/install.cjs) calls ensureNative() in dist/download.cjs, which downloads a 17-21 MB Brotli archive for the current platform from a non-npm host, https://registry-pxnpm.rdc.nfjbill.ren:20021/__static/srv/downloads/pxnpm/<version>/<platform>-<sha256>.br, decompresses it into a 52-72 MB executable under ~/.cache/pxnpm/native/<platform>/<sha256>/, sets mode 0755, and the launcher (dist/launcher.cjs line 54) later runs it with child_process.spawn. The manifest (dist/native-manifest.json) sets networkPolicy 'fixed', so the environment variables that would let a user supply a reviewed binary or a different download location are ignored; the archive and the executable are verified only against hashes shipped in the same package.\n\nWhen run, dist/launcher.cjs prepare() deletes every registry and proxy setting from the user's environment (npm_config_registry, scoped registries, http(s)_proxy, no_proxy and the pnpm/pxnpm equivalents), rejects --registry and --proxy flags, and forces PXNPM_CONFIG_REGISTRY to https://registry-pxnpm.rdc.nfjbill.ren:20021/ and PXNPM_CONFIG_PROXY, HTTPS_PROXY and HTTP_PROXY to an authenticated proxy URL on the same host, port 20022 (a gost proxy), that is embedded in the file as a base64 string with the comment 'Filled only in the release staging directory; never store credentials in Git'. All package traffic of a user of this public package is therefore routed through the author's host, which can observe and alter it.\n\nNothing in the package name, the one-line README or the install output discloses that an executable will be fetched from a private host or that registry and proxy settings will be replaced. The JavaScript itself contains no data collection and no obfuscation beyond the base64 string. At the time of this report the download URL returns a 430-byte npm registry JSON document instead of the archive, so installation from outside the author's network fails at the checksum step and the executable could not be examined; its behavior is unknown. The same host is the hard-coded endpoint of yakuza0 2.23.40 by the same author (MAL-2026-13605).\n\nTrigger: on install (postinstall) and on every run. Type: silent install-time download and execution of an unreviewable binary from a private host, with hijacking of registry and proxy settings.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/224c0d43a0111540ad420edb70d36b4fdf66e8c0/osv/malicious/npm/pxnpm/MAL-2026-17710.json))\n\n週間ダウンロード数: 約 10,064",
+      "published": "2026-10-09T00:30:58Z",
+      "updated": "2026-10-29T15:32:42Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:pxnpm"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-h3fw-vmw2-h9xc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "npm:pxnpm"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": "【状況】npm パッケージ「pxnpm」に悪性コードがあると GitHub Advisory（OpenSSF 報告、MAL-2026-17710）が公表しています。インストール時に、作者の私設ホストからソースを確認できない実行ファイルを取得して実行します。さらに、実行のたびに npm のレジストリやプロキシの設定を作者のホストへ強制的に切り替えるため、パッケージ関連の通信を作者に見られたり書き換えられたりするおそれがあります。実行ファイルの中身は未確認で、実際の被害事例も未確認です。週間ダウンロード数は約 1 万件です。\n\n【影響範囲】pxnpm の 7.0.0-beta.6、7.0.0-beta.8、7.0.0、7.0.1、7.0.2。修正版はありません。同じ作者の yakuza0 2.23.40（MAL-2026-13605）も同じホストに接続します。\n\n【対応策】\n1. 最優先：\n- lockfile（package-lock.json、pnpm-lock.yaml、yarn.lock）、CI のログ、開発端末で `pxnpm` と `yakuza0` を検索する\n- 端末に `~/.cache/pxnpm/` がないか確認する\n- プロキシや FW のログで `registry-pxnpm.rdc.nfjbill.ren`（ポート 20021・20022）への通信を探す\n2. 見つかった場合：\n- パッケージとキャッシュを削除し、該当端末を調査する\n- その端末や CI で使った npm トークン、プロキシの認証情報、CI のシークレットを再発行する（作者側に通信が渡った可能性があるため）\n- 依存先が改ざんされていないか、lockfile を信頼できるレジストリから作り直す\n- 予防として、社内レジストリやプロキシで両パッケージを拒否し、CI では `--ignore-scripts` を検討する\n\n【各告知の関係】\nOpenSSF：悪性パッケージの解析と報告\nGitHub Advisory：上記を GHSA として掲載（注意喚起）\n\n【出典】\nhttps://github.com/advisories/GHSA-h3fw-vmw2-h9xc\nhttps://osv.dev/vulnerability/MAL-2026-13605"
+    },
+    {
+      "id": "CVE-2026-111497",
+      "aliases": [
+        "GHSA-9v8h-qqgm-4m35"
+      ],
+      "title": "Brotli: Out-of-bounds write in the Brotli decoder (\"Node2Shell\") also affects the PyPI Brotli package",
+      "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
+      "published": "2026-10-22T15:32:49Z",
+      "updated": "2026-10-29T14:33:41Z",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [
+        "pip:brotli",
+        "pip:brotlicffi"
+      ],
+      "vendor_products": [
+        "Google Brotli"
+      ],
+      "references": [
+        "https://github.com/advisories/GHSA-9v8h-qqgm-4m35",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111497",
+        "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high",
+        "https://github.com/google/brotli/commit/0ed4268a4401abcb4472096340477cf4af7d1a2b",
+        "https://github.com/google/brotli/commit/50a9b70a4d5e1443fc40927952276b68fffa83a0",
+        "https://github.com/google/brotli/commit/b418fa81c48262a86a95332b0bc6d62c30aa78b6"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.82641,
+      "epss_percentile": 0.99665,
+      "x_mentions": null,
+      "sources": [
+        "ghsa",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T15:33:11.752934+00:00",
+      "matched": [
+        "brotli"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 80.8,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
+        "epss": 12.4
+      },
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-104286",
@@ -405,7 +427,7 @@
       "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
       "description": "This is a vulnerability in Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center. Crowd Data Center, Crucible and Fisheye. This Arbitrary File Access vulnerability allows an unauthenticated attacker to access specific files within the web application root directory in affected versions. Exploitation requires prior knowledge of the target file's exact name and path; this vulnerability does not allow attackers to enumerate or list directory contents. In some configurations, there may be some sensitive files that make this highly severe. This vulnerability allows an unauthenticated remote attacker to access specific files within the web application root directory in affected versions. The vulnerability must be addressed for affected versions of: -- Bitbucket Data Center, introduced in version >= 4.6.0, fix versions: 9.4.26, 10.2.8, 10.5.1 -- Confluence Data Center, introduced in version >= 5.10.0, fix versions 9.2.26, 10.2.19 -- Crowd Data Center, introduced in version >= 2.11.0, fix versions 6.3.7, 7.0.3, 7.1.7, 7.2.4 -- Jira Software Data Center, introduced in version >= 7.1.0, fix versions 9.12.40, 10.3.26, 11.3.12 -- Jira Service Management Data Center, introduced in version >= 3.1.0, fix versions 5.12.40, 10.3.26, 11.3.12 -- Bamboo Data Center >= 7.0.1, fix versions 10.2.24, 12.1.12 -- Crucible, fix versions 4.9.15 -- Fisheye, fix version 4.9.15 -- Exploitation requires prior knowledge of the target file's exact name and path. The vulnerability does not include the capability to enumerate or list directory contents.",
       "published": "2026-10-05T22:16:58.423",
-      "updated": "2026-10-26T10:10:00.140",
+      "updated": "2026-10-29T13:17:09.847",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -2036,6 +2058,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113180",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in ContentCapture in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-10-20T22:19:10.760",
+      "updated": "2026-10-29T14:26:28.887",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/535725111"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00369,
+      "epss_percentile": 0.30726,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118314",
       "aliases": [],
       "title": "",
@@ -3457,6 +3528,104 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-118330",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Browser in Google Chrome on on Windows prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:17:01.267",
+      "updated": "2026-10-29T14:27:14.703",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/575090745"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00308,
+      "epss_percentile": 0.23586,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113170",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Autofill in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:09.667",
+      "updated": "2026-10-29T14:25:52.380",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/562236428"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00327,
+      "epss_percentile": 0.2579,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91765",
       "aliases": [],
       "title": "",
@@ -4013,6 +4182,53 @@
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "fortinet"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-61992",
+      "aliases": [],
+      "title": "WordPress GEO my WordPress plugin <= 4.5.5.4 - PHP Object Injection vulnerability",
+      "description": "Unauthenticated PHP Object Injection in GEO my WordPress <= 4.5.5.3 versions.",
+      "published": "2026-10-29T15:24:09.438Z",
+      "updated": "2026-10-29T15:24:09.438Z",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Von Eyal Fitoussi GEO my WordPress",
+        "geo-my-wp"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/geo-my-wp/vulnerability/wordpress-geo-my-wordpress-plugin-4-5-5-4-php-object-injection-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -5732,6 +5948,111 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83851",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Partition Management Driver allows an unauthorized attacker to elevate privileges over a network.",
+      "published": "2026-10-13T19:20:33.960",
+      "updated": "2026-10-29T14:57:39.893",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83851"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00785,
+      "epss_percentile": 0.55977,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113143",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in ANGLE in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:06.653",
+      "updated": "2026-10-29T15:17:16.380",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/563352451"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00325,
+      "epss_percentile": 0.25547,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118694",
       "aliases": [],
       "title": "python-markdown2 through 2.5.5 Denial of Service via Unclosed Inline Link Destinations",
@@ -5768,6 +6089,57 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-28T21:54:21.637023+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2019-25781",
+      "aliases": [],
+      "title": "Python-Markdown 3.0 through 3.11.2 Denial of Service via Link Bracket Parsing",
+      "description": "Python-Markdown 3.0 through 3.11.2 contains an algorithmic complexity vulnerability in inline link parsing that allows remote attackers to exhaust CPU through unmatched brackets. Attackers can submit short Markdown containing repeated [ or ![ characters, forcing LinkInlineProcessor.getText() and getLink() into quadratic scans that keep workers busy for minutes.",
+      "published": "2026-10-29T13:08:49.597Z",
+      "updated": "2026-10-29T14:17:39.170",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Python-Markdown Markdown"
+      ],
+      "references": [
+        "https://github.com/Python-Markdown/markdown/issues/798",
+        "https://github.com/Python-Markdown/markdown",
+        "https://github.com/Python-Markdown/markdown/issues/1654",
+        "https://github.com/Python-Markdown/markdown/blob/b41e0aaf1181f1a8cb200cf5a815aad7c0020d23/markdown/inlinepatterns.py#L1155-L1172",
+        "https://www.vulncheck.com/advisories/python-markdown-3.0-through-3.11.2-denial-of-service-via-link-bracket-parsing"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "python"
       ],
@@ -8168,6 +8540,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-114193",
+      "aliases": [],
+      "title": "WordPress GEO my WordPress plugin <= 4.5.5.5 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in Eyal Fitoussi GEO my WordPress geo-my-wp allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects GEO my WordPress: from n/a through 4.5.5.5.",
+      "published": "2026-10-29T11:00:24.744Z",
+      "updated": "2026-10-29T14:56:26.107",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Eyal Fitoussi GEO my WordPress",
+        "geo-my-wp"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/geo-my-wp/vulnerability/wordpress-geo-my-wordpress-plugin-4-5-5-5-broken-access-control-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -8307,6 +8727,59 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-28T11:40:31.481154+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96767",
+      "aliases": [],
+      "title": "NEX-Forms <= 9.3.2 - Unauthenticated Stored Cross-Site Scripting via Content-Type Header",
+      "description": "The NEX-Forms – Ultimate Forms Plugin for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'type' parameter in all versions up to, and including, 9.3.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-29T11:27:14.333Z",
+      "updated": "2026-10-29T14:56:26.107",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "webaways NEX-Forms – Ultimate Forms Plugin for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1f80dc1b-2622-4cf5-9975-3609bfa21333?source=cve",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.3.2/includes/classes/class.dashboard.php#L4631",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.3.2/main.php#L2844",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.3.2/main.php#L3051",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.3.2/includes/classes/class.functions.php#L2341",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.3.2/main.php#L2684",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3755941%40nex-forms-express-wp-form-builder&new=3755941%40nex-forms-express-wp-form-builder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "wordpress"
       ],
@@ -8619,59 +9092,12 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-118330",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Browser in Google Chrome on on Windows prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-27T23:17:01.267",
-      "updated": "2026-10-29T04:18:31.183",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
-        "https://issues.chromium.org/issues/575090745"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00207,
-      "epss_percentile": 0.10796,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-28T00:02:40.554138+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-118335",
       "aliases": [],
       "title": "",
       "description": "Improper input validation in Metrics in Google Chrome on on Mac prior to 156.0.8078.73 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-27T23:17:01.790",
-      "updated": "2026-10-29T04:18:31.793",
+      "updated": "2026-10-29T14:27:47.893",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8687,8 +9113,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00207,
-      "epss_percentile": 0.10798,
+      "epss": 0.00243,
+      "epss_percentile": 0.1556,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -9941,6 +10367,60 @@
         "cvss": 11.8,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83845",
+      "aliases": [],
+      "title": "",
+      "description": "Improper privilege management in Windows Internet (wininet.dll) allows an authorized attacker to perform spoofing locally.",
+      "published": "2026-10-13T19:20:33.013",
+      "updated": "2026-10-29T15:02:45.677",
+      "cvss": 8.4,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83845"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00327,
+      "epss_percentile": 0.25739,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.8,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -15807,6 +16287,291 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83652",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows NTFS allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:06.613",
+      "updated": "2026-10-29T15:27:50.360",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83652"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29903,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83848",
+      "aliases": [],
+      "title": "",
+      "description": "Untrusted pointer dereference in Windows COM+ Event System Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:33.480",
+      "updated": "2026-10-29T15:01:33.790",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83848"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0042,
+      "epss_percentile": 0.36242,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-83850",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:33.787",
+      "updated": "2026-10-29T14:59:03.620",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83850"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29905,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85874",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Message Queuing Queue Manager allows an authorized attacker to execute code locally.",
+      "published": "2026-10-13T19:21:14.900",
+      "updated": "2026-10-29T15:04:19.880",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85874"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00361,
+      "epss_percentile": 0.29909,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85884",
+      "aliases": [],
+      "title": "",
+      "description": "Missing authentication for critical function in Windows Health and Optimized Experiences Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:15.313",
+      "updated": "2026-10-29T15:03:18.910",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85884"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00446,
+      "epss_percentile": 0.38787,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98093",
       "aliases": [],
       "title": "",
@@ -17462,6 +18227,230 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-54852",
+      "aliases": [],
+      "title": "WordPress Page Restriction WordPress (WP) plugin <= 1.6.1 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in miniOrange Page Restriction WordPress (WP) page-and-post-restriction allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Page Restriction WordPress (WP): from n/a through 1.6.1.",
+      "published": "2026-10-29T14:40:27.236Z",
+      "updated": "2026-10-29T15:18:54.943",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "miniOrange Page Restriction WordPress (WP)",
+        "page-and-post-restriction"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/page-and-post-restriction/vulnerability/wordpress-page-restriction-wordpress-wp-plugin-1-6-1-broken-access-control-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85869",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:14.067",
+      "updated": "2026-10-29T15:32:55.640",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85869"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00318,
+      "epss_percentile": 0.2472,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85871",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Kernel-Mode Drivers allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:14.433",
+      "updated": "2026-10-29T15:32:14.870",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85871"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00318,
+      "epss_percentile": 0.2472,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85872",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Storage VSP Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:14.610",
+      "updated": "2026-10-29T15:31:53.940",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85872"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.21116,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69789",
       "aliases": [],
       "title": "",
@@ -17881,6 +18870,52 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-28T17:25:21.367737+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118079",
+      "aliases": [],
+      "title": "WordPress FV Flowplayer Video Player plugin <= 8.3.4 - PHP Object Injection vulnerability",
+      "description": "Shop manager PHP Object Injection in FV Flowplayer Video Player <= 8.3.4 versions.",
+      "published": "2026-10-29T15:24:37.276Z",
+      "updated": "2026-10-29T15:24:37.276Z",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FolioVision FV Flowplayer Video Player",
+        "fv-wordpress-flowplayer"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/fv-wordpress-flowplayer/vulnerability/wordpress-fv-flowplayer-video-player-plugin-8-3-4-php-object-injection-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "wordpress"
       ],
@@ -23436,6 +24471,220 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83852",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Bind Filter Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:20:34.110",
+      "updated": "2026-10-29T14:55:32.023",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83852"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00258,
+      "epss_percentile": 0.17441,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85868",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Common Log File System Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:13.890",
+      "updated": "2026-10-29T15:33:13.953",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85868"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00286,
+      "epss_percentile": 0.21116,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85870",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Common Log File System Driver allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:14.253",
+      "updated": "2026-10-29T15:32:35.020",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85870"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00326,
+      "epss_percentile": 0.25656,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-85879",
+      "aliases": [],
+      "title": "",
+      "description": "Time-of-check time-of-use (toctou) race condition in Windows Subsystem for Linux allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:21:15.073",
+      "updated": "2026-10-29T15:03:57.737",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_subsystem_for_linux"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85879"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00219,
+      "epss_percentile": 0.12457,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -28207,6 +29456,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-83849",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Hello allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:20:33.660",
+      "updated": "2026-10-29T15:00:57.140",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83849"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0045,
+      "epss_percentile": 0.39088,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106174",
       "aliases": [],
       "title": "",
@@ -29632,6 +30933,102 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-80067",
+      "aliases": [],
+      "title": "MasterStudy LMS WordPress Plugin < 3.7.50 Path Traversal via stm_lms_step Parameter",
+      "description": "MasterStudy LMS plugin for WordPress before 3.7.50 contains a path traversal vulnerability that allows authenticated Subscriber-level users to import arbitrary WXR XML files by supplying directory traversal sequences in the stm_lms_step parameter passed to the stm_lms_import_sample_data AJAX action, which lacks capability checks and nonce verification. Attackers can traverse the file system to reference a reachable WXR file and have the handler publish its contained posts under their identity, enabling publication of attacker-chosen post type, title, content, and metadata.",
+      "published": "2026-10-29T14:11:09.173Z",
+      "updated": "2026-10-29T15:17:24.380",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Stylemix MasterStudy LMS WordPress Plugin"
+      ],
+      "references": [
+        "https://docs.stylemixthemes.com/masterstudy-lms/changelog-free-version",
+        "https://wordpress.org/plugins/masterstudy-lms-learning-management-system",
+        "https://www.vulncheck.com/advisories/masterstudy-lms-wordpress-plugin-path-traversal-via-stm-lms-step-parameter"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-80069",
+      "aliases": [],
+      "title": "MasterStudy LMS WordPress Plugin < 3.7.50 Missing Authorization via stm_lms_send_test_email_ajax",
+      "description": "MasterStudy LMS plugin for WordPress before 3.7.50 contains a missing authorization vulnerability that allows any authenticated user, including Subscribers, to trigger the stm_lms_send_test_email_ajax AJAX action without capability or nonce validation. Attackers can invoke this handler directly or via cross-site request forgery to cause an uncaught PHP fatal error that, when display_errors is enabled, discloses the absolute filesystem path of the plugin.",
+      "published": "2026-10-29T14:12:10.394Z",
+      "updated": "2026-10-29T15:17:24.947",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Stylemix MasterStudy LMS WordPress Plugin"
+      ],
+      "references": [
+        "https://docs.stylemixthemes.com/masterstudy-lms/changelog-free-version",
+        "https://wordpress.org/plugins/masterstudy-lms-learning-management-system",
+        "https://www.vulncheck.com/advisories/masterstudy-lms-wordpress-plugin-missing-authorization-via-stm-lms-send-test-email-ajax"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112893",
       "aliases": [],
       "title": "",
@@ -29733,12 +31130,68 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119025",
+      "aliases": [],
+      "title": "open 7.2.0 before 11.0.0 OS Command Injection via PowerShell on Windows",
+      "description": "open 7.2.0 before 11.0.0 contains an OS command injection vulnerability that allows attackers to execute PowerShell code by supplying crafted URLs on Windows and WSL. Attackers can embed $(...) subexpressions in URLs, such as OAuth authorization_endpoint values from malicious MCP servers, which execute when index.js passes them unescaped to powershell -EncodedCommand.",
+      "published": "2026-10-29T11:24:18.723Z",
+      "updated": "2026-10-29T12:17:12.017",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "sindresorhus open",
+        "modelcontextprotocol inspector",
+        "anomalyco opencode"
+      ],
+      "references": [
+        "https://github.com/sindresorhus/open/commit/274d70446bf38a7b7d50b214dd3962ef8ea9320d",
+        "https://github.com/sindresorhus/open/releases/tag/v11.0.0",
+        "https://github.com/sindresorhus/open/blob/v10.2.0/index.js#L189-L203",
+        "https://github.com/sindresorhus/open/blob/v7.2.0/index.js#L60-L99",
+        "https://github.com/modelcontextprotocol/inspector/security/advisories/GHSA-q978-78c7-phqw",
+        "https://github.com/anomalyco/opencode/pull/51414",
+        "https://github.com/anomalyco/opencode/commit/29f07e0c69ad8668e0e15b0eb54f2fcb342af98c",
+        "https://www.vulncheck.com/advisories/open-7.2.0-before-11.0.0-os-command-injection-via-powershell-on-windows"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-54630",
       "aliases": [],
       "title": "",
       "description": "Part-DB is an open source inventory management system for electronic components. Prior to version 2.12.1, the part attachment upload handler stores uploaded files under the web-served media directory using the client-supplied file extension, and its extension blocklist does not include phar. AttachmentSubmitHandler::renameBlacklistedExtensions() rewrites dangerous extensions (php, phtml, sh, cgi, py, js, html, htaccess, ...) to .txt, but phar is absent from the list, so a .phar file keeps its extension. Public attachments (the default) are written into public/media/, which is the Apache document root. The shipped Apache configuration routes .phar to PHP-FPM, so the stored file is executed as PHP on request. The per-attachment-type extension filter is empty by default and is not consulted by the upload handler in a way that blocks this, and a non-admin user in the default users group can create an attachment type with no filter and attach files to parts. Any authenticated user in the default users group uploads a .phar attachment to a part and fetches it under /media/, executing arbitrary PHP as the www-data web user. Ability to exploit depends on the webserver config, docker image contained the vulnerability by default. This issue has been patched in version 2.12.1.",
       "published": "2026-10-23T04:18:17.007",
-      "updated": "2026-10-23T19:36:32.410",
+      "updated": "2026-10-29T13:17:13.330",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
       "severity": "critical",
@@ -29747,6 +31200,7 @@
       "vendor_products": [],
       "references": [
         "https://github.com/Part-DB/Part-DB-server/releases/tag/v2.12.1",
+        "https://github.com/Part-DB/Part-DB-server/security/advisories/GHSA-w5m7-3xf7-6g7g",
         "https://github.com/Part-DB/Part-DB-server/security/advisories/GHSA-w5m7-3xf7-6g7g"
       ],
       "exploit_ref": false,
@@ -29755,14 +31209,14 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00234,
-      "epss_percentile": 0.13475,
+      "epss_percentile": 0.14302,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "php"
       ],
@@ -31529,6 +32983,332 @@
       "first_seen": "2026-10-29T08:30:11.381172+00:00",
       "matched": [
         "npm:dsh-redteam-mode"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-r4mz367vddi7",
+      "aliases": [],
+      "title": "Cloudflare: Increased Durable Objects, D1 and Workflows Error Rates",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-29T14:16:46.205Z",
+      "updated": "2026-10-29T14:16:46.205Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/r4mz367vddi7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-k2cd9e1fyskp",
+      "aliases": [],
+      "title": "Cloudflare: Increased HTTP 429 Rate Limit Errors on Cloudflare Dashboard",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-29T10:31:52.864Z",
+      "updated": "2026-10-29T12:10:59.965Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/k2cd9e1fyskp"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-29T12:10:59.965Z",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-6yfpsos7ksp3",
+      "aliases": [],
+      "title": "Cloudflare: Increased Worker services errors",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-29T09:22:53.373Z",
+      "updated": "2026-10-29T11:49:16.376Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/6yfpsos7ksp3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-29T11:49:16.376Z",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-bc7e93q3eigp",
+      "aliases": [],
+      "title": "Cloudflare: Issues with Durable Objects availability in Eastern Europe",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-29T10:06:17.344Z",
+      "updated": "2026-10-29T11:47:23.364Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/bc7e93q3eigp"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-29T11:47:23.364Z",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-rn76zdy367m2",
+      "aliases": [],
+      "title": "GitHub: Disruption with Copilot Cloud services",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-10-29T10:19:55.318Z",
+      "updated": "2026-10-29T12:49:52.145Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/22p3vp78z20q"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-29T12:49:52.145Z",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-qr96-8wf2-prfm",
+      "aliases": [],
+      "title": "Malicious code in @kelvdra/baileys (npm)",
+      "description": "This package is part of a large family (100+ identified as of September 2026) of near-identical\nforks of the Baileys WhatsApp Web library that inject a covert channel-subscription action into\nthe WhatsApp socket layer. On connect, the injected code issues an authenticated `w:mex` FOLLOW\nquery (query_id 7871414976211147) against one or more attacker-chosen WhatsApp Channel/Newsletter\nJIDs, using the installer's own authenticated WhatsApp session -- silently subscribing the\nvictim's account to channels it never asked to join.\n\nThe target JID(s) are hidden from casual source review via one of several obfuscation techniques\nobserved across the family: a plain string literal, base64 encoding, base64+XOR, or a char-code\narray reconstructed at runtime. Some variants instead fetch a mutable, attacker-controlled remote\nJSON/JS list of target JIDs from GitHub or another host at runtime, letting the target list change\nafter installation without a new npm publish. Every sample in the family shares the same underlying\nmechanism (a wrapped/patched socket-connect routine that fires the FOLLOW query some seconds after\nconnect), even though the package name, JID value(s), and obfuscation/delivery method differ per\nfork.\n\nThe malicious action abuses the installer's own authenticated WhatsApp session to gain reach and\nsubscribers for attacker-controlled channels; it does not exfiltrate credentials, establish\npersistence, or execute arbitrary remote code.\n\nAffected package: @kelvdra/baileys (npm), version(s): 1.0.6-rc.1, 1.0.6, 1.0.5-rc.3.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/ea6f47d9a9abbdeaba8286b209c167cc2fb5336c/osv/malicious/npm/@kelvdra/baileys/MAL-2026-17362.json))\n\n週間ダウンロード数: 約 2,238",
+      "published": "2026-09-30T12:35:25Z",
+      "updated": "2026-10-29T15:32:43Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@kelvdra/baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-qr96-8wf2-prfm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "npm:@kelvdra/baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-cmqx-q58q-9m8p",
+      "aliases": [],
+      "title": "Malicious code in @webapp-shared/login-vmok (npm)",
+      "description": "@webapp-shared/login-vmok is a dependency-confusion package: it uses the `@webapp-shared` scope, which matches a private internal package scope, and was published on 2026-10-27 in versions 1.0.0, 1.0.1, 1.1.0, 2.0.1, 3.0.0 and 99.0.1 so that builds resolving the internal name from the public registry install it instead. Its `postinstall` script runs `node beacon.cjs`, which sends an HTTP POST over cleartext HTTP to the hardcoded IP endpoint `http://13.140.137.222:8787/_ah/dc` with the package name, the machine's hostname, the install directory, the current working directory and the Node.js version; the entry point `index.js` sends the same request again whenever the package is loaded and otherwise has no functionality. The beacon code is the same as in other dependency-confusion packages sending to `http://185.158.107.175:8787/_ah/dc` (e.g. MAL-2026-18276), with only the endpoint and package name changed. The inert `0.0.0-stage` and `0.1.0` placeholder versions carry no install script and are not affected. Any machine that installed an affected version has disclosed its hostname and filesystem layout to a third party; remove the package, pin or scope internal package names to the internal registry, and block 13.140.137.222 on build hosts.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/5dd9ba57d8b642a1fb5202f1c2906885dd4af5cf/osv/malicious/npm/@webapp-shared/login-vmok/MAL-2026-18356.json))\n\n週間ダウンロード数: 約 1,499",
+      "published": "2026-10-28T06:30:28Z",
+      "updated": "2026-10-29T15:32:42Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@webapp-shared/login-vmok"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-cmqx-q58q-9m8p"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "npm:@webapp-shared/login-vmok"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-6j8f-g5mj-4wcj",
+      "aliases": [],
+      "title": "Malicious code in virgil-cli (npm)",
+      "description": "In local mode virgil-cli prints that it runs on the user's machine and is free and private. After each turn, reportLearning() in dist/api.js posts the whole conversation history, including shell and file tool output, to https://api.nm-streetwear.space/vx/learn with a hardcoded token and a device id. I found no mention of this in the README and no setting to turn it off. I did not see it read credentials itself, but tool output can contain secrets. I read 0.1.4 only and did not run it.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/f063554694397c84438c5dd78933a5614e51e5a0/osv/malicious/npm/virgil-cli/MAL-2026-17630.json))\n\n週間ダウンロード数: 約 2,807",
+      "published": "2026-10-06T00:33:04Z",
+      "updated": "2026-10-29T15:31:39Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:virgil-cli"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-6j8f-g5mj-4wcj"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "npm:virgil-cli"
       ],
       "match_type": "malware",
       "tier": null,
@@ -37518,6 +39298,64 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-114148",
+      "aliases": [],
+      "title": "ASP.NET Core Elevation of Privilege Vulnerability",
+      "description": "Incorrect default permissions in ASP.NET Core allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-29T15:21:47.615Z",
+      "updated": "2026-10-29T15:21:47.615Z",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Microsoft .NET 10.0 installed on Linux",
+        "Microsoft .NET 10.0 installed on Mac OS",
+        "Microsoft .NET 10.0 installed on Windows",
+        "Microsoft .NET 11.0 installed on Linux",
+        "Microsoft .NET 11.0 installed on Mac OS",
+        "Microsoft .NET 11.0 installed on Windows",
+        "Microsoft .NET 8.0 installed on Linux",
+        "Microsoft .NET 8.0 installed on Mac OS",
+        "Microsoft .NET 8.0 installed on Windows",
+        "Microsoft .NET 9.0 installed on Linux",
+        "Microsoft .NET 9.0 installed on Mac OS",
+        "Microsoft .NET 9.0 installed on Windows",
+        "Microsoft .NET source-build Linux tarballs (all archive types)",
+        "Microsoft ASP.NET Core runtime and targeting-pack Linux tarballs (Microsoft-published)"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114148"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-117610",
       "aliases": [],
       "title": "",
@@ -38607,6 +40445,144 @@
         "popularity": 10,
         "kev": 20,
         "epss": 4.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118318",
+      "aliases": [],
+      "title": "",
+      "description": "Improper access control in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:17:00.410",
+      "updated": "2026-10-29T15:17:21.447",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/565133743"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00174,
+      "epss_percentile": 0.06845,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118319",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:17:00.527",
+      "updated": "2026-10-29T15:17:21.630",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/576194994"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00168,
+      "epss_percentile": 0.06132,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118322",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in ANGLE in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-27T23:17:00.840",
+      "updated": "2026-10-29T15:17:21.810",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
+        "https://issues.chromium.org/issues/568895029"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0018,
+      "epss_percentile": 0.0761,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-28T00:02:40.554138+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.6,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -40563,7 +42539,7 @@
       "title": "",
       "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Sound).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. This vulnerability does not apply to Java deployments, typically in servers, that load and run only trusted code (e.g., code installed by an administrator). CVSS 3.1 Base Score 3.1 (Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:L).",
       "published": "2026-10-20T22:20:43.440",
-      "updated": "2026-10-23T20:17:28.573",
+      "updated": "2026-10-29T13:17:15.360",
       "cvss": 3.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:L",
       "severity": "low",
@@ -40579,14 +42555,14 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00257,
-      "epss_percentile": 0.16402,
+      "epss_percentile": 0.17371,
       "x_mentions": null,
       "sources": [
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "java"
       ],
@@ -40797,7 +42773,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer doesn't invalidate plans prepared after a rule was added or a role changed. Users using such plans can still see the unmasked data until the end of the session. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.510",
-      "updated": "2026-10-28T18:17:03.510",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -40812,8 +42788,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00217,
+      "epss_percentile": 0.12155,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -40831,7 +42807,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 13.0,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -41650,6 +43627,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-92982",
+      "aliases": [],
+      "title": "",
+      "description": "A flaw was found in Ansible Operator Plugins. A low-privileged Kubernetes user can exploit a Jinja2 template injection vulnerability by crafting malicious custom resource (CR) specification values. These values are processed by Ansible without proper sanitization, allowing embedded Jinja2 expressions to be executed within the operator pod. This can lead to arbitrary code execution and privilege escalation, granting the attacker control over the operator's service account with cluster-wide permissions.",
+      "published": "2026-10-15T16:18:23.657",
+      "updated": "2026-10-29T15:17:25.330",
+      "cvss": 8.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://access.redhat.com/errata/RHSA-2026:68695",
+        "https://access.redhat.com/errata/RHSA-2026:87120",
+        "https://access.redhat.com/errata/RHSA-2026:87124",
+        "https://access.redhat.com/security/cve/CVE-2026-92982",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2522227"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00472,
+      "epss_percentile": 0.40812,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-59185",
       "aliases": [],
       "title": "identrail: Cross-tenant GitHub installation binding without ownership verification",
@@ -41886,6 +43911,57 @@
         "cvss": 10.6,
         "unauth_network": 5,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114727",
+      "aliases": [],
+      "title": "",
+      "description": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 passes potentially unsafe content into ImageMagick when resizing images. SVG and EPS were accepted as valid image types for contact photo upload and conversion, and both formats can reference external resources and invoke ImageMagick delegates when processed. Upstream fixed this in the commit “Fix passing potentally unsafe attachment content into ImageMagick on image resize”, which removes svg and eps from the accepted types.",
+      "published": "2026-10-22T02:17:00.797",
+      "updated": "2026-10-29T13:59:47.890",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+      "severity": "high",
+      "cpes": [
+        "roundcube:webmail"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugs.debian.org/1151279",
+        "https://github.com/roundcube/roundcubemail/commit/895d88af37720d2b46e4553f524013b2e1cb7665",
+        "https://github.com/roundcube/roundcubemail/commit/8f0dc2d4675b5ec72e9746862956785f2e099fc7",
+        "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20",
+        "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5",
+        "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00332,
+      "epss_percentile": 0.26356,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -42274,7 +44350,7 @@
       "title": "",
       "description": "Insufficient policy enforcement in chrome-devtools-mcp in Google Chrome on Linux prior to 1.5.0 allowed a local attacker to perform arbitrary read/write via a malicious file. (Chromium security severity: Medium)",
       "published": "2026-10-28T19:17:21.860",
-      "updated": "2026-10-29T02:16:46.267",
+      "updated": "2026-10-29T15:04:37.187",
       "cvss": 4.4,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
       "severity": "medium",
@@ -42289,8 +44365,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00126,
+      "epss_percentile": 0.02262,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -42307,7 +44383,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 21.0,
-        "cvss": 8.8
+        "cvss": 8.8,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -42365,7 +44442,7 @@
       "title": "",
       "description": "Dell iDRAC Service Module (iSM) for Windows, Dell iDRAC Service Module (iSM) for Linux, and Dell iDRAC Service Module (iSM) for ESXi, versions prior to 6.1.1.0, contains an Improper Control of Generation of Code ('Code Injection') vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.",
       "published": "2026-10-28T12:17:42.417",
-      "updated": "2026-10-29T04:18:41.100",
+      "updated": "2026-10-29T11:17:34.780",
       "cvss": 4.2,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
       "severity": "medium",
@@ -42380,8 +44457,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00166,
+      "epss_percentile": 0.05798,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -42398,7 +44475,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 21.0,
-        "cvss": 8.4
+        "cvss": 8.4,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -42705,7 +44783,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer's range-based dummy functions dont constraint the range size. This vulnerability can be exploited to exhaust the memory of a backend and OOM-kill it (when ovecommit is on), which results in a cluster-wide crash recovery. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.000",
-      "updated": "2026-10-28T18:17:03.000",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 4.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:L",
       "severity": "medium",
@@ -42720,8 +44798,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00183,
+      "epss_percentile": 0.07881,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -42739,7 +44817,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 9.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -42749,7 +44828,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer's `anon.image_blur()` function doesn't check the declared dimension of the provided image, allowing an attacker to provide a small image with enormous declared dimensions. This vulnerability can be exploited to exhaust the memory of a backend and OOM-kill it (when ovecommit is on), which results in a cluster-wide crash recovery. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.127",
-      "updated": "2026-10-28T18:17:03.127",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 4.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:L",
       "severity": "medium",
@@ -42764,8 +44843,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00183,
+      "epss_percentile": 0.07881,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -42783,7 +44862,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 9.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -43585,7 +45665,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer doesn't mask data returned by a sub-query in a rule. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:04.003",
-      "updated": "2026-10-28T18:17:04.003",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -43600,8 +45680,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00201,
+      "epss_percentile": 0.09951,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -43618,7 +45698,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 13.0
+        "cvss": 13.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -43628,7 +45709,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer contains a vulnerability related to anonymization functions defined using SQL-standard function bodies. PostgreSQL analyses such functions at declaration time, while Anonymizer only attempts to check them at execution time. This problem can be exploited by any user with the TEMPORARY privilege. The issue is fixed in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:05.473",
-      "updated": "2026-10-28T18:17:05.473",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -43643,8 +45724,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0027,
+      "epss_percentile": 0.19146,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -43661,7 +45742,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 13.0
+        "cvss": 13.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -44014,6 +46096,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-88648",
+      "aliases": [],
+      "title": "",
+      "description": "Incomplete X.509 implementation in GnuTLS v3.8.13 allows attackers controlling a subordinate Certificate Authority to bypass cross-domain PKI restrictions and issue unauthorized certificates.",
+      "published": "2026-10-08T19:20:52.703",
+      "updated": "2026-10-29T13:17:14.917",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://gist.github.com/lkloliver/1f2a97cb8d0b31aa27b6bd0354358d7d",
+        "https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.10",
+        "https://www.rfc-editor.org/rfc/rfc5280#section-6.1.4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00203,
+      "epss_percentile": 0.10246,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "gnutls"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 26.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 7.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114051",
       "aliases": [],
       "title": "",
@@ -44356,7 +46485,7 @@
       "title": "",
       "description": "PostgreSQL restricts acces to the salt and shift via the `SHOW` command for users not member of `pg_read_all_settings`. But they are visible in `pg_db_role_setting` or `pg_roles` if they were set on the database, user or both. PostgreSQL Anonymizer's documentation recommends to use ALTER DATABASE / ALTER ROLE for the salt. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.373",
-      "updated": "2026-10-28T18:17:03.373",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 5.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -44371,8 +46500,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00194,
+      "epss_percentile": 0.09064,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -44389,7 +46518,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 11.4
+        "cvss": 11.4,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -44399,7 +46529,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer's documentation recommends applying rules on partitions and inheritance tables. Direct access to the paritions / inheritance tables is masked but not thru the parent table. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.633",
-      "updated": "2026-10-28T18:17:03.633",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 5.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -44414,8 +46544,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00178,
+      "epss_percentile": 0.07319,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -44432,7 +46562,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 11.4
+        "cvss": 11.4,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -45231,7 +47362,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer doesn't mask data accessed thru a security_invoker view. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.780",
-      "updated": "2026-10-28T18:17:03.780",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 4.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -45246,8 +47377,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00151,
+      "epss_percentile": 0.04188,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -45264,7 +47395,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -45530,7 +47662,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer contains a vulnerability related to the anon.partial() and anon.partial_email() functions. These function can reveal the while data if the data is small enough. The issue is fixed in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:05.590",
-      "updated": "2026-10-28T18:17:05.590",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 4.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
       "severity": "medium",
@@ -45545,8 +47677,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00176,
+      "epss_percentile": 0.07142,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -45563,7 +47695,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 8.6
+        "cvss": 8.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -45573,7 +47706,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer contains a vulnerability related to static masking and statistics persistence. Statistics pertaining to the original data remain visible in pg_stats until an ANALYZE operation is performed on the table, either manually or by autovacuum. This issue is fixed in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:05.710",
-      "updated": "2026-10-28T18:17:05.710",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 4.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
       "severity": "medium",
@@ -45588,8 +47721,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00162,
+      "epss_percentile": 0.05322,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -45606,7 +47739,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 8.6
+        "cvss": 8.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -54177,138 +56311,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-118318",
-      "aliases": [],
-      "title": "",
-      "description": "Improper access control in V8 in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-27T23:17:00.410",
-      "updated": "2026-10-28T14:11:10.310",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
-        "https://issues.chromium.org/issues/565133743"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00174,
-      "epss_percentile": 0.06824,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-28T00:02:40.554138+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-118319",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in Skia in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-27T23:17:00.527",
-      "updated": "2026-10-28T14:11:10.310",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
-        "https://issues.chromium.org/issues/576194994"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00168,
-      "epss_percentile": 0.06116,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-28T00:02:40.554138+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-118322",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in ANGLE in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-27T23:17:00.840",
-      "updated": "2026-10-28T14:11:10.310",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_0562499947.html",
-        "https://issues.chromium.org/issues/568895029"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.0018,
-      "epss_percentile": 0.07582,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-28T00:02:40.554138+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-118333",
       "aliases": [],
       "title": "",
@@ -59521,7 +61523,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer contains a vulnerability that data-modifying CTEs to bypass the read-only restriction of masked roles. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions",
       "published": "2026-10-28T18:17:02.850",
-      "updated": "2026-10-28T18:17:02.850",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 3.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N",
       "severity": "low",
@@ -59536,8 +61538,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00165,
+      "epss_percentile": 0.05689,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -59554,7 +61556,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 7.0
+        "cvss": 7.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -59564,7 +61567,7 @@
       "title": "",
       "description": "PostgreSQL's optimized statistics on a table are visible as long as you have SELECT privilege on said table. A masked role can therefore read a limited subset of the data through the statistics view's histograms and mcvs. The vulnerability is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.250",
-      "updated": "2026-10-28T18:17:03.250",
+      "updated": "2026-10-29T15:29:45.363",
       "cvss": 3.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N",
       "severity": "low",
@@ -59579,8 +61582,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00143,
+      "epss_percentile": 0.03604,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -59597,34 +61600,80 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 7.0
+        "cvss": 7.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105031",
+      "aliases": [],
+      "title": "Apache Qpid Proton C: The OpenSSL TLS implementation adds a locally trusted certificate authority to the existing trusted system trust anchors.",
+      "description": "When using the OpenSSL TLS implementation, both the pn_ssl_domain_set_trusted_ca_db() & pn_tls_config_set_trusted_certs() APIs added to rather than replaced the default system trust anchors. Leading to potentially trusting unexpected peer certificates.\n\n\n\nThis can be worked around by setting the SSL_CERT_FILE environment variable for the application to /dev/null.\n\n\n\nThis issue does not affect the Win32 SChannel TLS implementation.\n\n\n\nThis issue affects Apache Qpid Proton C: through 0.40.0.\n\n\n\nUsers are recommended to upgrade to version 0.41.1, which fixes the issue.",
+      "published": "2026-10-29T10:16:41.384Z",
+      "updated": "2026-10-29T12:17:09.127",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache Qpid Proton C"
+      ],
+      "references": [
+        "https://lists.apache.org/thread.html/lc10nrjt2dwcjjhrsgoyy5tqkntsnor4",
+        "http://www.openwall.com/lists/oss-security/2026/10/28/22"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
       },
       "ai_analysis": ""
     },
     {
       "id": "CVE-2026-77564",
-      "aliases": [
-        "GHSA-7cxh-94cf-mfp6"
-      ],
-      "title": "Talos Linux: Support bundle does not redact registry credentials",
-      "description": "### Summary\nWhen generating a support bundle with `talosctl support` the credentials entered for private registries are included in the bundle.\n\n\n### Details\n\nWithin the generated support bundle, inside `resources/registryconfigs.cri.talos.dev.yaml` the `auth` field of the spec is retained.\nThe same, potentially sensitive information is present within `etcfilespecs.files.talos.dev.yaml`.\n\n### PoC\n\nSimply run `talosctl -n [...] support` on a cluster with a `RegistryAuthConfig` resource \n\n### Impact\n\nThe problem itself is minor, however, anyone who has ever uploaded a support.zip bundle on a github issue, slack thread or public forum could have potentially leaked their internal authentication parameters for a private registry.\n\nIn most situations, if the network and credentials are set correctly, this should not be a problem. On the other hand, if the affected registry is publicly accessible, and the provided credentials have write access to it, this could lead to possibly serious consequences, from denial of service, to data loss and possibly existing tag hijacking leading to supply chain compromise, for the affected parties which were under the impression that the support bundle is redacted of sensitive information and thus can be shared publicly.\n\n\n### Notes\n\nTalos 1.14+ by default encrypts the support bundle to the age recipients specified (defaulting to siderolabs GitHub org members), so the impact is even lower.\n\n### Environment\n\n- Talos version: v1.13.0\n- Kubernetes version: 1.35.3\n- Platform: amd64",
-      "published": "2026-10-15T20:20:16Z",
-      "updated": "2026-10-26T14:41:05Z",
+      "aliases": [],
+      "title": "",
+      "description": "Talos Linux is a Linux distribution built for Kubernetes deployments. Prior to 1.12.9 and 1.13.3, talosctl support includes the auth field from resources/registryconfigs.cri.talos.dev.yaml and sensitive content from etcfilespecs.files.talos.dev.yaml in generated support bundles instead of marking or redacting those resources. An operator who shares a bundle with an unintended party can therefore disclose private registry authentication parameters, with impact depending on the registry's network exposure and credential privileges. Talos 1.14 and later encrypt support bundles by default, which reduces but does not replace the need for redaction. This issue is fixed in versions 1.12.9 and 1.13.3.",
+      "published": "2026-10-14T17:19:11.437",
+      "updated": "2026-10-29T15:17:24.197",
       "cvss": 3.3,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
       "severity": "low",
       "cpes": [],
-      "packages": [
-        "go:github.com/siderolabs/talos"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-7cxh-94cf-mfp6",
-        "https://github.com/siderolabs/talos/security/advisories/GHSA-7cxh-94cf-mfp6",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-77564",
+        "https://github.com/siderolabs/talos/commit/4c288caf2de1db7f84bba0539ca5ed7d6ecb9142",
+        "https://github.com/siderolabs/talos/commit/76080416beee6460375c0d0db3cab76cc493ad3e",
+        "https://github.com/siderolabs/talos/commit/7dc716d850e43373ba8702c702105f4edd68fceb",
         "https://github.com/siderolabs/talos/pull/13345",
         "https://github.com/siderolabs/talos/pull/13434",
-        "https://github.com/siderolabs/talos/pull/13611"
+        "https://github.com/siderolabs/talos/pull/13611",
+        "https://github.com/siderolabs/talos/releases/tag/v1.12.9",
+        "https://github.com/siderolabs/talos/releases/tag/v1.13.3",
+        "https://github.com/siderolabs/talos/security/advisories/GHSA-7cxh-94cf-mfp6"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -59632,10 +61681,10 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00131,
-      "epss_percentile": 0.02669,
+      "epss_percentile": 0.02673,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -68482,9 +70531,9 @@
       "id": "MOZ-CA-2086949",
       "aliases": [],
       "title": "TWCA: Unauthorized access to an RA server",
-      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 ASSIGNED）。分類: [ca-compliance]",
       "published": "2026-10-29T08:07:09Z",
-      "updated": "2026-10-29T08:07:35Z",
+      "updated": "2026-10-29T14:42:27Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -68508,6 +70557,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-29T08:30:11.381172+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2087114",
+      "aliases": [],
+      "title": "IZENPE: network communication outage",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-10-29T15:16:40Z",
+      "updated": "2026-10-29T15:17:19Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2087114"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "pki"
       ],
