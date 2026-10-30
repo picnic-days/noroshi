@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T00:25:22.530345+00:00",
+  "generated_at": "2026-10-30T06:29:46.175004+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1279,7 +1279,7 @@
       "title": "GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability",
       "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient regular expression validation.",
       "published": "2026-10-13T02:17:00.840",
-      "updated": "2026-10-29T20:17:37.330",
+      "updated": "2026-10-30T04:18:31.240",
       "cvss": 10.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -7727,7 +7727,7 @@
       "title": "Cisco Secure Firewall ASA Software and Cisco Secure FTD Software Unchecked Return Value to NULL Pointer Dereference Vulnerability",
       "description": "A vulnerability in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition. This vulnerability is due to logic errors when secondary authentication is configured on a tunnel group. An attacker could exploit this vulnerability by sending a crafted request when connecting to the SSL remote access VPN. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition.",
       "published": "2026-10-28T20:18:47.063",
-      "updated": "2026-10-29T20:17:35.480",
+      "updated": "2026-10-30T04:18:24.797",
       "cvss": 8.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
       "severity": "high",
@@ -21318,6 +21318,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-98432",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: free inet_opt and ireq_opt after an RCU grace period\n\ntcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the\nchild socket (newinet->inet_opt) without copying it.\n\nAnother cpu can concurrently process a retransmitted SYN for the same\nrequest socket, and send a SYNACK from tcp_check_req().\ntcp_v4_send_synack() and inet_csk_route_req() read ireq->ireq_opt\nunder rcu_read_lock() only, and ip_build_and_send_pkt() and\nip_options_build() then read opt->optlen twice.\n\nNote that the SYNACK timer itself is not an issue: it holds a\nreference on its request socket, and inet_csk_reqsk_queue_drop()\ncalls timer_delete_sync() before the child can be freed.\n\nSince commit 079096f103fa (\"tcp/dccp: install syn_recv requests\ninto ehash table\"), request sockets are processed without holding\nthe listener lock, so nothing prevents the child socket from being\nfreed while the SYNACK is still being built. TCP child sockets do\nnot have SOCK_RCU_FREE, and inet_sock_destruct() frees inet_opt\nwith a plain kfree(), leading to a use-after-free in\nip_options_build().\n\nA similar issue exists with request socket migration\n(net.ipv4.tcp_migrate_req=1, or a BPF_SK_REUSEPORT_SELECT_OR_MIGRATE\nprogram). reqsk_timer_handler() clones the request socket with\ninet_reqsk_clone(), so that the old request socket and its clone\nshare the same ireq_opt, then reqsk_migrate_reset() clears the\npointer in the old one. Another cpu holding a reference on the old\nrequest socket can still be using these options (sending a SYNACK,\nor creating a child in tcp_v4_syn_recv_sock()) when the clone is\nfreed, and tcp_v4_reqsk_destructor() also uses a plain kfree().\n\nReaders already use RCU, and other paths replacing inet_opt\n(do_ip_setsockopt(), cipso_v4_sock_setattr()...) already use\nkfree_rcu(). Use kfree_rcu() in inet_sock_destruct() and\ntcp_v4_reqsk_destructor() as well.\n\nIPv6 is not affected by the first issue, because tcp_v6_syn_recv_sock()\nduplicates the options. tcp_v6_reqsk_destructor() has the same\nmigration issue with ipv6_opt, which is only set by CALIPSO. This\nwill be addressed in a separate patch.",
+      "published": "2026-10-15T13:17:13.987",
+      "updated": "2026-10-30T02:17:10.480",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/11a03ce3c4a62d84c10ccdfe47f8075006498568",
+        "https://git.kernel.org/stable/c/26d4c36d318cffbbd160884a0e4cec0da4da4936",
+        "https://git.kernel.org/stable/c/742f73df544e03744f2981c467d6542fe8172a2a",
+        "https://git.kernel.org/stable/c/89b5b1eb7d633c33832b7ff2c02e19a144705036",
+        "https://git.kernel.org/stable/c/95a8c8fa9f27dce64c40c41c062de7728bf34ab5",
+        "https://git.kernel.org/stable/c/a47406c769f72c070386985488f1c4d057df86b2",
+        "https://git.kernel.org/stable/c/b3b027ef0cd322bfa839b9aaf5b27551eea54cf6",
+        "https://git.kernel.org/stable/c/e3f33b0a1d89d738e2b913dab519226eaf76e15b",
+        "http://www.openwall.com/lists/oss-security/2026/10/30/1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00388,
+      "epss_percentile": 0.32813,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-24T16:57:17.235614+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98093",
       "aliases": [],
       "title": "",
@@ -21549,58 +21602,6 @@
       "ssvc_exploitation": "",
       "epss": 0.00209,
       "epss_percentile": 0.10498,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-24T16:57:17.235614+00:00",
-      "matched": [
-        "linux-kernel"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 45.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 19.6,
-        "unauth_network": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-98432",
-      "aliases": [],
-      "title": "",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: free inet_opt and ireq_opt after an RCU grace period\n\ntcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the\nchild socket (newinet->inet_opt) without copying it.\n\nAnother cpu can concurrently process a retransmitted SYN for the same\nrequest socket, and send a SYNACK from tcp_check_req().\ntcp_v4_send_synack() and inet_csk_route_req() read ireq->ireq_opt\nunder rcu_read_lock() only, and ip_build_and_send_pkt() and\nip_options_build() then read opt->optlen twice.\n\nNote that the SYNACK timer itself is not an issue: it holds a\nreference on its request socket, and inet_csk_reqsk_queue_drop()\ncalls timer_delete_sync() before the child can be freed.\n\nSince commit 079096f103fa (\"tcp/dccp: install syn_recv requests\ninto ehash table\"), request sockets are processed without holding\nthe listener lock, so nothing prevents the child socket from being\nfreed while the SYNACK is still being built. TCP child sockets do\nnot have SOCK_RCU_FREE, and inet_sock_destruct() frees inet_opt\nwith a plain kfree(), leading to a use-after-free in\nip_options_build().\n\nA similar issue exists with request socket migration\n(net.ipv4.tcp_migrate_req=1, or a BPF_SK_REUSEPORT_SELECT_OR_MIGRATE\nprogram). reqsk_timer_handler() clones the request socket with\ninet_reqsk_clone(), so that the old request socket and its clone\nshare the same ireq_opt, then reqsk_migrate_reset() clears the\npointer in the old one. Another cpu holding a reference on the old\nrequest socket can still be using these options (sending a SYNACK,\nor creating a child in tcp_v4_syn_recv_sock()) when the clone is\nfreed, and tcp_v4_reqsk_destructor() also uses a plain kfree().\n\nReaders already use RCU, and other paths replacing inet_opt\n(do_ip_setsockopt(), cipso_v4_sock_setattr()...) already use\nkfree_rcu(). Use kfree_rcu() in inet_sock_destruct() and\ntcp_v4_reqsk_destructor() as well.\n\nIPv6 is not affected by the first issue, because tcp_v6_syn_recv_sock()\nduplicates the options. tcp_v6_reqsk_destructor() has the same\nmigration issue with ipv6_opt, which is only set by CALIPSO. This\nwill be addressed in a separate patch.",
-      "published": "2026-10-15T13:17:13.987",
-      "updated": "2026-10-24T14:16:41.427",
-      "cvss": 9.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://git.kernel.org/stable/c/11a03ce3c4a62d84c10ccdfe47f8075006498568",
-        "https://git.kernel.org/stable/c/26d4c36d318cffbbd160884a0e4cec0da4da4936",
-        "https://git.kernel.org/stable/c/742f73df544e03744f2981c467d6542fe8172a2a",
-        "https://git.kernel.org/stable/c/89b5b1eb7d633c33832b7ff2c02e19a144705036",
-        "https://git.kernel.org/stable/c/95a8c8fa9f27dce64c40c41c062de7728bf34ab5",
-        "https://git.kernel.org/stable/c/a47406c769f72c070386985488f1c4d057df86b2",
-        "https://git.kernel.org/stable/c/b3b027ef0cd322bfa839b9aaf5b27551eea54cf6",
-        "https://git.kernel.org/stable/c/e3f33b0a1d89d738e2b913dab519226eaf76e15b"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00165,
-      "epss_percentile": 0.05368,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -44938,6 +44939,46 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-2xiv8fdhk0bh",
+      "aliases": [],
+      "title": "Cloudflare: Increased Errors for Browser Run",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-30T02:41:48.427Z",
+      "updated": "2026-10-30T03:48:59.143Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/2xiv8fdhk0bh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-30T03:48:59.143Z",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -52635,6 +52676,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111357",
+      "aliases": [],
+      "title": "",
+      "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
+      "published": "2026-10-15T21:17:13.190",
+      "updated": "2026-10-30T04:18:10.020",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935",
+        "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00247,
+      "epss_percentile": 0.16012,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "ivanti"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-92209",
       "aliases": [],
       "title": "",
@@ -56005,7 +56091,7 @@
       "title": "",
       "description": "A flaw was found in Ansible Operator Plugins. A low-privileged Kubernetes user can exploit a Jinja2 template injection vulnerability by crafting malicious custom resource (CR) specification values. These values are processed by Ansible without proper sanitization, allowing embedded Jinja2 expressions to be executed within the operator pod. This can lead to arbitrary code execution and privilege escalation, granting the attacker control over the operator's service account with cluster-wide permissions.",
       "published": "2026-10-15T16:18:23.657",
-      "updated": "2026-10-29T15:17:25.330",
+      "updated": "2026-10-30T04:18:29.683",
       "cvss": 8.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -58948,6 +59034,852 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119260",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Frames in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.673Z",
+      "updated": "2026-10-30T01:16:44.767",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/573264074"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119261",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.810Z",
+      "updated": "2026-10-30T01:16:44.893",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/574213633"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119262",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.953Z",
+      "updated": "2026-10-30T01:16:45.010",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/574660146"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119263",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in GarbageCollection in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.101Z",
+      "updated": "2026-10-30T01:16:45.140",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575143870"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119264",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Dawn in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.239Z",
+      "updated": "2026-10-30T01:16:45.277",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575150692"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119265",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.381Z",
+      "updated": "2026-10-30T01:16:45.400",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575201795"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119266",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.521Z",
+      "updated": "2026-10-30T01:16:45.523",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575202553"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119267",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in DOM in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.662Z",
+      "updated": "2026-10-30T01:16:45.650",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/576203565"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119268",
+      "aliases": [],
+      "title": "",
+      "description": "Integer overflow in Editing in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.805Z",
+      "updated": "2026-10-30T01:16:45.780",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/576984708"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119269",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Blink in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:09.940Z",
+      "updated": "2026-10-30T01:16:45.910",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/577072000"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119270",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:10.072Z",
+      "updated": "2026-10-30T01:16:46.030",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/577333729"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119271",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:10.204Z",
+      "updated": "2026-10-30T01:16:46.170",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/577403270"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76025",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:07.640Z",
+      "updated": "2026-10-30T01:16:47.067",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/559780982"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76026",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Autofill in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:07.858Z",
+      "updated": "2026-10-30T01:16:47.180",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/567673200"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76028",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.133Z",
+      "updated": "2026-10-30T01:16:47.433",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/569012015"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76029",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Network in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.263Z",
+      "updated": "2026-10-30T01:16:47.567",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/572055997"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76030",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.411Z",
+      "updated": "2026-10-30T01:16:47.687",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/572269631"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76031",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Input in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:08.551Z",
+      "updated": "2026-10-30T01:16:47.807",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/572556403"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "GHSA-894j-wg8m-63h8",
       "aliases": [],
       "title": "vLLM OpenCVDynamicOpenPanguVideoBackend: request-level num_frames without a ceiling — unauthenticated memory/CPU exhaustion (OOM-kill) on any video-capable deployment",
@@ -59324,6 +60256,237 @@
         "popularity": 14.0,
         "cvss": 11.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108097",
+      "aliases": [],
+      "title": "Drupal core - Critical - Remote code execution - SA-CORE-2026-014",
+      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T03:09:55.043Z",
+      "updated": "2026-10-30T04:18:04.130",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Drupal core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-014"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 25,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108099",
+      "aliases": [],
+      "title": "Entity  List - Critical - Remote code execution - SA-CONTRIB-2026-218",
+      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Entity  List allows Reflection Injection. This issue affects Entity  List versions: from 0.0.0 to 3.0.10.",
+      "published": "2026-10-30T03:09:50.302Z",
+      "updated": "2026-10-30T04:18:04.260",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Entity  List"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-218"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 25,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114523",
+      "aliases": [],
+      "title": "Ffmpeg Image Toolkit - Highly critical - Remote Code Execution - SA-CONTRIB-2026-220",
+      "description": "Improper Neutralization of Special Elements used in an OS Command (\"OS Command Injection\") vulnerability in Drupal Ffmpeg Image Toolkit allows OS Command Injection. This issue affects Ffmpeg Image Toolkit versions: from 0.0.0 to 1.0.3.",
+      "published": "2026-10-30T03:09:49.279Z",
+      "updated": "2026-10-30T04:18:10.373",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Ffmpeg Image Toolkit"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-220"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal",
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 25,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114524",
+      "aliases": [],
+      "title": "Custom Formatters - Critical - Remote code execution - SA-CONTRIB-2026-225",
+      "description": "Privilege Defined With Unsafe Actions vulnerability in Drupal Custom Formatters allows Privilege Escalation. This issue affects Custom Formatters versions: from 0.0.0 to 4.2.1.",
+      "published": "2026-10-30T03:09:44.167Z",
+      "updated": "2026-10-30T04:18:10.953",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Custom Formatters"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-225"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 25,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118562",
+      "aliases": [],
+      "title": "Single Content Sync - Critical - Remote code execution - SA-CONTRIB-2026-275",
+      "description": "Deserialization of Untrusted Data vulnerability in Drupal Single Content Sync allows Object Injection. This issue affects Single Content Sync versions: from 0.0.0 to 1.4.19.",
+      "published": "2026-10-30T03:08:50.773Z",
+      "updated": "2026-10-30T04:18:21.990",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Single Content Sync"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-275"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 25,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -74303,6 +75466,144 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119272",
+      "aliases": [],
+      "title": "",
+      "description": "Out of bounds read in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-30T00:05:10.337Z",
+      "updated": "2026-10-30T01:16:46.297",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/569012543"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76024",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in MediaStream in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-10-30T00:05:07.416Z",
+      "updated": "2026-10-30T01:16:46.940",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/576215540"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-76027",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T00:05:07.992Z",
+      "updated": "2026-10-30T01:16:47.303",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/568894475"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-77564",
       "aliases": [],
       "title": "",
@@ -82264,6 +83565,4461 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107249",
+      "aliases": [],
+      "title": "Block AJAX - Highly critical - PHP object injection - SA-CONTRIB-2026-192",
+      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Drupal Block AJAX allows Object Injection. This issue affects Block AJAX versions: from 0.0.0 to 3.0.2.",
+      "published": "2026-10-30T03:10:24.115Z",
+      "updated": "2026-10-30T04:17:43.030",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Block AJAX"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-192"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107250",
+      "aliases": [],
+      "title": "ECA Helper - Critical - Unsupported - SA-CONTRIB-2026-193",
+      "description": "Vulnerability in Drupal ECA Helper. This issue affects ECA Helper versions: *.*.",
+      "published": "2026-10-30T03:10:23.038Z",
+      "updated": "2026-10-30T04:17:45.330",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal ECA Helper"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-193"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107251",
+      "aliases": [],
+      "title": "Entity Reference Manager (Merge entities) - Critical - Access bypass - SA-CONTRIB-2026-194",
+      "description": "Incorrect Authorization vulnerability in Drupal Entity Reference Manager (Merge entities) allows Forceful Browsing. This issue affects Entity Reference Manager (Merge entities) versions: from 0.0.0 to 1.0.3.",
+      "published": "2026-10-30T03:10:22.038Z",
+      "updated": "2026-10-30T04:17:45.453",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Entity Reference Manager (Merge entities)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-194"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107252",
+      "aliases": [],
+      "title": "MathJax: LaTeX for Drupal - Critical - Cross site scripting - SA-CONTRIB-2026-195",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal MathJax: LaTeX for Drupal allows Cross-Site Scripting (XSS). This issue affects MathJax: LaTeX for Drupal versions: from 0.0.0 to 4.1.2.",
+      "published": "2026-10-30T03:10:20.994Z",
+      "updated": "2026-10-30T04:17:47.337",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal MathJax: LaTeX for Drupal"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-195"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107253",
+      "aliases": [],
+      "title": "Orphans Media - Critical - Unsupported - SA-CONTRIB-2026-196",
+      "description": "Vulnerability in Drupal Orphans Media. This issue affects Orphans Media versions: *.*.",
+      "published": "2026-10-30T03:10:19.921Z",
+      "updated": "2026-10-30T04:17:47.927",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Orphans Media"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-196"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107254",
+      "aliases": [],
+      "title": "Authenticator Login Plus (2FA) - Critical - Improper authentication - SA-CONTRIB-2026-197",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.1.",
+      "published": "2026-10-30T03:10:18.866Z",
+      "updated": "2026-10-30T04:17:48.483",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Authenticator Login Plus (2FA)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-197"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107255",
+      "aliases": [],
+      "title": "Restrict route by IP - Critical - Access bypass - SA-CONTRIB-2026-216",
+      "description": "Incorrect Authorization vulnerability in Drupal Restrict route by IP allows Forceful Browsing. This issue affects Restrict route by IP versions: from 0.0.0 to 1.3.1, from 2.0.0 to 2.0.1.",
+      "published": "2026-10-30T03:09:58.356Z",
+      "updated": "2026-10-30T04:17:51.290",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Restrict route by IP"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-216"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107256",
+      "aliases": [],
+      "title": "Shield - Moderately critical - Access bypass - SA-CONTRIB-2026-248",
+      "description": "Improper Restriction of Excessive Authentication Attempts vulnerability in Drupal Shield allows Brute Force. This issue affects Shield versions: from 0.0.0 to 1.9.0.",
+      "published": "2026-10-30T03:09:20.371Z",
+      "updated": "2026-10-30T04:17:52.230",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Shield"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-248"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107257",
+      "aliases": [],
+      "title": "Actstream - Critical - Access bypass - SA-CONTRIB-2026-198",
+      "description": "Incorrect Authorization vulnerability in Drupal Actstream allows Forceful Browsing. This issue affects Actstream versions: from 0.0.0 to 2.0.1, from 2.1.0 to 2.1.1.",
+      "published": "2026-10-30T03:10:17.831Z",
+      "updated": "2026-10-30T04:17:53.833",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Actstream"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-198"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107258",
+      "aliases": [],
+      "title": "Inline Entity Form Dialog - Moderately critical - Access bypass - SA-CONTRIB-2026-199",
+      "description": "Incorrect Authorization vulnerability in Drupal Inline Entity Form Dialog allows Forceful Browsing. This issue affects Inline Entity Form Dialog versions: from 0.0.0 to 1.0.6.",
+      "published": "2026-10-30T03:10:16.826Z",
+      "updated": "2026-10-30T04:17:54.913",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Inline Entity Form Dialog"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-199"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107259",
+      "aliases": [],
+      "title": "Linked Field - Moderately critical - Server-side template injection - SA-CONTRIB-2026-200",
+      "description": "Improper Neutralization of Special Elements Used in a Template Engine vulnerability in Drupal Linked Field allows Code Injection. This issue affects Linked Field versions: from 0.0.0 to 1.8.0.",
+      "published": "2026-10-30T03:10:15.793Z",
+      "updated": "2026-10-30T04:17:55.090",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Linked Field"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-200"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107260",
+      "aliases": [],
+      "title": "Sector Distribution - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-229",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Sector Distribution allows Stored XSS. This issue affects Sector Distribution versions: from 0.0.0 to 10.3.3, from 10.4.0 to 10.4.2.",
+      "published": "2026-10-30T03:09:39.913Z",
+      "updated": "2026-10-30T04:17:55.360",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Sector Distribution"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-229"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107261",
+      "aliases": [],
+      "title": "Authenticator Login Plus (2FA) - Moderately critical - Improper authentication - SA-CONTRIB-2026-201",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.1.",
+      "published": "2026-10-30T03:10:14.755Z",
+      "updated": "2026-10-30T04:17:55.493",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Authenticator Login Plus (2FA)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-201"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107262",
+      "aliases": [],
+      "title": "Advanced Filesystem - Moderately critical - Cross-Site Request Forgery - SA-CONTRIB-2026-217",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Advanced Filesystem allows Cross Site Request Forgery. This issue affects Advanced Filesystem versions: from 0.0.0 to 1.0.28.",
+      "published": "2026-10-30T03:09:56.247Z",
+      "updated": "2026-10-30T04:17:55.620",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Advanced Filesystem"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-217"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107263",
+      "aliases": [],
+      "title": "Gutenberg - Moderately critical - Access bypass - SA-CONTRIB-2026-202",
+      "description": "Incorrect Authorization vulnerability in Drupal Gutenberg allows Forceful Browsing. This issue affects Gutenberg versions: from 0.0.0 to 2.15.0, from 3.0.0 to 3.0.7.",
+      "published": "2026-10-30T03:10:13.713Z",
+      "updated": "2026-10-30T04:17:55.993",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Gutenberg"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-202"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107264",
+      "aliases": [],
+      "title": "Inline Formatter Field - Moderately critical - Server-side template injection - SA-CONTRIB-2026-203",
+      "description": "Improper Neutralization of Special Elements Used in a Template Engine vulnerability in Drupal Inline Formatter Field allows Code Injection. This issue affects Inline Formatter Field versions: from 0.0.0 to 4.2.0.",
+      "published": "2026-10-30T03:10:12.569Z",
+      "updated": "2026-10-30T04:17:56.113",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Inline Formatter Field"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-203"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107265",
+      "aliases": [],
+      "title": "Leaflet - Moderately critical - Cross site scripting - SA-CONTRIB-2026-204",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Leaflet allows Stored XSS. This issue affects Leaflet versions: from 0.0.0 to 10.4.13.",
+      "published": "2026-10-30T03:10:11.422Z",
+      "updated": "2026-10-30T04:17:56.237",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Leaflet"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-204"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107266",
+      "aliases": [],
+      "title": "Views Share - Moderately critical - Access bypass - SA-CONTRIB-2026-205",
+      "description": "Missing Authorization vulnerability in Drupal Views Share allows Forceful Browsing. This issue affects Views Share versions: from 0.0.0 to 2.0.1.",
+      "published": "2026-10-30T03:10:10.336Z",
+      "updated": "2026-10-30T04:17:57.663",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Views Share"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-205"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107267",
+      "aliases": [],
+      "title": "DKAN - Moderately critical - Access bypass - SA-CONTRIB-2026-208",
+      "description": "Missing Authorization vulnerability in Drupal DKAN allows Forceful Browsing. This issue affects DKAN versions: from 0.0.0 to 4.0.4, from 4.1.0 to 4.1.5.",
+      "published": "2026-10-30T03:10:07.093Z",
+      "updated": "2026-10-30T04:17:58.113",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal DKAN"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-208"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107268",
+      "aliases": [],
+      "title": "Two Factor Authentication - TFA / Passwordless Login - Moderately critical - Information disclosure - SA-CONTRIB-2026-207",
+      "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Two Factor Authentication - TFA / Passwordless Login allows Forceful Browsing. This issue affects Two Factor Authentication - TFA / Passwordless Login versions: from 0.0.0 to 5.4.1, from 5.5.0 to 5.5.2.",
+      "published": "2026-10-30T03:10:08.179Z",
+      "updated": "2026-10-30T04:17:58.230",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Two Factor Authentication - TFA / Passwordless Login"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-207"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107306",
+      "aliases": [],
+      "title": "Menu Link Attributes - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-209",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Menu Link Attributes allows Stored XSS. This issue affects Menu Link Attributes versions: from 0.0.0 to 1.8.0.",
+      "published": "2026-10-30T03:10:06.002Z",
+      "updated": "2026-10-30T04:17:58.360",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Menu Link Attributes"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-209"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107307",
+      "aliases": [],
+      "title": "SmartLinker AI - Moderately critical - Information disclosure - SA-CONTRIB-2026-210",
+      "description": "Incorrect Authorization vulnerability in Drupal SmartLinker AI allows Forceful Browsing. This issue affects SmartLinker AI versions: from 0.0.0 to 1.0.3.",
+      "published": "2026-10-30T03:10:04.955Z",
+      "updated": "2026-10-30T04:17:58.483",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal SmartLinker AI"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-210"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107308",
+      "aliases": [],
+      "title": "Country - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-211",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Country allows Cross-Site Scripting (XSS). This issue affects Country versions: from 0.0.0 to 2.1.3, from 2.2.0 to 2.2.1.",
+      "published": "2026-10-30T03:10:03.911Z",
+      "updated": "2026-10-30T04:17:58.590",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Country"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-211"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107309",
+      "aliases": [],
+      "title": "Easy Breadcrumb - Moderately critical - Information disclosure - SA-CONTRIB-2026-212",
+      "description": "Missing Authorization vulnerability in Drupal Easy Breadcrumb allows Forceful Browsing. This issue affects Easy Breadcrumb versions: from 0.0.0 to 2.0.11.",
+      "published": "2026-10-30T03:10:02.716Z",
+      "updated": "2026-10-30T04:17:58.720",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Easy Breadcrumb"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-212"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107310",
+      "aliases": [],
+      "title": "Freelinking - Moderately critical - Information Disclosure - SA-CONTRIB-2026-213",
+      "description": "Server-Side Request Forgery (SSRF) vulnerability in Drupal Freelinking allows Server Side Request Forgery. This issue affects Freelinking versions: from 0.0.0 to 4.0.3.",
+      "published": "2026-10-30T03:10:01.636Z",
+      "updated": "2026-10-30T04:17:58.833",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Freelinking"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-213"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107311",
+      "aliases": [],
+      "title": "Permissions by Term - Moderately critical - Information disclosure - SA-CONTRIB-2026-214",
+      "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Permissions by Term allows Forceful Browsing. This issue affects Permissions by Term versions: from 0.0.0 to 3.1.41.",
+      "published": "2026-10-30T03:10:00.554Z",
+      "updated": "2026-10-30T04:17:58.963",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Permissions by Term"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-214"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107312",
+      "aliases": [],
+      "title": "Examples for Developers - Less critical - Allocation of resources without limits or throttling - SA-CONTRIB-2026-215",
+      "description": "Allocation of Resources Without Limits or Throttling vulnerability in Drupal Examples for Developers allows Excessive Allocation. This issue affects Examples for Developers versions: from 0.0.0 to 4.0.7.",
+      "published": "2026-10-30T03:09:59.485Z",
+      "updated": "2026-10-30T04:17:59.090",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Examples for Developers"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-215"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108514",
+      "aliases": [],
+      "title": "Drupal core - Moderately critical - Cross-site scripting - SA-CORE-2026-016",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 10.3.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T03:09:51.346Z",
+      "updated": "2026-10-30T04:18:05.750",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Drupal core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-016"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108515",
+      "aliases": [],
+      "title": "Drupal core - Moderately critical - Cross-site scripting - SA-CORE-2026-015",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T03:09:52.573Z",
+      "updated": "2026-10-30T04:18:07.017",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Drupal core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-015"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110738",
+      "aliases": [],
+      "title": "Gin Admin Theme - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-219",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Gin Admin Theme allows Cross-Site Scripting (XSS). This issue affects Gin Admin Theme versions: from 0.0.0 to 4.1.4, from 5.0.0 to 5.0.16.",
+      "published": "2026-10-30T03:09:53.718Z",
+      "updated": "2026-10-30T04:18:09.667",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Gin Admin Theme"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-219"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114525",
+      "aliases": [],
+      "title": "ABC - Critical - Cross-site scripting - SA-CONTRIB-2026-224",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal ABC allows Stored XSS. This issue affects ABC versions: from 0.0.0 to 1.25.0, from 2.0.0 to 2.0.1.",
+      "published": "2026-10-30T03:09:45.202Z",
+      "updated": "2026-10-30T04:18:11.120",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal ABC"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-224"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114526",
+      "aliases": [],
+      "title": "Black Hole - Critical - Cross-site scripting - SA-CONTRIB-2026-223",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Black Hole allows Stored XSS. This issue affects Black Hole versions: from 0.0.0 to 1.26.0, from 2.0.0 to 2.0.1.",
+      "published": "2026-10-30T03:09:46.199Z",
+      "updated": "2026-10-30T04:18:11.247",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Black Hole"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-223"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114527",
+      "aliases": [],
+      "title": "UI Icons - Critical - Cross site scripting - SA-CONTRIB-2026-221",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal UI Icons allows Cross-Site Scripting (XSS). This issue affects UI Icons versions: from 0.0.0 to 1.1.3, from 2.0.0 to 2.0.2.",
+      "published": "2026-10-30T03:09:48.255Z",
+      "updated": "2026-10-30T04:18:11.377",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal UI Icons"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-221"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114528",
+      "aliases": [],
+      "title": "Zero Point - Critical - Cross-site scripting - SA-CONTRIB-2026-222",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Zero Point allows Stored XSS. This issue affects Zero Point versions: from 0.0.0 to 1.30.0, from 2.0.0 to 2.0.1.",
+      "published": "2026-10-30T03:09:47.242Z",
+      "updated": "2026-10-30T04:18:11.490",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Zero Point"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-222"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114529",
+      "aliases": [],
+      "title": "CSV Field - Moderately critical - Cross site Scripting - SA-CONTRIB-2026-226",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal CSV Field allows Stored XSS. This issue affects CSV Field versions: from 0.0.0 to 2.0.10, from 3.0.0 to 3.0.7.",
+      "published": "2026-10-30T03:09:43.089Z",
+      "updated": "2026-10-30T04:18:11.610",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal CSV Field"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-226"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114530",
+      "aliases": [],
+      "title": "Dopup - Critical - Information disclosure - SA-CONTRIB-2026-227",
+      "description": "Incorrect Authorization vulnerability in Drupal Dopup allows Forceful Browsing. This issue affects Dopup versions: from 0.0.0 to 1.0.7.",
+      "published": "2026-10-30T03:09:42.085Z",
+      "updated": "2026-10-30T04:18:11.740",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Dopup"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-227"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114531",
+      "aliases": [],
+      "title": "Swiper formatter - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-228",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Swiper formatter allows Stored XSS. This issue affects Swiper formatter versions: from 0.0.0 to 2.1.2, from 3.0.1 to 3.1.0.",
+      "published": "2026-10-30T03:09:40.925Z",
+      "updated": "2026-10-30T04:18:11.860",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Swiper formatter"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-228"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114532",
+      "aliases": [],
+      "title": "UI Icons - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-230",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal UI Icons allows Cross-Site Scripting (XSS). This issue affects UI Icons versions: from 0.0.0 to 1.1.3, from 2.0.0 to 2.0.2.",
+      "published": "2026-10-30T03:09:38.903Z",
+      "updated": "2026-10-30T04:18:11.980",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal UI Icons"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-230"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114533",
+      "aliases": [],
+      "title": "Ágora Transparency Theme - Moderately critical - Information disclosure - SA-CONTRIB-2026-231",
+      "description": "Missing Authorization vulnerability in Drupal Ágora Transparency Theme allows Forceful Browsing. This issue affects Ágora Transparency Theme versions: from 0.0.0 to 1.2.3.",
+      "published": "2026-10-30T03:09:37.860Z",
+      "updated": "2026-10-30T04:18:12.100",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Ágora Transparency Theme"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-231"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114534",
+      "aliases": [],
+      "title": "Block Attributes - Moderately critical - Cross site Scripting - SA-CONTRIB-2026-232",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Block Attributes allows Stored XSS. This issue affects Block Attributes versions: from 0.0.0 to 2.1.0.",
+      "published": "2026-10-30T03:09:36.863Z",
+      "updated": "2026-10-30T04:18:12.217",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Block Attributes"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-232"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114535",
+      "aliases": [],
+      "title": "Swiper formatter - Moderately critical - Information disclosure - SA-CONTRIB-2026-233",
+      "description": "Missing Authorization vulnerability in Drupal Swiper formatter allows Forceful Browsing. This issue affects Swiper formatter versions: from 0.0.0 to 2.1.2, from 3.0.1 to 3.1.0.",
+      "published": "2026-10-30T03:09:35.861Z",
+      "updated": "2026-10-30T04:18:12.333",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Swiper formatter"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-233"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114536",
+      "aliases": [],
+      "title": "USWDS Paragraph Components - Moderately critical - Cross site scripting - SA-CONTRIB-2026-234",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal USWDS Paragraph Components allows Stored XSS. This issue affects USWDS Paragraph Components versions: from 0.0.0 to 3.1.3.",
+      "published": "2026-10-30T03:09:34.828Z",
+      "updated": "2026-10-30T04:18:12.447",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal USWDS Paragraph Components"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-234"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114537",
+      "aliases": [],
+      "title": "View Unpublished - Moderately critical - Access bypass - SA-CONTRIB-2026-235",
+      "description": "Incorrect Authorization vulnerability in Drupal View Unpublished allows Forceful Browsing. This issue affects View Unpublished versions: from 0.0.0 to 1.5.0.",
+      "published": "2026-10-30T03:09:33.836Z",
+      "updated": "2026-10-30T04:18:12.563",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal View Unpublished"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-235"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114538",
+      "aliases": [],
+      "title": "Bootstrap - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-236",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Bootstrap allows Cross-Site Scripting (XSS). This issue affects Bootstrap versions: from 0.0.0 to 3.45.0.",
+      "published": "2026-10-30T03:09:32.792Z",
+      "updated": "2026-10-30T04:18:12.680",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Bootstrap"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-236"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114539",
+      "aliases": [],
+      "title": "DocCheck Basic - Moderately critical - Access bypass - SA-CONTRIB-2026-237",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal DocCheck Basic allows Authentication Bypass. This issue affects DocCheck Basic versions: 7.x.",
+      "published": "2026-10-30T03:09:31.746Z",
+      "updated": "2026-10-30T04:18:12.797",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal DocCheck Basic"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-237"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114540",
+      "aliases": [],
+      "title": "Domain - Moderately critical - Access bypass - SA-CONTRIB-2026-238",
+      "description": "Incorrect Authorization vulnerability in Drupal Domain allows Forceful Browsing. This issue affects Domain versions: from 3.0.0 to 3.0.2.",
+      "published": "2026-10-30T03:09:30.703Z",
+      "updated": "2026-10-30T04:18:12.907",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Domain"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-238"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114541",
+      "aliases": [],
+      "title": "Frontend Editing - Moderately critical - Cross-Site Request Forgery (CSRF) - SA-CONTRIB-2026-240",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Frontend Editing allows Cross Site Request Forgery. This issue affects Frontend Editing versions: from 0.0.0 to 1.9.3.",
+      "published": "2026-10-30T03:09:28.662Z",
+      "updated": "2026-10-30T04:18:13.023",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Frontend Editing"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-240"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114542",
+      "aliases": [],
+      "title": "Simple OAuth (OAuth2) & OpenID Connect - Moderately critical - Access bypass - SA-CONTRIB-2026-242",
+      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal Simple OAuth (OAuth2) & OpenID Connect allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Simple OAuth (OAuth2) & OpenID Connect versions: from 6.1.0 to 6.1.3.",
+      "published": "2026-10-30T03:09:26.573Z",
+      "updated": "2026-10-30T04:18:13.140",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Simple OAuth (OAuth2) & OpenID Connect"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-242"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114543",
+      "aliases": [],
+      "title": "Simple User Management - Moderately critical - Access bypass - SA-CONTRIB-2026-239",
+      "description": "Incorrect Authorization vulnerability in Drupal Simple User Management allows Forceful Browsing. This issue affects Simple User Management versions: from 0.0.0 to 1.11.0.",
+      "published": "2026-10-30T03:09:29.665Z",
+      "updated": "2026-10-30T04:18:13.267",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Simple User Management"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-239"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114544",
+      "aliases": [],
+      "title": "Media Bulk Upload - Moderately critical - Access bypass - SA-CONTRIB-2026-243",
+      "description": "Incorrect Authorization vulnerability in Drupal Media Bulk Upload allows Forceful Browsing. This issue affects Media Bulk Upload versions: from 0.0.0 to 3.0.6.",
+      "published": "2026-10-30T03:09:25.557Z",
+      "updated": "2026-10-30T04:18:14.200",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Media Bulk Upload"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-243"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114545",
+      "aliases": [],
+      "title": "Fullcalendar View - Moderately critical - Access bypass - SA-CONTRIB-2026-244",
+      "description": "Incorrect Authorization vulnerability in Drupal Fullcalendar View allows Forceful Browsing. This issue affects Fullcalendar View versions: from 0.0.0 to 5.2.6.",
+      "published": "2026-10-30T03:09:24.468Z",
+      "updated": "2026-10-30T04:18:14.350",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Fullcalendar View"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-244"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114546",
+      "aliases": [],
+      "title": "Media Alias Display - Moderately critical - Information disclosure - SA-CONTRIB-2026-245",
+      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal Media Alias Display allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Media Alias Display versions: from 0.0.0 to 2.1.2, from 3.0.0 to 3.0.2.",
+      "published": "2026-10-30T03:09:23.440Z",
+      "updated": "2026-10-30T04:18:14.520",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Media Alias Display"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-245"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114547",
+      "aliases": [],
+      "title": "TinyPNG - Moderately critical - Information disclosure - SA-CONTRIB-2026-246",
+      "description": "Missing Authorization vulnerability in Drupal TinyPNG allows Forceful Browsing. This issue affects TinyPNG versions: from 0.0.0 to 2.0.2.",
+      "published": "2026-10-30T03:09:22.443Z",
+      "updated": "2026-10-30T04:18:14.660",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal TinyPNG"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-246"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114548",
+      "aliases": [],
+      "title": "ImageAPI Optimize WebP - Moderately critical - Information disclosure - SA-CONTRIB-2026-247",
+      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal ImageAPI Optimize WebP allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects ImageAPI Optimize WebP versions: from 0.0.0 to 2.1.2.",
+      "published": "2026-10-30T03:09:21.401Z",
+      "updated": "2026-10-30T04:18:15.470",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal ImageAPI Optimize WebP"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-247"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114553",
+      "aliases": [],
+      "title": "Frontend Editing - Less critical - Access bypass - SA-CONTRIB-2026-241",
+      "description": "Incorrect Authorization vulnerability in Drupal Frontend Editing allows Forceful Browsing. This issue affects Frontend Editing versions: from 0.0.0 to 1.9.3.",
+      "published": "2026-10-30T03:09:27.605Z",
+      "updated": "2026-10-30T04:18:15.593",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Frontend Editing"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-241"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114554",
+      "aliases": [],
+      "title": "AI File to Text - Moderately critical - Access bypass - SA-CONTRIB-2026-251",
+      "description": "Incorrect Authorization vulnerability in Drupal AI File to Text allows Forceful Browsing. This issue affects AI File to Text versions: from 0.0.0 to 1.0.1.",
+      "published": "2026-10-30T03:09:17.116Z",
+      "updated": "2026-10-30T04:18:16.417",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI File to Text"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-251"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114555",
+      "aliases": [],
+      "title": "Data field - Moderately critical - Cross site scripting - SA-CONTRIB-2026-250",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Data field allows Stored XSS. This issue affects Data field versions: from 0.0.0 to 2.0.14.",
+      "published": "2026-10-30T03:09:18.190Z",
+      "updated": "2026-10-30T04:18:16.667",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Data field"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-250"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114571",
+      "aliases": [],
+      "title": "Rabbit Hole - Moderately critical - Access Bypass - SA-CONTRIB-2026-252",
+      "description": "Incorrect Authorization vulnerability in Drupal Rabbit Hole allows Forceful Browsing. This issue affects Rabbit Hole versions: from 0.0.0 to 1.3.0.",
+      "published": "2026-10-30T03:09:16.074Z",
+      "updated": "2026-10-30T04:18:17.077",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Rabbit Hole"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-252"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114572",
+      "aliases": [],
+      "title": "Domain Login Restrict - Moderately critical - Access bypass - SA-CONTRIB-2026-249",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Domain Login Restrict allows Authentication Bypass. This issue affects Domain Login Restrict versions: from 0.0.0 to 1.5.0.",
+      "published": "2026-10-30T03:09:19.330Z",
+      "updated": "2026-10-30T04:18:17.563",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Domain Login Restrict"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-249"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114573",
+      "aliases": [],
+      "title": "Monster Menus - Critical - PHP object injection - SA-CONTRIB-2026-253",
+      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Drupal Monster Menus allows Object Injection. This issue affects Monster Menus versions: from 0.0.0 to 9.5.6.",
+      "published": "2026-10-30T03:09:15.036Z",
+      "updated": "2026-10-30T04:18:17.740",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Monster Menus"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-253"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118539",
+      "aliases": [],
+      "title": "Commerce Core - Highly critical - Access bypass - SA-CONTRIB-2026-254",
+      "description": "Missing Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41, from 3.0.0 to 3.3.13.",
+      "published": "2026-10-30T03:09:13.976Z",
+      "updated": "2026-10-30T04:18:18.830",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-254"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118540",
+      "aliases": [],
+      "title": "Commerce Core - Moderately critical - Information disclosure - SA-CONTRIB-2026-255",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41, from 3.0.0 to 3.2.0.",
+      "published": "2026-10-30T03:09:12.953Z",
+      "updated": "2026-10-30T04:18:18.963",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-255"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118541",
+      "aliases": [],
+      "title": "Commerce Core - Less critical - Access bypass - SA-CONTRIB-2026-256",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41.0, from 3.0.0 to 3.3.13.",
+      "published": "2026-10-30T03:09:11.899Z",
+      "updated": "2026-10-30T04:18:19.100",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-256"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118542",
+      "aliases": [],
+      "title": "Commerce Core - Moderately critical - Access bypass - SA-CONTRIB-2026-257",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41.0, from 3.0.0 to 3.3.13.",
+      "published": "2026-10-30T03:09:10.859Z",
+      "updated": "2026-10-30T04:18:19.240",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-257"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118543",
+      "aliases": [],
+      "title": "Commerce Core - Moderately critical - Cross-site request forgery - SA-CONTRIB-2026-258",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Commerce Core allows Cross Site Request Forgery. This issue affects Commerce Core versions: from 0.0.0 to 2.41.0, from 3.0.0 to 3.3.13.",
+      "published": "2026-10-30T03:09:09.800Z",
+      "updated": "2026-10-30T04:18:19.390",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-258"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118544",
+      "aliases": [],
+      "title": "Commerce Core - Moderately critical - Information disclosure - SA-CONTRIB-2026-259",
+      "description": "Exposure of Sensitive Information Through Data Queries vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41.0, from 3.0.0 to 3.3.13.",
+      "published": "2026-10-30T03:09:08.731Z",
+      "updated": "2026-10-30T04:18:19.533",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-259"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118545",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-266",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal AI (Artificial Intelligence) allows Cross-Site Scripting (XSS). This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:09:00.347Z",
+      "updated": "2026-10-30T04:18:19.680",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-266"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118546",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-267",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal AI (Artificial Intelligence) allows Cross-Site Scripting (XSS). This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:59.295Z",
+      "updated": "2026-10-30T04:18:19.813",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-267"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118548",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Information disclosure - SA-CONTRIB-2026-268",
+      "description": "Incorrect Authorization vulnerability in Drupal AI (Artificial Intelligence) allows Resource Injection. This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:58.257Z",
+      "updated": "2026-10-30T04:18:19.960",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-268"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118549",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Critical - Cross-site scripting - SA-CONTRIB-2026-269",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal AI (Artificial Intelligence) allows Cross-Site Scripting (XSS). This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:57.240Z",
+      "updated": "2026-10-30T04:18:20.100",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-269"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118550",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Access bypass - SA-CONTRIB-2026-270",
+      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal AI (Artificial Intelligence) allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:56.132Z",
+      "updated": "2026-10-30T04:18:20.257",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-270"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118551",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Less critical - Information Disclosure - SA-CONTRIB-2026-271",
+      "description": "Insecure Storage of Sensitive Information vulnerability in Drupal AI (Artificial Intelligence) allows Retrieve Embedded Sensitive Data. This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:55.104Z",
+      "updated": "2026-10-30T04:18:20.397",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-271"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118552",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-272",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal AI (Artificial Intelligence) allows Cross-Site Scripting (XSS). This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:54.084Z",
+      "updated": "2026-10-30T04:18:20.547",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-272"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118553",
+      "aliases": [],
+      "title": "AI (Artificial Intelligence) - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-273",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal AI (Artificial Intelligence) allows Stored XSS. This issue affects AI (Artificial Intelligence) versions: from 0.0.0 to 1.4.11, from 1.5.0 to 1.5.2.",
+      "published": "2026-10-30T03:08:52.993Z",
+      "updated": "2026-10-30T04:18:20.690",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal AI (Artificial Intelligence)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-273"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118554",
+      "aliases": [],
+      "title": "OpenID Connect Client - Moderately critical - Improper authentication - SA-CONTRIB-2026-287",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal OpenID Connect Client allows Authentication Bypass. This issue affects OpenID Connect Client versions: from 0.0.0 to 2.3.1.",
+      "published": "2026-10-30T03:08:38.343Z",
+      "updated": "2026-10-30T04:18:20.840",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal OpenID Connect Client"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-287"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118555",
+      "aliases": [],
+      "title": "Commerce License - Moderately critical - Access bypass - SA-CONTRIB-2026-260",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce License allows Forceful Browsing. This issue affects Commerce License versions: from 0.0.0 to 3.1.1.",
+      "published": "2026-10-30T03:09:06.783Z",
+      "updated": "2026-10-30T04:18:20.970",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce License"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-260"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118556",
+      "aliases": [],
+      "title": "Commerce Shipping - Moderately critical - Access bypass - SA-CONTRIB-2026-261",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce Shipping allows Forceful Browsing. This issue affects Commerce Shipping versions: from 0.0.0 to 2.16.0, from 3.0.0 to 3.0.6.",
+      "published": "2026-10-30T03:09:05.585Z",
+      "updated": "2026-10-30T04:18:21.127",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Shipping"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-261"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118557",
+      "aliases": [],
+      "title": "Commerce Shipping - Less critical - Access bypass - SA-CONTRIB-2026-262",
+      "description": "Incorrect Authorization vulnerability in Drupal Commerce Shipping allows Forceful Browsing. This issue affects Commerce Shipping versions: from 0.0.0 to 2.16.0, from 3.0.0 to 3.0.6.",
+      "published": "2026-10-30T03:09:04.516Z",
+      "updated": "2026-10-30T04:18:21.270",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Shipping"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-262"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118558",
+      "aliases": [],
+      "title": "Commerce Stripe - Critical - Cross-site request forgery - SA-CONTRIB-2026-263",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Commerce Stripe allows Cross Site Request Forgery. This issue affects Commerce Stripe versions: from 2.0.0 to 2.2.3.",
+      "published": "2026-10-30T03:09:03.476Z",
+      "updated": "2026-10-30T04:18:21.413",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Stripe"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-263"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118559",
+      "aliases": [],
+      "title": "Commerce Stripe - Moderately critical - Improper verification of cryptographic signature - SA-CONTRIB-2026-264",
+      "description": "Improper Verification of Cryptographic Signature vulnerability in Drupal Commerce Stripe allows Signature Spoof. This issue affects Commerce Stripe versions: from 0.0.0 to 1.4, from 2.0.0 to 2.2.3.",
+      "published": "2026-10-30T03:09:02.462Z",
+      "updated": "2026-10-30T04:18:21.557",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Stripe"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-264"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118560",
+      "aliases": [],
+      "title": "Commerce Stripe - Moderately critical - Cross site scripting - SA-CONTRIB-2026-265",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Commerce Stripe allows Cross-Site Scripting (XSS). This issue affects Commerce Stripe versions: from 2.0.0 to 2.2.3.",
+      "published": "2026-10-30T03:09:01.410Z",
+      "updated": "2026-10-30T04:18:21.690",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Commerce Stripe"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-265"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118561",
+      "aliases": [],
+      "title": "Single Content Sync - Critical - External control of file name or path - SA-CONTRIB-2026-274",
+      "description": "External Control of File Name or Path vulnerability in Drupal Single Content Sync allows Path Traversal. This issue affects Single Content Sync versions: from 0.0.0 to 1.4.19.",
+      "published": "2026-10-30T03:08:51.799Z",
+      "updated": "2026-10-30T04:18:21.840",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Single Content Sync"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-274"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118563",
+      "aliases": [],
+      "title": "CacheFlush - Critical - Unsupported - SA-CONTRIB-2026-276",
+      "description": "Vulnerability in Drupal CacheFlush. This issue affects CacheFlush versions: *.*.",
+      "published": "2026-10-30T03:08:49.738Z",
+      "updated": "2026-10-30T04:18:22.147",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal CacheFlush"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-276"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118564",
+      "aliases": [],
+      "title": "PayUmoney for Drupal Commerce - Critical - Unsupported - SA-CONTRIB-2026-277",
+      "description": "Vulnerability in Drupal PayUmoney for Drupal Commerce. This issue affects PayUmoney for Drupal Commerce versions: *.*.",
+      "published": "2026-10-30T03:08:48.653Z",
+      "updated": "2026-10-30T04:18:22.273",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal PayUmoney for Drupal Commerce"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-277"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118565",
+      "aliases": [],
+      "title": "GroupEx PRO ( Daxko )  integration - Critical - Unsupported - SA-CONTRIB-2026-278",
+      "description": "Vulnerability in Drupal GroupEx PRO ( Daxko )  integration. This issue affects GroupEx PRO ( Daxko )  integration versions: *.*.",
+      "published": "2026-10-30T03:08:47.618Z",
+      "updated": "2026-10-30T04:18:22.400",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal GroupEx PRO ( Daxko )  integration"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-278"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118567",
+      "aliases": [],
+      "title": "Bulk Update User Roles - Moderately critical - Incorrect authorization - SA-CONTRIB-2026-280",
+      "description": "Incorrect Authorization vulnerability in Drupal Bulk Update User Roles allows Forceful Browsing. This issue affects Bulk Update User Roles versions: from 0.0.0 to 1.0.5.",
+      "published": "2026-10-30T03:08:42.458Z",
+      "updated": "2026-10-30T04:18:22.537",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Bulk Update User Roles"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-280"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118568",
+      "aliases": [],
+      "title": "Content Sync (content-sync.io) - Moderately critical - Information disclosure - SA-CONTRIB-2026-291",
+      "description": "Insecure Storage of Sensitive Information vulnerability in Drupal Content Sync (content-sync.io) allows Retrieve Embedded Sensitive Data. This issue affects Content Sync (content-sync.io) versions: from 0.0.0 to 3.2.2.",
+      "published": "2026-10-30T03:08:34.253Z",
+      "updated": "2026-10-30T04:18:22.673",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Content Sync (content-sync.io)"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-291"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118569",
+      "aliases": [],
+      "title": "Fasttoggle - Moderately critical - Access bypass - SA-CONTRIB-2026-282",
+      "description": "Incorrect Authorization vulnerability in Drupal Fasttoggle allows Forceful Browsing. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
+      "published": "2026-10-30T03:08:45.588Z",
+      "updated": "2026-10-30T04:18:22.823",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Fasttoggle"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-282"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118570",
+      "aliases": [],
+      "title": "Fasttoggle - Moderately critical - Cross-Site Request Forgery - SA-CONTRIB-2026-283",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Fasttoggle allows Cross Site Request Forgery. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
+      "published": "2026-10-30T03:08:44.482Z",
+      "updated": "2026-10-30T04:18:22.967",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Fasttoggle"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-283"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118571",
+      "aliases": [],
+      "title": "Media Alias Display - Moderately critical - Information disclosure - SA-CONTRIB-2026-292",
+      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal Media Alias Display allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Media Alias Display versions: from 0.0.0 to 2.1.3, from 3.0.0 to 3.0.3.",
+      "published": "2026-10-30T03:08:33.262Z",
+      "updated": "2026-10-30T04:18:23.110",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Media Alias Display"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-292"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118572",
+      "aliases": [],
+      "title": "OAuth Login - OAuth OIDC SSO - Critical - Authentication bypass - SA-CONTRIB-2026-284",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal OAuth Login - OAuth OIDC SSO allows Authentication Bypass. This issue affects OAuth Login - OAuth OIDC SSO versions: from 0.0.0 to 3.1.1.",
+      "published": "2026-10-30T03:08:41.455Z",
+      "updated": "2026-10-30T04:18:23.250",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal OAuth Login - OAuth OIDC SSO"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-284"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118573",
+      "aliases": [],
+      "title": "OAuth2 Token Manager - Critical - Access bypass - SA-CONTRIB-2026-290",
+      "description": "Missing Authorization vulnerability in Drupal OAuth2 Token Manager allows Forceful Browsing. This issue affects OAuth2 Token Manager versions: from 0.0.0 to 1.2.0.",
+      "published": "2026-10-30T03:08:35.264Z",
+      "updated": "2026-10-30T04:18:23.393",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal OAuth2 Token Manager"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-290"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118574",
+      "aliases": [],
+      "title": "S3 File System - Moderately critical - Access bypass - SA-CONTRIB-2026-279",
+      "description": "Incorrect Permission Assignment for Critical Resource vulnerability in Drupal S3 File System allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects S3 File System versions: from 0.0.0 to 3.12.0.",
+      "published": "2026-10-30T03:08:43.467Z",
+      "updated": "2026-10-30T04:18:23.540",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal S3 File System"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-279"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118575",
+      "aliases": [],
+      "title": "Signature pad widget - Critical - Cross-site scripting - SA-CONTRIB-2026-285",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Signature pad widget allows Stored XSS. This issue affects Signature pad widget versions: from 0.0.0 to 1.15.0.",
+      "published": "2026-10-30T03:08:40.415Z",
+      "updated": "2026-10-30T04:18:23.680",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Signature pad widget"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-285"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118576",
+      "aliases": [],
+      "title": "Stage File Proxy - Critical - Cross-site scripting - SA-CONTRIB-2026-286",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Stage File Proxy allows Cross-Site Scripting (XSS). This issue affects Stage File Proxy versions: from 0.0.0 to 3.1.7, from 4.0.0 to 4.0.1.",
+      "published": "2026-10-30T03:08:39.367Z",
+      "updated": "2026-10-30T04:18:23.817",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Stage File Proxy"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-286"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118582",
+      "aliases": [],
+      "title": "CAPTCHA - Moderately critical - Session Replay (CAPTCHA bypass) - SA-CONTRIB-2026-281",
+      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal CAPTCHA allows Functionality Bypass. This issue affects CAPTCHA versions: from 0.0.0 to 1.18.0, from 2.0.0 to 2.0.11.",
+      "published": "2026-10-30T03:08:46.618Z",
+      "updated": "2026-10-30T04:18:23.960",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal CAPTCHA"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-281"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118583",
+      "aliases": [],
+      "title": "Field Permissions - Moderately critical - Access bypass - SA-CONTRIB-2026-288",
+      "description": "Incorrect Authorization vulnerability in Drupal Field Permissions allows Forceful Browsing. This issue affects Field Permissions versions: from 0.0.0 to 1.6.0.",
+      "published": "2026-10-30T03:08:37.282Z",
+      "updated": "2026-10-30T04:18:24.110",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Field Permissions"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-288"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118584",
+      "aliases": [],
+      "title": "Field Permissions - Moderately critical - Access bypass - SA-CONTRIB-2026-289",
+      "description": "Incorrect Authorization vulnerability in Drupal Field Permissions allows Forceful Browsing. This issue affects Field Permissions versions: from 0.0.0 to 1.6.0.",
+      "published": "2026-10-30T03:08:36.287Z",
+      "updated": "2026-10-30T04:18:24.243",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Field Permissions"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-289"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96389",
+      "aliases": [],
+      "title": "Xray Audit - Moderately critical - Access bypass - SA-CONTRIB-2026-206",
+      "description": "Missing Authorization vulnerability in Drupal Xray Audit allows Forceful Browsing. This issue affects Xray Audit versions: from 0.0.0 to 1.6.3, from 2.0.0 to 2.0.4, from 3.0.0 to 3.1.1.",
+      "published": "2026-10-30T03:10:09.246Z",
+      "updated": "2026-10-30T04:18:31.060",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Xray Audit"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-contrib-2026-206"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-56388",
       "aliases": [],
       "title": "",
@@ -83337,6 +89093,46 @@
         "pki"
       ],
       "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-aws-AWS_APIGATEWAY_OPERATIONAL_ISSUE_63501_D2C0654F167",
+      "aliases": [],
+      "title": "AWS: Amazon API Gateway（Oregon）[RESOLVED] Increased invoke error rates",
+      "description": "AWS の公式ステータスページに掲載された障害",
+      "published": "2026-10-30T01:28:38+00:00",
+      "updated": "2026-10-30T01:28:38+00:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://health.aws.amazon.com/health/status"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:aws"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "aws"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 10.0,
       "level": "low",
