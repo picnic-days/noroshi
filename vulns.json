@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T02:24:15.834484+00:00",
+  "generated_at": "2026-10-31T05:34:25.428681+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1057,7 +1057,7 @@
       "title": "",
       "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:44.797",
-      "updated": "2026-10-31T00:37:15.097",
+      "updated": "2026-10-31T04:18:17.910",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -1099,7 +1099,7 @@
         "tier1_critical": 15,
         "epss": 0.0
       },
-      "ai_analysis": "【状況】Chrome の描画部品 Skia に入力の検証漏れがあります（CVE-2026-119261、CVSS 9.6、Chromium の評価は High）。細工された HTML ページを開くだけで、サンドボックスの外で任意のコードが実行されるおそれがあります。Google が 2026/10/29 に修正版を出しました。悪用は確認されていません（KEV 未掲載、EPSS 0.21%）。\n\n【原因の部品】Skia（Google が開発する 2D 描画ライブラリで、Chromium に同梱）。Edge や Electron アプリなどの Chromium 系製品、Skia を単体で使う製品（Android、Flutter など）に影響するかは未確認です。\n\n【影響範囲】\n・デスクトップ版 Chrome 156.0.8078.79 より前\n・修正版：Win/Mac は 156.0.8078.79/.80、Linux は 156.0.8078.79（Stable・Extended Stable）\n・Edge：この CVE の修正版は未確認\n・Android/iOS 版 Chrome、ChromeOS：未確認\n\n【対応策】\n1. Chrome を 156.0.8078.79 以降に更新し、再起動するよう周知してください。自動更新は再起動するまで反映されません。管理コンソールや資産管理ツールで古い版の端末を洗い出してください。\n2. 公式の回避策はありません。更新が終わるまでは、不審なリンクやサイトを開かないよう注意喚起してください。Edge などの Chromium 系ブラウザや Electron アプリは、各ベンダーの告知を確認してください。\n\n【各告知の関係】\n・Google Chrome チーム：元の部品の修正（Chrome Releases。バグ 574213633 は非公開）\n・Microsoft などの組み込み製品：対応する更新は未確認\n・公的機関の注意喚起：未確認\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html\nhttps://www.cve.org/CVERecord?id=CVE-2026-119261"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-119263",
@@ -1107,7 +1107,7 @@
       "title": "",
       "description": "Memory corruption in GarbageCollection in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.047",
-      "updated": "2026-10-31T00:34:57.400",
+      "updated": "2026-10-31T04:18:18.300",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -1149,7 +1149,7 @@
         "tier1_critical": 15,
         "epss": 0.0
       },
-      "ai_analysis": "【状況】Google Chrome のガベージコレクション（GarbageCollection）にメモリ破損の脆弱性があります（CVE-2026-119263、Chromium の深刻度 High、CVSS 9.6）。細工した HTML ページを開くだけで、サンドボックスの外で任意のコードが実行される恐れがあります。悪用は確認されていません（CISA KEV 未掲載、EPSS 0.2%）。不具合の詳細ページは非公開です。\n\n【原因の部品】Chromium の GarbageCollection（開発元 Google）。\nChromium を組み込んだ製品（Microsoft Edge、その他の Chromium 系ブラウザ、Electron アプリ、Android WebView など）への影響と修正版の有無は未確認です。\n\n【影響範囲】\n・Chrome 156.0.8078.79 より前のバージョン\n・修正版（Stable / Extended Stable）：Windows・Mac は 156.0.8078.79/.80、Linux は 156.0.8078.79\n・Android 版：同じ日に 156.0.8078.79 が出たと報じられていますが、Google の告知では確かめられていないため、この CVE が直っているかは未確認\n・Edge など組み込み製品：未確認\n\n【対応策】\n1. 社内の Chrome をすべて 156.0.8078.79 以上に更新します。更新は再起動するまで反映されないため、管理ポリシーで再起動を促すか強制してください。そのあと資産管理ツールでバージョンを確認します。\n2. 公式の回避策は出ていません。更新が終わるまでは、信頼できないサイトの閲覧を控えるよう周知してください。Edge などの Chromium 系製品も、各ベンダーが Chromium 156.0.8078.79 相当の修正を出していないか確認してください。\n\n【各告知の関係】\n・Google Chrome Releases：元の部品の修正（Chrome 156.0.8078.79/.80 の配布）\n・Chromium の不具合ページ 575143870：Google が管理する元の記録（非公開）\n・組み込み製品のベンダーの告知：未確認（今回の参照先には含まれていません）\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02107719452.html\nhttps://issues.chromium.org/issues/575143870"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-96951",
@@ -1564,6 +1564,59 @@
         "rce": 5,
         "kev": 20,
         "epss": 4.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111357",
+      "aliases": [],
+      "title": "Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
+      "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
+      "published": "2026-10-15T21:17:13.190",
+      "updated": "2026-10-31T04:18:16.040",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "ivanti:connect_secure"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Ivanti Connect Secure"
+      ],
+      "references": [
+        "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935",
+        "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111357"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-10-30",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00316,
+      "epss_percentile": 0.24569,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T06:29:46.175004+00:00",
+      "matched": [
+        "ivanti"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 64.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "kev": 20,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -4834,7 +4887,7 @@
       "title": "",
       "description": "Use after free in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:46.063",
-      "updated": "2026-10-30T15:43:44.400",
+      "updated": "2026-10-31T04:18:19.800",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -4883,7 +4936,7 @@
       "title": "",
       "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:46.970",
-      "updated": "2026-10-30T15:36:55.100",
+      "updated": "2026-10-31T04:18:20.650",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -4932,7 +4985,7 @@
       "title": "",
       "description": "Memory corruption in Autofill in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:47.093",
-      "updated": "2026-10-30T15:37:31.143",
+      "updated": "2026-10-31T04:18:20.850",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -4981,7 +5034,7 @@
       "title": "",
       "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:47.337",
-      "updated": "2026-10-30T15:34:47.137",
+      "updated": "2026-10-31T04:18:21.043",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5030,7 +5083,7 @@
       "title": "",
       "description": "Memory corruption in Network in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:47.467",
-      "updated": "2026-10-30T15:32:14.603",
+      "updated": "2026-10-31T04:18:21.257",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5079,7 +5132,7 @@
       "title": "",
       "description": "Memory corruption in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:47.593",
-      "updated": "2026-10-30T15:24:30.053",
+      "updated": "2026-10-31T04:18:21.477",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5128,7 +5181,7 @@
       "title": "",
       "description": "Use after free in Input in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:47.717",
-      "updated": "2026-10-30T15:23:07.737",
+      "updated": "2026-10-31T04:18:21.700",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5177,7 +5230,7 @@
       "title": "",
       "description": "Use after free in Frames in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:44.663",
-      "updated": "2026-10-31T00:37:55.637",
+      "updated": "2026-10-31T04:18:17.700",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5226,7 +5279,7 @@
       "title": "",
       "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:44.920",
-      "updated": "2026-10-31T00:35:30.147",
+      "updated": "2026-10-31T04:18:18.113",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5275,7 +5328,7 @@
       "title": "",
       "description": "Memory corruption in Dawn in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.177",
-      "updated": "2026-10-31T00:34:11.967",
+      "updated": "2026-10-31T04:18:18.487",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5324,7 +5377,7 @@
       "title": "",
       "description": "Memory corruption in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.303",
-      "updated": "2026-10-31T00:33:40.180",
+      "updated": "2026-10-31T04:18:18.687",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5373,7 +5426,7 @@
       "title": "",
       "description": "Use after free in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.430",
-      "updated": "2026-10-31T00:33:26.740",
+      "updated": "2026-10-31T04:18:18.873",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5422,7 +5475,7 @@
       "title": "",
       "description": "Memory corruption in DOM in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.553",
-      "updated": "2026-10-31T00:32:25.687",
+      "updated": "2026-10-31T04:18:19.067",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5471,7 +5524,7 @@
       "title": "",
       "description": "Integer overflow in Editing in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.680",
-      "updated": "2026-10-31T00:31:23.740",
+      "updated": "2026-10-31T04:18:19.253",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5520,7 +5573,7 @@
       "title": "",
       "description": "Use after free in Blink in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.807",
-      "updated": "2026-10-31T00:30:16.150",
+      "updated": "2026-10-31T04:18:19.433",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -5569,7 +5622,7 @@
       "title": "",
       "description": "Improper input validation in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-10-30T01:16:45.937",
-      "updated": "2026-10-31T00:29:53.310",
+      "updated": "2026-10-31T04:18:19.630",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -11526,52 +11579,6 @@
         "cvss": 15.0,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-111357",
-      "aliases": [],
-      "title": "Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
-      "description": "Ivanti Connect Secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-118527.",
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Ivanti Connect Secure"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111357"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-10-30",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00316,
-      "epss_percentile": 0.24569,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T06:29:46.175004+00:00",
-      "matched": [
-        "ivanti"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 50.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "kev": 20,
-        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -56532,7 +56539,7 @@
       "title": "",
       "description": "The gettext family of functions in the GNU C Library version 2.0 and later accept LANGUAGE environment variable entries that contain '/' or that are equal to \"..\", unless the program is setuid or setgid (AT_SECURE).  An attacker who can set LANGUAGE in the environment of a program that uses gettext can make it load a message catalog (.mo file) from an arbitrary location in the file system.  A crafted .mo file can crash the program through out-of-range offsets, or supply translations whose format directives do not match the arguments passed by the program.  That causes undefined behaviour in the printf family of functions and may allow arbitrary code execution with the privileges of the program.  The safety of message catalogs relies on them being installed in trusted, read-only locations, and the directory traversal bypasses this.\n\nThe fix for CVE-2014-0475 rejects \"..\" path components in locale names passed to setlocale or taken from the LC_ALL, LC_* and LANG environment variables.  gettext reads LANGUAGE directly and appends each colon-separated entry to the message catalog directory, so that fix did not cover LANGUAGE.\n\nLANGUAGE is only used when the LC_MESSAGES locale is not \"C\", \"C.<encoding>\" or \"POSIX\", so the attacker must also be able to select another installed locale, for example through LANG or LC_ALL.  Exploitation also requires that the attacker can place the crafted file in a location readable by the target program, and that the environment crosses a trust boundary without the program running as AT_SECURE.  An example is an SSH server that accepts LANGUAGE and LANG from clients through the AcceptEnv directive and restricts an account to a forced command; the attacker may use this to escape the restriction.",
       "published": "2026-10-30T18:18:13.650",
-      "updated": "2026-10-30T20:17:20.137",
+      "updated": "2026-10-31T04:18:21.890",
       "cvss": 7.0,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
