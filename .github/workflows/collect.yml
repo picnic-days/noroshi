@@ -1,4 +1,5 @@
-# 30 分ごと（GitHub の混雑で間引かれることがある）に収集し、緊急案件を LINE に通知、data/ をコミットする。
+# 30 分ごと（GitHub の混雑で間引かれることがある）に収集し、緊急案件を LINE に通知する。
+# 運用状態（通知済み ID など）は main ではなく `data` ブランチに保存する（無ければ初回実行時に作る）。
 # 必要な Secrets: LINE_CHANNEL_ACCESS_TOKEN, LINE_TO（任意: ANTHROPIC_API_KEY, NVD_API_KEY, X_BEARER_TOKEN）
 name: collect
 on:
@@ -30,6 +31,23 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: restore state (data branch)
+        id: state
+        run: echo "exists=$(git ls-remote --heads origin data | wc -l)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.state.outputs.exists == '1'
+        with:
+          ref: data
+          path: data
+      - name: init state (first run)
+        if: steps.state.outputs.exists != '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir data && cd data
+          git init -q -b data
+          git remote add origin "https://github.com/${{ github.repository }}.git"
+          git config http.https://github.com/.extraheader "AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
       - run: python -m unittest discover -s tests
       - name: ping
         if: ${{ inputs.ping }}
@@ -50,9 +68,10 @@ jobs:
         run: python -m noroshi --send
       - name: commit data
         if: ${{ !inputs.ping }}
+        working-directory: data
         run: |
           git config user.name "noroshi-bot"
           git config user.email "noroshi-bot@users.noreply.github.com"
-          git add data/
+          git add -A
           git diff --cached --quiet || git commit -m "data: update $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push
+          git push origin HEAD:data
