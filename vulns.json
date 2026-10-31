@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T15:20:44.123845+00:00",
+  "generated_at": "2026-10-31T19:33:15.894756+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -12471,7 +12471,7 @@
       "title": "",
       "description": "Out-of-bounds read in Windows GDI allows an unauthorized attacker to disclose information over a network.",
       "published": "2026-10-13T19:20:06.437",
-      "updated": "2026-10-29T18:23:26.000",
+      "updated": "2026-10-31T19:17:04.150",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -12501,8 +12501,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.01067,
-      "epss_percentile": 0.64703,
+      "epss": 0.01044,
+      "epss_percentile": 0.64145,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -18265,7 +18265,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in Windows Win32K - GRFX allows an authorized attacker to elevate privileges locally.",
       "published": "2026-10-13T19:21:16.717",
-      "updated": "2026-10-28T16:45:16.900",
+      "updated": "2026-10-31T19:17:18.493",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -18295,8 +18295,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00434,
-      "epss_percentile": 0.37565,
+      "epss": 0.00424,
+      "epss_percentile": 0.36699,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -23252,6 +23252,65 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-30T13:37:12.002169+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-70106",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:22.223",
+      "updated": "2026-10-31T18:17:22.940",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70106"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00499,
+      "epss_percentile": 0.42811,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
       "matched": [
         "windows"
       ],
@@ -35402,6 +35461,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-70271",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Win32 Kernel Subsystem allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:45.950",
+      "updated": "2026-10-31T18:17:32.730",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70271"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00329,
+      "epss_percentile": 0.26046,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -44023,6 +44141,65 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-70211",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Win32 Kernel Subsystem allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:19:35.513",
+      "updated": "2026-10-31T19:16:56.517",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70211"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00459,
+      "epss_percentile": 0.39812,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106174",
       "aliases": [],
       "title": "",
@@ -46224,6 +46401,56 @@
         "popularity": 21.0,
         "cvss": 19.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120202",
+      "aliases": [],
+      "title": "Highflame ramparts 0.8.1 through 0.8.10 Skill Bundle Scan Bypass via Nested .pyc",
+      "description": "Highflame ramparts 0.8.1 through 0.8.10 contains a security scan bypass vulnerability that allows attackers to hide malicious payloads because collect_bundle_siblings and walk_bundle_subdir skip nested directories and .pyc files. Attackers can distribute a skill bundle with an unchecked-hash .pyc under scripts/<subdir>/__pycache__/ that ramparts silently ignores, while CPython executes it when the skill runs.",
+      "published": "2026-10-31T17:25:51.512Z",
+      "updated": "2026-10-31T18:17:08.080",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "highflame-ai ramparts"
+      ],
+      "references": [
+        "https://github.com/highflame-ai/ramparts/issues/154",
+        "https://github.com/highflame-ai/ramparts/blob/v0.8.10/src/skills.rs#L898",
+        "https://github.com/highflame-ai/ramparts",
+        "https://www.vulncheck.com/advisories/highflame-ramparts-0.8.1-through-0.8.10-skill-bundle-scan-bypass-via-nested-pyc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 40.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -48966,6 +49193,48 @@
       "first_seen": "2026-10-31T15:20:44.123845+00:00",
       "matched": [
         "npm:dsh-volcengine-provider"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-fg5w-8hhw-8j6h",
+      "aliases": [],
+      "title": "Malware in @mamans2973/maman",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,060",
+      "published": "2026-10-31T16:09:39Z",
+      "updated": "2026-10-31T16:13:00Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@mamans2973/maman"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-fg5w-8hhw-8j6h"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "npm:@mamans2973/maman"
       ],
       "match_type": "malware",
       "tier": null,
@@ -57356,6 +57625,56 @@
         "popularity": 21.0,
         "cvss": 14.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120210",
+      "aliases": [],
+      "title": "FFmpeg 5.0 through 9.0.2 Path Traversal via IMF Demuxer ASSETMAP Path",
+      "description": "FFmpeg 5.0 through 9.0.2 contains a path traversal vulnerability in the IMF demuxer that allows attackers to open files outside the package via unvalidated ASSETMAP Path elements. Attackers can supply a crafted IMF package with '..' or absolute paths to demux local MXF files, probe file existence and size, or trigger server-side requests.",
+      "published": "2026-10-31T17:25:56.847Z",
+      "updated": "2026-10-31T18:17:09.427",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25341",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/imfdec.c#L273",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://www.vulncheck.com/advisories/ffmpeg-5.0-through-9.0.2-path-traversal-via-imf-demuxer-assetmap-path"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -101632,6 +101951,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-10-30T18:53:00.917584+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2087789",
+      "aliases": [],
+      "title": "HARICA: 2 truncated CRLs published",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: [ca-compliance]",
+      "published": "2026-10-31T18:02:47Z",
+      "updated": "2026-10-31T18:03:50Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2087789"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
       "matched": [
         "pki"
       ],
