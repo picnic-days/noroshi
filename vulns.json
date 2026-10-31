@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T05:34:25.428681+00:00",
+  "generated_at": "2026-10-31T08:54:24.962201+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1217,6 +1217,58 @@
         "epss": 1.5
       },
       "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-103882",
+      "aliases": [],
+      "title": "Acadlix LMS <= 1.1.9 - Unauthenticated Arbitrary File Deletion via 'delete_file_data.file_path' Parameter",
+      "description": "The Acadlix LMS – AI Quiz Maker, Online Exam & Course Plugin for WordPress plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the post_delete_assessment_file_by_id function in all versions up to, and including, 1.1.9. This makes it possible for authenticated attackers, with subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). The route's permission callback only verifies a generic wp_rest nonce that the plugin itself emits inside the public acadlixOptions JavaScript object on every frontend page, effectively reducing the authentication requirement to unauthenticated.",
+      "published": "2026-10-31T08:30:46.515Z",
+      "updated": "2026-10-31T08:30:46.515Z",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "acadlix Acadlix LMS – AI Quiz Maker, Online Exam & Course Plugin for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b54682f6-914e-4c16-b8fb-63b5dcb14933?source=cve",
+        "https://plugins.trac.wordpress.org/browser/acadlix/tags/1.1.8/includes/Common/REST/Front/FrontQuizController.php#L692",
+        "https://plugins.trac.wordpress.org/browser/acadlix/tags/1.1.8/includes/Common/REST/Front/FrontQuizController.php#L680",
+        "https://plugins.trac.wordpress.org/browser/acadlix/tags/1.1.8/includes/Common/REST/Front/FrontQuizController.php#L807",
+        "https://plugins.trac.wordpress.org/browser/acadlix/tags/1.1.8/includes/Common/Assets/Manager.php#L570"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 73.2,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15
+      },
+      "ai_analysis": "Empty content. Search.【状況】WordPressプラグイン「Acadlix LMS」に任意ファイル削除の脆弱性があります（CVSS 9.1）。条件をそろえれば、ログインしていない人でもサーバ上のファイルを削除できます。wp-config.phpが消されると、サイトの乗っ取り（RCE）につながる恐れがあります。KEV未登録で、悪用の報告は未確認です。\n\n【原因の部品】開発元AcadlixのAcadlix LMSプラグイン自体の問題です。post_delete_assessment_file_by_id関数がファイルパスを十分に確認していません。また、APIの権限確認が公開ページに埋め込まれたnonceだけに頼っています。\n\n【影響範囲】Acadlix LMS <= 1.1.9（全バージョン）。他製品への組み込みは確認できませんでした。\n\n【対応策】\n1. 自社のWordPressで同プラグインを使っているか、管理画面またはwp-content/plugins/acadlixの有無で確認してください。使っていれば最新の1.2.0に更新します。1.2.0の変更履歴には「Wordfence報告のセキュリティ問題を修正」とあります。ただし、本件の修正かどうかは未確認です（Wordfenceのページが読めなかったため）。1.2.0は動作にPHP 8.2以上が必要です。\n2. すぐ更新できない場合は、プラグインを無効化または削除してください。wp-config.phpなど重要ファイルのバックアップと、ファイルが消えていないかの監視も行います。WAFでAcadlixのREST APIへのアクセスを制限する方法もあります。\n\n【各告知の関係】\n・Wordfence：脆弱性の報告者で、アドバイザリを公開\n・Acadlix：元の部品の修正（1.2.0の変更履歴に記載）\n・Patchstack：脆弱性データベースへの掲載（同じ件で、評価は8.6）\n\n【出典】\nhttps://www.wordfence.com/threat-intel/vulnerabilities/id/b54682f6-914e-4c16-b8fb-63b5dcb14933\nhttps://wordpress.org/plugins/acadlix/"
     },
     {
       "id": "CVE-2026-76418",
@@ -5700,6 +5752,61 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-30T18:53:00.917584+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 56.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119977",
+      "aliases": [],
+      "title": "WordPress Core 4.7.0 - 7.1.3 - Unauthenticated Upgrade-Window Staged-Installer Remote Code Execution",
+      "description": "WordPress Core is vulnerable to Remote Code Execution in versions 4.7 through 7.1.3. This is due to predictable, web-accessible staging paths used during full-package core upgrades. This makes it possible for unauthenticated attackers to execute code on the server during the upgrade window.",
+      "published": "2026-10-31T05:33:07.059Z",
+      "updated": "2026-10-31T06:16:34.550",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "WordPress Foundation WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4b4da0cf-d9f4-47c4-a0e8-6c4dc5a6f250?source=cve",
+        "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-wp-upgrader.php#L378",
+        "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-core-upgrader.php#L162",
+        "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/update-core.php#L1549",
+        "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/setup-config.php#L282",
+        "https://core.trac.wordpress.org/browser/tags/7.1.4/src/wp-admin/includes/class-wp-upgrader.php#L346",
+        "https://core.trac.wordpress.org/browser/tags/7.1.4/src/wp-admin/includes/update-core.php#L1545",
+        "https://wordpress.org/news/2026/10/wordpress-7-1-4/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
       "matched": [
         "wordpress"
       ],
@@ -11830,6 +11937,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119163",
+      "aliases": [],
+      "title": "FunnelKit Automations <= 3.8.5.2 - Unauthenticated SQL Injection via 'bwfan_cart_id' Parameter",
+      "description": "The FunnelKit Automations – Email Marketing Automation and CRM for WordPress & WooCommerce plugin for WordPress is vulnerable to time-based SQL Injection via the 'bwfan_cart_id' parameter in all versions up to, and including, 3.8.5.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation is a two-step persisted attack: an unauthenticated attacker submits a crafted bwfan_cart_id value during a guest Store API checkout (requiring only a publicly obtainable WooCommerce cart nonce), and the injection fires when a scheduled Action Scheduler job later reloads the stored meta upon order status transition out of pending, failed, or cancelled.",
+      "published": "2026-10-31T06:44:15.350Z",
+      "updated": "2026-10-31T07:16:36.600",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "teamfunnelkit FunnelKit Automations – Email Marketing Automation and CRM for WordPress & WooCommerce"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/22399b2a-75e5-428d-a9a2-8b42e23c1825?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/includes/db/class-bwfan-model-automation-contact.php#L132",
+        "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/modules/abandoned-cart/class-bwfan-abandoned.php#L1007",
+        "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/modules/abandoned-cart/class-bwfan-abandoned.php#L414",
+        "https://plugins.trac.wordpress.org/changeset/3759554/wp-marketing-automations/trunk/includes/db/class-bwfan-model-automation-contact.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -12022,6 +12180,57 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110530",
+      "aliases": [],
+      "title": "FeedWordPress <= 2026.0517 - Unauthenticated Stored Cross-Site Scripting via Syndicated Feed Content",
+      "description": "The FeedWordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2026.0517 via syndicated RSS/Atom feed content. The plugin's SyndicatedPost::sanitize_content() function only strips the 'target' attribute (the lines that would strip 'style' and 'on[a-z]+' event-handler attributes are commented out), and SyndicatedPost::insert_post() deliberately removes WordPress's wp_filter_kses and wp_filter_post_kses filters from content_save_pre before persisting imported feed items via wp_insert_post(). This makes it possible for unauthenticated attackers who control an external feed that a site has already subscribed to to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-31T08:30:47.249Z",
+      "updated": "2026-10-31T08:30:47.249Z",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "radgeek FeedWordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/cad2334c-21f5-40bc-8b08-32c12ce1e077?source=cve",
+        "https://plugins.trac.wordpress.org/browser/feedwordpress/tags/2026.0517/syndicatedpost.class.php#L1726",
+        "https://plugins.trac.wordpress.org/browser/feedwordpress/tags/2026.0517/syndicatedpost.class.php#L1196",
+        "https://plugins.trac.wordpress.org/browser/feedwordpress/tags/2026.0517/syndicatedpost.class.php#L395",
+        "https://plugins.trac.wordpress.org/browser/feedwordpress/",
+        "https://plugins.trac.wordpress.org/browser/feedwordpress/tags/2026.1016/syndicatedpost.class.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
       "matched": [
         "wordpress"
       ],
@@ -37332,6 +37541,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2025-9462",
+      "aliases": [],
+      "title": "WP2LEADS <= 3.5.6 - Authenticated (Subscriber+) SQL Injection via order Parameter",
+      "description": "The WP2LEADS plugin for WordPress is vulnerable to time-based SQL Injection via the ‘order’ parameter in all versions up to, and including, 3.5.6 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "published": "2026-10-31T07:46:50.489Z",
+      "updated": "2026-10-31T08:16:47.313",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "tobias_conrad WP2LEADS |  WordPress und KlickTipp einfach verbinden – WooCommerce und KlickTipp einfach verbinden"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/9f432ed8-7b99-44ad-a847-90236e977347?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp2leads/tags/3.5.3/includes/library/MapBuilderManager.php#L71",
+        "https://wordpress.org/plugins/wp2leads/",
+        "https://plugins.trac.wordpress.org/browser/wp2leads/",
+        "https://plugins.trac.wordpress.org/changeset/3766159/wp2leads/trunk/includes/library/MapBuilderManager.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105006",
       "aliases": [],
       "title": "",
@@ -37547,6 +37806,56 @@
         "popularity": 30,
         "cvss": 12.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107765",
+      "aliases": [],
+      "title": "Discussion Board <= 2.6.0 - Authenticated (Subscriber+) Stored Cross-Site Scripting via User Profile Website (user_url) Field",
+      "description": "The Discussion Board – WordPress Forum Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.6.0 via the user profile Website (user_url) field. This is due to insufficient output escaping in the ctdb_filter_comment_author_name() callback hooked to get_comment_author_link, which interpolates the raw user_url value into a single-quoted href attribute without esc_url() or esc_attr(). This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses a Discussion Board topic containing the attacker's reply.",
+      "published": "2026-10-31T06:44:18.638Z",
+      "updated": "2026-10-31T07:16:34.070",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "marketingfire Discussion Board – WordPress Forum Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5dbb177e-3cf8-48fe-9660-999c177cbeb5?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-discussion-board/tags/2.6.0/includes/functions/functions-user.php#L83",
+        "https://plugins.trac.wordpress.org/browser/wp-discussion-board/tags/2.6.0/includes/functions/functions-user.php#L92",
+        "https://plugins.trac.wordpress.org/browser/wp-discussion-board/tags/2.6.0/includes/functions/functions-skins.php#L43",
+        "https://plugins.trac.wordpress.org/changeset/3761217/wp-discussion-board/trunk/includes/functions/functions-user.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
       },
       "ai_analysis": ""
     },
@@ -48277,6 +48586,88 @@
         "openai"
       ],
       "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-5tlm9r9j9rpo",
+      "aliases": [],
+      "title": "Cloudflare: Cache purge delays in Qingdao Shandong, China",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-10-31T06:41:15.562Z",
+      "updated": "2026-10-31T06:57:35.247Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/5tlm9r9j9rpo"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-10-31T06:57:35.247Z",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-7j62-5j84-72fv",
+      "aliases": [],
+      "title": "Malware in local-commander-agent",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,018",
+      "published": "2026-10-31T07:57:13Z",
+      "updated": "2026-10-31T07:57:13Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:local-commander-agent"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7j62-5j84-72fv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T08:54:24.962201+00:00",
+      "matched": [
+        "npm:local-commander-agent"
+      ],
+      "match_type": "malware",
       "tier": null,
       "score": 40.0,
       "level": "medium",
