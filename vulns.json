@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T16:25:01.235517+00:00",
+  "generated_at": "2026-11-01T20:50:54.910904+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -12255,7 +12255,7 @@
       "title": "WordPress WordPress File Upload plugin <= 5.2.1 - Cross Site Scripting (XSS) vulnerability",
       "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Nickboss WordPress File Upload wp-file-upload allows Stored XSS.This issue affects WordPress File Upload: from n/a through 5.2.1.",
       "published": "2026-11-01T16:00:09.605Z",
-      "updated": "2026-11-01T16:18:15.323",
+      "updated": "2026-11-01T18:18:13.433",
       "cvss": 7.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
       "severity": "high",
@@ -12272,7 +12272,7 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "",
+      "ssvc_exploitation": "none",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
