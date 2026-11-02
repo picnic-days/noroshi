@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T00:45:51.403634+00:00",
+  "generated_at": "2026-11-02T06:54:57.464381+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -49283,6 +49283,48 @@
       "first_seen": "2026-10-31T19:33:15.894756+00:00",
       "matched": [
         "npm:@mamans2973/maman"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-543q-wq5f-hmgh",
+      "aliases": [],
+      "title": "Malicious code in scdn-jquery (npm)",
+      "description": "Version 0.1.6 contains an obfuscated loader in libs/18.2.0.js. When a website serves this file as a browser script, the injected code decodes and loads https://oomcsn.cc/assets/js/m.js. That remote script loads a beacon and inserts an invisible iframe pointing to https://oomcsn.cc/assets/js/group.html, which selects iOS exploit code based on the visitor's device version. The loader is embedded in a file presented as jQuery and executes when that browser script runs. No npm install-time execution was identified.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6007f07e3dbabcc1eaa382552bd73171cfe8f30a/osv/malicious/npm/scdn-jquery/MAL-2026-18455.json))\n\n週間ダウンロード数: 約 1,456",
+      "published": "2026-11-02T06:31:28Z",
+      "updated": "2026-11-02T06:31:34Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:scdn-jquery"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-543q-wq5f-hmgh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T06:54:57.464381+00:00",
+      "matched": [
+        "npm:scdn-jquery"
       ],
       "match_type": "malware",
       "tier": null,
@@ -102496,7 +102538,7 @@
       "title": "TWCA subscriber certificate serial numbers have 63 bits of CSPRNG output instead of 64 bits",
       "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 NEW）。分類: ",
       "published": "2026-11-02T00:16:52Z",
-      "updated": "2026-11-02T00:16:52Z",
+      "updated": "2026-11-02T04:08:28Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
