@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T20:50:54.910904+00:00",
+  "generated_at": "2026-11-02T00:45:51.403634+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -102480,6 +102480,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-01T16:25:01.235517+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2087918",
+      "aliases": [],
+      "title": "TWCA subscriber certificate serial numbers have 63 bits of CSPRNG output instead of 64 bits",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 NEW）。分類: ",
+      "published": "2026-11-02T00:16:52Z",
+      "updated": "2026-11-02T00:16:52Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2087918"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T00:45:51.403634+00:00",
       "matched": [
         "pki"
       ],
