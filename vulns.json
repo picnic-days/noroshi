@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T17:05:23.172150+00:00",
+  "generated_at": "2026-11-02T23:53:05.734982+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -6926,6 +6926,66 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-10-29T20:38:18.829247+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69705",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds write in Windows iSCSI allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-10-13T19:18:57.820",
+      "updated": "2026-11-02T21:04:36.630",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69705"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0097,
+      "epss_percentile": 0.61902,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
       "matched": [
         "windows"
       ],
@@ -23896,6 +23956,123 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69867",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in SQLite allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:00.587",
+      "updated": "2026-11-02T21:10:28.310",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69867"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00388,
+      "epss_percentile": 0.32899,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69963",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Microsoft Streaming Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:06.623",
+      "updated": "2026-11-02T21:14:21.503",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69963"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00348,
+      "epss_percentile": 0.28376,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98093",
       "aliases": [],
       "title": "",
@@ -36149,6 +36326,124 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69736",
+      "aliases": [],
+      "title": "",
+      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Credential Manager allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:18:58.440",
+      "updated": "2026-11-02T21:09:23.480",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69736"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00235,
+      "epss_percentile": 0.1454,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69964",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Microsoft Streaming Service allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-10-13T19:19:06.803",
+      "updated": "2026-11-02T21:15:30.587",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69964"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00275,
+      "epss_percentile": 0.19943,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.0,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -36454,6 +36749,54 @@
       "first_seen": "2026-10-30T13:37:12.002169+00:00",
       "matched": [
         "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118938",
+      "aliases": [],
+      "title": "",
+      "description": "In Trail of Bits fickling through 0.1.12, a pickle STACK_GLOBAL operand carrying a dotted __qualname__ (for example \"Values.read_file\") is resolved by pickle's find_class through _getattribute to an arbitrary attribute path rather than to a module-level function. Fickling records only the leading component of the name in its import tracking and renders the operation as a plain import (for instance, 'python -m fickling' displays it as 'from optparse import Values.read_file'), so the trailing attribute reference is never analyzed as a call. The OvertlyBadEvals analysis pass does not flag it, and check_safety() returns LIKELY_SAFE with zero findings. This allows an attacker to reach a class method that performs code execution: optparse.Values.read_file executes exec(open(filename).read(), vars), achieving arbitrary code execution when the crafted pickle is loaded through fickling.load(), which chains check_safety() into pickle.loads() as an explicit security gate. optparse is present in all current CPython 3.x releases (deprecated as of Python 3.13, not removed). This weakness is in the resolution and analysis of dotted attribute-path names, and is distinct from and independently fixable from the module-origin trust weakness tracked as CVE-2026-16760: resolving or flagging dotted attribute-path imports closes this vector while leaving the module-level trust behavior unchanged. This bypass was verified to remain present on the vendor master branch at commit d011709 as of 2026-10-30, after the vendor's October blocklist additions and a new heuristic that flags private stdlib attributes; because the public class method Values.read_file is neither blocklisted nor flagged as a private attribute, it is not addressed by those remediations.",
+      "published": "2026-10-30T22:16:54.020",
+      "updated": "2026-11-02T19:34:23.993",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bombadil.systems/advisories.html",
+        "https://github.com/trailofbits/fickling",
+        "https://github.com/trailofbits/fickling/commit/d011709",
+        "https://pypi.org/project/fickling/0.1.12/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00478,
+      "epss_percentile": 0.41248,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "python"
       ],
       "match_type": "keyword",
       "tier": 1,
@@ -36954,57 +37297,6 @@
         "cvss": 8.6,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-118938",
-      "aliases": [],
-      "title": "Fickling check_safety() bypass: dotted __qualname__ in STACK_GLOBAL resolves a class-method attribute path that evades call analysis",
-      "description": "In Trail of Bits fickling through 0.1.12, a pickle STACK_GLOBAL operand carrying a dotted __qualname__ (for example \"Values.read_file\") is resolved by pickle's find_class through _getattribute to an arbitrary attribute path rather than to a module-level function. Fickling records only the leading component of the name in its import tracking and renders the operation as a plain import (for instance, 'python -m fickling' displays it as 'from optparse import Values.read_file'), so the trailing attribute reference is never analyzed as a call. The OvertlyBadEvals analysis pass does not flag it, and check_safety() returns LIKELY_SAFE with zero findings. This allows an attacker to reach a class method that performs code execution: optparse.Values.read_file executes exec(open(filename).read(), vars), achieving arbitrary code execution when the crafted pickle is loaded through fickling.load(), which chains check_safety() into pickle.loads() as an explicit security gate. optparse is present in all current CPython 3.x releases (deprecated as of Python 3.13, not removed). This weakness is in the resolution and analysis of dotted attribute-path names, and is distinct from and independently fixable from the module-origin trust weakness tracked as CVE-2026-16760: resolving or flagging dotted attribute-path imports closes this vector while leaving the module-level trust behavior unchanged. This bypass was verified to remain present on the vendor master branch at commit d011709 as of 2026-10-30, after the vendor's October blocklist additions and a new heuristic that flags private stdlib attributes; because the public class method Values.read_file is neither blocklisted nor flagged as a private attribute, it is not addressed by those remediations.",
-      "published": "2026-10-30T21:19:13.015Z",
-      "updated": "2026-10-30T22:16:54.020",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "trailofbits fickling",
-        "fickling"
-      ],
-      "references": [
-        "https://bombadil.systems/advisories.html",
-        "https://pypi.org/project/fickling/0.1.12/",
-        "https://github.com/trailofbits/fickling",
-        "https://github.com/trailofbits/fickling/commit/d011709"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T22:58:56.692254+00:00",
-      "matched": [
-        "python"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 43.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -38763,6 +39055,347 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-112623",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:55.493",
+      "updated": "2026-11-02T18:27:58.770",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:visionos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00539,
+      "epss_percentile": 0.45372,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112626",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:55.980",
+      "updated": "2026-11-02T18:27:34.580",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:tvos",
+        "apple:visionos",
+        "apple:watchos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149524",
+        "https://support.apple.com/en-us/149525",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00575,
+      "epss_percentile": 0.47459,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112637",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:57.297",
+      "updated": "2026-11-02T18:25:01.470",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:tvos",
+        "apple:visionos",
+        "apple:watchos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149524",
+        "https://support.apple.com/en-us/149525",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00544,
+      "epss_percentile": 0.45681,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112651",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:58.397",
+      "updated": "2026-11-02T18:23:48.260",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:visionos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00539,
+      "epss_percentile": 0.45371,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112655",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:59.020",
+      "updated": "2026-11-02T20:17:55.863",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:tvos",
+        "apple:visionos",
+        "apple:watchos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149524",
+        "https://support.apple.com/en-us/149525",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00593,
+      "epss_percentile": 0.48326,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112659",
+      "aliases": [],
+      "title": "",
+      "description": "A type confusion issue was addressed with improved memory handling. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:59.497",
+      "updated": "2026-11-02T18:30:42.807",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:visionos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00555,
+      "epss_percentile": 0.46276,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118008",
       "aliases": [],
       "title": "Privilege escalation in the DOM: Navigation component",
@@ -38916,6 +39549,120 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-112639",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:17:57.620",
+      "updated": "2026-11-02T20:20:10.003",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:visionos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.002,
+      "epss_percentile": 0.09909,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112697",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
+      "published": "2026-10-26T21:18:04.537",
+      "updated": "2026-11-02T20:17:05.907",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:tvos",
+        "apple:visionos",
+        "apple:watchos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149524",
+        "https://support.apple.com/en-us/149525",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00209,
+      "epss_percentile": 0.11004,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-111756",
       "aliases": [],
       "title": "",
@@ -39010,6 +39757,57 @@
         "cvss": 18.4,
         "unauth_network": 5,
         "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115506",
+      "aliases": [],
+      "title": "",
+      "description": "libexpat through 2.9.0 contains a denial of service vulnerability because billion laughs protection in accountingDiffTolerated() in xmlparse.c detects entity amplification too late. Attackers can supply a moderately sized XML document with a large DTD and nested entity expansions to consume tens of seconds of CPU per parse.",
+      "published": "2026-10-22T20:17:06.620",
+      "updated": "2026-11-02T18:27:06.127",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [
+        "libexpat_project:libexpat"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/hannob/lololol",
+        "https://github.com/libexpat/libexpat",
+        "https://github.com/libexpat/libexpat/issues/1160",
+        "https://github.com/libexpat/libexpat/pull/1433",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.9.0-denial-of-service-via-billion-laughs-detection-delay"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00455,
+      "epss_percentile": 0.39497,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.4,
+        "unauth_network": 5,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -39779,7 +40577,7 @@
       "title": "",
       "description": "libexpat through 2.9.0 contains a signed integer overflow vulnerability in storeAtts() in lib/xmlparse.c that allows attackers to trigger out-of-bounds writes via oversized attribute counts. Attackers can supply a multi-gigabyte document with a start tag carrying over 2^30 attributes to overflow attIndex and nPrefixes, crashing applications or corrupting heap memory.",
       "published": "2026-10-28T03:17:13.293",
-      "updated": "2026-11-02T15:35:10.980",
+      "updated": "2026-11-02T20:17:37.377",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -40089,7 +40887,7 @@
       "title": "",
       "description": "The MongoDB Shell (mongosh) relies on Node.js as a third-party runtime that carries its own TLS root certificate store. This certificate store has the recoverable eMudhra intermediate CA certificates. This issue impacts MongoDB Shell (mongosh) versions prior to 2.14.0 and can be resolved by updating to mongosh 2.14.0 which bundles Node.js 24.22.1 or later. If mongosh is installed through npm, it uses the Node.js runtime installed on the host; update that runtime separately.",
       "published": "2026-10-26T15:16:39.480",
-      "updated": "2026-10-26T16:54:08.707",
+      "updated": "2026-11-02T20:17:32.210",
       "cvss": 7.6,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -40104,8 +40902,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00144,
+      "epss_percentile": 0.03675,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -40123,60 +40921,8 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 15.2,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120428",
-      "aliases": [],
-      "title": "PandaWiki 3.65.0 through 3.87.5 Stored XSS via /static-file/ PDF Query-String Bypass",
-      "description": "PandaWiki 3.65.0 through 3.87.5 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to upload HTML files with image extensions via /share/v1/common/file/upload. Attackers can lure administrators to /static-file/<key>?a=.pdf, bypassing the nginx attachment header to serve HTML inline and steal the panda_wiki_token JWT for session takeover.",
-      "published": "2026-11-02T14:28:53.641Z",
-      "updated": "2026-11-02T15:17:24.010",
-      "cvss": 5.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Chaitin PandaWiki"
-      ],
-      "references": [
-        "https://github.com/chaitin/PandaWiki/issues/1845",
-        "https://vul.yulun.ac.cn/20261101/pandawiki/",
-        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/web/admin/server.conf",
-        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/usecase/file.go",
-        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/handler/share/common.go",
-        "https://www.vulncheck.com/advisories/pandawiki-3.65.0-through-3.87.5-stored-xss-via-static-file-pdf-query-string-bypass"
-      ],
-      "exploit_ref": true,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-02T17:05:23.172150+00:00",
-      "matched": [
-        "nginx"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 41.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 10.2,
         "unauth_network": 5,
-        "exploit_ref": 5
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -45034,6 +45780,115 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69675",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Network File System allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:18:57.683",
+      "updated": "2026-11-02T21:03:20.730",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69675"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0047,
+      "epss_percentile": 0.40671,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-69721",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows iSCSI allows an authorized attacker to disclose information locally.",
+      "published": "2026-10-13T19:18:58.127",
+      "updated": "2026-11-02T21:08:09.853",
+      "cvss": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2012",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69721"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0047,
+      "epss_percentile": 0.40671,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.0,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106174",
       "aliases": [],
       "title": "",
@@ -47245,22 +48100,20 @@
     {
       "id": "CVE-2026-120202",
       "aliases": [],
-      "title": "Highflame ramparts 0.8.1 through 0.8.10 Skill Bundle Scan Bypass via Nested .pyc",
+      "title": "",
       "description": "Highflame ramparts 0.8.1 through 0.8.10 contains a security scan bypass vulnerability that allows attackers to hide malicious payloads because collect_bundle_siblings and walk_bundle_subdir skip nested directories and .pyc files. Attackers can distribute a skill bundle with an unchecked-hash .pyc under scripts/<subdir>/__pycache__/ that ramparts silently ignores, while CPython executes it when the skill runs.",
-      "published": "2026-10-31T17:25:51.512Z",
-      "updated": "2026-10-31T18:17:08.080",
+      "published": "2026-10-31T18:17:08.080",
+      "updated": "2026-11-02T19:35:33.347",
       "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "highflame-ai ramparts"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/highflame-ai/ramparts/issues/154",
-        "https://github.com/highflame-ai/ramparts/blob/v0.8.10/src/skills.rs#L898",
         "https://github.com/highflame-ai/ramparts",
+        "https://github.com/highflame-ai/ramparts/blob/v0.8.10/src/skills.rs#L898",
+        "https://github.com/highflame-ai/ramparts/issues/154",
         "https://www.vulncheck.com/advisories/highflame-ramparts-0.8.1-through-0.8.10-skill-bundle-scan-bypass-via-nested-pyc"
       ],
       "exploit_ref": false,
@@ -47268,11 +48121,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00287,
+      "epss_percentile": 0.21309,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -47288,7 +48140,8 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 14.2,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -50129,7 +50982,7 @@
       "title": "Cloudflare: Worker Deployments Delayed",
       "description": "Cloudflare の公式ステータスページに掲載された障害",
       "published": "2026-11-02T16:41:11.110Z",
-      "updated": "2026-11-02T16:41:11.110Z",
+      "updated": "2026-11-02T17:30:10.987Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -50151,7 +51004,7 @@
         "status:cloudflare"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-02T17:30:10.987Z",
       "first_seen": "2026-11-02T17:05:23.172150+00:00",
       "matched": [
         "cloudflare"
@@ -50239,6 +51092,222 @@
       "first_seen": "2026-11-02T17:05:23.172150+00:00",
       "matched": [
         "npm:calculator-preinstall-hook-demo"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120057",
+      "aliases": [],
+      "title": "psqlODBC large-object read overflows the application buffer",
+      "description": "psqlODBC copies the reply to a large-object read (loread) into the application's buffer using the length sent by the server, without comparing it to the buffer size. A server not trusted under current SSL settings, or a man-in-the-middle, can return more bytes than the buffer holds and overwrite adjacent memory in the client process with server-chosen bytes. Fetching any large-object column is sufficient to trigger it. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:09.117Z",
+      "updated": "2026-11-02T20:17:38.787",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-qhmr-5339-q33r"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120058",
+      "aliases": [],
+      "title": "psqlODBC row cache overflow when a later FETCH changes the column count",
+      "description": "psqlODBC sizes its row cache from the column count of a cursor's first result, but recomputes the column count from each later FETCH reply without checking that it matches. A server not trusted under current SSL settings can answer a later FETCH with more columns and make the driver write tuple records past the end of the heap allocation. A keyset reply with fewer columns than the key fields also underflows the unsigned field count. This is reachable with UseDeclareFetch enabled. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:09.747Z",
+      "updated": "2026-11-02T20:17:38.920",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-6rmx-9q62-4w6m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-3bv9locsg7ln",
+      "aliases": [],
+      "title": "Cloudflare:  Cloudflare Gateway DNS-over-TLS Connectivity Issues over IPv4",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-02T22:12:39.280Z",
+      "updated": "2026-11-02T22:12:39.280Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/3bv9locsg7ln"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-db4x8hh362t8",
+      "aliases": [],
+      "title": "GitHub: Elevated errors on GPT-5.4 Nano",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-02T17:46:23.166Z",
+      "updated": "2026-11-02T18:24:23.169Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/ns6pj9qy9glb"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-02T18:24:23.169Z",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-84hg-5759-2cgg",
+      "aliases": [],
+      "title": "Malware in levvleys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 3,402",
+      "published": "2026-11-02T17:13:23Z",
+      "updated": "2026-11-02T17:13:24Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:levvleys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-84hg-5759-2cgg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "npm:levvleys"
       ],
       "match_type": "malware",
       "tier": null,
@@ -52896,6 +53965,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120059",
+      "aliases": [],
+      "title": "psqlODBC uses a server-supplied column name as a format string",
+      "description": "For an updatable cursor over a table without OIDs that has an auto-increment int4 column, psqlODBC places that column's name, as reported by the server, into a printf-style format string. It later expands that string with one argument while it builds the WHERE clause of its positioned SELECT, UPDATE, and DELETE statements. A column name that contains format directives makes the driver read unrelated memory, which can crash the application or copy client memory into query text sent to the server. The name can come from a server not trusted under current SSL settings, or from any database user who can create a table that the application reads with an updatable cursor. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:10.340Z",
+      "updated": "2026-11-02T20:17:39.060",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-44rq-72jh-x2h8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70116",
       "aliases": [],
       "title": "",
@@ -54507,6 +55623,100 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120060",
+      "aliases": [],
+      "title": "psqlODBC does not validate server-supplied counts and lengths",
+      "description": "psqlODBC trusts counts and lengths in server data in three places. SQLBulkOperations uses a server-supplied row count in a size subtraction that can underflow. SQLStatistics iterates index keys using a server-supplied key count without bounding it to the fixed storage. Bytea octal decoding reads up to two bytes past the end of a truncated escape sequence. A server not trusted under current SSL settings can crash the client or make it read out of bounds. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:10.912Z",
+      "updated": "2026-11-02T20:17:39.190",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-4mfx-cfxx-c877"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120067",
+      "aliases": [],
+      "title": "psqlODBC stack buffer overflow copying ctid and oid values for updatable cursors",
+      "description": "For updatable cursors, which are enabled by default, psqlODBC adds hidden ctid and, for tables with OIDs, oid columns to the query. It copies each value into a 32-byte stack buffer using the length the server sent, without checking it against the buffer size, so a value of 32 bytes or more writes past the buffer. A server not trusted under current SSL settings can send such a value. So can any database user who can create a view with its own column named ctid that the application reads with an updatable cursor. Builds with _FORTIFY_SOURCE abort; other builds overwrite adjacent stack memory. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:15.519Z",
+      "updated": "2026-11-02T20:17:40.043",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-3r96-h2q4-6pxh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-102870",
       "aliases": [],
       "title": "",
@@ -54547,6 +55757,61 @@
         "popularity": 14.0,
         "cvss": 17.6,
         "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-113730",
+      "aliases": [
+        "GHSA-crwc-vw2r-qr6m"
+      ],
+      "title": "OGNL stricter-invocation block list bypass via java.lang.reflect reflection proxies",
+      "description": "### Summary\n\nOGNL's optional *stricter invocation* mode maintains a block list that prevents expressions from directly calling methods on dangerous classes such as `Runtime`, `ProcessBuilder`, and `ClassLoader`. The block list filters on the **declaring class of the method OGNL invokes**. Because `java.lang.reflect.Method` (and `Constructor`/`Field`) are not on the list, an expression can use reflection as a proxy — `someMethod.invoke(target, args)` — to reach a blocked method. The real call (e.g. `ProcessBuilder.start()`) then executes inside the JDK reflection machinery and never passes back through OGNL's `invokeMethod`, so the block list never sees it.\n\n### Proof of concept\n\nUnder the default OGNL context (public-only access, stricter invocation enabled), the following expression creates a file even though a direct `new ProcessBuilder(...).start()` is blocked:\n\n```\n(#pb=new java.lang.ProcessBuilder({\"/usr/bin/touch\",\"rce-proof.txt\"}),\n #methods=@java.lang.ProcessBuilder@class.getMethods(),\n #names=#methods.{ #this.getName() },\n #startIdx=#names.indexOf(\"start\"),\n #methods[#startIdx].invoke(#pb, null))\n```\n\n### Impact and scope — please read carefully\n\n**This is hardening of a defense-in-depth secondary layer, not a break of OGNL's primary security boundary.**\n\nIn OGNL the stricter-invocation block list is a *secondary* mitigation. The **primary** access-control gate is the `MemberAccess` implementation supplied by the integrating framework or application, which OGNL consults on every constructor and method call. Frameworks that evaluate untrusted expressions are expected to install a restrictive `MemberAccess` — for example, Apache Struts' `SecurityMemberAccess`, which excludes dangerous classes and the `java.lang.reflect` package. Against such a `MemberAccess` this PoC is blocked at the very first step (the `new ProcessBuilder(...)` constructor), before reflection is ever reachable.\n\nThe default context that ships with OGNL intentionally allows all public members and is **not** designed to sandbox untrusted input. An application that evaluates attacker-controlled expressions with that permissive default already has many paths to code execution, and this technique is not required to achieve it.\n\n**You are affected only if all of the following hold:** (1) your application evaluates untrusted/attacker-controlled OGNL expressions, (2) it uses OGNL's default permissive `MemberAccess` (or an equivalently permissive one that allows `java.lang.reflect`), and (3) it relies on the stricter-invocation block list as its sandbox. **Properly configured consumers — including Apache Struts with its `SecurityMemberAccess` — are not affected.** The actual protection for untrusted-expression scenarios remains a correctly configured `MemberAccess`; the block list should not be treated as a sandbox.\n\n### Fix\n\n`java.lang.reflect.Method`, `java.lang.reflect.Constructor`, and `java.lang.reflect.Field` are added to the stricter-invocation block list, so reflection objects can no longer be used as invocation proxies in stricter mode. The `java.lang.invoke.MethodHandle` path was verified not to be exploitable (its signature-polymorphic `invoke`/`invokeExact` fail through OGNL's reflection-based invocation), so no additional classes are required.\n\n### Credit\n\nReported responsibly through Tidelift by 毛锐 (youyi.mr@alibaba-inc.com).",
+      "published": "2026-10-21T16:31:04Z",
+      "updated": "2026-11-02T22:03:25Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "maven:ognl:ognl"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-crwc-vw2r-qr6m",
+        "https://github.com/orphan-oss/ognl/security/advisories/GHSA-crwc-vw2r-qr6m",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-113730",
+        "https://github.com/orphan-oss/ognl/commit/16396fa4b560221294c2ab9ca04b76b161115e7d",
+        "https://github.com/orphan-oss/ognl/commit/f4c17f794754d516ea799c36ed8524d1b7fb98e2",
+        "https://github.com/orphan-oss/ognl/releases/tag/OGNL_3_4_13"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00394,
+      "epss_percentile": 0.33638,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "struts"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5,
+        "rce": 5,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -58389,6 +59654,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120428",
+      "aliases": [],
+      "title": "",
+      "description": "PandaWiki 3.65.0 through 3.87.5 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to upload HTML files with image extensions via /share/v1/common/file/upload. Attackers can lure administrators to /static-file/<key>?a=.pdf, bypassing the nginx attachment header to serve HTML inline and steal the panda_wiki_token JWT for session takeover.",
+      "published": "2026-11-02T15:17:24.010",
+      "updated": "2026-11-02T19:35:33.347",
+      "cvss": 5.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/handler/share/common.go",
+        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/usecase/file.go",
+        "https://github.com/chaitin/PandaWiki/blob/v3.87.5/web/admin/server.conf",
+        "https://github.com/chaitin/PandaWiki/issues/1845",
+        "https://vul.yulun.ac.cn/20261101/pandawiki/",
+        "https://www.vulncheck.com/advisories/pandawiki-3.65.0-through-3.87.5-stored-xss-via-static-file-pdf-query-string-bypass"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T17:05:23.172150+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91484",
       "aliases": [],
       "title": "",
@@ -59088,56 +60402,6 @@
         "popularity": 21.0,
         "cvss": 14.6,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120210",
-      "aliases": [],
-      "title": "FFmpeg 5.0 through 9.0.2 Path Traversal via IMF Demuxer ASSETMAP Path",
-      "description": "FFmpeg 5.0 through 9.0.2 contains a path traversal vulnerability in the IMF demuxer that allows attackers to open files outside the package via unvalidated ASSETMAP Path elements. Attackers can supply a crafted IMF package with '..' or absolute paths to demux local MXF files, probe file existence and size, or trigger server-side requests.",
-      "published": "2026-10-31T17:25:56.847Z",
-      "updated": "2026-10-31T18:17:09.427",
-      "cvss": 5.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
-      ],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25341",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/imfdec.c#L273",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://www.vulncheck.com/advisories/ffmpeg-5.0-through-9.0.2-path-traversal-via-imf-demuxer-assetmap-path"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-31T19:33:15.894756+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 35.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 10.6,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -60830,6 +62094,144 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120061",
+      "aliases": [],
+      "title": "psqlODBC ODBC escape parser stack buffer overflow",
+      "description": "The psqlODBC parser for ODBC escape sequences in application SQL text writes the argument offsets of a {fn} escape into a fixed 16-entry stack array without a bound and does not initialize the array. An escape with too many arguments overflows the stack, and a reference to an unsupplied argument copies arbitrary bytes into the query. The copy of a {d}, {t}, {ts}, or {escape} body also writes one byte past a 128-byte stack buffer. An application that forwards untrusted SQL text to the driver exposes its process to memory corruption. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:11.590Z",
+      "updated": "2026-11-02T20:17:39.313",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-hfm6-qfx8-v4xq"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120062",
+      "aliases": [],
+      "title": "psqlODBC SQL injection through SQLSpecialColumns table and schema names",
+      "description": "SQLSpecialColumns in psqlODBC splices the table and schema names it receives into its catalog query without escaping them, while the other catalog functions escape them. An application that passes an untrusted table or schema name to SQLSpecialColumns lets the caller execute arbitrary SQL with the privileges of the connection. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:12.214Z",
+      "updated": "2026-11-02T20:17:39.433",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-gg8f-fx3w-rj33"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120064",
+      "aliases": [],
+      "title": "psqlODBC does not validate column numbers and row indexes in binding and descriptor functions",
+      "description": "Several psqlODBC entry points use an application-supplied column number or row index as an array index without validating it. SQLBindCol with a column number above 32767 wraps the binding count negative and a later copy runs off the array. A negative SQL_DESC_COUNT on an application row descriptor unbinds columns at negative indexes. SQLColAttribute with a very large column number uses a negative index. SQLSetPos(SQL_ADD) does not check the row number against the rowset size. An application that forwards untrusted column or row numbers exposes its process to out-of-bounds reads and writes. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:13.482Z",
+      "updated": "2026-11-02T20:17:39.673",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-7pq2-q7mj-ph8c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-92209",
       "aliases": [],
       "title": "",
@@ -61063,6 +62465,52 @@
         "cvss": 15.4,
         "rce": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120065",
+      "aliases": [],
+      "title": "psqlODBC does not escape a server-supplied column name in its updatable-cursor queries",
+      "description": "For an updatable cursor over a table without OIDs that has an auto-increment int4 column, psqlODBC uses that column to identify rows. It places the column's name, as reported by the server, between double quotes in its keyset queries and in the WHERE clause of its positioned SELECT, UPDATE, and DELETE statements, without doubling any double quote in the name. A column name that contains a double quote therefore changes the SQL that the driver runs with the application's privileges, including which rows a positioned UPDATE or DELETE affects. Any database user who can create a table that the application reads with an updatable cursor can choose such a name, and so can a server not trusted under current SSL settings. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:14.045Z",
+      "updated": "2026-11-02T20:17:39.800",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-9cg8-r57h-h6jj"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2
       },
       "ai_analysis": ""
     },
@@ -62063,6 +63511,101 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120306",
+      "aliases": [],
+      "title": "",
+      "description": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespaces, CAP_DAC_OVERRIDE, and that the worker's runc binary is visible at /proc/1/root. Fixed in worker 0.1.756: Buildah RUN steps, including the WORKDIR mkdir, use OCI isolation with private PID, IPC, and network namespaces, and tenant ARG values are passed only into the build container.",
+      "published": "2026-11-01T13:18:01.300",
+      "updated": "2026-11-02T20:17:40.170",
+      "cvss": 9.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/beam-cloud/beta9",
+        "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393",
+        "https://github.com/beam-cloud/beta9/pull/1897",
+        "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.756"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00362,
+      "epss_percentile": 0.30072,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T16:25:01.235517+00:00",
+      "matched": [
+        "kubernetes",
+        "docker"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120307",
+      "aliases": [],
+      "title": "",
+      "description": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as root, including files of other tenants on that machine. A read-only proof downloaded the worker pod's Kubernetes service account token through the file API for a path that did not exist inside the sandbox. In the shipped remote-node manifests that service account is bound to cluster-admin. Fixed in worker 0.1.756: sandbox file operations and workspace sync open paths with os.OpenRoot, so parent-directory and symlink lookups stay inside the container root or the mount source.",
+      "published": "2026-11-01T13:18:01.497",
+      "updated": "2026-11-02T20:17:40.340",
+      "cvss": 9.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/beam-cloud/beta9",
+        "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393",
+        "https://github.com/beam-cloud/beta9/pull/1897",
+        "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.756"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00484,
+      "epss_percentile": 0.4168,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T16:25:01.235517+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-87865",
       "aliases": [],
       "title": "",
@@ -62108,107 +63651,6 @@
         "cvss": 14.8,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120306",
-      "aliases": [],
-      "title": "Beta9 build sandbox escape via chroot-only isolation",
-      "description": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespaces, CAP_DAC_OVERRIDE, and that the worker's runc binary is visible at /proc/1/root. Fixed in worker 0.1.756: Buildah RUN steps, including the WORKDIR mkdir, use OCI isolation with private PID, IPC, and network namespaces, and tenant ARG values are passed only into the build container.",
-      "published": "2026-11-01T12:49:05.857Z",
-      "updated": "2026-11-01T13:18:01.300",
-      "cvss": 9.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "beam-cloud Beta9 worker",
-        "github.com/beam-cloud/beta9"
-      ],
-      "references": [
-        "https://github.com/beam-cloud/beta9",
-        "https://github.com/beam-cloud/beta9/pull/1897",
-        "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393",
-        "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.756"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T16:25:01.235517+00:00",
-      "matched": [
-        "kubernetes",
-        "docker"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 33.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 19.8
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120307",
-      "aliases": [],
-      "title": "Beta9 container escape via unvalidated sandbox file paths",
-      "description": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as root, including files of other tenants on that machine. A read-only proof downloaded the worker pod's Kubernetes service account token through the file API for a path that did not exist inside the sandbox. In the shipped remote-node manifests that service account is bound to cluster-admin. Fixed in worker 0.1.756: sandbox file operations and workspace sync open paths with os.OpenRoot, so parent-directory and symlink lookups stay inside the container root or the mount source.",
-      "published": "2026-11-01T12:49:51.981Z",
-      "updated": "2026-11-01T13:18:01.497",
-      "cvss": 9.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "beam-cloud Beta9 worker",
-        "github.com/beam-cloud/beta9"
-      ],
-      "references": [
-        "https://github.com/beam-cloud/beta9",
-        "https://github.com/beam-cloud/beta9/pull/1897",
-        "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393",
-        "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.756"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T16:25:01.235517+00:00",
-      "matched": [
-        "kubernetes"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 33.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 19.8
       },
       "ai_analysis": ""
     },
@@ -62262,206 +63704,6 @@
         "popularity": 21.0,
         "cvss": 12.6,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120243",
-      "aliases": [],
-      "title": "FFmpeg 2.0 through 9.0.2 Information Disclosure via G2M Kempf Palette",
-      "description": "FFmpeg 2.0 through 9.0.2 contains a use of uninitialized variable vulnerability in the Go2Meeting decoder that allows attackers to leak stack memory through out-of-range palette indices. Attackers can craft a G2M3/G2M4 stream with a short Kempf palette so kempf_restore_buf() copies uninitialized stack bytes, including pointers or stack guards, into decoded output.",
-      "published": "2026-11-01T00:57:09.338Z",
-      "updated": "2026-11-01T01:17:17.593",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
-      ],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24858",
-        "https://github.com/FFmpeg/FFmpeg/commit/edad2d0dafcf44fa315eab716fd0183ce808053b",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/g2meet.c#L1040-L1042",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://www.vulncheck.com/advisories/ffmpeg-2.0-through-9.0.2-information-disclosure-via-g2m-kempf-palette"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T02:14:47.538993+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 33.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120244",
-      "aliases": [],
-      "title": "FFmpeg 2.1 through 9.0.2 Uninitialized Memory Leak via PCX Decoder",
-      "description": "FFmpeg 2.1 through 9.0.2 contains a use of uninitialized resource vulnerability in the PCX decoder that allows attackers to leak heap memory through truncated RLE scanlines. Attackers can craft a PCX image whose RLE data ends early, causing pcx_decode_frame() to copy uninitialized av_malloc() buffer contents into visible decoded pixels.",
-      "published": "2026-11-01T00:57:10.036Z",
-      "updated": "2026-11-01T01:17:17.787",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
-      ],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24868",
-        "https://github.com/FFmpeg/FFmpeg/commit/ecd5dfc308a164757e7f25b1afefd8db21b43cf9",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/pcx.c#L45-L59",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://www.vulncheck.com/advisories/ffmpeg-2.1-through-9.0.2-uninitialized-memory-leak-via-pcx-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T02:14:47.538993+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 33.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120246",
-      "aliases": [],
-      "title": "FFmpeg 4.4 through 9.0.2 Uninitialized Memory Disclosure via CDXL HAM Decoder",
-      "description": "FFmpeg 4.4 through 9.0.2 contains a use of uninitialized variable vulnerability in the CDXL decoder that leaks stack memory into decoded pixels via unfilled HAM palette entries. Attackers can craft a type-0 CDXL file whose HAM pixels select unfilled new_palette entries in cdxl_decode_ham8() or cdxl_decode_ham6(), exposing stack bytes and pointer fragments in the BGR24 output.",
-      "published": "2026-11-01T00:57:11.435Z",
-      "updated": "2026-11-01T01:17:18.147",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
-      ],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24856",
-        "https://github.com/FFmpeg/FFmpeg/commit/47313ad3f9f33b892384b976fb7c09b3c85fd74e",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/cdxl.c#L226-L229",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://www.vulncheck.com/advisories/ffmpeg-4.4-through-9.0.2-uninitialized-memory-disclosure-via-cdxl-ham-decoder"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T02:14:47.538993+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 33.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120247",
-      "aliases": [],
-      "title": "FFmpeg 2.3 through 9.0.2 Huffyuv Decoder Uninitialized Heap Memory Disclosure",
-      "description": "FFmpeg 2.3 through 9.0.2 contains a use of uninitialized resource vulnerability in the Huffyuv decoder that allows attackers to leak heap memory into decoded pixels via short packed-BGR bitstreams. Attackers can craft a Huffyuv BGR24/BGRA video whose entropy data ends early, causing decode_slice() to add uninitialized s->temp[0] bytes into output frames, exposing heap contents.",
-      "published": "2026-11-01T00:57:12.137Z",
-      "updated": "2026-11-01T01:17:18.323",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
-      ],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24869",
-        "https://github.com/FFmpeg/FFmpeg/commit/7c73707355708c846f718cca90096bc1a33c8989",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/huffyuvdec.c#L802",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://www.vulncheck.com/advisories/ffmpeg-2.3-through-9.0.2-huffyuv-decoder-uninitialized-heap-memory-disclosure"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-01T02:14:47.538993+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 33.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.6
       },
       "ai_analysis": ""
     },
@@ -64169,6 +65411,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120063",
+      "aliases": [],
+      "title": "psqlODBC stack buffer overflow when quoting long schema and table names",
+      "description": "When psqlODBC quotes a schema or table name into a 128-byte stack buffer, its length check lets it write up to two bytes past the end of the buffer for a long name. The names come from the application's SQL text: the table of a statement the driver parses to describe its columns, and the target of the last INSERT when the driver rewrites SELECT @@IDENTITY. In the @@IDENTITY rewrite, a column name sent by the server can also write one byte past the buffer. The bytes written past the buffer are a double quote and a NUL. An application that forwards untrusted SQL text to the driver exposes its process to stack corruption. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:12.867Z",
+      "updated": "2026-11-02T20:17:39.553",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-285r-84w3-xcxv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 31.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113664",
       "aliases": [],
       "title": "",
@@ -64603,21 +65891,19 @@
     {
       "id": "CVE-2026-63121",
       "aliases": [],
-      "title": "Kubewarden trusted-repos-policy: uppercase registry host bypasses registry/image deny rules",
+      "title": "",
       "description": "Kubewarden policies is a collection of WebAssembly policies for securing and governing Kubernetes clusters. For versions provisionally classified as affected before 2.1.2, `trusted-repos-policy` compares an image's `registry` hostname against `reject lists` and `allow lists` case-sensitively even though `registry` DNS names are case-insensitive. An image with an uppercase or mixed-case `registry` hostname can miss a rejection rule for the equivalent lowercase host, so the admission policy accepts a resource whose container runtime pulls the same prohibited image. Only reject-list configurations have this bypass: allow-list configurations fail closed by over-denying differently cased hostnames. The security consequences depend on the configured rejection policy and deployment environment. This issue is fixed in version 2.1.2.",
-      "published": "2026-10-30T22:08:03.004Z",
-      "updated": "2026-10-30T22:16:58.123",
+      "published": "2026-10-30T22:16:58.123",
+      "updated": "2026-11-02T19:34:23.993",
       "cvss": 6.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
       "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "kubewarden policies"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p",
         "https://github.com/kubewarden/policies/commit/bc5597fcbbb0bc464b714ca7ff645c9743dea41b",
+        "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p",
         "https://github.com/kubewarden/policies/tree/trusted-repos-policy/v2.1.2"
       ],
       "exploit_ref": false,
@@ -64625,11 +65911,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00193,
+      "epss_percentile": 0.09,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -64645,7 +65930,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 12.6,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -64993,6 +66279,106 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120091",
+      "aliases": [],
+      "title": "Temporal Server Kubernetes compute provider builds a client from caller-supplied configuration and runs a caller-chosen command on the Worker Service host",
+      "description": "Temporal Server compiles a Worker Controller Instance module, go.temporal.io/auto-scaled-workers, into its Worker Service, and that module registers a compute provider named k8s whose function is to manage workers running in a Kubernetes cluster. The k8s provider built its Kubernetes client from the client configuration supplied in the caller's request rather than from operator configuration, and building and using that client could run a command of the caller's choosing on the Worker Service host, under the account the server process runs as. Two frontend operations reach the provider. CreateWorkerDeploymentVersion requires a namespace write role. ValidateWorkerDeploymentVersionComputeConfig is registered as a read-only namespace operation, so an authenticated caller holding only a read role in a single namespace can reach the provider through it, and that route does not require a worker deployment to already exist. Execution happens while the submitted configuration is validated, so no scaling decision, task arrival, or unusual request sequence is required. Because the Worker Service process holds the persistence credentials for every namespace in the cluster and the cluster's TLS material, the consequence reaches beyond the caller's namespace to the cluster as a whole. The provider is present in the official temporal-server binaries and container images for the affected releases. The control that keeps it unreachable is the compute provider allowlist, the dynamic configuration setting workercontroller.compute_providers.enabled. On Temporal Server 1.31.0 through 1.31.2 that allowlist does not deny by default: when the setting is unset the check is skipped and every registered compute provider is permitted, k8s included, so a stock deployment of those releases is exposed. On 1.31.3 and later 1.31 releases, and on 1.32.0 and later 1.32 releases, the allowlist denies by default, and a deployment is exposed only where k8s has been added to it. The 1.30 release line does not include the Worker Controller Instance module and is unaffected. To determine whether a deployment is affected, check the following together. The deployed Temporal Server version is in an affected range. The Worker Service is running, which it is in the default service set and therefore in a stock deployment. The effective value of workercontroller.compute_providers.enabled contains k8s, or, on 1.31.0 through 1.31.2 only, is unset; check both the global value and every namespace-constrained override, because an override can add k8s for a single namespace. And authorization is configured, meaning a real authorizer and claim mapper are in place; a deployment running with no authorizer already grants every caller unrestricted access to every namespace, so it has no namespace boundary for this to cross. Deployments that use a custom authorizer should also check whether it permits ValidateWorkerDeploymentVersionComputeConfig to callers without namespace write access. The separate per-namespace dynamic configuration setting workercontroller.enabled does not gate the affected path on any affected release.",
+      "published": "2026-11-02T21:19:19.927Z",
+      "updated": "2026-11-02T22:17:20.567",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [
+        "temporal:temporal"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Temporal Technologies, Inc. Temporal Server",
+        "go.temporal.io/server"
+      ],
+      "references": [
+        "https://github.com/temporalio/temporal/releases/tag/v1.32.2",
+        "https://github.com/temporalio/temporal/releases/tag/v1.31.5",
+        "https://github.com/temporalio/temporal-auto-scaled-workers/pull/165",
+        "https://github.com/temporalio/temporal/pull/12843",
+        "https://www.cve.org/CVERecord?id=CVE-2026-89139"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-62284",
+      "aliases": [],
+      "title": "",
+      "description": "OSAC operator is a Kubernetes operator. In the affected revision identified as 8220502, the `console-proxy` `RemoteConfigResolver` parses Kubernetes Secret kubeconfig data with `clientcmd.RESTConfigFromKubeConfig` without sanitizing the resulting `rest.Config`. An attacker who can create or modify a Secret labeled `osac.openshift.io/remote-cluster-kubeconfig`: \"true\" in a namespace where the proxy's RoleBinding grants Secret read access can supply `users[].user.exec`. When `rest.TransportFor` builds the HTTP transport for an upstream WebSocket connection, client-go invokes that exec credential plugin, spawning an arbitrary process as the osac-`console-proxy` service account inside the pod. Attacker-controlled `clusters[].server` also enables server-side request forgery from the proxy pod. Remote and auto VM cluster modes are affected, with auto the default; exclusively `local` mode does not read kubeconfig Secrets and is unaffected. The credential-plugin execution path is patched in commit 7e4222b; that patch does not address the described server-address SSRF path.",
+      "published": "2026-10-30T20:17:11.727",
+      "updated": "2026-11-02T19:35:33.347",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/osac-project/osac-operator/commit/7e4222b6ab465fc00606c8cfed980b226820cb1b",
+        "https://github.com/osac-project/osac-operator/commit/86466378aa3603253dca7fa2f59a2733af0dc092",
+        "https://github.com/osac-project/osac-operator/pull/321",
+        "https://github.com/osac-project/osac-operator/security/advisories/GHSA-5w5g-j6hw-6p8f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00505,
+      "epss_percentile": 0.43165,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-74049",
       "aliases": [],
       "title": "",
@@ -65089,23 +66475,27 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-62284",
+      "id": "GHSA-j656-3hf2-fvjc",
       "aliases": [],
-      "title": "",
-      "description": "OSAC operator is a Kubernetes operator. In the affected revision identified as 8220502, the `console-proxy` `RemoteConfigResolver` parses Kubernetes Secret kubeconfig data with `clientcmd.RESTConfigFromKubeConfig` without sanitizing the resulting `rest.Config`. An attacker who can create or modify a Secret labeled `osac.openshift.io/remote-cluster-kubeconfig`: \"true\" in a namespace where the proxy's RoleBinding grants Secret read access can supply `users[].user.exec`. When `rest.TransportFor` builds the HTTP transport for an upstream WebSocket connection, client-go invokes that exec credential plugin, spawning an arbitrary process as the osac-`console-proxy` service account inside the pod. Attacker-controlled `clusters[].server` also enables server-side request forgery from the proxy pod. Remote and auto VM cluster modes are affected, with auto the default; exclusively `local` mode does not read kubeconfig Secrets and is unaffected. The credential-plugin execution path is patched in commit 7e4222b; that patch does not address the described server-address SSRF path.",
-      "published": "2026-10-30T20:17:11.727",
-      "updated": "2026-10-30T23:17:12.457",
-      "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "high",
+      "title": "DBHub: MySQL and MariaDB comment interpretation bypasses read-only SQL validation",
+      "description": "The read-only mode can be bypassed on the MySQL and MariaDB connectors. In read-only mode a caller can still execute arbitrary write and DDL statements (for example DROP TABLE), which defeats the protection that read-only mode is meant to provide when a database is exposed to an AI agent.\n\nRoot cause\n\nThe problem is a mismatch between how DBHub's SQL parser handles single-line comments and how MySQL and MariaDB actually parse them.\n\nIn src/utils/sql-parser.ts, scanSingleLineComment treats \"--\" as the start of a comment no matter what character follows it. MySQL and MariaDB only begin a \"--\" comment when the two dashes are followed by whitespace, a control character, or the end of the line. Otherwise the dashes are read as two minus signs and the rest of the line is ordinary SQL.\n\nThe read-only check in src/tools/execute-sql.ts splits the input and validates each statement with isReadOnlySQL, but the connector then executes the original, unmodified string. The MySQL and MariaDB connectors open their connection pool with multipleStatements: true (src/connectors/mysql/index.ts:54 and src/connectors/mariadb/index.ts:53) and run the whole string in a single call.\n\nBecause of this, the following payload:\n\n    SELECT 1--1;DROP TABLE victim\n\nis seen by DBHub as a single SELECT statement, since everything after \"--\" is treated as a comment and the read-only check passes. MySQL and MariaDB instead parse it as \"SELECT 1 - -1\" followed by \"DROP TABLE victim\" and execute both statements.\n\nProof of concept\n\n1) DBHub's own parser. Running splitSQLStatements and isReadOnlySQL from this repository on the payload returns a single statement and readOnly = true, so the query is allowed in read-only mode. The same code correctly rejects \"SELECT 1; DROP TABLE victim\", which confirms that the \"--1\" is what gets through.\n\n2) Execution. Connecting to MariaDB 11.4 with mysql2 and multipleStatements: true (the same option the connector uses) and sending the payload returns 2 for the first statement, which confirms \"--\" was not treated as a comment, and then drops the table. The table exists before the call and is gone afterwards.\n\nImpact\n\nRead-only mode is the control operators rely on to let an assistant read from a database without being able to change it. With this bypass, anyone who can influence the SQL the assistant sends, most realistically through prompt injection in content the assistant reads, can perform writes and destructive DDL against MySQL and MariaDB. PostgreSQL is not affected by this path, because it treats \"--\" as a comment regardless and executes each split statement individually.\n\nAffected code (current main, commit e99c3aa9, package version 0.22.3)\n\n- src/utils/sql-parser.ts — scanSingleLineComment does not require whitespace after \"--\"\n- src/tools/execute-sql.ts — validates the split statements but executes the original string\n- src/connectors/mysql/index.ts and src/connectors/mariadb/index.ts — multipleStatements: true\n\nSuggested fix\n\nThe most reliable fix is to stop executing the original string: run only the statements that were validated, and disable multipleStatements on the MySQL and MariaDB connections unless it is genuinely required. As defense in depth, make the comment scanner dialect-aware so that for MySQL and MariaDB \"--\" only starts a comment when it is followed by whitespace, a control character, or the end of the line, similar to the handling already in place for MySQL conditional comments.",
+      "published": "2026-11-02T17:57:51Z",
+      "updated": "2026-11-02T17:57:52Z",
+      "cvss": 6.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
       "cpes": [],
-      "packages": [],
+      "packages": [
+        "npm:@bytebase/dbhub"
+      ],
       "vendor_products": [],
       "references": [
-        "https://github.com/osac-project/osac-operator/commit/7e4222b6ab465fc00606c8cfed980b226820cb1b",
-        "https://github.com/osac-project/osac-operator/commit/86466378aa3603253dca7fa2f59a2733af0dc092",
-        "https://github.com/osac-project/osac-operator/pull/321",
-        "https://github.com/osac-project/osac-operator/security/advisories/GHSA-5w5g-j6hw-6p8f"
+        "https://github.com/advisories/GHSA-j656-3hf2-fvjc",
+        "https://github.com/bytebase/dbhub/security/advisories/GHSA-j656-3hf2-fvjc",
+        "https://github.com/bytebase/dbhub/pull/342",
+        "https://github.com/bytebase/dbhub/commit/872bb338f7d31f6afe517a076ac3e3edafaaaf08",
+        "https://github.com/bytebase/dbhub/releases/tag/v0.22.6",
+        "https://github.com/advisories/GHSA-j656-3hf2-fvjc"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -65116,13 +66506,13 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "nvd"
+        "ghsa"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-10-30T22:58:56.692254+00:00",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
       "matched": [
-        "kubernetes"
+        "postgresql"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -65130,7 +66520,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 17.2
+        "cvss": 12.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -65904,6 +67295,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120066",
+      "aliases": [],
+      "title": "psqlODBC log files are created with default permissions at a predictable path and follow symbolic links",
+      "description": "On Unix-like systems, when logging is enabled, psqlODBC creates its log files in /tmp by default, named from the program name, user name, and process ID, with the default permissions, typically world-readable, and follows symbolic links when opening them. A local user can read query text and data from another user's logs, and can place a symbolic link at the predictable path so that the driver appends log data to a file of the attacker's choosing with the victim's privileges. Versions before psqlODBC 18.00.0006 are affected.",
+      "published": "2026-11-02T19:09:14.964Z",
+      "updated": "2026-11-02T20:17:39.920",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "PostgreSQL psqlODBC"
+      ],
+      "references": [
+        "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-wj7r-6pj3-62g8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114053",
       "aliases": [],
       "title": "",
@@ -66044,6 +67481,102 @@
         "popularity": 10,
         "kev": 20,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-q9v9-qpjp-fc24",
+      "aliases": [],
+      "title": "Unauthenticated EngineCore crash via out-of-range prompt token id under skip_tokenizer_init (incomplete fix of GHSA-25q3-v2hm-8vpf)",
+      "description": "### Summary\n\nA single unauthenticated request with an out-of-range prompt token id crashes\nthe shared EngineCore (and the API-server process) when vLLM is served with\n`--skip-tokenizer-init`, denying service to all tenants until the process is\nrestarted.\n\nThe vocab-range validation added for GHSA-25q3-v2hm-8vpf lives in\n`InputProcessor._validate_model_input` but is gated on `tokenizer is not None`.\n`--skip-tokenizer-init` is the mode where the client is expected to send raw\ntoken ids (pre-tokenized / token-in-token-out / RL serving), and there is no\ntokenizer, so the check is skipped entirely. The OpenAI `/v1/completions`\n`prompt` field only constrains integer ids from below (`Field(ge=0)`), so a\nlarge positive id passes all validation, reaches the embedding as an index, and\nraises out of the model forward. EngineCore treats that as fatal and shuts down.\nThe same gap reopens the `/v1/embeddings` and `/pooling` paths that GHSA-25q3\noriginally covered, whenever the tokenizer is disabled.\n\nVerified against `main` at HEAD `dc89fdfb0e` (2026-09-15).\n\n### Details\n\n`vllm/v1/engine/input_processor.py`, `_validate_model_input`:\n\n```python\nif prompt_ids and tokenizer is not None:   # <- skipped when tokenizer is None\n    ...\n    if min_input_id < 0: raise VLLMValidationError(\"... out of vocabulary\")\n    if max_input_id > max(tokenizer.max_token_id, model_vocab_size - 1):\n        raise VLLMValidationError(\"... out of vocabulary\")\n```\n\nReachability (unauthenticated; the OpenAI server has no auth by default):\n\n```\n/v1/completions (prompt = list[int], Field(ge=0) only, no upper bound)\n  -> InputProcessor.process_inputs -> _validate_model_inputs\n  -> _validate_model_input  # tokenizer is None -> vocab check skipped\n  -> model forward -> embedding index out of range -> exception\nEngineCore._process_engine_step -> run_busy_loop (no per-step guard)\n  -> run_engine_core: \"EngineCore encountered a fatal error\" -> _send_engine_dead\n```\n\nThe busy loop has no per-request guard around the model step, so the exception\nis fatal for the whole engine, not scoped to the offending request.\n\n### Impact\n\nUnauthenticated remote denial of service (availability): one request\npermanently takes down the shared engine for all tenants, on any deployment run\nwith `--skip-tokenizer-init` (pre-tokenized / token-in-token-out / RL serving).\nSame class as GHSA-25q3-v2hm-8vpf (High), whose remediation did not cover the\ntokenizer-disabled path. CWE-20 / CWE-1284 / CWE-248.\n\n### Suggested fix\n\nRun the vocab-range check whenever prompt ids are present, not only when a\ntokenizer exists. When the tokenizer is disabled, use `model_config\n.get_vocab_size() - 1` as the upper bound; otherwise keep the existing\n`max(tokenizer.max_token_id, model_vocab_size - 1)` bound. This validation is implemented by the merged fix.\n\nReported by Matteo Atkinson (matteoatkinson@gmail.com), with AI assistance.\n\nA fix for this was introduced in https://github.com/vllm-project/vllm/pull/62911.\n",
+      "published": "2026-11-02T19:50:12Z",
+      "updated": "2026-11-02T19:50:13Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-q9v9-qpjp-fc24"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 30.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-5r3c-5x4v-8gjh",
+      "aliases": [],
+      "title": "Missing request-wide media budget allows single-request frontend resource exhaustion",
+      "description": "### Summary\n\n  A remote inference client can submit one request containing many individually valid remote images. vLLM validates only\n  the image count and per-item limits before scheduling every image for download and decoding. It does not enforce a\n  request-wide encoded-byte, decoded-byte, or memory budget.\n\n  For models permitting multiple images, one compact request can therefore consume outbound connections, decoder CPU,\n  and API-frontend memory before prompt-length admission. API authentication is optional by default; when enabled,\n  ordinary inference access is sufficient.\n\n  Affected entry points include /v1/messages, non-Harmony /v1/responses, and equivalent chat-rendering paths.\n\n  ### Details\n\n  The verified flow is:\n\n  1. parse_image() registers a deferred fetch after count validation.\n  2. AsyncMultiModalItemTracker.resolve_items() starts all registered media operations in one asyncio.gather() and\n     materializes every result.\n\n  3. MediaConnector.load_from_url_async() downloads and decodes each response independently.\n  4. The HTTP size limit is per response, not per request.\n  5. ImageMediaIO.load_bytes() eagerly decodes each image into a MediaWithBytes, retaining both the decoded raster and\n     original bytes.\n\n  6. _resolve_items() retains the complete result list.\n  7. Fetching precedes downstream template/token-length admission in the HF renderer and Responses renderer.\n\n  MultiModalConfig defaults an unspecified modality count to 999. Representative LLaVA processing information supplies\n  no lower model-specific limit.\n\n  The aiohttp connection-pool limit of 100 and vLLM’s eight-worker decode pool constrain instantaneous concurrency, but\n  do not constrain aggregate request memory. Completed images accumulate until gathering and later preprocessing finish.\n\n  A complete fix should enforce a request-wide media resource budget, including aggregate encoded/decoded-byte\n  accounting, bounded request/process concurrency, and cancellation/release after validation failure or budget\n  exhaustion.\n\n  ### Impact\n\n  A remote client can cause disproportionate frontend memory, CPU, network, and connection-pool consumption with one\n  syntactically small request containing many compressed-image URLs. This work occurs before prompt-length rejection, so\n  even an over-context request can incur the full media cost.\n\n  Possible consequences include API-process termination, decoder saturation, outbound-connection occupation, and\n  degraded availability for other clients.\n\n  The bounded PoC demonstrates the resource-allocation and retention primitive, not an actual out-of-memory crash.\n\nA fix for this was introduced in https://github.com/vllm-project/vllm/pull/61226.\n",
+      "published": "2026-11-02T19:48:58Z",
+      "updated": "2026-11-02T19:48:58Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-5r3c-5x4v-8gjh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 30.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 15.0,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -66508,6 +68041,54 @@
         "popularity": 14.0,
         "cvss": 15.6,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120210",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg 5.0 through 9.0.2 contains a path traversal vulnerability in the IMF demuxer that allows attackers to open files outside the package via unvalidated ASSETMAP Path elements. Attackers can supply a crafted IMF package with '..' or absolute paths to demux local MXF files, probe file existence and size, or trigger server-side requests.",
+      "published": "2026-10-31T18:17:09.427",
+      "updated": "2026-11-02T19:14:53.030",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25341",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/imfdec.c#L273",
+        "https://www.vulncheck.com/advisories/ffmpeg-5.0-through-9.0.2-path-traversal-via-imf-demuxer-assetmap-path"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00276,
+      "epss_percentile": 0.20054,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-31T19:33:15.894756+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -67468,39 +69049,35 @@
     },
     {
       "id": "CVE-2026-115913",
-      "aliases": [
-        "GHSA-8397-8qf6-f2gm"
-      ],
-      "title": "vLLM: Phi-4 multimodal audio encoder materializes and retains full attention matrices: a single max-length audio OOM-crashes the vLLM engine",
-      "description": "### Summary\n\nThe Phi-4 multimodal audio encoder (`phi4mm_audio.py` / `phi4mm_utils.py`) runs its conformer attention in **eager mode by default**: the official HF config of `microsoft/Phi-4-multimodal-instruct` does not set `use_pt_scaled_dot_product_attention`, so the default `False` applies (`phi4mm_audio.py:166`, `:876`; `phi4mm_utils.py:1669`). The eager path fully materializes the attention probability matrix of shape `[n_chunks, 16, 500, 500]` per layer — and then **stores it on the module**: `self.attn = attn` (`phi4mm_utils.py:1802`, a `torch.jit.Attribute` declared at `:1693`), keeping a live reference for every one of the 24 encoder layers.\n\nThe only gates on audio length are the server-side limits `VLLM_MAX_AUDIO_CLIP_FILESIZE_MB=25` and `VLLM_MAX_AUDIO_DECODE_DURATION_S=600` (`envs.py:83-84`) — i.e. a 10-minute clip is a **legal input by default**. A 600 s clip becomes ~60,000 mel frames, which the encoder unfolds into 500-frame chunks (`phi4mm_audio.py:996`, `max_seq_len = 500`), giving `n_chunks ≈ 120`. Each layer therefore materializes a `120×16×500×500` matrix (~1–2 GiB depending on dtype), and the module attribute keeps all completed layers' matrices alive, so GPU memory climbs monotonically **within a single request** until an allocation fails.\n\nVerified end-to-end on the official `vllm/vllm-openai:v0.31.0` image: one 19.2 MB silent 600 s WAV → worker `torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.29 GiB ... 501.75 MiB free ... 22.09 GiB allocated by PyTorch` inside `get_audio_features` (`phi4mm_audio.py:1279` → `:1332` → `phi4mm_utils.py:1386`) → `EngineCore encountered a fatal error` → API `EngineDeadError` → whole server down; `/health` refuses connections. Total time from request to dead service: **~6 seconds**.\n\nA secondary effect: because `self.attn` persists on the module after the request ends, the matrices of the last audio request stay resident indefinitely (observed +50 MiB pinned after a single 5 s control request); they are only overwritten by the next audio request, so the resident footprint equals the largest audio processed since startup.\n\n### Details\n\n**1. Root cause.** `MultiHeadedAttention.forward_attention` in eager mode computes `attn = masked_softmax(scores, mask)` and unconditionally executes `self.attn = attn` (`phi4mm_utils.py:1795-1802`). The attribute is a leftover inference/debug hook (used by `torch.jit.Attribute(None, Tensor | None)` at `:1693`); in serving it serves no purpose but pins the full `[batch·chunks, heads, T, T]` tensor per layer past both the layer's forward and the request's lifetime. The SDP attention branch (`use_pt_scaled_dot_product_attention=True`) never materializes this matrix — but the HF config does not enable it and the code default is `False`.\n\n**2. Why one request suffices.** The conformer chunks long audio to `max_seq_len = 500` frames (`phi4mm_audio.py:996`). Duration is bounded only by `VLLM_MAX_AUDIO_DECODE_DURATION_S=600`, so `n_chunks` reaches ~120 for a maximal clip. With 16 heads and fp32 scores, one layer's attention tensor is ~1.8 GiB (the observed failing allocation was 2.29 GiB, consistent with the scores+bias materialization). The encoder has `num_blocks=24`, `attention_heads=16`, `attention_dim=1024`, `time_reduction=8` (HF config). Weights plus a handful of retained per-layer matrices exhaust the ~2.3 GiB headroom that `--gpu-memory-utilization 0.9` leaves on a 24 GB card — mid-forward, on the first request.\n\n**4. Deployment reality.** `--trust-remote-code` is the documented, standard way to serve this model (the HF model card instructs it), so the finding applies to default deployments. The crash is deterministic, not load-dependent: scheduler stats at death show a single running request and near-zero KV cache usage.\n\n\n### Impact\n\nAny unauthenticated client that can reach the chat/completions API of a default deployment serving `Phi-4-multimodal-instruct` (or any model reusing this audio tower) can kill the entire engine with **one request** carrying a perfectly legal 10-minute audio clip (silent noise suffices — no crafted content needed). Full denial of service, requiring a process restart. On GPUs with more headroom (e.g. 80 GB at default utilization) a single request may survive, but the eager path still materializes GiB-scale per-layer matrices and retains the last request's tensors indefinitely, so a few sequential max-length requests — or normal traffic following one — achieve the same result.\n\nRelation to prior art: the only public Phi-4-mm advisory we found, GHSA-vc6m-hm49-g9qg, concerns a CPU-side quadratic-cost path — different subsystem, different mechanism. GitHub search for \"phi4mm audio OOM/memory\" (31 results, 2026-10-08) shows no report of this attention-retention issue; `main` (2026-10-08) is unchanged.\n\n**Suggested remediation** (any one breaks the chain; 1+2 recommended):\n\n1. Remove `self.attn = attn` from the serving path (or gate it behind an explicit debug/`output_attentions` flag) so attention matrices are freed when the layer returns.\n2. Default `use_pt_scaled_dot_product_attention` to `True` (flash/SDPA kernels never materialize the `[B, H, T, T]` matrix); keep eager only as an opt-in.\n3. Additionally bound the encoder input (frames or duration) for this model so the eager path cannot reach GiB-scale single-layer allocations even if enabled.\n\nThis advisory was fixed in [MR60614](https://github.com/vllm-project/vllm/pull/60614).",
-      "published": "2026-10-28T21:15:41Z",
-      "updated": "2026-10-28T21:15:42Z",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, the Phi-4 multimodal audio encoder in phi4mm_audio.py and phi4mm_utils.py uses eager attention by default, allowing a remote client to submit one legal long audio clip that causes MultiHeadedAttention.forward_attention to materialize and retain full attention matrices in self.attn. The scaled dot-product attention branch does not materialize these matrices. The resulting quadratic GPU-memory use can cause an out-of-memory condition and terminate EngineCore for all users. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T17:17:19.053",
+      "updated": "2026-11-02T18:18:38.870",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
       "severity": "medium",
-      "cpes": [],
-      "packages": [
-        "pip:vllm"
+      "cpes": [
+        "vllm:vllm"
       ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-8397-8qf6-f2gm",
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-8397-8qf6-f2gm",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-115913",
-        "https://github.com/vllm-project/vllm/pull/60614",
         "https://github.com/vllm-project/vllm/commit/3d52578e13454de0bb8352cac988347cdcc89928",
-        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0"
+        "https://github.com/vllm-project/vllm/pull/60614",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-8397-8qf6-f2gm"
       ],
-      "exploit_ref": false,
+      "exploit_ref": true,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00305,
-      "epss_percentile": 0.23205,
+      "epss": 0.00329,
+      "epss_percentile": 0.26094,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -67515,7 +69092,7 @@
       "score_breakdown": {
         "popularity": 10,
         "cvss": 13.0,
-        "unauth_network": 5,
+        "exploit_ref": 5,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -67526,7 +69103,7 @@
       "title": "",
       "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in potatosalad jose (erlang-jose) allows a remote attacker to exhaust a node's memory with a small crafted JWE token.\n\nThe jose_jwe_zip:uncompress/2 function in src/jwe/jose_jwe_zip.erl decompresses the DEFLATE-compressed plaintext of a JWE that carries the optional zip: DEF header by calling zlib:inflate/2 on the entire attacker-controlled stream, with no bound on the output size or the inflation ratio. Raw DEFLATE reaches ratios around 1000:1 on highly repetitive input, so a few-kilobyte token inflates to hundreds of megabytes or gigabytes in a single call.\n\nDecompression runs automatically during decryption through jose_jwe:block_decrypt/2 (JOSE.JWE.block_decrypt/2 in Elixir), before the recipient can inspect or reject the payload. With the common asymmetric key-management algorithms (RSA-OAEP, ECDH-ES) an attacker needs only the recipient's public key to craft such a token, so no authentication or secret material is required. A single small token can exhaust the node's memory and crash the BEAM, denying service to all users.\n\nThis issue affects jose: from 1.0.0 before 1.11.13.",
       "published": "2026-10-26T20:17:58.290",
-      "updated": "2026-10-27T15:00:49.240",
+      "updated": "2026-11-02T22:17:22.133",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -67538,7 +69115,8 @@
         "https://github.com/potatosalad/erlang-jose/commit/857eb8e7f2d33e2c9ca2189e77226561cacaf2ad",
         "https://github.com/potatosalad/erlang-jose/commit/a7746ecd4950f85a393136e449a91dac62b5c429",
         "https://github.com/potatosalad/erlang-jose/security/advisories/GHSA-wfpv-qxp8-x5gm",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-65627"
+        "https://osv.dev/vulnerability/EEF-CVE-2026-65627",
+        "https://github.com/potatosalad/erlang-jose/security/advisories/GHSA-wfpv-qxp8-x5gm"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -67546,7 +69124,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00249,
-      "epss_percentile": 0.16083,
+      "epss_percentile": 0.16206,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -67574,7 +69152,7 @@
       "title": "",
       "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.10.0 until 1.30.0 and 2.2.0, server-side bearer authentication configured through AuthSettings with token_verifier accepts a valid token issued for another service when the authorization server serves multiple resources and the TokenVerifier does not independently validate the aud audience. This resource-confusion flaw lets a token holder authenticate to the wrong MCP server and exercise that token's resulting access. This issue is fixed in versions 1.30.0 and 2.2.0.",
       "published": "2026-10-27T20:17:13.307",
-      "updated": "2026-10-28T15:21:31.673",
+      "updated": "2026-11-02T20:17:32.943",
       "cvss": 6.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
       "severity": "medium",
@@ -67596,7 +69174,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00365,
-      "epss_percentile": 0.30247,
+      "epss_percentile": 0.30362,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -67619,12 +69197,204 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120243",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg 2.0 through 9.0.2 contains a use of uninitialized variable vulnerability in the Go2Meeting decoder that allows attackers to leak stack memory through out-of-range palette indices. Attackers can craft a G2M3/G2M4 stream with a short Kempf palette so kempf_restore_buf() copies uninitialized stack bytes, including pointers or stack guards, into decoded output.",
+      "published": "2026-11-01T01:17:17.593",
+      "updated": "2026-11-02T19:34:23.993",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24858",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/g2meet.c#L1040-L1042",
+        "https://github.com/FFmpeg/FFmpeg/commit/edad2d0dafcf44fa315eab716fd0183ce808053b",
+        "https://www.vulncheck.com/advisories/ffmpeg-2.0-through-9.0.2-information-disclosure-via-g2m-kempf-palette"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00124,
+      "epss_percentile": 0.02087,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T02:14:47.538993+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120244",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg 2.1 through 9.0.2 contains a use of uninitialized resource vulnerability in the PCX decoder that allows attackers to leak heap memory through truncated RLE scanlines. Attackers can craft a PCX image whose RLE data ends early, causing pcx_decode_frame() to copy uninitialized av_malloc() buffer contents into visible decoded pixels.",
+      "published": "2026-11-01T01:17:17.787",
+      "updated": "2026-11-02T19:34:23.993",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24868",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/pcx.c#L45-L59",
+        "https://github.com/FFmpeg/FFmpeg/commit/ecd5dfc308a164757e7f25b1afefd8db21b43cf9",
+        "https://www.vulncheck.com/advisories/ffmpeg-2.1-through-9.0.2-uninitialized-memory-leak-via-pcx-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00124,
+      "epss_percentile": 0.02088,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T02:14:47.538993+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120246",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg 4.4 through 9.0.2 contains a use of uninitialized variable vulnerability in the CDXL decoder that leaks stack memory into decoded pixels via unfilled HAM palette entries. Attackers can craft a type-0 CDXL file whose HAM pixels select unfilled new_palette entries in cdxl_decode_ham8() or cdxl_decode_ham6(), exposing stack bytes and pointer fragments in the BGR24 output.",
+      "published": "2026-11-01T01:17:18.147",
+      "updated": "2026-11-02T19:34:23.993",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24856",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/cdxl.c#L226-L229",
+        "https://github.com/FFmpeg/FFmpeg/commit/47313ad3f9f33b892384b976fb7c09b3c85fd74e",
+        "https://www.vulncheck.com/advisories/ffmpeg-4.4-through-9.0.2-uninitialized-memory-disclosure-via-cdxl-ham-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00124,
+      "epss_percentile": 0.02088,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T02:14:47.538993+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120247",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg 2.3 through 9.0.2 contains a use of uninitialized resource vulnerability in the Huffyuv decoder that allows attackers to leak heap memory into decoded pixels via short packed-BGR bitstreams. Attackers can craft a Huffyuv BGR24/BGRA video whose entropy data ends early, causing decode_slice() to add uninitialized s->temp[0] bytes into output frames, exposing heap contents.",
+      "published": "2026-11-01T01:17:18.323",
+      "updated": "2026-11-02T19:34:23.993",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24869",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/huffyuvdec.c#L802",
+        "https://github.com/FFmpeg/FFmpeg/commit/7c73707355708c846f718cca90096bc1a33c8989",
+        "https://www.vulncheck.com/advisories/ffmpeg-2.3-through-9.0.2-huffyuv-decoder-uninitialized-heap-memory-disclosure"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00124,
+      "epss_percentile": 0.02088,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-01T02:14:47.538993+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.6,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-120245",
       "aliases": [],
       "title": "",
       "description": "FFmpeg 0.10 through 9.0.2 contains a use of uninitialized resource vulnerability in sunrast_decode_frame() that leaks heap memory when decoding truncated 1-bit and 4-bit paletted Sun Raster images. Attackers can craft a truncated Sun Raster file so the uncleared temporary bitmap is expanded into PAL8 pixels, exposing stale heap contents such as allocator words in decoded output.",
       "published": "2026-11-01T01:17:17.960",
-      "updated": "2026-11-02T15:17:21.120",
+      "updated": "2026-11-02T19:34:23.993",
       "cvss": 6.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -68844,11 +70614,13 @@
       "title": "",
       "description": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 allows the ImageMagick resource limits to be bypassed during thumbnail generation. When rcube_image falls back to GD, the available-memory check was applied only on Windows, so on other platforms a crafted image with large dimensions was processed by GD without any resource limit and could exhaust server memory. Upstream fixed this in the commit “Fix ImageMagick resource limits bypass by GD fallback during thumbnail generation”, which applies the memory check on all platforms.",
       "published": "2026-10-22T02:17:00.190",
-      "updated": "2026-11-02T16:17:28.057",
+      "updated": "2026-11-02T18:40:05.430",
       "cvss": 3.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
       "severity": "low",
-      "cpes": [],
+      "cpes": [
+        "roundcube:webmail"
+      ],
       "packages": [],
       "vendor_products": [],
       "references": [
@@ -69124,6 +70896,54 @@
         "popularity": 21.0,
         "cvss": 5.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-qrj2-j723-m6w8",
+      "aliases": [],
+      "title": "vLLM Speculators Config verifier.name_or_path Element Directory Traversal Information Disclosure Vulnerability",
+      "description": "### Summary\n\n`maybe_override_with_speculators` runs unconditionally for every non-cloud-storage model (`vllm/engine/arg_utils.py:2218`). If the served repository's `config.json` carries a `speculators_config` key, vLLM takes `speculators_config[\"verifier\"][\"name_or_path\"]` straight out of that artifact and assigns it to **both** the model and the tokenizer:\n\n```python\n# vllm/transformers_utils/config.py:808-810\nverifier_model = speculators_config[\"verifier\"][\"name_or_path\"]\nmodel = tokenizer = verifier_model\n```\n\nThere is no containment check of any kind — no `basename`, no `resolve()` + `commonpath`, no `relative_to`/`parents` test, no `isabs` rejection. An absolute path needs no traversal syntax at all. The only validation anywhere on this path checks that four keys *exist* (`vllm/transformers_utils/configs/speculators/base.py:77-94`); nothing inspects what `name_or_path` points at.\n\nServing a crafted repository therefore redirects the whole served model identity — weights, config and tokenizer — to a directory the artifact names. Confirmed end-to-end against a live `vllm serve`: the unauthenticated `POST /detokenize` returns the victim directory's tokenizer vocabulary verbatim, and the victim checkpoint is what the engine loads as the primary model.\n\nLine numbers above are at `main` @ `e0317b28ce3ba4c9bd2ff69d885e3f34688a6d71`, where no containment fix has landed on `vllm/transformers_utils/config.py`. No opt-in is required: `trust_remote_code` stays `False` throughout (the engine prints it at startup).\n\n### Details\n\n### The call site\n\nThe override is not gated on `--speculative-config`; it runs for every model that is not cloud storage, before `ModelConfig` is constructed:\n\n```python\n# vllm/engine/arg_utils.py:2218-2228\nif not is_cloud_storage(self.model):\n    (self.model, self.tokenizer, self.speculative_config) = (\n        maybe_override_with_speculators(\n            model=self.model,\n            tokenizer=self.tokenizer,\n            revision=self.revision,\n            trust_remote_code=self.trust_remote_code,\n            ...\n```\n\n### The redirect\n\n```python\n# vllm/transformers_utils/config.py:786-810\nconfig_dict, _ = PreTrainedConfig.get_config_dict(model, ..., **without_trust_remote_code(kwargs))\nspeculators_config = config_dict.get(\"speculators_config\")\nif speculators_config is None:\n    return model, tokenizer, vllm_speculative_config\n...\n# Override model and tokenizer with the verifier model from config\nverifier_model = speculators_config[\"verifier\"][\"name_or_path\"]\nmodel = tokenizer = verifier_model          # :810 — no containment, no isabs check\n```\n\nNo `basename`, no `resolve()` + `commonpath`, no `relative_to`/`parents` test, no `isabs` rejection. An absolute path needs no traversal syntax. Note `without_trust_remote_code(kwargs)` at `:786`: this path deliberately reads the config *without* remote code, which is why the redirect needs no opt-in.\n\n### The validation is key-existence only\n\n```python\n# vllm/transformers_utils/configs/speculators/base.py:77-94\nspec_config = config_dict[\"speculators_config\"]\nmethods = spec_config[\"proposal_methods\"]\nfirst_method = methods[0]\n_ = first_method[\"speculative_tokens\"]\n_ = spec_config[\"verifier\"][\"name_or_path\"]      # presence only\n_ = config_dict[\"speculators_model_type\"]\nexcept (KeyError, IndexError, TypeError) as e:\n    raise ValueError(\"Invalid speculators config structure\") from e\n\nif \"transformer_layer_config\" not in config_dict:\n    raise ValueError(\"Must provide transformer_layer_config\")\n```\n\nNothing inspects what `name_or_path` points at. All of these keys are attacker-written; `speculators_model_type` must be one of the in-tree `@register_speculator` names (`eagle3`, `peagle`, `dflash`, `dflash2`, `dspark` — `vllm/transformers_utils/configs/speculators/algos.py`), which the attacker simply types.\n\n### Impact\n\nAn operator who serves an untrusted repository — a public Hub model, a vendor checkpoint, or a directory delivered by `git clone` or a shared mount — hands its publisher two things.\n\n**The victim directory's tokenizer vocabulary, verbatim, to an unauthenticated client.** `/detokenize` returns it as text, and sweeping token ids walks the whole vocabulary. No inversion, no numerical attack, no credentials. For a checkpoint whose tokenizer is a public base this is of little value; for a domain-specific or in-house vocabulary it is the model's IP, and it also discloses the domain, the languages, the special tokens and internal naming.\n\n**Execution of the victim's checkpoint.** The engine loads it as the primary model, so the attacker obtains full black-box query access to a private model through the ordinary completions API — which is the practical substance of model theft, since behavioural cloning needs no weight recovery. The operator, meanwhile, is silently serving someone else's weights under their own service.\n\nShared and multi-tenant model hosts are the realistic setting, since that is where the reachable directories belong to someone other than the repository's publisher.\n\nA fix for this was introduced in https://github.com/vllm-project/vllm/pull/61587.\n",
+      "published": "2026-11-02T19:49:32Z",
+      "updated": "2026-11-02T19:49:32Z",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-qrj2-j723-m6w8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-02T23:53:05.734982+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 25.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -69790,24 +71610,21 @@
     {
       "id": "CVE-2026-118599",
       "aliases": [],
-      "title": "epiphany: TAR-based .xpi with hard links can overwrite user files during WebExtension install",
+      "title": "",
       "description": "A file overwrite vulnerability exists in Epiphany when installing WebExtension packages from .xpi files.\n\nIn src/webextension/ephy-web-extension-manager.c, decompress_xpi_thread() used libarchive with archive_read_support_format_all() (and filters), so the installer did not require a real ZIP. A TAR file named *.xpi was extracted. TAR supports hard-link entry types; with Epiphany's archive_write_disk options (including ARCHIVE_EXTRACT_PERM), a crafted hard-link target can cause an attacker-chosen existing user-writable file to be truncated and overwritten with attacker-controlled content and mode bits, without a dedicated warning dialog, when the user installs or opens the crafted .xpi.\n\nThis is related to but separate from the ZIP-slip path traversal fixed as CVE-2026-77679 (#2922 / MR !2143).\n\nRequirements: the victim must install or open a malicious WebExtension (.xpi).\n\nAffected: Epiphany >= 47.0 (WebExtension XPI install path).\nFixed: https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2248 (commit 0cc9ab55 — only enable ZIP format support).\nUpstream: https://gitlab.gnome.org/GNOME/epiphany/-/work_items/2988\nReporter acknowledgment: Fernando Munoz",
-      "published": "2026-10-31T09:29:37.264Z",
-      "updated": "2026-10-31T10:16:38.060",
+      "published": "2026-10-31T10:16:38.060",
+      "updated": "2026-11-02T19:35:33.347",
       "cvss": 5.5,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
       "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "GNOME Epiphany",
-        "epiphany"
-      ],
+      "vendor_products": [],
       "references": [
         "https://access.redhat.com/security/cve/CVE-2026-118599",
         "https://bugzilla.redhat.com/show_bug.cgi?id=2562969",
-        "https://gitlab.gnome.org/GNOME/epiphany/-/work_items/2988",
-        "https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2248"
+        "https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2248",
+        "https://gitlab.gnome.org/GNOME/epiphany/-/work_items/2988"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -69815,10 +71632,9 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00182,
-      "epss_percentile": 0.07764,
+      "epss_percentile": 0.07758,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -70904,39 +72720,35 @@
     },
     {
       "id": "CVE-2026-115916",
-      "aliases": [
-        "GHSA-q97c-p368-75c4"
-      ],
-      "title": "vLLM: Out-of-vocabulary prompt token id passes input validation and triggers a CUDA device-side assert (engine crash / DoS)",
-      "description": "For a model whose vocabulary size is an exact multiple of the embedding padding size (64) — e.g. any Llama-2-family model, vocab 32000 — a single request carrying a pre-tokenized prompt with token id equal to the vocab size (32000) passes vLLM's input-id validation but is one past the last embedding row. At tensor-parallel size 1 the embedding lookup does not mask indices, so the id reaches `F.embedding` out of range and raises a CUDA device-side assert, which poisons the engine's CUDA context and takes the engine down. Any client that can send pre-tokenized input (`/v1/completions` with `prompt` as token ids, `/tokenize`-fed flows, or the `kv_transfer_params[\"prompt_token_ids\"]` reuse path) can trigger it.\n\n## Root cause\n`vllm/v1/engine/input_processor.py` accepts a token id when `id <= max(tokenizer.max_token_id, model_config.get_vocab_size() - 1)`.\n`vllm/tokenizers/hf.py` computes `max_token_id = max(max(vocab.values()), tokenizer.vocab_size)`. For Llama-2 tokenizers `max(vocab.values()) = 31999` but `tokenizer.vocab_size = 32000`, so `max_token_id = 32000` — one greater than the largest valid id.\nThe engine bound therefore becomes `max(32000, 31999) = 32000`, and id 32000 is accepted.\nThe model's embedding has `pad_vocab_size(32000, 64) = 32000` rows (no padding), valid indices 0..31999. At `VocabParallelEmbedding.forward` with `tp_size == 1` there is no masking, so index 32000 hits `F.embedding` out of range.\n\n## Affected\n- tp=1 (single GPU per model — common per-copy layout). tp>1 masks via `get_masked_input_and_mask`, so the id is clamped, not an OOB — likely wrong output rather than a crash.\n- Models whose vocab is a multiple of 64 with `tokenizer.vocab_size` one past the max real id (Llama-2 family, vocab 32000, is the clear case). Qwen2.5 is NOT affected (padded headroom).\n\n## Suggested fix \nmax_token_id in vllm/tokenizers/hf.py now uses tokenizer.vocab_size - 1, so an id equal to the vocabulary size fails input validation instead of reaching the embedding. Fixed in [MR59491](https://github.com/vllm-project/vllm/pull/59491), released in v0.32.0.\n\n## Reporter\nShijie Lyu (GitHub shijie-lyu lshjhf@gmail.com). Reported privately per SECURITY.\n\nThis advisory was fixed in [MR59491](https://github.com/vllm-project/vllm/pull/59491).",
-      "published": "2026-10-28T21:15:08Z",
-      "updated": "2026-10-28T21:15:09Z",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM is an inference and serving engine for large language models. Prior to 0.32.0, vllm/tokenizers/hf.py computes max_token_id with an off-by-one upper bound, allowing a pre-tokenized prompt ID equal to the vocabulary size to pass validation. For a tensor-parallel size of one and an exact multiple-of-64 vocabulary, VocabParallelEmbedding.forward does not mask that value before F.embedding uses it, causing a CUDA device-side assertion and terminating the engine. This issue is fixed in version 0.32.0.",
+      "published": "2026-10-26T18:17:39.080",
+      "updated": "2026-11-02T18:18:39.033",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
       "severity": "medium",
-      "cpes": [],
-      "packages": [
-        "pip:vllm"
+      "cpes": [
+        "vllm:vllm"
       ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-q97c-p368-75c4",
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-q97c-p368-75c4",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-115916",
-        "https://github.com/vllm-project/vllm/pull/59491",
         "https://github.com/vllm-project/vllm/commit/37cecc8141e2dcba9dd534897a164d4baaf27229",
-        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0"
+        "https://github.com/vllm-project/vllm/pull/59491",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-q97c-p368-75c4"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00305,
-      "epss_percentile": 0.23205,
+      "epss": 0.00312,
+      "epss_percentile": 0.24082,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
