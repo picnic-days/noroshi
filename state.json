@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-02T23:53:05.734982+00:00",
+  "last_run": "2026-11-03T06:48:39.559157+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -31,7 +31,7 @@
     "CVE-2026-103882": "2026-10-31T08:54:24.962201+00:00",
     "CVE-2026-97229": "2026-11-02T17:05:23.172150+00:00"
   },
-  "ai_key_checked": "2026-11-02",
+  "ai_key_checked": "2026-11-03",
   "open_outages": {},
   "eol_notified": {
     "php:8.2:90": "2026-10-24",
@@ -60,11 +60,14 @@
     "rails:8.0:7": "2026-10-31",
     "redis:8.0:30": "2026-11-01",
     "openssl:3.6:0": "2026-11-01",
-    "nextjs:15:90": "2026-11-02"
+    "nextjs:15:90": "2026-11-02",
+    "dotnet:9:7": "2026-11-03",
+    "dotnet:8:7": "2026-11-03",
+    "windows:11-23h2-e:7": "2026-11-03"
   },
-  "digest_sent": "2026-11-02",
-  "digest_since": "2026-11-02T00:45:51.403634+00:00",
-  "repo_adv_checked": "2026-11-02T23:53:05.734982+00:00",
+  "digest_sent": "2026-11-03",
+  "digest_since": "2026-11-03T06:48:39.559157+00:00",
+  "repo_adv_checked": "2026-11-03T06:48:39.559157+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -654,7 +657,8 @@
       "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
       "https://www.anthropic.com/research/early-progress-drug-development",
       "https://www.anthropic.com/news/expanding-partnership-gsa",
-      "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions"
+      "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+      "https://www.anthropic.com/research/provable-inference"
     ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T23:53:05.734982+00:00",
+  "generated_at": "2026-11-03T06:48:39.559157+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -14710,6 +14710,59 @@
         "popularity": 30,
         "cvss": 16.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111464",
+      "aliases": [],
+      "title": "WP Fastest Cache <= 1.5.3 - Unauthenticated Sensitive Information Exposure via Cached wp-activate.php Response",
+      "description": "The WP Fastest Cache plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.5.3. The plugin caches the response of Core’s wp-activate.php without honoring its no-store/no-cache headers, the wp-activate-* cookie, or the WP_INSTALLING state, writing the credential-bearing activation response to a publicly accessible cache file. This makes it possible for unauthenticated attackers to retrieve the plaintext username and twelve-character password of the most recently activated Multisite registrant from that cached wp-activate.php response. Exploitation requires a Multisite subdirectory installation with public user and site registration enabled, and the credentials are only exposed after a genuine registrant follows their activation link.",
+      "published": "2026-11-03T02:31:19.933Z",
+      "updated": "2026-11-03T03:16:43.173",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "emrevona WP Fastest Cache – WordPress Cache Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/83539a88-b90e-49f0-a599-b3f83b2d97b9?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.2/inc/cache.php#L1027",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.2/inc/cache.php#L452",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.2/inc/cache.php#L567",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.2/inc/cache.php#L1400",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.2/inc/cache.php#L83",
+        "https://plugins.trac.wordpress.org/changeset/3749897/wp-fastest-cache"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -39055,6 +39108,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120552",
+      "aliases": [],
+      "title": "SEO Engine <= 0.9.9 - Authenticated (Contributor+) Stored Cross-Site Scripting via Entity-Encoded Post Title via Strip-then-Decode in build_title()",
+      "description": "The SEO Engine – Smart SEO with AI, Schema & Redirection for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'title' parameter in all versions up to, and including, 0.9.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress core's wp_filter_kses (applied via title_save_pre for Contributors and Authors) strips literal tag markup on save but leaves HTML-entity-encoded payloads intact in the database, meaning entity-encoded XSS payloads stored via the standard WordPress REST API (POST /wp-json/wp/v2/posts) are not neutralized before reaching the vulnerable sink.",
+      "published": "2026-11-03T04:43:07.297Z",
+      "updated": "2026-11-03T05:18:32.983",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "tigroumeow SEO Engine – Smart SEO with AI, Schema & Redirection for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/454a05eb-fd4e-4125-abd0-7ba90ee2048a?source=cve",
+        "https://plugins.trac.wordpress.org/browser/seo-engine/tags/0.9.9/classes/core.php#L744",
+        "https://plugins.trac.wordpress.org/browser/seo-engine/tags/0.9.9/classes/core.php#L739",
+        "https://plugins.trac.wordpress.org/browser/seo-engine/tags/0.9.9/classes/rest.php#L1381",
+        "https://plugins.trac.wordpress.org/browser/seo-engine/tags/0.9.9/classes/rest.php#L164",
+        "https://plugins.trac.wordpress.org/browser/seo-engine/tags/0.9.9/app/index.js",
+        "https://plugins.trac.wordpress.org/changeset?old_path=/seo-engine/tags/0.9.9&new_path=/seo-engine/tags/1.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112623",
       "aliases": [],
       "title": "",
@@ -39115,7 +39220,7 @@
       "title": "",
       "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
       "published": "2026-10-26T21:17:55.980",
-      "updated": "2026-11-02T18:27:34.580",
+      "updated": "2026-11-03T05:18:29.693",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -39174,7 +39279,7 @@
       "title": "",
       "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
       "published": "2026-10-26T21:17:57.297",
-      "updated": "2026-11-02T18:25:01.470",
+      "updated": "2026-11-03T05:18:29.967",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -39554,7 +39659,7 @@
       "title": "",
       "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
       "published": "2026-10-26T21:17:57.620",
-      "updated": "2026-11-02T20:20:10.003",
+      "updated": "2026-11-03T05:18:30.200",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -39609,7 +39714,7 @@
       "title": "",
       "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. Processing maliciously crafted web content may lead to arbitrary code execution.",
       "published": "2026-10-26T21:18:04.537",
-      "updated": "2026-11-02T20:17:05.907",
+      "updated": "2026-11-03T05:18:30.730",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -50357,7 +50462,7 @@
       "title": "Malware in opencode-skills-collection",
       "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 5,204",
       "published": "2026-10-22T18:35:11Z",
-      "updated": "2026-11-02T15:25:19Z",
+      "updated": "2026-11-03T06:30:25Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -50397,9 +50502,9 @@
       "id": "GHSA-rgwm-3jj9-h563",
       "aliases": [],
       "title": "Malware in agentic-awesome-skills",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 6,963",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 4,971",
       "published": "2026-10-22T18:34:45Z",
-      "updated": "2026-10-29T17:25:43Z",
+      "updated": "2026-11-03T06:30:28Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -51308,6 +51413,252 @@
       "first_seen": "2026-11-02T23:53:05.734982+00:00",
       "matched": [
         "npm:levvleys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-j25w3rpv45gs",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in APJC",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-03T04:44:12.062Z",
+      "updated": "2026-11-03T05:56:29.439Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/j25w3rpv45gs"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-03T05:56:29.439Z",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-n5mvqjs26jg9",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Container Issues",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-03T04:12:18.432Z",
+      "updated": "2026-11-03T05:23:01.651Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/n5mvqjs26jg9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-03T05:23:01.651Z",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M6FDZ89W4PKDS19K496J307G",
+      "aliases": [],
+      "title": "OpenAI: File upload errors in ChatGPT",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-11-03T00:46:58Z",
+      "updated": "2026-11-03T05:39:36Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-03T05:39:36Z",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-45rq-6v9r-4475",
+      "aliases": [],
+      "title": "Malware in luna-baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,573",
+      "published": "2026-11-03T06:46:31Z",
+      "updated": "2026-11-03T06:46:31Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:luna-baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-45rq-6v9r-4475"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "npm:luna-baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-39ch-q3p3-3j33",
+      "aliases": [],
+      "title": "Malicious code in @atedone/workspace-context (npm)",
+      "description": "## Source: amazon-inspector (831ecc7c41217227ee159b85e4510e3d58c956be016bd7582e94fefb011565fe)\nOn require(), the package's top-level state.initialize() writes shell integration files into ~/.config/workspace-context (init.zsh,.zshrc, session-runtime.js, presentation.js, channel.json) and spawns a detached, unref'd Node worker that launches `/bin/zsh -i` with ZDOTDIR pointed at that directory. The injected init.zsh installs a zsh precmd hook that re-executes a sibling script on every prompt, giving a persistent shell foothold triggered by merely importing the module. session.js fetches http://150.136.8.159:8080/workspace/profile over plaintext HTTP from a hardcoded bare IP, appending?username=<USER> read from env.USER/LOGNAME, writes the response to session-profile.json, and presentation.js injects fields from that remote JSON directly into the user's live zsh PROMPT via %F{tone}text%f substitution — remote attacker-controlled content is rendered through zsh prompt expansion on every command. Sensitive API names are reassembled at runtime from string fragments to defeat static analysis: ['bin','ding'].join(''), ['sp','awn','_','sync'].join(''), ['sp','awn'].join(''), ['child','_process'].join(''), ['fe','tch'].join(''), and the env-var name ['WORKSPACE','_CONTEXT','_CHANNEL'].join(''). Access to child_process/fetch is funneled through Reflect.get/Reflect.apply with no plain literal references anywhere. refreshShellIntegration obtains the internal process.binding('spawn_sync') handle to execute `node lib/sync.js`, bypassing the public child_process module. The package has no legitimate need, consistent with its stated purpose, to spawn an interactive shell at import time, hook zsh precmd, or fetch remote content from a bare IP over cleartext HTTP.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/98ed2c08aa0835a176736f790c36fe8f6171bc89/osv/malicious/npm/@atedone/workspace-context/MAL-2026-18517.json))\n\n週間ダウンロード数: 約 3,578",
+      "published": "2026-11-03T06:31:20Z",
+      "updated": "2026-11-03T06:31:28Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@atedone/workspace-context"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-39ch-q3p3-3j33"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "npm:@atedone/workspace-context"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-jpgq-34qx-jwwc",
+      "aliases": [],
+      "title": "Malicious code in spectral-core (npm)",
+      "description": "## Source: amazon-inspector (451c36f03e81be0ff6c85334587d7ff401de1e5134e179557ec4bc454cd7ba76)\nThe tarball ships only package.json and binding.gyp (plus a markdown file), with gypfile: true set in package.json so npm invokes node-gyp rebuild on install. binding.gyp declares a 'none'-type target with no native source files; its sole purpose is an inline action that runs `node -e` with an embedded script. At install time that script reads /proc/1/environ and /proc/self/environ (container/pod entrypoint environment variables, which routinely contain CI/CD secrets and cloud credentials), collects DNS/socket/ARP/route reconnaissance output, queries the AWS EC2 instance metadata service at 169.254.169.254 for user-data and meta-data, and POSTs the collected data to the hardcoded collector https://webhook.site/d6092bdc-05c0-45da-a280-c343ea6d6156. The package exposes no library functionality — main: index.js is declared but index.js is not shipped — so the binding.gyp exists solely as a vehicle for install-time code execution and credential exfiltration. The name resembles the legitimate @stoplight/spectral-core project but the shipped contents are unrelated to it.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/0b4a7fbd4eea373a8b90aca1ace688cb95b8b251/osv/malicious/npm/spectral-core/MAL-2026-18377.json))\n\n週間ダウンロード数: 約 2,150",
+      "published": "2026-10-29T15:31:27Z",
+      "updated": "2026-11-03T06:31:22Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:spectral-core"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-jpgq-34qx-jwwc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "npm:spectral-core"
       ],
       "match_type": "malware",
       "tier": null,
