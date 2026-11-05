@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-05T18:01:59.685330+00:00",
+  "last_run": "2026-11-05T23:38:48.927446+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -110,7 +110,7 @@
   },
   "digest_sent": "2026-11-05",
   "digest_since": "2026-11-05T02:32:04.161797+00:00",
-  "repo_adv_checked": "2026-11-05T18:01:59.685330+00:00",
+  "repo_adv_checked": "2026-11-05T23:38:48.927446+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -702,7 +702,9 @@
       "https://www.anthropic.com/news/expanding-partnership-gsa",
       "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
       "https://www.anthropic.com/research/provable-inference",
-      "https://www.anthropic.com/research/investigating-vault-particles-with-claude"
+      "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+      "https://www.anthropic.com/legal/guest-pass-terms",
+      "https://www.anthropic.com/research/how-researchers-use-claude"
     ]
   }
 }

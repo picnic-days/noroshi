@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T18:01:59.685330+00:00",
+  "generated_at": "2026-11-05T23:38:48.927446+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -7,7 +7,7 @@
       "title": "PHP Memory Corruption Vulnerability",
       "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.357",
-      "updated": "2026-11-04T18:17:36.740",
+      "updated": "2026-11-05T19:17:07.900",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -81,7 +81,7 @@
       "title": "PHP Stale Internal Request-State Vulnerability",
       "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.823",
-      "updated": "2026-11-04T18:17:37.170",
+      "updated": "2026-11-05T19:17:08.397",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -1961,6 +1961,56 @@
       "ai_analysis": "【状況】Google Chrome の ANGLE（グラフィックス処理の部品）に範囲外書き込みの脆弱性があります。細工した HTML ページを開くと、サンドボックスの外で任意コードが実行されるおそれがあります（CVSS 9.6、Chromium 評価 High）。Google は11/3に修正版を出しました。悪用の報告はありません（KEV 未登録）。\n\n【原因の部品】ANGLE（Google／Chromium プロジェクト）\n組み込み製品：Microsoft Edge などの Chromium 系ブラウザ、Electron アプリ。いずれもこの件の修正状況は未確認です。\n\n【影響範囲】Windows 版 Chrome 157.0.8103.38 より前\nMac・Linux 版への影響は未確認です。\n\n【対応策】\n1. 社内の Windows 端末の Chrome を 157.0.8103.38/.39 以降にし、再起動させてください。chrome://version で版を確認できます。修正版は数日〜数週間かけて順次配信されるため、管理ツールで更新を強制してください。\n2. すぐ更新できない場合の回避策は未確認です。当面は Edge など他の Chromium 系製品のベンダー告知を確認し、修正版が出たら更新してください。\n\n【各告知の関係】\n・Google Chrome Releases：元の部品の修正（Chrome 157 の安定版公開。213件修正のうちの1件）\n・Chromium Issue 569415790：同じ件の不具合管理票（詳細は非公開）\n・国内の注意喚起：見つかっていません\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html\nhttps://issues.chromium.org/issues/569415790"
     },
     {
+      "id": "CVE-2026-121077",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Mobile in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-03T21:17:12.893",
+      "updated": "2026-11-05T18:17:05.530",
+      "cvss": 9.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/570026368"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00338,
+      "epss_percentile": 0.27348,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.3,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118308",
       "aliases": [],
       "title": "",
@@ -2516,7 +2566,7 @@
       "title": "",
       "description": "Privilege elevation in Contacts in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-03T21:17:33.503",
-      "updated": "2026-11-05T05:18:34.740",
+      "updated": "2026-11-05T18:17:07.093",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -2534,8 +2584,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00299,
-      "epss_percentile": 0.22714,
+      "epss": 0.00328,
+      "epss_percentile": 0.26092,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -2678,56 +2728,6 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/578670966"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00299,
-      "epss_percentile": 0.22715,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 74.2,
-      "level": "critical",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 19.2,
-        "unauth_network": 5,
-        "rce": 5,
-        "tier1_critical": 15,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121077",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Mobile in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-03T21:17:12.893",
-      "updated": "2026-11-05T05:18:24.680",
-      "cvss": 9.6,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/570026368"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -3862,6 +3862,56 @@
       "ssvc_exploitation": "",
       "epss": 0.00251,
       "epss_percentile": 0.16551,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 62.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "exploit_ref": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121113",
+      "aliases": [],
+      "title": "",
+      "description": "Buffer overflow in PDFium in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted PDF file. (Chromium security severity: High)",
+      "published": "2026-11-03T21:17:18.963",
+      "updated": "2026-11-05T22:25:18.097",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/567106301"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00329,
+      "epss_percentile": 0.26165,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -8671,7 +8721,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-03T21:17:31.793",
-      "updated": "2026-11-05T05:18:33.887",
+      "updated": "2026-11-05T18:17:06.693",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8689,8 +8739,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00357,
-      "epss_percentile": 0.29523,
+      "epss": 0.00403,
+      "epss_percentile": 0.34741,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -8720,7 +8770,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-03T21:17:32.447",
-      "updated": "2026-11-05T05:18:34.303",
+      "updated": "2026-11-05T18:17:06.893",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -8738,8 +8788,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00357,
-      "epss_percentile": 0.29525,
+      "epss": 0.00403,
+      "epss_percentile": 0.34741,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -9014,7 +9064,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-03T21:17:13.030",
-      "updated": "2026-11-05T05:18:24.903",
+      "updated": "2026-11-05T18:17:05.727",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -9032,8 +9082,204 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00357,
-      "epss_percentile": 0.29525,
+      "epss": 0.00403,
+      "epss_percentile": 0.34742,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121117",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Paint in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-03T21:17:19.490",
+      "updated": "2026-11-05T18:17:05.923",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/575318807"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0037,
+      "epss_percentile": 0.31045,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121128",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Scheduling in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-03T21:17:21.120",
+      "updated": "2026-11-05T18:17:06.127",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/568988525"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0037,
+      "epss_percentile": 0.31048,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121184",
+      "aliases": [],
+      "title": "",
+      "description": "Out of bounds read in Media in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-03T21:17:27.047",
+      "updated": "2026-11-05T18:17:06.320",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/565681451"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00359,
+      "epss_percentile": 0.29834,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121201",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Animation in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-03T21:17:29.033",
+      "updated": "2026-11-05T18:17:06.507",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/574193110"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0037,
+      "epss_percentile": 0.31047,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -10969,55 +11215,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-121117",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Paint in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-03T21:17:19.490",
-      "updated": "2026-11-05T05:18:27.583",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/575318807"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00327,
-      "epss_percentile": 0.25916,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-121118",
       "aliases": [],
       "title": "",
@@ -11214,55 +11411,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-121128",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Scheduling in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-03T21:17:21.120",
-      "updated": "2026-11-05T05:18:28.993",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/568988525"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00327,
-      "epss_percentile": 0.25914,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-121168",
       "aliases": [],
       "title": "",
@@ -11410,55 +11558,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-121184",
-      "aliases": [],
-      "title": "",
-      "description": "Out of bounds read in Media in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-03T21:17:27.047",
-      "updated": "2026-11-05T05:18:31.090",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/565681451"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00327,
-      "epss_percentile": 0.25917,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-121188",
       "aliases": [],
       "title": "",
@@ -11484,55 +11583,6 @@
       "ssvc_exploitation": "",
       "epss": 0.00327,
       "epss_percentile": 0.25912,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121201",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Animation in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-03T21:17:29.033",
-      "updated": "2026-11-05T05:18:31.777",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/574193110"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00327,
-      "epss_percentile": 0.25917,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12493,7 +12543,7 @@
       "title": "",
       "description": "Use of released resource in GPU in Google Chrome prior to 157.0.8103.38 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-03T21:17:36.470",
-      "updated": "2026-11-05T05:18:35.630",
+      "updated": "2026-11-05T18:17:07.280",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -12511,8 +12561,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00282,
-      "epss_percentile": 0.20835,
+      "epss": 0.00302,
+      "epss_percentile": 0.23104,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -12779,63 +12829,6 @@
         "unauth_network": 5,
         "rce": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-123158",
-      "aliases": [],
-      "title": "",
-      "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
-      "published": "2026-11-05T15:46:26.488Z",
-      "updated": "2026-11-05T17:18:17.809Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "OpenBSD OpenSSH"
-      ],
-      "references": [
-        "https://www.openssh.org/releasenotes.html#10.6p2",
-        "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482",
-        "https://news.ycombinator.com/item?id=50377976",
-        "https://news.ycombinator.com/item?id=50378228",
-        "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2",
-        "https://hachyderm.io/@damienmiller/117563026759098135",
-        "https://github.com/predkambrij/sshhole-repro",
-        "https://github.com/leonjza/sshhole-lab",
-        "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
-        "https://news.ycombinator.com/item?id=50379704"
-      ],
-      "exploit_ref": true,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "poc",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-05T18:01:59.685330+00:00",
-      "matched": [
-        "openssh"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 56.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -29153,6 +29146,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-112902",
+      "aliases": [],
+      "title": "Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+      "description": "Pillow is a Python imaging library. In versions through 12.3.0, the libtiff TIFF encoder can pass arguments to  TIFFSetField()  that do not match libtiff’s definition of the corresponding tag. When an application saves attacker-controlled image metadata through this encoder, crafted tag values can cause invalid memory reads, copying process memory into the encoded output or crashing the process. Applications that return the encoded output to an attacker can disclose that memory. The issue is reachable when re-saving compressed TIFF images and through certain conversions that preserve EXIF metadata into compressed TIFF output. This vulnerability is fixed in version 13.0.0.",
+      "published": "2026-11-05T20:38:07.769Z",
+      "updated": "2026-11-05T21:18:36.840",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "python-pillow Pillow"
+      ],
+      "references": [
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-xvh5-g6gv-559v",
+        "https://github.com/python-pillow/Pillow/pull/10227",
+        "https://github.com/python-pillow/Pillow/commit/570df030c0d30c2bf5336b2ab59f3902d8ab0b6d",
+        "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-46300",
       "aliases": [],
       "title": "Linux Kernel Missing Initialization of a Variable Vulnerability",
@@ -32658,53 +32701,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-121113",
-      "aliases": [],
-      "title": "",
-      "description": "Buffer overflow in PDFium in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted PDF file. (Chromium security severity: High)",
-      "published": "2026-11-03T21:17:18.963",
-      "updated": "2026-11-04T19:17:27.250",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/567106301"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00267,
-      "epss_percentile": 0.18921,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-83515",
       "aliases": [],
       "title": "",
@@ -35191,6 +35187,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-121106",
+      "aliases": [],
+      "title": "",
+      "description": "Information leak in Omnibox in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to leak sensitive information via UI Interaction. (Chromium security severity: Medium)",
+      "published": "2026-11-03T21:17:16.960",
+      "updated": "2026-11-05T22:26:27.627",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/517448378"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00247,
+      "epss_percentile": 0.16044,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108467",
       "aliases": [],
       "title": "",
@@ -36351,6 +36395,56 @@
         "popularity": 30,
         "cvss": 17.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112899",
+      "aliases": [],
+      "title": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+      "description": "Pillow is a Python imaging library. In versions 2.3.0 through 12.3.0, EPS rendering does not validate the scaled image dimensions before invoking Ghostscript. Applications that process untrusted EPS or PostScript files using an application-selected scale greater than one can incur excessive Ghostscript CPU and temporary disk consumption. In versions with decompression-bomb protection, the scaled output is checked only after Ghostscript has completed rendering, allowing resource consumption beyond the configured pixel limit. The amplification depends on the scale selected by the application, not an attacker-controlled scale value. This issue is fixed in version 13.0.0.",
+      "published": "2026-11-05T20:35:43.619Z",
+      "updated": "2026-11-05T21:18:36.663",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "python-pillow Pillow"
+      ],
+      "references": [
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-vx6w-vv9f-6gvg",
+        "https://github.com/python-pillow/Pillow/pull/10112",
+        "https://github.com/python-pillow/Pillow/commit/3e8cc105588d1dfe062fcada0b6058c1b5f14b65",
+        "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -37586,6 +37680,54 @@
       "ssvc_exploitation": "",
       "epss": 0.00175,
       "epss_percentile": 0.0707,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121110",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Shopping in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-03T21:17:17.557",
+      "updated": "2026-11-05T22:25:48.693",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/569006789"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00175,
+      "epss_percentile": 0.07069,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -50960,6 +51102,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-105031",
+      "aliases": [],
+      "title": "",
+      "description": "When using the OpenSSL TLS implementation, both the pn_ssl_domain_set_trusted_ca_db() & pn_tls_config_set_trusted_certs() APIs added to rather than replaced the default system trust anchors. Leading to potentially trusting unexpected peer certificates.\n\n\n\nThis can be worked around by setting the SSL_CERT_FILE environment variable for the application to /dev/null.\n\n\n\nThis issue does not affect the Win32 SChannel TLS implementation.\n\n\n\nThis issue affects Apache Qpid Proton C: through 0.40.0.\n\n\n\nUsers are recommended to upgrade to version 0.41.1, which fixes the issue.",
+      "published": "2026-10-29T11:17:24.290",
+      "updated": "2026-11-05T22:17:42.630",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://lists.apache.org/thread.html/lc10nrjt2dwcjjhrsgoyy5tqkntsnor4",
+        "http://www.openwall.com/lists/oss-security/2026/10/28/22"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00134,
+      "epss_percentile": 0.02952,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-29T15:34:30.523090+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.2,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70076",
       "aliases": [],
       "title": "",
@@ -63389,6 +63577,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123158",
+      "aliases": [],
+      "title": "",
+      "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+      "published": "2026-11-05T16:17:47.110",
+      "updated": "2026-11-05T21:18:45.663",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/leonjza/sshhole-lab",
+        "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482",
+        "https://github.com/predkambrij/sshhole-repro",
+        "https://hachyderm.io/@damienmiller/117563026759098135",
+        "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2",
+        "https://news.ycombinator.com/item?id=50377976",
+        "https://news.ycombinator.com/item?id=50378228",
+        "https://www.openssh.org/releasenotes.html#10.6p2",
+        "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
+        "https://github.com/google/goonami-scanner/pull/277"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T18:01:59.685330+00:00",
+      "matched": [
+        "openssh"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-99064",
       "aliases": [],
       "title": "",
@@ -63689,7 +63930,7 @@
       "title": "",
       "description": "SQLite before 3.54.0 built with FTS5 contains a heap buffer overflow in fts5MergeRowidLists() that undersizes the output buffer when merging detail=none prefix doclists. Attackers who can populate a detail=none FTS5 table with negative rowids and run a prefix MATCH query can write past the allocation, corrupting heap memory and crashing the process.",
       "published": "2026-10-30T12:16:36.027",
-      "updated": "2026-11-03T16:09:21.160",
+      "updated": "2026-11-05T21:18:41.047",
       "cvss": 8.5,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -63713,8 +63954,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00144,
-      "epss_percentile": 0.03701,
+      "epss": 0.00162,
+      "epss_percentile": 0.05459,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -71572,6 +71813,108 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111770",
+      "aliases": [],
+      "title": "Model Context Protocol TypeScript SDK: Shared transport or server instances delivered one HTTP client's messages to another",
+      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 2.0.0 until 2.3.0 in @modelcontextprotocol/server, applications that shared one stateless HTTP transport or one McpServer or Server instance among multiple clients could deliver responses and notifications to the wrong client. The affected surface is an MCP server reached over HTTP by multiple clients. The trigger is reuse of one stateless transport or server instance. Messages were associated with a connection using only the JSON-RPC request identifier. SDK clients start request identifiers at zero, so collisions occur in normal operation. Cross-client delivery exposes one client's responses and notifications to another client. The issue requires an HTTP endpoint reachable by more than one client and an application that constructs the server or transport once at startup instead of once per request or session. stdio servers and factory-created per-call servers are not affected. Upgrading causes reused instances to fail and therefore requires an application code change. This issue is fixed in @modelcontextprotocol/server 2.3.0.",
+      "published": "2026-11-05T21:28:00.414Z",
+      "updated": "2026-11-05T22:17:45.817",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol typescript-sdk",
+        "@modelcontextprotocol server"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-jm63-cq47-j5jp",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2918",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/84804c22e45a662675a198f853b7f00063838a8d",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116472",
+      "aliases": [],
+      "title": "ingress-nginx mirror-target self-DOS",
+      "description": "A security issue was discovered in ingress-nginx where a user with permission to create an Ingress may be able to cause denial of service of the ingress-nginx data plane, or possibly redirect traffic from other Ingresses. Kubernetes clusters are only affected if they are using ingress-nginx.\n\nDue to a missing check, the mirror-target Ingress annotation can be used to target an unauthenticated configuration API within the ingress-nginx controller, allowing write commands to be submitted. Corrupting the data within that configuration API results in all traffic through ingress-nginx being dropped until an Ingress configuration change or a controller restart causes the data to be recreated correctly.\n\nIn principle, this write access could also be used to redirect traffic from other Ingresses controlled by the same ingress-nginx instance. In practice, there is negligible additional risk: such redirection would require privileged information about internal ingress-nginx state, and users can already redirect traffic from other Ingresses controlled by the same ingress-nginx anyway.",
+      "published": "2026-11-05T18:13:29.564Z",
+      "updated": "2026-11-05T22:17:48.357",
+      "cvss": 2.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Kubernetes ingress-nginx",
+        "SUSE Rancher Prime RKE2 ingress-nginx"
+      ],
+      "references": [
+        "https://github.com/kubernetes/kubernetes/issues/143852",
+        "http://www.openwall.com/lists/oss-security/2026/11/05/4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "nginx",
+        "kubernetes"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 5.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98169",
       "aliases": [],
       "title": "",
@@ -74243,18 +74586,16 @@
     {
       "id": "CVE-2026-119572",
       "aliases": [],
-      "title": "Traefik 3.7.0-ea.1 before 3.7.15 mTLS Bypass via Ingress NGINX Provider",
+      "title": "",
       "description": "Traefik from 3.7.0-ea.1 before 3.7.15 contains an authentication bypass vulnerability in the Kubernetes Ingress NGINX provider that silently disables mTLS configured via the auth-tls-secret annotation. When another Ingress declares a path on the same host without matching auth-tls settings, Traefik falls back to default TLS options, letting unauthenticated attackers reach backends requiring client certificates.",
-      "published": "2026-10-30T13:18:11.594Z",
-      "updated": "2026-10-30T14:16:46.217",
-      "cvss": 7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N",
+      "published": "2026-10-30T14:16:46.070",
+      "updated": "2026-11-05T22:17:50.927",
+      "cvss": 7.0,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "traefik traefik"
-      ],
+      "vendor_products": [],
       "references": [
         "https://github.com/traefik/traefik/security/advisories/GHSA-p8wx-ph99-xgcr",
         "https://www.vulncheck.com/advisories/traefik-3.7.0-ea.1-before-3.7.15-mtls-bypass-via-ingress-nginx-provider"
@@ -74264,11 +74605,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00188,
+      "epss_percentile": 0.08521,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -74284,8 +74624,9 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 21.0,
-        "cvss": 14,
-        "unauth_network": 5
+        "cvss": 14.0,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -76791,6 +77132,181 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111768",
+      "aliases": [],
+      "title": "Model Context Protocol TypeScript SDK: One HTTP request within the default size limit could exhaust server memory during validation",
+      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.3.0 until 1.32.0 in @modelcontextprotocol/sdk and from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, HTTP servers did not enforce a limit on the number of array elements and object keys validated in one request. The affected surface is validation of HTTP requests containing arrays or object keys. The trigger is an array-element or object-key validation workload large enough to exhaust memory while remaining within the request size limit. A single request within the default 4 MiB limit can terminate the process with JavaScript heap exhaustion. No credentials are required unless the application authenticates before SDK processing. Tools accepting arrays or records carry the greatest risk. stdio-only servers do not expose the HTTP request path. Upgrading alone does not enable the new validation bound. Operators must configure both a tool-input element bound and an appropriate request body size limit. This issue is fixed in @modelcontextprotocol/sdk 1.32.0 and @modelcontextprotocol/server 2.3.0.",
+      "published": "2026-11-05T21:22:44.119Z",
+      "updated": "2026-11-05T22:17:45.457",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol typescript-sdk",
+        "@modelcontextprotocol server",
+        "@modelcontextprotocol sdk"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-46jr-4wx8-v453",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2926",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2927",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/6d8dbc6cb590edf766fcb66b636ca6b654e99c37",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/fd26801b3b387742fe24a90ed4b275dd6072209f",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-yaa0witbl2me",
+      "aliases": [],
+      "title": "Cloudflare: Workers Builds Issues",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-05T19:51:39.176Z",
+      "updated": "2026-11-05T20:20:10.166Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/yaa0witbl2me"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-05T20:20:10.166Z",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-pfbmpxxfq1cy",
+      "aliases": [],
+      "title": "GitHub: Degraded performance for multiple GitHub services",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-05T23:36:06.204Z",
+      "updated": "2026-11-05T23:36:06.204Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/s5bs6jn41fwh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-vercel-w661l7k3kf4p",
+      "aliases": [],
+      "title": "Vercel: Build delays and degraded Vercel Dashboard performance",
+      "description": "Vercel の公式ステータスページに掲載された障害",
+      "published": "2026-11-05T18:25:10.527Z",
+      "updated": "2026-11-05T18:50:23.107Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/y6fmg7s9m5t2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:vercel"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-05T18:50:23.107Z",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "vercel"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -78647,52 +79163,6 @@
       "ssvc_exploitation": "",
       "epss": 0.00166,
       "epss_percentile": 0.05896,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 39.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 13.0,
-        "unauth_network": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121106",
-      "aliases": [],
-      "title": "",
-      "description": "Information leak in Omnibox in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to leak sensitive information via UI Interaction. (Chromium security severity: Medium)",
-      "published": "2026-11-03T21:17:16.960",
-      "updated": "2026-11-04T19:17:27.057",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/517448378"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.002,
-      "epss_percentile": 0.10006,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -81431,29 +81901,29 @@
     },
     {
       "id": "CVE-2026-111769",
-      "aliases": [
-        "GHSA-6prh-2h8m-c8cw"
-      ],
-      "title": "MCP TypeScript client SDK: HTTP client transports and OAuth requests followed cross-origin redirects and re-sent custom headers and request bodies",
-      "description": "### Summary\nIn affected versions, the SDK's HTTP client transports and OAuth requests followed redirects to any origin.\n\nIf an MCP server or authorization server redirected a request to another origin, that origin received custom request headers (such as an `X-API-Key` set in `requestInit.headers`) and the `mcp-session-id` header. On a `307` or `308` it also received the request body, including OAuth token requests with their `refresh_token` and `client_secret`.\n\nOn current runtimes `fetch` already drops the `Authorization` header across origins.\n\n### Am I affected?\nYes, if your application uses `StreamableHTTPClientTransport`, `SSEClientTransport`, or the SDK's OAuth client functions such as `auth()`. stdio clients are not affected.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` all versions through 1.31.0\n- `@modelcontextprotocol/client` 2.0.0 through 2.2.0\n\n### Fix\nUpgrade to:\n\n- 1.x: `@modelcontextprotocol/sdk` 1.32.0 or later\n- 2.x: `@modelcontextprotocol/client` 2.3.0 or later\n\nRedirects are now followed only within the same origin, and not at all in browsers. If your MCP server or authorization server redirects to another origin on purpose, configure the final URL instead. Setting `redirectPolicy: 'follow'` on a transport restores the old behaviour and the exposure.\n\nIf a redirect may have reached a host you do not control, rotate the API keys and `client_secret` your application held and revoke its tokens.\n\nIf you cannot upgrade yet, pass a `fetch` that refuses redirects, for example `(url, init) => fetch(url, { ...init, redirect: 'error' })`.",
-      "published": "2026-10-20T18:26:30Z",
-      "updated": "2026-11-03T22:10:25Z",
+      "aliases": [],
+      "title": "Model Context Protocol TypeScript SDK: HTTP client transports and OAuth requests followed cross-origin redirects and re-sent custom headers and request bodies",
+      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. Prior to 1.32.0 in @modelcontextprotocol/sdk and from 2.0.0 until 2.3.0 in @modelcontextprotocol/client, the HTTP client transports and OAuth client requests followed redirects to a different origin while retaining custom request headers and, for HTTP 307 or 308 responses, request bodies. The affected surfaces are StreamableHTTPClientTransport, SSEClientTransport, and OAuth client functions such as auth(). The trigger is an HTTP redirect to another origin. Custom headers and mcp-session-id can be re-sent to the redirected origin. HTTP 307 and 308 redirects can also re-send the request body. OAuth request bodies can contain refresh_token and client_secret values. Current runtimes already strip the Authorization header across origins. stdio clients do not use the affected HTTP path. A malicious or compromised MCP or authorization server could therefore receive API keys, session identifiers, OAuth refresh tokens, or OAuth client secrets. Restoring unrestricted redirect following after upgrading restores the exposure. This issue is fixed in @modelcontextprotocol/sdk 1.32.0 and @modelcontextprotocol/client 2.3.0.",
+      "published": "2026-11-05T21:19:36.708Z",
+      "updated": "2026-11-05T22:17:45.637",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
       "severity": "medium",
       "cpes": [],
-      "packages": [
-        "npm:@modelcontextprotocol/sdk",
-        "npm:@modelcontextprotocol/client"
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol typescript-sdk",
+        "@modelcontextprotocol sdk",
+        "@modelcontextprotocol client"
       ],
-      "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-6prh-2h8m-c8cw",
         "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-6prh-2h8m-c8cw",
         "https://github.com/modelcontextprotocol/typescript-sdk/pull/2901",
         "https://github.com/modelcontextprotocol/typescript-sdk/pull/2902",
         "https://github.com/modelcontextprotocol/typescript-sdk/commit/30bfe5139f4b0825c90cd725f9a7e3f9af5e120d",
-        "https://github.com/modelcontextprotocol/typescript-sdk/commit/433eb413dc305ebeb93b8ebcde0095a8fc0d5fa0"
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/433eb413dc305ebeb93b8ebcde0095a8fc0d5fa0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -81464,7 +81934,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -83596,52 +84067,6 @@
       "ssvc_exploitation": "",
       "epss": 0.00185,
       "epss_percentile": 0.08183,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 36.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 10.8,
-        "unauth_network": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121110",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Shopping in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-03T21:17:17.557",
-      "updated": "2026-11-04T21:17:59.860",
-      "cvss": 5.4,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/569006789"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00185,
-      "epss_percentile": 0.08182,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -87660,6 +88085,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119408",
+      "aliases": [],
+      "title": "",
+      "description": "n8n before 2.42.6, 2.43.x before 2.43.3, and 3.x before 3.0.1 contains a remote code execution vulnerability via deprecated Function, Function Item, and LangChain Code nodes running outside task runner isolation. Authenticated users who can create, modify, or import workflows naming these hidden node types can execute JavaScript in the n8n main process.",
+      "published": "2026-10-30T12:16:37.283",
+      "updated": "2026-11-05T22:17:49.233",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://abraxaslabs.tech/research/n8n-function-vm2",
+        "https://github.com/n8n-io/n8n",
+        "https://github.com/n8n-io/n8n/blob/n8n@2.42.0/packages/nodes-base/nodes/Function/Function.node.ts#L167",
+        "https://github.com/n8n-io/n8n/commit/ea8417e29ad6f8b981d9a04b17283d5d77f2b5bb",
+        "https://github.com/n8n-io/n8n/releases/tag/n8n@2.42.6",
+        "https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.3",
+        "https://github.com/n8n-io/n8n/releases/tag/n8n@3.0.1",
+        "https://github.com/n8n-io/n8n/security/advisories/GHSA-9p7v-45m2-wxgj",
+        "https://www.vulncheck.com/advisories/n8n-before-2.42.6-2.43.3-and-3.0.1-code-execution-outside-task-runner-isolation-via-deprecated-function-nodes",
+        "https://abraxaslabs.tech/research/n8n-function-vm2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00627,
+      "epss_percentile": 0.50221,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-10-30T13:37:12.002169+00:00",
+      "matched": [
+        "langchain"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116591",
       "aliases": [
         "GHSA-fpmh-frq8-7rj8"
@@ -87710,61 +88189,6 @@
         "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119408",
-      "aliases": [],
-      "title": "n8n before 2.42.6, 2.43.3 and 3.0.1 Code Execution Outside Task Runner Isolation via Deprecated Function Nodes",
-      "description": "n8n before 2.42.6, 2.43.x before 2.43.3, and 3.x before 3.0.1 contains a remote code execution vulnerability via deprecated Function, Function Item, and LangChain Code nodes running outside task runner isolation. Authenticated users who can create, modify, or import workflows naming these hidden node types can execute JavaScript in the n8n main process.",
-      "published": "2026-10-30T11:30:45.729Z",
-      "updated": "2026-10-30T12:16:37.413",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "n8n-io n8n"
-      ],
-      "references": [
-        "https://github.com/n8n-io/n8n/security/advisories/GHSA-9p7v-45m2-wxgj",
-        "https://github.com/n8n-io/n8n/commit/ea8417e29ad6f8b981d9a04b17283d5d77f2b5bb",
-        "https://github.com/n8n-io/n8n/blob/n8n@2.42.0/packages/nodes-base/nodes/Function/Function.node.ts#L167",
-        "https://github.com/n8n-io/n8n/releases/tag/n8n@2.42.6",
-        "https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.3",
-        "https://github.com/n8n-io/n8n/releases/tag/n8n@3.0.1",
-        "https://abraxaslabs.tech/research/n8n-function-vm2",
-        "https://github.com/n8n-io/n8n",
-        "https://www.vulncheck.com/advisories/n8n-before-2.42.6-2.43.3-and-3.0.1-code-execution-outside-task-runner-isolation-via-deprecated-function-nodes"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-30T13:37:12.002169+00:00",
-      "matched": [
-        "langchain"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.4,
-        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -87821,7 +88245,7 @@
       "title": "",
       "description": "Authentication bypass by spoofing in X509Authenticator and X509AuthenticationListener of Symfony versions prior to 5.4.56, 6.x prior to 6.4.50, 7.x prior to 7.4.23, and 8.x prior to 8.1.11 allows an attacker holding a certificate from the application's trusted CA who can influence the CN to authenticate as an arbitrary user of the application, including a privileged one, following an incomplete fix for CVE-2026-45063.\nX509Authenticator extracts the user identifier from the Subject DN (Distinguished Name) that the web server passes in $_SERVER['SSL_CLIENT_S_DN']. The fix for CVE-2026-45063 anchored that extraction to an RDN (Relative Distinguished Name) boundary, but the regular expression used was not escape-aware. The expression runs against an already serialized DN, so it cannot tell an RDN separator from a separator character that occurs inside a value. Under RFC 2253, used by Apache and by nginx's $ssl_client_s_dn, a comma inside a value is escaped as \\, and the expression reads it as a separator regardless. RFC 2253 also does not treat / as a separator, so it leaves it bare inside a value, while the expression treats every / as one. The legacy X509_NAME_oneline() format, used by Apache's LegacyDNStringFormat and by nginx's $ssl_client_s_dn_legacy, is the mirror image: it escapes / as \\/ and leaves , bare. In that format, a certificate with no emailAddress attribute, or whose poisoned CN precedes it, authenticates as the smuggled address.\n\n\n\n\n\nTo cover both RFC 2253 and the legacy X509_NAME_oneline() format, X509Authenticator and X509AuthenticationListener now split the DN into RDNs before looking for the attribute, instead of matching the attribute against the serialized string. They select the separator from the serialization, split on unescaped occurrences of that separator only, unescape each RDN afterwards with the rules of its format, and require the attribute to span a whole RDN. The accepted value grammar is unchanged.\n\n\n\n\nApplications that pass a per-attribute user key (such as SSL_CLIENT_S_DN_Email) and deployments whose CA generates or validates the subject are not affected by this vulnerability.",
       "published": "2026-11-04T13:17:25.890",
-      "updated": "2026-11-04T19:17:24.867",
+      "updated": "2026-11-05T19:17:14.050",
       "cvss": 7.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -87838,8 +88262,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0027,
+      "epss_percentile": 0.1937,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -87856,7 +88280,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 21.0,
-        "cvss": 15.4
+        "cvss": 15.4,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -88250,6 +88675,53 @@
         "popularity": 14.0,
         "cvss": 17.0,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-110930",
+      "aliases": [],
+      "title": "",
+      "description": "Codex Desktop for Windows does not correctly check quotation marks in project paths from Windows Explorer. If a user selects \"Open project in ChatGPT\" for an attacker-controlled library's child item, the path can add application startup arguments. These arguments can run attacker-controlled code with the current Windows user's permissions before sign-in or project trust approval.",
+      "published": "2026-11-05T19:55:30.438Z",
+      "updated": "2026-11-05T21:18:35.430",
+      "cvss": 8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpenAI Codex Desktop for Windows",
+        "OpenAI Codex Desktop for Windows (Microsoft Store/MSIX package)"
+      ],
+      "references": [
+        "https://openai.com/security/advisories/cve-2026-110930/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16
       },
       "ai_analysis": ""
     },
@@ -91012,6 +91484,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-100395",
+      "aliases": [],
+      "title": "LXC: lxc-copy host-context hostname update follows symlink",
+      "description": "LXC is a userspace interface for the Linux kernel containment features used to create and manage system containers. In LXC 7.0.0 and earlier, lxc-copy and the public liblxc clone() API can follow attacker-controlled symbolic links while updating /etc/hostname in a copied container root filesystem. The affected surfaces are lxc-copy and liblxc's public lxc_container::clone() API. The privileged cloning process must run as root. The source rootfs must be attacker-controlled or less trusted. A symlink can be placed at etc/hostname or in an intermediate component. The clone operation preserves the symlink before updating the hostname. The vulnerable write truncates and overwrites an existing file outside the destination rootfs. When root clones an untrusted container without LXC_CLONE_KEEPNAME, the copied symlink can resolve outside the destination rootfs and cause the privileged process to overwrite an existing host file with the destination container name. Unprivileged use and managers with independent cloning implementations are not affected. LXC_CLONE_KEEPNAME avoids the hostname update and therefore the affected write.",
+      "published": "2026-11-05T21:45:58.175Z",
+      "updated": "2026-11-05T22:17:41.803",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "lxc lxc"
+      ],
+      "references": [
+        "https://github.com/lxc/lxc/security/advisories/GHSA-r23j-58gg-pjjc",
+        "https://github.com/lxc/lxc/commit/6424a91a55efc54edc25ca46e9165bd9f35b50b7",
+        "https://github.com/lxc/lxc/commit/fa12709a79c2b63b3918297d7505108fcc840eb6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106072",
       "aliases": [],
       "title": "",
@@ -91287,6 +91807,58 @@
       "first_seen": "2026-11-04T01:22:55.664487+00:00",
       "matched": [
         "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123273",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 and 6.9.13-60 Infinite Loop via SVG Decoder",
+      "description": "ImageMagick before 7.1.2-35 and 6.9.13-60 contains an infinite loop vulnerability in the SVG decoder because QueueAuthenticPixelCacheNexus in MagickCore/cache.c fails to validate requested region width and height. Attackers can supply a crafted SVG image that repeatedly requests a non-advancing pixel region, consuming CPU and hanging the decoding worker.",
+      "published": "2026-11-05T18:45:36.913Z",
+      "updated": "2026-11-05T19:17:21.047",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-q66g-3m63-78mh",
+        "https://github.com/ImageMagick/ImageMagick/commit/c5f2c6c9fb1458f960a506691c9351e9da6d2247",
+        "https://github.com/ImageMagick/ImageMagick6/commit/712e523e7f746d35c963b78555e1c24364a9426e",
+        "https://github.com/ImageMagick/ImageMagick/blob/3a9639c0bd21f61f22fcce4c5f6838f1f0d8f738/MagickCore/cache.c#L4348",
+        "https://github.com/ImageMagick/ImageMagick/releases/tag/7.1.2-35",
+        "https://github.com/ImageMagick/ImageMagick6/releases/tag/6.9.13-60",
+        "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-35-and-6.9.13-60-infinite-loop-via-svg-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "imagemagick"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -92723,6 +93295,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119434",
+      "aliases": [],
+      "title": "Decompression bomb in ezstd:decompress_using_ddict/2 allows BEAM memory exhaustion via unbounded output buffer",
+      "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in silviucpp ezstd allows an attacker who supplies a zstd frame to ezstd:decompress_using_ddict/2 to exhaust memory and terminate the Erlang VM via a small frame that declares a very large content size.\n\nzstd_nif_decompress_using_ddict in c_src/ezstd_nif.cc reads the frame's declared content size with ZSTD_getFrameContentSize and passes it directly to enif_make_new_binary, without the 1 GiB MAX_BUFFER_SIZE check that ezstd:decompress/1 applies before allocating. A valid 65,550-byte frame of RLE blocks declaring 2 GiB is rejected by ezstd:decompress/1 but is fully allocated and decompressed by the dictionary path. The allocation happens inside a NIF, so when it exceeds the memory available to the VM the operating system kills the whole node rather than the calling process.\n\nThis issue affects ezstd: from 1.0.5 before 1.2.5.",
+      "published": "2026-11-05T20:15:56.311Z",
+      "updated": "2026-11-05T21:18:41.210",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [
+        "silviucpp:ezstd"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "silviucpp ezstd",
+        "ezstd",
+        "silviucpp/ezstd"
+      ],
+      "references": [
+        "https://github.com/silviucpp/ezstd/releases/tag/v1.2.5",
+        "https://cna.erlef.org/cves/CVE-2026-119434.html",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-119434",
+        "https://github.com/silviucpp/ezstd/commit/6730128b1d35eca02a2028671421471ff651f423",
+        "https://github.com/silviucpp/ezstd/commit/e34f4a4f6dc18d990d1cece2d5fceef8e934a195"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "zstd"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112615",
       "aliases": [],
       "title": "",
@@ -93279,6 +93905,66 @@
         "cvss": 8.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111771",
+      "aliases": [],
+      "title": "Model Context Protocol TypeScript SDK: Server bearer authentication accepted tokens issued for another service",
+      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.6.0 until 1.32.0 in @modelcontextprotocol/sdk, from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, from 2.0.0 until 2.0.2 in @modelcontextprotocol/express, and from 2.0.0 until 2.3.1 in @modelcontextprotocol/server-legacy, server-side bearer authentication could accept a valid access token issued for a different service because the SDK did not enforce the token audience. The affected surface is server-side HTTP bearer authentication. The trigger is a valid token whose audience names another service. The authorization server must issue tokens for multiple services, and the application's verifyAccessToken() must not independently validate aud. Applications already validating aud inside verifyAccessToken() are not affected. An attacker with a token for another service could authenticate to the MCP server and obtain the confidentiality and integrity capabilities granted to an authenticated caller. Upgrading alone leaves the new audience validation disabled. Operators must enable audience validation and provide the token audience together. Enabling only the expected audience check causes every request to receive HTTP 401. This issue is fixed in @modelcontextprotocol/sdk 1.32.0, @modelcontextprotocol/server 2.3.0, @modelcontextprotocol/express 2.0.2, and @modelcontextprotocol/server-legacy 2.3.1.",
+      "published": "2026-11-05T21:08:55.758Z",
+      "updated": "2026-11-05T21:18:35.973",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "modelcontextprotocol typescript-sdk",
+        "@modelcontextprotocol sdk",
+        "@modelcontextprotocol server",
+        "@modelcontextprotocol express",
+        "@modelcontextprotocol server-legacy"
+      ],
+      "references": [
+        "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-rvq5-wwqv-78pq",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2929",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2930",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2952",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/40f8f4e229d963cd7fd2890bda2aeebe7005299a",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a0724d14cf34a27a3b070224d2996cdd611df9f",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a1867390b91b8836f49af76c45427279f513325",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/express@2.0.2",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server-legacy@2.3.1",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6
       },
       "ai_analysis": ""
     },
@@ -96864,7 +97550,7 @@
       "title": "",
       "description": "Incorrect authorization in the issuer resolution logic in AWS Private CA Connector for Kubernetes (aws-privateca-issuer) before v1.10.1 might allow an authenticated remote user to obtain certificates, including subordinate CA certificates, signed by a cluster-scoped AWS Private CA issuer that their approval policy does not authorize.\n\n\n\nTo remediate this issue, users should upgrade aws-privateca-issuer to version v1.10.1 or the AWS Private CA Connector for Kubernetes EKS add-on to version v1.10.1-eksbuild.1, and update any certificate requests, Certificate resources, or Ingress annotations whose issuerRef.kind is missing, incorrect, or does not match the referenced issuer, since v1.10.1 requires issuerRef.kind to be exactly AWSPCAIssuer or AWSPCAClusterIssuer and to match the issuer it references.",
       "published": "2026-10-29T17:18:07.667",
-      "updated": "2026-10-30T17:07:53.700",
+      "updated": "2026-11-05T22:17:48.873",
       "cvss": 8.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:L/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -96882,7 +97568,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0017,
-      "epss_percentile": 0.06366,
+      "epss_percentile": 0.06375,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -98941,7 +99627,7 @@
       "title": "",
       "description": "SQLite before 3.54.0 contains an authorization bypass vulnerability in lookupName() that invokes the authorizer only for the first joined table's USING column. Attackers able to submit SQL can query a shared USING column in a RIGHT or FULL JOIN to read columns denied via sqlite3_set_authorizer() SQLITE_READ restrictions.",
       "published": "2026-10-30T12:16:36.650",
-      "updated": "2026-11-03T15:52:13.787",
+      "updated": "2026-11-05T22:17:49.053",
       "cvss": 2.0,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "low",
@@ -98967,8 +99653,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00118,
-      "epss_percentile": 0.01724,
+      "epss": 0.00129,
+      "epss_percentile": 0.02515,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -98994,22 +99680,20 @@
     {
       "id": "CVE-2026-123059",
       "aliases": [],
-      "title": "Keycloak admin client secret stored in cleartext in a ConfigMap in Eclipse BaSyx Helm Charts",
+      "title": "",
       "description": "In Eclipse BaSyx Helm Charts version 2.2.0 of the `aas-basyx-v2-full` chart, deployments with the bundled Keycloak enabled store the client secret of the `basyx-technical-user` OAuth2 client in cleartext in a Kubernetes ConfigMap. This client uses the client-credentials grant and its service account holds the realm `admin` role.\n\n\n\nThe chart correctly writes `keycloak.technicalUser.clientSecret` to a Kubernetes Secret, but the template `basyx-keycloak-realm.yaml` also substitutes the same value into the Keycloak realm-import JSON, which is stored in the ConfigMap `<keycloak.fullnameOverride>-realm`. A principal that can read ConfigMaps but not Secrets in the release namespace, such as a holder of the built-in Kubernetes `view` ClusterRole, can read the client secret from the ConfigMap. They can then exchange it at the Keycloak token endpoint for an access token with the `admin` role. That token grants full create, read, update, delete and execute rights on all BaSyx repositories and registries in the deployment.\n\n\n\nThe bundled Keycloak is disabled by default. No fixed release of the `aas-basyx-v2-full` chart exists. Affected users should migrate to the `basyx` chart, or deploy without the bundled Keycloak and rotate the `basyx-technical-user` client secret.",
-      "published": "2026-11-05T13:13:17.917Z",
-      "updated": "2026-11-05T14:17:04.940",
+      "published": "2026-11-05T14:17:04.940",
+      "updated": "2026-11-05T22:17:55.573",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Eclipse Foundation Eclipse BaSyx Helm Charts"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/eclipse-basyx/charts/security/advisories/GHSA-6438-759f-6f8v",
         "https://github.com/eclipse-basyx/charts/pull/46",
         "https://github.com/eclipse-basyx/charts/releases/tag/aas-basyx-v2-full-2.2.0",
+        "https://github.com/eclipse-basyx/charts/security/advisories/GHSA-6438-759f-6f8v",
         "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/546"
       ],
       "exploit_ref": false,
@@ -99021,7 +99705,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -99043,22 +99726,20 @@
     {
       "id": "CVE-2026-123047",
       "aliases": [],
-      "title": "Keycloak admin user password stored in cleartext in a ConfigMap in Eclipse BaSyx Helm Charts",
+      "title": "",
       "description": "In Eclipse BaSyx Helm Charts versions 3.0.0-rc.1 to 3.12.1 of the `basyx` chart, deployments with the bundled Keycloak enabled store the passwords of the Keycloak users that the chart creates in cleartext in a Kubernetes ConfigMap.\n\n\n\nThe template `keycloak-init-config.yaml` rendered `keycloak.initialization.users`, including each user's `credentials[].value`, as `users.json` into the persistent ConfigMap `<release>-basyx-keycloak-init-config`. By default this includes the bootstrap administrator user. That user holds the `admin` role and has a non-temporary password. A principal that can read ConfigMaps but not Secrets in the release namespace, such as a holder of the built-in Kubernetes `view` ClusterRole, can read the password from the ConfigMap and log in to Keycloak as this user. The resulting token carries the `admin` role, which the default BaSyx ABAC rules map to full rights on all BaSyx APIs in the deployment.\n\n\n\nThe bundled Keycloak is disabled by default. The issue is fixed in version 3.12.2 of the `basyx` chart, which moves the initialization users to the Keycloak credentials Secret. Affected users should upgrade and change the passwords of users that were created through the chart.",
-      "published": "2026-11-05T12:11:12.591Z",
-      "updated": "2026-11-05T13:17:07.493",
+      "published": "2026-11-05T13:17:07.493",
+      "updated": "2026-11-05T19:17:17.360",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Eclipse Foundation Eclipse BaSyx Helm Charts"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/eclipse-basyx/charts/security/advisories/GHSA-6438-759f-6f8v",
         "https://github.com/eclipse-basyx/charts/pull/106",
         "https://github.com/eclipse-basyx/charts/releases/tag/basyx-3.12.2",
+        "https://github.com/eclipse-basyx/charts/security/advisories/GHSA-6438-759f-6f8v",
         "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/547"
       ],
       "exploit_ref": false,
@@ -99070,7 +99751,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -99620,6 +100300,55 @@
       "first_seen": "2026-11-04T22:15:13.118932+00:00",
       "matched": [
         "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-88984",
+      "aliases": [],
+      "title": "Kubeflow Pipelines: RBAC bypass on shared pipelines allows any authenticated user to delete or modify global pipelines",
+      "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.16.1, the multi-user API server treats the empty namespace used by shared or global pipelines as an authorization exception for modification and deletion operations. An authenticated user can modify or delete shared pipeline definitions and versions without the required Kubernetes RBAC permissions, compromising their integrity and availability. Read-only access to shared pipelines remains intentional, single-user deployments intentionally bypass multi-user checks, and execution of a modified pipeline is a conditional downstream consequence. The separate shared-pipeline multipart upload authorization path is outside this advisory and is not remediated by version 2.16.1. This issue is fixed in version 2.16.1.",
+      "published": "2026-11-05T22:13:12.954Z",
+      "updated": "2026-11-05T23:17:01.760",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "kubeflow pipelines"
+      ],
+      "references": [
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-ghgh-57qv-h687",
+        "https://github.com/kubeflow/pipelines/pull/13288",
+        "https://github.com/kubeflow/pipelines/commit/186dd1f3b0403af841c9b4ea7ab94f405339ef6c",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.16.1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "kubernetes"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -102046,7 +102775,7 @@
       "title": "HedgeDoc: Missing validation of incoming permission values on change",
       "description": "HedgeDoc is an open source, real-time collaborative markdown notes application. Prior to 1.11.1, the WebSocket permission handler allows a note owner to store strings outside the supported freely, editable, limited, locked, protected, and private permission values. The viewing and editing checks handle only known values and can otherwise fall through to permissive behavior, making a note readable or writable more broadly than intended. SQLite deployments can persist the invalid value because the database column does not strictly enforce the set, while MySQL and PostgreSQL reject the database update but can leave the in-memory note state inconsistent for connected users until reload or cache eviction. Exploitation requires the note owner to intentionally submit an invalid permission value, and the owner could already choose a legitimate permissive setting, which limits the practical security impact. This issue is fixed in version 1.11.1.",
       "published": "2026-11-05T17:29:59.103Z",
-      "updated": "2026-11-05T17:29:59.103Z",
+      "updated": "2026-11-05T18:16:59.140",
       "cvss": 5.9,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N",
       "severity": "medium",
@@ -102069,7 +102798,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -102839,6 +103569,55 @@
       "score_breakdown": {
         "popularity": 20,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-88982",
+      "aliases": [],
+      "title": "Kubeflow Pipelines: Cross-tenant execution-cache poisoning / output substitution via a namespace-blind cache key in the cache webhook (multi-user)",
+      "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.18.0, the legacy V1/raw-Argo execution cache mutating webhook and cache-server storage path hash selected template fields without the Kubernetes namespace, use the key alone for lookups and duplicate checks, and trust the mutable pipelines.kubeflow.org/execution_cache_key annotation when publishing outputs. In multi-user deployments where tenant namespaces share the cache service, a tenant with workload-submission privileges can read another namespace's cached outputs or seed matching outputs that are substituted into a later step. Standard KFP V2 component pods bypass this cache, matching requires the selected template fields and staleness policy, and arbitrary code execution or service availability impact is not established. This issue is fixed in version 2.18.0.",
+      "published": "2026-11-05T22:25:58.995Z",
+      "updated": "2026-11-05T23:17:01.600",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "kubeflow pipelines"
+      ],
+      "references": [
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-2xwh-426q-42c5",
+        "https://github.com/kubeflow/pipelines/pull/14359",
+        "https://github.com/kubeflow/pipelines/commit/620d0cc89ae0d042a484a003f8ffe6e9a55d347e",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 24.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.8
       },
       "ai_analysis": ""
     },
@@ -117398,49 +118177,6 @@
         "popularity": 14.0,
         "cvss": 7.0,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-105031",
-      "aliases": [],
-      "title": "",
-      "description": "When using the OpenSSL TLS implementation, both the pn_ssl_domain_set_trusted_ca_db() & pn_tls_config_set_trusted_certs() APIs added to rather than replaced the default system trust anchors. Leading to potentially trusting unexpected peer certificates.\n\n\n\nThis can be worked around by setting the SSL_CERT_FILE environment variable for the application to /dev/null.\n\n\n\nThis issue does not affect the Win32 SChannel TLS implementation.\n\n\n\nThis issue affects Apache Qpid Proton C: through 0.40.0.\n\n\n\nUsers are recommended to upgrade to version 0.41.1, which fixes the issue.",
-      "published": "2026-10-29T11:17:24.290",
-      "updated": "2026-10-29T15:43:33.310",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://lists.apache.org/thread.html/lc10nrjt2dwcjjhrsgoyy5tqkntsnor4",
-        "http://www.openwall.com/lists/oss-security/2026/10/28/22"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-10-29T15:34:30.523090+00:00",
-      "matched": [
-        "openssl"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
       },
       "ai_analysis": ""
     },
