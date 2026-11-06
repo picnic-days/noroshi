@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T03:40:33.619708+00:00",
+  "generated_at": "2026-11-06T11:31:43.774082+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -3190,6 +3190,60 @@
         "epss": 0.1
       },
       "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114630",
+      "aliases": [],
+      "title": "ELEX WordPress HelpDesk & Customer Ticketing System <= 3.3.8 - Unauthenticated Arbitrary File Deletion via 'ticket_attachment_path' Parameter",
+      "description": "The ELEX WordPress HelpDesk & Customer Ticketing System plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the factory_reset function in all versions up to, and including, 3.3.8 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). This vulnerability is exploitable via a two-step chain: an unauthenticated attacker first stores an arbitrary ticket_attachment_path value by submitting a ticket through the nopriv eh_crm_new_ticket_post AJAX endpoint (whose nonce is publicly exposed via the [wsdesk_support] shortcode), then triggers the factory_reset routine via a GET request to wp-admin/admin.php?page=wsdesk_factory_reset, which is guarded only by is_admin() — a request-type check — rather than a capability check, causing unlink() to be called on the attacker-supplied path.",
+      "published": "2026-11-06T11:17:35.857Z",
+      "updated": "2026-11-06T11:17:35.857Z",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "elextensions ELEX WordPress HelpDesk & Customer Ticketing System"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2151249a-8e7a-4c7b-89ff-5058942368fb?source=cve",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-init-handler.php#L808",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/elex-helpdesk-customer-support-ticket-system.php#L317",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-ajax-functions-two.php#L265",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-init-handler.php#L52",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-init-handler.php#L271",
+        "https://plugins.trac.wordpress.org/changeset/3775762/elex-helpdesk-customer-support-ticket-system/trunk/includes/class-crm-init-handler.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 73.2,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.2,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15
+      },
+      "ai_analysis": "【状況】WordPressのプラグイン「ELEX WordPress HelpDesk & Customer Ticketing System」に、ログインなしでサーバ上の任意のファイルを削除できる脆弱性があります（CVSS 9.1）。wp-config.php などが消されると、サイトの乗っ取りにつながるおそれがあります。原因は、初期化処理（factory_reset）で権限の確認とファイルパスの検証が足りないことです。悪用の有無は未確認です（CISA KEV 未登録、EPSSは不明）。\n\n【原因の部品】開発元 ELEXtensions のこのプラグイン本体です。ライブラリではないため、組み込み経由の影響はありません。\n\n【影響範囲】3.3.8 以前のすべてのバージョンです（有効インストールは200件以上）。\n\n【対応策】\n1. 3.3.9 に更新してください。変更履歴に、初期化処理のファイル削除の脆弱性を直したと書かれています。そのあと次を確認してください。\n・wp-config.php などの重要ファイルが消えていないか\n・アクセスログに page=wsdesk_factory_reset へのリクエストがないか\n・不審なチケットが投稿されていないか\n2. すぐ更新できない場合は、プラグインを止めるか削除してください。止められない場合は、WAFでログインしていない人からの wp-admin/admin.php?page=wsdesk_factory_reset へのアクセスを遮断し、[wsdesk_support] ショートコードを置いたページを非公開にしてください。あわせてバックアップも確認してください。\n※ 3.3.7 以前には、ログインなしで任意のファイルをアップロードできる別の脆弱性 CVE-2026-103768 もあります。古い版のまま運用していた場合は、不審なファイルが置かれていないかも確認してください。\n\n【各告知の関係】\n・Wordfence：脆弱性の公表とCVE採番です。ページの本文は取得できず、内容は未確認です。\n・ELEXtensions（開発元）：3.3.9 で修正しました（changeset 3775762 で権限チェックを追加）。\n・国内の注意喚起：未確認です。\n\n【出典】\nhttps://wordpress.org/plugins/elex-helpdesk-customer-support-ticket-system/\nhttps://plugins.trac.wordpress.org/changeset/3775762/elex-helpdesk-customer-support-ticket-system/trunk/includes/class-crm-init-handler.php\nhttps://www.wordfence.com/threat-intel/vulnerabilities/id/2151249a-8e7a-4c7b-89ff-5058942368fb?source=cve"
     },
     {
       "id": "CVE-2026-76418",
@@ -32188,6 +32242,54 @@
         "cvss": 14.8,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118166",
+      "aliases": [],
+      "title": "MC4WP: Mailchimp for WordPress < 4.15.0 - Unauthenticated Arbitrary Shortcode Execution via Dynamic Content Tag",
+      "description": "The MC4WP: Mailchimp for WordPress WordPress plugin before 4.15.0 does not prevent request-derived values in its dynamic content tags from being processed as shortcodes when a form is embedded with its block, allowing unauthenticated visitors to execute arbitrary registered shortcodes with attacker-chosen attributes. This requires the site owner to have added a request-derived tag to the form content and to embed the form with the block rather than the classic shortcode.",
+      "published": "2026-11-06T07:30:55.888Z",
+      "updated": "2026-11-06T08:17:18.400",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown MC4WP: Mailchimp for WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a8b2a564-25ae-4ed8-9c2c-989b104ba4c8/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.6,
+        "unauth_network": 5,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -63582,7 +63684,7 @@
       "title": "",
       "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
       "published": "2026-11-05T16:17:47.110",
-      "updated": "2026-11-05T21:18:45.663",
+      "updated": "2026-11-06T05:18:26.710",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -74463,9 +74565,9 @@
       "id": "GHSA-9855-prwc-mfp2",
       "aliases": [],
       "title": "Malware in opencode-skills-collection",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 4,361",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 4,145",
       "published": "2026-10-22T18:35:11Z",
-      "updated": "2026-11-05T17:20:29Z",
+      "updated": "2026-11-06T10:56:31Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -77312,7 +77414,7 @@
       "title": "Zoom: Service Degradation Affecting Zoom Mail, Calendar and Scheduler.",
       "description": "Zoom の公式ステータスページに掲載された障害",
       "published": "2026-11-05T19:32:15.277-08:00",
-      "updated": "2026-11-05T19:32:15.277-08:00",
+      "updated": "2026-11-05T21:09:23.146-08:00",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -77334,7 +77436,7 @@
         "status:zoom"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-05T21:09:23.146-08:00",
       "first_seen": "2026-11-06T03:40:33.619708+00:00",
       "matched": [
         "zoom"
@@ -77382,6 +77484,133 @@
         "npm:nishiki-bail"
       ],
       "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118167",
+      "aliases": [],
+      "title": "MC4WP: Mailchimp for WordPress < 4.15.0 - Unauthenticated Subscription Audience Override",
+      "description": "The MC4WP: Mailchimp for WordPress plugin before 4.15.0 does not validate that the Mailchimp audience a sign-up form or bundled integration subscribes a visitor to matches the audience configured by the site owner, allowing unauthenticated visitors to subscribe arbitrary email addresses to any other audience in the site's connected Mailchimp account.",
+      "published": "2026-11-06T06:00:28.080Z",
+      "updated": "2026-11-06T06:16:40.710",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown MC4WP: Mailchimp for WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/11752539-1dc8-4adb-a680-ce7ecaaff4d1/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "unauth_network": 5,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-3ehw20ozwlkr",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Singapore",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-06T08:54:00.339Z",
+      "updated": "2026-11-06T10:43:38.174Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/3ehw20ozwlkr"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-06T10:43:38.174Z",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-wtsd415cavkc",
+      "aliases": [],
+      "title": "Cloudflare: Wrangler Deployments, Pages, and Workers Builds failures",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-06T09:47:17.426Z",
+      "updated": "2026-11-06T10:08:30.899Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/wtsd415cavkc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-06T10:08:30.899Z",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 40.0,
       "level": "medium",
@@ -77624,6 +77853,54 @@
       "first_seen": "2026-11-03T21:00:08.723666+00:00",
       "matched": [
         "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116592",
+      "aliases": [],
+      "title": "undici vulnerable to cache poisoning and cross-user disclosure via intermediate redirect hops",
+      "description": "undici is an HTTP client for Node.js. In versions 7.30.1 and 8.12.2 through 8.12.3, when an originless Agent composes the redirect and shared cache interceptors, undici decides whether to store the final response under the original request key by inspecting only the final redirect hop, which bypasses the earlier fix for CVE-2026-109829 that compared only the initial and final origins. A redirect that bounces through an untrusted origin and returns to the trusted origin is still cached under the trusted key, an intermediate hop's Vary is dropped so a response that varies on Authorization or Cookie can be served to a different user, and an intermediate hop's no-cache or default-uncacheable status is ignored so a non-storable redirect is laundered into a cacheable entry. An attacker who controls a redirect target from a trusted URL can poison the cached entry for that URL or have a private, per-user response served to a later caller. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, compose the interceptors as cache then redirect, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
+      "published": "2026-11-06T10:05:41.972Z",
+      "updated": "2026-11-06T10:16:36.313",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-mqg3-3v4r-cm32",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -82145,6 +82422,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120474",
+      "aliases": [],
+      "title": "undici vulnerable to cross-user cache disclosure via same-origin redirect",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the redirect interceptor and a shared response cache are used together, an authenticated request that is redirected to a same-origin target has the final response stored under the original request's cache key. That key omits the credential and carries no Vary header, so a later anonymous or different user can be served the first user's private response body. This results in cross-user disclosure of cached private responses. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later.",
+      "published": "2026-11-06T09:57:46.664Z",
+      "updated": "2026-11-06T10:16:36.913",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-7xg3-fphp-28hg",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91394",
       "aliases": [],
       "title": "",
@@ -84260,6 +84585,198 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116630",
+      "aliases": [],
+      "title": "undici vulnerable to cross-user information disclosure via cross-origin redirect revalidation",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when an Agent composes the redirect and shared cache interceptors, a cached response that is revalidated with a conditional request can be validated by a 304 Not Modified from a different origin. When the origin that stored the response redirects the conditional revalidation request to another origin, the redirect handler strips origin-bound credential headers but not the cache-generated If-None-Match or If-Modified-Since validators, so the redirect destination receives the original origin's validator and undici treats its 304 as successful revalidation of the stored representation. As a result, a shared cache can serve the original origin's stored authenticated response, including one gated by Authorization, to a later unauthenticated caller. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, compose the interceptors as cache then redirect, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
+      "published": "2026-11-06T10:13:44.685Z",
+      "updated": "2026-11-06T11:17:05.497",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-5rm8-gv32-r954",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120222",
+      "aliases": [],
+      "title": "undici vulnerable to Denial of Service via unhandled exception in cache-interceptor response replay",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the cache interceptor is composed with a downstream handler that throws during response processing (such as the built-in dump interceptor exceeding its maxSize, or the decompress interceptor rejecting more than five Content-Encoding values), a throw raised asynchronously while a cached response is replayed escapes as an uncaught exception or unhandled promise rejection and terminates the Node.js process. A malicious or compromised HTTP server can crash any such client by serving a cacheable response that triggers the throw on replay, including on a 304 revalidation of a stale entry, so the impact is availability only. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, avoid composing the cache interceptor with a response handler that throws during response processing until upgrading.",
+      "published": "2026-11-06T10:00:50.635Z",
+      "updated": "2026-11-06T10:16:36.497",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-3g9m-rv3r-w5w2",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120415",
+      "aliases": [],
+      "title": "undici vulnerable to cross-origin credential disclosure via array-of-tuples headers bypassing redirect stripping",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, the redirect interceptor strips sensitive headers such as Authorization, Cookie, Proxy-Authorization, and Host when a request is redirected to a different origin, but when request headers are supplied as an array of name and value tuples (a valid documented input, for example from Object.entries), the redirect handler misreads them as a flat list so the header names never match and the sensitive headers are not removed. If a header-normalizing interceptor such as cache or deduplicate is composed outside the redirect interceptor, it then serializes the retained headers onto the cross-origin request, disclosing the caller's origin-bound credentials to the unrelated redirect destination. This is a representation-dependent bypass of the cross-origin header stripping added in CVE-2024-30260. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply request headers as a plain object or a flat name and value array rather than an array of tuples, or compose the redirect interceptor outside the normalizing interceptor.",
+      "published": "2026-11-06T10:10:48.653Z",
+      "updated": "2026-11-06T10:16:36.633",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-9v6h-8rgp-m69f",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120423",
+      "aliases": [],
+      "title": "undici vulnerable to Subresource Integrity bypass via whitespace in integrity metadata",
+      "description": "undici is an HTTP client for Node.js. In versions 7.15.0 through 7.30.1 and 8.0.0 through 8.12.3, fetch verifies Subresource Integrity metadata by splitting the integrity string on a single space, but the SRI grammar separates metadata by ASCII whitespace, which also includes the horizontal tab. An integrity value whose digest is preceded by a tab or other ASCII whitespace is parsed as a single unrecognized token and skipped, and when no recognized algorithm remains undici treats the integrity list as empty and accepts the response, so a server returning a body different from the pinned digest passes the check. An application that pins a response with a valid but whitespace-surrounded SRI value receives attacker-controlled bytes with no integrity error, and the attacker needs only to control the response body, not the integrity metadata. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply SRI integrity metadata without surrounding whitespace, using a single space to separate multiple digests.",
+      "published": "2026-11-06T10:08:32.545Z",
+      "updated": "2026-11-06T10:16:36.780",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "undici undici"
+      ],
+      "references": [
+        "https://github.com/nodejs/undici/security/advisories/GHSA-r4pc-4jcp-7pqc",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -96264,6 +96781,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-103002",
+      "aliases": [],
+      "title": "",
+      "description": "GPUStack is an open-source GPU cluster manager for AI model serving and GPU instance provisioning. From 2.2.0 until 2.2.2, cluster_apiserver_proxy forwarded an authenticated non-administrator's requests to a selected Kubernetes cluster without a resource-level authorization check. The proxy used a reachable worker's Kubernetes ServiceAccount credentials, so the caller could read sensitive resources, create or modify workloads, or delete resources according to that ServiceAccount's permissions. Exploitation required a Kubernetes-provider cluster with a reachable worker, and attacker-controlled workloads could result in code execution in the target cluster. This issue is fixed in version 2.2.2.",
+      "published": "2026-11-04T22:17:44.783",
+      "updated": "2026-11-06T05:18:16.667",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/gpustack/gpustack/commit/363191fa1da7e1426c6041f78b3cf00aff2622fe",
+        "https://github.com/gpustack/gpustack/commit/cdd67467e0f314609dc82216e142940d321abfed",
+        "https://github.com/gpustack/gpustack/pull/5911",
+        "https://github.com/gpustack/gpustack/pull/5936",
+        "https://github.com/gpustack/gpustack/releases/tag/v2.2.2",
+        "https://github.com/gpustack/gpustack/security/advisories/GHSA-3hch-x692-6qj3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0036,
+      "epss_percentile": 0.29984,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-04T22:15:13.118932+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112914",
       "aliases": [
         "GHSA-crv4-6mhj-j5jh"
@@ -96557,54 +97123,6 @@
         "popularity": 21.0,
         "cvss": 10.6,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-103002",
-      "aliases": [],
-      "title": "",
-      "description": "GPUStack is an open-source GPU cluster manager for AI model serving and GPU instance provisioning. From 2.2.0 until 2.2.2, cluster_apiserver_proxy forwarded an authenticated non-administrator's requests to a selected Kubernetes cluster without a resource-level authorization check. The proxy used a reachable worker's Kubernetes ServiceAccount credentials, so the caller could read sensitive resources, create or modify workloads, or delete resources according to that ServiceAccount's permissions. Exploitation required a Kubernetes-provider cluster with a reachable worker, and attacker-controlled workloads could result in code execution in the target cluster. This issue is fixed in version 2.2.2.",
-      "published": "2026-11-04T22:17:44.783",
-      "updated": "2026-11-04T22:17:44.783",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/gpustack/gpustack/commit/363191fa1da7e1426c6041f78b3cf00aff2622fe",
-        "https://github.com/gpustack/gpustack/commit/cdd67467e0f314609dc82216e142940d321abfed",
-        "https://github.com/gpustack/gpustack/pull/5911",
-        "https://github.com/gpustack/gpustack/pull/5936",
-        "https://github.com/gpustack/gpustack/releases/tag/v2.2.2",
-        "https://github.com/gpustack/gpustack/security/advisories/GHSA-3hch-x692-6qj3"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-04T22:15:13.118932+00:00",
-      "matched": [
-        "kubernetes"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 31.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6
       },
       "ai_analysis": ""
     },
@@ -104619,6 +105137,52 @@
         "popularity": 14.0,
         "cvss": 9.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-84161",
+      "aliases": [],
+      "title": "Authenticated remote denial of service through unbounded zlib decompression in storeAnalysisStatistics",
+      "description": "When an operator enables store.analysis_statistics_dir, a network client with PRODUCT_STORE permission for a product can call that product's storeAnalysisStatistics Thrift-over-HTTP method. CodeChecker 6.29.0 decodes the attacker-controlled Base64 string and passes the complete compressed input to one-shot zlib.decompress(). No maximum decompressed size is enforced.\n\n\n\nThis gives a correctly authorized, non-superuser store account a high-ratio memory and persistent-disk amplification primitive. The complete output is first materialized as a Python bytes object and is then written to the configured statistics directory. A sufficiently scaled payload can exhaust the API worker or host memory and impair CodeChecker availability.\n\n\n\nThe shipped value of store.analysis_statistics_dir is null, so the affected feature is disabled by default. The primary assessment does not rely on authentication being disabled. There is no authorization bypass and no path traversal in this report.",
+      "published": "2026-11-06T10:48:16.586Z",
+      "updated": "2026-11-06T11:17:17.190",
+      "cvss": 4.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Ericsson CodeChecker"
+      ],
+      "references": [
+        "https://github.com/Ericsson/codechecker/security/advisories/GHSA-w57m-6g36-jjwv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.8
       },
       "ai_analysis": ""
     },
