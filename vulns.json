@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T23:38:48.927446+00:00",
+  "generated_at": "2026-11-06T03:40:33.619708+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -77232,7 +77232,7 @@
       "title": "GitHub: Degraded performance for multiple GitHub services",
       "description": "GitHub の公式ステータスページに掲載された障害",
       "published": "2026-11-05T23:36:06.204Z",
-      "updated": "2026-11-05T23:36:06.204Z",
+      "updated": "2026-11-06T00:20:49.344Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -77254,7 +77254,7 @@
         "status:github"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-06T00:20:49.344Z",
       "first_seen": "2026-11-05T23:38:48.927446+00:00",
       "matched": [
         "github"
@@ -77300,6 +77300,88 @@
         "vercel"
       ],
       "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-pmmkv8mbtxln",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting Zoom Mail, Calendar and Scheduler.",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-05T19:32:15.277-08:00",
+      "updated": "2026-11-05T19:32:15.277-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/n6ft1fxrgkw3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T03:40:33.619708+00:00",
+      "matched": [
+        "zoom"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-gv3w-r6c7-9p4m",
+      "aliases": [],
+      "title": "Malicious code in nishiki-bail (npm)",
+      "description": "nishiki-bail is a fork of the Baileys WhatsApp Web library that silently subscribes the installer's own authenticated WhatsApp account to an author-chosen WhatsApp Channel. Part of the campaign OX Security documented as \"PhantomSub\" (2026-09-28): https://www.ox.security/blog/phantomsub-malicious-npm-campaign-secretly-adds-users-to-whatsapp-spam-channels/ . Static read of the published 1.1.19 tarball on 2026-10-16 (not executed) found a hardcoded channel JID 120363329486691279@newsletter together with the newsletter FOLLOW query wired to run automatically after the socket connects, with errors suppressed. Same family as the withdrawn MAL-2026-4519 (chromestaff-baileys 1.1.3). Live on npm with no OSV record as of 2026-10-16. (Corrected 2026-10-16: an earlier version cited 120363423239131660, which in this package only labels forwarded messages.)\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/f4bc872f8eaf40f025213a72be09b5c512032fab/osv/malicious/npm/nishiki-bail/MAL-2026-18711.json))\n\n週間ダウンロード数: 約 1,097",
+      "published": "2026-11-06T00:31:39Z",
+      "updated": "2026-11-06T00:31:40Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:nishiki-bail"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-gv3w-r6c7-9p4m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T03:40:33.619708+00:00",
+      "matched": [
+        "npm:nishiki-bail"
+      ],
+      "match_type": "malware",
       "tier": null,
       "score": 40.0,
       "level": "medium",
@@ -100314,23 +100396,21 @@
     {
       "id": "CVE-2026-88984",
       "aliases": [],
-      "title": "Kubeflow Pipelines: RBAC bypass on shared pipelines allows any authenticated user to delete or modify global pipelines",
+      "title": "",
       "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.16.1, the multi-user API server treats the empty namespace used by shared or global pipelines as an authorization exception for modification and deletion operations. An authenticated user can modify or delete shared pipeline definitions and versions without the required Kubernetes RBAC permissions, compromising their integrity and availability. Read-only access to shared pipelines remains intentional, single-user deployments intentionally bypass multi-user checks, and execution of a modified pipeline is a conditional downstream consequence. The separate shared-pipeline multipart upload authorization path is outside this advisory and is not remediated by version 2.16.1. This issue is fixed in version 2.16.1.",
-      "published": "2026-11-05T22:13:12.954Z",
+      "published": "2026-11-05T23:17:01.760",
       "updated": "2026-11-05T23:17:01.760",
       "cvss": 7.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "kubeflow pipelines"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-ghgh-57qv-h687",
-        "https://github.com/kubeflow/pipelines/pull/13288",
         "https://github.com/kubeflow/pipelines/commit/186dd1f3b0403af841c9b4ea7ab94f405339ef6c",
-        "https://github.com/kubeflow/pipelines/releases/tag/2.16.1"
+        "https://github.com/kubeflow/pipelines/pull/13288",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.16.1",
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-ghgh-57qv-h687"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -100341,7 +100421,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -103575,23 +103654,21 @@
     {
       "id": "CVE-2026-88982",
       "aliases": [],
-      "title": "Kubeflow Pipelines: Cross-tenant execution-cache poisoning / output substitution via a namespace-blind cache key in the cache webhook (multi-user)",
+      "title": "",
       "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.18.0, the legacy V1/raw-Argo execution cache mutating webhook and cache-server storage path hash selected template fields without the Kubernetes namespace, use the key alone for lookups and duplicate checks, and trust the mutable pipelines.kubeflow.org/execution_cache_key annotation when publishing outputs. In multi-user deployments where tenant namespaces share the cache service, a tenant with workload-submission privileges can read another namespace's cached outputs or seed matching outputs that are substituted into a later step. Standard KFP V2 component pods bypass this cache, matching requires the selected template fields and staleness policy, and arbitrary code execution or service availability impact is not established. This issue is fixed in version 2.18.0.",
-      "published": "2026-11-05T22:25:58.995Z",
+      "published": "2026-11-05T23:17:01.600",
       "updated": "2026-11-05T23:17:01.600",
       "cvss": 5.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
       "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "kubeflow pipelines"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-2xwh-426q-42c5",
-        "https://github.com/kubeflow/pipelines/pull/14359",
         "https://github.com/kubeflow/pipelines/commit/620d0cc89ae0d042a484a003f8ffe6e9a55d347e",
-        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0"
+        "https://github.com/kubeflow/pipelines/pull/14359",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0",
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-2xwh-426q-42c5"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -103602,7 +103679,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
