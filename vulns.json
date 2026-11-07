@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T10:16:30.301825+00:00",
+  "generated_at": "2026-11-07T16:30:34.290052+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -15737,6 +15737,61 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-04T22:15:13.118932+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118066",
+      "aliases": [],
+      "title": "Appointment Booking Plugin <= 5.7.6 - Unauthenticated Authentication Bypass via Account Takeover via 'IS NOT NULL' Sentinel in 'password_reset_token' Parameter",
+      "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Authentication Bypass via Account Takeover in all versions up to, and including, 5.7.6. This is due to the `OsModel::build_conditions_query()` function in `lib/models/model.php` comparing WHERE-clause values against the literal strings `'IS NULL'` and `'IS NOT NULL'` and concatenating a match directly into SQL without binding it as a parameter, a flaw that neither `sanitize_text_field()` nor the 5.7.5 `is_scalar()` hardening guard closes, since both pass the scalar sentinel through unchanged. This makes it possible for unauthenticated attackers to send `params[password_reset_token]=IS NOT NULL` to the public `customer_cabinet__change_password` AJAX route to match every non-null `account_nonse` value, resolving to the lowest-id customer and overwriting that customer's password to an attacker-chosen value — granting full access to their bookings, orders, and PII, and, when the `wp_users_as_customers` option is enabled, takeover of the linked WordPress subscriber or customer-role account. The attacker can first identify the target customer's email by sending `params[order_intent_key]=IS NOT NULL` to the public `steps__start_from_order_intent` route, which returns the name and email from the first matching order intent, and can then self-arm the required 15-minute password-reset freshness window by triggering a reset for that customer directly.",
+      "published": "2026-11-07T11:26:26.913Z",
+      "updated": "2026-11-07T12:17:43.833",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "latepoint Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2f7f5dc8-8cf7-493d-b012-89ff36a4dc02?source=cve",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/models/model.php#L414",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/controllers/customer_cabinet_controller.php#L494",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/controllers/steps_controller.php#L178",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/customer_helper.php#L235",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/order_intent_helper.php#L184",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/params_helper.php#L14",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/latepoint.php#L1073",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3779410%40latepoint&new=3779410%40latepoint"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
       "matched": [
         "wordpress"
       ],
@@ -32694,6 +32749,58 @@
         "cvss": 14.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115548",
+      "aliases": [],
+      "title": "Quttera ThreatSign <= 4.1.0.48 - Unauthenticated Stored Cross-Site Scripting via User-Agent Header",
+      "description": "The Quttera ThreatSign – Web Malware Scanner for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'HTTP_USER_AGENT' parameter in all versions up to, and including, 4.1.0.48 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever an administrator accesses an injected page.",
+      "published": "2026-11-07T11:26:35.366Z",
+      "updated": "2026-11-07T12:17:42.870",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "quttera Quttera ThreatSign – Web Malware Scanner for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/eacc5af0-3248-4819-b90e-0f5e0e6d2786?source=cve",
+        "https://plugins.trac.wordpress.org/browser/quttera-web-malware-scanner/tags/4.1.0.45/qtrAjaxHandler.php#L1199",
+        "https://plugins.trac.wordpress.org/browser/quttera-web-malware-scanner/tags/4.1.0.45/JS/iscan_frontend.php#L112",
+        "https://plugins.trac.wordpress.org/browser/quttera-web-malware-scanner/tags/4.1.0.45/qtrDatabaseScanner.php#L345",
+        "https://plugins.trac.wordpress.org/browser/quttera-web-malware-scanner/tags/4.1.0.45/qtrReport.php#L133",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3771915%40quttera-web-malware-scanner&new=3771915%40quttera-web-malware-scanner"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -50707,6 +50814,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123474",
+      "aliases": [],
+      "title": "WordPress Premium Blocks – Gutenberg Blocks for WordPress plugin <= 2.3.18 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in LeapWorx Premium Blocks – Gutenberg Blocks for WordPress premium-blocks-for-gutenberg allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Premium Blocks – Gutenberg Blocks for WordPress: from n/a through 2.3.18.",
+      "published": "2026-11-07T12:35:49.136Z",
+      "updated": "2026-11-07T13:16:37.383",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "LeapWorx Premium Blocks – Gutenberg Blocks for WordPress",
+        "premium-blocks-for-gutenberg"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/premium-blocks-for-gutenberg/vulnerability/wordpress-premium-blocks-gutenberg-blocks-for-wordpress-plugin-2-3-18-broken-access-control-vulnerability-2?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105296",
       "aliases": [],
       "title": "",
@@ -63127,6 +63282,59 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118047",
+      "aliases": [],
+      "title": "Falang multilanguage for WordPress <= 1.4.6 - Authenticated (Subscriber+) Stored Cross-Site Scripting via falang_term[] via `falang_language_ordering` AJAX / `edit_term` hook",
+      "description": "The Falang multilanguage for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'falang_term[<taxonomy>][<locale>][<field>] (via order[] driving wp_update_term)' parameter in all versions up to, and including, 1.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is made reliable because the required 'falang' nonce is disclosed to any logged-in user through the equally unprotected wp_ajax_falang_menu_translation handler, requiring no elevated access to obtain.",
+      "published": "2026-11-07T11:26:25.836Z",
+      "updated": "2026-11-07T12:17:43.360",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "sbouey Falang multilanguage for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2b995c66-f228-427e-b1b1-edcd5cb38041?source=cve",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/views/falang_term_translation_page.php#L197",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/class-falang-admin.php#L1721",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/class-falang-admin.php#L2739",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/class-falang-admin.php#L2904",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/class-falang-admin.php#L2995",
+        "https://plugins.trac.wordpress.org/browser/falang/tags/1.4.6/admin/views/edit_menu_page.php#L135",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3788331%40falang&new=3788331%40falang"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
       "matched": [
         "wordpress"
       ],
@@ -84568,6 +84776,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-124317",
+      "aliases": [],
+      "title": "libexpat through 2.10.0 Out-of-Bounds Read via unknown_toUtf8 and unknown_toUtf16",
+      "description": "libexpat through 2.10.0 contains an out-of-bounds read vulnerability in unknown_toUtf8() and unknown_toUtf16() in xmltok.c when handling application-registered unknown encodings. Attackers can supply a document ending in a truncated multibyte sequence so the convert callback reads past the parse buffer, leaking adjacent memory or crashing applications.",
+      "published": "2026-11-07T14:17:57.180Z",
+      "updated": "2026-11-07T15:17:16.220",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1492",
+        "https://github.com/libexpat/libexpat/blob/a70841d9ffa64ddde29ab824ed6305035ebe4c47/expat/lib/xmltok.c#L1274-L1322",
+        "https://github.com/libexpat/libexpat",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.10.0-out-of-bounds-read-via-unknown-toutf8-and-unknown-toutf16"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114509",
       "aliases": [],
       "title": "",
@@ -89660,6 +89918,57 @@
         "popularity": 21.0,
         "cvss": 10.2,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124318",
+      "aliases": [],
+      "title": "Treeio through 2.0 Insecure Deserialization RCE via Admin-Editable Pickle Fields",
+      "description": "Treeio through 2.0 contains an insecure deserialization vulnerability in UpdateRecord.get_format_strings and ModuleSetting.loads that allows staff users to execute code via unverified pickle data. Attackers can store a crafted base64 pickle payload in an UpdateRecord format_strings field through the Django admin, executing Python code as the web server user when news feeds render.",
+      "published": "2026-11-07T14:17:57.859Z",
+      "updated": "2026-11-07T15:17:16.270",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "treeio treeio"
+      ],
+      "references": [
+        "https://github.com/treeio/treeio/issues/165",
+        "https://github.com/treeio/treeio/blob/bae3115f4015aad2cbc5ab45572232ceec990495/treeio/core/models.py#L1101-L1109",
+        "https://github.com/treeio/treeio/blob/bae3115f4015aad2cbc5ab45572232ceec990495/treeio/core/models.py#L1265-L1273",
+        "https://github.com/treeio/treeio",
+        "https://www.vulncheck.com/advisories/treeio-through-2.0-insecure-deserialization-rce-via-admin-editable-pickle-fields"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.2,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -131159,6 +131468,610 @@
       "score_breakdown": {
         "popularity": 21.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99271",
+      "aliases": [],
+      "title": "ALSA: line6: Clear prev_fbuf on capture buffer release",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: line6: Clear prev_fbuf on capture buffer release\n\nA KASAN slab-use-after-free read was reported in submit_audio_out_urb()\nwhen generating an impulse test signal:\n\n  BUG: KASAN: slab-use-after-free in create_impulse_test_signal sound/usb/line6/playback.c:76 [inline]\n  BUG: KASAN: slab-use-after-free in submit_audio_out_urb+0x1848/0x1b20 sound/usb/line6/playback.c:249\n  Read of size 2 at addr ffff888008d74870 by task syz.2.3214/7785\n\n  Allocated by task 11:\n   kmem_cache_alloc_noprof+0x2f0/0x390 mm/slub.c:4144\n   line6_buffer_acquire+0x1a1/0x220 sound/usb/line6/pcm.c:158\n   line6_pcm_acquire+0xb6/0x230 sound/usb/line6/pcm.c:329\n   line6_startup_work+0x3c/0x50 sound/usb/line6/driver.c:728\n\n  Freed by task 7785:\n   kfree+0xf8/0x390 mm/slub.c:6566\n   line6_buffer_release sound/usb/line6/pcm.c:176 [inline]\n   line6_buffer_release+0xa5/0xf0 sound/usb/line6/pcm.c:170\n   __line6_pcm_release sound/usb/line6/pcm.c:305 [inline]\n   line6_pcm_release+0x5a/0x80 sound/usb/line6/pcm.c:313\n   snd_toneport_monitor_put+0x11b/0x190 sound/usb/line6/toneport.c:183\n\nline6pcm->prev_fbuf points into the capture PCM stream buffer\n(line6pcm->in.buffer), which is updated during audio_in_callback() to\nfeed rate synchronization, software monitoring, and impulse test signal\ngeneration on playback side.\n\nWhen all capture streams are closed, line6_buffer_release() frees\npstr->buffer with kfree().  However, it does not clear line6pcm->prev_fbuf.\nIf playback is subsequently started (e.g. via impulse test signal\nvolume control snd_line6_impulse_volume_put()), submit_audio_out_urb()\ndereferences the stale pointer line6pcm->prev_fbuf under in.lock,\nresulting in a slab-use-after-free read.\n\nClear prev_fbuf and prev_fsize in line6_buffer_release() when releasing\nthe capture stream buffer under in.lock, ensuring that no stale buffer\npointer can be accessed by submit_audio_out_urb().",
+      "published": "2026-11-07T14:08:45.047Z",
+      "updated": "2026-11-07T14:17:02.337",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/862d9268f40a6e10cef24eb226e738fb69ce8aa7",
+        "https://git.kernel.org/stable/c/22c82f33ff0b68d37041adf1dea5533a5863cd31",
+        "https://git.kernel.org/stable/c/aa118c8f61d59387961d58ffae831c5259a9f222"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99272",
+      "aliases": [],
+      "title": "smb: client: validate the data area in SMB2_read()",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate the data area in SMB2_read()\n\nSMB2_read() copies le32_to_cpu(rsp->DataLength) bytes from\n(char *)rsp + rsp->DataOffset without checking that the range lies\nwithin the response actually received. A READ response with\nDataOffset == 0 makes smb2_get_data_area_len() zero the data length, so\nsmb2_check_message() accepts a frame as short as the fixed response,\nwhile SMB2_read() still uses the server-supplied DataLength, capped only\nby CIFS_MAX_MSGSIZE and the caller's length.\n\nA malicious server can answer the synchronous read used by the\nmfsymlinks (or SFU) symlink parser with an 81-byte READ response\ncarrying DataOffset 0 and DataLength 1067, making the client copy 1067\nbytes from a 448-byte receive object (KASAN slab-out-of-bounds; up to\n16 KiB in the general case).\n\nClamp a zero (or header-overlapping) DataOffset to read_rsp_size, as\nhandle_read_data() does for the asynchronous path, and reject the\nresponse unless DataOffset + DataLength fits within rsp_iov.iov_len.\nThe SMB1 helper was fixed the same way in 5be5bdda5863.",
+      "published": "2026-11-07T14:08:45.332Z",
+      "updated": "2026-11-07T14:17:02.477",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1ba1937de005e261a8858f45bfef5da7458df94c",
+        "https://git.kernel.org/stable/c/2ec9cdf469dd32bcf33073aeb30c08e9356e0ca1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99273",
+      "aliases": [],
+      "title": "ksmbd: reserve space for the UTF-16 terminator in stream info",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: reserve space for the UTF-16 terminator in stream info\n\nsmb_strtoUTF16() always writes a terminating zero UTF-16 unit after the\nconverted characters, but get_file_stream_info() budgets only\nsizeof(struct smb2_file_stream_info) + streamlen * 2 for a stream entry\nand sizeof(struct smb2_file_stream_info) + 7 * 2 for the trailing\n\"::$DATA\" entry. When an entry exactly fills the 448-byte small response\nbuffer, the terminator is written two bytes past the allocation.\n\nReserve one extra UTF-16 unit in both budget checks. The terminator is\nnot part of the wire format, so the reported lengths are unchanged.",
+      "published": "2026-11-07T14:08:45.585Z",
+      "updated": "2026-11-07T14:17:02.600",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/06a751809ebd33e95b05bf733697318a17a4872b",
+        "https://git.kernel.org/stable/c/0e64f89563164719ceb1aa33f2a8bfd6391fa340",
+        "https://git.kernel.org/stable/c/a025c4991a7d83edc4dd339e3ea86d8ff6226eca"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99274",
+      "aliases": [],
+      "title": "smb: client: fix fiemap wild read on empty truncated response",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix fiemap wild read on empty truncated response\n\nsmb3_fiemap() treats -E2BIG from SMB2_ioctl() as a truncated range blob\nand loops for the next chunk. If the server reports\nSTATUS_BUFFER_OVERFLOW with OutputCount == 0, SMB2_ioctl() returns\n-E2BIG with out_data == NULL and out_data_len == 0, and the existing\nlength checks accept the empty result. The loop then evaluates\n\n\tnext = out_data[num - 1].file_offset + ...\n\nwith num == 0, reading 16 bytes before NULL.\n\nReject a truncated range blob that contains no range, so the resume\noffset is never computed from an empty response. Also require the last\nrange in a truncated blob to advance the resume offset without\noverflowing, and to stay within the requested range; a malicious or\nbroken server could otherwise make no progress or underflow len and loop\nforever. Free the previous response buffer before retrying.\n\nReproduced on 6.6.87.2 with a malicious SMB2 server that answers\nFSCTL_QUERY_ALLOCATED_RANGES with STATUS_BUFFER_OVERFLOW and\nOutputCount == 0; an FS_IOC_FIEMAP ioctl on the mount oopses in\ncifs_fiemap() with CR2 = fffffffffffffff8. The code path is unchanged\non mainline.",
+      "published": "2026-11-07T14:08:45.924Z",
+      "updated": "2026-11-07T14:17:02.730",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/4a426ca5be7e3dedbe76575b967db04fbf01136f",
+        "https://git.kernel.org/stable/c/31f6dbb29fe17fa9595c7e8b19fd92915b03a4ca",
+        "https://git.kernel.org/stable/c/f5baa17a0f316c235d61623ac8e8fb32c2b3c0cc"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99275",
+      "aliases": [],
+      "title": "smb: client: reject short SESSION_SETUP responses",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject short SESSION_SETUP responses\n\nsmb2_check_message() accepts frames shorter than struct smb2_pdu when\nthe SMB2 status is non-zero, before the minimum-PDU check added by\nb4694f269e66d. A 64-byte STATUS_MORE_PROCESSING_REQUIRED SESSION_SETUP\nresponse is therefore accepted even though it cannot contain the\nSecurityBufferOffset and SecurityBufferLength fields.\n\nThe parser then reads those fields from stale bytes left in the reused\nreceive buffer by an earlier frame. With a long stale\nSecurityBufferLength, decode_ntlmssp_challenge() copies up to about\n64 KB from beyond the receive object and sends the data back to the\nserver in the NTLMv2 AUTHENTICATE target info.\n\nReject short MPR SESSION_SETUP responses before the short-error path,\nand validate SecurityBufferOffset + SecurityBufferLength against the\nreceived response length before decoding the challenge.\n\nThe ordering bypass is not new: the short-error early return predates\nb4694f269e66d, and the unvalidated SecurityBufferLength read predates\nthe 2016 raw NTLMSSP split in 166cea4dc3a4, so all supported stable\ntrees are affected. Reproduced on 6.6.87.2; the path is unchanged on\nmainline.",
+      "published": "2026-11-07T14:08:46.188Z",
+      "updated": "2026-11-07T14:17:02.850",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/df63e01933886153e40706483b9635b2456ad91f",
+        "https://git.kernel.org/stable/c/4d8930afa3446041358a7db33e7b23a0bb9459b5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99276",
+      "aliases": [],
+      "title": "ksmbd: defer connection scavenging while session locks are busy",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: defer connection scavenging while session locks are busy\n\nThe expiration worker holds conn_list_lock for reading while checking\nfor authenticated sessions. Without this change, the check can wait for\nconn->session_lock or sessions_table_lock.\n\nIn destroy_previous_session(), the status updates after\nksmbd_conn_wait_idle_sess() run with both session locks held for\nwriting. Both the KSMBD_SESS_GOOD error path and the\nKSMBD_SESS_NEED_SETUP success path call ksmbd_all_conn_set_status(),\nwhich takes conn_list_lock for reading.\n\nA writer queued on conn_list_lock can block these new read acquisitions.\nThe worker then waits for a session lock held by\ndestroy_previous_session(), which waits behind the writer. The writer\ncannot proceed until the worker releases conn_list_lock.\n\nTry both session locks instead of waiting in the scavenging check. Keep\nthe connection when either lock is busy and let the periodic worker\nretry later.",
+      "published": "2026-11-07T14:08:46.432Z",
+      "updated": "2026-11-07T14:17:02.967",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/4e4e8b38994a0b0fc23f00ca6698b469a41abe70",
+        "https://git.kernel.org/stable/c/b4bae7af1154089be87c7475218264fcbfd16d10"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99277",
+      "aliases": [],
+      "title": "ksmbd: hold a connection reference for each session channel",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: hold a connection reference for each session channel\n\nksmbd_session_unregister() removes a session from the global and per-\nconnection tables before dropping the table reference. A concurrent\nreference holder can keep the session and its channel list alive after\nthose removals.\n\nConnection cleanup can no longer find the unpublished session to remove its\nchannels. Since a channel only stores a raw conn pointer, the connection\ncan be freed while another session reference holder is still accessing it,\nfor example during SMB3.1.1 binding or a procfs read.\n\nTake a connection reference when registering a channel and release it on\ninsertion failure, channel removal, or final session destruction. Keep the\nchannels and signing keys until the session is destroyed so a response can\nstill be signed after the session has been unregistered.",
+      "published": "2026-11-07T14:08:46.710Z",
+      "updated": "2026-11-07T14:17:03.080",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/4b333aed69cfc2c8687b86b6a4364a0dffc16dd8",
+        "https://git.kernel.org/stable/c/add8d7fb04efe564193df73581889c62fc0016f1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99278",
+      "aliases": [],
+      "title": "ksmbd: limit sessions on each connection",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: limit sessions on each connection\n\nThe pending setup limit only counts InProgress sessions. A client can\ncomplete authentication repeatedly and retain an unbounded number of Valid\nsessions on one connection.\n\nReserve a connection slot before allocating a session and retain a\nconnection reference while authentication is in progress. The first SMB3\nchannel takes over that reservation; binding to another connection reserves\none slot there. Reauthentication and authentication continuation reuse the\nexisting reservation. Return slots on allocation or insertion failure,\nchannel removal, and final session destruction.\n\nAccept max_sessions_per_connection in reserved startup-request space and\ndefault to 64 when older tools leave it zero. Keep the request size and\nexisting field offsets unchanged. Expose the configured limit in procfs.\nThe existing connection limits bound the aggregate number of sessions\nwithout a separate global session allocation limit.",
+      "published": "2026-11-07T14:08:46.983Z",
+      "updated": "2026-11-07T14:17:03.200",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/94f8462fc9d5332bc54e91605003c17381e9171a",
+        "https://git.kernel.org/stable/c/dc6aa1ba8b7fff8800ad9bf143f17d308e02ec68"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99279",
+      "aliases": [],
+      "title": "ksmbd: reclaim ended sessions on logoff and expiration",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: reclaim ended sessions on logoff and expiration\n\nLOGOFF and previous-session replacement leave sessions Expired with a\nzero credential expiry. Ended sessions can retain their memory and\nconnection slots when no further setup arrives on the owning connection.\n\nUnpublish a logged-off session while the request reference keeps its\nresponse signing and encryption keys alive. Remove its procfs entry\nbefore dropping the table reference so a reader cannot remove its own\nentry on the last put. Clear proc_entry after removal to avoid removing\nit twice.\n\nReclaim ended sessions from the global table in the existing expiration\nworker before it acquires conn_list_lock. Only select Expired sessions\nwith zero credential expiry and no references beyond the table\nreference. Keep sessions whose Kerberos credentials expired available\nfor reauthentication.\n\nUnlink the session from its setup connection and all channel\nconnections, so SMB2 sessions and sessions with only secondary SMB3\nchannels are covered. The session already holds connection references,\nand sessions_table_lock prevents concurrent channel removal. Queue\nsessions on a separate disposal list, leaving their hash nodes unhashed,\nand remove procfs entries and drop table references outside the locks.\n\nKeep the pending setup check before allocating a new session so\nabandoned InProgress sessions can release their slots even at the\nconnection limit. Retain the timeout and reference checks and dispose of\nthose sessions outside the locks. Leave ended Expired sessions to the\nexpiration worker.",
+      "published": "2026-11-07T14:08:47.243Z",
+      "updated": "2026-11-07T14:17:03.317",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1767a5e45dbf6a3b12105196dda4fb0ef80b9698",
+        "https://git.kernel.org/stable/c/26534ef335e92b028eb58e44d98d46a0e26af0ec"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99280",
+      "aliases": [],
+      "title": "ksmbd: drain session procfs readers before dropping table references",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: drain session procfs readers before dropping table references\n\nSession registration failure and connection cleanup can drop the table\nreference while the per-session procfs entry is still accessible. If a\nreader holds the last remaining reference, its final put calls\nproc_remove() from its own callback and waits for that callback to\nfinish.\n\nRemove the procfs entry before dropping the table reference in the\nregistration failure path. Queue sessions removed during connection\ncleanup and drain their procfs readers after releasing both session\nlocks, then return their table references. Keep the global hash node\nunhashed while a session is queued so a concurrent unregister cannot\ndrop the reference again.\n\nPrevious-session replacement also destroys the file table before the\nsession is finally freed. Detach the idr under the lock used by procfs\nfile counters, and report zero files after it has been detached. This\nprevents a reader from accessing the idr during or after its\ndestruction.",
+      "published": "2026-11-07T14:08:47.488Z",
+      "updated": "2026-11-07T14:17:03.453",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/6789f0983f8e85ce3a5ed8c50fc05d613ead9c2c",
+        "https://git.kernel.org/stable/c/1c087cf7d5386c708d8984b263280b42b3daada0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99281",
+      "aliases": [],
+      "title": "tun: Require CAP_NET_ADMIN to attach to an ownerless device",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntun: Require CAP_NET_ADMIN to attach to an ownerless device\n\nTwenty years ago I made creating a tuntap device require CAP_NET_ADMIN\nin commit ca6bb5d7ab22 (\"[NET]: Require CAP_NET_ADMIN to create tuntap\ndevices.\")\n\nThe idea was to allow the permissions on /dev/net/tun to be relaxed to\n0666 and thus allow owners of tun devices assigned with TUNSETOWNER to\nactually open it and get at their devices.\n\nWhat we missed at the time was that persistent devices with *no* owner\nwere already essentially world-consumable, and anyone who could open\nthe device node could also attach to those.\n\nEven then, using persistent devices with no explicitly set owner — on\nthe (false) presumption that CAP_NET_ADMIN would be required to open\nthem — wasn't an egregious userspace bug. There are cases where it does\nmake sense to separate the creation/configuration of the netdevice, from\nthe process which shovels packets into it.\n\nSince then, TUNSETGROUP was added a year later in commit 8c644623fe7e\n(\"[NET]: Allow group ownership of TUN/TAP devices.\"). Its commit message\nnoted that if both uid and gid are set, both have to match (in itself a\nbizarre choice) — but still not that with *neither* set, no permission\nat all was required.\n\nThen in 2012 commit c8d68e6be1c3 (\"tuntap: multiqueue support\") allowed\nnew queues to be attached to a device from the moment of its creation,\nwith no way for userspace to close the race between creation and a\nsubsequent TUNSET{OWNER,GROUP}.\n\nIn 2024, commit 3ca459eaba1bf (\"tun: fix group permission check\") tried\nto fix things to be saner: only require the user *or* the group to\nmatch, in line with standard POSIX permissions, and require\nCAP_NET_ADMIN if neither the user nor group authorised the access\n(although it put the CAP_NET_ADMIN check first, and would wrongly have\nreported the capability as having been used even when it was not).\n\nThat fix was reverted in commit a70c7b3cbc06 (\"tun: revert fix group\npermission check\") due to allegedly causing a regression in an selinux\ntest suite which *expected* the attachment to succeed when authorised\nby none of user, group, nor CAP_NET_ADMIN:\nhttps://lore.kernel.org/netdev/CAFqZXNtkCBT4f+PwyVRmQGoT3p1eVa01fCG_aNtpt6dakXncUg@mail.gmail.com/\n\nWe should not break UAPI. But we don't have to consider an selinux test\ncase which deliberately exercises a security flaw to be UAPI worth\npreserving either. To which end, I have fixed it in selinux-testsuite\ncommit b2f894f0016b (\"tests/tun_tap: set an owner on the device for the\nrelabel tests\").\n\nSo: fix the lack of CAP_NET_ADMIN check on devices which *haven't* been\nassigned an owner or group, while leaving the weird tun ownership model\nas it was (user *and* group have to match, if both are set). If someone\nstill wants to fix the latter (which wasn't actually the reason the\nprevious attempt was reverted), they can do it under separate cover.\n\nPermit attaching to an existing device only if an owner and/or group was\nset and the caller matches all that were set, or if the caller has\nCAP_NET_ADMIN. The only behavioural change is that a device with no\nowner or group now requires CAP_NET_ADMIN to attach — precisely the\nloophole we want to close.\n\nAnd put the CAP_NET_ADMIN check in the right place this time.",
+      "published": "2026-11-07T14:08:47.735Z",
+      "updated": "2026-11-07T14:17:03.790",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2f92c0286cfd58bff9d6d54c01a771073d5eb775",
+        "https://git.kernel.org/stable/c/e53d1cf05da8ea58a5743b7ce5894fb51b0b9700",
+        "https://git.kernel.org/stable/c/ffdf678dd16610e3f006dac904bd37c09684673c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99282",
+      "aliases": [],
+      "title": "net/sched: sch_teql: fix use-after-free on lower qdisc drop",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_teql: fix use-after-free on lower qdisc drop\n\nThe issue: teql_master_xmit() tests the slave's ndo_start_xmit() return\nvalue against NETDEV_TX_OK alone. A slave that consumes the skb but\nreturns an error code (rc < NET_XMIT_MASK, e.g. NET_XMIT_DROP) is treated\nas if the skb were still owned, so the loop restores skb->dev and calls\n__skb_pull() on it. A VLAN slave returns the result of dev_queue_xmit()\nfrom its ndo_start_xmit() (propagated since cbbef5e18307), and when the\nlower qdisc drops the packet that value is NET_XMIT_DROP after the skb\nhas been freed, giving a use-after-free in teql_master_xmit().\n\nThe Fix: test for consumption with dev_xmit_complete(), which accepts\nNETDEV_TX_OK and every rc < NET_XMIT_MASK, matching other callers that\nneed to distinguish consumed results from busy. Only NETDEV_TX_OK keeps\nthe packet counted in tx_packets/tx_bytes and advances the slave; a\nconsumed result that is neither a success nor NET_XMIT_CN ends the\nattempt and is charged to tx_dropped, so lower-qdisc drops are no longer\nreported as good transmits. NET_XMIT_CN is counted like success because\nit can accompany acceptance of the current packet: pfifo_head_drop drops\nthe old head, enqueues the current skb and returns NET_XMIT_CN.\n\nConditions to recreate the bug:\nWith CONFIG_NET_SCH_TEQL,\nCONFIG_VLAN_8021Q and CONFIG_DUMMY enabled, add lkrdummy0 (dummy) and\nlkrvlan0 (VLAN id 37 on lkrdummy0); set a pfifo limit 0 root on lkrdummy0\nand a teql0 root on lkrvlan0; bring teql0 up with an address and send one\nUDP packet to it. The VLAN xmit returns NET_XMIT_DROP from the lower\nqdisc while holding a freed skb.",
+      "published": "2026-11-07T14:08:47.978Z",
+      "updated": "2026-11-07T14:17:03.940",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/fc55d92ae6a4b2e7d062cad6d4c67f6b061d9cde",
+        "https://git.kernel.org/stable/c/2702ae318630787c640ec0d0403ffd9d95c43e9e",
+        "https://git.kernel.org/stable/c/782d6bb8f9b8e9d8591181662222bf74cd3ecf79"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123776",
+      "aliases": [],
+      "title": "RRD::CGI::Image versions through 0.01 for Perl pass CGI query parameters containting \"tz\" to tzset(), , so a FIFO or device path blocks the CGI process",
+      "description": "RRD::CGI::Image versions through 0.01 for Perl pass CGI query parameters containting \"tz\" to tzset(), , so a FIFO or device path blocks the CGI process.\n\nThe normalize_params method sends any query key matching /tz/i to tz(), which sets $ENV{TZ} to that value, with no validation. It then calls tzset(). glibc treats a TZ value starting with / or : as a file path and opens it, so a value naming a FIFO or a blocking device stalls the process inside tzset().",
+      "published": "2026-11-07T11:51:18.541Z",
+      "updated": "2026-11-07T12:17:46.093",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "RRD-CGI-Image"
+      ],
+      "references": [
+        "https://rt.cpan.org/Ticket/Display.html?id=182627",
+        "https://man7.org/linux/man-pages/man3/tzset.3.html",
+        "https://security.metacpan.org/patches/R/RRD-CGI-Image/0.01/CVE-2026-123776-r1.patch"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
       },
       "ai_analysis": ""
     },
