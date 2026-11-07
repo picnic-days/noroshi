@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T23:31:58.291375+00:00",
+  "generated_at": "2026-11-07T03:13:45.322659+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -32342,56 +32342,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-19868",
-      "aliases": [],
-      "title": "SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
-      "description": "An authentication enforcement vulnerability in SonicOS SSLVPN service may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
-      "published": "2026-11-06T19:03:00.616Z",
-      "updated": "2026-11-06T21:17:08.737",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "SonicWall SonicOS",
-        "SonicWall SonicOS SSLVPN"
-      ],
-      "references": [
-        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-19868"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-06",
-      "ransomware": false,
-      "ssvc_exploitation": "active",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T23:31:58.291375+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 50.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 15.0,
-        "unauth_network": 5,
-        "kev": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -38203,6 +38153,59 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119152",
+      "aliases": [],
+      "title": "Appointment Booking Plugin <= 5.7.6 - Unauthenticated Stored Cross-Site Scripting via Customer Email Field",
+      "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'customer[email] (inside params)' parameter in all versions up to, and including, 5.7.6 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. An unauthenticated visitor can exploit this by registering as a LatePoint customer via the public booking form — receiving an active customer session with no WordPress account — and then submitting a quoted local-part email address containing an HTML payload (e.g. a tag with no spaces) that passes FILTER_VALIDATE_EMAIL but is stored and rendered unescaped.",
+      "published": "2026-11-07T02:29:15.482Z",
+      "updated": "2026-11-07T02:29:15.482Z",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "latepoint Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/61d820ce-73e5-4db0-b3dd-b327edb0a5ad?source=cve",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/views/customers/index.php#L17",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/models/customer_model.php#L386",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/util_helper.php#L264",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/database_helper.php#L789",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/controllers/customer_cabinet_controller.php#L311",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.5/lib/helpers/steps_helper.php#L2239",
+        "https://plugins.trac.wordpress.org/changeset/3779410/latepoint/trunk/lib/views/customers/index.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T03:13:45.322659+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -63808,7 +63811,7 @@
       "title": "",
       "description": "There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected. Only Python 3.14.10 is affected, all other Python versions are unaffected.",
       "published": "2026-11-06T15:17:12.073",
-      "updated": "2026-11-06T18:17:57.750",
+      "updated": "2026-11-07T01:17:01.810",
       "cvss": 8.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -63818,7 +63821,8 @@
       "references": [
         "https://github.com/python/cpython/issues/160923",
         "https://github.com/python/cpython/pull/160984",
-        "https://mail.python.org/archives/list/security-announce@python.org/thread/PXVTTOBPUMFJSSUXN6XCS7FC5DZOSZXK/"
+        "https://mail.python.org/archives/list/security-announce@python.org/thread/PXVTTOBPUMFJSSUXN6XCS7FC5DZOSZXK/",
+        "http://www.openwall.com/lists/oss-security/2026/11/06/30"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -78229,6 +78233,46 @@
         "npm:@cherrydotfun/miniapp-sdk"
       ],
       "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-c60k3g4vsoc1",
+      "aliases": [],
+      "title": "Cloudflare: Spectrum Availability Issue in Phoenix",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-07T00:59:31.548Z",
+      "updated": "2026-11-07T00:59:31.548Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/c60k3g4vsoc1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T03:13:45.322659+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 40.0,
       "level": "medium",
@@ -99335,6 +99379,49 @@
         "popularity": 21.0,
         "cvss": 9.4,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-19868",
+      "aliases": [],
+      "title": "SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
+      "description": "SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "SonicWall SonicOS SSLVPN"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-19868"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-06",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "kev": 20
       },
       "ai_analysis": ""
     },
