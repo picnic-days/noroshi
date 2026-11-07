@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T16:30:34.290052+00:00",
+  "generated_at": "2026-11-07T20:31:01.693070+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -62912,6 +62912,100 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120836",
+      "aliases": [],
+      "title": "WordPress Meta Box – WordPress Custom Fields Framework plugin <= 5.15.3 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in eLightUp Meta Box – WordPress Custom Fields Framework meta-box allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Meta Box – WordPress Custom Fields Framework: from n/a through 5.15.3.",
+      "published": "2026-11-07T17:23:37.515Z",
+      "updated": "2026-11-07T19:17:21.657",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "eLightUp Meta Box – WordPress Custom Fields Framework",
+        "meta-box"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/meta-box/vulnerability/wordpress-meta-box-wordpress-custom-fields-framework-plugin-5-15-3-broken-access-control-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T20:31:01.693070+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123472",
+      "aliases": [],
+      "title": "WordPress Meta Box – WordPress Custom Fields Framework plugin <= 5.15.3 - Cross Site Scripting (XSS) vulnerability",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in eLightUp Meta Box – WordPress Custom Fields Framework meta-box allows Stored XSS.This issue affects Meta Box – WordPress Custom Fields Framework: from n/a through 5.15.3.",
+      "published": "2026-11-07T17:26:44.830Z",
+      "updated": "2026-11-07T18:17:21.207",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "eLightUp Meta Box – WordPress Custom Fields Framework",
+        "meta-box"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/meta-box/vulnerability/wordpress-meta-box-wordpress-custom-fields-framework-plugin-5-15-3-cross-site-scripting-xss-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T20:31:01.693070+00:00",
       "matched": [
         "wordpress"
       ],
@@ -132065,6 +132159,51 @@
       "first_seen": "2026-11-07T16:30:34.290052+00:00",
       "matched": [
         "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99283",
+      "aliases": [],
+      "title": "netfilter: conntrack: tcp: use UNACK timeout for non-closing RST packets",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: tcp: use UNACK timeout for non-closing RST packets\n\nCommit be0502a3f2e9 (\"netfilter: conntrack: tcp: only close if RST\nmatches exact sequence\") keeps an established conntrack entry in\nESTABLISHED when an in-window RST does not match the expected sequence\nnumber exactly, so the endpoint can validate the RST with a challenge\nACK.\n\nThe timeout selection nevertheless uses the CLOSE timeout for every RST\npacket.  The bug is that timeout selection is based on the packet type,\nnot on the state transition result: even when RST validation keeps\nnew_state in ESTABLISHED, the timeout is still forced to\nTCP_CONNTRACK_CLOSE.\n\nLinux TCP independently rate limits challenge ACKs per socket.  A second\nnon-exact RST can therefore arrive after the first challenge ACK has\nrestored the timeout but before the rate limit expires.  The second RST\nlowers the timeout to 10 seconds again while the endpoint suppresses the\nsecond challenge ACK, allowing the conntrack entry to expire while both\nTCP endpoints remain established.\n\nUsing the ESTABLISHED timeout for such RSTs would avoid this short\nexpiration window, but it could also retain stale entries for the\nfive-day default because conntrack cannot reliably match the endpoint's\nexact TCP state.\n\nUse the UNACK timeout for RST packets that leave the conntrack entry in\nTCP_CONNTRACK_ESTABLISHED.  Exact-match RSTs and accepted RST packet\ntrains still fall through to timeouts[new_state], which preserves the\nCLOSE timeout when conntrack accepts the RST as closing the flow.\n\nThis avoids the aggressive 10-second expiration window for non-exact\nRSTs while preserving the short timeout for RSTs that conntrack accepts\nas closing the flow.",
+      "published": "2026-11-07T20:14:11.433Z",
+      "updated": "2026-11-07T20:14:11.433Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0c6d33329960b2d884a399196c8403643d8a9de6",
+        "https://git.kernel.org/stable/c/bf80e6802273a900311b44e47c9b1a59c6d2473c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T20:31:01.693070+00:00",
+      "matched": [
+        "linux-kernel"
       ],
       "match_type": "keyword",
       "tier": 1,
