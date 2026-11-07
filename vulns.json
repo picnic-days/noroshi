@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T03:13:45.322659+00:00",
+  "generated_at": "2026-11-07T10:16:30.301825+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -32342,6 +32342,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-19868",
+      "aliases": [],
+      "title": "SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
+      "description": "An authentication enforcement vulnerability in SonicOS SSLVPN service may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
+      "published": "2026-11-06T19:17:48.437",
+      "updated": "2026-11-07T05:19:01.300",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "SonicWall SonicOS SSLVPN"
+      ],
+      "references": [
+        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-19868"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-06",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-06T23:31:58.291375+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -50612,6 +50660,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123466",
+      "aliases": [],
+      "title": "WordPress Premium Blocks – Gutenberg Blocks for WordPress plugin <= 2.3.18 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in LeapWorx Premium Blocks – Gutenberg Blocks for WordPress premium-blocks-for-gutenberg allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Premium Blocks – Gutenberg Blocks for WordPress: from n/a through 2.3.18.",
+      "published": "2026-11-07T09:08:23.000Z",
+      "updated": "2026-11-07T09:09:22.318Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "LeapWorx Premium Blocks – Gutenberg Blocks for WordPress",
+        "premium-blocks-for-gutenberg"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/premium-blocks-for-gutenberg/vulnerability/wordpress-premium-blocks-gutenberg-blocks-for-wordpress-plugin-2-3-18-broken-access-control-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105296",
       "aliases": [],
       "title": "",
@@ -62624,6 +62719,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-121792",
+      "aliases": [],
+      "title": "GamiPress <= 8.1.1 - Authenticated (Subscriber+) SQL Injection via 'Gravity Forms Name/List Field' Parameter",
+      "description": "The GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI plugin for WordPress is vulnerable to generic SQL Injection via the 'input_<field_id>.<part> (Gravity Forms name-field part, or list-field row)' parameter in all versions up to, and including, 8.1.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires a GamiPress achievement already configured against a Gravity Forms 'field value submission' event with the corresponding form published — a standard setup for sites using the integration.",
+      "published": "2026-11-07T06:39:39.568Z",
+      "updated": "2026-11-07T07:17:04.500",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "rubengc GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/9fa05058-3c16-4e61-bd6a-a1a09d2f56cc?source=cve",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.1/includes/functions/logs.php#L326",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.1/includes/functions/logs.php#L386",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.1/integrations/gravity-forms/includes/triggers.php#L256",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.1/integrations/gravity-forms/includes/listeners.php#L126",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.1/integrations/gravity-forms/includes/listeners.php#L65",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3787551%40gamipress&new=3787551%40gamipress"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105006",
       "aliases": [],
       "title": "",
@@ -62931,6 +63078,55 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-03T06:48:39.559157+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118784",
+      "aliases": [],
+      "title": "WPSpeed <= 2.6.10 - Authenticated (Subscriber+) Stored Cross-Site Scripting via User Nickname/Display Name",
+      "description": "The WPSpeed plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.6.10 This is due to a combination of two issues in the LightImages HTML optimizer: (1) Dispatcher::runOptimize() decides whether the current request is the site's home page by comparing only the URL path from REQUEST_URI against the path of the home URL, so on a plain-permalinks install the author archive URL /?author=<ID> is treated as the home page and the LightImages optimizer runs on it; and (2) LightImages::optimize() calls html_entity_decode() across the entire serialized DOMDocument output under the default-enabled img_processing_entity_decode setting, converting any entity-encoded markup present as plain text in the page (including WordPress's rendered author title) into live HTML. This makes it possible for authenticated attackers, with Subscriber-level access and above, to store entity-encoded markup in their own nickname/display_name through the normal profile endpoint and have that markup rehydrated into executing script when any logged-out visitor loads their author archive.",
+      "published": "2026-11-07T09:25:46.871Z",
+      "updated": "2026-11-07T09:25:46.871Z",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "john-dagelmore WPSpeed – WordPress Speed, Cache & Performance Optimization (Core Web Vitals, PageSpeed 100)"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/47aa1a74-4189-4521-ba6e-e91a06b8f5a6?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wpspeed/tags/2.6.10/src/Dispatcher.php#L170",
+        "https://plugins.trac.wordpress.org/browser/wpspeed/tags/2.6.10/src/Core/LightImages.php#L628",
+        "https://plugins.trac.wordpress.org/browser/wpspeed/tags/2.6.10/src/Core/Optimize.php#L152",
+        "https://plugins.trac.wordpress.org/changeset/3771695/wpspeed/trunk/src/Core/LightImages.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T10:16:30.301825+00:00",
       "matched": [
         "wordpress"
       ],
@@ -78280,6 +78476,46 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-x9orajjmvvwa",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Chicago",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-07T05:34:24.281Z",
+      "updated": "2026-11-07T05:12:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/x9orajjmvvwa"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-07T05:12:00.000Z",
+      "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -89180,7 +89416,7 @@
       "title": "",
       "description": "FreeRDP before 3.32.2 contains a denial of service vulnerability in WinPR's winpr_read_png_from_buffer() and winpr_convert_from_jpeg(), which lack libpng/libjpeg error handling. A malicious RDP server or MITM can offer a malformed PNG or truncated JPEG clipboard payload, causing the client to abort or exit.",
       "published": "2026-11-03T15:17:25.543",
-      "updated": "2026-11-03T21:14:52.110",
+      "updated": "2026-11-07T03:17:05.010",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -89191,15 +89427,16 @@
       "vendor_products": [],
       "references": [
         "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-799q-hjgw-g55g",
-        "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-denial-of-service-via-winpr-png-jpeg-image-readers"
+        "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-denial-of-service-via-winpr-png-jpeg-image-readers",
+        "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-799q-hjgw-g55g"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00267,
+      "epss_percentile": 0.18936,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -89217,7 +89454,8 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 17.4,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -93483,6 +93721,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-46487",
+      "aliases": [],
+      "title": "",
+      "description": "GeoNetwork is a catalog application to manage spatially referenced resources. From 4.0.0-alpha.1 until 4.2.16 and 4.4.11, the Elasticsearch-backed search proxy can skip GeoNetwork's access-control filter injection when a client request has an omitted query field. The request is then forwarded to Elasticsearch without group visibility, draft exclusion, record ownership, or portal-specific filtering. An unauthenticated remote attacker can use the affected public search API to retrieve the full indexed contents of metadata records that should not be publicly visible. This issue is fixed in versions 4.2.16 and 4.4.11.",
+      "published": "2026-11-03T19:18:05.933",
+      "updated": "2026-11-07T04:17:30.647",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/geonetwork/core-geonetwork/commit/1916412d38999f2eff68bad2dfccd69340d20f3f",
+        "https://github.com/geonetwork/core-geonetwork/commit/6c756c63cd1fa942f3832d99c64380c69c5e8be9",
+        "https://github.com/geonetwork/core-geonetwork/releases/tag/4.2.16",
+        "https://github.com/geonetwork/core-geonetwork/releases/tag/4.4.11",
+        "https://github.com/geonetwork/core-geonetwork/security/advisories/GHSA-582q-v28r-7cxr"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00463,
+      "epss_percentile": 0.40314,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
+      "matched": [
+        "elasticsearch"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-88066",
       "aliases": [],
       "title": "",
@@ -94034,57 +94321,6 @@
         "cvss": 15.0,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-46487",
-      "aliases": [],
-      "title": "GeoNetwork: ACL bypass on Elasticsearch search when request body omits query field",
-      "description": "GeoNetwork is a catalog application to manage spatially referenced resources. From 4.0.0-alpha.1 until 4.2.16 and 4.4.11, the Elasticsearch-backed search proxy can skip GeoNetwork's access-control filter injection when a client request has an omitted query field. The request is then forwarded to Elasticsearch without group visibility, draft exclusion, record ownership, or portal-specific filtering. An unauthenticated remote attacker can use the affected public search API to retrieve the full indexed contents of metadata records that should not be publicly visible. This issue is fixed in versions 4.2.16 and 4.4.11.",
-      "published": "2026-11-03T18:44:42.516Z",
-      "updated": "2026-11-03T19:18:05.933",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "geonetwork core-geonetwork"
-      ],
-      "references": [
-        "https://github.com/geonetwork/core-geonetwork/security/advisories/GHSA-582q-v28r-7cxr",
-        "https://github.com/geonetwork/core-geonetwork/commit/1916412d38999f2eff68bad2dfccd69340d20f3f",
-        "https://github.com/geonetwork/core-geonetwork/commit/6c756c63cd1fa942f3832d99c64380c69c5e8be9",
-        "https://github.com/geonetwork/core-geonetwork/releases/tag/4.2.16",
-        "https://github.com/geonetwork/core-geonetwork/releases/tag/4.4.11"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "elasticsearch"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -99383,49 +99619,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-19868",
-      "aliases": [],
-      "title": "SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
-      "description": "SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
-      "published": "2026-11-06",
-      "updated": "2026-11-06",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "SonicWall SonicOS SSLVPN"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-19868"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-06",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-06T23:31:58.291375+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-41709",
       "aliases": [],
       "title": "Broadcom VMWare ESX Insufficient Logging Vulnerability",
@@ -104533,6 +104726,54 @@
         "popularity": 21.0,
         "cvss": 4.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-mwgq-9582-w2vf",
+      "aliases": [],
+      "title": "Response amplification in OpenAI validation error handler",
+      "description": "This was reported as a normal pull request by @hclsys.\n\n## Summary\n\nThe OpenAI-compatible API server's shared `RequestValidationError` handler rendered all validation errors in its HTTP 400 response. Pydantic errors can include the full offending input, so a single malformed request that generates many errors can cause the same input to be serialized repeatedly.\n\n## Impact\n\nAn API client can trigger a disproportionately large error response. Formatting and sanitizing it consumes CPU and memory on the server, and buffering it can disrupt downstream clients and proxies. @rmonsurate originally reported the behavior on `POST /v1/responses` in [issue #49239](https://github.com/vllm-project/vllm/issues/49239).\n\n## Fix\n\nThe shared handler now limits the number of rendered errors and summarizes oversized input values before formatting. It still reports the total error count and how many entries were omitted. The fix bounds error-response rendering. Initial request validation and collection of validation errors still occur.\n\nA fix for this was introduced in https://github.com/vllm-project/vllm/pull/54684.",
+      "published": "2026-11-07T08:04:02Z",
+      "updated": "2026-11-07T08:04:02Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-mwgq-9582-w2vf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T10:16:30.301825+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 25.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
