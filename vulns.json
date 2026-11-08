@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T06:02:04.894693+00:00",
+  "generated_at": "2026-11-08T13:26:01.235135+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -78816,6 +78816,86 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-github-pyynvrm1vskw",
+      "aliases": [],
+      "title": "GitHub: Increase in timeouts for some unauthenticated users",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-08T10:36:05.481Z",
+      "updated": "2026-11-08T12:32:35.611Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/5yt31mfmyc6p"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-08T12:32:35.611Z",
+      "first_seen": "2026-11-08T13:26:01.235135+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-kw2lxj1th04c",
+      "aliases": [],
+      "title": "Anthropic Claude: Degraded performance for Claude Fable 5.1",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-08T08:28:32.818Z",
+      "updated": "2026-11-08T08:54:43.667Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/3m3q1nwb142k"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-08T08:54:43.667Z",
+      "first_seen": "2026-11-08T13:26:01.235135+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -93062,6 +93142,52 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-104307",
+      "aliases": [],
+      "title": "BackUpWordPress < 3.15 - Subscriber+ Backup Directory File Deletion via hmbkp_dismiss_error",
+      "description": "The BackUpWordPress plugin before 3.15 does not perform a capability or nonce check on an AJAX action that cleans up its backup directory, allowing any authenticated user (Subscriber and above) to delete the BackUpWordPress plugin before 3.15's backup protection and working files, removing download protection from stored backups and disrupting in-progress backups.",
+      "published": "2026-11-08T06:00:29.615Z",
+      "updated": "2026-11-08T06:17:03.760",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown BackUpWordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/fdd1c029-f055-40c0-9c7f-a0a3822304a9/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T13:26:01.235135+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
