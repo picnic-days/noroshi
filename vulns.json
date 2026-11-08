@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T18:30:39.652775+00:00",
+  "generated_at": "2026-11-08T22:29:58.336931+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -93811,7 +93811,7 @@
       "title": "CockroachDB PostgreSQL for IBM VPC is affected by multiple vulnerabilities",
       "description": "IBM CockroachDB PostgreSQL for IBM VPC 26.2.0 through 26.2.3, 25.4.0 through 25.4.12, and 25.2.0 through 25.2.20 is vulnerable to privilege escalation via user-defined function.",
       "published": "2026-11-08T18:08:16.406Z",
-      "updated": "2026-11-08T18:08:42.430Z",
+      "updated": "2026-11-08T19:17:38.500",
       "cvss": 7.1,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
       "severity": "high",
@@ -93834,7 +93834,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
