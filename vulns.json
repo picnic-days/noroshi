@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T23:59:03.110722+00:00",
+  "generated_at": "2026-11-08T06:02:04.894693+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -61652,6 +61652,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123615",
+      "aliases": [],
+      "title": "imgproxy before 4.0.17 Out-of-Bounds Write in ICO Loader",
+      "description": "imgproxy 3.3.0 before 4.0.17 contains an out-of-bounds heap read and write in the ICO loader's BMP header reconstruction (vips_foreign_load_ico_header in vips/icoload.c) when an ICO entry declares a tiny data size, causing unvalidated header fields to be read and written past the allocated buffer. Unauthenticated remote attackers can supply a crafted ICO image to corrupt adjacent heap chunk metadata, triggering a glibc abort that crashes the worker.",
+      "published": "2026-11-08T01:38:39.703Z",
+      "updated": "2026-11-08T02:16:57.147",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "imgproxy imgproxy"
+      ],
+      "references": [
+        "https://github.com/imgproxy/imgproxy/security/advisories/GHSA-494m-4556-wf5p",
+        "https://www.vulncheck.com/advisories/imgproxy-before-4.0.17-out-of-bounds-write-in-ico-loader"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T06:02:04.894693+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69635",
       "aliases": [],
       "title": "",
@@ -64719,7 +64767,7 @@
       "title": "",
       "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
       "published": "2026-11-05T16:17:47.110",
-      "updated": "2026-11-06T05:18:26.710",
+      "updated": "2026-11-08T03:16:37.447",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -64736,15 +64784,15 @@
         "https://news.ycombinator.com/item?id=50378228",
         "https://www.openssh.org/releasenotes.html#10.6p2",
         "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
-        "https://github.com/google/goonami-scanner/pull/277"
+        "https://github.com/coollabsio/coolify/discussions/12484"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00976,
+      "epss_percentile": 0.62332,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -64757,12 +64805,13 @@
       ],
       "match_type": "keyword",
       "tier": 1,
-      "score": 42.2,
+      "score": 42.3,
       "level": "medium",
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 16.2,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -98333,6 +98382,54 @@
         "popularity": 21.0,
         "cvss": 10.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123610",
+      "aliases": [],
+      "title": "rustls before 0.23.46 Denial of Service via Brotli Certificate Decompression",
+      "description": "rustls before 0.23.46 contains an uncontrolled memory allocation flaw in its optional Brotli certificate decompression, which limits decompressed output size but accepts an input-selected large history window. Malicious peers can send a certificate with a five-byte Brotli header requesting up to 1 GiB before authentication, aborting Brotli-enabled clients or client-authenticating servers whose allocator cannot satisfy the request.",
+      "published": "2026-11-08T01:38:35.478Z",
+      "updated": "2026-11-08T02:16:56.267",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "rustls rustls"
+      ],
+      "references": [
+        "https://github.com/rustls/rustls/security/advisories/GHSA-h2v8-394m-p7vv",
+        "https://www.vulncheck.com/advisories/rustls-before-0.23.46-denial-of-service-via-brotli-certificate-decompression"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T06:02:04.894693+00:00",
+      "matched": [
+        "brotli"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -146044,6 +146141,46 @@
         "aws"
       ],
       "match_type": "status",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2090687",
+      "aliases": [],
+      "title": "DigiCert: A misleading official support article causes a lot of misconfigured _validation-contactemail DNS TXT records and fake TLS certificate(s)",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-08T03:34:25Z",
+      "updated": "2026-11-08T05:30:59Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2090687"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T06:02:04.894693+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
       "tier": null,
       "score": 10.0,
       "level": "low",
