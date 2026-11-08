@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T13:26:01.235135+00:00",
+  "generated_at": "2026-11-08T18:30:39.652775+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -64602,6 +64602,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123158",
+      "aliases": [],
+      "title": "",
+      "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+      "published": "2026-11-05T16:17:47.110",
+      "updated": "2026-11-08T16:10:00.183",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/leonjza/sshhole-lab",
+        "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482",
+        "https://github.com/predkambrij/sshhole-repro",
+        "https://hachyderm.io/@damienmiller/117563026759098135",
+        "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2",
+        "https://news.ycombinator.com/item?id=50377976",
+        "https://news.ycombinator.com/item?id=50378228",
+        "https://www.openssh.org/releasenotes.html#10.6p2",
+        "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
+        "https://github.com/coollabsio/coolify/discussions/12484"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01014,
+      "epss_percentile": 0.63469,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T18:01:59.685330+00:00",
+      "matched": [
+        "openssh"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83500",
       "aliases": [],
       "title": "",
@@ -64748,60 +64802,6 @@
       "first_seen": "2026-10-24T16:57:17.235614+00:00",
       "matched": [
         "linux-kernel"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 42.3,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-123158",
-      "aliases": [],
-      "title": "",
-      "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
-      "published": "2026-11-05T16:17:47.110",
-      "updated": "2026-11-08T03:16:37.447",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/leonjza/sshhole-lab",
-        "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482",
-        "https://github.com/predkambrij/sshhole-repro",
-        "https://hachyderm.io/@damienmiller/117563026759098135",
-        "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2",
-        "https://news.ycombinator.com/item?id=50377976",
-        "https://news.ycombinator.com/item?id=50378228",
-        "https://www.openssh.org/releasenotes.html#10.6p2",
-        "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
-        "https://github.com/coollabsio/coolify/discussions/12484"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00976,
-      "epss_percentile": 0.62332,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-05T18:01:59.685330+00:00",
-      "matched": [
-        "openssh"
       ],
       "match_type": "keyword",
       "tier": 1,
@@ -78887,6 +78887,46 @@
       "first_seen": "2026-11-08T13:26:01.235135+00:00",
       "matched": [
         "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M6XVDCKRT3PSB0YP8J30GTD5",
+      "aliases": [],
+      "title": "OpenAI: Elevated errors with image generation",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-11-08T15:11:15Z",
+      "updated": "2026-11-08T17:00:42Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-08T17:00:42Z",
+      "first_seen": "2026-11-08T18:30:39.652775+00:00",
+      "matched": [
+        "openai"
       ],
       "match_type": "status",
       "tier": null,
@@ -93766,6 +93806,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-18893",
+      "aliases": [],
+      "title": "CockroachDB PostgreSQL for IBM VPC is affected by multiple vulnerabilities",
+      "description": "IBM CockroachDB PostgreSQL for IBM VPC 26.2.0 through 26.2.3, 25.4.0 through 25.4.12, and 25.2.0 through 25.2.20 is vulnerable to privilege escalation via user-defined function.",
+      "published": "2026-11-08T18:08:16.406Z",
+      "updated": "2026-11-08T18:08:42.430Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [
+        "ibm:cockroachdb_postgresql_for_ibm_vpc"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "IBM CockroachDB PostgreSQL for IBM VPC"
+      ],
+      "references": [
+        "https://www.ibm.com/support/pages/node/7293292"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T18:30:39.652775+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-104016",
       "aliases": [],
       "title": "",
@@ -99801,6 +99888,54 @@
         "cvss": 11.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-18546",
+      "aliases": [],
+      "title": "CockroachDB PostgreSQL for IBM VPC is affected by multiple vulnerabilities",
+      "description": "IBM CockroachDB PostgreSQL for IBM VPC 26.2.0 through 26.2.3, 25.4.0 through 25.4.12, and 25.2.0 through 25.2.20 is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks.",
+      "published": "2026-11-08T18:05:24.662Z",
+      "updated": "2026-11-08T18:17:04.447",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [
+        "ibm:cockroachdb_postgresql_for_ibm_vpc"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "IBM CockroachDB PostgreSQL for IBM VPC"
+      ],
+      "references": [
+        "https://www.ibm.com/support/pages/node/7293292"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-08T18:30:39.652775+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
       },
       "ai_analysis": ""
     },
