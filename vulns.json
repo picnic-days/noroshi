@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T22:29:58.336931+00:00",
+  "generated_at": "2026-11-09T01:59:25.865544+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -78929,6 +78929,88 @@
         "openai"
       ],
       "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-24hyksy87wl0",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting Zoom Inbound SMS Service in the AU region",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-08T16:07:48.240-08:00",
+      "updated": "2026-11-08T17:08:13.169-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/kvsn81c4blyx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-08T17:08:13.169-08:00",
+      "first_seen": "2026-11-09T01:59:25.865544+00:00",
+      "matched": [
+        "zoom"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-hh7j-5m3j-23pf",
+      "aliases": [],
+      "title": "Malware in @ethersphere/bee-js",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 3,560",
+      "published": "2026-11-09T01:25:27Z",
+      "updated": "2026-11-09T01:25:27Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@ethersphere/bee-js"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-hh7j-5m3j-23pf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-09T01:59:25.865544+00:00",
+      "matched": [
+        "npm:@ethersphere/bee-js"
+      ],
+      "match_type": "malware",
       "tier": null,
       "score": 40.0,
       "level": "medium",
