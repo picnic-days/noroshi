@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T01:59:25.865544+00:00",
+  "generated_at": "2026-11-09T09:48:56.205931+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -79011,6 +79011,93 @@
         "npm:@ethersphere/bee-js"
       ],
       "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115213",
+      "aliases": [],
+      "title": "EASY-JS-WPAPI <= 2.0 - Unauthenticated Administrator Password Disclosure and Authentication Bypass",
+      "description": "The EASY-JS-WPAPI Client HANDLE for the WordPress REST-API WordPress plugin through 2.0 does not prevent the administrator credentials it stores from being disclosed to unauthenticated users and does not correctly verify authentication, allowing unauthenticated attackers to obtain administrator credentials and gain full administrator access to the site.",
+      "published": "2026-11-09T06:00:26.027Z",
+      "updated": "2026-11-09T07:17:27.953",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown EASY-JS-WPAPI Client HANDLE for the WordPress REST-API"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/7aa5096b-017a-4326-8653-5d6749efb390/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-09T09:48:56.205931+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "unauth_network": 5,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-c9px7cw2ghrs",
+      "aliases": [],
+      "title": "GitHub: Increased timeouts due to surge in anonymous users",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-09T05:59:07.851Z",
+      "updated": "2026-11-09T09:09:56.174Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/jztczfplj6yb"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-09T09:09:56.174Z",
+      "first_seen": "2026-11-09T09:48:56.205931+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 40.0,
       "level": "medium",
