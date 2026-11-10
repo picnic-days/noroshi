@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-10T11:14:06.962795+00:00",
+  "last_run": "2026-11-10T18:41:19.148184+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -74,7 +74,11 @@
     "CVE-2026-114630": "2026-11-06T11:31:43.774082+00:00",
     "CVE-2026-115252": "2026-11-09T20:45:02.337830+00:00",
     "CVE-2026-123158": "2026-11-09T20:45:02.337830+00:00",
-    "CVE-2026-121034": "2026-11-09T20:45:02.337830+00:00"
+    "CVE-2026-121034": "2026-11-09T20:45:02.337830+00:00",
+    "CVE-2026-119958": "2026-11-10T18:41:19.148184+00:00",
+    "CVE-2026-112967": "2026-11-10T18:41:19.148184+00:00",
+    "CVE-2026-116928": "2026-11-10T18:41:19.148184+00:00",
+    "CVE-2026-0322": "2026-11-10T18:41:19.148184+00:00"
   },
   "ai_key_checked": "2026-11-10",
   "open_outages": {},
@@ -118,7 +122,7 @@
   },
   "digest_sent": "2026-11-10",
   "digest_since": "2026-11-10T02:57:29.637695+00:00",
-  "repo_adv_checked": "2026-11-10T11:14:06.962795+00:00",
+  "repo_adv_checked": "2026-11-10T18:41:19.148184+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -718,7 +722,8 @@
       "https://www.anthropic.com/research/components-of-agent-memory",
       "https://www.anthropic.com/research/teaching-ai-to-build-scientific-models",
       "https://www.anthropic.com/claude-fable-and-mythos-5-2",
-      "https://www.anthropic.com/research/claude-electronics-design"
+      "https://www.anthropic.com/research/claude-electronics-design",
+      "https://www.anthropic.com/news/roadshow-launch"
     ]
   }
 }
