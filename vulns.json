@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T02:57:29.637695+00:00",
+  "generated_at": "2026-11-10T11:14:06.962795+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -563,7 +563,7 @@
       "title": "OpenBSD OpenSSH Unexpected Status Code or Return Value Vulnerability",
       "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
       "published": "2026-11-05T16:17:47.110",
-      "updated": "2026-11-10T01:17:16.970",
+      "updated": "2026-11-10T05:17:58.923",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13961,6 +13961,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116779",
+      "aliases": [],
+      "title": "SignalWire FreeSwitch Code Injection Vulnerability",
+      "description": "FreeSWITCH is a Software Defined Telecom Stack enabling the digital transformation from proprietary telecom switches to a software implementation that runs on any commodity hardware. Prior to 1.11.3, sofia_presence_handle_sip_i_message() split the To user of an inbound SIP MESSAGE on a plus sign and treated the left side as a chat protocol selector. Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. Inbound chat is enabled on the stock internal and external profiles, and any authenticated profile account is sufficient; stock directory users without password material can also remove that barrier in affected configurations. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild. This issue is fixed in version 1.11.3.",
+      "published": "2026-11-05T20:17:44.790",
+      "updated": "2026-11-10T05:17:57.830",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "freeswitch:freeswitch"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "SignalWire FreeSwitch"
+      ],
+      "references": [
+        "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86",
+        "https://github.com/signalwire/freeswitch/pull/3135",
+        "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3",
+        "https://github.com/signalwire/freeswitch/security/advisories/GHSA-mg63-h38w-8p9p",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116779",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-116779"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-09",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01299,
+      "epss_percentile": 0.70632,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-09T20:45:02.337830+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 54.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69634",
       "aliases": [],
       "title": "",
@@ -14373,7 +14427,7 @@
       "title": "IBM Aspera Faspex Incorrect Authorization Vulnerability",
       "description": "IBM Aspera Faspex 5.0.0 through 5.0.19 could allow an authorized user to craft a specific message to bypass user authorization and gain full administrative privileges.",
       "published": "2026-11-07T04:17:28.900",
-      "updated": "2026-11-09T22:18:36.323",
+      "updated": "2026-11-10T05:17:59.200",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -14517,30 +14571,28 @@
     },
     {
       "id": "CVE-2026-102895",
-      "aliases": [
-        "GHSA-gj9m-f8ph-pmhr"
-      ],
-      "title": "GPUStack: Authentication bypass via trusted loopback source (reverse-proxy TCP peer or X-GPUStack-Real-IP header) grants unauthenticated admin",
-      "description": "### Impact\n\nIn GPUStack before v2.2.0, `get_current_user` (in `gpustack/api/auth.py`) promotes any request whose source is considered loopback to the built-in administrator account when `force_auth_localhost` is `False` (the default). The \"source\" is derived by `client_ip_getter`, which can be made to report `127.0.0.1` without any credentials in two ways:\n\n1. **Same-host reverse proxy (TCP peer).** In the canonical self-hosted shape —\n   GPUStack behind a same-host reverse proxy with `proxy_pass\n   http://127.0.0.1:<port>` — every remote request arrives at GPUStack with TCP\n   peer `127.0.0.1`, so the loopback auto-admin branch fires. No header or\n   credential is required. Verified end-to-end against HEAD `6bee5883`.\n2. **`X-GPUStack-Real-IP` header.** A forged `X-GPUStack-Real-IP: 127.0.0.1`\n   header can cause the request source to be treated as loopback.\n\nEither path yields **full, unauthenticated administrative access** over the network: enumerate and modify users, models, workers, and configuration; mint persistent admin API keys (scope `[\"*\"]`, valid from any source IP thereafter); read worker credentials and cloud/provider secrets. Combined with admin-only functionality such as `POST /v2/inference-backends/from yaml`, this leads to code execution on worker hosts.\n\nThis vulnerability has been observed exploited in the wild against a v2.1.1 deployment (attacker-created custom backends running reverse shells).\n\n### Root cause\n\nTrusting the network source of a request (socket peer, or a client-controllable header) as an authentication signal. When GPUStack is fronted by a same-host reverse proxy, the socket peer is always loopback, so the \"localhost is trusted\" assumption no longer holds.\n\n### Patches\n\nFixed in `gpustack` `2.2.0`: the loopback auto-admin path was removed and client-IP / forwarding-header handling was hardened. Upgrade to `2.2.0` or later.\n\n### Workarounds\n\n- Set `force_auth_localhost=true` to require authentication even for loopback\n  requests.\n- Ensure the reverse proxy / gateway cannot cause GPUStack to treat external\n  traffic as loopback, and strip any client-supplied `X-GPUStack-Real-IP`\n  header at the edge.\n- Keep the API off untrusted networks (VPN / edge authentication).\n\n### Remediation (in the fix)\n\nDo not derive authentication from the request's network source. Remove implicit loopback-based admin, and only accept a real client-IP header from an authenticated/trusted gateway (never from arbitrary clients).\n\n### Credit\n\nIndependently reported by Nikko Enggaliano; Wei Yunzhou; and Rui Yang & Haoyu Wang (Johns Hopkins University). Active in the-wild exploitation was reported by Javier Sixto (ulex.fr).",
-      "published": "2026-11-09T22:15:27Z",
-      "updated": "2026-11-09T22:15:29Z",
+      "aliases": [],
+      "title": "GPUStack Improper Authentication Vulnerability",
+      "description": "GPUStack is an open-source GPU cluster manager for AI model serving and GPU instance provisioning. Prior to 2.2.0, get_current_user in gpustack/api/auth.py treated a loopback request source as the built-in administrator when force_auth_localhost was false, which was the default. A remote request could appear to originate from 127.0.0.1 because client_ip_getter accepted a same-host reverse proxy peer or a client-supplied X-GPUStack-Real-IP loopback value. The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and cloud-provider secrets, and code execution through POST /v2/inference-backends/from-yaml. Exploitation was observed in the wild against a 2.1.1 deployment. This issue is fixed in version 2.2.0.",
+      "published": "2026-11-04T22:17:44.613",
+      "updated": "2026-11-10T05:17:40.970",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
-      "cpes": [],
-      "packages": [
-        "pip:gpustack"
+      "cpes": [
+        "gpustack:gpustack"
       ],
+      "packages": [],
       "vendor_products": [
         "GPUStack GPUStack"
       ],
       "references": [
-        "https://github.com/advisories/GHSA-gj9m-f8ph-pmhr",
-        "https://github.com/gpustack/gpustack/security/advisories/GHSA-gj9m-f8ph-pmhr",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
-        "https://github.com/gpustack/gpustack/pull/5346",
         "https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d",
-        "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
+        "https://github.com/gpustack/gpustack/pull/5346",
+        "https://github.com/gpustack/gpustack/releases/tag/v2.2.0",
+        "https://github.com/gpustack/gpustack/security/advisories/GHSA-gj9m-f8ph-pmhr",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-102895",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-102895"
       ],
       "exploit_ref": false,
       "kev": true,
@@ -14551,7 +14603,7 @@
       "epss_percentile": 0.2646,
       "x_mentions": null,
       "sources": [
-        "ghsa",
+        "nvd",
         "kev"
       ],
       "category": "vuln",
@@ -32750,6 +32802,54 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-10T02:57:29.637695+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120013",
+      "aliases": [],
+      "title": "Path Traversal in Agent Memory Module of SAP Cloud SDK for Python",
+      "description": "The agent_memory module accepts a caller-supplied tenant parameter in create_client(tenant=...). Prior to version 0.50.0, the tenant parameter was not validated before being used to construct filesystem paths for secret resolution. A value containing path traversal sequences (for example, attacker-corp/../victim-corp) could cause the resolved path to escape the intended directory and access another tenant's secrets under:Plain Text/etc/secrets/appfnd/hana-agent-memory/<tenant>/Successful exploitation could allow unauthorized access to another tenant's mounted credentials, including OAuth client IDs and client secrets. This vulnerability could enable cross-tenant access to sensitive credentials.",
+      "published": "2026-11-10T08:05:17.340Z",
+      "updated": "2026-11-10T09:17:22.303",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "SAP_SE SAP Cloud SDK for Python"
+      ],
+      "references": [
+        "https://github.com/SAP/cloud-sdk-python/security/advisories/GHSA-28c8-457r-4cf6",
+        "https://url.sap/sapsecuritypatchday"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
       "matched": [
         "python"
       ],
@@ -81085,6 +81185,130 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-m644az5hr9xo",
+      "aliases": [],
+      "title": "Cloudflare: Account Analytics Filter Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-10T08:02:37.766Z",
+      "updated": "2026-11-10T08:45:13.933Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/m644az5hr9xo"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-10T08:45:13.933Z",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-7j35-x788-5m8x",
+      "aliases": [],
+      "title": "Malicious code in sauruspro-bail (npm)",
+      "description": "Malicious package. `sauruspro-bail` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). it silently subscribes every victim (via the injected WhatsApp newsletter/channel FOLLOW on connect) to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363418964199743@newsletter, 120363429190136593@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/af6d7a13cf34b6ea7b4179955cc7dbd1298ae6bf/osv/malicious/npm/sauruspro-bail/MAL-2026-19073.json))\n\n週間ダウンロード数: 約 1,070",
+      "published": "2026-11-10T09:31:11Z",
+      "updated": "2026-11-10T09:31:12Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:sauruspro-bail"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7j35-x788-5m8x"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "npm:sauruspro-bail"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-fpfc-cq2r-8r2c",
+      "aliases": [],
+      "title": "Malware in moltbook-health",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,040",
+      "published": "2026-11-10T04:28:24Z",
+      "updated": "2026-11-10T04:28:25Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:moltbook-health"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-fpfc-cq2r-8r2c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "npm:moltbook-health"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -86014,6 +86238,106 @@
         "cvss": 19.2,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-60037",
+      "aliases": [],
+      "title": "OpenSSL command injection in device importer",
+      "description": "A high privileged remote attacker can perform an OpenSSL code injection in the frontends device importer function leading to code execution. This can result in a total loss of confidentiality, integrity and availability.",
+      "published": "2026-11-10T08:35:37.141Z",
+      "updated": "2026-11-10T09:17:23.133",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "MB connect line mbCONNECT24",
+        "MB connect line mymbCONNECT24",
+        "Helmholz myREX24V2",
+        "Helmholz myREX24V2.virtual"
+      ],
+      "references": [
+        "https://www.certvde.com/en/advisories/VDE-2026-079/",
+        "https://www.certvde.com/en/advisories/VDE-2026-141/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 38.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-60038",
+      "aliases": [],
+      "title": "OpenSSL command injection in ImportPKCS12",
+      "description": "A high privileged remote attacker can perform an OpenSSL code injection in the backends ImportPKCS12 function leading to code execution. This can result in a total loss of confidentiality, integrity and availability.",
+      "published": "2026-11-10T08:35:49.775Z",
+      "updated": "2026-11-10T09:17:23.300",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "MB connect line mbCONNECT24",
+        "MB connect line mymbCONNECT24",
+        "Helmholz myREX24V2",
+        "Helmholz myREX24V2.virtual"
+      ],
+      "references": [
+        "https://www.certvde.com/en/advisories/VDE-2026-079/",
+        "https://www.certvde.com/en/advisories/VDE-2026-141/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 38.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.2
       },
       "ai_analysis": ""
     },
@@ -101179,66 +101503,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111771",
-      "aliases": [],
-      "title": "Model Context Protocol TypeScript SDK: Server bearer authentication accepted tokens issued for another service",
-      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.6.0 until 1.32.0 in @modelcontextprotocol/sdk, from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, from 2.0.0 until 2.0.2 in @modelcontextprotocol/express, and from 2.0.0 until 2.3.1 in @modelcontextprotocol/server-legacy, server-side bearer authentication could accept a valid access token issued for a different service because the SDK did not enforce the token audience. The affected surface is server-side HTTP bearer authentication. The trigger is a valid token whose audience names another service. The authorization server must issue tokens for multiple services, and the application's verifyAccessToken() must not independently validate aud. Applications already validating aud inside verifyAccessToken() are not affected. An attacker with a token for another service could authenticate to the MCP server and obtain the confidentiality and integrity capabilities granted to an authenticated caller. Upgrading alone leaves the new audience validation disabled. Operators must enable audience validation and provide the token audience together. Enabling only the expected audience check causes every request to receive HTTP 401. This issue is fixed in @modelcontextprotocol/sdk 1.32.0, @modelcontextprotocol/server 2.3.0, @modelcontextprotocol/express 2.0.2, and @modelcontextprotocol/server-legacy 2.3.1.",
-      "published": "2026-11-05T21:08:55.758Z",
-      "updated": "2026-11-05T21:18:35.973",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "modelcontextprotocol typescript-sdk",
-        "@modelcontextprotocol sdk",
-        "@modelcontextprotocol server",
-        "@modelcontextprotocol express",
-        "@modelcontextprotocol server-legacy"
-      ],
-      "references": [
-        "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-rvq5-wwqv-78pq",
-        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2929",
-        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2930",
-        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2952",
-        "https://github.com/modelcontextprotocol/typescript-sdk/commit/40f8f4e229d963cd7fd2890bda2aeebe7005299a",
-        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a0724d14cf34a27a3b070224d2996cdd611df9f",
-        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a1867390b91b8836f49af76c45427279f513325",
-        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
-        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/express@2.0.2",
-        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server-legacy@2.3.1",
-        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-05T23:38:48.927446+00:00",
-      "matched": [
-        "mcp"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 33.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-125254",
       "aliases": [],
       "title": "FFmpeg through 9.0.2 Division by Zero via VVC ff_vvc_slice_rpl()",
@@ -108130,50 +108394,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116779",
-      "aliases": [],
-      "title": "SignalWire FreeSwitch Code Injection Vulnerability",
-      "description": "SignalWire FreeSwitch contains a code injection vulnerability that permits configuration and credential disclosure, arbitrary call control, and command execution.",
-      "published": "2026-11-09",
-      "updated": "2026-11-09",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "SignalWire FreeSwitch"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-116779"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-09",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01299,
-      "epss_percentile": 0.70632,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-09T20:45:02.337830+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-41709",
       "aliases": [],
       "title": "Broadcom VMWare ESX Insufficient Logging Vulnerability",
@@ -112538,6 +112758,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111771",
+      "aliases": [],
+      "title": "",
+      "description": "The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.6.0 until 1.32.0 in @modelcontextprotocol/sdk, from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, from 2.0.0 until 2.0.2 in @modelcontextprotocol/express, and from 2.0.0 until 2.3.1 in @modelcontextprotocol/server-legacy, server-side bearer authentication could accept a valid access token issued for a different service because the SDK did not enforce the token audience. The affected surface is server-side HTTP bearer authentication. The trigger is a valid token whose audience names another service. The authorization server must issue tokens for multiple services, and the application's verifyAccessToken() must not independently validate aud. Applications already validating aud inside verifyAccessToken() are not affected. An attacker with a token for another service could authenticate to the MCP server and obtain the confidentiality and integrity capabilities granted to an authenticated caller. Upgrading alone leaves the new audience validation disabled. Operators must enable audience validation and provide the token audience together. Enabling only the expected audience check causes every request to receive HTTP 401. This issue is fixed in @modelcontextprotocol/sdk 1.32.0, @modelcontextprotocol/server 2.3.0, @modelcontextprotocol/express 2.0.2, and @modelcontextprotocol/server-legacy 2.3.1.",
+      "published": "2026-11-05T21:18:35.973",
+      "updated": "2026-11-10T05:17:42.073",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/40f8f4e229d963cd7fd2890bda2aeebe7005299a",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a0724d14cf34a27a3b070224d2996cdd611df9f",
+        "https://github.com/modelcontextprotocol/typescript-sdk/commit/5a1867390b91b8836f49af76c45427279f513325",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2929",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2930",
+        "https://github.com/modelcontextprotocol/typescript-sdk/pull/2952",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/express@2.0.2",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server-legacy@2.3.1",
+        "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/@modelcontextprotocol/server@2.3.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00541,
+      "epss_percentile": 0.45792,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-05T23:38:48.927446+00:00",
+      "matched": [
+        "mcp"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.7,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116684",
       "aliases": [],
       "title": "",
@@ -116040,28 +116313,22 @@
     },
     {
       "id": "CVE-2026-88982",
-      "aliases": [
-        "GHSA-2xwh-426q-42c5"
-      ],
-      "title": "Kubeflow Pipelines: Cross-tenant execution-cache poisoning / output substitution via a namespace-blind cache key in the cache webhook (multi-user)",
-      "description": "## Summary\n\nThe legacy Kubeflow Pipelines V1/raw-Argo execution cache does not separate cached results by Kubernetes namespace. In multi-user deployments where tenants share the cache service, a tenant can receive another tenant's cached outputs or seed outputs that are subsequently substituted into another tenant's step.\n\nThis affects the Argo-template cache mutating webhook and its cache-server storage path. Standard KFP V2 component pods bypass this webhook cache; the separate V2 cache implementation is outside this advisory's scope.\n\n## Affected deployments and impact\n\nThe issue requires multiple tenant namespaces sharing the legacy cache service, cache-enabled V1/raw-Argo steps, and cache entries that satisfy the configured staleness policy. The standard multi-user configuration watches pods across namespaces.\n\nA tenant able to submit a step with the same cache-relevant template fields as another tenant's step can:\n\n- Read cached step outputs originally produced in another namespace.\n- Populate the shared cache before another tenant's matching step runs, causing that step to report the cached outputs instead of executing its intended containers.\n\nMatching refers to the selected template fields used by the cache key, not merely an identical container image. This is an application-level cache-key collision caused by missing tenant scope, not a cryptographic SHA-256 collision. The finding establishes cross-namespace confidentiality and integrity impact; it does not establish arbitrary code execution.\n\n## CVSS rationale\n\n**Medium — CVSS 3.1: 5.4**\n\n`CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N`\n\n- **AV:N / PR:L / UI:N:** a tenant with ordinary workload-submission privileges can exercise the shared cache through network-accessible APIs. Reading an existing cached result or poisoning a subsequent automated execution requires no additional victim interaction.\n- **AC:L:** known or shared templates can produce the same cache key deterministically. Cache-enabled execution and matching template fields describe the affected configuration; they do not establish an unavoidable narrow race or secret prerequisite.\n- **S:U:** the established impact is disclosure or substitution of output data managed by the same cache service. Crossing tenant namespaces alone does not establish a change in security authority; execution under a separate victim authority has not been established here.\n- **C:L / I:L / A:N:** the confirmed impact is selective cached-output disclosure and substitution. Arbitrary code execution, complete workload compromise, and a service-availability impact are not established.\n\n## Root cause\n\nThe vulnerable implementation hashes selected Argo template fields without a namespace. Cache lookups and duplicate checks use the key alone, and stored rows have no namespace ownership field. On a hit, the admission handler restores cached outputs and substitutes a dummy container for the step's containers.\n\nThe completion watcher also trusts the mutable `pipelines.kubeflow.org/execution_cache_key` annotation when publishing outputs. Adding a namespace to the hash alone is therefore insufficient: a tenant able to patch its own pod could supply another namespace's deterministic key. Namespace ownership must be enforced independently on cache writes and reads.\n\nRelevant implementation files are `backend/src/cache/server/mutation.go`, `backend/src/cache/server/watcher.go`, `backend/src/cache/storage/execution_cache_store.go`, and `backend/src/cache/model/execution_cache.go`.\n\n## Fix status\n\nThe source fix merged on September 10, 2026 in [PR #14359](https://github.com/kubeflow/pipelines/pull/14359), commit [620d0cc89ae0d042a484a003f8ffe6e9a55d347e](https://github.com/kubeflow/pipelines/commit/620d0cc89ae0d042a484a003f8ffe6e9a55d347e).\n\nThe merged fix:\n\n- Derives namespaced keys from the API server's admission request namespace and selected template fields.\n- Recomputes completed pods' keys from their observed namespace and `ARGO_TEMPLATE`, rejecting mismatched or malformed identities rather than trusting the annotation.\n- Stores the observed namespace separately and scopes normal reads and duplicate detection by namespace and key.\n- Adds a namespace column and composite index, leaving historical rows unowned and excluded from normal lookups.\n- Rejects structurally malformed template objects without panicking.\n\nThe first fixed release is **[2.18.0](https://github.com/kubeflow/pipelines/releases/tag/2.18.0)**. Releases through **2.17.3** remain affected; the affected-version upper bound is `<= 2.17.3` and the patched version is `2.18.0`.\n\n## Upgrade requirements and legacy fallback\n\nThe standard cache-server Deployment supports a normal rolling upgrade from 2.17.2. Apply the upgraded manifests without manually stopping old replicas or pausing submissions. Namespace isolation is fully enforced only after all old cache-server processes, including terminating pods, have exited and every new replica uses `enforce`. Custom installations sharing the cache database must upgrade every writer. Mixed-version operation does not yet provide the full isolation guarantee.\n\nExpect reduced cache reuse and increased step execution/resource use as tasks next run; there is no startup cache rebuild. Do not infer or backfill namespace ownership for historical rows. Pre-upgrade pods carrying old-format keys do not seed the new namespaced cache. Completing the upgrade does not undo previously disclosed data or reused poisoned outputs. Do not roll back to the vulnerable implementation to recover cache hits.\n\n[PR #14427](https://github.com/kubeflow/pipelines/pull/14427) merged into `release-2.18` on October 5, 2026 and standardizes the compatibility setting as **`KFP_SECURITY_LEGACY_CACHE_MODE=enforce|audit` on the cache-server Deployment**. This supersedes the original fix's `ALLOW_LEGACY_CACHE_FALLBACK` interface. Unset, empty, or `enforce` keeps full namespace isolation; invalid values prevent startup.\n\nExplicit `audit` permits a genuine namespaced cache miss to reuse a historical template-only entry whose stored namespace is empty. That entry may contain another tenant's outputs, including poisoned outputs: audit accepts residual cross-tenant confidentiality and integrity risk, and is not full remediation. Scoped entries take precedence, known foreign namespaces remain excluded, and a database error does not enable legacy fallback. Legacy hits are not promoted or backfilled into namespaced rows.\n\nThe server emits a startup warning and scoped `security_audit` events for legacy reuse without logging cached outputs or credentials. Keep replicas configured consistently, persist the mode in deployment configuration, and return to `enforce` after migration. Native V2 caching is outside this control and this advisory.\n\nSee the [released cache-server guide](https://github.com/kubeflow/pipelines/blob/2.18.0/backend/src/cache/README.md#namespace-isolation-and-upgrades) for rollout completion checks and audit-to-enforce migration. This fix does not establish an integrity boundary between users who can modify workloads within the same namespace.\n\n## Mitigation until the fixed release is deployed\n\nDisable legacy cache reuse for affected workloads, or ensure mutually untrusted namespaces do not share the legacy cache service and storage. Restricting the webhook's namespace selector or watcher scope alone is insufficient if mutually untrusted tenants still share cached entries.\n\n## Validation\n\nSource review identified the shared key, unscoped storage, and mutable-annotation write path. The public fix includes regressions exercising admission and completion handling, forged foreign-namespace keys, normal same-namespace reuse, malformed templates, legacy-row exclusion, and optional fallback behavior.\n\nDuring development, the cache test suite and lint passed; populated and repeatable schema migration and scoped storage behavior were verified on SQLite, MySQL 8.4, and PostgreSQL 16. Negative controls removing the watcher identity check or storage namespace filter failed their corresponding regressions. These tests use fake Kubernetes clients; they are not a claim of a live multi-tenant Kubernetes exploit reproduction.\n\n### Private patch disposition\n\nThe earlier [private PR #1](https://github.com/kubeflow/pipelines-ghsa-2xwh-426q-42c5/pull/1) is closed as superseded by [public PR #14359](https://github.com/kubeflow/pipelines/pull/14359) and the released follow-ups described above. The private branch and review history are retained; this closure does not dismiss the report or change reporter credit. The advisory remains a draft pending the publication review.",
-      "published": "2026-11-09T22:43:33Z",
-      "updated": "2026-11-09T22:43:35Z",
+      "aliases": [],
+      "title": "",
+      "description": "Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows. Prior to 2.18.0, the legacy V1/raw-Argo execution cache mutating webhook and cache-server storage path hash selected template fields without the Kubernetes namespace, use the key alone for lookups and duplicate checks, and trust the mutable pipelines.kubeflow.org/execution_cache_key annotation when publishing outputs. In multi-user deployments where tenant namespaces share the cache service, a tenant with workload-submission privileges can read another namespace's cached outputs or seed matching outputs that are substituted into a later step. Standard KFP V2 component pods bypass this cache, matching requires the selected template fields and staleness policy, and arbitrary code execution or service availability impact is not established. This issue is fixed in version 2.18.0.",
+      "published": "2026-11-05T23:17:01.600",
+      "updated": "2026-11-10T05:18:12.427",
       "cvss": 5.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
       "severity": "medium",
       "cpes": [],
-      "packages": [
-        "go:github.com/kubeflow/pipelines"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-2xwh-426q-42c5",
-        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-2xwh-426q-42c5",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-88982",
-        "https://github.com/kubeflow/pipelines/pull/14359",
         "https://github.com/kubeflow/pipelines/commit/620d0cc89ae0d042a484a003f8ffe6e9a55d347e",
-        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0"
+        "https://github.com/kubeflow/pipelines/pull/14359",
+        "https://github.com/kubeflow/pipelines/releases/tag/2.18.0",
+        "https://github.com/kubeflow/pipelines/security/advisories/GHSA-2xwh-426q-42c5"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -116072,13 +116339,12 @@
       "epss_percentile": 0.0418,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-05T23:38:48.927446+00:00",
       "matched": [
-        "postgresql",
         "kubernetes"
       ],
       "match_type": "keyword",
@@ -155150,6 +155416,86 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-09T20:45:02.337830+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2091246",
+      "aliases": [],
+      "title": "CFCA: Inaccurate Subject DN attribute values",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-10T04:52:02Z",
+      "updated": "2026-11-10T04:52:02Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2091246"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2091280",
+      "aliases": [],
+      "title": "CFCA: Deployment Process Certificate Misissuance",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-10T06:49:46Z",
+      "updated": "2026-11-10T06:49:46Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2091280"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T11:14:06.962795+00:00",
       "matched": [
         "pki"
       ],
