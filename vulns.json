@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T03:06:02.081622+00:00",
+  "generated_at": "2026-11-11T10:59:10.246761+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -630,6 +630,60 @@
         "kev": 20,
         "exploit_ref": 5,
         "epss": 2.5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-125350",
+      "aliases": [],
+      "title": "Google Chromium Use-After-Free Vulnerability",
+      "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-10T18:17:35.237",
+      "updated": "2026-11-11T05:19:38.220",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Google Chromium"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html",
+        "https://issues.chromium.org/issues/582442907",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-125350",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-125350"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 77.6,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20
       },
       "ai_analysis": ""
     },
@@ -14997,52 +15051,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-125350",
-      "aliases": [],
-      "title": "Google Chromium Use-After-Free Vulnerability",
-      "description": "Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code inside the sandbox via a specially crafted webpage. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chromium"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125350"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 55,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "rce": 5,
-        "kev": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-119858",
       "aliases": [],
       "title": "Remote Desktop Client Remote Code Execution Vulnerability",
@@ -18484,6 +18492,56 @@
         "popularity": 30,
         "cvss": 18.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116606",
+      "aliases": [],
+      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
+      "published": "2026-11-02T13:17:37.017",
+      "updated": "2026-11-11T05:19:26.320",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
+      ],
+      "references": [
+        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md",
+        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01602,
+      "epss_percentile": 0.76026,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 53.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 18.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -35764,7 +35822,7 @@
       "title": "",
       "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.50 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-10T18:17:34.843",
-      "updated": "2026-11-10T21:19:23.223",
+      "updated": "2026-11-11T05:19:37.613",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -39706,7 +39764,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-10T18:17:34.443",
-      "updated": "2026-11-10T21:19:22.767",
+      "updated": "2026-11-11T05:19:37.027",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -39752,7 +39810,7 @@
       "title": "",
       "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-10T18:17:34.707",
-      "updated": "2026-11-10T20:19:09.030",
+      "updated": "2026-11-11T05:19:37.333",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -39798,7 +39856,7 @@
       "title": "",
       "description": "Out of bounds write in GPU in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-10T18:17:34.980",
-      "updated": "2026-11-10T21:19:23.447",
+      "updated": "2026-11-11T05:19:37.910",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -43171,6 +43229,58 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124194",
+      "aliases": [],
+      "title": "Microsoft Office Outlook Missing User Interaction for Potentially Unsafe Action Vulnerability",
+      "description": "Product ui does not warn user of unsafe actions in Microsoft Office Outlook allows an unauthorized attacker to perform spoofing over a network.",
+      "published": "2026-11-10T19:20:48.180",
+      "updated": "2026-11-11T05:19:35.990",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:365_apps",
+        "microsoft:office_2021",
+        "microsoft:office_2024"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-124194",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-124194"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "kev": 20
       },
       "ai_analysis": ""
     },
@@ -46818,7 +46928,7 @@
       "title": "",
       "description": "Buffer overflow in Compositing in Google Chrome prior to 157.0.8103.50 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-10T18:17:34.303",
-      "updated": "2026-11-10T21:19:22.573",
+      "updated": "2026-11-11T05:19:36.753",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -46855,6 +46965,55 @@
         "cvss": 16.6,
         "unauth_network": 5,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111560",
+      "aliases": [],
+      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
+      "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed.",
+      "published": "2026-11-02T13:17:35.190",
+      "updated": "2026-11-11T05:19:20.373",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Multiple Products"
+      ],
+      "references": [
+        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md",
+        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111560",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0106,
+      "epss_percentile": 0.6483,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 47.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.2,
+        "kev": 20,
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -58134,7 +58293,7 @@
       "title": "",
       "description": "Out-of-bounds write in Microsoft Windows Search Component allows an unauthorized attacker to execute code over a network.",
       "published": "2026-11-10T19:19:21.287",
-      "updated": "2026-11-10T20:18:07.223",
+      "updated": "2026-11-11T05:19:26.693",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -66747,7 +66906,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network.",
       "published": "2026-11-10T19:22:13.027",
-      "updated": "2026-11-10T20:20:06.510",
+      "updated": "2026-11-11T05:19:56.570",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -101230,6 +101389,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126610",
+      "aliases": [],
+      "title": "Improper Certificate Validation in hMailServer",
+      "description": "Progressive Robot hMailServer 6.3.4 through 6.3.7, with a MySQL or MariaDB database and TlsMode=verify-full, does not hand the database client the CA file that TlsCaFile names when the file's name contains a character outside ASCII on Linux, or above U+00FF on Windows, which allows an attacker who can intercept the connection to the database server to read and modify the traffic between hMailServer and its database, by presenting, with MariaDB Connector/C 3.4.2 to 3.4.10 as the client, a certificate from any authority, its own included, for any name, and otherwise a certificate for the database server's name issued by any certificate authority in the system's trust store. The server converted the name for the client with the C runtime's conversion in the C locale, which gives an empty string for such a name, and then set no CA file at all, without an error, while certificate verification stayed on, so the client - MariaDB Connector/C, bundled on Windows and the distribution's on Linux - verified the certificate of a database server over the network against the system's trust store instead of the configured CA; Connector/C 3.4.2 to 3.4.10 (bundled on Windows in 6.3.4 to 6.3.6) went further and, with no CA file, took a certificate within its dates whose issuer it could not find, for any name, with neither its chain nor its name checked and no password proof, when the server offered first a sign-in method that hashes the password, which an attacker in the middle chooses (MariaDB's CONC-853, fixed in Connector/C 3.4.11), and Connector/C 3.4 accepted from a MariaDB 11.4 or later server a certificate the store did not vouch for when that server proved it held the account's password; on a connection it treats as local (127.0.0.1, ::1, a Unix socket, a named pipe, and localhost on Windows), Connector/C 3.4.1 and later checked neither the certificate's issuer nor its name, so that a local attacker able to stand in for the database server could present any certificate within its dates of its own making. The settings line of hmailserver --check-database still named the configured file, and the application log said the certificate had been checked. With MariaDB Connector/C 3.4.1 to 3.4.9 as the client - bundled on Windows in 6.3.4 to 6.3.6, and the client of Linux distributions that have not patched it - the missing CA file also met the precondition of CVE-2026-107819, so that a certificate issued for any other name by a trusted authority was enough to obtain the database password. On Linux the file was found only when the server ran on glibc under a locale whose character set holds the name's characters (a UTF-8 locale, or a legacy 8-bit one the system has, in whose bytes the file is then named); with no locale, LC_ALL=C or a locale the system lacks, and on Alpine (musl), the connection failed instead. The configuration is not the default: TlsMode defaults to prefer, which checks no certificate.",
+      "published": "2026-11-11T08:30:37.134Z",
+      "updated": "2026-11-11T09:17:12.830",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/112",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 40.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69640",
       "aliases": [],
       "title": "",
@@ -109049,6 +109256,250 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-21vwp89eiyjx",
+      "aliases": [],
+      "title": "Cloudflare: SSL Certificate Provisioning Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T07:45:42.146Z",
+      "updated": "2026-11-11T10:07:58.207Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/21vwp89eiyjx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T10:07:58.207Z",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-4qxszy04pdjw",
+      "aliases": [],
+      "title": "Cloudflare: Elevated number of 5xx errors in Hong Kong",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T07:52:21.120Z",
+      "updated": "2026-11-11T07:45:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/4qxszy04pdjw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T07:45:00.000Z",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-yu63fhh2peb7",
+      "aliases": [],
+      "title": "Cloudflare: Replicate Input Upload Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T04:33:19.016Z",
+      "updated": "2026-11-11T04:33:19.016Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/yu63fhh2peb7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-byzl30zyfc47",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Worker Builds Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T06:29:09.044Z",
+      "updated": "2026-11-11T06:41:33.983Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/byzl30zyfc47"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T06:41:33.983Z",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-47pm-q564-4v9p",
+      "aliases": [],
+      "title": "Malicious code in raiden-baileys (npm)",
+      "description": "Malicious package. `raiden-baileys` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). on connection it issues an authenticated `w:mex` newsletter FOLLOW mutation (query_id 7871414976211147) that silently subscribes every victim to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363407277177688@newsletter, 120363407702752541@newsletter, 120363411769951302@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/d79c40ce4b5c4ebdf5653958cfc23a1a612aef18/osv/malicious/npm/raiden-baileys/MAL-2026-19108.json))\n\n週間ダウンロード数: 約 1,172",
+      "published": "2026-11-11T06:32:35Z",
+      "updated": "2026-11-11T06:32:36Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:raiden-baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-47pm-q564-4v9p"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "npm:raiden-baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-7m86-chx9-8rr7",
+      "aliases": [],
+      "title": "Malware in prettlog",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,058",
+      "published": "2026-11-11T04:07:10Z",
+      "updated": "2026-11-11T04:07:10Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:prettlog"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7m86-chx9-8rr7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "npm:prettlog"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -114902,6 +115353,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111793",
+      "aliases": [],
+      "title": "Openwave Messaging Limited Webtop Media Transcoder Incorrect Resource Transfer Between Spheres Vulnerability",
+      "description": "Openwave Webtop Media Transcoder does not enforce administrator-defined file type restrictions to restrict the file-types to be converted. This may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.",
+      "published": "2026-10-16T19:17:05.680",
+      "updated": "2026-11-11T05:19:21.073",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "medium",
+      "cpes": [
+        "openwave:webtop_media_transcoder"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Openwave Messaging Limited Webtop Media Transcoder"
+      ],
+      "references": [
+        "https://github.com/GISOpenwave/security-advisories-public/blob/main/CAN-2026-2032674.md",
+        "https://openwave.ai",
+        "https://jvn.jp/en/vu/JVNVU93403064/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111793",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111793"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00274,
+      "epss_percentile": 0.19971,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 8.6,
+        "kev": 20,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70116",
       "aliases": [],
       "title": "",
@@ -117670,56 +118173,6 @@
         "cvss": 12.6,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-124317",
-      "aliases": [],
-      "title": "libexpat through 2.10.0 Out-of-Bounds Read via unknown_toUtf8 and unknown_toUtf16",
-      "description": "libexpat through 2.10.0 contains an out-of-bounds read vulnerability in unknown_toUtf8() and unknown_toUtf16() in xmltok.c when handling application-registered unknown encodings. Attackers can supply a document ending in a truncated multibyte sequence so the convert callback reads past the parse buffer, leaking adjacent memory or crashing applications.",
-      "published": "2026-11-07T14:17:57.180Z",
-      "updated": "2026-11-07T15:17:16.220",
-      "cvss": 6.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "libexpat libexpat"
-      ],
-      "references": [
-        "https://github.com/libexpat/libexpat/pull/1492",
-        "https://github.com/libexpat/libexpat/blob/a70841d9ffa64ddde29ab824ed6305035ebe4c47/expat/lib/xmltok.c#L1274-L1322",
-        "https://github.com/libexpat/libexpat",
-        "https://www.vulncheck.com/advisories/libexpat-through-2.10.0-out-of-bounds-read-via-unknown-toutf8-and-unknown-toutf16"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-07T16:30:34.290052+00:00",
-      "matched": [
-        "expat"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 37.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 12.6,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -123278,6 +123731,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126617",
+      "aliases": [],
+      "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') in hMailServer",
+      "description": "SQL injection in the database layer of Progressive Robot hMailServer 6.0.0-B1 through 6.2.18, when the server uses MySQL/MariaDB or PostgreSQL, allows a remote attacker to alter SQL statements the server runs. On those two engines parameters are not bound: SQLStatement::GenerateFromCommand wrote each value into the statement's text as a quoted literal with a separate string replacement over the whole text per parameter, so a value holding the name of a parameter substituted after it had that name replaced, inside the value, by the later value with its own quotes, which ended the literal early and placed the later value in the statement as SQL. The row the server writes for each recipient of a queued message carries the recipient's address twice, so in the default configuration an authenticated user who may send mail reaches it by sending to an address of their choosing. A remote unauthenticated sender reaches the same statement through a message the server sends to the envelope sender, such as a delivery failure notice or an automatic reply, and, when greylisting or message indexing is enabled (both are off by default), through the greylisting record's envelope addresses or through the message metadata the server stores for IMAP SORT, which carries four header fields of a received message. An altered statement runs with the privileges of the server's database account; on PostgreSQL, whose client call runs every statement in the text it is given, further statements can follow it, while on MySQL/MariaDB, where one statement is run per call, the change is confined to the statement it is in. SQL Server and SQL Server Compact, where parameters are bound, are not affected.",
+      "published": "2026-11-11T08:33:22.129Z",
+      "updated": "2026-11-11T09:17:13.860",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/101",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.2.19"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-93471",
       "aliases": [],
       "title": "",
@@ -124069,6 +124570,101 @@
         "popularity": 21.0,
         "cvss": 15.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126621",
+      "aliases": [],
+      "title": "Improper Certificate Validation in hMailServer",
+      "description": "Progressive Robot hMailServer 6.0.0-B1 through 6.3.7 on Windows hands OpenSSL the names of its own TLS files - the listeners' certificates, chains, private keys and Diffie-Hellman parameters, a port's client-certificate CA file (from 6.2.19), the object store's CA file (from 6.3.4) and the ACME client's keys and certificates - as Latin-1 bytes, which on code page 1252 are the code page's own for U+00A0 to U+00FF, and OpenSSL's file opening on Windows reads a name as UTF-8 first and opens the file at that reading when it is there, or creates it there when its folder is. When every byte of a configured name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9, which are U+00E9 in UTF-8 - the server used the file at that other name whenever one was there, which allows a local attacker who can create that file or its folder but cannot change the configured one, as any user can by default beside a file an administrator keeps under ProgramData, to have a port that logs on by client certificate (from 6.2.25) accept certificates from a certificate authority of the attacker's own and so sign in over the network as any mailbox without its password; to have the server trust such an authority for its object store and, intercepting that connection, read and modify the messages it stores; to receive the private keys the ACME client writes, the key of a certificate issued for the server's names among them; or to keep TLS ports from starting. The configuration is not the default: by default these files have names in ASCII, client certificates are off on every port, and the object store and ACME are off. The Linux builds are not affected.",
+      "published": "2026-11-11T08:36:26.283Z",
+      "updated": "2026-11-11T09:17:14.277",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/115",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126609",
+      "aliases": [],
+      "title": "Improper Certificate Validation in hMailServer",
+      "description": "Progressive Robot hMailServer 6.2.25 through 6.3.7 on Windows, with a PostgreSQL database, the connection's sslmode require, verify-ca or verify-full, and a root certificate file named by PostgreSQLSslRootCert (from 6.2.25) or, with TlsMode=verify-full and neither PostgreSQL key set, by TlsCaFile (from 6.3.4), hands the file's name to libpq as bytes in the system's ANSI code page (up to 6.3.5 as Latin-1 bytes, which on code page 1252 are the code page's own for U+00A0 to U+00FF), and libpq looks for the file by those bytes and then hands the same bytes to OpenSSL, whose file opening on Windows reads a name as UTF-8 first and opens the file at that reading when one is there. When every byte of the name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9 on code page 1252, which are U+00E9 in UTF-8 - the database server's certificate was checked against the file at that other name whenever one was there, which allows a local attacker who can create that file but cannot change the configured one, as any user can by default beside a file an administrator keeps under ProgramData, or beside a folder directly under the system drive's root whose permissions the administrator restricted, and who can intercept the connection to the database server or stand in for it, to have hMailServer trust a certificate authority of the attacker's own and read and modify the traffic between hMailServer and its database, the database password included; the file alone, holding no authority that issued the database server's certificate, stops hMailServer from connecting to its database. The same applies in 6.3.4 through 6.3.7 to TlsCaFile when an Oracle MySQL client library has been put in place of the bundled MariaDB Connector/C, since that client opens the file through OpenSSL in the same way; the bundled MariaDB Connector/C opens the file in the code page and is not affected, and neither are the Linux builds. The configuration is not the default: by default no root certificate file is named.",
+      "published": "2026-11-11T08:30:17.425Z",
+      "updated": "2026-11-11T09:17:12.687",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/114",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "openssl",
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0
       },
       "ai_analysis": ""
     },
@@ -125252,51 +125848,6 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116606",
-      "aliases": [],
-      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
-      "description": "Barracuda Networks Email Security Gateway (ESG) contains an authentication bypass using an alternate path or channel that could allow an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration. This vulnerability can be chained with CVE-2026-111560.",
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01602,
-      "epss_percentile": 0.76026,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 35.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -129092,7 +129643,7 @@
       "title": "",
       "description": "Improper input validation in Ivanti EPMM before version 12.11.0.0, 12.10.0.1, and 12.9.0.3 allows a remote authenticated attacker with admin privileges to set arbitrary Linux kernel parameters as root.",
       "published": "2026-11-10T16:17:13.557",
-      "updated": "2026-11-10T18:17:18.090",
+      "updated": "2026-11-11T05:19:16.550",
       "cvss": 6.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:H",
       "severity": "medium",
@@ -129231,7 +129782,7 @@
       "title": "",
       "description": "A improper authentication vulnerability in Fortinet FortiOS 7.6.0 through 7.6.6 may allow a remote authenticated attacker to gain improper access control via an invalid token after entering a valid username and password",
       "published": "2026-11-10T20:18:56.927",
-      "updated": "2026-11-10T21:19:03.180",
+      "updated": "2026-11-11T05:19:30.393",
       "cvss": 6.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
       "severity": "medium",
@@ -134932,6 +135483,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-121374",
+      "aliases": [],
+      "title": "Arbitrary file write and code execution via excluded node roles in Kubernetes special agent",
+      "description": "Argument injection in the Kubernetes special agent in Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows a user with permission to edit rules in at least one folder to write files to arbitrary locations writable by the site user via crafted node roles in the \"Exclude nodes based on their role\" rule option, leading to code execution as the site user.",
+      "published": "2026-11-11T10:45:05.944Z",
+      "updated": "2026-11-11T10:45:05.944Z",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Checkmk GmbH Checkmk"
+      ],
+      "references": [
+        "https://checkmk.com/werk/22120"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116176",
       "aliases": [],
       "title": "",
@@ -136508,6 +137104,54 @@
         "popularity": 14.0,
         "cvss": 17.6,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124317",
+      "aliases": [],
+      "title": "",
+      "description": "libexpat through 2.10.0 contains an out-of-bounds read vulnerability in unknown_toUtf8() and unknown_toUtf16() in xmltok.c when handling application-registered unknown encodings. Attackers can supply a document ending in a truncated multibyte sequence so the convert callback reads past the parse buffer, leaking adjacent memory or crashing applications.",
+      "published": "2026-11-07T15:17:16.080",
+      "updated": "2026-11-11T05:19:36.560",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/libexpat/libexpat",
+        "https://github.com/libexpat/libexpat/blob/a70841d9ffa64ddde29ab824ed6305035ebe4c47/expat/lib/xmltok.c#L1274-L1322",
+        "https://github.com/libexpat/libexpat/pull/1492",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.10.0-out-of-bounds-read-via-unknown-toutf8-and-unknown-toutf16"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00249,
+      "epss_percentile": 0.16284,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-07T16:30:34.290052+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12.6,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -140205,56 +140849,12 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111560",
-      "aliases": [],
-      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
-      "description": "Barracuda Networks Email Security Gateway (ESG), Load Balancer, Application Delivery Controller (ADC), Message Archiver (BMA), WAF Control Center (WCC), Web Application Firewall (WAF), and Web Security Gateway (WSG) contain an OS command injection vulnerability. This vulnerability could allow an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed. This vulnerability can be chained with CVE-2026-116606",
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Barracuda Networks Multiple Products"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.0106,
-      "epss_percentile": 0.6483,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-63660",
       "aliases": [],
       "title": "node-fontnik: integer-overflow heap out-of-bounds write in RenderSDF",
       "description": "node-fontnik is a library that delivers a range of glyphs rendered as SDFs (signed distance fields) in a protocol buffer. Prior to version 0.7.7, a crafted font could trigger a heap out-of-bounds write in RenderSDF (include/mapbox/glyph_foundry_impl.hpp). RenderSDF computed the SDF bitmap allocation size as buffered_width * buffered_height in 32-bit unsigned int. Glyph dimensions are derived from the uploaded font's outline bounding box with no upper bound, so a glyph large enough to make that product exceed 2³² wrapped to a small value. The buffer was then under-allocated while the render loop still wrote one byte per pixel, corrupting the heap (CWE-190 → CWE-787) and crashing the process. A 680-byte font is enough to drive FreeType to a 65536×65536 buffered glyph, wrapping the size to 0. This issue has been patched in version 0.7.7.",
       "published": "2026-11-11T02:40:47.419Z",
-      "updated": "2026-11-11T02:40:47.419Z",
+      "updated": "2026-11-11T03:16:52.367",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
       "severity": "high",
@@ -140277,7 +140877,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -140292,93 +140893,6 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 16.2
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-124194",
-      "aliases": [],
-      "title": "Microsoft Office Outlook Missing User Interaction for Potentially Unsafe Action Vulnerability",
-      "description": "Microsoft Office Outlook contains a missing user interaction for potentially unsafe action vulnerability that allows an unauthorized attacker to perform spoofing over a network.",
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-124194"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-111793",
-      "aliases": [],
-      "title": "Openwave Messaging Limited Webtop Media Transcoder Incorrect Resource Transfer Between Spheres Vulnerability",
-      "description": "Openwave Messaging Limited Webtop Media Transcoder contains an incorrect resource transfer between spheres vulnerability that may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.",
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Openwave Messaging Limited Webtop Media Transcoder"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111793"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00274,
-      "epss_percentile": 0.19971,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20,
-        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -143104,6 +143618,102 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126615",
+      "aliases": [],
+      "title": "Authentication Bypass by Alternate Name in hMailServer",
+      "description": "The sign-in of Progressive Robot hMailServer 6.2.22-pre2 through 6.3.7 takes for an account names that are not its address but under which the database's own comparison finds it, while the per-name lockout and the compromised-account hold are kept by the name as the client gave it. This allows a remote unauthenticated attacker to go on guessing an account's password beyond the lockout's threshold, and anyone who has the password of an account held for review to sign in to it. The per-name lockout (from 6.2.22-pre2; AccountLockoutThreshold in hMailServer.ini, 0, off, by default) locks a name after repeated failed sign-ins. The hold (from 6.3.4, where the compromised-account detection is set to enforce, which is not the default) refuses an account judged to have been taken over. Both are asked, before the password, of the name the client gave: trimmed, in lower case and with a domain alias or the default domain applied. The account whose password the sign-in then checks is whichever one the database finds under that name. The databases find an account under spellings that this key counts apart. MySQL and MariaDB find it under one with accented letters in place of plain ones, and MariaDB 11.8, in a database made before 6.3.4, also under one with full-width letters, with a single letter in place of a pair of plain ones, or with characters its comparison ignores in any number. SQL Server and SQL Server Compact find it under one with full-width letters or with characters their comparison ignores in any number, and SQL Server also under one with a single letter in place of a pair of plain ones, with a character of Latin-1 in place of a digit and, for an address holding letters of Latin-1 outside ASCII, under those letters in the other case, and, under an accent-insensitive collation, with accented letters. PostgreSQL finds it under one holding a letter whose lower case under the database's locale is a plain letter, and, for an address holding letters outside ASCII, under those letters in the other case; on the build for musl (from 6.3.6) the server's own lower case folds nearly all of these too. On every database, a domain alias saved with white space at the end of its name gives such a spelling too, and on every database but PostgreSQL so does an account's bare local part where the default domain was saved with spaces at its end and no other white space (neither is the default). Each such spelling has a lockout threshold of its own, so the lockout limits the guesses at an account only to its threshold times the number of the account's spellings. That is far beyond any threshold for most addresses on MySQL and MariaDB, and without limit on SQL Server, on SQL Server Compact, the database the Windows installer uses by default, and before 6.3.4 on MariaDB 11.8. A locked name is got round under another spelling. A held account is signed in to under another spelling with its password over IMAP, POP3 and SMTP AUTH, and, where they are turned on (off by default), over ManageSieve, the REST API and the webmail. IMAP LOGIN, offered as installed, carries such spellings on MySQL, MariaDB and SQL Server Compact, and, on SQL Server and PostgreSQL, for some addresses; the sign-ins that carry a name as UTF-8 carry them for the others on SQL Server, and on PostgreSQL for those holding one of the plain letters another letter lowers to or a letter outside ASCII with another case. The same lookup mapped to accounts the names given by an OAuth 2.0 token, a client certificate, a Kerberos ticket and an OpenID Connect or SAML identity provider, where those are set up (none is by default), so that a name an issuer gave to one party could sign in to another's account; OAuth 2.0 tokens were mapped so from 6.2.0, before the per-name lockout existed. A name holding a NUL character, carried from 6.3.0 on Linux and 6.3.3 on Windows, failed the statement on MySQL, MariaDB and PostgreSQL.",
+      "published": "2026-11-11T08:32:57.155Z",
+      "updated": "2026-11-11T09:17:13.573",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/104",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126618",
+      "aliases": [],
+      "title": "Improper Restriction of Excessive Authentication Attempts in hMailServer",
+      "description": "The auto-ban of Progressive Robot hMailServer 6.0.0-B1 through 6.3.7 can be kept from banning an address after repeated failed logons, which allows a remote unauthenticated attacker who can connect from two or more addresses to go on guessing account passwords - over SMTP AUTH, IMAP and POP3, and over ManageSieve, CalDAV/CardDAV and the REST API where those are turned on (off by default) - without being banned. When the failed logons counted from one address reach MaxInvalidLogonAttempts (3 by default), the server clears that address's count, saves an IP range that refuses the address for AutoBanMinutes (60 by default) and drops the connection. The range is named \"Auto-ban: \" followed by the user name of the logon that reached the limit, and no two ranges may have the same name. The server chooses the name by checking candidates as written - the name, then the name with a number, a random suffix or a GUID added - and only then cuts it to the 100 characters the database column holds, so that with a user name of 90 characters or more every candidate is the same once cut. While one range named after such a user name stands, every later ban named after a user name with the same first 90 characters therefore fails at the database: no range is saved, the address is not refused, and, its count having already been cleared, it is given the next full set of attempts. A user name of 78 to 89 characters makes later bans fail in the same way: from the second, the third or the twelfth on, depending on its length and the database, or, from 78 to 85 characters, by chance. An attacker who has once had an address banned under such a name can in this way keep guessing passwords from any other address, ending each set of attempts with a logon under a name of that kind; each failed save is reported in the server's error log (as the database error HM5032, and from 6.2.19 also as HM6099). On SQL Server a user name holding characters outside the database's code page has the same effect at any length, because the check compared names in that code page; that save is refused by the server's own check of the name, with no database error, and is reported only from 6.2.19 (HM6099). A user name holding a NUL character, which the web services listener's HTTP Basic sign-in (off by default) carries from 6.3.3 and, on the Linux builds, IMAP LOGIN, offered as installed, from 6.3.0, makes bans fail at any length: on MySQL, MariaDB and PostgreSQL the statements that check the name and save the range end at the character, so that every ban named after such a name fails, from the first and from a single address, and, its count having already been cleared, the address is given the next full set of attempts; on SQL Server and SQL Server Compact the name is bound only as far as the character, so that while one range under the part before it stands, every later ban named after such a name fails. On SQL Server, and on MySQL and MariaDB for an account whose local part has nine characters or more, a guess at the account can itself carry a name of that kind, since those databases find an account under its address followed by spaces (and SQL Server also under one holding characters its comparison ignores), so that not even a MaxInvalidLogonAttempts of 1, which bans each failed logon under the name it gave, avoids it there.",
+      "published": "2026-11-11T08:33:12.130Z",
+      "updated": "2026-11-11T09:17:14.000",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/102",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114150",
       "aliases": [
         "GHSA-6vjv-7wm8-p67r"
@@ -144125,6 +144735,54 @@
         "cvss": 9.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126619",
+      "aliases": [],
+      "title": "Misinterpretation of Input in hMailServer",
+      "description": "Misinterpretation of SQL statement text in the database layer of Progressive Robot hMailServer 6.0.0-B1 through 6.3.7 allows a remote unauthenticated attacker to have a failed database write reported to the server as successful. The layer answers a failed statement as a success when it finds the marker [IGNORE-ERRORS], which is meant only for the server's own schema statements (its upgrade scripts and the database log's tables), and statements carry values from outside - an envelope address, the user name of a failed logon, a message's headers - in their text on MySQL/MariaDB and PostgreSQL, and in the batches of the database log on every engine. Up to 6.2.18 the marker was honoured anywhere in a statement, a value included, on MySQL/MariaDB and PostgreSQL. From 6.2.19 it was honoured only inside a comment, but the layer read a backslash inside a string literal as an escape, which SQL Server, SQL Server Compact and PostgreSQL with standard_conforming_strings on (its default) do not, so that on those engines a value holding a backslash could make the layer take part of the statement's literals for statement text and find the marker there: on PostgreSQL from 6.3.3 for every statement carrying an outside value that holds a backslash, with no setting changed for a message delivered into a local mailbox (through an internationalised (SMTPUTF8) envelope sender) and for the IP range an auto-ban writes (named after the user name of the failed logon), and on SQL Server and SQL Server Compact for the database log, when the server logs to the database (logging is off, and the log device is files, by default). A statement run outside a transaction that then failed - a constraint, a deadlock, a lock or statement timeout, a full disk, and up to 6.2.18 a lost connection - was answered as a success, and its caller went on as if the row had been written: a message delivered into a local mailbox could be counted as delivered with no row to show it and no failure notice to its sender, and a message accepted with 250 could be left with no queue row and never delivered (up to 6.2.18, and on PostgreSQL from 6.3.3 when every recipient's address carries the marker too, which needs an address that takes any local part); an auto-ban whose IP range was not written could be logged and counted as applied, with no error reported, while the address stayed unbanned; and message metadata (written only when message indexing is on), entries of the database log and rows of features an administrator turns on could be lost without an error. On MySQL/MariaDB up to 6.2.18 the caller was handed whatever identifier the client library still held for the connection - 0, or that of an insert its last successful statement made, in whatever table - under which a queued message's recipients were then written, so that another message still in the queue could be delivered to them as well. This flaw gives a value no way to change what a statement does, and no privilege is gained.",
+      "published": "2026-11-11T08:33:47.151Z",
+      "updated": "2026-11-11T09:17:14.133",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progressive Robot Ltd hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/100",
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -145629,9 +146287,9 @@
       "id": "CVE-2026-120244",
       "aliases": [],
       "title": "",
-      "description": "FFmpeg 2.1 through 9.0.2 contains a use of uninitialized resource vulnerability in the PCX decoder that allows attackers to leak heap memory through truncated RLE scanlines. Attackers can craft a PCX image whose RLE data ends early, causing pcx_decode_frame() to copy uninitialized av_malloc() buffer contents into visible decoded pixels.",
+      "description": "FFmpeg 2.1 through 9.0.2 contains an uninitialized memory disclosure vulnerability in pcx_decode_frame() in libavcodec/pcx.c that leaves scanline buffer bytes uncleared when input ends early. Attackers can supply a crafted truncated RLE-compressed or uncompressed PCX image to leak heap memory contents through the decoded pixels.",
       "published": "2026-11-01T01:17:17.787",
-      "updated": "2026-11-02T19:34:23.993",
+      "updated": "2026-11-11T03:16:48.813",
       "cvss": 6.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -145651,7 +146309,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00124,
-      "epss_percentile": 0.02088,
+      "epss_percentile": 0.02132,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -145773,9 +146431,9 @@
       "id": "CVE-2026-120245",
       "aliases": [],
       "title": "",
-      "description": "FFmpeg 0.10 through 9.0.2 contains a use of uninitialized resource vulnerability in sunrast_decode_frame() that leaks heap memory when decoding truncated 1-bit and 4-bit paletted Sun Raster images. Attackers can craft a truncated Sun Raster file so the uncleared temporary bitmap is expanded into PAL8 pixels, exposing stale heap contents such as allocator words in decoded output.",
+      "description": "FFmpeg 0.10 through 9.0.2 contains an uninitialized memory disclosure vulnerability in sunrast_decode_frame() in libavcodec/sunrast.c that leaves decoded image regions unwritten for truncated input. Attackers can supply a crafted truncated Sun Raster image, RLE-encoded or raw, to leak stale heap contents such as allocator metadata through the decoded picture.",
       "published": "2026-11-01T01:17:17.960",
-      "updated": "2026-11-02T19:34:23.993",
+      "updated": "2026-11-11T03:16:48.980",
       "cvss": 6.8,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -145796,7 +146454,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00124,
-      "epss_percentile": 0.02087,
+      "epss_percentile": 0.02132,
       "x_mentions": null,
       "sources": [
         "nvd"
