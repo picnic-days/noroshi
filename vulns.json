@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T10:59:10.246761+00:00",
+  "generated_at": "2026-11-11T18:42:26.148654+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -33365,6 +33365,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123863",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a remote HTTP/2 denial of service via a reachable assertion in Http2Session teardown",
+      "description": "A reachable assertion in Node.js HTTP/2 session teardown lets any unauthenticated client abort the server, over both TLS and cleartext. A client can arrange for an Http2Stream that still holds nghttp2-allocated header buffers to outlive its session: the stream is removed from the session's stream set but never detached, so when ~Http2Session() runs the memory accounting is nonzero and the CHECK_EQ(current_nghttp2_memory_, 0) assertion fails, terminating the process. The trigger needs only a default http2 server whose handler responds before the request body has ended, which is typical. It is a variant of CVE-2024-27983 that the earlier fix did not cover, because that fix only detached streams still tracked in the session. This vulnerability affects Node.js 26.x (since 26.9.0) and 24.x (since 24.22.0).",
+      "published": "2026-11-11T18:16:12.733Z",
+      "updated": "2026-11-11T18:16:12.733Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105005",
       "aliases": [],
       "title": "",
@@ -34249,6 +34296,53 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123864",
+      "aliases": [],
+      "title": "Node.js is vulnerable to cross-connection memory disclosure via TLS write re-entrancy in the HTTPS request parser",
+      "description": "A re-entrancy flaw in Node.js HTTPS lets an unauthenticated client read memory belonging to other connections, including TLS private keys and other users' requests. TLSWrap::DoWrite() calls ClearOut() directly when asked to write zero bytes; if that write is issued from JavaScript running inside the HTTP parser's on_body callback, ClearOut() decrypts the next TLS record while the parser is still mid-body, re-entering llhttp_execute() and causing a use-after-free and an out-of-bounds heap read. The server then copies that freed or unrelated heap memory into the response for the request body. Triggering it requires a handler that calls res.flushHeaders() before the request body ends and later calls res.end() with a non-empty chunk, and reading the leaked memory requires any ordinary route that echoes or stores a request body. Cleartext node:http is not affected. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:17:56.773Z",
+      "updated": "2026-11-11T18:17:56.773Z",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -38198,6 +38292,147 @@
       "first_seen": "2026-11-10T18:41:19.148184+00:00",
       "matched": [
         "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123874",
+      "aliases": [],
+      "title": "Node.js is vulnerable to an HTTP/2 use-after-free via respondWithFile() stream reset during a pending write",
+      "description": "A use-after-free in Node.js HTTP/2 lets an unauthenticated client corrupt server memory, over both TLS and cleartext, when the server serves files with respondWithFile() or respondWithFD(). A client can make the server free an Http2Stream while a write request that points to it is still queued on the socket; when that write completes, the code dereferences and makes a virtual call through the freed object. The only precondition is that the application serves a file with stream.respondWithFile() or stream.respondWithFD(), with default settings otherwise. This vulnerability affects Node.js 26.x (since 26.9.0) and 24.x (since 24.22.0).",
+      "published": "2026-11-11T18:32:20.292Z",
+      "updated": "2026-11-11T18:32:20.292Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123865",
+      "aliases": [],
+      "title": "Node.js is vulnerable to an HTTP/2 memory and file-descriptor leak via a protocol error during session shutdown",
+      "description": "An unauthenticated HTTP/2 client can permanently leak Node.js server memory and file descriptors. If a peer triggers a protocol error, for example an oversized frame header, while the session is already shutting down, nghttp2 tears the session down internally but Node.js never notices, leaving a dangling session: the socket stays in CLOSE_WAIT and all of Node.js's HTTP/2 state for that connection is held in memory indefinitely, with no further cost to the attacker. The attacker can start the shutdown remotely by sending GOAWAY(NO_ERROR), so it is reliable against default HTTP/2 servers. It is an incomplete-fix case of CVE-2026-48937: that fix detected nghttp2 internal terminations by watching for GOAWAY sent while not shutting down, but missed terminations that arrive while the session is already shutting down. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:19:36.284Z",
+      "updated": "2026-11-11T18:19:36.284Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123866",
+      "aliases": [],
+      "title": "Node.js is vulnerable to HTTP/2 response memory disclosure via a use-after-free during stream teardown",
+      "description": "A use-after-free in Node.js HTTP/2 stream teardown can leak response memory, including the contents of other connections' response buffers, to a peer. When a stream is torn down while a write is still backpressured, for example by a peer RST_STREAM or by the server's own per-stream timeout destroying the stream, the stream's response buffer is freed but a reference to it is still used, so freed or unrelated heap memory is written to the socket instead of the intended response. On Node.js 26.x and 24.x the teardown can be driven purely by a remote peer once the window-size change from 26.9.0 and 24.22.0 is present, and on all supported lines the same defect is reachable through an application-initiated teardown such as a per-stream idle timeout. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:21:18.538Z",
+      "updated": "2026-11-11T18:21:18.538Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -47741,6 +47976,147 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123875",
+      "aliases": [],
+      "title": "Node.js is vulnerable to an HTTP/2 denial of service via a NULL pointer dereference when a respondWithFile() download is cancelled",
+      "description": "A NULL pointer dereference in Node.js HTTP/2 lets an unauthenticated client crash the server, over both TLS and cleartext, by cancelling file downloads. When the server serves a file with stream.respondWithFile() or stream.respondWithFD() and the client cancels the request, a StreamPipe used for the transfer is torn down in an order that leaves a NULL pointer which is then dereferenced, aborting the process. No crafted frames are needed, and a handful of cancelled requests against a default file-serving handler is enough. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:33:57.475Z",
+      "updated": "2026-11-11T18:33:57.475Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123868",
+      "aliases": [],
+      "title": "Node.js is vulnerable to an HTTP/2 memory exhaustion denial of service via unaccounted inbound DATA on an undrained stream",
+      "description": "An unauthenticated HTTP/2 client can exhaust Node.js server memory because inbound DATA queued on an undrained stream is charged to no session budget. Each inbound DATA frame creates one JavaScript Buffer view in the receiving stream's readable queue, but nothing charges that queue to current_session_memory_: the socket read buffer is accounted only during parsing and released immediately, so whatever stays queued is accounted to nothing. A peer that fills a stream's receive window with one-byte DATA frames pays about 10 wire bytes per frame while the server retains about 114 bytes per frame, so a single stream on one connection can retain hundreds of megabytes from tens of megabytes sent. maxSessionMemory neither bounds the growth nor refuses new streams, because Http2Session::CanAddStream gates admission on the same counter that never sees the queue. This vulnerability affects Node.js 26.x and 24.x.",
+      "published": "2026-11-11T18:25:01.907Z",
+      "updated": "2026-11-11T18:25:01.907Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123828",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a heap buffer overflow in HTTP/2 session.altsvc() via a long origin",
+      "description": "A one-byte heap buffer overflow in Node.js HTTP/2 Alt-Svc handling lets a remote, unauthenticated attacker corrupt process memory. When an application passes an attacker-controlled value such as a request's :authority header to Http2Session.altsvc(), the AltSvc implementation in src/node_http2.cc allocates a buffer sized to the origin length and then writes it with a null terminator, placing one byte past the end of the allocation. A single request carrying a long but syntactically valid :authority triggers the out-of-bounds write, which aborts the process and serves as a remote heap-corruption primitive. This vulnerability affects Node.js 26.x and 24.x.",
+      "published": "2026-11-11T18:10:54.030Z",
+      "updated": "2026-11-11T18:10:54.030Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-85369",
       "aliases": [],
       "title": "",
@@ -47836,6 +48212,52 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 16.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123872",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a client certificate authentication bypass via TLS 1.2 renegotiation servername change",
+      "description": "A client certificate authentication bypass in Node.js TLS lets a client change the servername during TLS 1.2 renegotiation to reach endpoints it was not authorized for. On a server that applies different client-certificate policies per hostname, for example stricter admin-only client-cert auth on one host and ordinary client-cert auth on another, a client that authenticates for a permitted host can renegotiate the TLS 1.2 connection under a different servername and carry its existing authentication to the protected host, bypassing the stricter policy. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:30:25.193Z",
+      "updated": "2026-11-11T18:30:25.193Z",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 46.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2
       },
       "ai_analysis": ""
     },
@@ -67959,6 +68381,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115819",
+      "aliases": [],
+      "title": "One-byte buffer overflow in wide scanf %s and %[ conversions",
+      "description": "Calling the wide scanf family of functions (swscanf, fwscanf, wscanf, vswscanf, vfwscanf and vwscanf) with a %s or %[ conversion without the 'l' length modifier in the GNU C Library version 2.2 to version 2.44 writes an extra null byte one past the end of the destination array when the converted multibyte string and its terminating null byte exactly fill that array.\n\nThese conversions store each wide input character into the caller's char array as a multibyte sequence.  The conversion ends with the sequence that returns to the initial shift state, which also stores the terminating null byte, and the functions then append a second null byte.  A destination sized for the converted string and one terminator, as the C standard requires the caller to provide, is therefore written one byte past its end.  The out-of-bounds byte is always a null byte, which may corrupt adjacent data or crash the process.  An attacker who supplies the input can trigger the overflow with a string whose converted length exactly fills the destination.\n\nThe narrow scanf functions, the %ls and %l[ conversions into a wchar_t array, and the 'a' and 'm' allocation modifiers are not affected, and storing a wide scanf conversion into a narrow char array is uncommon.  This issue affects all architectures and ABIs supported by the GNU C Library.",
+      "published": "2026-11-11T15:36:38.804Z",
+      "updated": "2026-11-11T16:17:24.980",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "The GNU C Library glibc"
+      ],
+      "references": [
+        "https://sourceware.org/bugzilla/show_bug.cgi?id=34989",
+        "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0027"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108399",
       "aliases": [],
       "title": "",
@@ -86090,6 +86560,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123877",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a certificate validation bypass in https.Agent via cross-policy TLS session reuse",
+      "description": "A certificate validation bypass in Node.js https.Agent lets a cached TLS session authenticated under one CA policy be reused by a later request with a stricter policy. https.Agent.prototype.getName() assigns the same Agent and session-cache key to a request that omits ca and one that explicitly supplies ca: [], because an omitted value appends nothing to the key while an empty array stringifies to an empty string. The two policies differ: omitting ca uses the default trust store, while supplying ca replaces it. Since they share a key, a TLS session authenticated under the broader default policy is handed to a new connection made under the later ca: [] policy, and TLS 1.3 session resumption carries the earlier authentication forward, so the second request reports authorized === true and transmits confidential data to a server its own CA policy would reject on a fresh connection. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:28:38.494Z",
+      "updated": "2026-11-11T18:28:38.494Z",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109413",
       "aliases": [
         "GHSA-2v3c-qxhr-7vpv"
@@ -91299,6 +91815,101 @@
         "cvss": 16.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123871",
+      "aliases": [],
+      "title": "Node.js is vulnerable to proxy credential disclosure via ERR_PROXY_INVALID_CONFIG error messages",
+      "description": "Node.js discloses proxy credentials in ERR_PROXY_INVALID_CONFIG error messages. CVE-2026-48615 established that a proxy credential must not appear in a Node.js error message and redacted the username and password from ProxyConfig.href, but that fix missed four error paths in the same subsystem, one of them inside the same constructor, which interpolate the raw proxy URL, credentials included, into an ERR_PROXY_INVALID_CONFIG message. The proxy URL comes from the environment, but the defect is the sink: a secret that Node.js redacts everywhere else is emitted verbatim into a much wider audience than the process environment, such as stderr, container logs, log aggregation, and crash reporting services. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:26:51.700Z",
+      "updated": "2026-11-11T18:26:51.700Z",
+      "cvss": 6.2,
+      "cvss_vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-100290",
+      "aliases": [],
+      "title": "Double free after allocation failure in regcomp and regexec",
+      "description": "The regcomp and regexec functions in the GNU C Library version 2.3 to version 2.44 may read freed memory and free the same heap block twice when a memory allocation fails while a regular expression is compiled or matched.  The re_dfa_add_node (the NFA node table) and build_range_exp (bracket ranges) grow several arrays with consecutive realloc calls and store the new pointers only after all of them succeed.  When a later call fails, the pattern buffer keeps pointers to blocks that were already freed, and the error cleanup frees them again.  In regexec, the back-reference cache (match_ctx_add_entry) frees its array when a realloc fails but keeps the pointer, which is freed again on the error path.\n\nAn attacker does not need to supply a crafted regular expression: patterns large enough to grow these arrays are common.  The failure has to hit a specific allocation, though, so the issue can only be reached when the system is already under memory pressure.  An attacker who supplies the pattern or the subject string has little control over which allocation fails, so the expected impact is a crash of the process.  This issue affects all architectures and ABIs supported by the GNU C Library.",
+      "published": "2026-11-11T15:56:08.323Z",
+      "updated": "2026-11-11T16:17:24.667",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "The GNU C Library glibc"
+      ],
+      "references": [
+        "https://sourceware.org/bugzilla/show_bug.cgi?id=34991",
+        "https://sourceware.org/bugzilla/show_bug.cgi?id=31935",
+        "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0028"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "glibc"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 7.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -109500,6 +110111,210 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-804glbb3pq6t",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Degraded",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T15:53:19.709Z",
+      "updated": "2026-11-11T16:18:51.073Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/804glbb3pq6t"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T16:18:51.073Z",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-3ptyvdaljq9b",
+      "aliases": [],
+      "title": "Cloudflare: Workers deployments errors with D1 bindings",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T13:09:04.520Z",
+      "updated": "2026-11-11T13:03:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/3ptyvdaljq9b"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T13:03:00.000Z",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-slack-1583",
+      "aliases": [],
+      "title": "Slack: Trouble loading Slack and saving changes.",
+      "description": "Slack の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T07:24:01-08:00",
+      "updated": "2026-11-11T07:24:01-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://slack-status.com/2026-11/b8bb993128ac94f5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:slack"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "slack"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-73wm-q362-6xp2",
+      "aliases": [],
+      "title": "Malware in taskpace",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 9,476",
+      "published": "2026-11-11T15:35:44Z",
+      "updated": "2026-11-11T15:35:49Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:taskpace"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-73wm-q362-6xp2"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "npm:taskpace"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-9j97-6pqr-qvrx",
+      "aliases": [],
+      "title": "Malware in 0sec-cli",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,462",
+      "published": "2026-11-11T12:09:02Z",
+      "updated": "2026-11-11T14:53:13Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:0sec-cli"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-9j97-6pqr-qvrx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "npm:0sec-cli"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-109829",
       "aliases": [
         "GHSA-4w7w-5xrc-9h26"
@@ -112268,6 +113083,335 @@
         "cvss": 13.2,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124693",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery PivotGrid Axis Chips",
+      "description": "In Progress Kendo UI for jQuery versions 2026.3.1015 up to, but not including, 2026.4.1110, PivotGrid and PivotConfigurator axis field names are passed to a chip template without appropriate encoding. An attacker who can influence an axis field name can cause JavaScript to execute when a user views the rendered chip. The field name can be interpreted as HTML in both attribute and element contexts. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected release has not been established.",
+      "published": "2026-11-11T16:54:21.803Z",
+      "updated": "2026-11-11T17:17:18.483",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-pivotgrid-pivotconfigurator-axis-chip-xss-cve-2026-124693"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124694",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery PropertyGrid Values and Descriptions",
+      "description": "In Progress Kendo UI for jQuery versions 2026.3.1015 up to, but not including, 2026.4.1110, PropertyGrid does not encode bound property values and items[].description in its default configuration. An attacker who can influence either value can cause JavaScript to execute when a user views the grid. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected release has not been established.",
+      "published": "2026-11-11T16:57:45.440Z",
+      "updated": "2026-11-11T17:17:18.630",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-propertygrid-bound-values-description-xss-cve-2026-124694"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124689",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery ActionSheet Header Labels",
+      "description": "In Progress Kendo UI for jQuery versions 2026.3.1014 up to, but not including, 2026.4.1110, ActionSheet does not encode title, subtitle, and header button label values before rendering them. An attacker who can influence these values can inject markup that executes as JavaScript when a user opens the ActionSheet. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The report identifies version 2026.3.1014; the first affected release has not been established.",
+      "published": "2026-11-11T16:48:21.531Z",
+      "updated": "2026-11-11T17:17:18.043",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-actionsheet-header-xss-cve-2026-124689"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124690",
+      "aliases": [],
+      "title": "Cross-Site Scripting During Kendo UI for jQuery Custom SVG Icon Sanitization",
+      "description": "In Progress Kendo UI for jQuery, sanitizeSvgContent() parses custom icon markup into a live DOM before filtering it. An attacker who can influence custom icon content can cause JavaScript to execute during icon creation, before an unsafe element is removed. The issue was reported in version 2026.3.1015; the first affected release has not been established. The issue is fixed in version 2026.4.1110.",
+      "published": "2026-11-11T16:50:59.752Z",
+      "updated": "2026-11-11T17:17:18.193",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-svg-icon-sanitizer-xss-cve-2026-124690"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124692",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery Grid and TreeList Column Reordering",
+      "description": "In Progress Kendo UI for jQuery versions 2026.3.1015 up to, but not including, 2026.4.1110, the Grid and TreeList column-reorder drag clue reparses header text as HTML. An attacker who can influence a column field or title used by an affected application can cause JavaScript to execute when a user drags a column header while column reordering is enabled. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected release has not been established.",
+      "published": "2026-11-11T16:52:26.328Z",
+      "updated": "2026-11-11T17:17:18.337",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-grid-treelist-column-reorder-drag-clue-xss-cve-2026-124692"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124688",
+      "aliases": [],
+      "title": "Cross-Site Scripting via the spriteCssClass Field in Kendo UI for jQuery",
+      "description": "In Progress® Kendo® UI for jQuery prior to 2026.4.1111 the TabStrip, PanelBar, and Menu widgets support mapping a dataSource field to `spriteCssClass`. If an attacker can control the mapped data, they can break out of the attribute and inject markup, including event-handler attributes. The resulting JavaScript executes in the application's origin when a victim loads a page that renders the affected widget, allowing access to data and actions available in the victim's authenticated session.",
+      "published": "2026-11-11T16:44:32.121Z",
+      "updated": "2026-11-11T17:17:17.897",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-tabstrip-panelbar-menu-spritecssclass-xss-cve-2026-124688"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124687",
+      "aliases": [],
+      "title": "Cross-Site Scripting in DropDownButton and SplitButton Items in Kendo UI for jQuery",
+      "description": "In Progress® Kendo® UI for jQuery versions from 2022.2.621 prior to 2026.4.1111 the DropDownButton and SplitButton allow markup injection through the `id` and `target` attributes. An attacker who can influence these item values can break out of the attributes and inject markup, including event handlers. The issue is fixed in 2026.4.1111.",
+      "published": "2026-11-11T16:25:03.748Z",
+      "updated": "2026-11-11T17:17:17.743",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-dropdownbutton-splitbutton-items-attribute-xss-cve-2026-124687"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -115405,6 +116549,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123481",
+      "aliases": [],
+      "title": "WordPress The Ultimate WordPress Toolkit – WP Extended plugin <= 3.4.2 - Broken Access Control vulnerability",
+      "description": "Missing Authorization vulnerability in WP Extended The Ultimate WordPress Toolkit – WP Extended wpextended allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects The Ultimate WordPress Toolkit – WP Extended: from n/a through 3.4.2.",
+      "published": "2026-11-11T12:40:46.952Z",
+      "updated": "2026-11-11T15:17:18.210",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "WP Extended The Ultimate WordPress Toolkit – WP Extended",
+        "wpextended"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/wpextended/vulnerability/wordpress-the-ultimate-wordpress-toolkit-wp-extended-plugin-3-4-2-broken-access-control-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70116",
       "aliases": [],
       "title": "",
@@ -115821,6 +117012,52 @@
         "popularity": 20,
         "cvss": 13.4,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123867",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a per-host mTLS authorization bypass via a CA-only SNI context failing open to the default CA",
+      "description": "A per-host mutual-TLS authorization bypass in Node.js lets a client authorized for the default hostname reach a protected hostname it is not authorized for. When a TLS server assigns a hostname a different client-certificate CA with server.addContext(host, { ca: protectedCA }) but no server certificate in that SNI context, the per-host client CA is never installed and the handshake falls back to the default client CA. In src/crypto/crypto_tls.cc, CertCbDone installs the SNI context's CA only when setSniContext succeeds, but setSniContext returns false for a context with no server certificate, so a CA-only SNI context silently keeps the default CA. A client holding a certificate trusted by the default CA, but not the protected CA, can therefore complete mTLS to the protected hostname and read its response even with requestCert and rejectUnauthorized enabled, while a client certified by the protected CA is rejected. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:23:12.991Z",
+      "updated": "2026-11-11T18:23:12.991Z",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.4
       },
       "ai_analysis": ""
     },
@@ -124245,6 +125482,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-106156",
+      "aliases": [],
+      "title": "Uncontrolled Resource Consumption in Telerik UI for ASP.NET Core Server-side Aggregation",
+      "description": "In Progress® Telerik® UI for ASP.NET Core versions `2015.1.318` through `2026.3.811`, repeated server-side aggregation requests, with or without grouping, cause dynamic assemblies and load contexts to be retained, resulting in accumulating process memory consumption. An unauthenticated remote attacker can exploit this if the application exposes an aggregation endpoint that is reachable without authentication. Repeated requests can cause memory growth that may exhaust available resources and affect application availability. Disabling grouping in the client-side interface does not prevent direct requests containing these descriptors. The issue is fixed in version `2026.3.1015`.",
+      "published": "2026-11-11T17:24:56.315Z",
+      "updated": "2026-11-11T18:18:24.423",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Telerik UI for ASP.NET Core"
+      ],
+      "references": [
+        "https://www.telerik.com/aspnet-core-ui/documentation/knowledge-base/kb-security-uncontrolled-resource-consumption-cve-2026-106156"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91484",
       "aliases": [],
       "title": "",
@@ -124960,6 +126244,52 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123862",
+      "aliases": [],
+      "title": "Node.js is vulnerable to a zlib denial of service via a stream destroy during a pending params() call",
+      "description": "An uncatchable exception in the Node.js zlib streaming API lets a peer crash a process by disconnecting while data is being compressed. zlib.params() queues a flush and completes its work in that write's callback; if the stream is destroyed first, as pipeline() does when the peer goes away, Writable still invokes the callback with an error, but the callback ignores its arguments and asserts that the native handle still exists. The handle is gone, so an ERR_INTERNAL_ASSERTION is thrown from inside stream internals and bypasses the stream's error event, the params() callback, and the pipeline() callback, terminating the process. An application is affected only if it calls deflate.params() while streaming to a peer, which is uncommon. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:14:26.996Z",
+      "updated": "2026-11-11T18:14:26.996Z",
+      "cvss": 2.9,
+      "cvss_vector": "CVSS:3.0/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 5.8
       },
       "ai_analysis": ""
     },
@@ -125901,7 +127231,7 @@
       "title": "",
       "description": "Improper access control in Microsoft Exchange Server allows an authorized attacker to perform spoofing over a network.",
       "published": "2026-11-10T19:19:37.800",
-      "updated": "2026-11-10T20:18:15.380",
+      "updated": "2026-11-11T18:19:13.380",
       "cvss": 7.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L",
       "severity": "high",
@@ -126747,7 +128077,7 @@
       "title": "",
       "description": "Improper authentication in ASP.NET Core allows an unauthorized attacker to elevate privileges over a network.",
       "published": "2026-11-10T19:19:50.893",
-      "updated": "2026-11-10T20:18:25.410",
+      "updated": "2026-11-11T12:19:10.227",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -128010,6 +129340,98 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 14.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123829",
+      "aliases": [],
+      "title": "Node.js is vulnerable to Permission Model file-name disclosure via recursive fs.watch",
+      "description": "A Permission Model bypass in Node.js recursive file watching discloses the names of files and directories the process is not permitted to read. On macOS and Windows, fs.watch() and fs.promises.watch() in recursive mode are backed by the native libuv watcher: FSEventWrap::Start checks kFileSystemRead only once, on the watched root, and FSEventWrap::OnEvent then forwards every filename libuv reports (relative paths at any depth) to the JavaScript callback without checking that each path is covered by the read grant. Code running under --permission with an exact read grant on a directory can therefore learn names such as sub/secret.txt even though readdir on that subdirectory is denied. The flaw exposes names and timing metadata, not file contents, and requires macOS or Windows plus files created under the watched directory by another actor. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+      "published": "2026-11-11T18:12:41.452Z",
+      "updated": "2026-11-11T18:12:41.452Z",
+      "cvss": 2.5,
+      "cvss_vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nodejs node"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+        "https://cna.openjsf.org/security-advisories.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 5.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119618",
+      "aliases": [],
+      "title": "Apache HTTP Server: mod_http2: heap corruption and RCE in assign_headers",
+      "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE.\n\nThis issue affects Apache HTTP Server: from 2.4.55 through 2.4.70.\nAffected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
+      "published": "2026-11-11T14:54:08.155Z",
+      "updated": "2026-11-11T15:55:23.793Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache HTTP Server"
+      ],
+      "references": [
+        "https://httpd.apache.org/security/vulnerabilities_24.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "apache-httpd"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -130257,7 +131679,7 @@
       "title": "",
       "description": "A flaw was found in gnome-remote-desktop as shipped in Red Hat Enterprise Linux. In the VNC TLS I/O handlers, retryable GnuTLS results (GNUTLS_E_AGAIN and GNUTLS_E_INTERRUPTED) are handled with an unbounded busy loop instead of yielding to the event loop. A remote attacker who can reach an enabled VNC TLS listener can cause the event-loop thread to spin at high CPU with no forward progress, resulting in denial of service.",
       "published": "2026-10-13T12:17:14.033",
-      "updated": "2026-11-04T22:17:46.733",
+      "updated": "2026-11-11T13:17:13.583",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
@@ -130265,6 +131687,7 @@
       "packages": [],
       "vendor_products": [],
       "references": [
+        "https://access.redhat.com/errata/RHSA-2026:98510",
         "https://access.redhat.com/security/cve/CVE-2026-109832",
         "https://bugzilla.redhat.com/show_bug.cgi?id=2550352"
       ],
@@ -130274,7 +131697,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0041,
-      "epss_percentile": 0.35417,
+      "epss_percentile": 0.35587,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -135485,20 +136908,18 @@
     {
       "id": "CVE-2026-121374",
       "aliases": [],
-      "title": "Arbitrary file write and code execution via excluded node roles in Kubernetes special agent",
+      "title": "",
       "description": "Argument injection in the Kubernetes special agent in Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows a user with permission to edit rules in at least one folder to write files to arbitrary locations writable by the site user via crafted node roles in the \"Exclude nodes based on their role\" rule option, leading to code execution as the site user.",
-      "published": "2026-11-11T10:45:05.944Z",
-      "updated": "2026-11-11T10:45:05.944Z",
+      "published": "2026-11-11T11:17:14.377",
+      "updated": "2026-11-11T11:17:14.487",
       "cvss": 9.4,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Checkmk GmbH Checkmk"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://checkmk.com/werk/22120"
+        "https://checkmk.com/werk/17994"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -135509,7 +136930,7 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -139165,7 +140586,7 @@
       "title": "",
       "description": "A flaw was found in Ansible Operator Plugins. A low-privileged Kubernetes user can exploit a Jinja2 template injection vulnerability by crafting malicious custom resource (CR) specification values. These values are processed by Ansible without proper sanitization, allowing embedded Jinja2 expressions to be executed within the operator pod. This can lead to arbitrary code execution and privilege escalation, granting the attacker control over the operator's service account with cluster-wide permissions.",
       "published": "2026-10-15T16:18:23.657",
-      "updated": "2026-10-30T04:18:29.683",
+      "updated": "2026-11-11T13:17:34.297",
       "cvss": 8.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -139185,7 +140606,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00472,
-      "epss_percentile": 0.40812,
+      "epss_percentile": 0.41166,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -140198,6 +141619,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-124686",
+      "aliases": [],
+      "title": "JavaScript Code Injection through kendo.init() in Kendo UI for jQuery",
+      "description": "In Progress® Kendo® UI for jQuery versions prior to 2026.4.1111, kendo.init() compiles data-* attribute values with new Function when an invalid JSON object is supplied. An attacker with low privileges who can control these attribute values can inject JavaScript that executes during declarative widget initialization when a user loads or interacts with an affected page. Successful exploitation can compromise the confidentiality and integrity of data accessible in the user's browser context. The issue was reported in version 2022.3.1109; the first affected release has not been established.",
+      "published": "2026-11-11T15:27:32.762Z",
+      "updated": "2026-11-11T16:17:25.317",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-init-code-injection-cve-2026-124686"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-123372",
       "aliases": [
         "GHSA-jf3h-8jvx-vcrg"
@@ -141033,6 +142500,96 @@
         "popularity": 10,
         "cvss": 15.0,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-106023",
+      "aliases": [],
+      "title": "Apache HTTP Server: mod_md NULL pointer dereference leads to child process crash",
+      "description": "NULL pointer dereference vulnerability in Apache HTTP Server's mod_md during HTTP request processing.\n\n\n\nThis issue affects Apache HTTP Server: from 2.4.30 through 2.4.69.",
+      "published": "2026-11-11T14:55:26.491Z",
+      "updated": "2026-11-11T15:17:13.460",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache HTTP Server"
+      ],
+      "references": [
+        "https://httpd.apache.org/security/vulnerabilities_24.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "apache-httpd"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-109163",
+      "aliases": [],
+      "title": "Apache HTTP Server: mod_vhost_alias 1 byte stack buffer overwrite (after CVE-2026-63292)",
+      "description": "Stack-based buffer overflow vulnerability in Apache HTTP Server's mod_vhost_alias (after CVE-2026-63292)\n\n\n\nThis issue affects Apache HTTP Server: 2.4.69.",
+      "published": "2026-11-11T14:55:08.116Z",
+      "updated": "2026-11-11T15:17:14.097",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache HTTP Server"
+      ],
+      "references": [
+        "https://httpd.apache.org/security/vulnerabilities_24.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "apache-httpd"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30
       },
       "ai_analysis": ""
     },
@@ -151632,6 +153189,109 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 9.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96618",
+      "aliases": [],
+      "title": "",
+      "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in hexpm hex allows an untrusted package mirror to exhaust the memory or disk space of the machine running mix deps.get, mix deps.update, mix hex.package fetch or mix hex.docs fetch.\n\nHex treats a mirror configured with HEX_MIRROR_URL, HEX_MIRROR or mirror_url as untrusted: it doesn't send credentials to it, and it checks registry signatures and package checksums that the mirror can't forge. Several response paths consume memory or disk in proportion to what the mirror sends before any of those checks run.\n\nHex.HTTP.request/5 reads the whole response body into memory and decompresses it with :zlib.gunzip/1 whenever the response's Content-Encoding contains gzip, with no limit on the compressed or decompressed size. Hex doesn't ask for compressed responses, so the server decides whether this step runs. It applies to registry, package, docs and API responses.\n\nPackage tarballs have no download size limit. Hex 2.5.1 holds the whole tarball in memory and writes it to the cache, and the development branch streams it to a temporary file; the 16 MiB tarball limit is checked only when the file is unpacked. The tarball is then unpacked, into deps/<app> in 2.5.1 and into a staging directory on the development branch, before its checksums are compared with the registry.\n\nmix hex.docs fetch, and mix hex.docs offline when docs are missing, write the docs tarball to disk and extract it with :mix_hex_erl_tar.extract/2 without the 16 MiB compressed and 128 MiB decompressed limits that mix_hex_tarball:unpack_docs/3 applies. The signed registry doesn't cover docs tarballs, so nothing checks them.\n\nRegistry responses are also decompressed before their signature is checked, in hex_core code that Hex vendors; that part is tracked in https://github.com/hexpm/hex_core/security/advisories/GHSA-7c4r-cgf9-9jmq.\n\nThis issue affects hex: from 0.11.2 before 2.5.2.",
+      "published": "2026-10-12T16:17:07.920",
+      "updated": "2026-11-11T14:17:51.537",
+      "cvss": 2.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.erlef.org/cves/CVE-2026-96618.html",
+        "https://github.com/hexpm/hex/commit/08956100a8283ba500a123e5539ac64d5d7e91d8",
+        "https://github.com/hexpm/hex/commit/51ea632424fb6ea8765148f96dc25dfeb526b1f8",
+        "https://github.com/hexpm/hex/commit/bb5189eade682c5fc3f98d9725973a7beb4e1deb",
+        "https://github.com/hexpm/hex/security/advisories/GHSA-gf42-pg2f-63jp",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-96618"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00358,
+      "epss_percentile": 0.29783,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.3,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-105274",
+      "aliases": [],
+      "title": "",
+      "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in hexpm hex_core allows an untrusted repository mirror, or a server answering hex_core's API requests, to exhaust the memory of the Erlang VM running hex_core. The same code is vendored in Hex (mix_hex_repo, mix_hex_api) and rebar3 (r3_hex_repo, r3_hex_api).\n\nhex_repo:get_names/1, hex_repo:get_versions/1, hex_repo:get_package/2 and hex_repo:get_policy/2 decompress the registry response with zlib:gunzip/1 and decode the signed envelope before verifying its signature. A mirror doesn't have the repository's private key, but it chooses the compressed bytes, so a small response decompresses into an envelope of any size before the signature check rejects it.\n\nhex_api decodes responses with the application/vnd.hex+erlang content type through hex_safe_binary_to_term:safe_binary_to_term/1, which calls binary_to_term(Binary, [safe]). The safe option prevents atom creation, but it accepts compressed terms and doesn't limit the size of the decoded term, and the check that rejects functions and ports runs after the term has been built. The fix for CVE-2026-21619 added the safe option and that check without bounding the decoded size.\n\nThis issue affects rebar3: from 3.9.1 before 3.27.3; hex: from 2.1.0 before 2.5.2 and from 2.6.0 onward; hex_core: from 0.1.0 before 0.20.0.",
+      "published": "2026-10-12T17:17:12.457",
+      "updated": "2026-11-11T15:17:12.850",
+      "cvss": 2.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://cna.erlef.org/cves/CVE-2026-105274.html",
+        "https://github.com/erlang/rebar3/commit/209c02ec57c2cc3207ee0174c3af3675b8dc8f79",
+        "https://github.com/erlang/rebar3/commit/360838a22f5b3a88c0358207f2923059bcbb3afb",
+        "https://github.com/hexpm/hex/commit/671f695ac548ed01f5828c2a739ecaa942b21007",
+        "https://github.com/hexpm/hex/commit/d8b60eee97abb119d525306f048969a217d793a5",
+        "https://github.com/hexpm/hex_core/commit/ebe25d110717f6a3addba5232cd4a7dc1c76b628",
+        "https://github.com/hexpm/hex_core/commit/fbb6d9de472e5edb8d6fb6b32a91cb266137892e",
+        "https://github.com/hexpm/hex_core/security/advisories/GHSA-7c4r-cgf9-9jmq",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-105274"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00447,
+      "epss_percentile": 0.3921,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.3,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.2,
+        "unauth_network": 5,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -189176,6 +190836,46 @@
         "pki"
       ],
       "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-aws-AWS_EC2_OPERATIONAL_ISSUE_EC778_EFC270B4609",
+      "aliases": [],
+      "title": "AWS: Amazon Elastic Compute Cloud（Tokyo）Elevated API issues and Launch Failures",
+      "description": "AWS の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T15:40:33+00:00",
+      "updated": "2026-11-11T15:40:33+00:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://health.aws.amazon.com/health/status"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:aws"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "aws"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 10.0,
       "level": "low",
