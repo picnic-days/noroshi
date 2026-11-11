@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T23:44:24.231489+00:00",
+  "generated_at": "2026-11-11T03:06:02.081622+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -482,6 +482,46 @@
       "ai_analysis": "【状況】GitHub Advisory Database が 2026/11/4、npm パッケージ screenshot-desktop の 1.16.0 をマルウェア（CWE-506：悪意あるコードの埋め込み）として登録しました。修正版はありません。このパッケージを入れた、または動かした端末は、完全に乗っ取られたものとして扱うよう求められています。本物のパッケージが改ざんされた経緯と、実際の被害は未確認です。\n\n【原因の部品】npm の screenshot-desktop（GitHub リポジトリは bencevans/screenshot-desktop）。スクリーンショットを撮るためのライブラリで、Electron アプリなどに組み込まれます。組み込んでいる主な製品は未確認です。\n\n【影響範囲】screenshot-desktop 1.16.0 だけです。依存先として間接的に入った場合も対象になります。\n\n【対応策】\n1. 最優先でやること\n・package-lock.json、yarn.lock、pnpm-lock.yaml で「screenshot-desktop」と「1.16.0」を検索する\n・npm ls screenshot-desktop を実行し、間接的な依存も確認する\n・CI のビルドログ、キャッシュ、配布済みのアプリに 1.16.0 が含まれていないか確認する\n・見つかった端末やランナーは隔離し、パッケージを削除する\n・その端末にあった秘密情報（npm トークン、GitHub トークン、クラウドの鍵、SSH 鍵など）を、別の端末から再発行する\n・削除だけでは不正なソフトが残る可能性があるため、端末の再構築を推奨します\n2. すぐ対処できない場合\n・バージョンを 1.16.0 より前に固定し、npm ci で入れ直す。直前の 1.15.6 が安全かどうかは未確認\n・ビルドでは --ignore-scripts を付ける\n・使用中の端末の外向き通信を監視する\n\n【各告知の関係】\n・GitHub：マルウェアの告知（GHSA-q2mc-9hgr-vmx2）\n・開発元（bencevans）：公式の告知は未確認\n・国内の注意喚起：見つかりませんでした\n\n【出典】\nhttps://github.com/advisories/GHSA-q2mc-9hgr-vmx2"
     },
     {
+      "id": "JP-jpcert-at260035",
+      "aliases": [],
+      "title": "2026年11月マイクロソフトセキュリティ更新プログラムに関する注意喚起  (公開)",
+      "description": "JPCERT/CC の注意喚起",
+      "published": "2026-11-11T11:20:00+09:00",
+      "updated": "2026-11-11T11:20:00+09:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.jpcert.or.jp/at/2026/at260035.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "jpcert"
+      ],
+      "category": "jp-alert",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T03:06:02.081622+00:00",
+      "matched": [
+        "jpcert"
+      ],
+      "match_type": "jp-alert",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": "【状況】\nMicrosoftが2026年11月の月例更新を出しました（日本時間11/11）。修正は1,000件以上あります。このうちCVE-2026-124194 Microsoft Outlook のなりすましの脆弱性は実際に悪用されています（MSRCの判定はExploited: Yes）。細工したメッセージファイルを開くと、通常表示される警告が表示されずに攻撃者の管理するサーバーへ接続し、認証情報が漏えいする可能性があります。CISAのKEVにも登録済みで、対応期限は2026-11-24です。\n【原因の部品】\nMicrosoft製品そのものです。ほかの部品を組み込んだことによる問題ではありません。\n【影響範囲】\n・CVE-2026-124194：Microsoft 365 Apps for Enterprise、Office LTSC 2021、Office LTSC 2024（32/64bit）。修正ビルド番号は未確認です（MSRCのページで確認してください）\n・ほかにExchange Server（オンプレ）のRCE（CVE-2026-118207）、Windows LDAP（CVE-2026-119958）、Schannel（CVE-2026-119952）も重要です\n・Windows 11 23H2 Enterprise/Educationは今回が最後のセキュリティ更新です\n【対応策】\n1. 今日中にOutlook/Microsoft 365 Appsの11月更新を配り、クイック実行版の端末が修正ビルドになったかを確認する。続けてWindowsとオンプレExchangeを更新する\n2. すぐ更新できない場合は、次の3つで被害を減らす（更新の代わりにはなりません）\n・ネットワーク境界と端末のファイアウォールで、外部宛てのSMB（TCP 445）を遮断する\n・特権アカウントをProtected Usersグループに入れる\n・外部への接続に使われるNTLM認証を、まず監査してから制限する\n【各告知の関係】\n・Microsoft：自社製品の修正と悪用の公表（一次情報）\n・JPCERT/CC：Microsoftの公表を紹介する国内向け注意喚起\n・CISA：KEVに登録（悪用確認の公的な注意喚起）\n【出典】\nhttps://www.jpcert.or.jp/at/2026/at260035.html\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194\n\n（JPCERTのページは直接取得できず、検索結果で内容を確認しました）"
+    },
+    {
       "id": "CVE-2026-115252",
       "aliases": [],
       "title": "Confection 0.4.0 - 0.4.7 - Unauthenticated RCE via Write Key Option",
@@ -592,60 +632,6 @@
         "epss": 2.5
       },
       "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-125350",
-      "aliases": [],
-      "title": "Google Chromium Use-After-Free Vulnerability",
-      "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-10T18:17:35.237",
-      "updated": "2026-11-10T20:43:45.543",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Google Chromium"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html",
-        "https://issues.chromium.org/issues/582442907",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-125350",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125350"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 77.6,
-      "level": "critical",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "kev": 20
-      },
-      "ai_analysis": "【状況】Chrome の XML 処理に、解放済みメモリを使ってしまう脆弱性（CVE-2026-125350、CVSS 8.8）があります。細工した Web ページを開くだけで、サンドボックス内で任意のコードを実行されるおそれがあります。Google は悪用コードが出回っていることを認めており、CISA の悪用確認済み脆弱性リスト（KEV）にも11/10付で登録されています。\n\n【原因の部品】Google は原因の部品名を公表していません。ただ Alpine と Gentoo がこの CVE 番号で libxslt を修正しているため、XSLT 処理ライブラリの libxslt が原因とみられます。libxslt 開発元の告知は未確認です。\n組み込み先：Chrome/Chromium 系ブラウザ、Electron アプリ、OS の libxslt（それを使う PHP の xsl 拡張、Python の lxml など）\n\n【影響範囲】\n・Chrome デスクトップ版 157.0.8103.50 より前\n・修正版：Win/Mac は 157.0.8103.50/.51、Linux は 157.0.8103.50\n・libxslt：Alpine 3.22〜3.24 と Gentoo（1.1.45-r1 以上）で修正済み。開発元の修正版は未確認\n・Edge・Brave など他の Chromium 系、Android 版 Chrome、Electron：修正版は未確認\n\n【対応策】\n1. 社内端末の Chrome を 157.0.8103.50 以上に更新し、再起動するよう徹底する。管理コンソールで版数も確認する。Playwright・Puppeteer・Docker で使うヘッドレス Chrome は自動更新されないため、個別に更新する。\n2. 更新が終わるまでは、不審なリンクを開かないよう周知する。Edge などの Chromium 系ブラウザ、Electron アプリ、サーバの libxslt は、各ベンダーの更新を確認して適用する。\n\n【各告知の関係】\n・Google：Chrome の修正（一次情報。不具合の詳細は非公開）\n・Alpine／Gentoo：libxslt パッケージの修正\n・CISA：KEV 登録による注意喚起\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-125350"
     },
     {
       "id": "CVE-2026-119977",
@@ -15011,6 +14997,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-125350",
+      "aliases": [],
+      "title": "Google Chromium Use-After-Free Vulnerability",
+      "description": "Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code inside the sandbox via a specially crafted webpage. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Google Chromium"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-125350"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 55,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "rce": 5,
+        "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119858",
       "aliases": [],
       "title": "Remote Desktop Client Remote Code Execution Vulnerability",
@@ -18452,56 +18484,6 @@
         "popularity": 30,
         "cvss": 18.8,
         "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116606",
-      "aliases": [],
-      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
-      "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
-      "published": "2026-11-02T13:17:37.017",
-      "updated": "2026-11-10T20:18:04.450",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
-      ],
-      "references": [
-        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md",
-        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01602,
-      "epss_percentile": 0.76026,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 53.8,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 18.6,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -43193,58 +43175,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-124194",
-      "aliases": [],
-      "title": "Microsoft Office Outlook Missing User Interaction for Potentially Unsafe Action Vulnerability",
-      "description": "Product ui does not warn user of unsafe actions in Microsoft Office Outlook allows an unauthorized attacker to perform spoofing over a network.",
-      "published": "2026-11-10T19:20:48.180",
-      "updated": "2026-11-10T21:29:50.613",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [
-        "microsoft:365_apps",
-        "microsoft:office_2021",
-        "microsoft:office_2024"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-124194",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-124194"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 48.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 13.0,
-        "unauth_network": 5,
-        "kev": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-108467",
       "aliases": [],
       "title": "",
@@ -46925,55 +46855,6 @@
         "cvss": 16.6,
         "unauth_network": 5,
         "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-111560",
-      "aliases": [],
-      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
-      "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed.",
-      "published": "2026-11-02T13:17:35.190",
-      "updated": "2026-11-10T20:17:42.997",
-      "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Barracuda Networks Multiple Products"
-      ],
-      "references": [
-        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md",
-        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111560",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.0106,
-      "epss_percentile": 0.6483,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 47.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 17.2,
-        "kev": 20,
-        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -89033,72 +88914,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-123084",
-      "aliases": [],
-      "title": "Python-pulpcore: pulpcore: header content guard jq filter exposes the content-app environment",
-      "description": "An **expression language injection** has been found in the HeaderContentGuard.permit function in publication.py of the content guard in the **Pulpcore** package. The guard is supposed to check a value in a request header. It saves a jq filter and runs that filter against the header when a client asks for content. The filter is not limited to the header, and jq's env builtin also returns the environment of the content process. A low-privileged network attacker or user who can create a header content guard and attach it to a distribution can save a filter that reads that environment. The content request is allowed or denied according to the filter result. Repeating the request lets that attacker or user recover the environment, including Pulp settings held there, such as the Django secret key or the database password.",
-      "published": "2026-11-10T22:12:16.251Z",
-      "updated": "2026-11-10T23:17:20.120",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [
-        "ansible_automation_platform:2",
-        "satellite:6",
-        "rhui:4",
-        "rhui:5"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Red Hat Red Hat Ansible Automation Platform 2",
-        "ansible-automation-platform-24/hub-rhel8",
-        "ansible-automation-platform-25/hub-rhel8",
-        "ansible-automation-platform-26/hub-rhel9",
-        "ansible-automation-platform-27/hub-rhel9",
-        "python3.11-pulpcore",
-        "python3.12-pulpcore",
-        "python3x-pulpcore",
-        "python-pulpcore",
-        "Red Hat Red Hat Satellite 6",
-        "Red Hat Red Hat Update Infrastructure 4 for Cloud Providers",
-        "python-pulpcore-client",
-        "Red Hat Red Hat Update Infrastructure 5",
-        "rhui5/rhua-rhel9",
-        "rhui5/rhua-tp-rhel9"
-      ],
-      "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-123084",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2567260"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [
-        "python"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 43.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 13.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-105006",
       "aliases": [],
       "title": "",
@@ -115087,58 +114902,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111793",
-      "aliases": [],
-      "title": "Openwave Messaging Limited Webtop Media Transcoder Incorrect Resource Transfer Between Spheres Vulnerability",
-      "description": "Openwave Webtop Media Transcoder does not enforce administrator-defined file type restrictions to restrict the file-types to be converted. This may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.",
-      "published": "2026-10-16T19:17:05.680",
-      "updated": "2026-11-10T21:32:47.230",
-      "cvss": 4.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
-      "severity": "medium",
-      "cpes": [
-        "openwave:webtop_media_transcoder"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Openwave Messaging Limited Webtop Media Transcoder"
-      ],
-      "references": [
-        "https://github.com/GISOpenwave/security-advisories-public/blob/main/CAN-2026-2032674.md",
-        "https://openwave.ai",
-        "https://jvn.jp/en/vu/JVNVU93403064/",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111793",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111793"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00274,
-      "epss_percentile": 0.19971,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 38.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 8.6,
-        "kev": 20,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-70116",
       "aliases": [],
       "title": "",
@@ -119283,7 +119046,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an authorized attacker to elevate privileges locally.",
       "published": "2026-11-10T19:20:33.967",
-      "updated": "2026-11-10T19:20:34.097",
+      "updated": "2026-11-11T01:17:11.650",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -125493,6 +125256,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116606",
+      "aliases": [],
+      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "description": "Barracuda Networks Email Security Gateway (ESG) contains an authentication bypass using an alternate path or channel that could allow an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration. This vulnerability can be chained with CVE-2026-111560.",
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01602,
+      "epss_percentile": 0.76026,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 35.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119961",
       "aliases": [],
       "title": "",
@@ -130042,19 +129850,20 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-109481",
+      "id": "CVE-2026-114147",
       "aliases": [
-        "GHSA-xw2x-23jm-j582"
+        "GHSA-wr8v-9x5q-ggcm"
       ],
-      "title": "Microsoft Security Advisory CVE-2026-109481 - ASP.NET Core Elevation of Privilege Vulnerability",
-      "description": "Cross-site request forgery (csrf) in ASP.NET Core allows an unauthorized attacker to elevate privileges over a network.",
-      "published": "2026-11-10T19:18:17.267",
-      "updated": "2026-11-10T23:33:37Z",
+      "title": "Microsoft Security Advisory CVE-2026-114147 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nSignalR Redis scale-out can mishandle case-mismatched group removal and leave subscriptions in a state that permits persistent resource amplification and denial of service.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/509\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-401\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### 8.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### 9.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### 10.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### 11.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n### .NET 8.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### .NET 9.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### .NET 10.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCompare the deployed ASP.NET Core runtime and the application's resolved Microsoft.AspNetCore.SignalR.StackExchangeRedis package version with the affected ranges above. Self-contained applications include their own runtime.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nUpdate both the ASP.NET Core runtime and the Microsoft.AspNetCore.SignalR.StackExchangeRedis package to the applicable patched versions above. Restart affected framework-dependent applications after installing the runtime update. Rebuild and redeploy applications after updating the package; self-contained applications must also be rebuilt with the patched runtime. Updating a machine-wide runtime or SDK alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114147](https://www.cve.org/CVERecord?id=CVE-2026-114147)\n\n### Acknowledgements\n\n- [71C4 with ARPSEC](https://www.linkedin.com/in/navaponpremkasem/)\n- [71C4](https://www.linkedin.com/in/navaponpremkasem/)\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:23:32Z",
+      "updated": "2026-11-11T00:23:34Z",
       "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [
+        "nuget:microsoft.aspnetcore.signalr.stackexchangeredis",
         "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
         "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
         "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
@@ -130069,13 +129878,12 @@
       ],
       "vendor_products": [],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109481",
-        "https://github.com/advisories/GHSA-xw2x-23jm-j582",
-        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-xw2x-23jm-j582",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-109481",
-        "https://github.com/dotnet/announcements/issues/506",
-        "https://github.com/dotnet/aspnetcore/discussions/70470",
-        "https://github.com/dotnet/aspnetcore/releases/tag/v11.0.0"
+        "https://github.com/advisories/GHSA-wr8v-9x5q-ggcm",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-wr8v-9x5q-ggcm",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-114147",
+        "https://github.com/dotnet/announcements/issues/509",
+        "https://github.com/dotnet/aspnetcore/commit/cc53379f74963c4509ddfa91845132146d7054aa",
+        "https://github.com/dotnet/aspnetcore/commit/d94f9c231ee7e047c5c3c4cfdabe862274938faf"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -130086,58 +129894,14 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "nvd",
         "ghsa"
       ],
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-10T18:41:19.148184+00:00",
       "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114147",
-      "aliases": [],
-      "title": "",
-      "description": "Missing release of memory after effective lifetime in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "published": "2026-11-10T19:19:07.853",
-      "updated": "2026-11-10T20:18:00.980",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114147"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
+        "dotnet",
+        "redis"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -130152,77 +129916,11 @@
     },
     {
       "id": "CVE-2026-114149",
-      "aliases": [
-        "GHSA-x33c-w48q-qrgc"
-      ],
-      "title": "Microsoft Security Advisory CVE-2026-114149 - ASP.NET Core Denial of Service Vulnerability",
+      "aliases": [],
+      "title": "",
       "description": "Uncontrolled resource consumption in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
       "published": "2026-11-10T19:19:08.040",
-      "updated": "2026-11-10T23:06:34Z",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [
-        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-x86",
-        "nuget:microsoft.aspnetcore.webutilities"
-      ],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114149",
-        "https://github.com/advisories/GHSA-x33c-w48q-qrgc",
-        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-x33c-w48q-qrgc",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-114149",
-        "https://github.com/dotnet/announcements/issues/511",
-        "https://github.com/dotnet/aspnetcore/commit/e2fdf87f23ce5747bce1ac9a8c34905b17799a68",
-        "https://github.com/dotnet/aspnetcore/commit/eea3265c048c88f9c064fc1ff2b3be9570b6f8cc"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "ghsa"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114154",
-      "aliases": [],
-      "title": "",
-      "description": "Uncontrolled resource consumption in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "published": "2026-11-10T19:19:08.633",
-      "updated": "2026-11-10T20:18:01.620",
+      "updated": "2026-11-11T00:17:27.970",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
@@ -130230,51 +129928,7 @@
       "packages": [],
       "vendor_products": [],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114154"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-118748",
-      "aliases": [],
-      "title": "",
-      "description": "Allocation of resources without limits or throttling in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "published": "2026-11-10T19:19:51.643",
-      "updated": "2026-11-10T20:18:25.983",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118748"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114149"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -130927,30 +130581,40 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-118750",
+      "id": "CVE-2026-109478",
       "aliases": [
-        "GHSA-6527-9fp8-r4x6"
+        "GHSA-r3qf-p3jm-8h4p"
       ],
-      "title": "Microsoft Security Advisory CVE-2026-118750 - ASP.NET Core Denial of Service Vulnerability",
-      "description": "Allocation of resources without limits or throttling in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "published": "2026-11-10T19:19:51.923",
-      "updated": "2026-11-10T23:32:02Z",
+      "title": "Microsoft Security Advisory CVE-2026-109478 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "Inefficient algorithmic complexity in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "published": "2026-11-10T19:18:17.113",
+      "updated": "2026-11-11T00:22:45Z",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [
-        "nuget:microsoft.aspnetcore.webutilities"
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
       ],
       "vendor_products": [],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118750",
-        "https://github.com/advisories/GHSA-6527-9fp8-r4x6",
-        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-6527-9fp8-r4x6",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-118750",
-        "https://github.com/dotnet/announcements/issues/512",
-        "https://github.com/dotnet/aspnetcore/commit/9a26c7414a4fbff45535c0830253c1b4479b0073",
-        "https://github.com/dotnet/aspnetcore/discussions/70476"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109478",
+        "https://github.com/advisories/GHSA-r3qf-p3jm-8h4p",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-r3qf-p3jm-8h4p",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109478",
+        "https://github.com/dotnet/announcements/issues/515",
+        "https://github.com/dotnet/aspnetcore/commit/2523887d4cca7013afa2737e20cb7f6ba1eed8ff",
+        "https://github.com/dotnet/aspnetcore/commit/effb34d85fdc5137ee4bd87d52560433c3df02e7"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -130963,50 +130627,6 @@
       "sources": [
         "nvd",
         "ghsa"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-109478",
-      "aliases": [],
-      "title": "",
-      "description": "Inefficient algorithmic complexity in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "published": "2026-11-10T19:18:17.113",
-      "updated": "2026-11-10T21:18:08.393",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109478"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -131156,6 +130776,55 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-wrm2-c2h2-4w82",
+      "aliases": [],
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-109478 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-r3qf-p3jm-8h4p. This link is maintained to preserve external references.\n\n## Original Description\nInefficient algorithmic complexity in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "published": "2026-11-10T21:32:29Z",
+      "updated": "2026-11-11T00:21:10Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wrm2-c2h2-4w82",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109478",
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109478",
+        "https://github.com/advisories/GHSA-wrm2-c2h2-4w82"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T03:06:02.081622+00:00",
       "matched": [
         "dotnet"
       ],
@@ -135797,7 +135466,7 @@
       "title": "",
       "description": "Use of uninitialized resource in Microsoft Windows Codecs Library allows an authorized attacker to disclose information locally.",
       "published": "2026-11-10T19:22:12.063",
-      "updated": "2026-11-10T19:22:12.190",
+      "updated": "2026-11-11T02:17:22.927",
       "cvss": 5.6,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N",
       "severity": "medium",
@@ -135937,6 +135606,241 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-109481",
+      "aliases": [
+        "GHSA-xw2x-23jm-j582"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-109481 - ASP.NET Core Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nThe Blazor/SignalR `/_blazor/refresh` path can accept a cross-site request that binds a victim's authenticated principal to an attacker-owned circuit.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/506\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-352\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.6.26359.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable runtime or update each independently referenced package to the fixed version above. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-109481](https://www.cve.org/CVERecord?id=CVE-2026-109481)\n\n### Acknowledgements\n\n- [Derek Haber](https://x.com/thecowboyhacker) with [Armadin](https://armadin.com/)\n- Anonymous\n- Artur Stetsko\n- s3zer0\n- [Leonardo Souza](https://www.linkedin.com/in/capleonardo-souza) with [Delfia](https://delfia.tech/)\n- Attila.Cs(zerodaybugs.com) with https://zerodaybugs.com/\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-10T23:33:36Z",
+      "updated": "2026-11-10T23:33:37Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-xw2x-23jm-j582",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-xw2x-23jm-j582",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-109481",
+        "https://github.com/dotnet/announcements/issues/506",
+        "https://github.com/dotnet/aspnetcore/discussions/70470",
+        "https://github.com/dotnet/aspnetcore/releases/tag/v11.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114154",
+      "aliases": [
+        "GHSA-3893-7fxc-qvff"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-114154 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nMalformed chunked HttpSys requests containing conflicting content-length headers can retain request and connection resources.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/513\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-401\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### ASP.NET Core 2.3 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys) | = 2.3.10 | 2.3.14\n[Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys) | = 2.3.11 | 2.3.14\n[Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys) | = 2.3.12 | 2.3.14\n[Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys) | = 2.3.13 | 2.3.14\n\n### .NET 8.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 8.0.0, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 8.0.0, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 8.0.0, <= 8.0.33 | 8.0.34\n\n### .NET 9.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 9.0.0, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 9.0.0, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 9.0.0, <= 9.0.22 | 9.0.23\n\n### .NET 10.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 10.0.0, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 10.0.0, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 10.0.0, <= 10.0.14 | 10.0.15\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nUpdate standalone Microsoft.AspNetCore.Server.HttpSys references to 2.3.14, then rebuild and redeploy affected applications, including framework-dependent applications. Install the applicable patched runtime version listed above. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114154](https://www.cve.org/CVERecord?id=CVE-2026-114154)\n\n### Acknowledgements\n\n- [Kevin Gosse](https://x.com/kookiz/)\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:28:01Z",
+      "updated": "2026-11-11T00:28:02Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.server.httpsys",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-3893-7fxc-qvff",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-3893-7fxc-qvff",
+        "https://github.com/dotnet/announcements/issues/513",
+        "https://github.com/dotnet/aspnetcore/commit/20e629e9af9cabb0c1c02410be99521821b22f83",
+        "https://github.com/dotnet/aspnetcore/commit/8cb8dc4a1d3e5a6aedeb3dbbfd0b390aac59f172",
+        "https://github.com/dotnet/aspnetcore/commit/efc799e69e38cdc36c7b9c96580014d28e68201c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118748",
+      "aliases": [
+        "GHSA-5h82-77p6-2wp3"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-118748 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nBlazor static-SSR client validation retains attacker-controlled rendered field names in an unbounded singleton cache, allowing remote process memory exhaustion.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/516\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-770\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable runtime or update each independently referenced package to the fixed version above. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-118748](https://www.cve.org/CVERecord?id=CVE-2026-118748)\n\n### Acknowledgements\n\n- Artur Stetsko\n- Alejandro Pacheco\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:11:03Z",
+      "updated": "2026-11-11T00:11:05Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-5h82-77p6-2wp3",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-5h82-77p6-2wp3",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-118748",
+        "https://github.com/dotnet/announcements/issues/516",
+        "https://github.com/dotnet/aspnetcore/discussions/70477",
+        "https://github.com/dotnet/aspnetcore/releases/tag/v11.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118750",
+      "aliases": [
+        "GHSA-6527-9fp8-r4x6"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-118750 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nFileBufferingReadStream buffer allocation can allow unauthenticated multipart-form requests to exhaust memory.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/512\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-770\n\n## Affected Platforms\n\n- **Platforms:** Any supported OS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe table lists the affected package range and the fixed NuGet version.\n\n### ASP.NET Core 2.3 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.WebUtilities](https://www.nuget.org/packages/Microsoft.AspNetCore.WebUtilities) | >= 2.3.0, <= 2.3.13 | 2.3.14\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the application's Microsoft.AspNetCore.WebUtilities package reference against the affected range above, including transitive dependencies brought in by Microsoft.AspNetCore.Http. Use `dotnet list <PROJECT> package --include-transitive` to inspect resolved dependencies.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nUpdate each applicable package reference to its patched version listed above, then rebuild and redeploy the application. Updating only the installed runtime does not update an application's standalone package references.\n\nApplications referencing Microsoft.AspNetCore.Http must resolve Microsoft.AspNetCore.WebUtilities to version 2.3.14 or later. Add or update a direct WebUtilities reference if necessary to override an older transitive dependency.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-118750](https://www.cve.org/CVERecord?id=CVE-2026-118750)\n\n### Acknowledgements\n\n- NavSec4\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-10T23:32:00Z",
+      "updated": "2026-11-10T23:32:02Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.webutilities"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-6527-9fp8-r4x6",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-6527-9fp8-r4x6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-118750",
+        "https://github.com/dotnet/announcements/issues/512",
+        "https://github.com/dotnet/aspnetcore/commit/9a26c7414a4fbff45535c0830253c1b4479b0073",
+        "https://github.com/dotnet/aspnetcore/discussions/70476"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118140",
       "aliases": [],
       "title": "",
@@ -135976,93 +135880,6 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 11.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114146",
-      "aliases": [],
-      "title": "",
-      "description": "Incorrect authorization in ASP.NET Core allows an authorized attacker to elevate privileges over a network.",
-      "published": "2026-11-10T19:19:07.683",
-      "updated": "2026-11-10T20:18:00.820",
-      "cvss": 9.0,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114146"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 32.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 18.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114156",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in ASP.NET Core allows an unauthorized attacker to bypass a security feature over a network.",
-      "published": "2026-11-10T19:19:08.937",
-      "updated": "2026-11-10T20:18:01.850",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114156"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 32.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 13.0,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -139274,50 +139091,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-114150",
-      "aliases": [],
-      "title": "",
-      "description": "Use of uninitialized resource in ASP.NET Core allows an unauthorized attacker to disclose information over a network.",
-      "published": "2026-11-10T19:19:08.220",
-      "updated": "2026-11-10T20:18:01.287",
-      "cvss": 5.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114150"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 30.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 11.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-120222",
       "aliases": [],
       "title": "",
@@ -140316,6 +140089,69 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-114156",
+      "aliases": [
+        "GHSA-8w29-6cjc-h6w4"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-114156 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\n`PathString.StartsWithSegments` can mishandle percent-encoded backslashes and permit authorization checks to match an unintended path.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/510\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 6.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-41\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.7.26381.103, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable runtime or update each independently referenced package to the fixed version above. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114156](https://www.cve.org/CVERecord?id=CVE-2026-114156)\n\n### Acknowledgements\n\n- Anonymous\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:24:05Z",
+      "updated": "2026-11-11T00:24:06Z",
+      "cvss": 5.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-8w29-6cjc-h6w4",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-8w29-6cjc-h6w4",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-114156",
+        "https://github.com/dotnet/announcements/issues/510",
+        "https://github.com/dotnet/aspnetcore/discussions/70478",
+        "https://github.com/dotnet/aspnetcore/releases/tag/v11.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 11.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112906",
       "aliases": [
         "GHSA-2g95-wg33-c5x2"
@@ -140364,6 +140200,184 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 9.4,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111560",
+      "aliases": [],
+      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
+      "description": "Barracuda Networks Email Security Gateway (ESG), Load Balancer, Application Delivery Controller (ADC), Message Archiver (BMA), WAF Control Center (WCC), Web Application Firewall (WAF), and Web Security Gateway (WSG) contain an OS command injection vulnerability. This vulnerability could allow an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed. This vulnerability can be chained with CVE-2026-116606",
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Multiple Products"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0106,
+      "epss_percentile": 0.6483,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 30.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "kev": 20,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-63660",
+      "aliases": [],
+      "title": "node-fontnik: integer-overflow heap out-of-bounds write in RenderSDF",
+      "description": "node-fontnik is a library that delivers a range of glyphs rendered as SDFs (signed distance fields) in a protocol buffer. Prior to version 0.7.7, a crafted font could trigger a heap out-of-bounds write in RenderSDF (include/mapbox/glyph_foundry_impl.hpp). RenderSDF computed the SDF bitmap allocation size as buffered_width * buffered_height in 32-bit unsigned int. Glyph dimensions are derived from the uploaded font's outline bounding box with no upper bound, so a glyph large enough to make that product exceed 2³² wrapped to a small value. The buffer was then under-allocated while the render loop still wrote one byte per pixel, corrupting the heap (CWE-190 → CWE-787) and crashing the process. A 680-byte font is enough to drive FreeType to a 65536×65536 buffered glyph, wrapping the size to 0. This issue has been patched in version 0.7.7.",
+      "published": "2026-11-11T02:40:47.419Z",
+      "updated": "2026-11-11T02:40:47.419Z",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "mapbox node-fontnik"
+      ],
+      "references": [
+        "https://github.com/mapbox/node-fontnik/security/advisories/GHSA-cfm6-c7rv-58xj",
+        "https://github.com/mapbox/node-fontnik/pull/202",
+        "https://github.com/mapbox/node-fontnik/releases/tag/v0.7.7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T03:06:02.081622+00:00",
+      "matched": [
+        "freetype"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124194",
+      "aliases": [],
+      "title": "Microsoft Office Outlook Missing User Interaction for Potentially Unsafe Action Vulnerability",
+      "description": "Microsoft Office Outlook contains a missing user interaction for potentially unsafe action vulnerability that allows an unauthorized attacker to perform spoofing over a network.",
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-124194"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111793",
+      "aliases": [],
+      "title": "Openwave Messaging Limited Webtop Media Transcoder Incorrect Resource Transfer Between Spheres Vulnerability",
+      "description": "Openwave Messaging Limited Webtop Media Transcoder contains an incorrect resource transfer between spheres vulnerability that may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.",
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Openwave Messaging Limited Webtop Media Transcoder"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111793"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00274,
+      "epss_percentile": 0.19971,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 30.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "kev": 20,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -140969,6 +140983,69 @@
         "popularity": 14.0,
         "cvss": 15.6,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114146",
+      "aliases": [
+        "GHSA-67wp-ghc2-fw2g"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-114146 - ASP.NET Core Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nSignalR connections are not consistently bound to the identity negotiated at connection establishment, allowing injected messages to execute Hub invocations as the victim.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/504\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Critical\n- **Score:** 9.0 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-863\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### ASP.NET Core 2.3 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.Http.Connections](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Connections) | >= 1.2.0, <= 1.2.13 | 1.2.14\n\n### .NET 8.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### .NET 9.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### .NET 10.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable runtime or update each independently referenced package to the fixed version above. After updating standalone packages, rebuild and redeploy affected applications, including framework-dependent applications; restarting alone does not replace app-local packages. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114146](https://www.cve.org/CVERecord?id=CVE-2026-114146)\n\n### Acknowledgements\n\n- Mika Vehns with MIVE GmbH\n- Lucas Gabriel\n- [hsuan0223x](https://x.com/hsuan0223x)\n- Mariusz Maik\n- [Pocas (Jeongwon Jo)](https://x.com/pocas142)\n- Grace Chapel\n- [Jacob Keith](https://hackerone.com/cratitoes) with Keith Systems\n- [Weeraphat Srisutham](https://linkedin.com/in/weeraphat-srisutham)\n- [Kevin Gosse](https://x.com/kookiz/)\n- Artur Stetsko\n- [Yudai Shibata](https://x.com/yudaishibata)\n- [71C4](https://www.linkedin.com/in/navaponpremkasem/)\n- Attila Csatadi of ZeroDayBugs.com\n- Vu Van Tien ( @n0_Be3r )\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:21:56Z",
+      "updated": "2026-11-11T00:21:58Z",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.http.connections",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-67wp-ghc2-fw2g",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-67wp-ghc2-fw2g",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-114146",
+        "https://github.com/dotnet/announcements/issues/504",
+        "https://github.com/dotnet/aspnetcore/commit/514c86030195fd6b649bb26c48975a043d96b791",
+        "https://github.com/dotnet/aspnetcore/commit/db8579880b30153dbd601fa079f49e7e3ce42e08"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.6
       },
       "ai_analysis": ""
     },
@@ -142894,7 +142971,7 @@
       "title": "",
       "description": "Improper privilege management in Microsoft Azure Kubernetes Service allows an authorized attacker to elevate privileges locally.",
       "published": "2026-11-10T19:20:38.233",
-      "updated": "2026-11-10T19:20:38.350",
+      "updated": "2026-11-11T01:17:13.213",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -143023,6 +143100,69 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 15.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114150",
+      "aliases": [
+        "GHSA-6vjv-7wm8-p67r"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-114150 - ASP.NET Core Information Disclosure Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nA reused `ResponseBufferingStream` can retain pooled tail memory and expose response-body data from another request through HTTP logging.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/514\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 5.9 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-908\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.2.26159.112, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCheck the deployed runtime and application package versions against the affected ranges above. Self-contained applications include their own runtime; updating a machine-wide runtime does not replace it.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable runtime or update each independently referenced package to the fixed version above. Restart applications. Rebuild and redeploy self-contained applications; updating a machine-wide runtime does not replace their embedded runtime. An SDK update alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114150](https://www.cve.org/CVERecord?id=CVE-2026-114150)\n\n### Acknowledgements\n\n- [Kevin Gosse](https://x.com/kookiz/)\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:20:47Z",
+      "updated": "2026-11-11T00:20:49Z",
+      "cvss": 5.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-6vjv-7wm8-p67r",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-6vjv-7wm8-p67r",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-114150",
+        "https://github.com/dotnet/announcements/issues/514",
+        "https://github.com/dotnet/aspnetcore/discussions/70475",
+        "https://github.com/dotnet/aspnetcore/releases/tag/v11.0.0"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 29.4,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -143346,49 +143486,6 @@
         "cvss": 14.2,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114157",
-      "aliases": [],
-      "title": "",
-      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in ASP.NET Core allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T19:19:09.087",
-      "updated": "2026-11-10T20:18:01.970",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114157"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 29.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0
       },
       "ai_analysis": ""
     },
@@ -146198,6 +146295,104 @@
         "popularity": 14.0,
         "cvss": 13.0,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123084",
+      "aliases": [],
+      "title": "",
+      "description": "An **expression language injection** has been found in the HeaderContentGuard.permit function in publication.py of the content guard in the **Pulpcore** package. The guard is supposed to check a value in a request header. It saves a jq filter and runs that filter against the header when a client asks for content. The filter is not limited to the header, and jq's env builtin also returns the environment of the content process. A low-privileged network attacker or user who can create a header content guard and attach it to a distribution can save a filter that reads that environment. The content request is allowed or denied according to the filter result. Repeating the request lets that attacker or user recover the environment, including Pulp settings held there, such as the Django secret key or the database password.",
+      "published": "2026-11-10T23:17:19.997",
+      "updated": "2026-11-10T23:17:20.120",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-123084",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2567260"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [
+        "django"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114157",
+      "aliases": [
+        "GHSA-7phj-vgxq-r67h"
+      ],
+      "title": "Microsoft Security Advisory CVE-2026-114157 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core's Kestrel Named Pipes transport. This advisory provides guidance on updating affected applications and components.\n\nA Kestrel named-pipe listener configured with `CurrentUserOnly` can lose protected namespace ownership during recovery, allowing another local user to claim the pipe path.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/507\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-362\n- **MSRC severity:** Important\n- **Impact:** Security Feature Bypass\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** Arm64, x64, x86\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nMicrosoft.AspNetCore.Server.Kestrel.Transport.NamedPipes ships in the ASP.NET Core shared framework and runtime packs; it is not a separately packable NuGet package.\n\nAffected intervals and patched release versions are listed below.\n\n### .NET 8.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### .NET 9.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### .NET 10.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\nThe .NET 11.0.0 release is fixed; affected prereleases are listed above.\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nReview Windows applications that use Kestrel's Named Pipes transport and identify their deployed ASP.NET Core versions. Compare deployed versions with the affected intervals above. Self-contained applications include their own framework; updating a machine-wide installation does not replace their embedded copies.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nInstall the applicable ASP.NET Core runtime update and restart applications. Rebuild and redeploy affected self-contained applications with fixed runtime packs. An SDK update alone does not replace runtime or framework files already embedded in deployed applications. Use the patched version listed for the affected servicing line.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114157](https://www.cve.org/CVERecord?id=CVE-2026-114157)\n\n### Acknowledgements\n\n- Antonio Alonso-Stepanov\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
+      "published": "2026-11-11T00:25:04Z",
+      "updated": "2026-11-11T00:25:06Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N/E:U/RL:O/RC:C",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
+        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-7phj-vgxq-r67h",
+        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-7phj-vgxq-r67h",
+        "https://github.com/dotnet/announcements/issues/507",
+        "https://github.com/dotnet/aspnetcore/commit/671bb7f9c84e24153ac8440e4e6de307a6cbd920",
+        "https://github.com/dotnet/aspnetcore/commit/a4ade6a6848f06681af1a57b5a7b555647d3e19d",
+        "https://github.com/dotnet/aspnetcore/discussions/70472"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0
       },
       "ai_analysis": ""
     },
