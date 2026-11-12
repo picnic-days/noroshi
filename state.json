@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-12T08:20:56.834167+00:00",
+  "last_run": "2026-11-12T17:06:04.594898+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -84,14 +84,7 @@
     "OUT-openai-01M76CW2D7FM7K7F8NJ4W0G08N": "2026-11-12T01:01:55.044889+00:00"
   },
   "ai_key_checked": "2026-11-12",
-  "open_outages": {
-    "OUT-openai-01M76CW2D7FM7K7F8NJ4W0G08N": {
-      "title": "OpenAI: Unable to start new Workspace Agent runs",
-      "provider": "openai",
-      "since": "2026-11-12T01:01:55.044889+00:00",
-      "url": "https://status.openai.com"
-    }
-  },
+  "open_outages": {},
   "eol_notified": {
     "php:8.2:90": "2026-10-24",
     "dotnet:9:30": "2026-10-24",
@@ -133,7 +126,7 @@
   },
   "digest_sent": "2026-11-12",
   "digest_since": "2026-11-12T01:01:55.044889+00:00",
-  "repo_adv_checked": "2026-11-12T08:20:56.834167+00:00",
+  "repo_adv_checked": "2026-11-12T17:06:04.594898+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T08:20:56.834167+00:00",
+  "generated_at": "2026-11-12T17:06:04.594898+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -520,46 +520,6 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】\nMicrosoftが2026年11月の月例更新を出しました（日本時間11/11）。修正は1,000件以上あります。このうちCVE-2026-124194 Microsoft Outlook のなりすましの脆弱性は実際に悪用されています（MSRCの判定はExploited: Yes）。細工したメッセージファイルを開くと、通常表示される警告が表示されずに攻撃者の管理するサーバーへ接続し、認証情報が漏えいする可能性があります。CISAのKEVにも登録済みで、対応期限は2026-11-24です。\n【原因の部品】\nMicrosoft製品そのものです。ほかの部品を組み込んだことによる問題ではありません。\n【影響範囲】\n・CVE-2026-124194：Microsoft 365 Apps for Enterprise、Office LTSC 2021、Office LTSC 2024（32/64bit）。修正ビルド番号は未確認です（MSRCのページで確認してください）\n・ほかにExchange Server（オンプレ）のRCE（CVE-2026-118207）、Windows LDAP（CVE-2026-119958）、Schannel（CVE-2026-119952）も重要です\n・Windows 11 23H2 Enterprise/Educationは今回が最後のセキュリティ更新です\n【対応策】\n1. 今日中にOutlook/Microsoft 365 Appsの11月更新を配り、クイック実行版の端末が修正ビルドになったかを確認する。続けてWindowsとオンプレExchangeを更新する\n2. すぐ更新できない場合は、次の3つで被害を減らす（更新の代わりにはなりません）\n・ネットワーク境界と端末のファイアウォールで、外部宛てのSMB（TCP 445）を遮断する\n・特権アカウントをProtected Usersグループに入れる\n・外部への接続に使われるNTLM認証を、まず監査してから制限する\n【各告知の関係】\n・Microsoft：自社製品の修正と悪用の公表（一次情報）\n・JPCERT/CC：Microsoftの公表を紹介する国内向け注意喚起\n・CISA：KEVに登録（悪用確認の公的な注意喚起）\n【出典】\nhttps://www.jpcert.or.jp/at/2026/at260035.html\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194\n\n（JPCERTのページは直接取得できず、検索結果で内容を確認しました）"
-    },
-    {
-      "id": "OUT-openai-01M76CW2D7FM7K7F8NJ4W0G08N",
-      "aliases": [],
-      "title": "OpenAI: Unable to start new Workspace Agent runs",
-      "description": "OpenAI の公式ステータスページに掲載された障害",
-      "published": "2026-11-11T22:50:17Z",
-      "updated": "2026-11-11T22:50:17Z",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://status.openai.com"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "status:openai"
-      ],
-      "category": "outage",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "openai"
-      ],
-      "match_type": "status",
-      "tier": null,
-      "score": 90.0,
-      "level": "critical",
-      "score_breakdown": {},
-      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-115252",
@@ -15595,6 +15555,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116606",
+      "aliases": [],
+      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
+      "published": "2026-11-02T13:17:37.017",
+      "updated": "2026-11-12T11:34:22.650",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [
+        "barracuda:email_security_gateway_300_firmware",
+        "barracuda:email_security_gateway_400_firmware",
+        "barracuda:email_security_gateway_600_firmware",
+        "barracuda:email_security_gateway_800_firmware",
+        "barracuda:email_security_gateway_900_firmware"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
+      ],
+      "references": [
+        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md",
+        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.08934,
+      "epss_percentile": 0.95313,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 54.9,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 18.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 1.3
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105010",
       "aliases": [],
       "title": "",
@@ -16414,56 +16430,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126256",
-      "aliases": [],
-      "title": "",
-      "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4 all versions, FortiOS 7.2 all versions, FortiOS 7.0 all versions may allow a remote privileged attacker to execute arbitrary code or command via crafted paquets.",
-      "published": "2026-11-11T21:31:52.364Z",
-      "updated": "2026-11-11T22:17:25.783",
-      "cvss": 7.4,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H/E:P/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [
-        "fortinet:fortios"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Fortinet FortiOS"
-      ],
-      "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-270"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "fortinet"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 54.8,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 14.8,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-69634",
       "aliases": [],
       "title": "",
@@ -17223,55 +17189,6 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [
-        "fortinet"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 54.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 19.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126259",
-      "aliases": [],
-      "title": "",
-      "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets.",
-      "published": "2026-11-11T21:31:53.632Z",
-      "updated": "2026-11-11T22:17:26.200",
-      "cvss": 9.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [
-        "fortinet:fortios"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Fortinet FortiOS"
-      ],
-      "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-273"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
       "matched": [
         "fortinet"
       ],
@@ -18890,56 +18807,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116606",
-      "aliases": [],
-      "title": "Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability",
-      "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
-      "published": "2026-11-02T13:17:37.017",
-      "updated": "2026-11-11T05:19:26.320",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Barracuda Networks Barracuda Email Security Gateway (ESG)"
-      ],
-      "references": [
-        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md",
-        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-116606"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01602,
-      "epss_percentile": 0.76026,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 53.8,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 18.6,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126164",
       "aliases": [],
       "title": "",
@@ -18989,24 +18856,22 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126253",
+      "id": "CVE-2026-120869",
       "aliases": [],
-      "title": "",
-      "description": "A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker to broadcast LSA via specially crafted request",
-      "published": "2026-11-11T21:31:47.633Z",
-      "updated": "2026-11-11T22:17:25.347",
+      "title": "An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance",
+      "description": "An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance",
+      "published": "2026-11-12T14:03:14.594Z",
+      "updated": "2026-11-12T14:17:23.990",
       "cvss": 9.3,
-      "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H/E:P/RL:O/RC:C",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
       "severity": "critical",
-      "cpes": [
-        "fortinet:fortios"
-      ],
+      "cpes": [],
       "packages": [],
       "vendor_products": [
-        "Fortinet FortiOS"
+        "Citrix NetScaler Console"
       ],
       "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-267"
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697320"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -19022,9 +18887,9 @@
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
       "matched": [
-        "fortinet"
+        "citrix"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -39891,55 +39756,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126258",
-      "aliases": [],
-      "title": "",
-      "description": "A stack-based buffer overflow vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.7 may allow an unauthenticated attacker with wad port access to crash proxy or ZTNA sessions via crafted HTTP or HTTPS requests.",
-      "published": "2026-11-11T21:31:50.602Z",
-      "updated": "2026-11-11T22:17:26.073",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [
-        "fortinet:fortios"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Fortinet FortiOS"
-      ],
-      "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-272"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "fortinet"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 50.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 15.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126149",
       "aliases": [],
       "title": "",
@@ -41830,54 +41646,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126254",
-      "aliases": [],
-      "title": "",
-      "description": "A numeric truncation error vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a configured ibgp neighbor to send malicious/malformed attributes to all connected routers via a specially crafted request",
-      "published": "2026-11-11T21:31:50.608Z",
-      "updated": "2026-11-11T22:17:25.490",
-      "cvss": 9.6,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H/E:F/RL:O/RC:C",
-      "severity": "critical",
-      "cpes": [
-        "fortinet:fortios"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Fortinet FortiOS"
-      ],
-      "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-268"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "fortinet"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 49.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 19.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-114625",
       "aliases": [],
       "title": "Arista VeloCloud Orchestrator SQL Injection Vulnerability",
@@ -43598,6 +43366,65 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111560",
+      "aliases": [],
+      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
+      "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed.",
+      "published": "2026-11-02T13:17:35.190",
+      "updated": "2026-11-12T13:48:08.640",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [
+        "barracuda:email_security_gateway_300_firmware",
+        "barracuda:email_security_gateway_400_firmware",
+        "barracuda:email_security_gateway_600_firmware",
+        "barracuda:email_security_gateway_800_firmware",
+        "barracuda:email_security_gateway_900_firmware",
+        "barracuda:web_application_firewall",
+        "barracuda:web_security_gateway_firmware",
+        "barracuda:load_balancer_adc_firmware",
+        "barracuda:message_archiver_firmware"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Barracuda Networks Multiple Products"
+      ],
+      "references": [
+        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md",
+        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111560",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-10",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.06196,
+      "epss_percentile": 0.93603,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T23:44:24.231489+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 48.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.2,
+        "kev": 20,
+        "epss": 0.9
       },
       "ai_analysis": ""
     },
@@ -45997,6 +45824,63 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126641",
+      "aliases": [],
+      "title": "Ansible-pylibssh: accepts a changed ssh host key when host_key_auto_add is enabled",
+      "description": "A host key verification flaw was found in ansible-pylibssh and in the ansible.netcommon libssh connection plugin. When trust-on-first-use is enabled (host_key_auto_add on the libssh connection plugin, or AutoAddPolicy in ansible-pylibssh), a host that is already present in known_hosts but now presents a different key is accepted without warning. The pylibssh Session.verify_knownhost() method passes the SSH_KNOWN_HOSTS_CHANGED and SSH_KNOWN_HOSTS_OTHER states to the same missing_host_key() policy hook used for unknown hosts, and the bundled AutoAddPolicy/RejectPolicy classes (as well as ansible.netcommon's MyAddPolicy, which is modeled on paramiko's AutoAddPolicy) therefore add the changed key and continue the connection rather than aborting as paramiko's BadHostKeyException path would. As a result the controller authenticates to the substitute host, runs the play there, and appends the new key to known_hosts, which can disclose connection credentials to an attacker performing a machine-in-the-middle attack. Default configurations (host_key_checking enabled, host_key_auto_add unset) are not affected; non-interactive runs fail closed.",
+      "published": "2026-11-12T10:47:30.699Z",
+      "updated": "2026-11-12T11:17:11.470",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "medium",
+      "cpes": [
+        "ansible_automation_platform:2"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-26/ee-supported-rhel9",
+        "ansible-automation-platform-27/ee-supported-rhel9",
+        "python3.11-ansible-pylibssh",
+        "python3.12-ansible-pylibssh",
+        "python3x-ansible-pylibssh",
+        "python-ansible-pylibssh"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-126641",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2571719"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "python",
+        "libssh"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -49839,51 +49723,194 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-111560",
+      "id": "CVE-2026-116314",
       "aliases": [],
-      "title": "Barracuda Networks Multiple Products OS Command Injection Vulnerability",
-      "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed.",
-      "published": "2026-11-02T13:17:35.190",
-      "updated": "2026-11-11T05:19:20.373",
-      "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "title": "PostgreSQL pg_restore executes arbitrary code due to missing non-plain archive validation",
+      "description": "Improper input validation in PostgreSQL pg_restore allows a non-plain archive provider to execute arbitrary code as the operating system user running pg_restore, via a crafted archive.  Note a contrast: crafted archive data may legitimately cause arbitrary SQL to execute at the restore destination, but it does not legitimately confer arbitrary code execution in the pg_restore OS process.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:08.184Z",
+      "updated": "2026-11-12T15:17:39.500",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
       "vendor_products": [
-        "Barracuda Networks Multiple Products"
+        "n/a PostgreSQL"
       ],
       "references": [
-        "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md",
-        "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111560",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-111560"
+        "https://www.postgresql.org/support/security/CVE-2026-116314/"
       ],
       "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-10",
+      "kev": false,
+      "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.0106,
-      "epss_percentile": 0.6483,
+      "epss": null,
+      "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "nvd",
-        "kev"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-11-10T23:44:24.231489+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 47.4,
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 47.6,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 10,
-        "cvss": 17.2,
-        "kev": 20,
-        "epss": 0.2
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116330",
+      "aliases": [],
+      "title": "PostgreSQL pg_dump tar restore.sql fails to block psql command injection",
+      "description": "Untrusted data inclusion in PostgreSQL pg_dump tar-format restore.sql allows a compromised origin server to execute arbitrary code as the client operating system account running psql, via the predictable restriction key in restore.sql.  This is a gap in the fix for CVE-2025-8714.  restore.sql is undocumented.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:17.385Z",
+      "updated": "2026-11-12T15:17:41.557",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116330/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 47.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120145",
+      "aliases": [],
+      "title": "PostgreSQL logical replication can write to subscriber system catalogs, executing arbitrary code",
+      "description": "Missing authorization in PostgreSQL logical replication allows a compromised publisher to execute arbitrary code as the operating system user running the superuser-owned subscription, via naming a system catalog as a replication target.  Only subscriptions owned by a superuser are vulnerable.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:23.991Z",
+      "updated": "2026-11-12T15:17:43.060",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120145/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 47.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-13764",
+      "aliases": [],
+      "title": "Masterstudy - Education WordPress Theme <= 4.8.151 - Missing Authorization to Authenticated (Subscriber+) Privilege Escalation",
+      "description": "The Masterstudy - Education WordPress Theme theme for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 4.8.151. This is due to missing authorization and nonce validation on the `masterstudy_ms_stm_set_discard_transient` AJAX action. This makes it possible for authenticated attackers, with Subscriber-level access and above, to elevate their privileges to Administrator by setting the `stm_developer_access_token` transient and using the developer access auto-login flow to obtain administrator session cookies.",
+      "published": "2026-11-12T11:32:17.421Z",
+      "updated": "2026-11-12T12:18:23.883",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "StylemixThemes Masterstudy - Education WordPress Theme"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/ec898f73-d275-4624-911b-89d9a945ff92?source=cve",
+        "https://themeforest.net/item/masterstudy-education-center-wordpress-theme/12170274",
+        "https://docs.stylemixthemes.com/masterstudy-theme-documentation/extra-materials/changelog"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6
       },
       "ai_analysis": ""
     },
@@ -51743,6 +51770,287 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126877",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Dawn in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:16.580",
+      "updated": "2026-11-12T16:19:05.083",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/577377985"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00271,
+      "epss_percentile": 0.19734,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 46.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126883",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Core in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:17.400",
+      "updated": "2026-11-12T16:19:05.797",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/578659604"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00271,
+      "epss_percentile": 0.19734,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 46.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126902",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect reference resolution in Browser in Google Chrome on on Mac prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:20.000",
+      "updated": "2026-11-12T16:19:06.523",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/580867480"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00276,
+      "epss_percentile": 0.20243,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 46.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126904",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Compositing in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:20.273",
+      "updated": "2026-11-12T16:19:06.707",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/574410140"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00267,
+      "epss_percentile": 0.19053,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 46.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126915",
+      "aliases": [],
+      "title": "",
+      "description": "Use of uninitialized variable in Skia in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:21.800",
+      "updated": "2026-11-12T16:19:06.910",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/579276256"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00276,
+      "epss_percentile": 0.20243,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 46.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126256",
+      "aliases": [],
+      "title": "",
+      "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a remote privileged attacker to execute arbitrary code or command via crafted paquets.",
+      "published": "2026-11-11T22:17:25.783",
+      "updated": "2026-11-12T16:19:04.043",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-270"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00572,
+      "epss_percentile": 0.47778,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 45.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.8,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-87692",
       "aliases": [],
       "title": "",
@@ -52703,6 +53011,51 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126259",
+      "aliases": [],
+      "title": "",
+      "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets.",
+      "published": "2026-11-11T22:17:26.200",
+      "updated": "2026-11-12T16:19:04.260",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-273"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00647,
+      "epss_percentile": 0.51526,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -71556,6 +71909,51 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 14.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126253",
+      "aliases": [],
+      "title": "",
+      "description": "A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker to broadcast LSA via specially crafted request",
+      "published": "2026-11-11T22:17:25.347",
+      "updated": "2026-11-12T16:19:03.760",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-267"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00374,
+      "epss_percentile": 0.31843,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6,
+        "unauth_network": 5,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -96337,6 +96735,1228 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116304",
+      "aliases": [],
+      "title": "PostgreSQL parallel RECORD typmod use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL coordination of anonymous RECORD type identifiers among parallel workers allows a database user to execute arbitrary code as the operating system user running the database, via causing one process to free a shared tuple descriptor while another process retains and later uses its address.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:02.654Z",
+      "updated": "2026-11-12T15:17:38.043",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116304/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116306",
+      "aliases": [],
+      "title": "PostgreSQL composite-type change during field assignment executes arbitrary code",
+      "description": "Type confusion in PostgreSQL composite-value field assignment allows an object creator to execute arbitrary code as the operating system user running the database, via changing a composite type between deforming and reforming a value.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:03.245Z",
+      "updated": "2026-11-12T15:17:38.193",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116306/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116307",
+      "aliases": [],
+      "title": "PostgreSQL plperl prepared-query use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via re-entering plperl and freeing a prepared query while an outer invocation is executing it.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:03.906Z",
+      "updated": "2026-11-12T15:17:38.340",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116307/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116309",
+      "aliases": [],
+      "title": "PostgreSQL plperl blessed-reference type confusion may execute arbitrary code",
+      "description": "Type confusion in PostgreSQL plperl may allow an object creator to execute arbitrary code, via blessing a non-hash reference into PostgreSQL::InServer::ARRAY.  We have not confirmed or ruled out a way to control the pointer sufficiently to achieve security impact, but we are proceeding as though that is possible.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:05.119Z",
+      "updated": "2026-11-12T15:17:38.647",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116309/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116315",
+      "aliases": [],
+      "title": "PostgreSQL tsvector_delete() heap buffer overflow executes arbitrary code",
+      "description": "Heap-based buffer overflow in PostgreSQL tsvector_delete() allows a database user to execute arbitrary code as the operating system user running the database, via a tsvector whose lexeme data uses a nonstandard but valid ordering that requires additional alignment padding in the result.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:08.773Z",
+      "updated": "2026-11-12T15:17:39.683",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116315/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116317",
+      "aliases": [],
+      "title": "PostgreSQL ts_rank_cd() heap buffer overflow may execute arbitrary code",
+      "description": "Heap-based buffer overflow in PostgreSQL ts_rank_cd() may allow a database user to execute arbitrary code as the operating system user running the database, via an invalid tsvector containing duplicate positions.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:09.968Z",
+      "updated": "2026-11-12T15:17:39.993",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116317/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116319",
+      "aliases": [],
+      "title": "PostgreSQL plperl reentrant return_next() use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via reentrant return_next() calls.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:11.112Z",
+      "updated": "2026-11-12T15:17:40.313",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116319/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116320",
+      "aliases": [],
+      "title": "PostgreSQL plperl array and hash conversion use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via dropping the final reference to a Perl array or hash while PostgreSQL is converting that object.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:11.698Z",
+      "updated": "2026-11-12T15:17:40.430",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116320/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116323",
+      "aliases": [],
+      "title": "PostgreSQL pltcl reentrant result conversion use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL pltcl allows an object creator to execute arbitrary code as the operating system user running the database, via a domain CHECK that re-enters the Tcl interpreter and frees or changes a string still used by the outer result conversion.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:13.913Z",
+      "updated": "2026-11-12T15:17:40.823",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116323/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116328",
+      "aliases": [],
+      "title": "PostgreSQL generation memory context integer wraparound executes arbitrary code",
+      "description": "Integer wraparound in PostgreSQL generation memory contexts allows a database user to execute arbitrary code as the operating system user running the database, via freeing an allocation larger than 1 GB and causing its block to be reused for smaller chunks whose back-pointer offset cannot represent that position.  Within major versions 16-18, minor versions before PostgreSQL 18.7, 17.12, and 16.16 are affected.  Versions before PostgreSQL 16 are unaffected.",
+      "published": "2026-11-12T14:15:16.239Z",
+      "updated": "2026-11-12T15:17:41.313",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116328/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116329",
+      "aliases": [],
+      "title": "PostgreSQL statistics import type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL statistics import allows a table maintainer to execute arbitrary code as the operating system user running the database, via nested SET DATA TYPE during conversion of values to import.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T14:15:16.818Z",
+      "updated": "2026-11-12T15:17:41.437",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116329/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116331",
+      "aliases": [],
+      "title": "PostgreSQL min/max aggregate type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL min/max aggregate optimization allows an object creator to execute arbitrary code as the operating system user running the database, via a user-defined aggregate whose SORTOP option causes the planner to treat the aggregate's input and result as the same type when they differ.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:17.983Z",
+      "updated": "2026-11-12T15:17:41.683",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116331/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116332",
+      "aliases": [],
+      "title": "PostgreSQL portal setup use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL portal setup allows an object creator to execute arbitrary code as the operating system user running the database, via running user-defined code during planning or executor startup that closes the portal currently being prepared.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:18.550Z",
+      "updated": "2026-11-12T15:17:41.800",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116332/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116335",
+      "aliases": [],
+      "title": "PostgreSQL commutator or negator result-type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL operator commutator and negator links allows an object creator to execute arbitrary code as the operating system user running the database, via linking operators having different result types or creating inconsistent reciprocal links.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:19.796Z",
+      "updated": "2026-11-12T15:17:42.043",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116335/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116336",
+      "aliases": [],
+      "title": "PostgreSQL REINDEX CONCURRENTLY does not block DROP INDEX during index functions",
+      "description": "Operation on a dropped index in PostgreSQL REINDEX CONCURRENTLY allows an object creator to execute arbitrary code as the operating system user running the database, via an index expression that issues DROP INDEX.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:20.347Z",
+      "updated": "2026-11-12T15:17:42.167",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116336/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120139",
+      "aliases": [],
+      "title": "PostgreSQL tuple-size integer wraparound executes arbitrary code",
+      "description": "Integer wraparound in PostgreSQL in-memory tuple-size calculations allows a database user to execute arbitrary code as the operating system user running the database, via oversized tuple data.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:20.956Z",
+      "updated": "2026-11-12T15:17:42.420",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120139/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120141",
+      "aliases": [],
+      "title": "PostgreSQL materialized set-returning function type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL materialized set-returning functions allows a database user to execute arbitrary code as the operating system user running the database, via returning rows having different dynamic RECORD return types.  json_populate_recordset() is one affected function.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:21.515Z",
+      "updated": "2026-11-12T15:17:42.547",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120141/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120142",
+      "aliases": [],
+      "title": "PostgreSQL dropped-column type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL anonymous RECORD types allows an object creator to execute arbitrary code as the operating system user running the database, via row types having dropped attributes in the same positions but with different widths or alignments.  Within major versions 17-18, minor versions before PostgreSQL 18.7 and 17.12 are affected.  Versions before PostgreSQL 17 are unaffected.",
+      "published": "2026-11-12T14:15:22.150Z",
+      "updated": "2026-11-12T15:17:42.660",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120142/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120143",
+      "aliases": [],
+      "title": "PostgreSQL transition-table cursor use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL trigger functions allows an object creator to execute arbitrary code as the operating system user running the database, via a cursor over a transition table.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:22.843Z",
+      "updated": "2026-11-12T15:17:42.790",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120143/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120144",
+      "aliases": [],
+      "title": "PostgreSQL type-cache invalidation gap executes arbitrary code",
+      "description": "Type confusion from incomplete PostgreSQL type-cache invalidation allows an object creator to execute arbitrary code as the operating system user running the database, via a composite type change while its cache entry is being populated.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T14:15:23.436Z",
+      "updated": "2026-11-12T15:17:42.930",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120144/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120147",
+      "aliases": [],
+      "title": "PostgreSQL dblink reentrant disconnect use-after-free executes arbitrary code",
+      "description": "Use after free in the PostgreSQL dblink extension allows an object creator to execute arbitrary code as the operating system user running the database, via type conversion code that re-enters dblink and closes a connection whose results an outer dblink call is reading.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:25.141Z",
+      "updated": "2026-11-12T15:17:43.317",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120147/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120149",
+      "aliases": [],
+      "title": "PostgreSQL FDW batch-insert mismatch executes arbitrary code",
+      "description": "Heap-based buffer overflow in PostgreSQL foreign batch inserts allows a foreign server to execute arbitrary code, via reporting that it inserted more rows than the server supplied.  postgres_fdw can legitimately encounter this when a rule on the remote table expands an INSERT into additional rows.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:26.749Z",
+      "updated": "2026-11-12T15:17:43.567",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120149/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120150",
+      "aliases": [],
+      "title": "PostgreSQL expanded-record domain-check use-after-free executes arbitrary code",
+      "description": "Use after free in PostgreSQL expanded-record domain checks allows an object creator to execute arbitrary code as the operating system user running the database, via repeated checks of a domain over a composite type that cause reuse of a dangling memory-context pointer.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:27.323Z",
+      "updated": "2026-11-12T15:17:43.687",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120150/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120151",
+      "aliases": [],
+      "title": "PostgreSQL plpgsql record-field type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL plpgsql record-field assignment allows an object creator to execute arbitrary code as the operating system user running the database, via a reentrant domain CHECK that changes a RECORD variable's row type while a value is being cast.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:27.877Z",
+      "updated": "2026-11-12T15:17:43.817",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120151/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-18447",
+      "aliases": [],
+      "title": "PostgreSQL output parameter type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL SQL-language functions allows an object creator to execute arbitrary code as the operating system user running the database, via an output parameter of type \"any\".  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:31.850Z",
+      "updated": "2026-11-12T15:17:51.127",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-18447/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-6460",
+      "aliases": [],
+      "title": "PostgreSQL type confusion after ALTER ... SET DATA TYPE executes arbitrary code",
+      "description": "Type confusion in PostgreSQL allows an object creator to execute arbitrary code as the operating system user running the database, via ALTER ... SET DATA TYPE primarily.  Other DDL attack routes exist, such as \"ALTER TABLE ... ADD COLUMN; ROLLBACK; ALTER TABLE ... ADD COLUMN\".  The system had inadequate tracking of typed values, and values were not self-identifying.  Stale values could appear in data dictionary entries, PL/pgSQL variables, and many other parts of the system.  PostgreSQL Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:32.415Z",
+      "updated": "2026-11-12T15:17:51.597",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-6460/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-111756",
       "aliases": [],
       "title": "",
@@ -98538,6 +100158,98 @@
         "cvss": 15.2,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120148",
+      "aliases": [],
+      "title": "PostgreSQL extended-statistics pseudo-type confusion executes arbitrary code",
+      "description": "Type confusion in PostgreSQL extended statistics allows an object creator to execute arbitrary code as the operating system user running the database, via a statistics expression of an anonymous RECORD type whose backend-local type identifier denotes a different row type in another session.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:25.724Z",
+      "updated": "2026-11-12T15:17:43.443",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120148/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 41.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16.2,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126258",
+      "aliases": [],
+      "title": "",
+      "description": "A stack-based buffer overflow vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.7 may allow an unauthenticated attacker with wad port access to crash proxy or ZTNA sessions via crafted HTTP or HTTPS requests.",
+      "published": "2026-11-11T22:17:26.073",
+      "updated": "2026-11-12T16:19:04.150",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-272"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00578,
+      "epss_percentile": 0.48073,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -108102,6 +109814,50 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126254",
+      "aliases": [],
+      "title": "",
+      "description": "A numeric truncation error vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a configured ibgp neighbor to send malicious/malformed attributes to all connected routers via a specially crafted request",
+      "published": "2026-11-11T22:17:25.490",
+      "updated": "2026-11-12T16:19:03.930",
+      "cvss": 9.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-268"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00466,
+      "epss_percentile": 0.40788,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "fortinet"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 40.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 19.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98169",
       "aliases": [],
       "title": "",
@@ -108398,6 +110154,46 @@
         "kev": 20,
         "epss": 0.1
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M76CW2D7FM7K7F8NJ4W0G08N",
+      "aliases": [],
+      "title": "OpenAI: Unable to start new Workspace Agent runs",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T22:50:17Z",
+      "updated": "2026-11-12T08:32:37Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-12T08:32:37Z",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
@@ -115297,9 +117093,9 @@
       "id": "GHSA-9j97-6pqr-qvrx",
       "aliases": [],
       "title": "Malware in 0sec-cli",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,462",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,678",
       "published": "2026-11-11T12:09:02Z",
-      "updated": "2026-11-12T07:47:47Z",
+      "updated": "2026-11-12T13:06:36Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -115529,6 +117325,128 @@
         "zoom"
       ],
       "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-1na2mbfshgdh",
+      "aliases": [],
+      "title": "Cloudflare: Replicate Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-12T08:30:17.012Z",
+      "updated": "2026-11-12T11:34:02.628Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/1na2mbfshgdh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-12T11:34:02.628Z",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M77FAXVFV338GY7G9VRENRS5",
+      "aliases": [],
+      "title": "OpenAI: GPT-image-2.5 and 2.6 Sunburst & Flare High error rate",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-11-12T08:52:35Z",
+      "updated": "2026-11-12T09:25:12Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-12T09:25:12Z",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-rg5m-xj29-j8gm",
+      "aliases": [],
+      "title": "Malware in diezyxhao-baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,294",
+      "published": "2026-11-12T15:05:00Z",
+      "updated": "2026-11-12T15:05:00Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:diezyxhao-baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-rg5m-xj29-j8gm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "npm:diezyxhao-baileys"
+      ],
+      "match_type": "malware",
       "tier": null,
       "score": 40.0,
       "level": "medium",
@@ -116322,6 +118240,54 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 39.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 4.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-16052",
+      "aliases": [],
+      "title": "Cookie Attribute Injection via Unescaped Semicolons in http.cookies.Morsel",
+      "description": "The http.cookies.Morsel class allows separator semicolons in attribute\nvalues\nand includes them verbatim in all output formats. An attacker who can\ncontrol\nthese values could use this to relax the cookie's Domain or SameSite\nrestrictions.",
+      "published": "2026-11-12T16:28:03.251Z",
+      "updated": "2026-11-12T16:28:03.251Z",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Python Software Foundation CPython"
+      ],
+      "references": [
+        "https://github.com/python/cpython/pull/161711",
+        "https://github.com/python/cpython/issues/161707",
+        "https://mail.python.org/archives/list/security-announce@python.org/thread/IZL4QUFV7PKGT2JYSU2DCBMLTWYJDGKZ/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
       "matched": [
         "python"
       ],
@@ -118206,6 +120172,100 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120153",
+      "aliases": [],
+      "title": "PostgreSQL extension-script substitutions allow SQL injection through object names",
+      "description": "SQL injection in PostgreSQL extension-script substitutions allows an attacker with database-level CREATE privilege to execute arbitrary code as the bootstrap superuser, via a schema or owner name containing newlines or other special substrings.  This is similar to CVE-2023-39417, but it requires a non-bundled extension with a vulnerable script pattern.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:29.010Z",
+      "updated": "2026-11-12T15:17:44.073",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120153/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.4,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-6467",
+      "aliases": [],
+      "title": "PostgreSQL extension script schema mishandling executes arbitrary SQL",
+      "description": "Uncontrolled search path element in PostgreSQL CREATE EXTENSION allows an attacker with database-level CREATE privilege to execute arbitrary code as the bootstrap superuser, via ALTER SCHEMA ... RENAME or CREATE EXTENSION ... SCHEMA \"$user\".  ALTER EXTENSION was also affected.  A trusted-extension script located the wrong object and executed arbitrary SQL of the attacker's choice.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:32.994Z",
+      "updated": "2026-11-12T15:17:51.793",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-6467/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.4,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83788",
       "aliases": [],
       "title": "",
@@ -118673,6 +120733,98 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-11T18:42:26.148654+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124695",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery Form Item Hints",
+      "description": "In Progress Kendo UI for jQuery Form, the items[].hint option is documented as a string but is rendered as HTML. An attacker who can influence a Form item's hint can cause attacker-controlled markup to execute as JavaScript when a user views the rendered form. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected version is 2020.2.513; the latest vulnerable version is 2026.3.1015. The issue is fixed in version 2026.4.1111.",
+      "published": "2026-11-12T16:52:14.648Z",
+      "updated": "2026-11-12T16:52:14.648Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-form-item-hint-xss-cve-2026-124695"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 39.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124691",
+      "aliases": [],
+      "title": "Cross-Site Scripting in Kendo UI for jQuery Gantt Parent Dropdown",
+      "description": "In Progress Kendo UI for jQuery Gantt, the task editor's Parent dropdown renders task titles as HTML. An attacker who can influence a task title shown in the dropdown can cause attacker-controlled markup to execute as JavaScript when a user opens or interacts with the task editor. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected version is 2020.3.915; the latest vulnerable version is 2026.3.1015. The issue is fixed in version 2026.4.1111.",
+      "published": "2026-11-12T16:42:30.326Z",
+      "updated": "2026-11-12T16:47:05.093Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Progress Software Kendo UI for jQuery"
+      ],
+      "references": [
+        "https://www.telerik.com/kendo-jquery-ui/documentation/knowledge-base/kb-security-kendo-gantt-parent-dropdown-xss-cve-2026-124691"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
       "matched": [
         "jquery"
       ],
@@ -124881,6 +127033,144 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 7.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116316",
+      "aliases": [],
+      "title": "PostgreSQL security-restricted operations can create types in pg_temp, which later queries of the session find",
+      "description": "Improper protection of alternate path in PostgreSQL security-restricted operations allows an object creator to execute arbitrary SQL as the operation's caller, via a domain, enum, or range type created in pg_temp.  The victim session must later run a query containing an unqualified type name, e.g. \"SELECT '1'::bigint\"; autovacuum and other common security-restricted operation users do not do so, so they are unaffected.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:09.406Z",
+      "updated": "2026-11-12T15:17:39.837",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116316/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116318",
+      "aliases": [],
+      "title": "PostgreSQL pg_dump not-null constraint name allows SQL injection",
+      "description": "SQL injection in PostgreSQL pg_dump allows an object creator to execute arbitrary SQL as the user restoring the dump, via an inherited column having a child-local not-null constraint whose name requires quoting.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T14:15:10.532Z",
+      "updated": "2026-11-12T15:17:40.147",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116318/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116326",
+      "aliases": [],
+      "title": "PostgreSQL plperl tied-object exceptions follow stale sigjmp_buf",
+      "description": "Uncaught exceptions in PostgreSQL plperl allow an object creator to cause use of a stale sigjmp_buf, via a tied Perl object, or a Perl object whose overloaded conversion throws while plperl is handling another error.  We have not ruled out arbitrary code execution on some platform.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:15.067Z",
+      "updated": "2026-11-12T15:17:41.077",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116326/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.6
       },
       "ai_analysis": ""
     },
@@ -131094,6 +133384,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-14661",
+      "aliases": [],
+      "title": "PostgreSQL dblink and subscriptions can append to arbitrary files",
+      "description": "External control of file name in PostgreSQL dblink and CREATE/ALTER SUBSCRIPTION allows a user to achieve persistent denial of service, via appending invalid data to a chosen file.  Specifically, the \"sslkeylogfile\" connection parameter appends data, in NSS keylog format, to a file of the user's choosing.  This \"sslkeylogfile\" mechanism cannot add arbitrary bytes.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are also affected if libpq version 18 or later is installed and in use by the server.",
+      "published": "2026-11-12T14:15:30.140Z",
+      "updated": "2026-11-12T15:17:49.890",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-14661/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91484",
       "aliases": [],
       "title": "",
@@ -131514,6 +133850,52 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 15.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116325",
+      "aliases": [],
+      "title": "PostgreSQL reindexdb index name quoting allows SQL injection",
+      "description": "SQL injection in PostgreSQL reindexdb allows an object creator to execute arbitrary SQL as the database user running reindexdb, via a crafted index name embedded in the parallel catalog query for --jobs with --index.  Within major versions 17-18, minor versions before PostgreSQL 18.7 and 17.12 are affected.  Versions before PostgreSQL 17 are unaffected.",
+      "published": "2026-11-12T14:15:14.469Z",
+      "updated": "2026-11-12T15:17:40.947",
+      "cvss": 8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116325/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16
       },
       "ai_analysis": ""
     },
@@ -132221,6 +134603,53 @@
       "first_seen": "2026-11-10T18:41:19.148184+00:00",
       "matched": [
         "dotnet"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 35.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116322",
+      "aliases": [],
+      "title": "PostgreSQL pre-authentication cancel request can leak a spinlock",
+      "description": "Improper locking in PostgreSQL startup processing allows an unauthenticated network client to trigger a server restart, via arranging for authentication_timeout to arrive while it holds a spinlock during cancel handling.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T14:15:12.887Z",
+      "updated": "2026-11-12T15:17:40.707",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116322/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -136485,6 +138914,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126329",
+      "aliases": [],
+      "title": "Docker Sandboxes privilege escalation through untrusted state directories",
+      "description": "Docker Sandboxes reuses existing state and configuration directories without verifying their ownership. If sbx or sandboxd is run as root with HOME or, on Linux, XDG_STATE_HOME pointing to an attacker-controlled location, a local unprivileged user can substitute control-plane sockets and configuration trusted by the root process, potentially executing commands as root. Exploitation requires a privileged invocation with an attacker-influenced environment. The issue affects Linux and macOS and is fixed in version 0.53.0.",
+      "published": "2026-11-12T15:50:44.926Z",
+      "updated": "2026-11-12T16:19:04.663",
+      "cvss": 7.3,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Docker Docker Sandboxes"
+      ],
+      "references": [
+        "https://docs.docker.com/ai/sandboxes/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-106072",
       "aliases": [],
       "title": "",
@@ -136674,6 +139149,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116313",
+      "aliases": [],
+      "title": "PostgreSQL \"vacuumdb --missing-stats-only\" lets a database owner execute code as the vacuumdb user",
+      "description": "Untrusted search path in PostgreSQL vacuumdb allows a database owner to execute arbitrary SQL as the database user running vacuumdb, via shadowing operators used in the --missing-stats-only catalog query.  The pg_upgrade documentation recommends an affected vacuumdb invocation.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T14:15:07.627Z",
+      "updated": "2026-11-12T15:17:39.347",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116313/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-120065",
       "aliases": [],
       "title": "psqlODBC does not escape a server-supplied column name in its updatable-cursor queries",
@@ -136809,6 +139330,51 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 13.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114147",
+      "aliases": [],
+      "title": "",
+      "description": "Missing release of memory after effective lifetime in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "published": "2026-11-10T19:19:07.853",
+      "updated": "2026-11-12T16:18:10.513",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114147"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.013,
+      "epss_percentile": 0.7085,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -137392,71 +139958,6 @@
         "cvss": 15.0,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114147",
-      "aliases": [
-        "GHSA-wr8v-9x5q-ggcm"
-      ],
-      "title": "Microsoft Security Advisory CVE-2026-114147 - ASP.NET Core Denial of Service Vulnerability",
-      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nSignalR Redis scale-out can mishandle case-mismatched group removal and leave subscriptions in a state that permits persistent resource amplification and denial of service.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/509\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-401\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### 8.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### 9.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### 10.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### 11.0 - standalone packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.StackExchangeRedis) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n### .NET 8.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 8.0.0-preview.1.23112.2, <= 8.0.33 | 8.0.34\n\n### .NET 9.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 9.0.0-preview.1.24081.5, <= 9.0.22 | 9.0.23\n\n### .NET 10.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 10.0.0-preview.1.25120.3, <= 10.0.14 | 10.0.15\n\n### .NET 11.0 - affected runtime packages\n\nPackage | Affected version | Patched version\n--- | --- | ---\n[Microsoft.AspNetCore.App.Runtime.linux-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-musl-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-musl-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.linux-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.linux-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.osx-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.osx-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-arm64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-arm64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x64](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x64) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n[Microsoft.AspNetCore.App.Runtime.win-x86](https://www.nuget.org/packages/Microsoft.AspNetCore.App.Runtime.win-x86) | >= 11.0.0-preview.1.26104.118, <= 11.0.0-rc.3.26522.148 | 11.0.0\n\n## Advisory FAQ\n\n### <a name=\"how-affected\"></a>How do I know if I am affected?\n\nCompare the deployed ASP.NET Core runtime and the application's resolved Microsoft.AspNetCore.SignalR.StackExchangeRedis package version with the affected ranges above. Self-contained applications include their own runtime.\n\n### <a name=\"how-fix\"></a>How do I fix the issue?\n\nUpdate both the ASP.NET Core runtime and the Microsoft.AspNetCore.SignalR.StackExchangeRedis package to the applicable patched versions above. Restart affected framework-dependent applications after installing the runtime update. Rebuild and redeploy applications after updating the package; self-contained applications must also be rebuilt with the patched runtime. Updating a machine-wide runtime or SDK alone does not update an application's standalone package references.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in a supported version of .NET, please report it to the Microsoft Security Response Center (MSRC) via the [MSRC Researcher Portal](https://msrc.microsoft.com/report/vulnerability/new). Further information can be found in the MSRC [Report an Issue FAQ](https://www.microsoft.com/msrc/faqs-report-an-issue).\n\nSecurity reports made through MSRC may qualify for the Microsoft .NET Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at https://aka.ms/corebounty.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### External Links\n\n[CVE-2026-114147](https://www.cve.org/CVERecord?id=CVE-2026-114147)\n\n### Acknowledgements\n\n- [71C4 with ARPSEC](https://www.linkedin.com/in/navaponpremkasem/)\n- [71C4](https://www.linkedin.com/in/navaponpremkasem/)\n\n### Revisions\n\nV1.0 (November 10, 2026): Advisory published.",
-      "published": "2026-11-11T00:23:32Z",
-      "updated": "2026-11-11T00:23:34Z",
-      "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [
-        "nuget:microsoft.aspnetcore.signalr.stackexchangeredis",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-arm",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-musl-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.linux-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.osx-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.osx-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-arm64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-x64",
-        "nuget:microsoft.aspnetcore.app.runtime.win-x86"
-      ],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/advisories/GHSA-wr8v-9x5q-ggcm",
-        "https://github.com/dotnet/aspnetcore/security/advisories/GHSA-wr8v-9x5q-ggcm",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-114147",
-        "https://github.com/dotnet/announcements/issues/509",
-        "https://github.com/dotnet/aspnetcore/commit/cc53379f74963c4509ddfa91845132146d7054aa",
-        "https://github.com/dotnet/aspnetcore/commit/d94f9c231ee7e047c5c3c4cfdabe862274938faf"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "ghsa"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet",
-        "redis"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 34.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 15.0,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -142217,6 +144718,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116333",
+      "aliases": [],
+      "title": "PostgreSQL parallel B-tree array scan reads beyond array bounds",
+      "description": "Buffer over-read in PostgreSQL parallel B-tree scans allows an object creator to read attacker-chosen server-memory addresses, via a function incorrectly marked PARALLEL SAFE or STABLE to make participating workers build different scan-key arrays.  Within major versions 17-18, minor versions before PostgreSQL 18.7 and 17.12 are affected.  Versions before PostgreSQL 17 are unaffected.",
+      "published": "2026-11-12T14:15:19.133Z",
+      "updated": "2026-11-12T15:17:41.920",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116333/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108147",
       "aliases": [],
       "title": "Potential memory exhaustion in MultiPartParser via base64-encoded file upload",
@@ -142963,6 +145510,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-16240",
+      "aliases": [],
+      "title": "PostgreSQL pg_basebackup can use backup manifest content as a format string",
+      "description": "Use of externally-controlled format string in PostgreSQL pg_basebackup allows an attacker having already compromised a server to achieve disclosure from pg_basebackup memory, via backup manifest bytes.  The vulnerability does not return the improperly-read bytes back to the attacker's server, so a successful attack would need separate implementation-specific secrets for that.  Integrity impact is unlikely; in particular, the applicable formatter does not support %n.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:31.280Z",
+      "updated": "2026-11-12T15:17:50.170",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-16240/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 32.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 7.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113648",
       "aliases": [],
       "title": "",
@@ -143668,7 +146262,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer doesn't invalidate plans prepared after a rule was added or a role changed. Users using such plans can still see the unmasked data until the end of the session. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.510",
-      "updated": "2026-11-10T21:47:29.643",
+      "updated": "2026-11-12T13:37:28.470",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -143686,7 +146280,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00217,
-      "epss_percentile": 0.12229,
+      "epss_percentile": 0.12263,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -147321,6 +149915,144 @@
       "first_seen": "2026-11-11T18:42:26.148654+00:00",
       "matched": [
         "jquery"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116311",
+      "aliases": [],
+      "title": "PostgreSQL DROP OWNED can remove restrictive row security policies from non-owned tables",
+      "description": "Missing authorization in PostgreSQL DROP OWNED allows a role to remove itself from restrictive row level security policies, thereby reading or modifying rows that the policy was intended to deny, via queries after the DROP OWNED.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:06.390Z",
+      "updated": "2026-11-12T15:17:39.007",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116311/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116312",
+      "aliases": [],
+      "title": "PostgreSQL MERGE can place the wrong row in a trigger transition table",
+      "description": "Inconsistent transition-capture state in PostgreSQL MERGE allows a table data modifier to make an AFTER trigger process the wrong new row, via a partitioned table MERGE that performs an INSERT before an UPDATE.  Within major versions 15-18, minor versions before PostgreSQL 18.7, 17.12, 16.16, and 15.20 are affected.  Versions before PostgreSQL 15 are unaffected.",
+      "published": "2026-11-12T14:15:06.946Z",
+      "updated": "2026-11-12T15:17:39.190",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116312/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-16237",
+      "aliases": [],
+      "title": "PostgreSQL INSERT ... ON CONFLICT can read or modify rows despite auto-updatable view WHERE condition",
+      "description": "Improper protection in PostgreSQL INSERT ... ON CONFLICT on auto-updatable views allows an attacker having INSERT and UPDATE privileges on the view to read and modify every row in the view's base table, via iterated INSERT ... ON CONFLICT DO UPDATE.  This bypasses the view's WHERE condition, whether or not the view is a security_barrier view.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:30.710Z",
+      "updated": "2026-11-12T15:17:50.030",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-16237/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -152015,6 +154747,328 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116308",
+      "aliases": [],
+      "title": "PostgreSQL dict_int reads beyond zero-length tokens",
+      "description": "Buffer over-read in PostgreSQL dict_int allows a database user to disclose portions of server memory, via a zero-length token.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:04.565Z",
+      "updated": "2026-11-12T15:17:38.490",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116308/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116310",
+      "aliases": [],
+      "title": "PostgreSQL COPY error context uses freed field storage",
+      "description": "Use after free in PostgreSQL COPY FROM error reporting allows a database user to disclose portions of server memory, via a longer input row following an ignored or nullified conversion error.  file_fdw reaches the same code path in affected version 18.  Within major versions 17-18, minor versions before PostgreSQL 18.7 and 17.12 are affected.  Versions before PostgreSQL 17 are unaffected.",
+      "published": "2026-11-12T14:15:05.798Z",
+      "updated": "2026-11-12T15:17:38.810",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116310/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116321",
+      "aliases": [],
+      "title": "PostgreSQL unterminated name value discloses server memory",
+      "description": "Improper null termination in PostgreSQL array element assignment allows a database user to disclose server memory, via changing the final byte of a fixed-length name value to a nonzero byte and passing it to code that treats the value as a C string.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:12.297Z",
+      "updated": "2026-11-12T15:17:40.577",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116321/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116327",
+      "aliases": [],
+      "title": "PostgreSQL security_barrier analysis can expose hidden values through indirect expressions",
+      "description": "Exposure of sensitive information in PostgreSQL security_barrier processing allows a database user to infer values hidden by a security_barrier view, via applying a leaky function to a CASE test value or internal parameter that indirectly represents a protected column.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:15.661Z",
+      "updated": "2026-11-12T15:17:41.197",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116327/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120146",
+      "aliases": [],
+      "title": "PostgreSQL REASSIGN OWNED bypasses role SET and CREATEDB checks",
+      "description": "Missing authorization in PostgreSQL REASSIGN OWNED allows a role granted INHERIT but not SET to transfer objects to the granted role.  It also allows reassignment of database ownership without the CREATEDB privilege.  The equivalent ALTER ... OWNER commands block this.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:24.583Z",
+      "updated": "2026-11-12T15:17:43.193",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120146/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120152",
+      "aliases": [],
+      "title": "PostgreSQL pg_show_all_settings() use-after-free discloses memory",
+      "description": "Use after free in PostgreSQL pg_show_all_settings() allows a database user to retrieve memory contents, via loading a module while the function is scanning custom-variable placeholders that the module replaces and frees.  Within major versions 16-18, minor versions before PostgreSQL 18.7, 17.12, and 16.16 are affected.  Versions before PostgreSQL 16 are unaffected.",
+      "published": "2026-11-12T14:15:28.444Z",
+      "updated": "2026-11-12T15:17:43.940",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120152/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120154",
+      "aliases": [],
+      "title": "PostgreSQL INSERT ... ON CONFLICT can read rows despite row security policies",
+      "description": "Improper protection in PostgreSQL INSERT ... ON CONFLICT allows an attacker having INSERT, UPDATE, and applicable SELECT privileges on the table to read every row despite row security policies, via iterated INSERT ... ON CONFLICT DO UPDATE.  Unlike CVE-2026-16237, this does not facilitate improper writes.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:29.579Z",
+      "updated": "2026-11-12T15:17:44.193",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120154/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119924",
       "aliases": [],
       "title": "",
@@ -152215,7 +155269,7 @@
       "title": "",
       "description": "PostgreSQL Anonymizer's `anon.image_blur()` function doesn't check the declared dimension of the provided image, allowing an attacker to provide a small image with enormous declared dimensions. This vulnerability can be exploited to exhaust the memory of a backend and OOM-kill it (when ovecommit is on), which results in a cluster-wide crash recovery. The problem is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.127",
-      "updated": "2026-11-10T21:53:37.470",
+      "updated": "2026-11-12T13:36:44.270",
       "cvss": 4.7,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:L",
       "severity": "medium",
@@ -152233,7 +155287,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00183,
-      "epss_percentile": 0.07949,
+      "epss_percentile": 0.07964,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -154843,6 +157897,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126643",
+      "aliases": [],
+      "title": "Aap-gateway-operator: resource-server secret exposed in plaintext in the automationcontroller custom resource",
+      "description": "A cleartext storage flaw was found in the AAP Gateway Operator. When reconciling an AutomationController, the operator reads the protected resource-server Secret (Secret/<aap-name>-resource-server, key controller_resource_server_secret) and copies its plaintext value into the generated AutomationController custom resource under spec.extra_settings (RESOURCE_SERVER.SECRET_KEY). Although the operator uses no_log to keep the value out of its own logs, serializing it into the custom resource exposes it to any principal able to read the AutomationController CR without permission to read the backing Kubernetes Secret, breaking the expected OpenShift RBAC separation between the two resources. The value may also propagate into Kubernetes API/etcd storage, GitOps and Argo diffs and history, rendered manifests, support bundles, and audit data. The resource-server secret is intended for trusted Gateway-to-Controller service authentication, and its disclosure may allow a user to impersonate a trusted Controller service and reach privileged service-index APIs.",
+      "published": "2026-11-12T10:47:33.808Z",
+      "updated": "2026-11-12T11:17:11.727",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "ansible_automation_platform:2"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-25/gateway-rhel8-operator",
+        "ansible-automation-platform-25/gateway-rhel9-operator",
+        "ansible-automation-platform-26/gateway-rhel9-operator",
+        "ansible-automation-platform-27/gateway-rhel9-operator"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-126643",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2571730"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 27.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112778",
       "aliases": [],
       "title": "",
@@ -155669,6 +158776,52 @@
         "popularity": 14.0,
         "cvss": 12.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116303",
+      "aliases": [],
+      "title": "PostgreSQL foreign key and JSON conversions bypass EXECUTE privilege on cast functions",
+      "description": "Missing authorization in PostgreSQL type conversion allows a database user to invoke a cast function despite lacking EXECUTE privilege on that function, via foreign keys, to_json(), and others.  A successful attack requires the attacker to search each database for access-restricted cast functions and identify confidentiality impact specific to each function implementation found.  There are few or no practical examples of an access-restricted cast function or of a cast function having confidentiality impact.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T14:15:01.762Z",
+      "updated": "2026-11-12T15:17:37.910",
+      "cvss": 3.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "n/a PostgreSQL"
+      ],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116303/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 26.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 6.2
       },
       "ai_analysis": ""
     },
@@ -156902,53 +160055,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126877",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Dawn in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T22:39:00.090Z",
-      "updated": "2026-11-11T23:17:16.693",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/577377985"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126879",
       "aliases": [],
       "title": "",
@@ -157060,53 +160166,6 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
         "https://issues.chromium.org/issues/575038730"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126883",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Core in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T22:39:01.657Z",
-      "updated": "2026-11-11T23:17:17.493",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/578659604"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -157748,100 +160807,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126902",
-      "aliases": [],
-      "title": "",
-      "description": "Incorrect reference resolution in Browser in Google Chrome on on Mac prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T22:39:05.414Z",
-      "updated": "2026-11-11T23:17:20.100",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/580867480"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126904",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Compositing in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T22:38:54.096Z",
-      "updated": "2026-11-11T23:17:20.373",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/574410140"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126905",
       "aliases": [],
       "title": "",
@@ -158094,53 +161059,6 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
         "https://issues.chromium.org/issues/569286603"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126915",
-      "aliases": [],
-      "title": "",
-      "description": "Use of uninitialized variable in Skia in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T22:39:03.463Z",
-      "updated": "2026-11-11T23:17:21.910",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/579276256"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -159691,6 +162609,52 @@
         "popularity": 14.0,
         "cvss": 10.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126330",
+      "aliases": [],
+      "title": "Docker Sandboxes restores removed automatically assigned port publications",
+      "description": "Docker Sandboxes can silently republish a sandbox service after an operator removes its automatically assigned host-port mapping. The daemon removes the active binding but retains the original publication request, allowing a later port change or sandbox restart to publish the service again on a new host port. An attacker able to reach the restored endpoint may regain access to the service. Both TCP and UDP mappings are affected. Exposure is limited to the original bind address, which defaults to loopback. The issue is fixed in version 0.53.0.",
+      "published": "2026-11-12T15:46:29.130Z",
+      "updated": "2026-11-12T16:19:04.810",
+      "cvss": 2.4,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Docker Docker Sandboxes"
+      ],
+      "references": [
+        "https://docs.docker.com/ai/sandboxes/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 24.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 4.8
       },
       "ai_analysis": ""
     },
@@ -175262,7 +178226,7 @@
       "title": "",
       "description": "PostgreSQL's optimized statistics on a table are visible as long as you have SELECT privilege on said table. A masked role can therefore read a limited subset of the data through the statistics view's histograms and mcvs. The vulnerability is resolved in PostgreSQL Anonymizer 3.3.0 and later versions.",
       "published": "2026-10-28T18:17:03.250",
-      "updated": "2026-11-10T21:50:28.597",
+      "updated": "2026-11-12T13:37:02.553",
       "cvss": 3.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N",
       "severity": "low",
@@ -175280,7 +178244,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00143,
-      "epss_percentile": 0.03654,
+      "epss_percentile": 0.0368,
       "x_mentions": null,
       "sources": [
         "nvd"
