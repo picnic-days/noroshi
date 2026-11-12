@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T01:01:55.044889+00:00",
+  "generated_at": "2026-11-12T08:20:56.834167+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -115299,7 +115299,7 @@
       "title": "Malware in 0sec-cli",
       "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,462",
       "published": "2026-11-11T12:09:02Z",
-      "updated": "2026-11-11T14:53:13Z",
+      "updated": "2026-11-12T07:47:47Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -115447,6 +115447,86 @@
       "first_seen": "2026-11-12T01:01:55.044889+00:00",
       "matched": [
         "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-8odt36zmvm36",
+      "aliases": [],
+      "title": "Cloudflare: DNSSEC Configuration Change Issues",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-12T04:53:29.795Z",
+      "updated": "2026-11-12T05:26:45.720Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/8odt36zmvm36"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-12T05:26:45.720Z",
+      "first_seen": "2026-11-12T08:20:56.834167+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-1mgtnfzf421k",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting Outbound SMS Messages for a subset of users in the US region",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-11T18:21:49.265-08:00",
+      "updated": "2026-11-11T20:45:37.527-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/4p9rlpt9fv4v"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-11T20:45:37.527-08:00",
+      "first_seen": "2026-11-12T08:20:56.834167+00:00",
+      "matched": [
+        "zoom"
       ],
       "match_type": "status",
       "tier": null,
@@ -137170,7 +137250,7 @@
       "title": "",
       "description": "A flaw was found in gnome-remote-desktop as shipped in Red Hat Enterprise Linux. In the VNC TLS I/O handlers, retryable GnuTLS results (GNUTLS_E_AGAIN and GNUTLS_E_INTERRUPTED) are handled with an unbounded busy loop instead of yielding to the event loop. A remote attacker who can reach an enabled VNC TLS listener can cause the event-loop thread to spin at high CPU with no forward progress, resulting in denial of service.",
       "published": "2026-10-13T12:17:14.033",
-      "updated": "2026-11-11T13:17:13.583",
+      "updated": "2026-11-12T02:16:40.263",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
@@ -137179,6 +137259,7 @@
       "vendor_products": [],
       "references": [
         "https://access.redhat.com/errata/RHSA-2026:98510",
+        "https://access.redhat.com/errata/RHSA-2026:99136",
         "https://access.redhat.com/security/cve/CVE-2026-109832",
         "https://bugzilla.redhat.com/show_bug.cgi?id=2550352"
       ],
