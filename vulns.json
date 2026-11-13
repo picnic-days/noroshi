@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T22:44:16.366619+00:00",
+  "generated_at": "2026-11-13T02:57:04.527500+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -19629,6 +19629,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107412",
+      "aliases": [],
+      "title": "Multiple Memory overflow vulnerabilities can lead to unpredictable or erroneous behavior and Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Multiple Memory overflow vulnerabilities can lead to unpredictable or erroneous behavior and Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T02:21:30.835Z",
+      "updated": "2026-11-13T02:21:30.835Z",
+      "cvss": 9.5,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-17545",
       "aliases": [],
       "title": "",
@@ -19773,6 +19820,246 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 18.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107407",
+      "aliases": [],
+      "title": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:01:33.369Z",
+      "updated": "2026-11-13T02:18:49.613",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107408",
+      "aliases": [],
+      "title": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:04:05.605Z",
+      "updated": "2026-11-13T02:18:49.740",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107409",
+      "aliases": [],
+      "title": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
+      "description": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:05:45.195Z",
+      "updated": "2026-11-13T02:18:49.863",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107410",
+      "aliases": [],
+      "title": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:10:10.553Z",
+      "updated": "2026-11-13T02:18:49.997",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120868",
+      "aliases": [],
+      "title": "Memory overflow in Packet Processing can lead to unpredictable or erroneous behavior or Denial of Service in NetScaler ADC and NetScaler Gateway",
+      "description": "Memory overflow in Packet Processing can lead to unpredictable or erroneous behavior or Denial of Service in NetScaler ADC and NetScaler Gateway.",
+      "published": "2026-11-12T23:39:03.969Z",
+      "updated": "2026-11-13T00:20:09.977",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -34978,6 +35265,203 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107413",
+      "aliases": [],
+      "title": "Memory overflow in SAML authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in SAML authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T02:24:22.832Z",
+      "updated": "2026-11-13T02:24:22.832Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107414",
+      "aliases": [],
+      "title": "Memory overflow in WebAuth authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in WebAuth authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T02:26:08.515Z",
+      "updated": "2026-11-13T02:26:08.515Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107411",
+      "aliases": [],
+      "title": "Memory overflow in RTSP ALG can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory overflow in RTSP ALG can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:15:37.209Z",
+      "updated": "2026-11-13T02:15:37.209Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-128066",
+      "aliases": [
+        "GHSA-wqgw-9xfh-qf2g"
+      ],
+      "title": "Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data",
+      "description": "Pillow is a Python imaging library. From 1.0 through 12.3.0, ImageFileDirectory_v2.load() in src/PIL/TiffImagePlugin.py retains a separate bytes object for each out-of-line IFD tag value without limiting the total data read or preventing distinct tags from referencing the same file region. A small crafted TIFF or EXIF-bearing JPEG, PNG, WebP, or MPO can therefore cause memory use quadratic in the input size. TIFF and some JPEG paths trigger parsing during Image.open(), while other formats are exposed when EXIF is requested, including through getexif() or ImageOps.exif_transpose(). The declared pixel dimensions do not bound this metadata allocation, so decompression-bomb checks do not prevent process memory exhaustion. This issue is fixed in version 13.0.0.",
+      "published": "2026-11-12T22:47:44.807Z",
+      "updated": "2026-11-13T00:20:14.613",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pillow"
+      ],
+      "vendor_products": [
+        "python-pillow Pillow"
+      ],
+      "references": [
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-wqgw-9xfh-qf2g",
+        "https://github.com/python-pillow/Pillow/commit/4908edaf7f416616784c7c03d8c1a60153710ffb",
+        "https://github.com/python-pillow/Pillow/commit/4b63dffd8a6d980fa0e21b40832fa6cbf033eacf",
+        "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+        "https://github.com/advisories/GHSA-wqgw-9xfh-qf2g"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126238",
       "aliases": [],
       "title": "",
@@ -35071,6 +35555,62 @@
         "unauth_network": 5,
         "exploit_ref": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-128067",
+      "aliases": [
+        "GHSA-xcvg-w56q-r89m"
+      ],
+      "title": "Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size",
+      "description": "Pillow is a Python imaging library. From 2.3.0 through 12.3.0, Pillow applications that save compressed TIFF images through libtiff can pass attacker-controlled image geometry tags to the encoder while allocating its row buffer from the actual image dimensions. The affected TiffImagePlugin._save path allows ImageWidth, ImageLength, or SamplesPerPixel from exif=, tiffinfo=, or a source TIFF IFD to make libtiff consume a larger scanline than the buffer supplied by ImagingLibTiffEncode. This can read heap memory into the generated TIFF or crash the process. When TIFF Predictor 2 is enabled, libtiff can rewrite the oversized scanline in place and corrupt memory beyond the buffer. A carried-over PlanarConfiguration value of 2 instead makes libtiff use a shorter scanline and can produce an undecodable output file, but is not established to cause the out-of-bounds access. This issue is fixed in version 13.0.0.",
+      "published": "2026-11-12T22:49:58.221Z",
+      "updated": "2026-11-13T00:20:14.853",
+      "cvss": 8.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:L/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:pillow"
+      ],
+      "vendor_products": [
+        "python-pillow Pillow"
+      ],
+      "references": [
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-xcvg-w56q-r89m",
+        "https://github.com/python-pillow/Pillow/commit/53318b50e8e9e85a57d033d4d879e1398d97aeb1",
+        "https://github.com/python-pillow/Pillow/commit/ec5f1cbcf67275641abaad5c065ffb64a0a804a9",
+        "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+        "https://github.com/advisories/GHSA-xcvg-w56q-r89m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -73324,7 +73864,7 @@
       "title": "OpenTelemetry Python: Denial of service through quadratic-time traceparent parsing in opentelemetry-api",
       "description": "OpenTelemetry Python provides the Python API and SDK for OpenTelemetry. Prior to 1.45.2, TraceContextTextMapPropagator.extract() in opentelemetry-api can perform quadratic-time regular-expression backtracking on a malformed traceparent value containing a trace-context prefix, a long whitespace sequence, and an embedded newline. Exploitation requires an attacker-controlled carrier that preserves embedded newlines and permits a sufficiently large value, because conforming HTTP header values cannot contain embedded newlines. JSON-based carriers, including applicable MCP request metadata integrations, can preserve the required newline depending on the SDK, instrumentation, and message-size limits. Parsing on an asynchronous server's event-loop thread can consume excessive CPU and delay unrelated requests, while the advisory does not establish disclosure, modification, or code execution. This issue is fixed in version 1.45.2.",
       "published": "2026-11-12T22:24:22.023Z",
-      "updated": "2026-11-12T22:24:22.023Z",
+      "updated": "2026-11-13T02:18:52.200",
       "cvss": 5.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
       "severity": "medium",
@@ -73345,12 +73885,13 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "",
+      "ssvc_exploitation": "none",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -93033,6 +93574,61 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-122006",
+      "aliases": [
+        "GHSA-f3w6-w445-fwh9"
+      ],
+      "title": "Active Storage: Possible arbitrary file write and read in image analysis",
+      "description": "### Impact\nA Rails application that processes attachments with ImageMagick may allow an unauthenticated attacker to write arbitrary files on the server and, when attachments are stored with the Disk service, to read arbitrary files readable by the application process. Those files typically include `secret_key_base` and credentials for external systems, which may in turn allow escalation to remote code execution or lateral movement to those systems.\n\n### Details\nImageMagick selects a coder from the content of the file it is given, and some coders act on files named inside the image rather than on the image itself. Active Storage constrained none of ImageMagick's coders, and the ImageMagick analyzer runs when a file is attached, so an attacker who can upload a crafted file may be able to invoke one. Attaching the upload is sufficient; no variant, preview, or `analyze` call is required. One specific attack chain has been reported to us, but we do not assume it is the only one that exists.\n\nThe fixed versions ship an ImageMagick security policy and prepend its directory to `MAGICK_CONFIGURE_PATH` through `MiniMagick.cli_env`, so every ImageMagick process that MiniMagick spawns applies it. The policy denies the `MSL` scripting coder, the coders that read or delete files other than the image, fetch remote or local references, or display to a screen, every coder backed by Ghostscript together with the `gs` delegate, and `@filename` indirection. ImageMagick applies every `policy.xml` on its search path, so the shipped policy adds to the host's policy rather than replacing it. The policy applies to every ImageMagick command that MiniMagick runs, not only those of Active Storage. See the `activestorage` CHANGELOG and \"ImageMagick Security Policy\" in the Active Storage guide.\n\n### Affected applications\nAn application is affected if it meets all of these requirements:\n- Uses ImageMagick for Active Storage image processing. This is `config.active_storage.variant_processor = :mini_magick`, which is the default for applications on `load_defaults 6.1` or earlier.\n- Runs ImageMagick under a security policy that does not already deny the coders involved. The policies that Debian and Ubuntu package do not.\n- Allows file uploads from untrusted users.\n\n### Mitigation\n- Upgrade to a fixed version of `activestorage`.\n- An application whose variant processor is `:mini_magick` must use mini_magick `>= 5.1`, which applying the policy requires. With an older mini_magick, such an application raises an exception during boot.\n- An application that renders PostScript or PDF through ImageMagick must re-allow the `gs` delegate and the coders it uses in the host's `policy.xml`.\n- An application that replaces `MiniMagick.cli_env` after boot, clears the environment with `MiniMagick.cli_prefix`, or installs its own `MiniMagick::Shell` does not receive the shipped policy and must carry its rules in ImageMagick's system policy. GraphicsMagick does not read ImageMagick policies.\n- If attachments are stored with the Disk service, change `secret_key_base` and every secret readable by the application process, including the master key and everything `config/credentials.yml.enc` holds, storage and database credentials, and third-party tokens. Do not retain an exposed secret as a fallback.\n\n### Workarounds\nCopy the rules of the policy that the fixed versions ship, `activestorage/lib/active_storage/image_magick/policy.xml`, into ImageMagick's system policy, for example `/etc/ImageMagick-7/policy.xml`. At a minimum, deny the `MSL` coder, the Ghostscript coders, and the `gs` delegate:\n\n```xml\n<policy domain=\"coder\" rights=\"none\" pattern=\"MSL\"/>\n<policy domain=\"delegate\" rights=\"none\" pattern=\"gs\"/>\n<policy domain=\"coder\" rights=\"none\" pattern=\"{PS,PS2,PS3,EPS,EPS2,EPS3,EPI,EPSF,EPSI,EPT,EPT2,EPT3,PDF,AI,EPDF,PDFA,POCKETMOD,XPS,PCL}\"/>\n```\n\n### Releases\nThe fixed releases are available at the normal locations.\n\nPatches for those who cannot upgrade at once:\n- 8.1: https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328\n- 8.0: https://github.com/rails/rails/commit/ea8c40121ce53a3d0255cd4eb6d13bfe3bc01776\n\n### Versions affected\n- activestorage < 8.0.5.2\n- activestorage >= 8.1, < 8.1.4.1\n\n### Credit\nThis issue was responsibly reported by HackerOne researcher [ryotak](https://hackerone.com/ryotak).\n\n### References\n- ImageMagick [security policy](https://imagemagick.org/security-policy/)",
+      "published": "2026-11-12T23:46:51Z",
+      "updated": "2026-11-12T23:46:52Z",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [
+        "rubygems:activestorage"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-f3w6-w445-fwh9",
+        "https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-122006",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126082",
+        "https://github.com/digitalocean/droplet-1-clicks/pull/488",
+        "https://github.com/rubysec/ruby-advisory-db/pull/1300"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00741,
+      "epss_percentile": 0.55143,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-04T16:20:13.636306+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 43.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-6103",
       "aliases": [],
       "title": "",
@@ -111936,6 +112532,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126081",
+      "aliases": [
+        "GHSA-wm3x-v3qw-4jh3"
+      ],
+      "title": "Action Pack: Possible Strong Parameters Bypass in Parameters#each_key",
+      "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Parameters#each_key delegates to the internal ActiveSupport::HashWithIndifferentAccess that holds the request parameters, so when called with a block it returns that hash instead of the Parameters instance. The hash does not respond to permitted?, so Active Model mass assignment (new, assign_attributes, update) accepts it without raising ActiveModel::ForbiddenAttributesError. An application that passes the return value of each_key to mass assignment could allow a remote, unauthenticated attacker to set attributes that the application does not permit, such as an authorization flag. This is an incomplete fix of CVE-2020-8164, which made each, each_pair and each_value return the Parameters instance but left each_key delegated. An application is affected if it passes the return value of ActionController::Parameters#each_key, called with a block, to mass assignment. Rails itself makes no such call. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+      "published": "2026-11-10T21:19:26.817",
+      "updated": "2026-11-12T23:37:10Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "rubygems:actionpack"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/rails/rails/commit/2fc8838300133931e19eed3ea6cee76a7e83f19c",
+        "https://github.com/rails/rails/commit/8ba746e0a786458c281060823f2ccc5c5f6312ac",
+        "https://github.com/rails/rails/releases/tag/v8.0.5.2",
+        "https://github.com/rails/rails/releases/tag/v8.1.4.1",
+        "https://github.com/rails/rails/security/advisories/GHSA-wm3x-v3qw-4jh3",
+        "https://github.com/advisories/GHSA-wm3x-v3qw-4jh3",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126081"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00625,
+      "epss_percentile": 0.50489,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "rails"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 40.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "OUT-openai-01M76CW2D7FM7K7F8NJ4W0G08N",
       "aliases": [],
       "title": "OpenAI: Unable to start new Workspace Agent runs",
@@ -118874,7 +119526,7 @@
       "title": "Malware in 0sec-cli",
       "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,678",
       "published": "2026-11-11T12:09:02Z",
-      "updated": "2026-11-12T13:06:36Z",
+      "updated": "2026-11-13T02:16:09Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -120054,6 +120706,48 @@
       "first_seen": "2026-11-12T22:44:16.366619+00:00",
       "matched": [
         "pip:eulaliatts"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-79gc-4mjg-34pw",
+      "aliases": [],
+      "title": "Malicious code in acustoviasr (PyPI)",
+      "description": "## Source: kam193 (1b7333093822a9bcb12475b4f9a7e57dacecb962f9157f2b67f53ab7797f085d)\nThis campaign consists of similar loader packages, which provide executing code from a given URL. While they do not contain the malicious payload and the usage remains unknown, they are clearly a coordinated campaign to place multiple deceptive ways to load malicious code.\n\n\n---\n\nCategory: MALICIOUS - The campaign has clearly malicious intent, like infostealers.\n\n\nCampaign: 2026-10-voice-synthesis-profiles\n\n\nReasons (based on the campaign):\n\n\n - other\n\n\n - Downloads and executes a remote malicious script.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/d7c9500808ddc5f5d63b871765285f48fa63cfac/osv/malicious/pypi/acustoviasr/MAL-2026-19199.json))\n\n週間ダウンロード数: 約 2,000",
+      "published": "2026-11-13T00:31:29Z",
+      "updated": "2026-11-13T00:31:35Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "pip:acustoviasr"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-79gc-4mjg-34pw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "pip:acustoviasr"
       ],
       "match_type": "malware",
       "tier": null,
@@ -125068,57 +125762,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-122006",
-      "aliases": [],
-      "title": "",
-      "description": "The activestorage gem before 8.1.4.1 for Ruby on Rails, when ImageMagick attachment processing occurs, can allow server read and write operations (e.g., reading secret_key_base) because the ImageMagick analyzer runs when a file is attached, and there is not an ImageMagick security policy to block unintended functionality.",
-      "published": "2026-11-04T15:17:42.940",
-      "updated": "2026-11-12T22:09:39.233",
-      "cvss": 9.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/rails/rails/releases/tag/v8.0.5.2",
-        "https://github.com/rails/rails/releases/tag/v8.1.4.1",
-        "https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9",
-        "https://github.com/alan-turing-institute/cyber-threat-observatory/blob/main/reports/2026-11-04/TIER_2_CVE-2026-122006.md",
-        "https://github.com/digitalocean/droplet-1-clicks/pull/488",
-        "https://github.com/rubysec/ruby-advisory-db/pull/1300"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00741,
-      "epss_percentile": 0.55143,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-04T16:20:13.636306+00:00",
-      "matched": [
-        "rails",
-        "imagemagick"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 38.7,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 19.6,
-        "unauth_network": 5,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-67449",
       "aliases": [],
       "title": "",
@@ -125162,6 +125805,62 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126077",
+      "aliases": [
+        "GHSA-x6mj-8jx9-qhqv"
+      ],
+      "title": "Action Pack: Possible sensitive session information leak in Active Storage proxy mode",
+      "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, When ActionDispatch::Cookies reads a signed or encrypted cookie that was written under a rotated secret (config.action_dispatch.cookies_rotations) or in the format that a :hybrid cookie serializer migrates from, it writes the cookie back to the response in the current format, and that write ignores request.session_options[:skip]. ActiveStorage::DisableSession relies on that option to keep the session cookie off the public, immutable responses of the Active Storage proxy controllers, but those controllers still load the session, so a request carrying an old-format session cookie could receive the rewritten session cookie in Set-Cookie on a cacheable response. A shared cache that stores such a response together with its Set-Cookie header could then serve one user's session to later requesters of the same URL, or serve an attacker's session to other users. Applications are affected when they serve Active Storage files through the proxy controllers, have a cookie rotation or a :hybrid serializer migration configured, and run behind a cache that stores Set-Cookie on public responses. This is a path around the fix for CVE-2024-26144. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+      "published": "2026-11-10T21:19:26.187",
+      "updated": "2026-11-12T23:44:41Z",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "rubygems:actionpack"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/rails/rails/commit/0e6cf8faa89caf4c64311d35ca2bc88c1458d4e3",
+        "https://github.com/rails/rails/commit/849a6c30eacbb6ca4722132f43c4333a93188556",
+        "https://github.com/rails/rails/releases/tag/v8.0.5.2",
+        "https://github.com/rails/rails/releases/tag/v8.1.4.1",
+        "https://github.com/rails/rails/security/advisories/GHSA-x6mj-8jx9-qhqv",
+        "https://github.com/advisories/GHSA-x6mj-8jx9-qhqv",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126077"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00415,
+      "epss_percentile": 0.36257,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "rails"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6,
         "unauth_network": 5,
         "epss": 0.1
       },
@@ -126493,6 +127192,58 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 8.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-wgv4-95jc-33jm",
+      "aliases": [],
+      "title": "Duplicate Advisory: Active Storage: Possible arbitrary file write and read in Active Storage image analysis",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-f3w6-w445-fwh9. This link is maintained to preserve external references.\n\n## Original Description\nThe activestorage gem before 8.1.4.1 for Ruby on Rails, when ImageMagick attachment processing occurs, can allow server read and write operations (e.g., reading secret_key_base) because the ImageMagick analyzer runs when a file is attached, and there is not an ImageMagick security policy to block unintended functionality.",
+      "published": "2026-11-04T15:32:31Z",
+      "updated": "2026-11-12T23:46:27Z",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [
+        "rubygems:activestorage"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wgv4-95jc-33jm",
+        "https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-122006",
+        "https://github.com/rails/rails/releases/tag/v8.0.5.2",
+        "https://github.com/rails/rails/releases/tag/v8.1.4.1",
+        "https://github.com/digitalocean/droplet-1-clicks/pull/488"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "rails",
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 19.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -130333,6 +131084,62 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 17.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126072",
+      "aliases": [
+        "GHSA-rwvh-fw6r-pwvp"
+      ],
+      "title": "Action Pack: Possible DoS vulnerability in Action Controller Live streaming",
+      "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Live::Buffer#close pushes its end-of-stream marker onto the response's bounded queue while it holds the buffer's monitor. When the client has stopped reading and the queue is full, the push blocks, and Buffer#abort, which runs when the client disconnects or a write times out, waits indefinitely for the same monitor. Each such response could permanently hold a web server thread and its ActionController::Live thread, possibly resulting in a DoS vulnerability through thread exhaustion. Applications that stream responses with ActionController::Live, including send_stream, are affected. Applications that serve large files through Active Storage proxy mode are exposed to unauthenticated clients. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+      "published": "2026-11-10T21:19:25.413",
+      "updated": "2026-11-12T23:45:26Z",
+      "cvss": 5.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "rubygems:actionpack"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/rails/rails/commit/27ad18ed5900dee28ba20e9c6fc718ff751fa215",
+        "https://github.com/rails/rails/commit/ccbfc09690fef05fdd2a9969c917a71b92cc98fc",
+        "https://github.com/rails/rails/releases/tag/v8.0.5.2",
+        "https://github.com/rails/rails/releases/tag/v8.1.4.1",
+        "https://github.com/rails/rails/security/advisories/GHSA-rwvh-fw6r-pwvp",
+        "https://github.com/advisories/GHSA-rwvh-fw6r-pwvp",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126072"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00411,
+      "epss_percentile": 0.35909,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "rails"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 36.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.8,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -144045,10 +144852,8 @@
     },
     {
       "id": "CVE-2026-125327",
-      "aliases": [
-        "GHSA-5qg5-rgp6-j5m5"
-      ],
-      "title": "pgEdge RAG Server unbounded corpus read allows resource exhaustion from unauthenticated requests",
+      "aliases": [],
+      "title": "",
       "description": "pgEdge RAG Server is an API server for retrieval-augmented generation over PostgreSQL content using pgvector. Prior to 2.0.0, the unauthenticated query endpoint uses FetchDocuments in internal/database/search.go to read the entire filtered corpus without a LIMIT and rebuild an in-memory BM25 index on every request. Because HybridEnabled is set by default in internal/config/loader.go and the endpoint has no rate limit, inexpensive remote queries can impose database and CPU work proportional to corpus size and exhaust service resources. This issue is fixed in version 2.0.0.",
       "published": "2026-11-10T19:21:09.977",
       "updated": "2026-11-12T22:18:51.470",
@@ -144056,17 +144861,13 @@
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "severity": "high",
       "cpes": [],
-      "packages": [
-        "go:github.com/pgedge/pgedge-rag-server"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
         "https://github.com/pgEdge/pgedge-rag-server/commit/a09d4872356b510c81f11591845445c33ff45a84",
         "https://github.com/pgEdge/pgedge-rag-server/pull/44",
         "https://github.com/pgEdge/pgedge-rag-server/releases/tag/v2.0.0",
-        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-5qg5-rgp6-j5m5",
-        "https://github.com/advisories/GHSA-5qg5-rgp6-j5m5",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125327"
+        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-5qg5-rgp6-j5m5"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -144077,8 +144878,7 @@
       "epss_percentile": 0.39278,
       "x_mentions": null,
       "sources": [
-        "nvd",
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -150433,7 +151233,7 @@
       "title": "",
       "description": "A host key verification flaw was found in ansible-pylibssh and in the ansible.netcommon libssh connection plugin. When trust-on-first-use is enabled (host_key_auto_add on the libssh connection plugin, or AutoAddPolicy in ansible-pylibssh), a host that is already present in known_hosts but now presents a different key is accepted without warning. The pylibssh Session.verify_knownhost() method passes the SSH_KNOWN_HOSTS_CHANGED and SSH_KNOWN_HOSTS_OTHER states to the same missing_host_key() policy hook used for unknown hosts, and the bundled AutoAddPolicy/RejectPolicy classes (as well as ansible.netcommon's MyAddPolicy, which is modeled on paramiko's AutoAddPolicy) therefore add the changed key and continue the connection rather than aborting as paramiko's BadHostKeyException path would. As a result the controller authenticates to the substitute host, runs the play there, and appends the new key to known_hosts, which can disclose connection credentials to an attacker performing a machine-in-the-middle attack. Default configurations (host_key_checking enabled, host_key_auto_add unset) are not affected; non-interactive runs fail closed.",
       "published": "2026-11-12T11:17:11.317",
-      "updated": "2026-11-12T22:19:20.967",
+      "updated": "2026-11-13T02:18:52.430",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
       "severity": "medium",
@@ -153607,21 +154407,19 @@
     {
       "id": "CVE-2026-126793",
       "aliases": [],
-      "title": "Privilege escalation in Aurora PostgreSQL dialect detection in AWS Advanced Go Wrapper",
+      "title": "",
       "description": "An untrusted search path issue in Aurora PostgreSQL dialect detection in the AWS Advanced Go Wrapper from release 2026-04-06 (awssql/v2.0.0) and before release 2026-07-29 (awssql/v2.0.3) could allow a remote authenticated user to escalate privileges to those of another database user, including a member of the rds_superuser role, via a crafted function that runs when that user connects to an Aurora PostgreSQL cluster through an affected version of the wrapper.\n\n\n\nTo remediate this issue, users should upgrade to the AWS Advanced Go Wrapper release 2026-07-29 (awssql/v2.0.3) or later.",
-      "published": "2026-11-12T21:04:58.312Z",
+      "published": "2026-11-12T21:17:22.380",
       "updated": "2026-11-12T22:18:35.610",
       "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "AWS aws-advanced-go-wrapper"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/aws/aws-advanced-go-wrapper/releases/tag/release-2026-07-29",
         "https://aws.amazon.com/security/security-bulletins/2026-182-aws/",
+        "https://github.com/aws/aws-advanced-go-wrapper/releases/tag/release-2026-07-29",
         "https://github.com/aws/aws-advanced-go-wrapper/security/advisories/GHSA-fhr2-6r5v-gm9f"
       ],
       "exploit_ref": false,
@@ -153633,7 +154431,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -154591,10 +155388,8 @@
     },
     {
       "id": "CVE-2026-125325",
-      "aliases": [
-        "GHSA-w437-9mwm-j6vq"
-      ],
-      "title": "pgEdge RAG Server shared keyword index leaked results between concurrent unauthenticated requests",
+      "aliases": [],
+      "title": "",
       "description": "pgEdge RAG Server is an API server for retrieval-augmented generation over PostgreSQL content using pgvector. Prior to 2.0.0, the BM25 keyword index is a single per-pipeline object shared by the unauthenticated query endpoint, and concurrent requests lock its clear, refill, and search operations separately. This allows one request to search a corpus populated through another request's search filter, which can return documents belonging to a different tenant or customer without malformed input. The affected responses cannot be identified retrospectively from the server logs. This issue is fixed in version 2.0.0.",
       "published": "2026-11-10T18:17:33.857",
       "updated": "2026-11-12T22:18:51.470",
@@ -154602,17 +155397,13 @@
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
       "cpes": [],
-      "packages": [
-        "go:github.com/pgedge/pgedge-rag-server"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
         "https://github.com/pgEdge/pgedge-rag-server/commit/a09d4872356b510c81f11591845445c33ff45a84",
         "https://github.com/pgEdge/pgedge-rag-server/pull/44",
         "https://github.com/pgEdge/pgedge-rag-server/releases/tag/v2.0.0",
-        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-w437-9mwm-j6vq",
-        "https://github.com/advisories/GHSA-w437-9mwm-j6vq",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125325"
+        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-w437-9mwm-j6vq"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -154623,8 +155414,7 @@
       "epss_percentile": 0.19594,
       "x_mentions": null,
       "sources": [
-        "nvd",
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -154802,10 +155592,8 @@
     },
     {
       "id": "CVE-2026-125326",
-      "aliases": [
-        "GHSA-68g8-gh8f-7rhg"
-      ],
-      "title": "pgEdge RAG Server discloses part of the configured provider credential through API error messages",
+      "aliases": [],
+      "title": "",
       "description": "pgEdge RAG Server is an API server for retrieval-augmented generation over PostgreSQL content using pgvector. Prior to 2.0.0, the unauthenticated query API in internal/server/handlers.go returns err.Error() from failed LLM provider calls, preserving provider-controlled error text that can quote a partially masked submitted API key. A remote caller can cause an authentication failure and obtain part of the operator's credential for the third-party provider account through the query API error response. This issue is fixed in version 2.0.0.",
       "published": "2026-11-10T18:17:34.010",
       "updated": "2026-11-12T22:18:51.470",
@@ -154813,17 +155601,13 @@
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N",
       "severity": "medium",
       "cpes": [],
-      "packages": [
-        "go:github.com/pgedge/pgedge-rag-server"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
         "https://github.com/pgEdge/pgedge-rag-server/commit/72e0785a6d7cc9e35ad67d570bc9fddeaa4b2f61",
         "https://github.com/pgEdge/pgedge-rag-server/pull/45",
         "https://github.com/pgEdge/pgedge-rag-server/releases/tag/v2.0.0",
-        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-68g8-gh8f-7rhg",
-        "https://github.com/advisories/GHSA-68g8-gh8f-7rhg",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125326"
+        "https://github.com/pgEdge/pgedge-rag-server/security/advisories/GHSA-68g8-gh8f-7rhg"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -154834,8 +155618,7 @@
       "epss_percentile": 0.35834,
       "x_mentions": null,
       "sources": [
-        "nvd",
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -158299,10 +159082,8 @@
     },
     {
       "id": "CVE-2026-125323",
-      "aliases": [
-        "GHSA-vq9p-w6wv-cr25"
-      ],
-      "title": "pgEdge Control Plane generates pg_hba.conf with trust authentication for local and loopback connections",
+      "aliases": [],
+      "title": "",
       "description": "pgEdge Control Plane is a distributed application for managing and orchestrating Postgres databases across multiple hosts. From 0.1.0 to 0.10.1, generated pg_hba.conf files began with hard-coded trust entries for Unix-socket and loopback connections. Because PostgreSQL evaluates the file from top to bottom, those entries also preempted operator-supplied rules in the pg_hba_conf field. Under the systemd orchestrator, any unprivileged operating-system account on a database host could authenticate as any PostgreSQL role, including the superuser, without credentials and obtain full control of the host's databases. Under Docker Swarm, reaching the container-local socket or loopback interface required code execution inside the database container. Publishing the PostgreSQL port to the host did not expose these trust rules because host connections did not appear to originate from 127.0.0.1 or ::1. This issue is fixed in version 0.11.0.",
       "published": "2026-11-10T18:17:33.703",
       "updated": "2026-11-12T22:18:51.470",
@@ -158310,18 +159091,14 @@
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
-      "packages": [
-        "go:github.com/pgedge/control-plane"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
         "https://github.com/pgEdge/control-plane/blob/main/changes/v0.11.0.md",
         "https://github.com/pgEdge/control-plane/commit/88659f7388fc6c86125e60475aa83810171145b7",
         "https://github.com/pgEdge/control-plane/pull/470",
         "https://github.com/pgEdge/control-plane/releases/tag/v0.11.0",
-        "https://github.com/pgEdge/control-plane/security/advisories/GHSA-vq9p-w6wv-cr25",
-        "https://github.com/advisories/GHSA-vq9p-w6wv-cr25",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-125323"
+        "https://github.com/pgEdge/control-plane/security/advisories/GHSA-vq9p-w6wv-cr25"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -158332,8 +159109,7 @@
       "epss_percentile": 0.01953,
       "x_mentions": null,
       "sources": [
-        "nvd",
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -164512,23 +165288,21 @@
     {
       "id": "CVE-2026-126198",
       "aliases": [],
-      "title": "pgEdge Postgres MCP Server custom tools performed writes without user confirmation",
+      "title": "",
       "description": "pgEdge Postgres MCP Server enables SQL queries against PostgreSQL databases through Model Context Protocol compatible clients. Prior to 1.1.0, the bundled clients, including the CLI and web client, decided whether to request write confirmation by checking only for the query_database tool name instead of server-published write annotations. Custom pl-do, pl-func, and writing sql tools therefore ran without confirmation on allow_writes connections, including when a model followed instructions in retrieved content. The affected control is a bundled-client warning rather than a server authorization boundary, and other MCP clients do not inherit that prompt. This issue is fixed in 1.1.0.",
-      "published": "2026-11-12T17:31:01.420Z",
-      "updated": "2026-11-12T19:09:06.967",
+      "published": "2026-11-12T18:17:24.953",
+      "updated": "2026-11-13T02:18:51.523",
       "cvss": 3.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
       "severity": "low",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "pgEdge pgedge-postgres-mcp"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/pgEdge/pgedge-postgres-mcp/security/advisories/GHSA-v44x-hxg7-5cgc",
-        "https://github.com/pgEdge/pgedge-postgres-mcp/pull/198",
         "https://github.com/pgEdge/pgedge-postgres-mcp/commit/c86d5cbe6d65c6debd0d0e909ce320271caa4d90",
-        "https://github.com/pgEdge/pgedge-postgres-mcp/releases/tag/v1.1.0"
+        "https://github.com/pgEdge/pgedge-postgres-mcp/pull/198",
+        "https://github.com/pgEdge/pgedge-postgres-mcp/releases/tag/v1.1.0",
+        "https://github.com/pgEdge/pgedge-postgres-mcp/security/advisories/GHSA-v44x-hxg7-5cgc"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -164539,7 +165313,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",

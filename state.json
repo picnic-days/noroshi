@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-12T22:44:16.366619+00:00",
+  "last_run": "2026-11-13T02:57:04.527500+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -87,7 +87,7 @@
     "CVE-2026-125347": "2026-11-12T22:44:16.366619+00:00",
     "CVE-2026-126859": "2026-11-12T22:44:16.366619+00:00"
   },
-  "ai_key_checked": "2026-11-12",
+  "ai_key_checked": "2026-11-13",
   "open_outages": {
     "OUT-anthropic-sqn3fg1l96dl": {
       "title": "Anthropic Claude: Elevated errors affecting the Microsoft 365 connector",
@@ -135,9 +135,9 @@
     "windows:11-23h2-e:0": "2026-11-10",
     "postgresql:14:0": "2026-11-12"
   },
-  "digest_sent": "2026-11-12",
-  "digest_since": "2026-11-12T01:01:55.044889+00:00",
-  "repo_adv_checked": "2026-11-12T22:44:16.366619+00:00",
+  "digest_sent": "2026-11-13",
+  "digest_since": "2026-11-13T02:57:04.527500+00:00",
+  "repo_adv_checked": "2026-11-13T02:57:04.527500+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
