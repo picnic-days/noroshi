@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T18:31:26.614755+00:00",
+  "generated_at": "2026-11-13T23:54:02.959044+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -560,46 +560,6 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】DigiCertが2026-11-12にMozilla CA Programへ自ら報告した事案（状態UNCONFIRMED、予備報告）。以前keyCompromise（鍵漏えい）で失効した証明書と同じ秘密鍵で、新しい証明書を再び発行していた。メールで届いた漏えい報告では失効はしたが、鍵をブロックリストに登録していなかったため。その証明書は失効済みで、鍵もブロックリストに登録された。悪用は未確認。\n\n【原因の部品】DigiCert（CA）の鍵漏えい報告の処理手順。ソフトウェアの脆弱性ではない。\n\n【影響範囲】問題の証明書は1件。ドメインは未確認（コメント欄でdatayard.usと推測されている）。外部のコメント投稿者は、mastercard.comなどでも鍵漏えいで失効したのと同じ鍵が再利用されていると指摘している。ただしDigiCertは、秘密鍵を持っていることが証明されなかった失効は自社の規程（CPS）どおりだとして、インシデントとは認めていない。\n\n【対応策】\n1. 自社がDigiCertの証明書を使っている場合は、過去にkeyCompromiseで失効した証明書と同じ鍵を、更新後の証明書で使い回していないかを確認する（CTログ検索と社内の発行記録）。使い回していれば、新しい鍵で再発行し、古い証明書を失効させる。\n2. 鍵の漏えいが疑われるときは、ポータルからの失効だけで済ませない。DigiCertが指定するproblemreport.digicert.comに、秘密鍵を持っていることの証明付きで報告し、その鍵がブロックリストに登録されるようにする。\n\n【各告知の関係】\n・DigiCert：当事者のCAとしての予備報告\n・Mozilla Bugzilla：CA Programの審査の場（関連告知なし）\n\n【出典】\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=2092247"
-    },
-    {
-      "id": "OUT-anthropic-sqn3fg1l96dl",
-      "aliases": [],
-      "title": "Anthropic Claude: Elevated errors affecting the Microsoft 365 connector",
-      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
-      "published": "2026-11-12T17:52:44.934Z",
-      "updated": "2026-11-12T17:52:44.934Z",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://stspg.io/m0rbx38nmy1c"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "status:anthropic"
-      ],
-      "category": "outage",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T22:44:16.366619+00:00",
-      "matched": [
-        "anthropic"
-      ],
-      "match_type": "status",
-      "tier": null,
-      "score": 90.0,
-      "level": "critical",
-      "score_breakdown": {},
-      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-115252",
@@ -4682,6 +4642,56 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-04T01:22:55.664487+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 62.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-121047",
+      "aliases": [],
+      "title": "",
+      "description": "Buffer overflow in Media in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-03T21:17:09.003",
+      "updated": "2026-11-13T20:50:58.263",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/566251701"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00356,
+      "epss_percentile": 0.29771,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-03T21:00:08.723666+00:00",
       "matched": [
         "chrome"
       ],
@@ -15783,13 +15793,13 @@
       "title": "",
       "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE.\n\nThis issue affects Apache HTTP Server: from 2.4.55 through 2.4.70.\nAffected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
       "published": "2026-11-11T15:17:15.900",
-      "updated": "2026-11-13T18:20:04.510",
+      "updated": "2026-11-13T18:44:55.113",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [
         "apache:http_server",
-        "icing:mod_h2"
+        "icing:mod_http2"
       ],
       "packages": [],
       "vendor_products": [],
@@ -21252,58 +21262,6 @@
       "first_seen": "2026-11-13T10:59:35.730917+00:00",
       "matched": [
         "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-129171",
-      "aliases": [],
-      "title": "NginxPulse 1.5.0 before 1.6.26 SQL Injection via /api/stats/:type",
-      "description": "NginxPulse 1.5.0 before 1.6.26 contains an unauthenticated sql injection vulnerability that allows remote attackers to append SQL via the id and locationType parameters of /api/stats/:type. Attackers can close the quoted table-name identifier and use error-based output to read database contents, and read or write server files via PostgreSQL superuser functions.",
-      "published": "2026-11-13T17:21:48.310Z",
-      "updated": "2026-11-13T18:17:42.530",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "likaia NginxPulse"
-      ],
-      "references": [
-        "https://vul.yulun.ac.cn/20261030/nginxpulse/",
-        "https://github.com/likaia/nginxpulse/issues/103",
-        "https://github.com/likaia/nginxpulse/commit/f9416bea3be892a394cd24a6d4a2afbd8397e926",
-        "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/stats.go#L217-L221",
-        "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/overall_stats.go#L219-L224",
-        "https://www.vulncheck.com/advisories/nginxpulse-1.5.0-before-1.6.26-sql-injection-via-api-stats-type"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T18:31:26.614755+00:00",
-      "matched": [
-        "nginx"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -37102,6 +37060,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-114713",
+      "aliases": [],
+      "title": "UnrealIRCd Improper Neutralization of Delimiters Vulnerability",
+      "description": "The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 \"label\" message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
+      "published": "2026-11-08T03:16:33.410",
+      "updated": "2026-11-13T20:17:50.767",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "UnrealIRCd UnrealIRCd"
+      ],
+      "references": [
+        "https://forums.unrealircd.org/viewtopic.php?t=9487",
+        "https://www.unrealircd.org/",
+        "https://www.unrealircd.org/index/news",
+        "http://www.openwall.com/lists/oss-security/2026/11/08/1",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114713",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-114713"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-13",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00302,
+      "epss_percentile": 0.23297,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T18:31:26.614755+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 52.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.2,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-91766",
       "aliases": [],
       "title": "",
@@ -43684,6 +43694,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-128089",
+      "aliases": [
+        "GHSA-vvf4-9x63-8xvv"
+      ],
+      "title": "dnspython excessive memory and CPU use",
+      "description": "dnspython is a DNS toolkit for Python. Prior to version 2.9.2, the from_text() parser for WKS records does not require the service number to be between 0 and 65535 before using it as a bitmap offset. An attacker-controlled zone file can supply a larger number, causing the service bitmap to grow to an extremely large size through inefficient repeated extension, consuming excessive memory and CPU and potentially terminating the process. Applications are affected only when they parse zone-file text whose record type and rdata are attacker controlled. This issue is fixed in version 2.9.2.",
+      "published": "2026-11-13T19:22:22.444Z",
+      "updated": "2026-11-13T20:19:16Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:dnspython"
+      ],
+      "vendor_products": [
+        "rthalley dnspython"
+      ],
+      "references": [
+        "https://github.com/rthalley/dnspython/security/advisories/GHSA-vvf4-9x63-8xvv",
+        "https://github.com/rthalley/dnspython/commit/388db14ee9923288f6e73f86e482c77706e59d73",
+        "https://github.com/rthalley/dnspython/commit/a62e1be066da0ed71b5b59f37435bb17cfa0070f",
+        "https://github.com/rthalley/dnspython/releases/tag/v2.9.2",
+        "https://github.com/advisories/GHSA-vvf4-9x63-8xvv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -45303,53 +45369,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-121047",
-      "aliases": [],
-      "title": "",
-      "description": "Buffer overflow in Media in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-03T21:17:09.003",
-      "updated": "2026-11-04T14:17:32.543",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
-        "https://issues.chromium.org/issues/566251701"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00356,
-      "epss_percentile": 0.2947,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-03T21:00:08.723666+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.7,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-118318",
       "aliases": [],
       "title": "",
@@ -46702,57 +46721,6 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 18.2
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-0331",
-      "aliases": [],
-      "title": "PAN-OS: Sensitive Information Disclosure Vulnerability",
-      "description": "An information disclosure vulnerability in Palo Alto Networks PAN-OS® software enables an unauthenticated remote attacker with network access  to obtain sensitive firewall and session information by sending traffic to or through a dataplane interface.\n\n\n\nPanorama is not affected by this vulnerability.",
-      "published": "2026-11-11T19:35:31.346Z",
-      "updated": "2026-11-11T20:17:04.560",
-      "cvss": 6.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:U/AU:N/R:U/V:D/RE:M/U:Amber",
-      "severity": "medium",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0331"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 48.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 13.2,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -54107,57 +54075,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-0330",
-      "aliases": [],
-      "title": "PAN-OS: Authenticated Remote Code Execution (RCE) in Panorama",
-      "description": "A remote code execution (RCE) vulnerability in Palo Alto Networks PAN-OS® software on Panorama enables an authenticated administrator with network access to execute arbitrary code with root privileges.\n\n\n\nThe security risk posed by this issue is significantly minimized by restricting access to the management interface to only trusted internal IP addresses according to our recommended  best practice deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 .\n\n\n\nCloud NGFW, Prisma® Access, and standalone PAN-OS firewalls are not affected by this vulnerability.",
-      "published": "2026-11-11T19:37:07.716Z",
-      "updated": "2026-11-11T20:17:03.937",
-      "cvss": 6.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U/AU:N/R:U/RE:M/U:Amber",
-      "severity": "medium",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0330"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 47.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 12.2,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-69982",
       "aliases": [],
       "title": "",
@@ -56871,7 +56788,7 @@
       "title": "Check Point Multiple Products Incorrect Permission Assignment for Critical Resource Vulnerability",
       "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
       "published": "2026-11-12T14:17:24.233",
-      "updated": "2026-11-13T17:17:19.920",
+      "updated": "2026-11-13T20:18:14.257",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -56882,6 +56799,7 @@
       ],
       "references": [
         "https://support.checkpoint.com/results/sk/sk1000362",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123039",
         "https://nvd.nist.gov/vuln/detail/CVE-2026-123039"
       ],
       "exploit_ref": false,
@@ -79214,57 +79132,6 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 14.2
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-0329",
-      "aliases": [],
-      "title": "PAN-OS: Buffer Overflow Vulnerability",
-      "description": "A buffer overflow vulnerability in Palo Alto Networks PAN-OS® software enables an unauthenticated attacker with network access to cause a denial of service (DoS) condition by sending specially crafted network traffic to or through a dataplane interface.\n\n\n\nCloud NGFW and Panorama are not affected by this vulnerability.",
-      "published": "2026-11-11T19:39:54.302Z",
-      "updated": "2026-11-11T20:17:03.300",
-      "cvss": 4.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U/AU:N/R:U/V:D/RE:M/U:Amber",
-      "severity": "medium",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0329"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 44.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 9.2,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -102881,9 +102748,9 @@
       "id": "CVE-2026-121528",
       "aliases": [],
       "title": "",
-      "description": "A improper certificate validation vulnerability in Fortinet FortiOS 7.6.0 through 7.6.4, FortiOS 7.4.0 through 7.4.9, FortiOS 7.2.0 through 7.2.13 may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the SSLVPN web portal and the backend destination website.",
+      "description": "A improper certificate validation vulnerability in Fortinet FortiOS 7.6.0 through 7.6.4, FortiOS 7.4.0 through 7.4.9, FortiOS 7.2.0 through 7.2.13, FortiOS 7.0 all versions, FortiOS 6.4 all versions may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the SSLVPN web portal and the backend destination website.",
       "published": "2026-11-11T22:17:11.250",
-      "updated": "2026-11-12T19:14:29.340",
+      "updated": "2026-11-13T19:19:10.053",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -102899,7 +102766,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00243,
-      "epss_percentile": 0.15672,
+      "epss_percentile": 0.15668,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -103703,57 +103570,12 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-116314",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in PostgreSQL pg_restore allows a non-plain archive provider to execute arbitrary code as the operating system user running pg_restore, via a crafted archive.  Note a contrast: crafted archive data may legitimately cause arbitrary SQL to execute at the restore destination, but it does not legitimately confer arbitrary code execution in the pg_restore OS process.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:39.500",
-      "updated": "2026-11-13T05:18:04.410",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-116314/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 41.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-116330",
       "aliases": [],
       "title": "",
       "description": "Untrusted data inclusion in PostgreSQL pg_dump tar-format restore.sql allows a compromised origin server to execute arbitrary code as the client operating system account running psql, via the predictable restriction key in restore.sql.  This is a gap in the fix for CVE-2025-8714.  restore.sql is undocumented.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:41.557",
-      "updated": "2026-11-12T19:02:35.830",
+      "updated": "2026-11-13T21:17:37.740",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -103768,8 +103590,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00373,
+      "epss_percentile": 0.31742,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -103782,13 +103604,14 @@
       ],
       "match_type": "keyword",
       "tier": 2,
-      "score": 41.6,
+      "score": 41.7,
       "level": "medium",
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 17.6,
         "unauth_network": 5,
-        "rce": 5
+        "rce": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -103798,7 +103621,7 @@
       "title": "",
       "description": "Missing authorization in PostgreSQL logical replication allows a compromised publisher to execute arbitrary code as the operating system user running the superuser-owned subscription, via naming a system catalog as a replication target.  Only subscriptions owned by a superuser are vulnerable.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.060",
-      "updated": "2026-11-12T19:02:35.830",
+      "updated": "2026-11-13T20:17:53.947",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -103807,6 +103630,52 @@
       "vendor_products": [],
       "references": [
         "https://www.postgresql.org/support/security/CVE-2026-120145/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00541,
+      "epss_percentile": 0.46017,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 41.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116314",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in PostgreSQL pg_restore allows a non-plain archive provider to execute arbitrary code as the operating system user running pg_restore, via a crafted archive.  Note a contrast: crafted archive data may legitimately cause arbitrary SQL to execute at the restore destination, but it does not legitimately confer arbitrary code execution in the pg_restore OS process.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:39.500",
+      "updated": "2026-11-13T05:18:04.410",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116314/"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -103911,9 +103780,9 @@
       "id": "CVE-2026-114032",
       "aliases": [],
       "title": "",
-      "description": "The OpenSSL library bundled with the Illumio VEN for Windows is affected by an uncontrolled search path vulnerability. A low-privileged, authenticated local attacker could potentially leverage this vulnerability to execute arbitrary code with SYSTEM privileges.",
+      "description": "The OpenSSL library bundled with the Illumio VEN is affected by an uncontrolled search path vulnerability. A low-privileged, authenticated local attacker could potentially leverage this vulnerability to execute arbitrary code with elevated privileges.",
       "published": "2026-11-09T22:18:27.397",
-      "updated": "2026-11-12T22:09:39.233",
+      "updated": "2026-11-13T20:17:48.917",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -103929,7 +103798,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0013,
-      "epss_percentile": 0.02691,
+      "epss_percentile": 0.02697,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -109901,7 +109770,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in Microsoft Windows Codecs Library allows an unauthorized attacker to execute code over a network.",
       "published": "2026-11-10T19:18:52.763",
-      "updated": "2026-11-10T21:18:51.760",
+      "updated": "2026-11-13T19:18:24.577",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -109916,8 +109785,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00788,
+      "epss_percentile": 0.56734,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -109930,12 +109799,13 @@
       ],
       "match_type": "keyword",
       "tier": 1,
-      "score": 41.0,
+      "score": 41.1,
       "level": "medium",
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 15.0,
-        "unauth_network": 5
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -114228,6 +114098,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-9661",
+      "aliases": [],
+      "title": "Postecert FIRMAOK! 1.6.29 Local Privilege Escalation via OpenSSL Search Path",
+      "description": "Poste Italiane Postecert FIRMAOK! 1.6.29 on Windows contains a local privilege escalation vulnerability caused by an uncontrolled OpenSSL search path, where launcher.exe and dependent executables such as updater.exe and tslupdater.exe load OpenSSL configuration and library files from a hardcoded, user-writable directory that does not exist by default. A low-privileged local attacker can create this missing directory and place malicious OpenSSL configuration or library files inside it, causing the application to load and execute attacker-controlled code with the privileges of the user running it, enabling horizontal or, when a higher-privileged user runs the application, vertical privilege escalation up to full system compromise.",
+      "published": "2026-11-13T21:40:35.827Z",
+      "updated": "2026-11-13T22:17:27.467",
+      "cvss": 7.3,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Poste Italiane Postecert FIRMAOK!"
+      ],
+      "references": [
+        "https://seclists.org/fulldisclosure/2026/Nov/14",
+        "https://postecert.poste.it/firma/download.shtml",
+        "https://www.vulncheck.com/advisories/postecert-firmaok-local-privilege-escalation-via-openssl-search-path",
+        "http://seclists.org/fulldisclosure/2026/Nov/14"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 40.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14.6,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112893",
       "aliases": [],
       "title": "",
@@ -114384,57 +114304,6 @@
         "cvss": 15.4,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-0328",
-      "aliases": [],
-      "title": "PAN-OS: User Impersonation through GlobalProtect Portal",
-      "description": "Authentication bypass vulnerabilities in the GlobalProtect™ portal and gateway of Palo Alto Networks PAN-OS® software enables an unauthenticated user to bypass security restrictions and establish an unauthorized VPN connection. \n\n\n\nPanorama, Cloud NGFW, and Prisma® Access are not affected by this vulnerability.",
-      "published": "2026-11-11T19:45:53.014Z",
-      "updated": "2026-11-11T20:17:02.737",
-      "cvss": 2.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:H/SA:N/E:U/AU:N/R:U/V:D/RE:M/U:Amber",
-      "severity": "low",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0328"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 40.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 5.4,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -114835,6 +114704,46 @@
         "unauth_network": 5,
         "epss": 0.1
       },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-sqn3fg1l96dl",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors affecting the Microsoft 365 connector",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-12T17:52:44.934Z",
+      "updated": "2026-11-13T21:49:44.029Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/m0rbx38nmy1c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-13T21:49:44.029Z",
+      "first_seen": "2026-11-12T22:44:16.366619+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
       "ai_analysis": ""
     },
     {
@@ -123409,6 +123318,128 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-rikplz89rpml",
+      "aliases": [],
+      "title": "Cloudflare: Issues with 1.1.1.1 public resolver in Canada",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-13T23:53:18.687Z",
+      "updated": "2026-11-13T23:53:18.687Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/rikplz89rpml"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-51drrqvsv66g",
+      "aliases": [],
+      "title": "GitHub: Copilot experiencing degraded model availability for some GPT models",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-13T20:13:51.325Z",
+      "updated": "2026-11-13T21:27:59.028Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/cppzsh0j19vy"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-13T21:27:59.028Z",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-q78g-75cg-hwq6",
+      "aliases": [],
+      "title": "Malware in @jelou/cli-win32-x64",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,286",
+      "published": "2026-11-13T22:51:02Z",
+      "updated": "2026-11-13T22:51:02Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@jelou/cli-win32-x64"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-q78g-75cg-hwq6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "npm:@jelou/cli-win32-x64"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -126124,6 +126155,51 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 9.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-0331",
+      "aliases": [],
+      "title": "",
+      "description": "An information disclosure vulnerability in Palo Alto Networks PAN-OS® software enables an unauthenticated remote attacker with network access  to obtain sensitive firewall and session information by sending traffic to or through a dataplane interface.\n\n\n\nPanorama is not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:04.380",
+      "updated": "2026-11-13T20:17:40.310",
+      "cvss": 6.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://security.paloaltonetworks.com/CVE-2026-0331"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00565,
+      "epss_percentile": 0.47486,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "panos"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.2,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -130321,37 +130397,30 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-0326",
+      "id": "CVE-2026-0330",
       "aliases": [],
-      "title": "PAN-OS: Buffer Overflow Vulnerability in Protocol and Service Processing",
-      "description": "A buffer overflow vulnerability in Palo Alto Networks PAN-OS software enables an unauthenticated attacker to disrupt service processing by causing a service process crash or memory corruption.\n\n\n\nPanorama and Prisma® Access are not affected by this vulnerability.",
-      "published": "2026-11-11T19:50:29.708Z",
-      "updated": "2026-11-11T20:17:02.040",
-      "cvss": 1.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:U/AU:N/R:U/V:D/RE:M/U:Amber",
-      "severity": "low",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
+      "title": "",
+      "description": "A remote code execution (RCE) vulnerability in Palo Alto Networks PAN-OS® software on Panorama enables an authenticated administrator with network access to execute arbitrary code with root privileges.\n\n\n\nThe security risk posed by this issue is significantly minimized by restricting access to the management interface to only trusted internal IP addresses according to our recommended  best practice deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 .\n\n\n\nCloud NGFW, Prisma® Access, and standalone PAN-OS firewalls are not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:03.780",
+      "updated": "2026-11-13T20:17:38.870",
+      "cvss": 6.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:X/RE:M/U:Amber",
+      "severity": "medium",
+      "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0326"
+        "https://security.paloaltonetworks.com/CVE-2026-0330"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00498,
+      "epss_percentile": 0.43228,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -130360,14 +130429,15 @@
       "matched": [
         "panos"
       ],
-      "match_type": "exact",
+      "match_type": "keyword",
       "tier": 1,
-      "score": 38.4,
+      "score": 38.3,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 30,
-        "cvss": 3.4,
-        "unauth_network": 5
+        "popularity": 21.0,
+        "cvss": 12.2,
+        "rce": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -132624,6 +132694,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-129171",
+      "aliases": [],
+      "title": "",
+      "description": "NginxPulse 1.5.0 before 1.6.26 contains an unauthenticated sql injection vulnerability that allows remote attackers to append SQL via the id and locationType parameters of /api/stats/:type. Attackers can close the quoted table-name identifier and use error-based output to read database contents, and read or write server files via PostgreSQL superuser functions.",
+      "published": "2026-11-13T18:17:42.530",
+      "updated": "2026-11-13T18:17:42.530",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/overall_stats.go#L219-L224",
+        "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/stats.go#L217-L221",
+        "https://github.com/likaia/nginxpulse/commit/f9416bea3be892a394cd24a6d4a2afbd8397e926",
+        "https://github.com/likaia/nginxpulse/issues/103",
+        "https://vul.yulun.ac.cn/20261030/nginxpulse/",
+        "https://www.vulncheck.com/advisories/nginxpulse-1.5.0-before-1.6.26-sql-injection-via-api-stats-type"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T18:31:26.614755+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116146",
       "aliases": [],
       "title": "",
@@ -134356,6 +134475,276 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116323",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in PostgreSQL pltcl allows an object creator to execute arbitrary code as the operating system user running the database, via a domain CHECK that re-enters the Tcl interpreter and frees or changes a string still used by the outer result conversion.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:40.823",
+      "updated": "2026-11-13T21:17:37.307",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116323/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0059,
+      "epss_percentile": 0.4879,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116328",
+      "aliases": [],
+      "title": "",
+      "description": "Integer wraparound in PostgreSQL generation memory contexts allows a database user to execute arbitrary code as the operating system user running the database, via freeing an allocation larger than 1 GB and causing its block to be reused for smaller chunks whose back-pointer offset cannot represent that position.  Within major versions 16-18, minor versions before PostgreSQL 18.7, 17.12, and 16.16 are affected.  Versions before PostgreSQL 16 are unaffected.",
+      "published": "2026-11-12T15:17:41.313",
+      "updated": "2026-11-13T21:17:37.523",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116328/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0059,
+      "epss_percentile": 0.48789,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-116329",
+      "aliases": [],
+      "title": "",
+      "description": "Type confusion in PostgreSQL statistics import allows a table maintainer to execute arbitrary code as the operating system user running the database, via nested SET DATA TYPE during conversion of values to import.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
+      "published": "2026-11-12T15:17:41.437",
+      "updated": "2026-11-13T21:17:37.630",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116329/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0059,
+      "epss_percentile": 0.48789,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120147",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in the PostgreSQL dblink extension allows an object creator to execute arbitrary code as the operating system user running the database, via type conversion code that re-enters dblink and closes a connection whose results an outer dblink call is reading.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:43.317",
+      "updated": "2026-11-13T20:17:54.957",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120147/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0059,
+      "epss_percentile": 0.48787,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120149",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in PostgreSQL foreign batch inserts allows a foreign server to execute arbitrary code, via reporting that it inserted more rows than the server supplied.  postgres_fdw can legitimately encounter this when a rule on the remote table expands an INSERT into additional rows.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:43.567",
+      "updated": "2026-11-13T20:17:56.990",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120149/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00596,
+      "epss_percentile": 0.49033,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120150",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in PostgreSQL expanded-record domain checks allows an object creator to execute arbitrary code as the operating system user running the database, via repeated checks of a domain over a composite type that cause reuse of a dangling memory-context pointer.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:43.687",
+      "updated": "2026-11-13T20:17:58.000",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-120150/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00577,
+      "epss_percentile": 0.48082,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116304",
       "aliases": [],
       "title": "",
@@ -134678,138 +135067,6 @@
       "vendor_products": [],
       "references": [
         "https://www.postgresql.org/support/security/CVE-2026-116320/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116323",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in PostgreSQL pltcl allows an object creator to execute arbitrary code as the operating system user running the database, via a domain CHECK that re-enters the Tcl interpreter and frees or changes a string still used by the outer result conversion.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:40.823",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-116323/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116328",
-      "aliases": [],
-      "title": "",
-      "description": "Integer wraparound in PostgreSQL generation memory contexts allows a database user to execute arbitrary code as the operating system user running the database, via freeing an allocation larger than 1 GB and causing its block to be reused for smaller chunks whose back-pointer offset cannot represent that position.  Within major versions 16-18, minor versions before PostgreSQL 18.7, 17.12, and 16.16 are affected.  Versions before PostgreSQL 16 are unaffected.",
-      "published": "2026-11-12T15:17:41.313",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-116328/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116329",
-      "aliases": [],
-      "title": "",
-      "description": "Type confusion in PostgreSQL statistics import allows a table maintainer to execute arbitrary code as the operating system user running the database, via nested SET DATA TYPE during conversion of values to import.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
-      "published": "2026-11-12T15:17:41.437",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-116329/"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -135206,138 +135463,6 @@
       "vendor_products": [],
       "references": [
         "https://www.postgresql.org/support/security/CVE-2026-120144/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120147",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in the PostgreSQL dblink extension allows an object creator to execute arbitrary code as the operating system user running the database, via type conversion code that re-enters dblink and closes a connection whose results an outer dblink call is reading.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:43.317",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-120147/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120149",
-      "aliases": [],
-      "title": "",
-      "description": "Heap-based buffer overflow in PostgreSQL foreign batch inserts allows a foreign server to execute arbitrary code, via reporting that it inserted more rows than the server supplied.  postgres_fdw can legitimately encounter this when a rule on the remote table expands an INSERT into additional rows.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:43.567",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-120149/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-120150",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in PostgreSQL expanded-record domain checks allows an object creator to execute arbitrary code as the operating system user running the database, via repeated checks of a domain over a composite type that cause reuse of a dangling memory-context pointer.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:43.687",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-120150/"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -140021,6 +140146,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-128242",
+      "aliases": [],
+      "title": "",
+      "description": "actix-http before 3.20.1 and actix-web before 4.18.2 contain an unbounded decompression vulnerability in encoding::Decoder that lets remote attackers exhaust memory and CPU via compressed bodies. Attackers can send small highly compressed gzip, deflate, Brotli or zstd request bodies to Json, Form, Bytes or String extractors, or serve them to awc clients, causing denial of service.",
+      "published": "2026-11-13T10:18:12.180",
+      "updated": "2026-11-13T23:17:18.353",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/actix/actix-web",
+        "https://github.com/actix/actix-web/blob/actix-http-v3.20.0/actix-http/src/encoding/decoder.rs#L239-L301",
+        "https://github.com/actix/actix-web/commit/0d0be61bd757027bfcecbc53df1b7a600f21ecd0",
+        "https://github.com/actix/actix-web/commit/41b54d23ea04f66758c15de7e4ab18325cd25280",
+        "https://github.com/actix/actix-web/releases/tag/actix-http-v3.20.1",
+        "https://github.com/actix/actix-web/releases/tag/actix-web-v4.18.2",
+        "https://github.com/actix/actix-web/security/advisories/GHSA-qph8-7859-gq2f",
+        "https://rustsec.org/advisories/RUSTSEC-2026-0448.html",
+        "https://www.vulncheck.com/advisories/actix-http-before-3.20.1-and-actix-web-before-4.18.2-decompression-bomb-dos-via-encoding-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00956,
+      "epss_percentile": 0.61948,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "brotli",
+        "zstd"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116591",
       "aliases": [
         "GHSA-fpmh-frq8-7rj8"
@@ -140170,31 +140349,27 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-128242",
+      "id": "CVE-2026-128131",
       "aliases": [],
-      "title": "actix-http before 3.20.1 and actix-web before 4.18.2 Decompression Bomb DoS via encoding::Decoder",
-      "description": "actix-http before 3.20.1 and actix-web before 4.18.2 contain an unbounded decompression vulnerability in encoding::Decoder that lets remote attackers exhaust memory and CPU via compressed bodies. Attackers can send small highly compressed gzip, deflate, Brotli or zstd request bodies to Json, Form, Bytes or String extractors, or serve them to awc clients, causing denial of service.",
-      "published": "2026-11-13T09:33:45.553Z",
-      "updated": "2026-11-13T10:18:12.180",
+      "title": "AIOHTTP: Concatenated compressed streams cause excessive CPU use",
+      "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, aiohttp decompresses each member of a payload containing many concatenated gzip, deflate, or zstd streams by passing the entire remaining input to a new decompressor, causing quadratic CPU use. Empty members produce no output, so client_max_size and output backpressure do not limit the work. A remote attacker can block a server event loop with a crafted compressed request body or WebSocket message, and a malicious server can similarly block a client. This issue is fixed in version 3.14.4.",
+      "published": "2026-11-13T20:39:46.745Z",
+      "updated": "2026-11-13T22:11:32.147",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
       "severity": "high",
       "cpes": [],
       "packages": [],
       "vendor_products": [
-        "actix actix-http",
-        "actix actix-web"
+        "aio-libs aiohttp"
       ],
       "references": [
-        "https://github.com/actix/actix-web/security/advisories/GHSA-qph8-7859-gq2f",
-        "https://rustsec.org/advisories/RUSTSEC-2026-0448.html",
-        "https://github.com/actix/actix-web/commit/41b54d23ea04f66758c15de7e4ab18325cd25280",
-        "https://github.com/actix/actix-web/commit/0d0be61bd757027bfcecbc53df1b7a600f21ecd0",
-        "https://github.com/actix/actix-web/blob/actix-http-v3.20.0/actix-http/src/encoding/decoder.rs#L239-L301",
-        "https://github.com/actix/actix-web/releases/tag/actix-http-v3.20.1",
-        "https://github.com/actix/actix-web/releases/tag/actix-web-v4.18.2",
-        "https://github.com/actix/actix-web",
-        "https://www.vulncheck.com/advisories/actix-http-before-3.20.1-and-actix-web-before-4.18.2-decompression-bomb-dos-via-encoding-decoder"
+        "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-h4cc-hm5h-fmm9",
+        "https://github.com/aio-libs/aiohttp/pull/13362",
+        "https://github.com/aio-libs/aiohttp/pull/13391",
+        "https://github.com/aio-libs/aiohttp/commit/d041d4d0fd48c3f0832084d33be16cf1c4835f85",
+        "https://github.com/aio-libs/aiohttp/commit/d925a80539ffd227da1d93ab4a5bff123cc777db",
+        "https://github.com/aio-libs/aiohttp/releases/tag/v3.14.4"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -140210,9 +140385,8 @@
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
       "matched": [
-        "brotli",
         "zstd"
       ],
       "match_type": "keyword",
@@ -142047,6 +142221,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-0329",
+      "aliases": [],
+      "title": "",
+      "description": "A buffer overflow vulnerability in Palo Alto Networks PAN-OS® software enables an unauthenticated attacker with network access to cause a denial of service (DoS) condition by sending specially crafted network traffic to or through a dataplane interface.\n\n\n\nCloud NGFW and Panorama are not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:03.140",
+      "updated": "2026-11-13T20:17:37.413",
+      "cvss": 4.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://security.paloaltonetworks.com/CVE-2026-0329"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00426,
+      "epss_percentile": 0.37366,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "panos"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 35.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 9.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-92387",
       "aliases": [],
       "title": "",
@@ -142189,7 +142408,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL extended statistics allows an object creator to execute arbitrary code as the operating system user running the database, via a statistics expression of an anonymous RECORD type whose backend-local type identifier denotes a different row type in another session.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.443",
-      "updated": "2026-11-12T19:02:35.830",
+      "updated": "2026-11-13T20:17:55.963",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
       "severity": "high",
@@ -142204,8 +142423,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00483,
+      "epss_percentile": 0.42185,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -142218,12 +142437,58 @@
       ],
       "match_type": "keyword",
       "tier": 2,
-      "score": 35.2,
+      "score": 35.3,
       "level": "medium",
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 16.2,
-        "rce": 5
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-118741",
+      "aliases": [],
+      "title": "",
+      "description": "Improper authentication in ASP.NET Core allows an unauthorized attacker to elevate privileges over a network.",
+      "published": "2026-11-10T19:19:50.893",
+      "updated": "2026-11-13T19:18:45.563",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118741"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00757,
+      "epss_percentile": 0.55738,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "dotnet"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -143071,50 +143336,6 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-118741",
-      "aliases": [],
-      "title": "",
-      "description": "Improper authentication in ASP.NET Core allows an unauthorized attacker to elevate privileges over a network.",
-      "published": "2026-11-10T19:19:50.893",
-      "updated": "2026-11-11T12:19:10.227",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118741"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "dotnet"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 35.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 16.2,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -145842,56 +146063,6 @@
         "popularity": 20,
         "cvss": 9.6,
         "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-0327",
-      "aliases": [],
-      "title": "PAN-OS: Privilege Escalation Vulnerability in GlobalProtect",
-      "description": "A privilege escalation vulnerability in the GlobalProtect gateway of Palo Alto Networks PAN-OS® software enables an authenticated, lower-privileged user to obtain the privileges and configuration of a higher-privileged user.\n\n\n\nCloud NGFW and Panorama are not affected by this vulnerability.",
-      "published": "2026-11-11T19:48:39.698Z",
-      "updated": "2026-11-11T20:17:02.390",
-      "cvss": 2.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:U/AU:N/R:U/V:D/RE:M/U:Amber",
-      "severity": "low",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0327"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 34.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 4.6
       },
       "ai_analysis": ""
     },
@@ -151977,7 +152148,7 @@
       "title": "",
       "description": "OpsTree BuildPiper before 2.7.0 contains a privilege escalation vulnerability that allows project users to gain Kubernetes cluster-admin rights by submitting unrestricted manifests through the Additional Manifest feature. Attackers can deploy a ClusterRoleBinding binding a service account to cluster-admin, which the pipeline applies with cluster-wide credentials, granting control over all workloads and secrets.",
       "published": "2026-11-13T10:18:03.200",
-      "updated": "2026-11-13T15:45:24.843",
+      "updated": "2026-11-13T19:19:27.837",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -152023,7 +152194,7 @@
       "title": "",
       "description": "OpsTree BuildPiper before 2.7.0 contains an improper authorization vulnerability that allows authenticated deploy users to define arbitrary Kubernetes hostPath volumes without allow-list or policy checks. Attackers can set the host path to / in the Define HostPath Volume configuration to mount the worker node root filesystem read-write, breaking container isolation and enabling node and cluster compromise.",
       "published": "2026-11-13T10:18:04.260",
-      "updated": "2026-11-13T15:45:24.843",
+      "updated": "2026-11-13T23:17:17.230",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -152328,7 +152499,7 @@
       "title": "",
       "description": "An incorrect privilege management vulnerability in the OPSWAT MetaDefender Endpoint Security SDK used by the Palo Alto Networks GlobalProtect™ app on Windows devices allows a locally authenticated non-administrative Windows user to escalate their privileges to NT AUTHORITY\\SYSTEM.",
       "published": "2026-11-11T20:16:59.480",
-      "updated": "2026-11-12T19:02:35.830",
+      "updated": "2026-11-13T20:17:30.490",
       "cvss": 5.9,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:X/U:Amber",
       "severity": "medium",
@@ -152344,7 +152515,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00132,
-      "epss_percentile": 0.02795,
+      "epss_percentile": 0.02801,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -152415,23 +152586,21 @@
     {
       "id": "CVE-2026-129165",
       "aliases": [],
-      "title": "Tactical RMM 0.17.0 through 1.6.1 Arbitrary File Read via Report Preview",
+      "title": "",
       "description": "Tactical RMM 0.17.0 through 1.6.1 contains an arbitrary file read in the /reporting/templates/preview/ endpoint because WeasyPrint resolves file:// links in user-supplied template_md and embeds the files in the returned PDF. Users with report management permission can read the Django SECRET_KEY, reused as the NATS password, and publish runscript commands to every managed agent.",
-      "published": "2026-11-13T17:21:52.384Z",
-      "updated": "2026-11-13T18:17:41.600",
+      "published": "2026-11-13T18:17:41.600",
+      "updated": "2026-11-13T22:17:24.647",
       "cvss": 9.4,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "AmidaWare Tactical RMM"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://vul.yulun.ac.cn/20261028/tacticalrmm/",
         "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/ee/reporting/utils.py#L110-L117",
         "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/ee/reporting/views.py#L202-L245",
         "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/tacticalrmm/utils.py#L227-L236",
+        "https://vul.yulun.ac.cn/20261028/tacticalrmm/",
         "https://www.vulncheck.com/advisories/tactical-rmm-0.17.0-through-1.6.1-arbitrary-file-read-via-report-preview"
       ],
       "exploit_ref": false,
@@ -152443,7 +152612,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -152665,56 +152833,6 @@
       "score_breakdown": {
         "popularity": 21.0,
         "cvss": 11.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-0325",
-      "aliases": [],
-      "title": "PAN-OS: GlobalProtect Authorization Bypass Vulnerability",
-      "description": "An authorization bypass vulnerability in the GlobalProtect gateway of Palo Alto Networks PAN-OS® software enables an authenticated attacker with valid GlobalProtect credentials to bypass IP address restrictions and circumvent network access controls that rely on source IP filtering.\n\nCloud NGFW is not affected by this vulnerability.",
-      "published": "2026-11-11T19:51:55.386Z",
-      "updated": "2026-11-11T20:17:01.720",
-      "cvss": 1.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:U/AU:N/R:A/V:D/RE:M/U:Amber",
-      "severity": "low",
-      "cpes": [
-        "palo_alto_networks:pan-os"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Palo Alto Networks Cloud NGFW",
-        "Palo Alto Networks PAN-OS",
-        "Palo Alto Networks Prisma Access"
-      ],
-      "references": [
-        "https://security.paloaltonetworks.com/CVE-2026-0325"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "panos"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 32.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 2.6
       },
       "ai_analysis": ""
     },
@@ -154425,6 +154543,97 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-116326",
+      "aliases": [],
+      "title": "",
+      "description": "Uncaught exceptions in PostgreSQL plperl allow an object creator to cause use of a stale sigjmp_buf, via a tied Perl object, or a Perl object whose overloaded conversion throws while plperl is handling another error.  We have not ruled out arbitrary code execution on some platform.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+      "published": "2026-11-12T15:17:41.077",
+      "updated": "2026-11-13T21:17:37.410",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.postgresql.org/support/security/CVE-2026-116326/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00638,
+      "epss_percentile": 0.5113,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T17:06:04.594898+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126197",
+      "aliases": [],
+      "title": "",
+      "description": "pgEdge Postgres MCP Server enables SQL queries against PostgreSQL databases through Model Context Protocol compatible clients. Prior to 1.1.0, custom pl-do tools interpolated JSON arguments into a PostgreSQL DO block delimited by fixed dollar-quote tags. An argument containing $mcp_custom_tool$ could terminate the block and inject arbitrary SQL statements, while $mcp_args$ could inject procedural code into a plpgsql block. Because the statement used the simple query protocol, injected text could include additional statements and transaction control, bypassing read_only and accessing data or modifying resources available to the connecting role. The issue requires at least one pl-do custom tool; sql and pl-func tools pass arguments as bind parameters and are not affected by this injection mechanism. This issue is fixed in 1.1.0.",
+      "published": "2026-11-12T18:17:24.780",
+      "updated": "2026-11-13T19:19:23.773",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/pgEdge/pgedge-postgres-mcp/commit/b5b929305de7a22cd6ed7de8ae1be2ac90ca0868",
+        "https://github.com/pgEdge/pgedge-postgres-mcp/pull/196",
+        "https://github.com/pgEdge/pgedge-postgres-mcp/releases/tag/v1.1.0",
+        "https://github.com/pgEdge/pgedge-postgres-mcp/security/advisories/GHSA-r5pp-jx86-r6r9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00369,
+      "epss_percentile": 0.31244,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T22:44:16.366619+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 31.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116316",
       "aliases": [],
       "title": "",
@@ -154482,49 +154691,6 @@
       "vendor_products": [],
       "references": [
         "https://www.postgresql.org/support/security/CVE-2026-116318/"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T17:06:04.594898+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 31.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-116326",
-      "aliases": [],
-      "title": "",
-      "description": "Uncaught exceptions in PostgreSQL plperl allow an object creator to cause use of a stale sigjmp_buf, via a tied Perl object, or a Perl object whose overloaded conversion throws while plperl is handling another error.  We have not ruled out arbitrary code execution on some platform.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
-      "published": "2026-11-12T15:17:41.077",
-      "updated": "2026-11-12T19:02:35.830",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-116326/"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -155145,51 +155311,47 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126197",
+      "id": "CVE-2026-0328",
       "aliases": [],
-      "title": "pgEdge Postgres MCP Server SQL injection through custom pl-do tool parameters",
-      "description": "pgEdge Postgres MCP Server enables SQL queries against PostgreSQL databases through Model Context Protocol compatible clients. Prior to 1.1.0, custom pl-do tools interpolated JSON arguments into a PostgreSQL DO block delimited by fixed dollar-quote tags. An argument containing $mcp_custom_tool$ could terminate the block and inject arbitrary SQL statements, while $mcp_args$ could inject procedural code into a plpgsql block. Because the statement used the simple query protocol, injected text could include additional statements and transaction control, bypassing read_only and accessing data or modifying resources available to the connecting role. The issue requires at least one pl-do custom tool; sql and pl-func tools pass arguments as bind parameters and are not affected by this injection mechanism. This issue is fixed in 1.1.0.",
-      "published": "2026-11-12T17:29:35.883Z",
-      "updated": "2026-11-12T19:09:06.967",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
+      "title": "",
+      "description": "Authentication bypass vulnerabilities in the GlobalProtect™ portal and gateway of Palo Alto Networks PAN-OS® software enables an unauthenticated user to bypass security restrictions and establish an unauthorized VPN connection. \n\n\n\nPanorama, Cloud NGFW, and Prisma® Access are not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:02.577",
+      "updated": "2026-11-13T20:17:36.023",
+      "cvss": 2.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:H/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
+      "severity": "low",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "pgEdge pgedge-postgres-mcp"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://github.com/pgEdge/pgedge-postgres-mcp/security/advisories/GHSA-r5pp-jx86-r6r9",
-        "https://github.com/pgEdge/pgedge-postgres-mcp/pull/196",
-        "https://github.com/pgEdge/pgedge-postgres-mcp/commit/b5b929305de7a22cd6ed7de8ae1be2ac90ca0868",
-        "https://github.com/pgEdge/pgedge-postgres-mcp/releases/tag/v1.1.0"
+        "https://security.paloaltonetworks.com/CVE-2026-0328"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.0057,
+      "epss_percentile": 0.4772,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
-      "first_seen": "2026-11-12T22:44:16.366619+00:00",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
       "matched": [
-        "postgresql"
+        "panos"
       ],
       "match_type": "keyword",
-      "tier": 2,
-      "score": 31.6,
+      "tier": 1,
+      "score": 31.5,
       "level": "medium",
       "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.6
+        "popularity": 21.0,
+        "cvss": 5.4,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -156749,18 +156911,16 @@
     {
       "id": "CVE-2026-95613",
       "aliases": [],
-      "title": "Zenitel Connect pREST API adopts arbitrary PostgreSQL role from unvalidated JWT sub claim",
+      "title": "",
       "description": "The pREST database REST API in Zenitel Connect firmware before 1.11.0 signs and verifies JWTs with the platform CA private key, which is stored on a data volume shared between containers, and sets the PostgreSQL session role from the unvalidated sub claim of each request while connected to the database as the \"postgres\" superuser, which allows local attackers who can read the platform CA private key from the container filesystem to execute database operations as the PostgreSQL superuser, including reading the master encryption key and password hashes, via a forged JWT with sub=postgres sent to the pREST API.",
-      "published": "2026-11-13T15:44:28.709Z",
-      "updated": "2026-11-13T16:19:38.717",
+      "published": "2026-11-13T16:19:38.717",
+      "updated": "2026-11-13T20:19:04.253",
       "cvss": 8.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Zenitel Zenitel Connect"
-      ],
+      "vendor_products": [],
       "references": [
         "https://www.zenitel.com/sites/default/files/2026-11/A100K12404-Zenitel-Security-Advisory.pdf"
       ],
@@ -156773,7 +156933,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -156845,7 +157004,7 @@
       "title": "",
       "description": "A flaw was found in Ansible Operator Plugins. A low-privileged Kubernetes user can exploit a Jinja2 template injection vulnerability by crafting malicious custom resource (CR) specification values. These values are processed by Ansible without proper sanitization, allowing embedded Jinja2 expressions to be executed within the operator pod. This can lead to arbitrary code execution and privilege escalation, granting the attacker control over the operator's service account with cluster-wide permissions.",
       "published": "2026-10-15T16:18:23.657",
-      "updated": "2026-11-11T13:17:34.297",
+      "updated": "2026-11-13T21:17:48.473",
       "cvss": 8.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -156865,7 +157024,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00472,
-      "epss_percentile": 0.41166,
+      "epss_percentile": 0.41389,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -158841,50 +159000,6 @@
         "popularity": 10,
         "cvss": 15.0,
         "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114713",
-      "aliases": [],
-      "title": "UnrealIRCd Improper Neutralization of Delimiters Vulnerability",
-      "description": "UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "UnrealIRCd UnrealIRCd"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-114713"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-13",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00302,
-      "epss_percentile": 0.23297,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T18:31:26.614755+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 30.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "kev": 20,
-        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -161609,6 +161724,109 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-128083",
+      "aliases": [
+        "GHSA-63hm-g96r-2m2q"
+      ],
+      "title": "Laravel: Task Output Injection - Concurrency Process",
+      "description": "Laravel is a web application framework. Prior to 12.71.0 and 13.40.0, Laravel's Concurrency::run process driver can treat a forged internal result message in child standard output as framework output. An application route must invoke Concurrency::run, and a task must write attacker-controlled bytes at the start of the child's standard output that form a complete JSON document followed by gzip magic bytes. Under those application-specific conditions, an attacker can forge the internal result message and achieve remote code execution. The affected behavior is not exposed by default and requires application code that routes untrusted input into task output. This issue is fixed in versions 12.71.0 and 13.40.0.",
+      "published": "2026-11-13T18:44:40.992Z",
+      "updated": "2026-11-13T19:19:30.893",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L",
+      "severity": "low",
+      "cpes": [],
+      "packages": [
+        "composer:laravel/framework"
+      ],
+      "vendor_products": [
+        "laravel framework"
+      ],
+      "references": [
+        "https://github.com/laravel/framework/security/advisories/GHSA-63hm-g96r-2m2q",
+        "https://github.com/laravel/framework/pull/62297",
+        "https://github.com/laravel/framework/commit/0f904940d176d51db1105cc925136f01bb69e92c",
+        "https://github.com/laravel/framework/commit/c37133b89b30a86eb404537151edd8944e938f0a",
+        "https://github.com/laravel/framework/releases/tag/v12.71.0",
+        "https://github.com/laravel/framework/releases/tag/v13.40.0",
+        "https://github.com/advisories/GHSA-63hm-g96r-2m2q"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd",
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "laravel"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 4.6,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-0326",
+      "aliases": [],
+      "title": "",
+      "description": "A buffer overflow vulnerability in Palo Alto Networks PAN-OS software enables an unauthenticated attacker to disrupt service processing by causing a service process crash or memory corruption.\n\n\n\nPanorama and Prisma® Access are not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:01.890",
+      "updated": "2026-11-13T20:17:33.667",
+      "cvss": 1.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://security.paloaltonetworks.com/CVE-2026-0326"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00426,
+      "epss_percentile": 0.37366,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "panos"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 29.5,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 3.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114150",
       "aliases": [
         "GHSA-6vjv-7wm8-p67r"
@@ -161862,7 +162080,7 @@
       "title": "",
       "description": "Livewire PowerGrid creates data tables based on Laravel Livewire library. From version 6.0.0 to before version 6.10.4, the public Livewire property sortDirection is interpolated verbatim into a raw SQL ORDER BY clause and is not restricted to asc/desc, allowing arbitrary SQL injection through POST /livewire/update. This issue has been patched in version 6.10.4.",
       "published": "2026-11-11T22:17:28.090",
-      "updated": "2026-11-12T22:18:51.470",
+      "updated": "2026-11-13T19:19:33.860",
       "cvss": 7.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L",
       "severity": "high",
@@ -161872,6 +162090,7 @@
       "references": [
         "https://github.com/Power-Components/livewire-powergrid/commit/13d047bf1637e82926e6914aa3ca0f29a4c9704a",
         "https://github.com/Power-Components/livewire-powergrid/releases/tag/v6.10.4",
+        "https://github.com/Power-Components/livewire-powergrid/security/advisories/GHSA-7fgc-3h6c-698r",
         "https://github.com/Power-Components/livewire-powergrid/security/advisories/GHSA-7fgc-3h6c-698r"
       ],
       "exploit_ref": false,
@@ -161880,7 +162099,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00356,
-      "epss_percentile": 0.2977,
+      "epss_percentile": 0.29788,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -162494,102 +162713,6 @@
       "references": [
         "https://github.com/vllm-project/vllm/security/advisories/GHSA-894j-wg8m-63h8",
         "https://www.vulncheck.com/advisories/vllm-0.30.0-before-0.31.0-resource-exhaustion-via-openpangu-video-backend-num-frames"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T10:59:35.730917+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 28.8,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126395",
-      "aliases": [],
-      "title": "vLLM 0.14.0rc1 before 0.31.0 Heap Address Disclosure via sanitize_message()",
-      "description": "vLLM from 0.14.0rc1 before 0.31.0 contains an information disclosure vulnerability in sanitize_message() whose lowercase-only regex fails to scrub uppercase PIL image addresses. Unauthenticated attackers can send a crafted PNG to endpoints such as /tokenize, triggering HF-processor errors that leak live server heap addresses useful for ASLR bypass.",
-      "published": "2026-11-13T09:35:51.636Z",
-      "updated": "2026-11-13T10:17:43.707",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-m9fg-w9qh-67pc",
-        "https://www.vulncheck.com/advisories/vllm-0.14-0rc1-before-0.31.0-heap-address-disclosure-via-sanitize-message"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T10:59:35.730917+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 28.8,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 13.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-126396",
-      "aliases": [],
-      "title": "vLLM from 0.24.0 before 0.31.0 Resource Exhaustion via MiniMax M3 min_pixels",
-      "description": "vLLM from 0.24.0 before 0.31.0 contains a resource exhaustion vulnerability in the MiniMax M3 VL video processor, which accepts request-level min_pixels without range or min_pixels <= max_pixels validation. Its video-wide pixel budget is enforced only when max_long_side_pixel is set, and that value defaults to None. API clients can supply a large min_pixels via mm_processor_kwargs to enlarge every decoded frame, causing excessive CPU and host-memory consumption that may disrupt workers or the service.",
-      "published": "2026-11-13T09:35:50.950Z",
-      "updated": "2026-11-13T10:17:43.877",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w4cg-mhc7-mgw3",
-        "https://www.vulncheck.com/advisories/vllm-from-0.24.0-before-0.31.0-resource-exhaustion-via-minimax-m3-min-pixels"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -163406,7 +163529,7 @@
       "title": "",
       "description": "OpsTree BuildPiper before 2.7.0 contains an authorization bypass vulnerability that allows authenticated users to create environments on unassigned Kubernetes clusters by tampering with cluster_id and namespaces values. Attackers can modify requests to POST /api/v1/project/{project_id}/env/ to target another project's cluster, then trigger builds and deployments into it, bypassing project isolation.",
       "published": "2026-11-13T10:18:03.820",
-      "updated": "2026-11-13T15:45:24.843",
+      "updated": "2026-11-13T19:19:28.007",
       "cvss": 7.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -164023,24 +164146,22 @@
     {
       "id": "CVE-2026-129166",
       "aliases": [],
-      "title": "Keep 0.34.10 through 0.55.0 Blind SQL Injection via CEL Bracket-Indexed JSON Keys",
+      "title": "",
       "description": "Keep 0.34.10 through 0.55.0 contains a blind SQL injection vulnerability in its CEL-to-SQL converter, which inserts bracket-indexed JSON keys from CEL filters unescaped into JSON path expressions for SQLite, PostgreSQL, and MySQL. Authenticated users with read:alert permission can submit crafted CEL expressions to /alerts/query or the cel parameter of /incidents, using result counts as a boolean oracle to extract other tenants' alerts and password hashes.",
-      "published": "2026-11-13T17:21:51.724Z",
+      "published": "2026-11-13T18:17:41.753",
       "updated": "2026-11-13T18:17:41.753",
       "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "keephq Keep"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://vul.yulun.ac.cn/20261030/keephq_keep/",
-        "https://github.com/keephq/keep/issues/6902",
-        "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/sqlite.py#L16-L18",
-        "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/postgresql.py#L22-L26",
         "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/cel_ast_converter.py#L278-L290",
+        "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/postgresql.py#L22-L26",
+        "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/sqlite.py#L16-L18",
+        "https://github.com/keephq/keep/issues/6902",
+        "https://vul.yulun.ac.cn/20261030/keephq_keep/",
         "https://www.vulncheck.com/advisories/keep-0.34.10-through-0.55.0-blind-sql-injection-via-cel-bracket-indexed-json-keys"
       ],
       "exploit_ref": false,
@@ -164052,7 +164173,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -167156,6 +167276,98 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126395",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.14.0rc1 before 0.31.0 contains an information disclosure vulnerability in sanitize_message() whose lowercase-only regex fails to scrub uppercase PIL image addresses. Unauthenticated attackers can send a crafted PNG to endpoints such as /tokenize, triggering HF-processor errors that leak live server heap addresses useful for ASLR bypass.",
+      "published": "2026-11-13T10:17:43.577",
+      "updated": "2026-11-13T23:17:16.620",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-m9fg-w9qh-67pc",
+        "https://www.vulncheck.com/advisories/vllm-0.14-0rc1-before-0.31.0-heap-address-disclosure-via-sanitize-message"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00389,
+      "epss_percentile": 0.335,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 25.9,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126396",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM from 0.24.0 before 0.31.0 contains a resource exhaustion vulnerability in the MiniMax M3 VL video processor, which accepts request-level min_pixels without range or min_pixels <= max_pixels validation. Its video-wide pixel budget is enforced only when max_long_side_pixel is set, and that value defaults to None. API clients can supply a large min_pixels via mm_processor_kwargs to enlarge every decoded frame, causing excessive CPU and host-memory consumption that may disrupt workers or the service.",
+      "published": "2026-11-13T10:17:43.750",
+      "updated": "2026-11-13T21:17:42.660",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w4cg-mhc7-mgw3",
+        "https://www.vulncheck.com/advisories/vllm-from-0.24.0-before-0.31.0-resource-exhaustion-via-minimax-m3-min-pixels"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00418,
+      "epss_percentile": 0.36631,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 25.9,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "GHSA-qrj2-j723-m6w8",
       "aliases": [],
       "title": "vLLM Speculators Config verifier.name_or_path Element Directory Traversal Information Disclosure Vulnerability",
@@ -167246,6 +167458,50 @@
         "popularity": 14.0,
         "cvss": 11.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-0327",
+      "aliases": [],
+      "title": "",
+      "description": "A privilege escalation vulnerability in the GlobalProtect gateway of Palo Alto Networks PAN-OS® software enables an authenticated, lower-privileged user to obtain the privileges and configuration of a higher-privileged user.\n\n\n\nCloud NGFW and Panorama are not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:02.240",
+      "updated": "2026-11-13T20:17:34.863",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://security.paloaltonetworks.com/CVE-2026-0327"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00366,
+      "epss_percentile": 0.30896,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "panos"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 25.7,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 4.6,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -170131,6 +170387,50 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-0325",
+      "aliases": [],
+      "title": "",
+      "description": "An authorization bypass vulnerability in the GlobalProtect gateway of Palo Alto Networks PAN-OS® software enables an authenticated attacker with valid GlobalProtect credentials to bypass IP address restrictions and circumvent network access controls that rely on source IP filtering.\n\nCloud NGFW is not affected by this vulnerability.",
+      "published": "2026-11-11T20:17:01.563",
+      "updated": "2026-11-13T20:17:32.503",
+      "cvss": 1.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:A/V:D/RE:M/U:Amber",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://security.paloaltonetworks.com/CVE-2026-0325"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00356,
+      "epss_percentile": 0.29804,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "panos"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 23.7,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 2.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-125112",
       "aliases": [],
       "title": "",
@@ -170714,18 +171014,16 @@
     {
       "id": "CVE-2026-126477",
       "aliases": [],
-      "title": "OpenEMR before 8.5.0 Stored XSS via Eye Exam Defaults in eye_base.php",
+      "title": "",
       "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in the Eye Exam (eye_mag) module that allows administrators to inject JavaScript through unencoded Eye_defaults list option titles. Attackers can store a crafted title via edit_list.php that breaks out of a jQuery string in eye_base.php, executing script in any authenticated user's session when they click Defaults.",
-      "published": "2026-11-13T09:34:55.801Z",
-      "updated": "2026-11-13T10:17:57.353",
+      "published": "2026-11-13T10:17:57.237",
+      "updated": "2026-11-13T19:19:24.133",
       "cvss": 4.6,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "openemr openemr"
-      ],
+      "vendor_products": [],
       "references": [
         "https://github.com/openemr/openemr/security/advisories/GHSA-gr77-7xgh-5gwf",
         "https://www.vulncheck.com/advisories/openemr-before-8.5.0-stored-xss-via-eye-exam-defaults-in-eye-base-php"
@@ -170735,11 +171033,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00251,
+      "epss_percentile": 0.16743,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -170754,7 +171051,8 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0,
-        "cvss": 9.2
+        "cvss": 9.2,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -208848,6 +209146,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-12T22:44:16.366619+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092715",
+      "aliases": [],
+      "title": "NETLOCK: 2026 audit statements for NetLock Arany (Class Gold) Főtanúsítvány not filed in CCADB on time",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 ASSIGNED）。分類: [ca-compliance] [audit-delay]",
+      "published": "2026-11-13T21:14:42Z",
+      "updated": "2026-11-13T23:04:49Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092715"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
       "matched": [
         "pki"
       ],
