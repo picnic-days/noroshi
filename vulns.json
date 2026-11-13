@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T02:57:04.527500+00:00",
+  "generated_at": "2026-11-13T10:59:35.730917+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -602,6 +602,46 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-anthropic-nn11wk485zfn",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-13T09:58:58.057Z",
+      "updated": "2026-11-13T09:58:58.057Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/6kqyd0c5b1gr"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115252",
       "aliases": [],
       "title": "Confection 0.4.0 - 0.4.7 - Unauthenticated RCE via Write Key Option",
@@ -1001,6 +1041,117 @@
         "tier1_critical": 15
       },
       "ai_analysis": "【状況】MicrosoftがCVE-2026-112967を公開しました。Windowsの「Xbox Live Networking Service」にヒープバッファオーバーフローがあり、認証なしでネットワーク経由のリモートコード実行を許すおそれがあります。CVSSは9.8です。CVSSのベクタでは悪用コードは未実証（E:U）、公式修正はあり（RL:O）となっています。CISA KEVには登録されていません。実際の悪用は確認されていません。MSRCのページは取得できず、本文の確認はできていません（未確認）。\n\n【原因の部品】Windows標準のXbox Live Networking Service（XboxNetApiSvc）で、開発元はMicrosoftです。他製品に組み込まれる部品ではありません。\n\n【影響範囲】対象のWindowsのバージョン、修正KB、ビルド番号はいずれも未確認です。\n\n【対応策】\n1. MSRCの更新ガイドで対象OSと修正KBを確認し、今月のWindows累積更新を優先して適用してください。外部から届く端末やサーバから先に進めてください。\n2. すぐ更新できない場合は、業務で使っていない端末でXboxNetApiSvcを無効にしてください（GPOで設定できます）。CISベンチマークでも企業環境では無効が推奨されています。ただし、無効化でこの脆弱性を防げるかはMicrosoftの見解が取れておらず未確認です。あわせて、不要な受信通信をファイアウォールで制限してください。\n\n【各告知の関係】\n・Microsoft（MSRC）：開発元として修正を告知（一次情報）\n・組み込み製品ベンダーや国内機関の告知：確認できませんでした\n\n【出典】\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-112967"
+    },
+    {
+      "id": "CVE-2026-119077",
+      "aliases": [],
+      "title": "ELEX WordPress HelpDesk & Customer Ticketing System <= 3.3.9 - Unauthenticated PHP Object Injection to Remote Code Execution via 'form' Parameter",
+      "description": "The ELEX WordPress HelpDesk & Customer Ticketing System plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 3.3.9 via the 'form (specifically the attacker-controlled ticket_label field inside the url-encoded form string)' parameter parameter. This is due to missing server-side authentication and the absence of a class allowlist on deserialization, with the only guard being a nonce publicly emitted on any page carrying the [wsdesk_support] shortcode. This makes it possible for unauthenticated attackers to execute code on the server. A successful exploit requires a single anonymous GET to any public page carrying the [wsdesk_support] shortcode to harvest the publicly emitted wsdesk_nonce value, after which a single unauthenticated POST completes the attack.",
+      "published": "2026-11-13T09:35:17.360Z",
+      "updated": "2026-11-13T10:17:26.613",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "elextensions ELEX WordPress HelpDesk & Customer Ticketing System"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f14b07ce-8893-4f8c-a501-5da6ec5a3b8f?source=cve",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-public-functions.php#L822",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-ajax-functions-two.php#L156",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-ajax-functions-two.php#L265",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-public-functions.php#L627",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-ajax-functions.php#L946",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/vendor/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php#L45",
+        "https://plugins.trac.wordpress.org/browser/elex-helpdesk-customer-support-ticket-system/tags/3.3.8/includes/class-crm-init-handler.php#L529",
+        "https://plugins.trac.wordpress.org/changeset/3797458/elex-helpdesk-customer-support-ticket-system/trunk/includes/class-crm-public-functions.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.6,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15
+      },
+      "ai_analysis": "【状況】WordPress用プラグイン「ELEX WordPress HelpDesk & Customer Ticketing System」に、外部から渡されたデータを安全に復元しない欠陥（PHP Object Injection、CVE-2026-119077、CVSS 9.8）があります。ログインしていない攻撃者でも、サーバ上で任意のコードを実行できます。条件は、公開ページに[wsdesk_support]ショートコードが置かれていることです。KEV（米CISAの悪用確認済み脆弱性リスト）には未登録で、実際の悪用報告は確認できていません（未確認）。\n\n【原因の部品】このプラグイン本体です（開発元：ELEXtensions）。ほかの製品に組み込まれて配布されているものではありません。プラグインには、攻撃に悪用され得るライブラリGuzzleが同梱されていますが、Guzzle自体の脆弱性ではありません。\n\n【影響範囲】3.3.9以前のすべてのバージョンです。\n\n【対応策】\n1. このプラグインを3.4.0以降に更新してください。開発元は11/12に「3.4.0への更新」としてコードを修正し、データ復元処理を安全な方式に置き換えています。ただし、Wordfenceが正式に案内する修正版は未確認です。更新後はバージョンを確認してください。\n2. すぐ更新できない場合は、プラグインを停止してください。難しければ、[wsdesk_support]を置いた公開ページを非公開にし、WAF（Webアプリ向けファイアウォール）で防御してください。このプラグインには過去にも、ログイン不要のファイルアップロード脆弱性（3.3.7以前）がありました。見覚えのないPHPファイルや管理者アカウントがないか、侵害の痕跡も確認してください。\n\n【各告知の関係】\n・Wordfence：脆弱性の発見と公表（CVEの登録元）\n・ELEXtensions：プラグインのコード修正（WordPress.orgでの変更記録）\n・VulDBなど：同じCVEを転載したもので、別の件ではありません\n・国内の注意喚起：未確認\n\n【出典】\nhttps://www.wordfence.com/threat-intel/vulnerabilities/id/f14b07ce-8893-4f8c-a501-5da6ec5a3b8f\nhttps://plugins.trac.wordpress.org/changeset/3797458/"
+    },
+    {
+      "id": "CVE-2026-125055",
+      "aliases": [],
+      "title": "Chatterbug Forms <= 1.0.2 - Unauthenticated Arbitrary File Upload via File Upload via Public Form Submission",
+      "description": "The Chatterbug Forms – Fast, Flexible WordPress Form Builder plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 1.0.2 via the cbforms_check_form_submissions function. This is due to missing server-side file extension validation in cbforms_check_form_submissions(), where the allowed-type check defaults to the uploaded file's own extension when no field restriction is configured, trivially allowing any extension including .php. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. The submission nonce printed inline on every public page containing a Chatterbug form is freely obtainable by unauthenticated visitors and therefore does not constitute an effective access control barrier.",
+      "published": "2026-11-13T09:35:13.330Z",
+      "updated": "2026-11-13T10:17:28.277",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "sameh101 Chatterbug Forms – Fast, Flexible WordPress Form Builder"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7819c1fa-884b-4f1d-ba63-84057bf6da84?source=cve",
+        "https://plugins.trac.wordpress.org/browser/chatterbug-forms/tags/1.0.2/chatterbug-forms.php#L422",
+        "https://plugins.trac.wordpress.org/browser/chatterbug-forms/tags/1.0.2/chatterbug-forms.php#L331",
+        "https://plugins.trac.wordpress.org/browser/chatterbug-forms/tags/1.0.2/chatterbug-forms.php#L510",
+        "https://plugins.trac.wordpress.org/browser/chatterbug-forms/tags/1.0.2/chatterbug-forms.php#L308",
+        "https://plugins.trac.wordpress.org/changeset/3794492/chatterbug-forms/trunk/chatterbug-forms.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 74.6,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "tier1_critical": 15
+      },
+      "ai_analysis": "【状況】WordPressのフォーム作成プラグイン「Chatterbug Forms」に、ログインなしで.php を含む任意のファイルをアップロードでき、リモートでコードを実行される恐れのある脆弱性があります（CVE-2026-125055、CVSS 9.8）。公開ページのフォーム用トークン（nonce）は誰でも取得できるため、防御になりません。悪用の報告は未確認で、CISA KEV（悪用が確認された脆弱性の一覧）にも載っていません。\n【原因の部品】Chatterbug Forms（WordPressプラグイン）。有効インストール数は10件以上と少なく、ほかの製品への組み込みは未確認です。\n【影響範囲】1.0.2以下の全バージョン\n【対応策】\n1. 全WordPressサイトでこのプラグインが入っているか確認し、入っていれば今日中に無効化・削除してください。trunk（開発版）には修正が入っていますが、修正済みの公開バージョンは未確認です。修正版が出るまでは更新では解決しないと考えてください。使っていた場合は、wp-content/uploads に不審な.php などがないか、アクセスログに不審なフォーム送信がないかも確認してください。\n2. すぐ削除できない場合は、フォームを置いたページを非公開にし、WAFやWebサーバの設定でアップロード先ディレクトリでのPHP実行を禁止してください。\n【各告知の関係】\n・Wordfence：CVEを発行した機関として脆弱性を公開（元の部品の告知）\n・プラグイン開発者：trunkで修正（changeset 3794492）。公開バージョンは未確認\n・組み込み製品の更新や国内の注意喚起：なし（未確認）\n【出典】\nhttps://www.wordfence.com/threat-intel/vulnerabilities/id/7819c1fa-884b-4f1d-ba63-84057bf6da84\nhttps://www.cve.org/CVERecord?id=CVE-2026-125055"
     },
     {
       "id": "CVE-2026-113078",
@@ -3458,7 +3609,7 @@
       "title": "",
       "description": "Link following in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.153",
-      "updated": "2026-11-12T19:50:42.067",
+      "updated": "2026-11-13T05:18:29.380",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -3500,7 +3651,7 @@
         "tier1_critical": 15,
         "epss": 0.0
       },
-      "ai_analysis": "【状況】Google が 2026/11/11、Chrome デスクトップ版の安定版を更新しました。83 件の脆弱性修正のうちの 1 件で、Chrome の FileSystem 機能に重要度 High の欠陥があります。細工した Web ページを開くよう利用者が誘導されると、サンドボックス外でコードを実行される恐れがあります（CVSS 9.6）。Google の告知に悪用の記載はなく、CISA KEV（悪用確認済み脆弱性の一覧）にも載っていません。悪用は未確認です。\n※同じ月の別件のゼロデイ CVE-2026-125350 は 157.0.8103.50 で修正済みで、今回の版に更新すれば併せて対処できます。\n\n【原因の部品】Chrome の基盤である Chromium の FileSystem（開発元は Google）。Chromium は Edge などほかのブラウザにも組み込まれています。\n\n【影響範囲】\n・Chrome 157.0.8103.78 未満（Windows / Mac / Linux）\n・Edge などの Chromium 系ブラウザが影響を受けるか、修正版があるかは未確認\n・Extended Stable 版と Android 版の修正版は未確認\n\n【対応策】\n1. Chrome を次の版以上に更新し、ブラウザを再起動する\n ・Windows / Mac：157.0.8103.78/.79\n ・Linux：157.0.8103.78\n 配布は数日〜数週間かけて段階的に進むため、管理コンソールなどで社内端末の版を確認してください。Edge は Microsoft の告知を確認し、修正版が出たらすぐ適用してください。\n2. すぐ更新できない場合：Google から公式の回避策は出ていません。利用者に不審なリンクやページを開かないよう注意を促してください。\n\n【各告知の関係】\n・Google（Chrome Releases）：元の部品の修正（一次情報）\n・Chrome（Google）の CVE レコード：同じ件の採番\n・HKCERT：注意喚起（修正版は Google と同じ）\n・Microsoft（Edge）：組み込み製品側の告知は未確認\n\n【出典】\nhttps://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html\nhttps://www.cve.org/CVERecord?id=CVE-2026-126859\nhttps://www.hkcert.org/security-bulletin/google-chrome-multiple-vulnerabilities_20261112"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-96951",
@@ -13612,7 +13763,7 @@
       "title": "",
       "description": "Out of bounds write in Network in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:11.553",
-      "updated": "2026-11-12T19:51:24.453",
+      "updated": "2026-11-13T05:18:28.023",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13661,7 +13812,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:12.527",
-      "updated": "2026-11-12T19:51:12.953",
+      "updated": "2026-11-13T05:18:28.730",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13710,7 +13861,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:12.793",
-      "updated": "2026-11-12T19:50:59.723",
+      "updated": "2026-11-13T05:18:28.927",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13759,7 +13910,7 @@
       "title": "",
       "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.287",
-      "updated": "2026-11-12T19:50:30.680",
+      "updated": "2026-11-13T05:18:29.577",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13808,7 +13959,7 @@
       "title": "",
       "description": "Use after free in Media in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.423",
-      "updated": "2026-11-12T19:50:16.070",
+      "updated": "2026-11-13T05:18:29.767",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13857,7 +14008,7 @@
       "title": "",
       "description": "Use after free in Layout in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-11T23:17:16.860",
-      "updated": "2026-11-12T19:49:50.487",
+      "updated": "2026-11-13T05:18:32.300",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -13906,7 +14057,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:17.007",
-      "updated": "2026-11-12T19:49:38.353",
+      "updated": "2026-11-13T05:18:32.533",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -16328,7 +16479,7 @@
       "title": "",
       "description": "Use after free in Dawn in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:16.580",
-      "updated": "2026-11-12T19:50:02.273",
+      "updated": "2026-11-13T05:18:32.100",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -16377,7 +16528,7 @@
       "title": "",
       "description": "Use after free in Core in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:17.400",
-      "updated": "2026-11-12T19:49:11.053",
+      "updated": "2026-11-13T05:18:32.703",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -19629,53 +19780,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-107412",
-      "aliases": [],
-      "title": "Multiple Memory overflow vulnerabilities can lead to unpredictable or erroneous behavior and Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
-      "description": "Multiple Memory overflow vulnerabilities can lead to unpredictable or erroneous behavior and Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
-      "published": "2026-11-13T02:21:30.835Z",
-      "updated": "2026-11-13T02:21:30.835Z",
-      "cvss": 9.5,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 54.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 19.0,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-17545",
       "aliases": [],
       "title": "",
@@ -19825,198 +19929,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-107407",
-      "aliases": [],
-      "title": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "description": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "published": "2026-11-13T02:01:33.369Z",
-      "updated": "2026-11-13T02:18:49.613",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-107408",
-      "aliases": [],
-      "title": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "description": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "published": "2026-11-13T02:04:05.605Z",
-      "updated": "2026-11-13T02:18:49.740",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-107409",
-      "aliases": [],
-      "title": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
-      "description": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
-      "published": "2026-11-13T02:05:45.195Z",
-      "updated": "2026-11-13T02:18:49.863",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-107410",
-      "aliases": [],
-      "title": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "description": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "published": "2026-11-13T02:10:10.553Z",
-      "updated": "2026-11-13T02:18:49.997",
-      "cvss": 9.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-120868",
       "aliases": [],
       "title": "Memory overflow in Packet Processing can lead to unpredictable or erroneous behavior or Denial of Service in NetScaler ADC and NetScaler Gateway",
@@ -20050,6 +19962,150 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120864",
+      "aliases": [],
+      "title": "Memory overflow in ICA proxy can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in ICA proxy can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T08:10:07.476Z",
+      "updated": "2026-11-13T09:17:34.057",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111334",
+      "aliases": [],
+      "title": "Memory overflow in Endpoint Analysis (EPA/EPAS) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in Endpoint Analysis (EPA/EPAS) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:33:09.222Z",
+      "updated": "2026-11-13T08:17:15.557",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 53.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107415",
+      "aliases": [],
+      "title": "Memory overflow in Email OTP authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in Email OTP authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:05:57.191Z",
+      "updated": "2026-11-13T04:17:36.417",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
       "matched": [
         "citrix"
       ],
@@ -35265,147 +35321,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-107413",
-      "aliases": [],
-      "title": "Memory overflow in SAML authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
-      "description": "Memory overflow in SAML authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
-      "published": "2026-11-13T02:24:22.832Z",
-      "updated": "2026-11-13T02:24:22.832Z",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 52.4,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-107414",
-      "aliases": [],
-      "title": "Memory overflow in WebAuth authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
-      "description": "Memory overflow in WebAuth authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
-      "published": "2026-11-13T02:26:08.515Z",
-      "updated": "2026-11-13T02:26:08.515Z",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 52.4,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-107411",
-      "aliases": [],
-      "title": "Memory overflow in RTSP ALG can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "description": "Memory overflow in RTSP ALG can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
-      "published": "2026-11-13T02:15:37.209Z",
-      "updated": "2026-11-13T02:15:37.209Z",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Citrix NetScaler ADC",
-        "Citrix NetScaler Gateway"
-      ],
-      "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T02:57:04.527500+00:00",
-      "matched": [
-        "citrix"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 52.4,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-128066",
       "aliases": [
         "GHSA-wqgw-9xfh-qf2g"
@@ -35449,6 +35364,486 @@
       "first_seen": "2026-11-13T02:57:04.527500+00:00",
       "matched": [
         "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120865",
+      "aliases": [],
+      "title": "Memory overflow in HTTP/3 (QUIC) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in HTTP/3 (QUIC) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T08:11:19.158Z",
+      "updated": "2026-11-13T09:17:34.190",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120867",
+      "aliases": [],
+      "title": "Memory overflow in SSL/TLS/DTLS can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in SSL/TLS/DTLS can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T08:14:51.280Z",
+      "updated": "2026-11-13T09:17:34.437",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120861",
+      "aliases": [],
+      "title": "Memory overflow / improper handling in GSLB and geolocation (MEP, static-proximity, config-sync) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory overflow / improper handling in GSLB and geolocation (MEP, static-proximity, config-sync) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T07:58:38.809Z",
+      "updated": "2026-11-13T08:17:16.760",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120862",
+      "aliases": [],
+      "title": "Memory overflow in SIP ALG (LSN) and DNS answer-section logging datapaths can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "description": "Memory overflow in SIP ALG (LSN) and DNS answer-section logging datapaths can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T08:02:05.170Z",
+      "updated": "2026-11-13T08:17:16.890",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120863",
+      "aliases": [],
+      "title": "Memory overflow in the management plane can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in the management plane can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T08:03:43.365Z",
+      "updated": "2026-11-13T08:17:17.013",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120860",
+      "aliases": [],
+      "title": "Memory overflow in protocol load-balancing traffic handling (Diameter, SIP-over-TCP, MQTT, RADIUS) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in protocol load-balancing traffic handling (Diameter, SIP-over-TCP, MQTT, RADIUS) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:56:35.648Z",
+      "updated": "2026-11-13T08:17:16.633",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111337",
+      "aliases": [],
+      "title": "Memory overflow in Base64 decoding in advanced policy expressions leading to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in Base64 decoding in advanced policy expressions leading to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:40:20.685Z",
+      "updated": "2026-11-13T08:17:15.950",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111340",
+      "aliases": [],
+      "title": "Memory overflow in KBA (knowledge-based authentication) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in KBA (knowledge-based authentication) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:07:04.587Z",
+      "updated": "2026-11-13T04:17:36.537",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111341",
+      "aliases": [],
+      "title": "Memory overflow in client-certificate authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in client-certificate authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:08:23.331Z",
+      "updated": "2026-11-13T04:17:36.653",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111342",
+      "aliases": [],
+      "title": "Memory overflow in LDAP authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in LDAP authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:09:43.916Z",
+      "updated": "2026-11-13T04:17:36.777",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -35701,6 +36096,54 @@
       "first_seen": "2026-11-05T23:38:48.927446+00:00",
       "matched": [
         "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111336",
+      "aliases": [],
+      "title": "Memory overflow in HTTP/2 handling can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in HTTP/2 handling can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:38:51.913Z",
+      "updated": "2026-11-13T08:17:15.817",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -38734,7 +39177,7 @@
       "title": "",
       "description": "Use after free in ANGLE in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:11.860",
-      "updated": "2026-11-12T17:17:33.680",
+      "updated": "2026-11-13T05:18:28.200",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -38781,7 +39224,7 @@
       "title": "",
       "description": "Use after free in Skia in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-11T23:17:12.403",
-      "updated": "2026-11-12T17:17:34.070",
+      "updated": "2026-11-13T05:18:28.547",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -38828,7 +39271,7 @@
       "title": "",
       "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:15.907",
-      "updated": "2026-11-12T17:17:36.840",
+      "updated": "2026-11-13T05:18:31.320",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -38875,7 +39318,7 @@
       "title": "",
       "description": "Use after free in ServiceWorker in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-11T23:17:17.650",
-      "updated": "2026-11-12T17:17:38.210",
+      "updated": "2026-11-13T05:18:32.893",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -38922,7 +39365,7 @@
       "title": "",
       "description": "Use after free in Passwords in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:20.963",
-      "updated": "2026-11-12T17:17:41.113",
+      "updated": "2026-11-13T05:18:37.000",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -38969,7 +39412,7 @@
       "title": "",
       "description": "Buffer overflow in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:21.357",
-      "updated": "2026-11-12T17:17:41.740",
+      "updated": "2026-11-13T05:18:37.663",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -43982,7 +44425,7 @@
       "title": "",
       "description": "Type confusion in Turbolev in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:12.000",
-      "updated": "2026-11-12T17:17:33.870",
+      "updated": "2026-11-13T05:18:28.383",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44029,7 +44472,7 @@
       "title": "",
       "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:13.070",
-      "updated": "2026-11-12T17:17:34.650",
+      "updated": "2026-11-13T05:18:29.140",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44123,7 +44566,7 @@
       "title": "",
       "description": "Use after free in HTML in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.687",
-      "updated": "2026-11-12T17:17:35.620",
+      "updated": "2026-11-13T05:18:29.950",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44170,7 +44613,7 @@
       "title": "",
       "description": "Use after free in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.820",
-      "updated": "2026-11-12T17:17:35.830",
+      "updated": "2026-11-13T05:18:30.127",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44217,7 +44660,7 @@
       "title": "",
       "description": "Use after free in DOM in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:14.960",
-      "updated": "2026-11-12T17:17:36.043",
+      "updated": "2026-11-13T05:18:30.330",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44264,7 +44707,7 @@
       "title": "",
       "description": "Incorrect authorization in Extensions in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code inside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:15.103",
-      "updated": "2026-11-12T18:17:33.073",
+      "updated": "2026-11-13T05:18:30.517",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44311,7 +44754,7 @@
       "title": "",
       "description": "Use after free in Browser in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:15.230",
-      "updated": "2026-11-12T17:17:36.267",
+      "updated": "2026-11-13T05:18:30.707",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44358,7 +44801,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:15.363",
-      "updated": "2026-11-12T17:17:36.470",
+      "updated": "2026-11-13T05:18:30.910",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44405,7 +44848,7 @@
       "title": "",
       "description": "Use after free in Frames in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:15.517",
-      "updated": "2026-11-12T17:17:36.657",
+      "updated": "2026-11-13T05:18:31.117",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44452,7 +44895,7 @@
       "title": "",
       "description": "Use after free in Extensions in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:16.040",
-      "updated": "2026-11-12T17:17:37.033",
+      "updated": "2026-11-13T05:18:31.510",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44499,7 +44942,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:16.163",
-      "updated": "2026-11-12T17:17:37.230",
+      "updated": "2026-11-13T05:18:31.707",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44546,7 +44989,7 @@
       "title": "",
       "description": "Integer overflow in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:16.450",
-      "updated": "2026-11-12T17:17:37.427",
+      "updated": "2026-11-13T05:18:31.910",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44593,7 +45036,7 @@
       "title": "",
       "description": "Use after free in Frames in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:17.780",
-      "updated": "2026-11-12T17:17:38.390",
+      "updated": "2026-11-13T05:18:33.127",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44640,7 +45083,7 @@
       "title": "",
       "description": "Use after free in Animation in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:17.907",
-      "updated": "2026-11-12T17:17:38.600",
+      "updated": "2026-11-13T05:18:33.363",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44687,7 +45130,7 @@
       "title": "",
       "description": "Buffer overflow in Turbolev in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:18.033",
-      "updated": "2026-11-12T17:17:38.793",
+      "updated": "2026-11-13T05:18:33.597",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44734,7 +45177,7 @@
       "title": "",
       "description": "Off-by-one error in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:18.180",
-      "updated": "2026-11-12T17:17:38.987",
+      "updated": "2026-11-13T05:18:33.827",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44781,7 +45224,7 @@
       "title": "",
       "description": "Out of bounds read in Media in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:18.307",
-      "updated": "2026-11-12T17:17:39.177",
+      "updated": "2026-11-13T05:18:34.080",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44828,7 +45271,7 @@
       "title": "",
       "description": "Use after free in MediaStream in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:18.617",
-      "updated": "2026-11-12T17:17:39.357",
+      "updated": "2026-11-13T05:18:34.330",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44875,7 +45318,7 @@
       "title": "",
       "description": "Out of bounds write in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:18.760",
-      "updated": "2026-11-12T17:17:39.557",
+      "updated": "2026-11-13T05:18:34.577",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44922,7 +45365,7 @@
       "title": "",
       "description": "Use after free in CSS in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-11T23:17:19.020",
-      "updated": "2026-11-12T17:17:39.760",
+      "updated": "2026-11-13T05:18:34.800",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -44969,7 +45412,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:19.307",
-      "updated": "2026-11-12T17:17:39.940",
+      "updated": "2026-11-13T05:18:35.080",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45016,7 +45459,7 @@
       "title": "",
       "description": "Use after free in Elements in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:19.600",
-      "updated": "2026-11-12T17:17:40.133",
+      "updated": "2026-11-13T05:18:35.330",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45063,7 +45506,7 @@
       "title": "",
       "description": "Use after free in CSS in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:19.730",
-      "updated": "2026-11-12T17:17:40.330",
+      "updated": "2026-11-13T05:18:35.567",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45110,7 +45553,7 @@
       "title": "",
       "description": "Use after free in PDF in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:19.857",
-      "updated": "2026-11-12T17:17:40.523",
+      "updated": "2026-11-13T05:18:35.800",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45157,7 +45600,7 @@
       "title": "",
       "description": "Incomplete cleanup in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:20.403",
-      "updated": "2026-11-12T17:17:40.717",
+      "updated": "2026-11-13T05:18:36.620",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45204,7 +45647,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:20.830",
-      "updated": "2026-11-12T17:17:40.910",
+      "updated": "2026-11-13T05:18:36.797",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45251,7 +45694,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:21.093",
-      "updated": "2026-11-12T17:17:41.350",
+      "updated": "2026-11-13T05:18:37.220",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45298,7 +45741,7 @@
       "title": "",
       "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-11T23:17:21.220",
-      "updated": "2026-11-12T17:17:41.557",
+      "updated": "2026-11-13T05:18:37.420",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45345,7 +45788,7 @@
       "title": "",
       "description": "Integer overflow in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:21.950",
-      "updated": "2026-11-12T17:17:41.933",
+      "updated": "2026-11-13T05:18:38.207",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45392,7 +45835,7 @@
       "title": "",
       "description": "Memory corruption in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:22.107",
-      "updated": "2026-11-12T17:17:42.163",
+      "updated": "2026-11-13T05:18:38.440",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45439,7 +45882,7 @@
       "title": "",
       "description": "Use after free in Layout in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:22.267",
-      "updated": "2026-11-12T17:17:42.353",
+      "updated": "2026-11-13T05:18:38.653",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45486,7 +45929,7 @@
       "title": "",
       "description": "Use after free in BrowserTag in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:22.397",
-      "updated": "2026-11-12T17:17:42.537",
+      "updated": "2026-11-13T05:18:38.863",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45533,7 +45976,7 @@
       "title": "",
       "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:22.663",
-      "updated": "2026-11-12T17:17:42.753",
+      "updated": "2026-11-13T05:18:39.070",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -54923,7 +55366,7 @@
       "title": "",
       "description": "Incorrect reference resolution in Browser in Google Chrome on on Mac prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:20.000",
-      "updated": "2026-11-12T16:19:06.523",
+      "updated": "2026-11-13T05:18:36.063",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -54970,7 +55413,7 @@
       "title": "",
       "description": "Use after free in Compositing in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:20.273",
-      "updated": "2026-11-12T16:19:06.707",
+      "updated": "2026-11-13T05:18:36.377",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -55017,7 +55460,7 @@
       "title": "",
       "description": "Use of uninitialized variable in Skia in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:21.800",
-      "updated": "2026-11-12T16:19:06.910",
+      "updated": "2026-11-13T05:18:37.873",
       "cvss": 7.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -55064,7 +55507,7 @@
       "title": "",
       "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a remote privileged attacker to execute arbitrary code or command via crafted paquets.",
       "published": "2026-11-11T22:17:25.783",
-      "updated": "2026-11-12T19:14:29.340",
+      "updated": "2026-11-13T05:18:26.830",
       "cvss": 7.4,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "severity": "high",
@@ -56074,7 +56517,7 @@
       "title": "",
       "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets.",
       "published": "2026-11-11T22:17:26.200",
-      "updated": "2026-11-12T19:14:29.340",
+      "updated": "2026-11-13T05:18:27.217",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -73911,6 +74354,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120866",
+      "aliases": [],
+      "title": "Memory overflow / improper handling in BGP dynamic routing can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow / improper handling in BGP dynamic routing can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T08:12:50.443Z",
+      "updated": "2026-11-13T09:17:34.313",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:4.0/AV:A/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105296",
       "aliases": [],
       "title": "",
@@ -74328,6 +74818,50 @@
         "cvss": 20.0,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107412",
+      "aliases": [],
+      "title": "",
+      "description": "Multiple Memory overflow vulnerabilities can lead to unpredictable or erroneous behavior and Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:17:28.877",
+      "updated": "2026-11-13T03:17:28.877",
+      "cvss": 9.5,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 45.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 19.0,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -75013,6 +75547,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126378",
+      "aliases": [],
+      "title": "Vvveb through 1.0.8.6 Webshell Upload via Theme Installer validFile() Bypass",
+      "description": "Vvveb through 1.0.8.6 contains a file upload vulnerability in the theme installer validFile() function that uses strpos() instead of strict path matching. Attackers with admin credentials can upload a ZIP containing a PHP file whose path includes /theme.php to achieve remote code execution on nginx deployments.",
+      "published": "2026-11-13T09:36:03.184Z",
+      "updated": "2026-11-13T10:17:40.557",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "givanz Vvveb"
+      ],
+      "references": [
+        "https://github.com/givanz/Vvveb/security/advisories/GHSA-xpgr-r6c8-3hpq",
+        "https://www.vulncheck.com/advisories/vvveb-through-1.0.8.6-webshell-upload-via-theme-installer-validfile-bypass"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.8,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126253",
       "aliases": [],
       "title": "",
@@ -75054,6 +75636,182 @@
         "cvss": 18.6,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107407",
+      "aliases": [],
+      "title": "",
+      "description": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:18:49.613",
+      "updated": "2026-11-13T03:17:27.423",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107408",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:18:49.740",
+      "updated": "2026-11-13T03:17:28.447",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107409",
+      "aliases": [],
+      "title": "",
+      "description": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:18:49.863",
+      "updated": "2026-11-13T03:17:28.553",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107410",
+      "aliases": [],
+      "title": "",
+      "description": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T02:18:49.997",
+      "updated": "2026-11-13T03:17:28.653",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -93153,6 +93911,194 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-111338",
+      "aliases": [],
+      "title": "Sensitive authentication material written to a log file in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Sensitive authentication material written to a log file in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:42:17.340Z",
+      "updated": "2026-11-13T08:17:16.077",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:A/VC:H/VI:H/VA:L/SC:L/SI:L/SA:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111339",
+      "aliases": [],
+      "title": "Memory overflow in Application Firewall data decompression/inspection can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in Application Firewall data decompression/inspection can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:45:26.079Z",
+      "updated": "2026-11-13T08:17:16.220",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:A/VC:H/VI:H/VA:L/SC:L/SI:L/SA:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111335",
+      "aliases": [],
+      "title": "Improper request handling can lead to a denial-of-service / reboot-loop condition in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Improper request handling can lead to a denial-of-service / reboot-loop condition in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:35:36.768Z",
+      "updated": "2026-11-13T08:17:15.683",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-111333",
+      "aliases": [],
+      "title": "Memory overflow in an authentication request can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway",
+      "description": "Memory overflow in an authentication request can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T07:29:29.352Z",
+      "updated": "2026-11-13T08:17:15.380",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:L/SI:L/SA:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108358",
       "aliases": [
         "GHSA-3x94-m842-937c"
@@ -95528,7 +96474,7 @@
       "title": "",
       "description": "imgproxy 3.3.0 before 4.0.17 contains an out-of-bounds heap read and write in the ICO loader's BMP header reconstruction (vips_foreign_load_ico_header in vips/icoload.c) when an ICO entry declares a tiny data size, causing unvalidated header fields to be read and written past the allocated buffer. Unauthenticated remote attackers can supply a crafted ICO image to corrupt adjacent heap chunk metadata, triggering a glibc abort that crashes the worker.",
       "published": "2026-11-08T02:16:57.147",
-      "updated": "2026-11-12T21:30:23.870",
+      "updated": "2026-11-13T04:17:38.870",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -95537,7 +96483,8 @@
       "vendor_products": [],
       "references": [
         "https://github.com/imgproxy/imgproxy/security/advisories/GHSA-494m-4556-wf5p",
-        "https://www.vulncheck.com/advisories/imgproxy-before-4.0.17-out-of-bounds-write-in-ico-loader"
+        "https://www.vulncheck.com/advisories/imgproxy-before-4.0.17-out-of-bounds-write-in-ico-loader",
+        "https://github.com/imgproxy/imgproxy/security/advisories/GHSA-494m-4556-wf5p"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -95565,6 +96512,138 @@
         "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107413",
+      "aliases": [],
+      "title": "",
+      "description": "Memory overflow in SAML authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:17:28.997",
+      "updated": "2026-11-13T03:17:28.997",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107414",
+      "aliases": [],
+      "title": "",
+      "description": "Memory overflow in WebAuth authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+      "published": "2026-11-13T03:17:29.113",
+      "updated": "2026-11-13T03:17:29.113",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-107411",
+      "aliases": [],
+      "title": "",
+      "description": "Memory overflow in RTSP ALG can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+      "published": "2026-11-13T03:17:28.757",
+      "updated": "2026-11-13T03:17:28.757",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697305"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T02:57:04.527500+00:00",
+      "matched": [
+        "citrix"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 43.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -101746,7 +102825,7 @@
       "title": "",
       "description": "Improper input validation in PostgreSQL pg_restore allows a non-plain archive provider to execute arbitrary code as the operating system user running pg_restore, via a crafted archive.  Note a contrast: crafted archive data may legitimately cause arbitrary SQL to execute at the restore destination, but it does not legitimately confer arbitrary code execution in the pg_restore OS process.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:39.500",
-      "updated": "2026-11-12T22:18:26.310",
+      "updated": "2026-11-13T05:18:04.410",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -116658,9 +117737,9 @@
       "id": "GHSA-qwpw-cwrq-333j",
       "aliases": [],
       "title": "Malicious code in @ubedsockets/baileys (npm)",
-      "description": "Malicious package. `@ubedsockets/baileys` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). On connection it issues an authenticated `w:mex` newsletter FOLLOW mutation (query_id 7871414976211147) that silently subscribes every victim to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363410154606795@newsletter, 120363423295236859@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious. Detected by wormsign static analysis of the injected channel-subscription code.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6282ccd01cbcaeab639c2217d5515a4869847d8b/osv/malicious/npm/@ubedsockets/baileys/MAL-2026-18600.json))\n\n週間ダウンロード数: 約 1,059",
+      "description": "Malicious package. `@ubedsockets/baileys` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). On connection it issues an authenticated `w:mex` newsletter FOLLOW mutation (query_id 7871414976211147) that silently subscribes every victim to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363410154606795@newsletter, 120363423295236859@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious. Detected by wormsign static analysis of the injected channel-subscription code.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6282ccd01cbcaeab639c2217d5515a4869847d8b/osv/malicious/npm/@ubedsockets/baileys/MAL-2026-18600.json))\n\n週間ダウンロード数: 約 3,675",
       "published": "2026-11-04T06:32:52Z",
-      "updated": "2026-11-04T06:32:53Z",
+      "updated": "2026-11-13T06:31:37Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -119278,9 +120357,9 @@
       "id": "GHSA-47pm-q564-4v9p",
       "aliases": [],
       "title": "Malicious code in raiden-baileys (npm)",
-      "description": "Malicious package. `raiden-baileys` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). on connection it issues an authenticated `w:mex` newsletter FOLLOW mutation (query_id 7871414976211147) that silently subscribes every victim to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363407277177688@newsletter, 120363407702752541@newsletter, 120363411769951302@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/d79c40ce4b5c4ebdf5653958cfc23a1a612aef18/osv/malicious/npm/raiden-baileys/MAL-2026-19108.json))\n\n週間ダウンロード数: 約 1,172",
+      "description": "Malicious package. `raiden-baileys` is a trojanized fork of the Baileys WhatsApp library (@whiskeysockets/baileys). on connection it issues an authenticated `w:mex` newsletter FOLLOW mutation (query_id 7871414976211147) that silently subscribes every victim to attacker-controlled WhatsApp channels — hardcoded newsletter JIDs: 120363407277177688@newsletter, 120363407702752541@newsletter, 120363411769951302@newsletter. Legitimate Baileys never hardcodes a channel JID or auto-follows on connect; all published versions are malicious.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/d79c40ce4b5c4ebdf5653958cfc23a1a612aef18/osv/malicious/npm/raiden-baileys/MAL-2026-19108.json))\n\n週間ダウンロード数: 約 2,328",
       "published": "2026-11-11T06:32:35Z",
-      "updated": "2026-11-11T06:32:36Z",
+      "updated": "2026-11-13T06:32:37Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -119524,9 +120603,9 @@
       "id": "GHSA-9j97-6pqr-qvrx",
       "aliases": [],
       "title": "Malware in 0sec-cli",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,678",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 2,944",
       "published": "2026-11-11T12:09:02Z",
-      "updated": "2026-11-13T02:16:09Z",
+      "updated": "2026-11-13T05:27:35Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -120748,6 +121827,128 @@
       "first_seen": "2026-11-13T02:57:04.527500+00:00",
       "matched": [
         "pip:acustoviasr"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-n1xq1w9wh418",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting Zoom Phone Calls in China Region",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-13T01:45:37.500-08:00",
+      "updated": "2026-11-13T01:45:37.500-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/7s0ygj0dbwms"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "zoom"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-openai-01M79GYA0GA772Y6D089AH5478",
+      "aliases": [],
+      "title": "OpenAI: Sites: Publishing failing",
+      "description": "OpenAI の公式ステータスページに掲載された障害",
+      "published": "2026-11-13T03:59:08Z",
+      "updated": "2026-11-13T05:55:44Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://status.openai.com"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:openai"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-13T05:55:44Z",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "openai"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-5vqf-f5c5-7w3x",
+      "aliases": [],
+      "title": "Malicious code in @trashcore/baileys (npm)",
+      "description": "@trashcore/baileys is a fork of the Baileys WhatsApp Web library that silently subscribes the installer's own WhatsApp account to WhatsApp Channels chosen by the publisher. When the socket connects, code in lib/Socket/newsletter.js sends the WhatsApp w:mex FOLLOW query for the channel ID(s) 120363420249672073@newsletter, 120363424020283759@newsletter (stored as base64 strings), using the victim's authenticated session and without telling them. Same behaviour as the PhantomSub family (MAL-2026-17342).\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/f8bd377e5c522af8e1a7cf92b0cd17dcdba7a45f/osv/malicious/npm/@trashcore/baileys/MAL-2026-18905.json))\n\n週間ダウンロード数: 約 2,802",
+      "published": "2026-11-10T00:32:08Z",
+      "updated": "2026-11-13T06:31:37Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@trashcore/baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-5vqf-f5c5-7w3x"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "npm:@trashcore/baileys"
       ],
       "match_type": "malware",
       "tier": null,
@@ -129418,6 +130619,104 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-127073",
+      "aliases": [],
+      "title": "OpsTree BuildPiper before 2.7.0 Privilege Escalation via Additional Manifest",
+      "description": "OpsTree BuildPiper before 2.7.0 contains a privilege escalation vulnerability that allows project users to gain Kubernetes cluster-admin rights by submitting unrestricted manifests through the Additional Manifest feature. Attackers can deploy a ClusterRoleBinding binding a service account to cluster-admin, which the pipeline applies with cluster-wide credentials, granting control over all workloads and secrets.",
+      "published": "2026-11-13T09:34:27.520Z",
+      "updated": "2026-11-13T10:18:03.200",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpsTree Solutions BuildPiper"
+      ],
+      "references": [
+        "https://gist.github.com/neelkotnis/7bc715e190e5be2c2fc5be15c4035ce7",
+        "https://www.buildpiper.io/",
+        "https://www.vulncheck.com/advisories/opstree-buildpiper-before-2.7.0-privilege-escalation-via-additional-manifest"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.8,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-127080",
+      "aliases": [],
+      "title": "OpsTree BuildPiper before 2.7.0 Container Escape via Unrestricted HostPath Volumes",
+      "description": "OpsTree BuildPiper before 2.7.0 contains an improper authorization vulnerability that allows authenticated deploy users to define arbitrary Kubernetes hostPath volumes without allow-list or policy checks. Attackers can set the host path to / in the Define HostPath Volume configuration to mount the worker node root filesystem read-write, breaking container isolation and enabling node and cluster compromise.",
+      "published": "2026-11-13T09:34:21.479Z",
+      "updated": "2026-11-13T10:18:04.260",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpsTree Solutions BuildPiper"
+      ],
+      "references": [
+        "https://gist.github.com/neelkotnis/b8c1cf47f829c28086fe78d8187eb938",
+        "https://www.buildpiper.io/",
+        "https://www.vulncheck.com/advisories/opstree-buildpiper-before-2.7.0-container-escape-via-unrestricted-hostpath-volumes"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.8,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119923",
       "aliases": [],
       "title": "",
@@ -130301,6 +131600,54 @@
         "popularity": 21.0,
         "cvss": 16.4,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-128014",
+      "aliases": [],
+      "title": "FrankenPHP 1.8.0 before 1.13.2 Out-of-Bounds Write via Bundled Brotli Decoder",
+      "description": "FrankenPHP standalone static binaries 1.8.0 before 1.13.2 bundle the PHP brotli extension statically linked with Brotli 1.2.0, whose decoder contains an out-of-bounds write (CVE-2026-111497). Unauthenticated remote attackers can send crafted data to applications that pass it to brotli_uncompress_add() to crash the entire FrankenPHP process, and possibly cause memory disclosure or code execution.",
+      "published": "2026-11-13T09:34:12.011Z",
+      "updated": "2026-11-13T10:18:06.583",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "php frankenphp"
+      ],
+      "references": [
+        "https://github.com/php/frankenphp/security/advisories/GHSA-p746-jj3f-94p8",
+        "https://www.vulncheck.com/advisories/frankenphp-1.8.0-before-1.13.2-out-of-bounds-write-via-bundled-brotli-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "brotli"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -131753,7 +133100,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL coordination of anonymous RECORD type identifiers among parallel workers allows a database user to execute arbitrary code as the operating system user running the database, via causing one process to free a shared tuple descriptor while another process retains and later uses its address.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:38.043",
-      "updated": "2026-11-12T22:18:25.273",
+      "updated": "2026-11-13T05:18:03.267",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -131797,7 +133144,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL composite-value field assignment allows an object creator to execute arbitrary code as the operating system user running the database, via changing a composite type between deforming and reforming a value.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:38.193",
-      "updated": "2026-11-12T22:18:25.500",
+      "updated": "2026-11-13T05:18:03.703",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -131841,7 +133188,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via re-entering plperl and freeing a prepared query while an outer invocation is executing it.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:38.340",
-      "updated": "2026-11-12T22:18:25.700",
+      "updated": "2026-11-13T05:18:03.900",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -131885,7 +133232,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL plperl may allow an object creator to execute arbitrary code, via blessing a non-hash reference into PostgreSQL::InServer::ARRAY.  We have not confirmed or ruled out a way to control the pointer sufficiently to achieve security impact, but we are proceeding as though that is possible.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:38.647",
-      "updated": "2026-11-12T22:18:26.017",
+      "updated": "2026-11-13T05:18:04.037",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -131929,7 +133276,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in PostgreSQL tsvector_delete() allows a database user to execute arbitrary code as the operating system user running the database, via a tsvector whose lexeme data uses a nonstandard but valid ordering that requires additional alignment padding in the result.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:39.683",
-      "updated": "2026-11-12T22:18:26.450",
+      "updated": "2026-11-13T05:18:04.573",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -131973,7 +133320,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in PostgreSQL ts_rank_cd() may allow a database user to execute arbitrary code as the operating system user running the database, via an invalid tsvector containing duplicate positions.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:39.993",
-      "updated": "2026-11-12T22:18:26.750",
+      "updated": "2026-11-13T05:18:04.817",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132017,7 +133364,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via reentrant return_next() calls.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:40.313",
-      "updated": "2026-11-12T22:18:27.040",
+      "updated": "2026-11-13T05:18:06.137",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132061,7 +133408,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL plperl allows an object creator to execute arbitrary code as the operating system user running the database, via dropping the final reference to a Perl array or hash while PostgreSQL is converting that object.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:40.430",
-      "updated": "2026-11-12T22:18:27.187",
+      "updated": "2026-11-13T05:18:07.007",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132237,7 +133584,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL min/max aggregate optimization allows an object creator to execute arbitrary code as the operating system user running the database, via a user-defined aggregate whose SORTOP option causes the planner to treat the aggregate's input and result as the same type when they differ.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:41.683",
-      "updated": "2026-11-12T22:18:27.643",
+      "updated": "2026-11-13T05:18:07.127",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132281,7 +133628,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL portal setup allows an object creator to execute arbitrary code as the operating system user running the database, via running user-defined code during planning or executor startup that closes the portal currently being prepared.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:41.800",
-      "updated": "2026-11-12T22:18:27.787",
+      "updated": "2026-11-13T05:18:07.233",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132325,7 +133672,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL operator commutator and negator links allows an object creator to execute arbitrary code as the operating system user running the database, via linking operators having different result types or creating inconsistent reciprocal links.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:42.043",
-      "updated": "2026-11-12T22:18:28.063",
+      "updated": "2026-11-13T05:18:07.367",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132369,7 +133716,7 @@
       "title": "",
       "description": "Operation on a dropped index in PostgreSQL REINDEX CONCURRENTLY allows an object creator to execute arbitrary code as the operating system user running the database, via an index expression that issues DROP INDEX.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:42.167",
-      "updated": "2026-11-12T22:18:28.200",
+      "updated": "2026-11-13T05:18:07.473",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132413,7 +133760,7 @@
       "title": "",
       "description": "Integer wraparound in PostgreSQL in-memory tuple-size calculations allows a database user to execute arbitrary code as the operating system user running the database, via oversized tuple data.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:42.420",
-      "updated": "2026-11-12T22:19:07.470",
+      "updated": "2026-11-13T05:18:07.927",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132457,7 +133804,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL materialized set-returning functions allows a database user to execute arbitrary code as the operating system user running the database, via returning rows having different dynamic RECORD return types.  json_populate_recordset() is one affected function.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:42.547",
-      "updated": "2026-11-12T22:19:07.600",
+      "updated": "2026-11-13T05:18:09.417",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132501,7 +133848,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL anonymous RECORD types allows an object creator to execute arbitrary code as the operating system user running the database, via row types having dropped attributes in the same positions but with different widths or alignments.  Within major versions 17-18, minor versions before PostgreSQL 18.7 and 17.12 are affected.  Versions before PostgreSQL 17 are unaffected.",
       "published": "2026-11-12T15:17:42.660",
-      "updated": "2026-11-12T22:19:07.723",
+      "updated": "2026-11-13T05:18:09.953",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132545,7 +133892,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL trigger functions allows an object creator to execute arbitrary code as the operating system user running the database, via a cursor over a transition table.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:42.790",
-      "updated": "2026-11-12T22:19:07.830",
+      "updated": "2026-11-13T05:18:10.083",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132589,7 +133936,7 @@
       "title": "",
       "description": "Type confusion from incomplete PostgreSQL type-cache invalidation allows an object creator to execute arbitrary code as the operating system user running the database, via a composite type change while its cache entry is being populated.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
       "published": "2026-11-12T15:17:42.930",
-      "updated": "2026-11-12T22:19:07.937",
+      "updated": "2026-11-13T05:18:10.210",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132765,7 +134112,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL plpgsql record-field assignment allows an object creator to execute arbitrary code as the operating system user running the database, via a reentrant domain CHECK that changes a RECORD variable's row type while a value is being cast.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.817",
-      "updated": "2026-11-12T22:19:08.040",
+      "updated": "2026-11-13T05:18:10.340",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132809,7 +134156,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL SQL-language functions allows an object creator to execute arbitrary code as the operating system user running the database, via an output parameter of type \"any\".  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:51.127",
-      "updated": "2026-11-12T22:19:21.947",
+      "updated": "2026-11-13T05:18:39.447",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -132853,7 +134200,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL allows an object creator to execute arbitrary code as the operating system user running the database, via ALTER ... SET DATA TYPE primarily.  Other DDL attack routes exist, such as \"ALTER TABLE ... ADD COLUMN; ROLLBACK; ALTER TABLE ... ADD COLUMN\".  The system had inadequate tracking of typed values, and values were not self-identifying.  Stale values could appear in data dictionary entries, PL/pgSQL variables, and many other parts of the system.  PostgreSQL Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:51.597",
-      "updated": "2026-11-12T22:19:23.417",
+      "updated": "2026-11-13T05:18:53.517",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -137597,6 +138944,63 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-128242",
+      "aliases": [],
+      "title": "actix-http before 3.20.1 and actix-web before 4.18.2 Decompression Bomb DoS via encoding::Decoder",
+      "description": "actix-http before 3.20.1 and actix-web before 4.18.2 contain an unbounded decompression vulnerability in encoding::Decoder that lets remote attackers exhaust memory and CPU via compressed bodies. Attackers can send small highly compressed gzip, deflate, Brotli or zstd request bodies to Json, Form, Bytes or String extractors, or serve them to awc clients, causing denial of service.",
+      "published": "2026-11-13T09:33:45.553Z",
+      "updated": "2026-11-13T10:18:12.180",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "actix actix-http",
+        "actix actix-web"
+      ],
+      "references": [
+        "https://github.com/actix/actix-web/security/advisories/GHSA-qph8-7859-gq2f",
+        "https://rustsec.org/advisories/RUSTSEC-2026-0448.html",
+        "https://github.com/actix/actix-web/commit/41b54d23ea04f66758c15de7e4ab18325cd25280",
+        "https://github.com/actix/actix-web/commit/0d0be61bd757027bfcecbc53df1b7a600f21ecd0",
+        "https://github.com/actix/actix-web/blob/actix-http-v3.20.0/actix-http/src/encoding/decoder.rs#L239-L301",
+        "https://github.com/actix/actix-web/releases/tag/actix-http-v3.20.1",
+        "https://github.com/actix/actix-web/releases/tag/actix-web-v4.18.2",
+        "https://github.com/actix/actix-web",
+        "https://www.vulncheck.com/advisories/actix-http-before-3.20.1-and-actix-web-before-4.18.2-decompression-bomb-dos-via-encoding-decoder"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "brotli",
+        "zstd"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-115915",
       "aliases": [
         "GHSA-h3rc-j82p-2c3h"
@@ -141944,6 +143348,72 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 5.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-125711",
+      "aliases": [],
+      "title": "Trustindex Review Widget Plugins < 14.3 - Editor+ Stored XSS via Business Name",
+      "description": "The Widgets for Google Reviews WordPress plugin before 14.3, WP Tripadvisor Review Widgets WordPress plugin before 14.3, Widgets for Booking.com Reviews WordPress plugin before 14.3, Widgets for Reviews & Recommendations WordPress plugin before 14.3, Widgets for Airbnb Reviews WordPress plugin before 14.3, Widgets for Yelp Reviews WordPress plugin before 14.3, Widgets for Amazon Reviews WordPress plugin before 14.3, Widgets for Thumbtack Reviews WordPress plugin before 14.3, Widgets for Ebay Reviews WordPress plugin before 14.3, Widgets for Zillow Reviews WordPress plugin before 14.3, Widgets for Capterra Reviews WordPress plugin before 14.3, Widgets for Expedia Reviews WordPress plugin before 14.3, Widgets for Opentable Reviews WordPress plugin before 14.3, Widgets for WordPress Reviews WordPress plugin before 14.3, Widgets for Hotels.com Reviews WordPress plugin before 14.3, Review Widgets for Szallas.hu WordPress plugin before 14.3, Widgets for AliExpress Reviews WordPress plugin before 14.3, Widgets for Árukereső Reviews WordPress plugin before 14.3, Widgets for Foursquare Reviews WordPress plugin before 14.3, Widgets for Alibaba Reviews WordPress plugin before 14.3, Widgets for SourceForge Reviews WordPress plugin before 14.3 do not sanitise and escape the connected business details before outputting them in their review widgets, which could allow users with the Editor role and above to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in a multisite setup).",
+      "published": "2026-11-13T06:00:09.524Z",
+      "updated": "2026-11-13T06:16:54.143",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown Widgets for Google Reviews",
+        "Unknown WP Tripadvisor Review Widgets",
+        "Unknown Widgets for Booking.com Reviews",
+        "Unknown Widgets for Reviews & Recommendations",
+        "Unknown Widgets for Airbnb Reviews",
+        "Unknown Widgets for Yelp Reviews",
+        "Unknown Widgets for Amazon Reviews",
+        "Unknown Widgets for Thumbtack Reviews",
+        "Unknown Widgets for Ebay Reviews",
+        "Unknown Widgets for Zillow Reviews",
+        "Unknown Widgets for Capterra Reviews",
+        "Unknown Widgets for Expedia Reviews",
+        "Unknown Widgets for Opentable Reviews",
+        "Unknown Widgets for WordPress Reviews",
+        "Unknown Widgets for Hotels.com Reviews",
+        "Unknown Review Widgets for Szallas.hu",
+        "Unknown Widgets for AliExpress Reviews",
+        "Unknown Widgets for Árukereső Reviews",
+        "Unknown Widgets for Foursquare Reviews",
+        "Unknown Widgets for Alibaba Reviews",
+        "Unknown Widgets for SourceForge Reviews"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/87cbeff9-277e-48ea-b61a-53e1e2aaeed2/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -148622,7 +150092,7 @@
       "title": "",
       "description": "SQL injection in PostgreSQL extension-script substitutions allows an attacker with database-level CREATE privilege to execute arbitrary code as the bootstrap superuser, via a schema or owner name containing newlines or other special substrings.  This is similar to CVE-2023-39417, but it requires a non-bundled extension with a vulnerable script pattern.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:44.073",
-      "updated": "2026-11-12T22:19:08.277",
+      "updated": "2026-11-13T05:18:10.500",
       "cvss": 7.2,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -148666,7 +150136,7 @@
       "title": "",
       "description": "Uncontrolled search path element in PostgreSQL CREATE EXTENSION allows an attacker with database-level CREATE privilege to execute arbitrary code as the bootstrap superuser, via ALTER SCHEMA ... RENAME or CREATE EXTENSION ... SCHEMA \"$user\".  ALTER EXTENSION was also affected.  A trusted-extension script located the wrong object and executed arbitrary SQL of the attacker's choice.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:51.793",
-      "updated": "2026-11-12T22:19:23.543",
+      "updated": "2026-11-13T05:18:53.663",
       "cvss": 7.2,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -149257,6 +150727,55 @@
         "popularity": 21.0,
         "cvss": 12.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-127077",
+      "aliases": [],
+      "title": "OpsTree BuildPiper before 2.7.0 Authorization Bypass via Environment Creation API",
+      "description": "OpsTree BuildPiper before 2.7.0 contains an authorization bypass vulnerability that allows authenticated users to create environments on unassigned Kubernetes clusters by tampering with cluster_id and namespaces values. Attackers can modify requests to POST /api/v1/project/{project_id}/env/ to target another project's cluster, then trigger builds and deployments into it, bypassing project isolation.",
+      "published": "2026-11-13T09:34:24.783Z",
+      "updated": "2026-11-13T10:18:03.820",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpsTree Solutions BuildPiper"
+      ],
+      "references": [
+        "https://gist.github.com/neelkotnis/e6ba937a2ea3f06fc0a79bd6193e4574",
+        "https://www.buildpiper.io/",
+        "https://www.vulncheck.com/advisories/opstree-buildpiper-before-2.7.0-authorization-bypass-via-environment-creation-api"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 33.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -150481,6 +152000,55 @@
         "cvss": 17.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126397",
+      "aliases": [],
+      "title": "vLLM 0.10.1 before 0.31.0 Cohere2 Vision DoS via max_patches",
+      "description": "vLLM from 0.10.1 before 0.31.0 forwards a request-controlled mm_processor_kwargs.max_patches value to the Hugging Face processor for Cohere2 Vision models without a server-side upper bound, causing quadratic CPU work during multimodal preprocessing. Remote clients can send small image chat-completion requests with large, varying max_patches values to bypass the LRU cache, exhaust preprocessing workers, and deny service to other clients.",
+      "published": "2026-11-13T09:35:50.274Z",
+      "updated": "2026-11-13T10:17:44.050",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-9g3c-x747-c6wr",
+        "https://github.com/vllm-project/vllm/commit/f6326f53bda46898a331c2d24500332c285d9a2b",
+        "https://www.vulncheck.com/advisories/vllm-0.10.1-before-0.31.0-cohere2-vision-dos-via-max-patches"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 32.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -152181,7 +153749,7 @@
       "title": "",
       "description": "Improper protection of alternate path in PostgreSQL security-restricted operations allows an object creator to execute arbitrary SQL as the operation's caller, via a domain, enum, or range type created in pg_temp.  The victim session must later run a query containing an unqualified type name, e.g. \"SELECT '1'::bigint\"; autovacuum and other common security-restricted operation users do not do so, so they are unaffected.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:39.837",
-      "updated": "2026-11-12T22:18:26.593",
+      "updated": "2026-11-13T05:18:04.710",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -152224,7 +153792,7 @@
       "title": "",
       "description": "SQL injection in PostgreSQL pg_dump allows an object creator to execute arbitrary SQL as the user restoring the dump, via an inherited column having a child-local not-null constraint whose name requires quoting.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
       "published": "2026-11-12T15:17:40.147",
-      "updated": "2026-11-12T22:18:26.893",
+      "updated": "2026-11-13T05:18:04.923",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -153829,6 +155397,54 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 11.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126398",
+      "aliases": [],
+      "title": "vLLM 0.28.0 before 0.30.0 Denial of Service via Prompt Embeds on XD-RoPE Models",
+      "description": "vLLM from 0.28.0 before 0.30.0 contains a reachable assertion vulnerability in GPUModelRunner._init_xdrope_positions that allows remote attackers to crash the engine by submitting embeddings-only requests. Attackers can send a /v1/completions request containing only prompt_embeds to XD-RoPE models with --enable-prompt-embeds, terminating the EngineCore and API server for all clients.",
+      "published": "2026-11-13T09:35:49.601Z",
+      "updated": "2026-11-13T10:17:44.217",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-5q78-j82c-2vr2",
+        "https://www.vulncheck.com/advisories/vllm-0.28.0-before-0.30.0-denial-of-service-via-prompt-embeds-on-xd-rope-models"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 31.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 16.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -156014,6 +157630,53 @@
         "cvss": 11.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126285",
+      "aliases": [],
+      "title": "NocoDB before 2026.08.0 SQL Injection via Legacy where Query Filter",
+      "description": "NocoDB before 2026.08.0 contains an sql injection vulnerability that allows authenticated users with read access to run arbitrary read queries via the legacy where parameter on PostgreSQL. Attackers, including Viewer-role users, can inject single quotes into filter values concatenated by CustomKnex.ts to read other tables, schemas, view-filtered rows, and hidden columns.",
+      "published": "2026-11-13T09:36:35.854Z",
+      "updated": "2026-11-13T10:17:32.140",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nocodb nocodb"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-f2jp-xg6f-hjf6",
+        "https://www.vulncheck.com/advisories/nocodb-before-2026.08.0-sql-injection-via-legacy-where-query-filter"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.6
       },
       "ai_analysis": ""
     },
@@ -159999,6 +161662,150 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126394",
+      "aliases": [],
+      "title": "vLLM 0.30.0 before 0.31.0 Resource Exhaustion via OpenPangu Video Backend num_frames",
+      "description": "vLLM 0.30.0 before 0.31.0 contains a resource exhaustion vulnerability in OpenCVDynamicOpenPanguVideoBackend, which uses request-controlled num_frames without an effective ceiling. Unauthenticated attackers can send /v1/chat/completions or /tokenize requests selecting the openpangu video_backend with a huge num_frames, forcing np.linspace allocations and CPU work that OOM-kill the API server.",
+      "published": "2026-11-13T09:35:52.305Z",
+      "updated": "2026-11-13T10:17:43.523",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-894j-wg8m-63h8",
+        "https://www.vulncheck.com/advisories/vllm-0.30.0-before-0.31.0-resource-exhaustion-via-openpangu-video-backend-num-frames"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 28.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126395",
+      "aliases": [],
+      "title": "vLLM 0.14.0rc1 before 0.31.0 Heap Address Disclosure via sanitize_message()",
+      "description": "vLLM from 0.14.0rc1 before 0.31.0 contains an information disclosure vulnerability in sanitize_message() whose lowercase-only regex fails to scrub uppercase PIL image addresses. Unauthenticated attackers can send a crafted PNG to endpoints such as /tokenize, triggering HF-processor errors that leak live server heap addresses useful for ASLR bypass.",
+      "published": "2026-11-13T09:35:51.636Z",
+      "updated": "2026-11-13T10:17:43.707",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-m9fg-w9qh-67pc",
+        "https://www.vulncheck.com/advisories/vllm-0.14-0rc1-before-0.31.0-heap-address-disclosure-via-sanitize-message"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 28.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126396",
+      "aliases": [],
+      "title": "vLLM from 0.24.0 before 0.31.0 Resource Exhaustion via MiniMax M3 min_pixels",
+      "description": "vLLM from 0.24.0 before 0.31.0 contains a resource exhaustion vulnerability in the MiniMax M3 VL video processor, which accepts request-level min_pixels without range or min_pixels <= max_pixels validation. Its video-wide pixel budget is enforced only when max_long_side_pixel is set, and that value defaults to None. API clients can supply a large min_pixels via mm_processor_kwargs to enlarge every decoded frame, causing excessive CPU and host-memory consumption that may disrupt workers or the service.",
+      "published": "2026-11-13T09:35:50.950Z",
+      "updated": "2026-11-13T10:17:43.877",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-w4cg-mhc7-mgw3",
+        "https://www.vulncheck.com/advisories/vllm-from-0.24.0-before-0.31.0-resource-exhaustion-via-minimax-m3-min-pixels"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 28.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-125201",
       "aliases": [],
       "title": "",
@@ -160494,7 +162301,7 @@
       "title": "",
       "description": "Untrusted search path in PostgreSQL vacuumdb allows a database owner to execute arbitrary SQL as the database user running vacuumdb, via shadowing operators used in the --missing-stats-only catalog query.  The pg_upgrade documentation recommends an affected vacuumdb invocation.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
       "published": "2026-11-12T15:17:39.347",
-      "updated": "2026-11-12T22:18:26.163",
+      "updated": "2026-11-13T05:18:04.153",
       "cvss": 7.2,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -161342,6 +163149,56 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-128241",
+      "aliases": [],
+      "title": "libexpat xmlwf through 2.10.0 Symlink Following via -d Output Directory",
+      "description": "The xmlwf tool in libexpat through 2.10.0 contains a symlink following vulnerability because -d output mode opens files with fopen(\"wb\"), which follows symbolic links. Local attackers with write access to the output directory can plant a symlink at the expected output name to truncate or overwrite files writable by the xmlwf user.",
+      "published": "2026-11-13T09:33:46.216Z",
+      "updated": "2026-11-13T10:18:12.137",
+      "cvss": 4.1,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat project libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1502",
+        "https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/xmlwf/xmlwf.c#L1272-L1275",
+        "https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/xmlwf/xmlwf.c#L1338-L1347",
+        "https://github.com/libexpat/libexpat",
+        "https://www.vulncheck.com/advisories/libexpat-xmlwf-through-2.10.0-symlink-following-via-d-output-directory"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 8.2
       },
       "ai_analysis": ""
     },
@@ -166462,6 +168319,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126399",
+      "aliases": [],
+      "title": "vLLM 0.19.0 before 0.31.0 Resource Exhaustion via Request-Level num_frames",
+      "description": "vLLM from 0.19.0 before 0.31.0 contains a resource exhaustion vulnerability that allows inference clients to bypass the server frame limit by setting media_io_kwargs.video.num_frames in chat completion requests. Attackers can supply num_frames=-1 or a large value with many base64 JPEG frames, forcing VideoMediaIO to decode all frames and np.stack them, causing memory exhaustion.",
+      "published": "2026-11-13T09:35:48.994Z",
+      "updated": "2026-11-13T10:17:44.380",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-vxqj-p4gw-9h4c",
+        "https://www.vulncheck.com/advisories/vllm-0.19.0-before-0.31.0-resource-exhaustion-via-request-level-num-frames"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 24.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-50000",
       "aliases": [],
       "title": "",
@@ -168035,6 +169939,53 @@
         "popularity": 21.0,
         "cvss": 2.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126477",
+      "aliases": [],
+      "title": "OpenEMR before 8.5.0 Stored XSS via Eye Exam Defaults in eye_base.php",
+      "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in the Eye Exam (eye_mag) module that allows administrators to inject JavaScript through unencoded Eye_defaults list option titles. Attackers can store a crafted title via edit_list.php that breaks out of a jQuery string in eye_base.php, executing script in any authenticated user's session when they click Defaults.",
+      "published": "2026-11-13T09:34:55.801Z",
+      "updated": "2026-11-13T10:17:57.353",
+      "cvss": 4.6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "openemr openemr"
+      ],
+      "references": [
+        "https://github.com/openemr/openemr/security/advisories/GHSA-gr77-7xgh-5gwf",
+        "https://www.vulncheck.com/advisories/openemr-before-8.5.0-stored-xss-via-eye-exam-defaults-in-eye-base-php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T10:59:35.730917+00:00",
+      "matched": [
+        "jquery"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.2
       },
       "ai_analysis": ""
     },
