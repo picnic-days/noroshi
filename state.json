@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-13T10:59:35.730917+00:00",
+  "last_run": "2026-11-13T18:31:26.614755+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -88,7 +88,9 @@
     "CVE-2026-126859": "2026-11-12T22:44:16.366619+00:00",
     "OUT-anthropic-nn11wk485zfn": "2026-11-13T10:59:35.730917+00:00",
     "CVE-2026-119077": "2026-11-13T10:59:35.730917+00:00",
-    "CVE-2026-125055": "2026-11-13T10:59:35.730917+00:00"
+    "CVE-2026-125055": "2026-11-13T10:59:35.730917+00:00",
+    "CVE-2026-126872": "2026-11-13T18:31:26.614755+00:00",
+    "CVE-2026-126885": "2026-11-13T18:31:26.614755+00:00"
   },
   "ai_key_checked": "2026-11-13",
   "open_outages": {
@@ -97,12 +99,6 @@
       "provider": "anthropic",
       "since": "2026-11-12T22:44:16.366619+00:00",
       "url": "https://stspg.io/m0rbx38nmy1c"
-    },
-    "OUT-anthropic-nn11wk485zfn": {
-      "title": "Anthropic Claude: Elevated errors on claude.ai, Claude Code, and platform.claude.com",
-      "provider": "anthropic",
-      "since": "2026-11-13T10:59:35.730917+00:00",
-      "url": "https://stspg.io/6kqyd0c5b1gr"
     }
   },
   "eol_notified": {
@@ -146,7 +142,7 @@
   },
   "digest_sent": "2026-11-13",
   "digest_since": "2026-11-13T02:57:04.527500+00:00",
-  "repo_adv_checked": "2026-11-13T10:59:35.730917+00:00",
+  "repo_adv_checked": "2026-11-13T18:31:26.614755+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -748,7 +744,8 @@
       "https://www.anthropic.com/claude-fable-and-mythos-5-2",
       "https://www.anthropic.com/research/claude-electronics-design",
       "https://www.anthropic.com/news/roadshow-launch",
-      "https://www.anthropic.com/legal/self-hosted-managed-agents-license"
+      "https://www.anthropic.com/legal/self-hosted-managed-agents-license",
+      "https://www.anthropic.com/research/building-strong-safety-evaluations"
     ]
   }
 }
