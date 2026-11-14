@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T23:54:02.959044+00:00",
+  "generated_at": "2026-11-14T06:24:18.260875+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -10815,6 +10815,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126881",
+      "aliases": [],
+      "title": "",
+      "description": "Improper initialization in Media in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-11T23:17:17.137",
+      "updated": "2026-11-14T05:18:39.903",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
+        "https://issues.chromium.org/issues/575038730"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00443,
+      "epss_percentile": 0.39017,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T01:01:55.044889+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118315",
       "aliases": [],
       "title": "",
@@ -14661,55 +14710,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126881",
-      "aliases": [],
-      "title": "",
-      "description": "Improper initialization in Media in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-11T23:17:17.137",
-      "updated": "2026-11-12T19:49:24.910",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [
-        "google:chrome"
-      ],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html",
-        "https://issues.chromium.org/issues/575038730"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00291,
-      "epss_percentile": 0.21995,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T01:01:55.044889+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126863",
       "aliases": [],
       "title": "",
@@ -15793,7 +15793,7 @@
       "title": "",
       "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE.\n\nThis issue affects Apache HTTP Server: from 2.4.55 through 2.4.70.\nAffected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
       "published": "2026-11-11T15:17:15.900",
-      "updated": "2026-11-13T18:44:55.113",
+      "updated": "2026-11-14T05:18:29.103",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -37065,7 +37065,7 @@
       "title": "UnrealIRCd Improper Neutralization of Delimiters Vulnerability",
       "description": "The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 \"label\" message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
       "published": "2026-11-08T03:16:33.410",
-      "updated": "2026-11-13T20:17:50.767",
+      "updated": "2026-11-14T05:18:24.417",
       "cvss": 8.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
       "severity": "high",
@@ -45736,7 +45736,7 @@
       "title": "",
       "description": "Use after free in MediaStream in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-11T23:17:13.200",
-      "updated": "2026-11-12T17:17:34.853",
+      "updated": "2026-11-14T05:18:39.700",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -45752,8 +45752,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00212,
-      "epss_percentile": 0.11628,
+      "epss": 0.00223,
+      "epss_percentile": 0.13059,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -56788,7 +56788,7 @@
       "title": "Check Point Multiple Products Incorrect Permission Assignment for Critical Resource Vulnerability",
       "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
       "published": "2026-11-12T14:17:24.233",
-      "updated": "2026-11-13T20:18:14.257",
+      "updated": "2026-11-14T05:18:31.413",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -78986,7 +78986,7 @@
       "title": "",
       "description": "V programming language standard library net.http through version 0.5.2 prior to commit 4077484 contains a TLS certificate validation bypass vulnerability that allows on-path attackers to intercept HTTPS traffic by exploiting the default false value of SSLConnectConfig.validate and FetchConfig.validate, which completes TLS handshakes without verifying certificates in both the mbedtls and OpenSSL backends. Attackers can present an expired, self-signed, wrong-hostname, or untrusted-root certificate to successfully complete the handshake via http.get, http.post, or http.fetch, enabling interception or modification of HTTPS traffic unless validate: true is explicitly configured.",
       "published": "2026-11-10T14:17:36.290",
-      "updated": "2026-11-12T20:57:59.173",
+      "updated": "2026-11-14T03:17:31.087",
       "cvss": 9.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -79004,7 +79004,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00229,
-      "epss_percentile": 0.1382,
+      "epss_percentile": 0.13806,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -101408,7 +101408,7 @@
       "title": "",
       "description": "rConfig Core 8.0.0 before 8.2.19 and rConfig Pro before 8.4.1 contain a deserialization of untrusted data vulnerability that allows unauthenticated network attackers to execute arbitrary code by pushing a crafted serialized job onto the Redis-backed Laravel Horizon queue, which runs without authentication in affected deployments. Laravel's CallQueuedHandler unserializes the job without class restrictions, allowing attackers to instantiate the existing App\\\\Jobs\\\\TaskDownloadRun class and invoke an attacker-controlled Artisan command. Attackers can leverage the bundled laravel/tinker package to execute arbitrary PHP and operating system commands as the queue worker's user, write a persistent web shell into the web-served storage/app/public directory, and read database credentials, stored device credentials, and API tokens. Where Redis is not directly reachable, authenticated attackers can deliver the payload through the application by configuring a device target that points at the rConfig server's loopback address.",
       "published": "2026-11-09T13:17:07.503",
-      "updated": "2026-11-12T21:36:06.743",
+      "updated": "2026-11-14T02:16:48.033",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -101426,7 +101426,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00621,
-      "epss_percentile": 0.50277,
+      "epss_percentile": 0.50338,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -102750,7 +102750,7 @@
       "title": "",
       "description": "A improper certificate validation vulnerability in Fortinet FortiOS 7.6.0 through 7.6.4, FortiOS 7.4.0 through 7.4.9, FortiOS 7.2.0 through 7.2.13, FortiOS 7.0 all versions, FortiOS 6.4 all versions may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the SSLVPN web portal and the backend destination website.",
       "published": "2026-11-11T22:17:11.250",
-      "updated": "2026-11-13T19:19:10.053",
+      "updated": "2026-11-14T05:18:31.270",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -103575,7 +103575,7 @@
       "title": "",
       "description": "Untrusted data inclusion in PostgreSQL pg_dump tar-format restore.sql allows a compromised origin server to execute arbitrary code as the client operating system account running psql, via the predictable restriction key in restore.sql.  This is a gap in the fix for CVE-2025-8714.  restore.sql is undocumented.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:41.557",
-      "updated": "2026-11-13T21:17:37.740",
+      "updated": "2026-11-14T05:18:28.207",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -103621,7 +103621,7 @@
       "title": "",
       "description": "Missing authorization in PostgreSQL logical replication allows a compromised publisher to execute arbitrary code as the operating system user running the superuser-owned subscription, via naming a system catalog as a replication target.  Only subscriptions owned by a superuser are vulnerable.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.060",
-      "updated": "2026-11-13T20:17:53.947",
+      "updated": "2026-11-14T05:18:30.250",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -109796,6 +109796,168 @@
       "first_seen": "2026-11-10T18:41:19.148184+00:00",
       "matched": [
         "windows"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126299",
+      "aliases": [
+        "GHSA-89p3-fcch-88ph"
+      ],
+      "title": "NLTK: Quadratic-time CPU denial of service in CCG lexicon parser (fromstring) on wide bracket bodies and operator chains",
+      "description": "## Summary\n\nThe public CCG lexicon parser `nltk.ccg.lexicon.fromstring` parses caller-influenced lexicon text with two pure-Python loops whose cost is quadratic in the input width. A service that parses an untrusted CCG lexicon string can be driven into tens of seconds of single-threaded CPU by a few-megabyte input, starving the request worker. No authentication or user interaction is required.\n\n## Root Cause\n\n`matchBrackets` consumes a bracket body one character at a time with `inside = inside + rest[0]; rest = rest[1:]`. The `rest = rest[1:]` tail re-slice copies the entire remaining string on every iteration, so a flat bracket body costs O(n^2). `augParseCategory` drives a `while rest != \"\":` operator loop that re-copies the regular-expression match tail (`rest = app[3]`) once per operator, which is also O(n^2) over a long operator chain. The parser carries a recursion-depth guard (`MAX_PARSE_DEPTH = 500`) that raises on deeply nested categories, but both quadratic loops run on flat input whose nesting depth stays at zero, so that guard never fires. No bound is applied to line length or category width before the text reaches these loops.\n\n```text\nAffected functions:\n- nltk.ccg.lexicon.matchBrackets       (nltk/ccg/lexicon.py:149-172; tail re-slice at line 168)\n- nltk.ccg.lexicon.augParseCategory    (nltk/ccg/lexicon.py:223-268; APP_RE tail re-copy at line 250)\nPublic entry point: nltk.ccg.lexicon.fromstring (nltk/ccg/lexicon.py:271), also re-exported as nltk.ccg.chart.fromstring.\n```\n\n## Impact\n\nAn attacker who can influence the CCG lexicon string parsed by an application causes sustained single-threaded CPU consumption (availability loss). The vulnerable path is network-reachable (AV:N) and needs no privileges or user interaction (PR:N, UI:N). Because the cost grows quadratically with attacker-chosen input size, a few-megabyte payload costs tens of seconds per core, and a small number of concurrent requests can exhaust worker threads. Confidentiality and integrity are not affected. The NLTK regular-expression wall-clock timeout wraps regex matching only; it does not wrap these pure-Python slicing loops, so it provides no protection here.\n\n## Proof of Concept\n\n```text\nEnvironment: nltk 3.10.3, regex 2026.9.10, CPython. Run the parser on the shipped public API.\n```\n\n```python\nimport nltk.ccg.lexicon as L\n\n# Vector A: flat bracket body -> matchBrackets tail re-slice is O(n^2)\nn = 400000\nlex_a = \":- S\\nw => (\" + \"a\" * n + \")\\n\"\n\n# Vector B: long operator chain -> augParseCategory tail re-copy is O(n^2)\nm = 32000\nlex_b = \":- a\\nw => \" + \"a\" + \"/a\" * m + \"\\n\"\n\nimport time\nfor name, s in ((\"A\", lex_a), (\"B\", lex_b)):\n    t = time.perf_counter()\n    try:\n        L.fromstring(s)\n    except Exception:\n        pass  # downstream parse error is irrelevant; the CPU is already burned\n    print(name, round(time.perf_counter() - t, 3), \"s\")\n```\n\n```text\nNegative control (\":- a\\nw => (a/a)\"):   ~0.00007 s\nVector A (matchBrackets, flat body):     n=50k 0.078s | 100k 0.260s | 200k 1.046s | 400k 2.083s   (~4x per doubling => O(n^2))\nVector B (augParseCategory, operators):  m=4k 0.078s | 8k 0.215s | 16k 0.485s | 32k 1.329s        (super-linear)\n```\n\n## Attack Chain\n\n1. **Exposure:** An application calls the public `nltk.ccg.lexicon.fromstring(lex_str)` (also reachable as `nltk.ccg.chart.fromstring`) on lexicon text the attacker can influence.\n2. **Control:** The attacker fully controls the body width (a run of characters inside one bracket) and the operator-chain length; neither is capped by `fromstring`.\n3. **Path:** `fromstring` splits input into lines and routes each category through `nextCategory`, which dispatches to `matchBrackets` (Vector A) or into the `augParseCategory` operator loop (Vector B).\n4. **Guard:** The only relevant guard is the `MAX_PARSE_DEPTH = 500` recursion-depth check. On flat input the recursion depth is zero, so `if _depth > max_depth` is never reached; the width loops run unbounded.\n5. **Primitive:** The tail re-slice `rest = rest[1:]` and tail re-copy `rest = app[3]` execute a quadratic number of string copies.\n6. **Result:** Sustained single-core CPU exhaustion; a few-megabyte lexicon costs tens of seconds and scales quadratically, blocking the parsing thread.\n\n## Bypass Evidence\n\nThe one protection present on this path is the recursion-depth guard `MAX_PARSE_DEPTH = 500` (nltk/ccg/lexicon.py:22), checked at lexicon.py:153 and lexicon.py:228. It defends only against nesting depth and raises a bounded `ValueError` for deeply nested categories. The quadratic payloads here are flat: a single bracket body or a single operator run has nesting depth zero to one, so the depth check provably never fires while the width loops consume quadratic time. This was confirmed by running the shipped parser: the payloads complete without a `ValueError` or a regex `TimeoutError` while consuming quadratic CPU (Vector A shows a clean 4x cost per input doubling). A repository search finds no line-length or category-width cap anywhere on the `fromstring` path; the regex source-length limit bounds regex patterns, not lexicon text. The strongest disproof attempt (that CPython in-place string concatenation makes Vector A linear) fails because `rest = rest[1:]` is an unconditional copy of the remaining input that the concatenation fast path cannot elide, and the measured 4x-per-doubling ratio confirms the quadratic empirically.\n\n## Affected Versions\n\n- `Ecosystem: PyPI (pip)`\n- `Package: nltk`\n- `Confirmed affected range: <= 3.10.3`\n- `Latest release checked: 3.10.3 (PyPI, https://pypi.org/pypi/nltk/json)`\n- `Fix status: 3.10.4`\n\nThe width-slicing loops ship in every release carrying the CCG lexicon parser and are present in the current latest published release, 3.10.3. The lower boundary was not bisected, so the introducing version is left open; the behavior long predates the recent regular-expression and recursion-depth hardening.\n\n## Suggested Fix\n\nScan the bracket body and the operator chain with an index cursor into the original string (or a `collections.deque`) instead of repeatedly re-slicing or re-copying the tail, so each character is handled in constant amortized time. As defense in depth, impose an explicit bound on lexicon line length and category width at the `fromstring` chokepoint and raise a bounded error when it is exceeded, mirroring the existing depth guard. No configuration-only mitigation fully removes the exposure for a service that must parse untrusted lexicons; until a fix ships, callers should cap the size of accepted lexicon input and parse it under a CPU or time budget in an isolated worker.\n\nReported by zx (GitHub: @manus-pi).\n\n\n## Fix status\n\nPR: #3753 \"[Do not merge yet] Fix GHSA-8mgp-746c-j5xp: URL-scheme bypass of pathsec.validate_path\", open; head da55cab0e at the time of this note (a develop merge on top of 238f81500, the head on which the verdicts below were measured).\n\nFix commit: cf12a5e6a (nltk/ccg/lexicon.py: matchBrackets, nextCategory and augParseCategory thread a cursor instead of re-slicing the tail; the trailing capture group is dropped; MAX_PARSE_LEN=100000 caps the input).\n\nProbe: nltk/test/unit/security_probes/ghsa_89p3_fcch_88ph.py (on the PR). Verdict on the PR head: FIXED (scaling 4.4x over a 4x input; an over-cap chain is rejected by MAX_PARSE_LEN). The advisory PoC re-run on develop 2fa3f48fe: vector A (bracket body, 100k vs 400k) 15.8x and vector B (operator chain, 8k vs 32k) 11.3x over a 4x input, so develop is still VULNERABLE.",
+      "published": "2026-11-14T00:08:50Z",
+      "updated": "2026-11-14T00:08:50Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:nltk"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-89p3-fcch-88ph",
+        "https://github.com/nltk/nltk/security/advisories/GHSA-89p3-fcch-88ph",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126299",
+        "https://github.com/nltk/nltk/pull/3944",
+        "https://github.com/nltk/nltk/commit/0bb5b947bd235b950cf2f90e893a498e16da0fe3",
+        "https://github.com/nltk/nltk/commit/cf12a5e6a"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00582,
+      "epss_percentile": 0.48336,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126298",
+      "aliases": [
+        "GHSA-r53h-rw34-8h97"
+      ],
+      "title": "NLTK: Quadratic-time CPU denial of service in Tree.chomsky_normal_form right-factor binarization via list.pop(0)",
+      "description": "## Summary\n\n`Tree.chomsky_normal_form()` binarizes a parse tree and defaults to right factoring. For a node with N children the right-factor branch repeatedly removes the first element of a working list with `list.pop(0)`, which shifts all remaining elements each time, so binarizing one wide node costs O(N^2). An application that converts an attacker-supplied treebank tree to Chomsky Normal Form can be forced into tens of seconds of single-threaded CPU by one wide flat tree. No authentication or user interaction is required.\n\n## Root Cause\n\nIn the default right-factor branch the transform executes `curNode[0:] = [nodeCopy.pop(0), newNode]` inside a loop over the N children of a node. `list.pop(0)` is O(len) because it shifts every remaining element down by one; performed N-2 times over a shrinking length-N list this sums to O(N^2). The left-factor branch instead uses `nodeCopy.pop()` (removing the last element), which is O(1) and linear overall, so the two branches differ only by this front-versus-back removal. No cap is placed on the child count of a node, and the public `Tree.fromstring` parser accepts an arbitrarily wide bracketed tree.\n\n```text\nAffected function:\n- nltk.tree.transforms.chomsky_normal_form (nltk/tree/transforms.py; right-factor sink at line 168, O(1) left control at line 179)\nPublic entry points: nltk.tree.Tree.chomsky_normal_form (nltk/tree/tree.py:455, default factor=\"right\"); nltk.tree.Tree.fromstring (nltk/tree/tree.py:592).\n```\n\n## Impact\n\nAn attacker who can influence the tree that an application normalizes to Chomsky Normal Form causes sustained single-threaded CPU consumption (availability loss). The path is network-reachable (AV:N) and needs no privileges or user interaction (PR:N, UI:N). Because the cost grows quadratically with the attacker-chosen child count, roughly 1.5 MB of treebank input costs about 14 seconds on one core and scales as N^2 above that. Confidentiality and integrity are not affected. The NLTK regular-expression wall-clock timeout wraps regex matching only and does not wrap this pure-Python list loop.\n\n## Proof of Concept\n\n```text\nEnvironment: nltk 3.10.3, CPython. Drive the public transform on a wide flat tree.\n```\n\n```python\nimport time\nfrom nltk.tree import Tree\n\nfor N in (80000, 160000, 320000):\n    s = \"(S \" + \"(A a)\" * N + \")\"\n    t = Tree.fromstring(s)\n    start = time.perf_counter()\n    t.chomsky_normal_form()          # default factor=\"right\"\n    print(\"right\", N, round(time.perf_counter() - start, 3), \"s\")\n```\n\n```text\nright (default):  N=80000 1.972s | N=160000 5.004s (2.54x) | N=320000 14.518s (2.90x)   -> super-linear\nleft  (control):  N=80000 1.399s | N=160000 2.731s (1.95x) | N=320000  5.379s (1.97x)   -> linear\n```\n\n## Attack Chain\n\n1. **Exposure:** An application parses an attacker-influenced treebank string with the public `Tree.fromstring` and normalizes it with `Tree.chomsky_normal_form()`.\n2. **Control:** The attacker controls the number of children of a node (a wide flat tree such as `(S (A a)(A a)...(A a))`); no child-count cap exists in `fromstring` or the transform.\n3. **Path:** `Tree.chomsky_normal_form` delegates to `nltk.tree.transforms.chomsky_normal_form` with the default `factor=\"right\"`.\n4. **Guard:** None. There is no width bound on the loop, and the regex match timeout does not wrap this pure-Python list operation.\n5. **Primitive:** `curNode[0:] = [nodeCopy.pop(0), newNode]` performs an O(N) front shift on each of N iterations.\n6. **Result:** O(N^2) single-core CPU exhaustion; roughly 1.5 MB of input costs about 14 seconds and scales quadratically, blocking the processing thread.\n\n## Bypass Evidence\n\nThere is no guard to bypass on this path: neither `Tree.fromstring` nor `chomsky_normal_form` caps the child count, and the regular-expression wall-clock timeout wraps only regex matching, not this list loop. The finding was confirmed by fresh timing that isolates the cause: the right-factor default and the left-factor branch build the identical bounded head strings and copy the node once, so the only differing term is `pop(0)` versus `pop()`. The measured right-versus-left divergence grows with N (right rises toward a 4x per-doubling ratio while left holds near 2x), which proves a quadratic component beyond the shared linear costs. A relevant corroboration is that the inverse transform `un_chomsky_normal_form` was already rewritten to a single linear pass to remove exactly this quadratic class (see the comment at nltk/tree/transforms.py:195-201), while the forward default path retained the `pop(0)` idiom. The strongest disproof attempt (that the head-string join dominates and is linear) fails because that join is bounded and present in both branches and therefore cannot explain the branch-dependent quadratic growth.\n\n## Affected Versions\n\n- `Ecosystem: PyPI (pip)`\n- `Package: nltk`\n- `Confirmed affected range: <= 3.10.3`\n- `Latest release checked: 3.10.3 (PyPI, https://pypi.org/pypi/nltk/json)`\n- `Fix status: 3.10.4`\n\nThe right-factor `pop(0)` idiom ships in every release carrying this transform and is present in the current latest published release, 3.10.3. The lower boundary was not bisected, so the introducing version is left open.\n\n## Suggested Fix\n\nRewrite the right-factor binarization to avoid removing from the front of a list: iterate the children with an index cursor or a `collections.deque` so each step is constant time, mirroring the linear rebuild already applied to `un_chomsky_normal_form`. As defense in depth, bound the child count accepted for normalization and raise a clear error past a configurable maximum. No configuration-only mitigation removes the exposure for a service that normalizes untrusted trees; until a fix ships, callers should cap accepted tree width and run the transform under a CPU or time budget in an isolated worker.\n\nReported by zx (GitHub: @manus-pi).\n\n\n## Fix status (2026-09-28)\n\nPR: #3909 \"Fix quadratic DoS in Tree.chomsky_normal_form right-factor binarization (GHSA-r53h-rw34-8h97)\", merged 2026-09-23, merge commit 2f53e20ce on develop.\n\nFix commits: 457ebe349 (linear front consume in chomsky_normal_form) and 677857dca (refuse a binarisation that would nest a tree beyond MAX_TREE_DEPTH). Follow-up #3917 (merge 9ba132e43, commit f0686dea6) walks Tree equality and conversion with an explicit stack so the deep-tree tests pass on Python 3.10 and 3.11.\n\nProbe: nltk/test/unit/security_probes/ghsa_r53h_rw34_8h97.py; verdict on develop 2fa3f48fe: FIXED (chomsky_normal_form scales 5.1x over a 4x input).",
+      "published": "2026-11-14T00:07:59Z",
+      "updated": "2026-11-14T00:08:00Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:nltk"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-r53h-rw34-8h97",
+        "https://github.com/nltk/nltk/security/advisories/GHSA-r53h-rw34-8h97",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126298",
+        "https://github.com/nltk/nltk/pull/3909",
+        "https://github.com/nltk/nltk/commit/457ebe349f8dd8080224f76a64aff806dd437057",
+        "https://github.com/nltk/nltk/commit/677857dcafd84e4591865d976b562a27dfde566e"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00582,
+      "epss_percentile": 0.48336,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 41.1,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 15.0,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126297",
+      "aliases": [
+        "GHSA-v8f3-6phw-6mh9"
+      ],
+      "title": "NLTK: Quadratic-time CPU denial of service in ConllCorpusReader SRL instance builder via nested span rescan",
+      "description": "## Summary\n\n`ConllCorpusReader.srl_instances()` builds semantic-role-labeling instances from a CoNLL corpus block. For a sentence block with P predicates and P span columns, the instance builder rescans every span column (and every span within it) once per predicate while searching for each predicate's head, giving O(P^2 * R) work. A single well-formed block that places the head span in the last column forces the full scan on every predicate, so an application that reads an attacker-supplied CoNLL SRL corpus can be driven into tens of seconds of single-threaded CPU. No authentication or user interaction is required.\n\n## Root Cause\n\n`_get_srl_instances` iterates over the P predicates of a block; for each predicate it scans every span list and every span within it, using an inner `break` that stops only when a span tagged `V` or `C-V` containing the predicate word is found. When the sole head span is placed in the last span column, no earlier column matches, so the `for ... else: continue` construct traverses every span of every earlier column before matching. Over P predicates each scanning up to P columns of R spans, the cost is O(P^2 * R). The block is read whole with no size cap, and the grid-consistency check enforces only uniform column count, not a bound on P, R, or total work.\n\n```text\nAffected function:\n- nltk.corpus.reader.conll.ConllCorpusReader._get_srl_instances (nltk/corpus/reader/conll.py:394-424; nested rescan at lines 405-419)\nPublic entry point: nltk.corpus.reader.conll.ConllCorpusReader.srl_instances (nltk/corpus/reader/conll.py:158-169).\n```\n\n## Impact\n\nAn attacker who can supply a CoNLL corpus that an application loads and iterates with `srl_instances()` causes sustained single-threaded CPU consumption (availability loss). The path is network-reachable through any corpus-ingestion surface (AV:N) and needs no privileges or user interaction (PR:N, UI:N). Because the cost is super-linear in attacker-chosen predicate and column counts, a roughly 1 MB crafted corpus pins a core for tens of seconds and a few megabytes reaches minutes. Confidentiality and integrity are not affected. The NLTK regular-expression wall-clock timeout wraps regex matching only and does not cover this pure-Python nested loop over the parsed grid. Exploitation requires the application to use the SRL-specific API on untrusted CoNLL data with `words`, `pos`, `tree`, and `srl` columns; a deployment that never calls `srl_instances()` is unaffected.\n\n## Proof of Concept\n\n```text\nEnvironment: nltk 3.10.3, CPython. Stage a crafted CoNLL corpus under an authorized data root and iterate srl_instances().\nCorpus construction: one blank-line-delimited block with P predicate rows and P SRL span columns, the sole \"V\" head span in the last column.\n```\n\n```python\nimport time, os, tempfile\nfrom nltk.corpus.reader.conll import ConllCorpusReader\n\ndef build_block(n):\n    # n predicates, n SRL columns; the single V head placed in the last column\n    # (columns: words pos tree srl...): emit n predicate rows and n SRL span\n    # columns, with the single \"V\" head span placed in the final column.\n    ...\n\nfor n in (40, 80, 160, 320):\n    root = tempfile.mkdtemp()\n    open(os.path.join(root, \"c.conll\"), \"w\").write(build_block(n))\n    r = ConllCorpusReader(root, [\"c.conll\"], (\"words\", \"pos\", \"tree\", \"srl\"))\n    t = time.perf_counter()\n    list(r.srl_instances())\n    print(n, round(time.perf_counter() - t, 3), \"s\")\n```\n\n```text\nNegative control (single predicate): n=40 -> 1.88 ms ; n=320 -> 4.45 ms      (flat)\nAttack (P=R=n):  n=40 -> 0.022s (10 KB) | n=80 -> 0.148s (39 KB) | n=160 -> 1.164s (156 KB) | n=320 -> 10.002s (619 KB)\n```\n\nThe attack timing rises about 8x per doubling of n while the file grows only about 4x, confirming super-linear cost driven by attacker-chosen predicate and column count; the single-predicate control stays in the millisecond range.\n\n## Attack Chain\n\n1. **Exposure:** An application loads an attacker-supplied CoNLL corpus (columns include `srl`) and iterates it with the public `ConllCorpusReader(...).srl_instances()`.\n2. **Control:** The attacker controls the predicate count P, the span-column count, and the placement of the single head span; the block is read whole with no size cap.\n3. **Path:** `srl_instances()` calls `_get_srl_instances`, which pairs each predicate against the span columns via a doubly-nested scan.\n4. **Guard:** The inner `break` on the first matching `V` or `C-V` head is defeated by placing the sole head span in the last column, so every earlier column is scanned in full. The path-containment sandbox bounds where files load, not how much work a block costs.\n5. **Primitive:** The nested rescan performs O(P^2 * R) span comparisons with no work cap or timeout.\n6. **Result:** Sustained single-core CPU exhaustion; a roughly 1 MB corpus costs tens of seconds and scales super-linearly, blocking the processing thread.\n\n## Bypass Evidence\n\nThe only short-circuit on this path is the inner `break` that fires when a predicate's `V` or `C-V` head span is found. It is defeated by construction: placing the sole head span in the last span column means no earlier column matches, so the `for ... else: continue` traverses every span of every earlier column for every predicate. This was confirmed in source (nltk/corpus/reader/conll.py:405-419) and reproduced end-to-end through the real public `srl_instances()` API, where the attack timing scales super-linearly while a single-predicate control stays flat. The path-containment sandbox is a file-location control and imposes no bound on parse cost, and the regular-expression timeout does not wrap this loop. The strongest disproof attempts (that Python `range` membership is O(1) so the loop is linear, and that the `break` fires early) both fail: the O(1) membership test is evaluated once per span, and the number of spans traversed is exactly what the last-column head placement maximizes.\n\n## Affected Versions\n\n- `Ecosystem: PyPI (pip)`\n- `Package: nltk`\n- `Confirmed affected range: <= 3.10.3`\n- `Latest release checked: 3.10.3 (PyPI, https://pypi.org/pypi/nltk/json)`\n- `Fix status: 3.10.4`\n\nThe nested rescan ships in every release carrying this reader and is present in the current latest published release, 3.10.3. The lower boundary was not bisected, so the introducing version is left open; the behavior predates the recent regular-expression hardening.\n\n## Suggested Fix\n\nReplace the per-predicate linear search over all span columns with a single pass that indexes head spans by word position (for example, build a map from word index to the owning span column once, then look up each predicate in constant time), reducing the total cost to about O(P * R). As defense in depth, bound the predicate and span counts accepted from a single block and process untrusted corpora under a CPU or time budget. No configuration-only mitigation removes the exposure for a service that must read untrusted CoNLL SRL data; until a fix ships, callers should cap accepted corpus size and isolate the parsing worker.\n\nReported by zx (GitHub: @manus-pi).\n\n\n## Fix status (2026-09-28)\n\nPR: #3753 \"[Do not merge yet] Fix GHSA-8mgp-746c-j5xp: URL-scheme bypass of pathsec.validate_path\", open; head da55cab0e at the time of this note (a develop merge on top of 238f81500, the head on which the verdicts below were measured).\n\nFix commit: cf12a5e6a \"Patch seven algorithmic-DoS and path/exec GHSA classes across all affected modules\" (ConllCorpusReader._get_srl_instances builds a one-pass wordnum to spanlist index instead of rescanning per predicate).\n\nProbe: nltk/test/unit/security_probes/ghsa_v8f3_6phw_6mh9.py (on the PR). Verdict on the PR head: FIXED (srl_instances scaled 3.9x over 4x predicates). The same probe run against develop 2fa3f48fe: VULNERABLE (45.8x over 4x predicates).",
+      "published": "2026-11-14T00:05:57Z",
+      "updated": "2026-11-14T00:05:58Z",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [
+        "pip:nltk"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-v8f3-6phw-6mh9",
+        "https://github.com/nltk/nltk/security/advisories/GHSA-v8f3-6phw-6mh9",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-126297",
+        "https://github.com/nltk/nltk/pull/3933",
+        "https://github.com/nltk/nltk/commit/7bae75fc0f7b1f057ff7d89d24c81bb5a4a0f05a",
+        "https://github.com/nltk/nltk/commit/9cacbb95d97eaac7debb30d6e7decbe74d2c635f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00582,
+      "epss_percentile": 0.48333,
+      "x_mentions": null,
+      "sources": [
+        "ghsa"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "python"
       ],
       "match_type": "keyword",
       "tier": 1,
@@ -123323,7 +123485,7 @@
       "title": "Cloudflare: Issues with 1.1.1.1 public resolver in Canada",
       "description": "Cloudflare の公式ステータスページに掲載された障害",
       "published": "2026-11-13T23:53:18.687Z",
-      "updated": "2026-11-13T23:53:18.687Z",
+      "updated": "2026-11-14T01:01:17.641Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -123345,7 +123507,7 @@
         "status:cloudflare"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-14T01:01:17.641Z",
       "first_seen": "2026-11-13T23:54:02.959044+00:00",
       "matched": [
         "cloudflare"
@@ -123403,7 +123565,7 @@
       "title": "Malware in @jelou/cli-win32-x64",
       "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,286",
       "published": "2026-11-13T22:51:02Z",
-      "updated": "2026-11-13T22:51:02Z",
+      "updated": "2026-11-14T04:51:38Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -123431,6 +123593,128 @@
       "first_seen": "2026-11-13T23:54:02.959044+00:00",
       "matched": [
         "npm:@jelou/cli-win32-x64"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-a643zcsfc71q",
+      "aliases": [],
+      "title": "Cloudflare: Increased errors for R2 and Tiered Cache",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-14T05:30:35.270Z",
+      "updated": "2026-11-14T05:30:35.270Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/a643zcsfc71q"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-anthropic-qrpz8k79qm7x",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated purchasing errors on claude.ai",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-14T02:54:33.309Z",
+      "updated": "2026-11-14T04:23:05.193Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/qqf00d9r7pm4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-14T04:23:05.193Z",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-m5f4-fvwx-j934",
+      "aliases": [],
+      "title": "Malware in @i18n.site/cli-win32-x64",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,703",
+      "published": "2026-11-13T01:11:08Z",
+      "updated": "2026-11-14T02:40:34Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@i18n.site/cli-win32-x64"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-m5f4-fvwx-j934"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "npm:@i18n.site/cli-win32-x64"
       ],
       "match_type": "malware",
       "tier": null,
@@ -130402,7 +130686,7 @@
       "title": "",
       "description": "A remote code execution (RCE) vulnerability in Palo Alto Networks PAN-OS® software on Panorama enables an authenticated administrator with network access to execute arbitrary code with root privileges.\n\n\n\nThe security risk posed by this issue is significantly minimized by restricting access to the management interface to only trusted internal IP addresses according to our recommended  best practice deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 .\n\n\n\nCloud NGFW, Prisma® Access, and standalone PAN-OS firewalls are not affected by this vulnerability.",
       "published": "2026-11-11T20:17:03.780",
-      "updated": "2026-11-13T20:17:38.870",
+      "updated": "2026-11-14T05:18:14.270",
       "cvss": 6.1,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:X/RE:M/U:Amber",
       "severity": "medium",
@@ -134480,7 +134764,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL pltcl allows an object creator to execute arbitrary code as the operating system user running the database, via a domain CHECK that re-enters the Tcl interpreter and frees or changes a string still used by the outer result conversion.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:40.823",
-      "updated": "2026-11-13T21:17:37.307",
+      "updated": "2026-11-14T05:18:26.170",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -134525,7 +134809,7 @@
       "title": "",
       "description": "Integer wraparound in PostgreSQL generation memory contexts allows a database user to execute arbitrary code as the operating system user running the database, via freeing an allocation larger than 1 GB and causing its block to be reused for smaller chunks whose back-pointer offset cannot represent that position.  Within major versions 16-18, minor versions before PostgreSQL 18.7, 17.12, and 16.16 are affected.  Versions before PostgreSQL 16 are unaffected.",
       "published": "2026-11-12T15:17:41.313",
-      "updated": "2026-11-13T21:17:37.523",
+      "updated": "2026-11-14T05:18:27.210",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -134570,7 +134854,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL statistics import allows a table maintainer to execute arbitrary code as the operating system user running the database, via nested SET DATA TYPE during conversion of values to import.  Within major version 18, minor versions before PostgreSQL 18.7 are affected.  Versions before PostgreSQL 18 are unaffected.",
       "published": "2026-11-12T15:17:41.437",
-      "updated": "2026-11-13T21:17:37.630",
+      "updated": "2026-11-14T05:18:27.610",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -134615,7 +134899,7 @@
       "title": "",
       "description": "Use after free in the PostgreSQL dblink extension allows an object creator to execute arbitrary code as the operating system user running the database, via type conversion code that re-enters dblink and closes a connection whose results an outer dblink call is reading.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.317",
-      "updated": "2026-11-13T20:17:54.957",
+      "updated": "2026-11-14T05:18:30.450",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -134660,7 +134944,7 @@
       "title": "",
       "description": "Heap-based buffer overflow in PostgreSQL foreign batch inserts allows a foreign server to execute arbitrary code, via reporting that it inserted more rows than the server supplied.  postgres_fdw can legitimately encounter this when a rule on the remote table expands an INSERT into additional rows.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.567",
-      "updated": "2026-11-13T20:17:56.990",
+      "updated": "2026-11-14T05:18:30.750",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -134705,7 +134989,7 @@
       "title": "",
       "description": "Use after free in PostgreSQL expanded-record domain checks allows an object creator to execute arbitrary code as the operating system user running the database, via repeated checks of a domain over a composite type that cause reuse of a dangling memory-context pointer.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.687",
-      "updated": "2026-11-13T20:17:58.000",
+      "updated": "2026-11-14T05:18:30.870",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -142408,7 +142692,7 @@
       "title": "",
       "description": "Type confusion in PostgreSQL extended statistics allows an object creator to execute arbitrary code as the operating system user running the database, via a statistics expression of an anonymous RECORD type whose backend-local type identifier denotes a different row type in another session.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:43.443",
-      "updated": "2026-11-13T20:17:55.963",
+      "updated": "2026-11-14T05:18:30.587",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
       "severity": "high",
@@ -152235,6 +152519,50 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-121374",
+      "aliases": [],
+      "title": "",
+      "description": "Argument injection in the Kubernetes special agent in Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows a user with permission to edit rules in at least one folder to write files to arbitrary locations writable by the site user via crafted node roles in the \"Exclude nodes based on their role\" rule option, leading to code execution as the site user.",
+      "published": "2026-11-11T11:17:14.377",
+      "updated": "2026-11-14T05:18:31.140",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://checkmk.com/werk/17994"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00382,
+      "epss_percentile": 0.32712,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-11T10:59:10.246761+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 32.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108147",
       "aliases": [],
       "title": "Potential memory exhaustion in MultiPartParser via base64-encoded file upload",
@@ -152447,49 +152775,6 @@
         "popularity": 14.0,
         "cvss": 13.8,
         "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121374",
-      "aliases": [],
-      "title": "",
-      "description": "Argument injection in the Kubernetes special agent in Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows a user with permission to edit rules in at least one folder to write files to arbitrary locations writable by the site user via crafted node roles in the \"Exclude nodes based on their role\" rule option, leading to code execution as the site user.",
-      "published": "2026-11-11T11:17:14.377",
-      "updated": "2026-11-11T11:17:14.487",
-      "cvss": 9.4,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://checkmk.com/werk/17994"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-11T10:59:10.246761+00:00",
-      "matched": [
-        "kubernetes"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 32.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 18.8
       },
       "ai_analysis": ""
     },
@@ -154548,7 +154833,7 @@
       "title": "",
       "description": "Uncaught exceptions in PostgreSQL plperl allow an object creator to cause use of a stale sigjmp_buf, via a tied Perl object, or a Perl object whose overloaded conversion throws while plperl is handling another error.  We have not ruled out arbitrary code execution on some platform.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
       "published": "2026-11-12T15:17:41.077",
-      "updated": "2026-11-13T21:17:37.410",
+      "updated": "2026-11-14T05:18:26.670",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -157147,7 +157432,7 @@
       "title": "",
       "description": "FFmpeg before 8.1.3 and 9.x before 9.0.2 contains a heap buffer overflow vulnerability in the DVD subtitle encoder that underestimates RLE output size for odd-width rectangles. Attackers can supply files with crafted bitmap subtitles that, when transcoded to the dvdsub encoder, write past the output buffer and corrupt heap memory.",
       "published": "2026-11-09T19:16:57.643",
-      "updated": "2026-11-10T21:46:26.057",
+      "updated": "2026-11-14T02:16:49.537",
       "cvss": 8.5,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -157167,7 +157452,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00141,
-      "epss_percentile": 0.03476,
+      "epss_percentile": 0.035,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -162749,7 +163034,7 @@
       "title": "",
       "description": "FFmpeg 7.0 before 8.1.3 and 9.x before 9.0.2 contains a heap out-of-bounds write vulnerability in vk_av1_decode_slice() in libavcodec/vulkan_av1.c because the tile-count limit is checked only on entry. Attackers can supply a crafted AV1 stream with more than 256 tiles decoded via the Vulkan hardware accelerator to overflow tile_sizes and corrupt heap memory.",
       "published": "2026-11-09T19:16:56.427",
-      "updated": "2026-11-10T21:46:25.960",
+      "updated": "2026-11-14T02:16:49.393",
       "cvss": 7.3,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -162769,7 +163054,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00129,
-      "epss_percentile": 0.02622,
+      "epss_percentile": 0.02646,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -162797,7 +163082,7 @@
       "title": "",
       "description": "FFmpeg 7.1 through 9.0.2 contains an integer overflow in ff_vk_decode_add_slice() in libavcodec/vulkan_decode.c that miscalculates the Vulkan hwaccel bitstream buffer size. Attackers can supply a crafted stream with over 2 GiB of slice data per frame, causing memcpy() to write past a smaller pooled host-mapped buffer.",
       "published": "2026-11-09T19:17:03.737",
-      "updated": "2026-11-10T21:46:30.263",
+      "updated": "2026-11-14T02:16:50.430",
       "cvss": 7.3,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -162816,7 +163101,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00123,
-      "epss_percentile": 0.02091,
+      "epss_percentile": 0.02114,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -164197,7 +164482,7 @@
       "title": "",
       "description": "Winter CMS is a content management system built on the Laravel PHP framework. Prior to 1.2.14, BrandSetting::renderCss() and EditorSetting::renderCss() store raw LESS compiler output with Cache::forever() but apply strip_tags() only to the value returned on a cache miss. The first render after saving custom CSS appears sanitized while priming an unsafe cache entry, and later cache hits return unsanitized output into the backend style element, allowing a user with backend.manage_branding or backend.manage_editor to cause stored cross-site scripting when another backend page renders the styles. The styles also appear on unauthenticated backend sign-in, password restore, and password reset layouts. This issue is fixed in version 1.2.14.",
       "published": "2026-11-10T20:19:08.263",
-      "updated": "2026-11-12T22:18:51.470",
+      "updated": "2026-11-14T03:17:26.010",
       "cvss": 4.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:N/I:H/A:N",
       "severity": "medium",
@@ -164215,7 +164500,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00395,
-      "epss_percentile": 0.3421,
+      "epss_percentile": 0.34244,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -166109,7 +166394,7 @@
       "title": "",
       "description": "pgEdge Postgres MCP Server enables SQL queries against PostgreSQL databases through Model Context Protocol compatible clients. Prior to 1.1.0, the where parameter of the count_rows tool accepted subqueries against tables other than the table named in the tool call. A caller could use predicates and the returned row count as an inference oracle to extract data from any other table that the connected database role could read. The database privilege boundary remained intact, and the flaw did not grant access to tables outside that role's existing SELECT privileges. This issue is fixed in version 1.1.0.",
       "published": "2026-11-10T18:17:33.560",
-      "updated": "2026-11-12T22:18:51.470",
+      "updated": "2026-11-14T03:17:25.590",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -166129,7 +166414,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00332,
-      "epss_percentile": 0.26721,
+      "epss_percentile": 0.26732,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -167467,7 +167752,7 @@
       "title": "",
       "description": "A privilege escalation vulnerability in the GlobalProtect gateway of Palo Alto Networks PAN-OS® software enables an authenticated, lower-privileged user to obtain the privileges and configuration of a higher-privileged user.\n\n\n\nCloud NGFW and Panorama are not affected by this vulnerability.",
       "published": "2026-11-11T20:17:02.240",
-      "updated": "2026-11-13T20:17:34.863",
+      "updated": "2026-11-14T05:18:08.850",
       "cvss": 2.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Amber",
       "severity": "low",
@@ -171971,7 +172256,7 @@
       "title": "",
       "description": "Winter CMS is a content management system built on the Laravel PHP framework. From 1.2.13 until 1.2.14, the Backend\\Controllers\\MyAccount controller inherits the FormController actions create, update, and preview while declaring an empty $requiredPermissions array, and formFindModelObject() resolves a caller-supplied record identifier through an unscoped Backend\\Models\\User query. Any authenticated backend user can request another sequential user identifier through /backend/backend/myaccount/preview/{other_user_id} or the inherited update action and read profile data including name, login, email, avatar, role, group membership, superuser status, and throttle state. Password material is not exposed, and existing model authorization guards block cross-user writes. This issue is fixed in version 1.2.14.",
       "published": "2026-11-10T20:19:09.890",
-      "updated": "2026-11-12T22:18:51.470",
+      "updated": "2026-11-14T03:17:28.517",
       "cvss": 4.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
       "severity": "medium",
@@ -171989,7 +172274,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00253,
-      "epss_percentile": 0.17012,
+      "epss_percentile": 0.17,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -209186,6 +209471,286 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092770",
+      "aliases": [],
+      "title": "IdenTrust: Issuance of Code Signing Certificate with CP/CPS discrepancies",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:00:28Z",
+      "updated": "2026-11-14T00:00:28Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092770"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092771",
+      "aliases": [],
+      "title": "IdenTrust: Issuance of Timestamping Certificate with CP/CPS discrepancies",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:04:20Z",
+      "updated": "2026-11-14T00:04:20Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092771"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092773",
+      "aliases": [],
+      "title": "NETLOCK: Two Gold subordinate CAs not disclosed in CCADB, and Gold CA CRLs outside our monitoring",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:11:45Z",
+      "updated": "2026-11-14T01:16:59Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092773"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092774",
+      "aliases": [],
+      "title": "NETLOCK: emailProtection certificates under the Gold hierarchy not issued under S/MIME BR profiles",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:11:55Z",
+      "updated": "2026-11-14T00:15:22Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092774"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092776",
+      "aliases": [],
+      "title": "NETLOCK: Delayed revocation of emailProtection certificates under the Gold hierarchy",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:13:33Z",
+      "updated": "2026-11-14T01:16:54Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092776"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092786",
+      "aliases": [],
+      "title": "CFCA: Inappropriate OID Organisation Name for 2.16.156.112554(`China Financial Certification Authority Extended Validation (EV)`)",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:48:00Z",
+      "updated": "2026-11-14T00:48:16Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092786"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092787",
+      "aliases": [],
+      "title": "NETLOCK: Remove NetLock Arany (Class Gold) Főtanúsítvány",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Root Program、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T00:53:09Z",
+      "updated": "2026-11-14T01:43:04Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092787"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T06:24:18.260875+00:00",
       "matched": [
         "pki"
       ],
