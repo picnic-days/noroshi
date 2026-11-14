@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T19:11:17.145107+00:00",
+  "generated_at": "2026-11-14T22:59:25.434133+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -123857,6 +123857,46 @@
         "npm:@i18n.site/cli-win32-x64"
       ],
       "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-dpao7idy3zei",
+      "aliases": [],
+      "title": "Cloudflare: Elevated error rates on R2 buckets in West North America",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-14T20:18:18.649Z",
+      "updated": "2026-11-14T20:20:37.898Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/dpao7idy3zei"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-14T20:20:37.898Z",
+      "first_seen": "2026-11-14T22:59:25.434133+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 40.0,
       "level": "medium",
