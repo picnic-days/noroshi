@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T06:24:18.260875+00:00",
+  "generated_at": "2026-11-14T13:48:56.083190+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -560,6 +560,46 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】DigiCertが2026-11-12にMozilla CA Programへ自ら報告した事案（状態UNCONFIRMED、予備報告）。以前keyCompromise（鍵漏えい）で失効した証明書と同じ秘密鍵で、新しい証明書を再び発行していた。メールで届いた漏えい報告では失効はしたが、鍵をブロックリストに登録していなかったため。その証明書は失効済みで、鍵もブロックリストに登録された。悪用は未確認。\n\n【原因の部品】DigiCert（CA）の鍵漏えい報告の処理手順。ソフトウェアの脆弱性ではない。\n\n【影響範囲】問題の証明書は1件。ドメインは未確認（コメント欄でdatayard.usと推測されている）。外部のコメント投稿者は、mastercard.comなどでも鍵漏えいで失効したのと同じ鍵が再利用されていると指摘している。ただしDigiCertは、秘密鍵を持っていることが証明されなかった失効は自社の規程（CPS）どおりだとして、インシデントとは認めていない。\n\n【対応策】\n1. 自社がDigiCertの証明書を使っている場合は、過去にkeyCompromiseで失効した証明書と同じ鍵を、更新後の証明書で使い回していないかを確認する（CTログ検索と社内の発行記録）。使い回していれば、新しい鍵で再発行し、古い証明書を失効させる。\n2. 鍵の漏えいが疑われるときは、ポータルからの失効だけで済ませない。DigiCertが指定するproblemreport.digicert.comに、秘密鍵を持っていることの証明付きで報告し、その鍵がブロックリストに登録されるようにする。\n\n【各告知の関係】\n・DigiCert：当事者のCAとしての予備報告\n・Mozilla Bugzilla：CA Programの審査の場（関連告知なし）\n\n【出典】\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=2092247"
+    },
+    {
+      "id": "OUT-anthropic-ct4c2pwf2xpj",
+      "aliases": [],
+      "title": "Anthropic Claude: Some users unable to sign up with Apple on the Claude iOS app",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-14T07:11:36.117Z",
+      "updated": "2026-11-14T07:11:36.117Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/4858wf40dx89"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T13:48:56.083190+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-115252",
@@ -102534,6 +102574,55 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 12.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129319",
+      "aliases": [],
+      "title": "create-ecdh: computeSecret does not validate that the peer public key is on the curve (invalid-curve attack)",
+      "description": "create-ecdh is a browserifiable implementation of Node.js crypto.createECDH. In versions 4.0.4 and below, the JavaScript implementation (browser.js, used by browser bundlers and on Node.js versions without a working native crypto.createECDH) did not validate peer public keys in ECDH.prototype.computeSecret or ECDH.prototype.setPublicKey. The peer point was multiplied by the local private key without checking that it was on the configured curve or in its prime-order subgroup. An attacker who can submit public keys to a party that reuses a static private key can perform an invalid-curve or small-subgroup attack and recover the private key modulo small factors, eventually recovering the full key via the Chinese Remainder Theorem. For the ed25519 and curve25519 curves, low-order points were also accepted, which could force a predictable shared secret. On modern Node.js, create-ecdh re-exports the native implementation, which is not affected. This issue is fixed in version 4.0.5.",
+      "published": "2026-11-14T06:48:48.653Z",
+      "updated": "2026-11-14T07:17:21.370",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "browserify createECDH",
+        "create-ecdh"
+      ],
+      "references": [
+        "https://github.com/browserify/createECDH/security/advisories/GHSA-32q7-f779-hw5r",
+        "https://github.com/browserify/createECDH/commit/1cfaf332773237e5fea4b51a2ad3efab4c22bec1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T13:48:56.083190+00:00",
+      "matched": [
+        "nodejs"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -209751,6 +209840,46 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-14T06:24:18.260875+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2092894",
+      "aliases": [],
+      "title": "CFCA: Delayed revocation of certificates affected by bug #2091246 and bug #2090925",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-14T12:04:36Z",
+      "updated": "2026-11-14T12:04:36Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2092894"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-14T13:48:56.083190+00:00",
       "matched": [
         "pki"
       ],
