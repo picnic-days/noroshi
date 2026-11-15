@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T22:59:25.434133+00:00",
+  "generated_at": "2026-11-15T02:39:55.502203+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -7,7 +7,7 @@
       "title": "PHP Memory Corruption Vulnerability",
       "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
       "published": "2026-10-21T14:17:09.357",
-      "updated": "2026-11-05T19:17:07.900",
+      "updated": "2026-11-15T01:18:01.333",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -33,12 +33,12 @@
         "http://seclists.org/fulldisclosure/2026/Oct/51",
         "http://www.openwall.com/lists/oss-security/2026/10/21/6",
         "http://www.openwall.com/lists/oss-security/2026/10/23/5",
+        "https://github.com/rapid7/metasploit-framework/pull/22139",
         "https://arcticwolf.com/resources/blog/php2shell-critical-php-vulnerabilities-enable-unauthenticated-remote-code-execution/",
         "https://cert-portal.siemens.com/productcert/html/ssa-166980.html",
         "https://cert-portal.siemens.com/productcert/html/ssa-566435.html",
         "https://cert-portal.siemens.com/productcert/html/ssa-566512.html",
         "https://php2shell.delftintellab.com",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-109618",
         "https://nvd.nist.gov/vuln/detail/CVE-2026-109618"
       ],
       "exploit_ref": false,
@@ -15833,7 +15833,7 @@
       "title": "",
       "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE.\n\nThis issue affects Apache HTTP Server: from 2.4.55 through 2.4.70.\nAffected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
       "published": "2026-11-11T15:17:15.900",
-      "updated": "2026-11-14T05:18:29.103",
+      "updated": "2026-11-15T01:18:02.837",
       "cvss": 8.1,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -15848,6 +15848,7 @@
         "http://www.openwall.com/lists/oss-security/2026/11/11/13",
         "https://access.redhat.com/security/cve/cve-2026-119618",
         "https://bugs.gentoo.org/986161",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2567318",
         "https://github.com/AlmaLinux/updates/issues/4252",
         "https://github.com/microsoft/azurelinux/pull/20165",
         "https://ubuntu.com/security/CVE-2026-119618",
@@ -15858,8 +15859,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00408,
-      "epss_percentile": 0.35586,
+      "epss": 0.0133,
+      "epss_percentile": 0.71529,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -15872,14 +15873,14 @@
       ],
       "match_type": "exact",
       "tier": 1,
-      "score": 56.3,
+      "score": 56.4,
       "level": "high",
       "score_breakdown": {
         "popularity": 30,
         "cvss": 16.2,
         "unauth_network": 5,
         "rce": 5,
-        "epss": 0.1
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -207746,6 +207747,63 @@
         "popularity": 14.0,
         "cvss": 5.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129356",
+      "aliases": [],
+      "title": "vllm-project vllm Common Prefix single_type_kv_cache_manager.py race condition",
+      "description": "A vulnerability was found in vllm-project vllm 0.30.0/0.31.0. This vulnerability affects unknown code of the file single_type_kv_cache_manager.py of the component Common Prefix Handler. The manipulation results in race condition. The attack may be performed from remote. Attacks of this nature are highly complex. It is stated that the exploitability is difficult. The exploit has been made public and could be used. Upgrading to version 0.32.0 is able to resolve this issue. The patch is identified as e687a251bb056fa527846633f7a1b0a6c0f42374. You should upgrade the affected component.",
+      "published": "2026-11-15T01:15:24.018Z",
+      "updated": "2026-11-15T02:17:21.153",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P",
+      "severity": "low",
+      "cpes": [
+        "vllm-project:vllm"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://vuldb.com/vuln/437419",
+        "https://vuldb.com/vuln/437419/cti",
+        "https://vuldb.com/cve/CVE-2026-129356",
+        "https://vuldb.com/submit/1043823",
+        "https://github.com/vllm-project/vllm/issues/61673",
+        "https://github.com/vllm-project/vllm/pull/61126",
+        "https://github.com/vllm-project/vllm/commit/e687a251bb056fa527846633f7a1b0a6c0f42374",
+        "https://github.com/vllm-project/vllm/releases/tag/v0.32.0",
+        "https://github.com/vllm-project/vllm/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T02:39:55.502203+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 19.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 4.6,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
