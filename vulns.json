@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T09:56:26.467153+00:00",
+  "generated_at": "2026-11-15T17:12:40.193121+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -641,7 +641,7 @@
       "score": 90.0,
       "level": "critical",
       "score_breakdown": {},
-      "ai_analysis": "【状況】npm パッケージ「@theholocron/holocron-plugin-discord」の特定バージョンに悪性コードが入っていることが分かり、GitHub が 2026/11/15 にマルウェアとして公開しました（CWE-506）。GitHub は、このパッケージを入れた・実行した端末は完全に侵害されたものとみなすよう求めています。悪性コードの具体的な動作と、実際の被害が出ているかは未確認です。週間ダウンロード数は約1.3万件です。\n\n【原因の部品】開発元 theholocron（Discord 用 CLI プラグイン）の npm パッケージです。正規の公開アカウントが乗っ取られたのか、開発元自身が出したのかは未確認です。このパッケージを組み込んでいる主な製品は確認できませんでした。\n\n【影響範囲】\n・対象：5.0.0-alpha.436 のみ\n・修正版：なし\n\n【対応策】\n1. 最優先でやること\n・lockfile（package-lock.json、yarn.lock、pnpm-lock.yaml）とすべての node_modules を検索し、「holocron-plugin-discord@5.0.0-alpha.436」がないか確認する\n・CI のビルドログとキャッシュに、このバージョンを取得した履歴がないか確認する\n・見つかった場合：\n　- 該当端末や CI ランナーをネットワークから切り離す\n　- 別の端末から、保存されていた秘密情報（npm/GitHub トークン、クラウド鍵、SSH 鍵、Discord トークンなど）をすべて再発行する\n　- パッケージを消しても安全とは限らないため、端末は初期化（再構築）する\n2. すぐ更新できない場合の回避策\n・修正版はないので、5.0.0-alpha.436 をインストールしないよう禁止設定をする\n・それより前の版に固定し、npm ci で lockfile どおりにだけインストールする\n\n【各告知の関係】\n・GitHub Advisory Database：悪性パッケージとして告知（今回の唯一の情報源）\n・開発元の告知や国内の注意喚起：未確認\n\n【出典】\nhttps://github.com/advisories/GHSA-95pv-hv63-58m8"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-115252",
@@ -78535,6 +78535,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-125771",
+      "aliases": [],
+      "title": "WordPress MCP Server for WordPress plugin <= 2.0.3 - Privilege Escalation vulnerability",
+      "description": "Incorrect Privilege Assignment vulnerability in AtlasAiDev MCP Server for WordPress ai-workflow-automation-ai-agent-hub allows Privilege Escalation.This issue affects MCP Server for WordPress: from n/a through 2.0.3.",
+      "published": "2026-11-15T15:09:09.099Z",
+      "updated": "2026-11-15T15:16:46.997",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "AtlasAiDev MCP Server for WordPress",
+        "ai-workflow-automation-ai-agent-hub"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/ai-workflow-automation-ai-agent-hub/vulnerability/wordpress-mcp-server-for-wordpress-plugin-2-0-3-privilege-escalation-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-69452",
       "aliases": [],
       "title": "",
@@ -123992,7 +124039,7 @@
       "title": "Zoom: Service Degradation Affecting Zoom Events custom domain",
       "description": "Zoom の公式ステータスページに掲載された障害",
       "published": "2026-11-15T01:34:15.530-08:00",
-      "updated": "2026-11-15T01:34:15.530-08:00",
+      "updated": "2026-11-15T01:57:46.006-08:00",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -124014,7 +124061,7 @@
         "status:zoom"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-15T01:57:46.006-08:00",
       "first_seen": "2026-11-15T09:56:26.467153+00:00",
       "matched": [
         "zoom"
@@ -210195,6 +210242,246 @@
         "pki"
       ],
       "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093061",
+      "aliases": [],
+      "title": "Sectigo: Late disclosure of TLS CP/CPS in CCADB",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-15T10:30:30Z",
+      "updated": "2026-11-15T10:30:46Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093061"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093075",
+      "aliases": [],
+      "title": "Disig: Reuse period discrepancy for DNS change method.",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-15T14:13:18Z",
+      "updated": "2026-11-15T14:13:18Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093075"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093076",
+      "aliases": [],
+      "title": "Disig: The CP/CPS effective date was not updated within 14 days.",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-15T14:26:18Z",
+      "updated": "2026-11-15T14:26:18Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093076"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093078",
+      "aliases": [],
+      "title": "Asseco DS / Certum: OCSP Responses with Validity Intervals Shorter Than Eight Hours",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-15T14:42:45Z",
+      "updated": "2026-11-15T14:42:45Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093078"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093087",
+      "aliases": [],
+      "title": "Hongkong Post: CP/CPS missing CCADB policy attestation",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-15T15:31:07Z",
+      "updated": "2026-11-15T15:31:07Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093087"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-aws-AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE_7EB95_9ACD11D39CE",
+      "aliases": [],
+      "title": "AWS: Multiple services（N. Virginia）[RESOLVED] Increased Connectivity issues in US-EAST-1",
+      "description": "AWS の公式ステータスページに掲載された障害",
+      "published": "2026-11-15T12:38:02+00:00",
+      "updated": "2026-11-15T12:38:02+00:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://health.aws.amazon.com/health/status"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:aws"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-15T17:12:40.193121+00:00",
+      "matched": [
+        "aws"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 10.0,
       "level": "low",
