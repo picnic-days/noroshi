@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-16T19:53:38.184007+00:00",
+  "last_run": "2026-11-17T02:56:07.554687+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -96,7 +96,7 @@
     "OUT-anthropic-b5cq662qf2wm": "2026-11-16T19:53:38.184007+00:00",
     "AI-anthropic-coordinated-vulnerability-disclosure-timelines": "2026-11-16T19:53:38.184007+00:00"
   },
-  "ai_key_checked": "2026-11-16",
+  "ai_key_checked": "2026-11-17",
   "open_outages": {
     "OUT-anthropic-b5cq662qf2wm": {
       "title": "Anthropic Claude: Claude unable to join meetings",
@@ -142,11 +142,13 @@
     "dotnet:9:0": "2026-11-10",
     "dotnet:8:0": "2026-11-10",
     "windows:11-23h2-e:0": "2026-11-10",
-    "postgresql:14:0": "2026-11-12"
+    "postgresql:14:0": "2026-11-12",
+    "drupal:11.3:30": "2026-11-17",
+    "drupal:10.6:30": "2026-11-17"
   },
-  "digest_sent": "2026-11-15",
-  "digest_since": "2026-11-15T02:39:55.502203+00:00",
-  "repo_adv_checked": "2026-11-16T19:53:38.184007+00:00",
+  "digest_sent": "2026-11-17",
+  "digest_since": "2026-11-17T02:56:07.554687+00:00",
+  "repo_adv_checked": "2026-11-17T02:56:07.554687+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
