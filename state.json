@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-17T11:53:15.309368+00:00",
+  "last_run": "2026-11-17T20:56:14.977968+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -94,7 +94,13 @@
     "OUT-anthropic-ct4c2pwf2xpj": "2026-11-14T13:48:56.083190+00:00",
     "GHSA-95pv-hv63-58m8": "2026-11-15T09:56:26.467153+00:00",
     "OUT-anthropic-b5cq662qf2wm": "2026-11-16T19:53:38.184007+00:00",
-    "AI-anthropic-coordinated-vulnerability-disclosure-timelines": "2026-11-16T19:53:38.184007+00:00"
+    "AI-anthropic-coordinated-vulnerability-disclosure-timelines": "2026-11-16T19:53:38.184007+00:00",
+    "OUT-anthropic-1lglzf469c0z": "2026-11-17T20:56:14.977968+00:00",
+    "GHSA-h6jf-g8cj-x4v3": "2026-11-17T20:56:14.977968+00:00",
+    "CVE-2026-126912": "2026-11-17T20:56:14.977968+00:00",
+    "CVE-2026-126842": "2026-11-17T20:56:14.977968+00:00",
+    "CVE-2026-126846": "2026-11-17T20:56:14.977968+00:00",
+    "CVE-2026-126909": "2026-11-17T20:56:14.977968+00:00"
   },
   "ai_key_checked": "2026-11-17",
   "open_outages": {
@@ -103,6 +109,12 @@
       "provider": "anthropic",
       "since": "2026-11-16T19:53:38.184007+00:00",
       "url": "https://stspg.io/01qq3kzyyqzl"
+    },
+    "OUT-anthropic-1lglzf469c0z": {
+      "title": "Anthropic Claude: Some users unable to sign in with Apple on claude.ai and the Claude iOS app",
+      "provider": "anthropic",
+      "since": "2026-11-17T20:56:14.977968+00:00",
+      "url": "https://stspg.io/3tl6h35nnzwm"
     }
   },
   "eol_notified": {
@@ -148,7 +160,7 @@
   },
   "digest_sent": "2026-11-17",
   "digest_since": "2026-11-17T02:56:07.554687+00:00",
-  "repo_adv_checked": "2026-11-17T11:53:15.309368+00:00",
+  "repo_adv_checked": "2026-11-17T20:56:14.977968+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -752,7 +764,8 @@
       "https://www.anthropic.com/news/roadshow-launch",
       "https://www.anthropic.com/legal/self-hosted-managed-agents-license",
       "https://www.anthropic.com/research/building-strong-safety-evaluations",
-      "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines"
+      "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
+      "https://www.anthropic.com/legal/linked-billing-terms"
     ]
   }
 }
