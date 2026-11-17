@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T02:56:07.554687+00:00",
+  "generated_at": "2026-11-17T11:53:15.309368+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -74291,6 +74291,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-97639",
+      "aliases": [],
+      "title": "Everest Backup <= 2.3.14 - Unauthenticated Arbitrary Plugin Activation via 'page' and 'plugin' POST Parameters",
+      "description": "The Everest Backup – WordPress Cloud Backup, Migration, Restore & Cloning Plugin plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.3.14 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to activate any already-installed inactive plugin on the site.",
+      "published": "2026-11-17T04:43:48.039Z",
+      "updated": "2026-11-17T05:18:39.660",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "everestthemes Everest Backup – WordPress Cloud Backup, Migration, Restore & Cloning Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/c1213236-929a-47dc-9f04-53a3bcecce72?source=cve",
+        "https://plugins.trac.wordpress.org/browser/everest-backup/tags/2.3.13/inc/classes/class-everest-backup.php#L60",
+        "https://plugins.trac.wordpress.org/browser/everest-backup/tags/2.3.13/inc/classes/class-everest-backup.php#L267",
+        "https://plugins.trac.wordpress.org/browser/everest-backup/tags/2.3.13/inc/classes/class-everest-backup.php#L648",
+        "https://plugins.trac.wordpress.org/browser/everest-backup/tags/2.3.13/inc/functions.php#L828",
+        "https://plugins.trac.wordpress.org/changeset/3796792/everest-backup/trunk/inc/classes/class-everest-backup.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126862",
       "aliases": [],
       "title": "",
@@ -75628,7 +75680,7 @@
       "title": "",
       "description": "Memory corruption in DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler",
       "published": "2026-11-13T02:18:49.863",
-      "updated": "2026-11-17T00:17:23.973",
+      "updated": "2026-11-17T05:18:30.020",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -75673,7 +75725,7 @@
       "title": "",
       "description": "Memory overflow in NetScaler Push can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
       "published": "2026-11-13T02:18:49.997",
-      "updated": "2026-11-17T00:17:24.100",
+      "updated": "2026-11-17T05:18:30.183",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -75718,7 +75770,7 @@
       "title": "",
       "description": "An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance",
       "published": "2026-11-12T14:17:23.990",
-      "updated": "2026-11-17T00:17:25.180",
+      "updated": "2026-11-17T05:18:33.410",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -75763,7 +75815,7 @@
       "title": "",
       "description": "Memory overflow in Packet Processing can lead to unpredictable or erroneous behavior or Denial of Service in NetScaler ADC and NetScaler Gateway.",
       "published": "2026-11-13T00:20:09.977",
-      "updated": "2026-11-17T00:17:25.043",
+      "updated": "2026-11-17T05:18:33.257",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -75898,7 +75950,7 @@
       "title": "",
       "description": "Memory overflow in SMPP traffic can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
       "published": "2026-11-13T02:18:49.613",
-      "updated": "2026-11-17T00:17:23.727",
+      "updated": "2026-11-17T05:18:29.677",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -75943,7 +75995,7 @@
       "title": "",
       "description": "Memory corruption in DNS / DNS-over-HTTPS (DoH) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
       "published": "2026-11-13T02:18:49.740",
-      "updated": "2026-11-17T00:17:23.850",
+      "updated": "2026-11-17T05:18:29.843",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -117584,9 +117636,9 @@
       "id": "GHSA-9855-prwc-mfp2",
       "aliases": [],
       "title": "Malware in opencode-skills-collection",
-      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 3,513",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 3,783",
       "published": "2026-10-22T18:35:11Z",
-      "updated": "2026-11-13T14:49:38Z",
+      "updated": "2026-11-17T11:51:53Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -124587,6 +124639,250 @@
       "first_seen": "2026-11-17T02:56:07.554687+00:00",
       "matched": [
         "npm:vite-auto-import-svg"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-5831aw44ia7i",
+      "aliases": [],
+      "title": "Cloudflare: Turnstile verification failures",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-17T10:24:59.409Z",
+      "updated": "2026-11-17T10:24:59.409Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/5831aw44ia7i"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-1nqok7v173qg",
+      "aliases": [],
+      "title": "Cloudflare: Elevated number of 52x origin connectivity errors in Seoul",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-17T08:51:03.499Z",
+      "updated": "2026-11-17T05:50:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/1nqok7v173qg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-17T05:50:00.000Z",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-w32cwc1kp2h9",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting My Files Functionality in Zoom Hub in US Region",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-16T23:08:43.247-08:00",
+      "updated": "2026-11-17T00:41:21.411-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/75bkr1786wml"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-17T00:41:21.411-08:00",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "zoom"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-zoom-t0wkzg9j0b08",
+      "aliases": [],
+      "title": "Zoom: Service Degradation Affecting Zoom Phone Inbound Calls for Subset of Jio subscribers in India",
+      "description": "Zoom の公式ステータスページに掲載された障害",
+      "published": "2026-11-16T23:33:40.121-08:00",
+      "updated": "2026-11-16T23:33:40.121-08:00",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/3hk2mmfjxlp7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:zoom"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "zoom"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-96hm-h5v4-92fq",
+      "aliases": [],
+      "title": "Malicious code in @wppconnect/server (npm)",
+      "description": "@wppconnect/server 2.10.82, a REST server for WhatsApp automation, ships dist/util/diagnostics.js, loaded unconditionally on server start by dist/server.js:18 (2.10.81's dist/server.js does not load it). It collects every environment variable, the files .env, .env.local, .env.production, config.js, config.json and ormconfig.json from the working directory, and the WhatsApp session-token files under tokens/ and wppconnect_tokens/, looks up the machine's public IP at https://api.ipify.org, and uploads the report as a document to the Telegram Bot API (bot 9034051102, chat_id 7343578055, method sendDocument). It waits a random 30 to 240 seconds before sending, sends at most once per 24 hours per machine (a marker file in the temp directory), and does nothing on machines it identifies as CI or a sandbox (CI, GITHUB_ACTIONS and RUNNER_* variables, sandbox-like hostnames). The Telegram endpoint is assembled from base64 parts (dist/util/diagnostics.js:27-33); collection is at lines 113-207 and the upload at 196-233. The same module reaches the server through its dependency @wppconnect-team/wppconnect 2.4.1, which runs it on import.\n\n2.10.82 was published on 2026-11-16 at 03:09 UTC through the project's release workflow; the source line was added in the repository's commit bdddf54 (2026-11-16 02:43 UTC) and removed by pull request #2733 at 03:44 UTC, but 2.10.82 is still served by npm. Anyone who installed or started 2.10.82 should treat the machine's environment variables, those files and its WhatsApp sessions as exposed, rotate the credentials and log the sessions out.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/babba2d7abb676ad6064d956e3cfa9250f5d7581/osv/malicious/npm/@wppconnect/server/MAL-2026-20043.json))\n\n週間ダウンロード数: 約 1,900",
+      "published": "2026-11-17T06:31:51Z",
+      "updated": "2026-11-17T06:31:52Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@wppconnect/server"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-96hm-h5v4-92fq"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "npm:@wppconnect/server"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-rj96-rg6c-9hw8",
+      "aliases": [],
+      "title": "Malicious code in @wppconnect-team/wppconnect (npm)",
+      "description": "@wppconnect-team/wppconnect 2.4.1, a WhatsApp Web automation library, ships dist/utils/diagnostics.js, required from dist/controllers/browser.js so that it runs when the library is imported. It records the hostname, user name, operating system and working directory, copies every environment variable (except a short list of shell and npm variables), reads .env, .env.local, .env.production, config.js, config.json and ormconfig.json from the working directory, adds the project's package.json dependencies and a directory listing, and up to five WhatsApp session-token files from tokens/, looks up the machine's public IP at https://api.ipify.org, and uploads the report as a document to the Telegram Bot API (bot 9034051102, chat_id 7343578055, method sendDocument). It sends at once on import, at most once per 24 hours per machine (marker .wpp-support-diag in the temp directory), and swallows every error. In the source at the release commit (dee571e) this is src/utils/diagnostics.ts: the endpoint at lines 21-30, collection at 64-161, the upload at 166-204.\n\n2.4.1 was published on 2026-11-15 at 23:31 UTC through the project's release workflow and is still npm's latest version of the package; the module was added in the repository's commits 06caa8c and 27ed8e3 (2026-11-15 22:34 UTC) and removed by pull request #2967 on 2026-11-16 at 03:50 UTC. @wppconnect/server 2.10.82 depends on it. Anyone who installed or imported 2.4.1 should treat the machine's environment variables, those files and its WhatsApp sessions as exposed, rotate the credentials and log the sessions out.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/babba2d7abb676ad6064d956e3cfa9250f5d7581/osv/malicious/npm/@wppconnect-team/wppconnect/MAL-2026-20044.json))\n\n週間ダウンロード数: 約 8,265",
+      "published": "2026-11-17T06:31:51Z",
+      "updated": "2026-11-17T06:31:51Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@wppconnect-team/wppconnect"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-rj96-rg6c-9hw8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "npm:@wppconnect-team/wppconnect"
       ],
       "match_type": "malware",
       "tier": null,
@@ -143513,6 +143809,57 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-125159",
+      "aliases": [],
+      "title": "TYPO3 CMS - Information Disclosure in Image Processing",
+      "description": "ImageMagick and GraphicsMagick use small modules, called \"coders\", to read each image format. When processing images, TYPO3 determined the coder from the file type detected by the file contents, as long as the detected mime-type started with image/. A file containing MVG (Magick Vector Graphics) instructions, uploaded with an image file extension like .png, was therefore processed with the MVG coder. MVG instructions can read local files into the processed image, which allows disclosing the contents of arbitrary files readable by the web server, for example configuration files containing credentials, through a publicly accessible processed image.\n\nExploiting this vulnerability requires a way to upload files without a mime-type check, for example a public form of the Form Framework using a FileUpload or ImageUpload element without configured allowedMimeTypes (see TYPO3-CORE-SA-2026-032), which allows exploitation by unauthenticated visitors. Additionally, ImageMagick must be used for image processing, and its default system configuration must allow the MVG coder.",
+      "published": "2026-11-17T11:11:08.084Z",
+      "updated": "2026-11-17T11:43:40.480Z",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "TYPO3 TYPO3 CMS",
+        "typo3/cms-core"
+      ],
+      "references": [
+        "https://news.typo3.com/security/advisory/typo3-core-sa-2026-028",
+        "https://github.com/TYPO3/typo3/commit/d6dd82b3c093ca47cc30b1f0ae257e0c1b231d2f",
+        "https://github.com/TYPO3/typo3/commit/8ba8dc3151d386e17eb831cfcbb08a90ceecf140",
+        "https://github.com/TYPO3/typo3/commit/c6a5a7e1cf8a94ce92a4dacb415302cb9cf200f7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 35.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-0329",
       "aliases": [],
       "title": "",
@@ -148142,6 +148489,57 @@
         "cvss": 15.0,
         "unauth_network": 5,
         "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-97187",
+      "aliases": [],
+      "title": "Incorrect Authorization in GitLab",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Kubernetes Secrets from other namespaces in clusters connected through the GitLab agent for Kubernetes due to incorrect authorization in workspaces.",
+      "published": "2026-11-17T04:11:35.223Z",
+      "updated": "2026-11-17T05:18:39.370",
+      "cvss": 7.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:L/A:N",
+      "severity": "high",
+      "cpes": [
+        "gitlab:gitlab"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "GitLab GitLab"
+      ],
+      "references": [
+        "https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/work_items/1197",
+        "https://hackerone.com/reports/3975310",
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-6-released/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 34.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 15.2,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -161195,6 +161593,150 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107493",
+      "aliases": [],
+      "title": "Use-After-Free in PEM_X509_INFO_read_bio_ex() when appending to a caller-supplied stack fails",
+      "description": "Issue summary: When an application passes a stack to\nPEM_X509_INFO_read_bio_ex() to add entries to, and reading fails,\nOpenSSL frees every entry in the stack, both the old ones and any new\nones, but leaves them in the stack.\n\nImpact summary: An application that passes an existing stack to\nPEM_X509_INFO_read_bio_ex() and keeps using it after a failed read may\nuse memory that was already freed. This can cause a crash or, in\nprinciple, memory corruption. Malformed PEM data can make the read fail,\nbut only applications that pass an existing stack are affected, and\nOpenSSL itself does not do this.\n\nCWE: CWE-416: Use After Free\n\nDescription: PEM_X509_INFO_read_bio_ex() reads certificates, CRLs and\nprivate keys from PEM data and adds them to a stack of X509_INFO\nstructures. If the application passes a stack that is not NULL, the\nfunction adds the new entries to it and must leave the entries that are\nalready there unchanged.\n\nIf reading fails, the function frees every entry in the stack. This\nincludes the entries that were there before the call, and the entries\nadded by the call. It does not remove these entries from the stack, so\nthe stack keeps pointers to freed memory. The failure can happen at any\npoint, even before any entry was added. A PEM item with invalid content\nis enough.  This also happens if the stack was empty: entries added\nbefore the failure are freed but stay in the stack.\n\nAn application that then reads or frees the stack will use memory that\nwas already freed. This can crash the application or, in principle,\ncorrupt memory.\n\nOnly applications that pass a stack that is not NULL are affected.\nOpenSSL itself never does this. Its own callers, including the code that\nTLS uses to load CA certificates, always pass NULL. When the stack is\nNULL, the function frees only the entries that it created itself, which\nis safe. We expect that very few applications pass an existing stack. An\nattacker can make the read fail with malformed PEM data, but cannot make\nan application pass an existing stack.\n\nThe same problem affects PEM_X509_INFO_read_bio(), PEM_X509_INFO_read()\nand PEM_X509_INFO_read_ex(), which use the same code. OpenSSL 1.1.1 and\n1.0.2 have only the first two of these functions.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "published": "2026-11-17T08:14:08.947Z",
+      "updated": "2026-11-17T09:17:25.870",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpenSSL OpenSSL"
+      ],
+      "references": [
+        "https://openssl-library.org/news/secadv/20261117.txt",
+        "https://github.com/openssl/openssl/commit/c57a5ccf0c060755b5494a6870922b7c6cdd7dd8",
+        "https://github.com/openssl/openssl/commit/0486dfadfec558e1808f59d35a8d79e541c4e7d7",
+        "https://github.com/openssl/openssl/commit/c8f6d04f8e6d40b1bf83334e4a2ec9daf5943a3d"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124709",
+      "aliases": [],
+      "title": "Unbounded Memory Retention in QUIC Server for Rejected Streams",
+      "description": "Issue summary: A QUIC server that rejects a stream opened by the peer may\nretain that stream's state for the lifetime of the connection if the peer\nresets the stream before the rejection is signalled, even though the peer's\nstream credit is returned.\n\nImpact summary: A remote client that completes a QUIC handshake can repeatedly\nopen and reset streams, causing server memory to grow without bound until the\nprocess runs out of memory and every connection on it is lost. This is a\nDenial of Service.\n\nCWE: CWE-401: Missing Release of Memory after Effective Lifetime\n\nDescription: QUIC servers track each stream the peer opens. When the incoming\nstream policy rejects a stream, OpenSSL schedules a STOP_SENDING frame, marks\nthe stream deleted and returns the peer's stream credit. A deleted stream is\ncollected only once its receive part is fully drained, which for a rejected\nstream means the STOP_SENDING has been acknowledged. If the peer sends\nRESET_STREAM first, the reset cancels the pending STOP_SENDING, so it is never\nsent or acknowledged and the stream is never collected.\n\nThe default configuration reaches this path. Once a connection has a default\nstream, meaning the application has read from or written to the connection as\nthe tutorial server does, the effective incoming stream policy rejects streams\nthe application does not accept. Applications that set the REJECT policy\nexplicitly are affected too.\n\nEach retained stream costs about 300 bytes, and the peer's stream credit\nwindow paces how quickly they accumulate. A client that keeps the connection\nopen and keeps opening and resetting streams grows server memory without\nbound. The severity is Low because growth is slow, needs a long-lived\nconnection, and causes no memory corruption or disclosure.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "published": "2026-11-17T08:14:35.674Z",
+      "updated": "2026-11-17T09:17:27.227",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpenSSL OpenSSL"
+      ],
+      "references": [
+        "https://openssl-library.org/news/secadv/20261117.txt",
+        "https://github.com/openssl/openssl/commit/ead311df1037e7994a6d86c7e862d71ad59c52c7",
+        "https://github.com/openssl/openssl/commit/22291a6af12f158fbb13bfbd572a33dbdbf290d2",
+        "https://github.com/openssl/openssl/commit/f3acb0a3328046741479482c51cec815839e1b05"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-35190",
+      "aliases": [],
+      "title": "Out-of-Bounds Read in TLS 1.3 Key-Share Processing with Suite B Certificate Flag",
+      "description": "Issue summary: A server configured with the Suite B certificate flag through\nSSL_CTX_set_cert_flags() and with TLS 1.3 enabled may read past the end of a\nfixed group list when it processes a ClientHello whose supported_groups and\nkey_share contain no Suite B group.\n\nImpact summary: A remote client can send a ClientHello that makes the server\nread past the end of a static array. The values read are never returned to the\nclient, so no memory is disclosed; on builds with sanitizers or hardened\nallocators the read may crash the process, causing Denial of Service.\n\nCWE: CWE-125: Out-of-bounds Read\n\nDescription: When the Suite B certificate flag is set, OpenSSL restricts the\naccepted groups to P-256 and P-384 by substituting a fixed two-element list\nfor the configured group list. The tuple machinery used for key-share\nselection was not updated for this substitution: tls1_get_group_tuples() still\nreturns the configured tuples, which by default describe eight groups. The\nserver-side walk in tls_parse_ctos_key_share() then advances through the\ntwo-element list using those tuple counts without checking the cumulative\noffset against the number of groups present.\n\nOnly applications that call SSL_CTX_set_cert_flags() with\nSSL_CERT_FLAG_SUITEB_128_LOS and leave TLS 1.3 enabled are affected. The\nopenssl s_server -suiteB_128 option sets an X.509 verification parameter\ninstead, so the stock command line server is not vulnerable. Default\nconfigurations do not reach this code.\n\nA client that offers only groups outside the Suite B set, such as X25519,\nforces every tuple to be walked and the read to run past the array. The bytes\nread are compared against client group IDs and never sent back, so no memory\nis disclosed. On builds with address sanitizers or hardened allocators the\nread can abort the process; in ordinary release builds it reads a few bytes of\nadjacent constant data.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "published": "2026-11-17T08:15:01.294Z",
+      "updated": "2026-11-17T09:17:27.560",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OpenSSL OpenSSL"
+      ],
+      "references": [
+        "https://openssl-library.org/news/secadv/20261117.txt",
+        "https://github.com/openssl/openssl/commit/ade64619df04056b3e5fd1c1befe9425a7c80eb6",
+        "https://github.com/openssl/openssl/commit/9a812981b927c5714b7c2e5d138618105cea2152",
+        "https://github.com/openssl/openssl/commit/9491b0d9cc7950af1f3dc89499bd5433b9cd4f43"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 30,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-101731",
       "aliases": [],
       "title": "",
@@ -164981,6 +165523,57 @@
         "popularity": 10,
         "cvss": 13.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-18491",
+      "aliases": [],
+      "title": "Incorrect Authorization in GitLab",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user holding a granular personal access token with limited scope to authorize Kubernetes API proxy access beyond the token's intended boundaries due to missing granular scope enforcement in the Kubernetes agent proxy-user authorization flow.",
+      "published": "2026-11-17T04:12:05.217Z",
+      "updated": "2026-11-17T05:18:37.000",
+      "cvss": 4.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [
+        "gitlab:gitlab"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "GitLab GitLab"
+      ],
+      "references": [
+        "https://gitlab.com/gitlab-org/gitlab/-/work_items/604810",
+        "https://hackerone.com/reports/3857396",
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-6-released/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 9.8,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -196269,32 +196862,31 @@
     {
       "id": "CVE-2026-99272",
       "aliases": [],
-      "title": "smb: client: validate the data area in SMB2_read()",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate the data area in SMB2_read()\n\nSMB2_read() copies le32_to_cpu(rsp->DataLength) bytes from\n(char *)rsp + rsp->DataOffset without checking that the range lies\nwithin the response actually received. A READ response with\nDataOffset == 0 makes smb2_get_data_area_len() zero the data length, so\nsmb2_check_message() accepts a frame as short as the fixed response,\nwhile SMB2_read() still uses the server-supplied DataLength, capped only\nby CIFS_MAX_MSGSIZE and the caller's length.\n\nA malicious server can answer the synchronous read used by the\nmfsymlinks (or SFU) symlink parser with an 81-byte READ response\ncarrying DataOffset 0 and DataLength 1067, making the client copy 1067\nbytes from a 448-byte receive object (KASAN slab-out-of-bounds; up to\n16 KiB in the general case).\n\nClamp a zero (or header-overlapping) DataOffset to read_rsp_size, as\nhandle_read_data() does for the asynchronous path, and reject the\nresponse unless DataOffset + DataLength fits within rsp_iov.iov_len.\nThe SMB1 helper was fixed the same way in 5be5bdda5863.",
-      "published": "2026-11-07T14:08:45.332Z",
-      "updated": "2026-11-07T14:17:02.477",
+      "published": "2026-11-07T14:17:02.477",
+      "updated": "2026-11-17T11:17:28.777",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
+        "https://git.kernel.org/stable/c/082ae8a34170b7388106aa0897f47405f0824946",
         "https://git.kernel.org/stable/c/1ba1937de005e261a8858f45bfef5da7458df94c",
-        "https://git.kernel.org/stable/c/2ec9cdf469dd32bcf33073aeb30c08e9356e0ca1"
+        "https://git.kernel.org/stable/c/2ec9cdf469dd32bcf33073aeb30c08e9356e0ca1",
+        "https://git.kernel.org/stable/c/b949f6a0c08a57439334f39754ee7bd3c315d4a3"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00145,
+      "epss_percentile": 0.03828,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -196308,7 +196900,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -196407,32 +197000,31 @@
     {
       "id": "CVE-2026-99275",
       "aliases": [],
-      "title": "smb: client: reject short SESSION_SETUP responses",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject short SESSION_SETUP responses\n\nsmb2_check_message() accepts frames shorter than struct smb2_pdu when\nthe SMB2 status is non-zero, before the minimum-PDU check added by\nb4694f269e66d. A 64-byte STATUS_MORE_PROCESSING_REQUIRED SESSION_SETUP\nresponse is therefore accepted even though it cannot contain the\nSecurityBufferOffset and SecurityBufferLength fields.\n\nThe parser then reads those fields from stale bytes left in the reused\nreceive buffer by an earlier frame. With a long stale\nSecurityBufferLength, decode_ntlmssp_challenge() copies up to about\n64 KB from beyond the receive object and sends the data back to the\nserver in the NTLMv2 AUTHENTICATE target info.\n\nReject short MPR SESSION_SETUP responses before the short-error path,\nand validate SecurityBufferOffset + SecurityBufferLength against the\nreceived response length before decoding the challenge.\n\nThe ordering bypass is not new: the short-error early return predates\nb4694f269e66d, and the unvalidated SecurityBufferLength read predates\nthe 2016 raw NTLMSSP split in 166cea4dc3a4, so all supported stable\ntrees are affected. Reproduced on 6.6.87.2; the path is unchanged on\nmainline.",
-      "published": "2026-11-07T14:08:46.188Z",
-      "updated": "2026-11-07T14:17:02.850",
+      "published": "2026-11-07T14:17:02.850",
+      "updated": "2026-11-17T11:17:28.897",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
-        "https://git.kernel.org/stable/c/df63e01933886153e40706483b9635b2456ad91f",
-        "https://git.kernel.org/stable/c/4d8930afa3446041358a7db33e7b23a0bb9459b5"
+        "https://git.kernel.org/stable/c/136128f84f13849b732ffabf24c5ee891a2033d4",
+        "https://git.kernel.org/stable/c/4d8930afa3446041358a7db33e7b23a0bb9459b5",
+        "https://git.kernel.org/stable/c/9a0b6567936c3f8fef34c4f4a995f0a1473af7d0",
+        "https://git.kernel.org/stable/c/df63e01933886153e40706483b9635b2456ad91f"
       ],
       "exploit_ref": false,
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00154,
+      "epss_percentile": 0.04587,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -196446,7 +197038,8 @@
       "score": 21.0,
       "level": "low",
       "score_breakdown": {
-        "popularity": 21.0
+        "popularity": 21.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -198069,22 +198662,21 @@
     {
       "id": "CVE-2026-99308",
       "aliases": [],
-      "title": "usb: xhci: Fix bounce buffer overflow",
+      "title": "",
       "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: xhci: Fix bounce buffer overflow\n\nHigh-speed devices with out of spec 1024 byte bulk endpoints exist and\nare allowed by USB core, but xhci-hcd always sets packet size to 512.\nThe exact nature of these devices isn't documented, commit fb5ee84ea72c\n(\"USB: Accept bulk endpoints with 1024-byte maxpacket\") only states\nthat they \"don't work with xHCI host controllers\", whatever it means.\n\nBut somebody (or a malicious device) can try, and then the driver will\nallocate a 512 byte bounce buffer for this endpoint and may write up to\n1024 bytes into it if particular scatter-gather URBs are used, because\nxhci_align_td() obtains packet size from the descriptor. Fix this.\n\nAs a side effect, TRBs will be aligned to the packet size chosen by the\ndriver on all endpoints of all speeds. Alignment serves the xHC, not\ndevice, so this is fine. Only out of spec devices are affected anyway.",
-      "published": "2026-11-16T09:59:31.923Z",
-      "updated": "2026-11-16T10:17:05.853",
+      "published": "2026-11-16T10:17:05.853",
+      "updated": "2026-11-17T11:17:29.010",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Linux Linux"
-      ],
+      "vendor_products": [],
       "references": [
+        "https://git.kernel.org/stable/c/68c5cb7574c567e83ba95258cb146db95e069a87",
         "https://git.kernel.org/stable/c/d0d15d7a11f2a45e5d29ab4780a094992d7a26a2",
-        "https://git.kernel.org/stable/c/e95ace4abebd564b50b856513e24853d35be06cd",
-        "https://git.kernel.org/stable/c/68c5cb7574c567e83ba95258cb146db95e069a87"
+        "https://git.kernel.org/stable/c/dab2792e136385bd34b36d2b95db94862ed902cc",
+        "https://git.kernel.org/stable/c/e95ace4abebd564b50b856513e24853d35be06cd"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -198095,7 +198687,6 @@
       "epss_percentile": 0.13061,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -214172,6 +214763,566 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-17T02:56:07.554687+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093898",
+      "aliases": [],
+      "title": "GDCA: Inconsistency Between Subordinate CA Certificate Key Usage and CP/CPS Requirements",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T05:41:58Z",
+      "updated": "2026-11-17T05:45:31Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093898"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093901",
+      "aliases": [],
+      "title": "GDCA: ECC Subscriber Certificate Key Usage Requirements Inconsistent with CA/Browser Forum Baseline Requirements",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T05:47:05Z",
+      "updated": "2026-11-17T05:49:21Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093901"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093904",
+      "aliases": [],
+      "title": "GDCA: Failure to Respond to a Certificate Problem Report Within 24 Hours",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T05:51:19Z",
+      "updated": "2026-11-17T05:58:42Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093904"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093955",
+      "aliases": [],
+      "title": "NAVER Cloud Trust Services: OCSP responses signed with ecdsa-with-SHA256 using P-384 responder keys",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T07:32:58Z",
+      "updated": "2026-11-17T07:32:58Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093955"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093969",
+      "aliases": [],
+      "title": "TWCA: CP/CPS coverage of CA certificates",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T08:32:21Z",
+      "updated": "2026-11-17T08:32:21Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093969"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093970",
+      "aliases": [],
+      "title": "TWCA: OCSP responses for newly revoked subscriber certificates omitted nextUpdate",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T08:33:17Z",
+      "updated": "2026-11-17T08:33:17Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093970"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093971",
+      "aliases": [],
+      "title": "TWCA: OCSP responses with revocationReason unspecified (0)",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T08:36:02Z",
+      "updated": "2026-11-17T08:36:02Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093971"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093973",
+      "aliases": [],
+      "title": "CFCA: Missing CCADB Policy Adherence Statement in IdentityCA CPS",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T08:55:26Z",
+      "updated": "2026-11-17T08:59:23Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093973"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093975",
+      "aliases": [],
+      "title": "CFCA: Inaccurate Cross-signed Certificate Profiles in Global-Trust CP/CPS",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T09:01:25Z",
+      "updated": "2026-11-17T09:01:25Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093975"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2093998",
+      "aliases": [],
+      "title": "CFCA: EV TLS certificate misissued with incorrect businessCategory",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T09:32:31Z",
+      "updated": "2026-11-17T09:32:31Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2093998"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2094037",
+      "aliases": [],
+      "title": "D-Trust: Preliminary findings on Certificate Problem Report not provided within 24 hours",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T10:29:43Z",
+      "updated": "2026-11-17T10:29:43Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2094037"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2094045",
+      "aliases": [],
+      "title": "certSIGN: Different URLs in Root CPS vs CA certificates",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T10:50:29Z",
+      "updated": "2026-11-17T10:50:29Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2094045"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2094046",
+      "aliases": [],
+      "title": "certSIGN: DV CPS inconsistency in text",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T10:53:44Z",
+      "updated": "2026-11-17T10:53:44Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2094046"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2094047",
+      "aliases": [],
+      "title": "certSIGN: Delay in updating in CCADB the version of a CPS",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-17T10:55:41Z",
+      "updated": "2026-11-17T10:55:41Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2094047"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T11:53:15.309368+00:00",
       "matched": [
         "pki"
       ],
