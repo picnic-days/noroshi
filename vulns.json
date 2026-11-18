@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T02:54:45.051818+00:00",
+  "generated_at": "2026-11-18T11:43:51.230202+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -727,6 +727,48 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】Microsoft公式のPyPIパッケージ agent-framework の正規パッケージが乗っ取られ、2026年11月17日に公開された1.26.1と1.26.2に認証情報を盗むコードが入っていました。どちらも削除済みで、latestは安全な1.26.0に戻っています。ただしpip/uvやCIのキャッシュ、社内ミラーからはまだ入る可能性があります。importしなくても、インストールしただけで実行されます。盗まれる対象は環境変数、~/.azure・.npmrc・.git-credentials など、AzureマネージドIDのトークン、Azure DevOps/GitHub ActionsのOIDCトークンで、外部のwebhook.siteへ送られます。犯人がアップロードに使った認証情報を無効化済みかは未確認です。\n\n【影響範囲】agent-framework 1.26.1と1.26.2のみです。1.26.0以前は影響なし。依存先の agent-framework-core 1.26.0 は変更されていません。\n\n【対応策】\n1. lockfile、CIの実行ログ、pip freeze の結果で 1.26.1/1.26.2 を探してください。site-packages に agent_framework_meta.pth か af_runtime_diag.pth があれば感染しています。見つかったら削除し、==1.26.0 に固定したうえで、その環境から読めた秘密情報（Azure・AWS・GitHub・PyPI/npmのトークン、CI/Actionsのシークレット）をすべて再発行してください。11/17 20:35 UTC以降のEntraのサインインログとロール割り当ても確認してください。\n2. 「最新版に上げる」だけでは安全になりません。バージョンを固定し、キャッシュと社内ミラーからも該当版を消してください。Pythonプロセスからwebhook.siteへの通信と、環境変数 _AF_TEL=1 を監視してください。\n\n【各告知の関係】\nGitHub Advisory/OSV：悪性パッケージの告知（修正版なし。1.26.0に戻す）\nMicrosoft（開発元）：GitHubのIssueで該当版を取り下げ、調査中と回答\nStepSecurity・Socketなど：セキュリティ企業による分析\n\n【出典】\nhttps://github.com/advisories/GHSA-764m-3ppc-5m73\nhttps://github.com/microsoft/agent-framework/issues/10411\nhttps://www.stepsecurity.io/blog/microsoft-agent-framework-pypi-package-compromised"
+    },
+    {
+      "id": "GHSA-j2hq-r459-pg6f",
+      "aliases": [],
+      "title": "Malicious code in vant (npm)",
+      "description": "Ten versions of vant were published on 2024-12-19 between 00:41:47Z and 01:49:30Z by the npm user landluck, using npm 9.2.0: 4.9.11, 2.13.3, 3.6.13, 4.9.12, 3.6.14, 2.13.4, 4.9.13, 4.9.14, 3.6.15 and 2.13.5. Each one adds an install hook, \"postinstall\": \"node lib/utils/support.js\", which no earlier release of vant had. Clean releases by the maintainer followed from 02:20:40Z the same day (4.9.15, 3.6.16, 2.13.6). The ten versions are deprecated on the registry with the message \"Contains security vulnerabilities, do not use\" but remain installable.\n\nContent (all ten tarballs read statically, integrity matching the registry; nothing was executed): every version is the clean 4.9.10 build with every other file byte-identical to 4.9.10, package.json \"version\" set to the target number, the postinstall hook added, and one added file, lib/utils/support.js. The 2.13.x and 3.6.x versions therefore ship 4.x code under 2.x and 3.x numbers. lib/utils/support.js is a single obfuscated line in two builds:\n- sha256 92c486bcc03a68b5b0b914417bca063bf40ad08db246a1c3f11bb8999afedf43, 609,615 bytes: 4.9.11, 2.13.3, 3.6.13\n- sha256 b91f82dc09bae8c3e72e4cf8f6778a8530417bf5fed3a7e2df49e8b85950eb85, 609,441 bytes: 4.9.12, 3.6.14, 2.13.4, 4.9.13, 4.9.14, 3.6.15, 2.13.5\n\nThe script uses child_process and writes and marks files executable. Strings in both builds: the XMRig 6.22.2 linux-static-x64 release download from github.com, the endpoint 80.78.28.72/tokens (https in the first build, http in the second), an IP lookup at ipinfo.io/json, the GitHub API path api.github.com/repos/youzan/vant/git/blobs/, and the local paths /tmp/vant_helper and /tmp/xmrig. Classification: cryptocurrency miner dropper run from an install hook.\n\nThis compromise was reported publicly on the same day, in the vant maintainers' notice (youzan/vant discussion #13273, 2024-12-19T01:39Z) and in vendor write-ups such as Sonatype's, which lists the same ten versions. ossf/malicious-packages issue #1628 asks for a record for eight of them; this record adds 4.9.11 and 3.6.15. At the time of writing no malware record for these versions exists in OSV or the GitHub Advisory Database.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6e55eedf725a24f7642b70835be301ba435a5a51/osv/malicious/npm/vant/MAL-2026-20107.json))\n\n週間ダウンロード数: 約 115,882",
+      "published": "2026-11-18T03:30:26Z",
+      "updated": "2026-11-18T03:30:34Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:vant"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-j2hq-r459-pg6f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "npm:vant"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": "【状況】npm の UI ライブラリ vant に、2024-12-19 に乗っ取られた npm アカウント（landluck）から悪性版が 10 個公開されました。npm install の後に自動で動く処理（postinstall）で、Linux 向けの暗号通貨マイナー XMRig をダウンロードして実行します。外部の通信先は 80.78.28.72 と ipinfo.io です。実際に被害が出たかは未確認です。悪性版は非推奨になっていますが、今もインストールできます。同じ日に Rspack も同じ手口の被害を受けています。\n\n【原因の部品】npm:vant（youzan/vant）。これを組み込んだ主な製品は未確認です。\n\n【影響範囲】\n・2.13.3〜2.13.5\n・3.6.13〜3.6.15\n・4.9.11〜4.9.14\n（計 10 版）\n修正後のクリーンな版は 2.13.6／3.6.16／4.9.15 です。\n\n【対応策】\n1. 最優先でやること\n・package-lock.json／yarn.lock／pnpm-lock.yaml と CI のログで、上の版を 12/19 以降に入れていないか確認する\n・該当した場合は、その端末と CI ランナーで次を確認する：/tmp/xmrig と /tmp/vant_helper の有無、xmrig のプロセス、上の通信先への通信\n・該当した環境は作り直し、そこに置いていた秘密情報（npm・GitHub・クラウドのトークンなど）を再発行する\n・vant をクリーン版に固定し、lockfile を作り直す\n2. すぐ更新できない場合の回避策\n・npm install --ignore-scripts でインストール時の処理を止める\n・悪性の版をレジストリやプロキシで遮断する\n\n【各告知の関係】\n・vant 開発元（GitHub の discussion #13273）：侵害の公表とクリーン版の公開\n・OpenSSF／GitHub（GHSA-j2hq-r459-pg6f）：悪性パッケージとしての登録\n・Sonatype などのセキュリティ企業：分析記事（注意喚起）\n\n【出典】\nhttps://github.com/advisories/GHSA-j2hq-r459-pg6f\nhttps://thehackernews.com/2024/12/rspack-npm-packages-compromised-with.html"
     },
     {
       "id": "CVE-2026-115252",
@@ -5327,6 +5369,59 @@
         "cvss": 19.2,
         "unauth_network": 5,
         "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115731",
+      "aliases": [],
+      "title": "Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability",
+      "description": "Deserialization of untrusted data in the report-processing code of Puppet, as used by Puppet Server, in the affected releases, allows a client that holds any CA-signed agent certificate to execute arbitrary code on the Puppet Server as its service user by submitting a report containing a crafted rich-data type via PUT request. Where the certificate authority autosigns requests without strong verification, an unauthenticated network attacker can obtain such a certificate.",
+      "published": "2026-11-03T21:17:01.867",
+      "updated": "2026-11-18T05:19:01.130",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [
+        "puppet:puppet",
+        "puppet:puppet_enterprise"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Perforce Puppet Enterprise"
+      ],
+      "references": [
+        "https://portal.perforce.com/s/cve/a91Qi000003IaHpIAK/report-deserialization-code-execution",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-115731",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-115731"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-17",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00366,
+      "epss_percentile": 0.30882,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 58.9,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 18.8,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -39379,56 +39474,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-114938",
-      "aliases": [],
-      "title": "",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Compiler).  Supported versions that are affected are Oracle Java SE: 8u511b33-perf, 17.0.21.0.3, 21.0.13.0.3, 25.0.5.0.3, 27.0.1.0.3; Oracle GraalVM for JDK: 17.0.21.0.3 and  21.0.13.0.3; Oracle GraalVM Enterprise Edition: 21.3.20.0.3. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in takeover of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "published": "2026-11-17T21:32:03.183Z",
-      "updated": "2026-11-18T02:17:40.110",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Oracle Corporation Oracle Java SE",
-        "Oracle Corporation Oracle GraalVM for JDK",
-        "Oracle Corporation Oracle GraalVM Enterprise Edition"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cspunov2026.html",
-        "http://www.openwall.com/lists/oss-security/2026/11/17/31"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-18T02:54:45.051818+00:00",
-      "matched": [
-        "java"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 51.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-82418",
       "aliases": [],
       "title": "IBM Watson Speech Services Cartridge is vulnerable to a Use After Free condition in cryptography wheels OpenSSL",
@@ -40935,16 +40980,14 @@
       "aliases": [],
       "title": "",
       "description": "Protection mechanism failure in ANGLE in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:07.979Z",
-      "updated": "2026-11-17T22:19:09.403",
+      "published": "2026-11-17T21:17:45.100",
+      "updated": "2026-11-18T05:19:08.267",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/576579698"
@@ -40953,12 +40996,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -40984,16 +41026,14 @@
       "aliases": [],
       "title": "",
       "description": "Out of bounds write in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:17.460Z",
-      "updated": "2026-11-17T22:19:12.270",
+      "published": "2026-11-17T21:17:53.400",
+      "updated": "2026-11-18T05:19:11.900",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/536599243"
@@ -41002,12 +41042,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -41034,7 +41073,7 @@
       "title": "",
       "description": "Use after free in WebGL in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:56.223",
-      "updated": "2026-11-17T22:19:13.447",
+      "updated": "2026-11-18T05:19:13.890",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41080,7 +41119,7 @@
       "title": "",
       "description": "Out of bounds write in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:56.463",
-      "updated": "2026-11-17T22:19:13.590",
+      "updated": "2026-11-18T05:19:14.090",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41126,7 +41165,7 @@
       "title": "",
       "description": "Out of bounds read in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:00.137",
-      "updated": "2026-11-17T22:19:14.917",
+      "updated": "2026-11-18T05:19:15.910",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41172,7 +41211,7 @@
       "title": "",
       "description": "Out of bounds write in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:18:00.920",
-      "updated": "2026-11-17T22:19:15.063",
+      "updated": "2026-11-18T05:19:16.097",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41218,7 +41257,7 @@
       "title": "",
       "description": "Out of bounds write in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:18:04.570",
-      "updated": "2026-11-17T22:19:16.027",
+      "updated": "2026-11-18T05:19:17.250",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41264,7 +41303,7 @@
       "title": "",
       "description": "Out of bounds read in ANGLE in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:04.947",
-      "updated": "2026-11-17T22:19:16.340",
+      "updated": "2026-11-18T05:19:17.637",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41310,7 +41349,7 @@
       "title": "",
       "description": "Buffer overflow in Color in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:05.430",
-      "updated": "2026-11-17T22:19:16.857",
+      "updated": "2026-11-18T05:19:18.150",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41356,7 +41395,7 @@
       "title": "",
       "description": "Out of bounds write in Tint in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:07.363",
-      "updated": "2026-11-17T22:19:17.520",
+      "updated": "2026-11-18T05:19:18.843",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -41402,7 +41441,7 @@
       "title": "",
       "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
       "published": "2026-11-17T21:18:08.687",
-      "updated": "2026-11-17T22:19:18.557",
+      "updated": "2026-11-18T05:19:19.980",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -45823,6 +45862,110 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119161",
+      "aliases": [],
+      "title": "HTML Forms <= 1.7.1 - Unauthenticated Stored Cross-Site Scripting via Submission Field Name",
+      "description": "The HTML Forms – Simple WordPress Forms Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'arbitrary POST parameter NAME (the array key, not the value)' parameter in all versions up to, and including, 1.7.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Script execution does not require the Screen Options panel to be opened — injected attributes on the hidden-column checkboxes fire on page load as soon as the Submissions tab is rendered.",
+      "published": "2026-11-18T11:30:36.866Z",
+      "updated": "2026-11-18T11:30:36.866Z",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "linksoftware HTML Forms – Simple WordPress Forms Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/24cc3258-88aa-4950-89ba-ae209083e9c5?source=cve",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/admin/class-admin.php#L356",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/class-forms.php#L196",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/class-forms.php#L227",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/class-forms.php#L32",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/class-submission.php#L33",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.1/src/admin/class-admin.php#L270",
+        "https://plugins.trac.wordpress.org/browser/html-forms/tags/1.7.2/src/admin/class-admin.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96571",
+      "aliases": [],
+      "title": "FancyBox for WordPress <= 3.4.2 - Unauthenticated Stored Cross-Site Scripting via Comment Anchor 'href' Attribute",
+      "description": "The FancyBox for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment Anchor 'href' Attribute in all versions up to, and including, 3.4.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the attacker to wrap the payload anchor around a smilie shortcode (e.g., :mrgreen:), which WordPress renders as an &lt;img&gt; element, satisfying the plugin's a:has(img) enrollment selector and disguising the malicious link as an ordinary comment emoticon.",
+      "published": "2026-11-18T11:30:43.515Z",
+      "updated": "2026-11-18T11:30:43.515Z",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "colorlibplugins FancyBox for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b50c85c9-d8f9-492b-8538-2af80a948741?source=cve",
+        "https://plugins.trac.wordpress.org/browser/fancybox-for-wordpress/tags/3.4.2/fancybox.php#L733",
+        "https://plugins.trac.wordpress.org/browser/fancybox-for-wordpress/tags/3.4.2/fancybox.php#L807",
+        "https://plugins.trac.wordpress.org/browser/fancybox-for-wordpress/tags/3.4.2/assets/js/jquery.fancybox.js#L132",
+        "https://plugins.trac.wordpress.org/browser/fancybox-for-wordpress/tags/3.4.2/assets/js/jquery.fancybox.js#L1725",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3792374%40fancybox-for-wordpress&new=3792374%40fancybox-for-wordpress"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-66570",
       "aliases": [],
       "title": "WordPress WordPress File Upload plugin <= 5.2.1 - Cross Site Scripting (XSS) vulnerability",
@@ -46702,16 +46845,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:08.388Z",
-      "updated": "2026-11-17T22:19:09.233",
+      "published": "2026-11-17T21:17:44.970",
+      "updated": "2026-11-18T05:19:08.090",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/560339053"
@@ -46720,12 +46861,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46751,16 +46891,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in CSS in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:12.514Z",
-      "updated": "2026-11-17T22:19:09.610",
+      "published": "2026-11-17T21:17:45.723",
+      "updated": "2026-11-18T05:19:08.450",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/575201475"
@@ -46769,12 +46907,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46800,16 +46937,14 @@
       "aliases": [],
       "title": "",
       "description": "Out of bounds write in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:18.878Z",
-      "updated": "2026-11-17T22:19:10.267",
+      "published": "2026-11-17T21:17:46.677",
+      "updated": "2026-11-18T05:19:09.200",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/568908052"
@@ -46818,12 +46953,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46849,16 +46983,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Chromecast in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:08.108Z",
-      "updated": "2026-11-17T22:19:10.740",
+      "published": "2026-11-17T21:17:50.013",
+      "updated": "2026-11-18T05:19:09.770",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/512778726"
@@ -46867,12 +46999,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46898,16 +47029,14 @@
       "aliases": [],
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:33.003Z",
-      "updated": "2026-11-17T22:19:11.357",
+      "published": "2026-11-17T21:17:50.867",
+      "updated": "2026-11-18T05:19:10.537",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/572312093"
@@ -46916,12 +47045,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46947,16 +47075,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Plugins in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:11.449Z",
-      "updated": "2026-11-17T22:19:11.513",
+      "published": "2026-11-17T21:17:50.983",
+      "updated": "2026-11-18T05:19:10.713",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/573981230"
@@ -46965,12 +47091,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -46996,16 +47121,14 @@
       "aliases": [],
       "title": "",
       "description": "Improper state validation in Performance in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:13.944Z",
-      "updated": "2026-11-17T22:19:11.830",
+      "published": "2026-11-17T21:17:51.713",
+      "updated": "2026-11-18T05:19:11.177",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/577245772"
@@ -47014,12 +47137,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -47046,7 +47168,7 @@
       "title": "",
       "description": "Use after free in WebAudio in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:17:53.913",
-      "updated": "2026-11-17T22:19:12.573",
+      "updated": "2026-11-18T05:19:12.343",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47092,7 +47214,7 @@
       "title": "",
       "description": "Use after free in PDFium in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted PDF file. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:54.037",
-      "updated": "2026-11-17T23:17:55.510",
+      "updated": "2026-11-18T05:19:12.577",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47138,7 +47260,7 @@
       "title": "",
       "description": "Use after free in Forms in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:54.400",
-      "updated": "2026-11-17T22:19:12.717",
+      "updated": "2026-11-18T05:19:12.797",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47184,7 +47306,7 @@
       "title": "",
       "description": "Use after free in Layout in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:54.520",
-      "updated": "2026-11-17T22:19:12.867",
+      "updated": "2026-11-18T05:19:13.017",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47230,7 +47352,7 @@
       "title": "",
       "description": "Buffer overflow in Video in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
       "published": "2026-11-17T21:17:57.110",
-      "updated": "2026-11-17T22:19:13.887",
+      "updated": "2026-11-18T05:19:14.630",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47276,7 +47398,7 @@
       "title": "",
       "description": "Use after free in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
       "published": "2026-11-17T21:17:57.583",
-      "updated": "2026-11-17T22:19:14.180",
+      "updated": "2026-11-18T05:19:14.980",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47322,7 +47444,7 @@
       "title": "",
       "description": "Use after free in GarbageCollection in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:17:57.950",
-      "updated": "2026-11-17T22:19:14.323",
+      "updated": "2026-11-18T05:19:15.153",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47368,7 +47490,7 @@
       "title": "",
       "description": "Use after free in Accessibility in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:59.613",
-      "updated": "2026-11-17T22:19:14.620",
+      "updated": "2026-11-18T05:19:15.540",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47414,7 +47536,7 @@
       "title": "",
       "description": "Use after free in DOM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:59.757",
-      "updated": "2026-11-17T22:19:14.767",
+      "updated": "2026-11-18T05:19:15.740",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47460,7 +47582,7 @@
       "title": "",
       "description": "Use after free in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:03.107",
-      "updated": "2026-11-17T22:19:15.387",
+      "updated": "2026-11-18T05:19:16.487",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47506,7 +47628,7 @@
       "title": "",
       "description": "Use after free in Autofill in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:05.187",
-      "updated": "2026-11-17T22:19:16.487",
+      "updated": "2026-11-18T05:19:17.790",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47552,7 +47674,7 @@
       "title": "",
       "description": "Buffer overflow in Media in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:18:05.310",
-      "updated": "2026-11-17T22:19:16.667",
+      "updated": "2026-11-18T05:19:17.967",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47598,7 +47720,7 @@
       "title": "",
       "description": "Use after free in Autofill in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:05.930",
-      "updated": "2026-11-17T22:19:17.180",
+      "updated": "2026-11-18T05:19:18.483",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47644,7 +47766,7 @@
       "title": "",
       "description": "Use after free in Bindings in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:07.610",
-      "updated": "2026-11-17T22:19:17.867",
+      "updated": "2026-11-18T05:19:19.210",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47690,7 +47812,7 @@
       "title": "",
       "description": "Use after free in CSS in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:07.977",
-      "updated": "2026-11-17T22:19:18.037",
+      "updated": "2026-11-18T05:19:19.417",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47736,7 +47858,7 @@
       "title": "",
       "description": "Use after free in XML in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:08.217",
-      "updated": "2026-11-17T22:19:18.203",
+      "updated": "2026-11-18T05:19:19.600",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47782,7 +47904,7 @@
       "title": "",
       "description": "Type confusion in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:08.573",
-      "updated": "2026-11-17T22:19:18.370",
+      "updated": "2026-11-18T05:19:19.790",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47828,7 +47950,7 @@
       "title": "",
       "description": "Use after free in Geometry in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:08.933",
-      "updated": "2026-11-17T22:19:18.730",
+      "updated": "2026-11-18T05:19:20.177",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47874,7 +47996,7 @@
       "title": "",
       "description": "Use after free in Loader in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:10.257",
-      "updated": "2026-11-17T22:19:19.217",
+      "updated": "2026-11-18T05:19:20.730",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47920,7 +48042,7 @@
       "title": "",
       "description": "Out of bounds read in Editing in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:10.380",
-      "updated": "2026-11-17T22:19:19.387",
+      "updated": "2026-11-18T05:19:20.917",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -47966,7 +48088,7 @@
       "title": "",
       "description": "Buffer overflow in Partition in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:10.970",
-      "updated": "2026-11-17T22:19:19.560",
+      "updated": "2026-11-18T05:19:21.103",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -51747,6 +51869,59 @@
       "first_seen": "2026-11-18T02:54:45.051818+00:00",
       "matched": [
         "java"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123343",
+      "aliases": [],
+      "title": "BlockArt Blocks <= 2.4.3 - Missing Authorization to Authenticated (Contributor+) Sensitive Information Disclosure via 'queryArgs' and 'query[post_status]' Block Attributes",
+      "description": "The BlockArt Blocks – Gutenberg Blocks, Page Builder Blocks ,WordPress Block Plugin, Sections & Template Library plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.4.3. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to view the title, excerpt, and full content of other users' draft, pending, and private posts, exposing that content to unauthenticated visitors on the published permalink. This is exploitable by an Author-level user because WordPress's wp_filter_post_kses preserves block-comment JSON in HTML comments, allowing the malicious queryArgs and query[post_status] attributes to survive post saving and execute on every unauthenticated request to the published URL. Exploitation by attackers with contributor-level access and above requires that attacker only needs to see the data themselves (not expose it to unauthenticated visitors) — satisfied by viewing their own preview URL. On a default installation, where that is not configured, the vulnerability requires attackers with author-level access and above.",
+      "published": "2026-11-18T09:29:55.673Z",
+      "updated": "2026-11-18T10:16:53.900",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "wpblockart BlockArt Blocks – Gutenberg Blocks, Page Builder Blocks ,WordPress Block Plugin, Sections & Template Library"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/11c2ad2c-5589-4465-ab53-0ef62487542a?source=cve",
+        "https://plugins.trac.wordpress.org/browser/blockart-blocks/tags/2.4.3/includes/BlockTypes/PostTemplate.php#L100",
+        "https://plugins.trac.wordpress.org/browser/blockart-blocks/tags/2.4.3/includes/BlockTypes/PostTemplate.php#L118",
+        "https://plugins.trac.wordpress.org/browser/blockart-blocks/tags/2.4.3/includes/BlockTypes/PostTemplate.php#L39",
+        "https://plugins.trac.wordpress.org/browser/blockart-blocks/tags/2.4.3/dist/query-loop/block.json#L497",
+        "https://plugins.trac.wordpress.org/changeset?old_path=/blockart-blocks/tags/2.4.3&new_path=/blockart-blocks/tags/2.4.4",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3804250%40blockart-blocks&new=3804250%40blockart-blocks"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -55662,16 +55837,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:12.136Z",
-      "updated": "2026-11-17T22:19:09.067",
+      "published": "2026-11-17T21:17:44.480",
+      "updated": "2026-11-18T05:19:07.897",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/574795880"
@@ -55680,12 +55853,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55711,16 +55883,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Browser in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:19.387Z",
-      "updated": "2026-11-17T22:19:09.790",
+      "published": "2026-11-17T21:17:45.967",
+      "updated": "2026-11-18T05:19:08.653",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/569129183"
@@ -55729,12 +55899,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55760,16 +55929,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Views in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:34.145Z",
-      "updated": "2026-11-17T22:19:09.950",
+      "published": "2026-11-17T21:17:46.090",
+      "updated": "2026-11-18T05:19:08.837",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/575506658"
@@ -55778,12 +55945,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55809,16 +55975,14 @@
       "aliases": [],
       "title": "",
       "description": "Race condition in Printing in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:33.263Z",
-      "updated": "2026-11-17T22:19:10.110",
+      "published": "2026-11-17T21:17:46.203",
+      "updated": "2026-11-18T05:19:09.020",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/573591801"
@@ -55827,12 +55991,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55858,16 +56021,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Ozone in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:20.531Z",
-      "updated": "2026-11-17T22:19:10.443",
+      "published": "2026-11-17T21:17:48.333",
+      "updated": "2026-11-18T05:19:09.387",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/574200170"
@@ -55876,12 +56037,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55907,16 +56067,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Accessibility in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:21.910Z",
-      "updated": "2026-11-17T22:19:10.590",
+      "published": "2026-11-17T21:17:49.370",
+      "updated": "2026-11-18T05:19:09.583",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/574378401"
@@ -55925,12 +56083,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -55956,16 +56113,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Omnibox in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:14.971Z",
-      "updated": "2026-11-17T22:19:10.887",
+      "published": "2026-11-17T21:17:50.133",
+      "updated": "2026-11-18T05:19:09.963",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/579037685"
@@ -55974,12 +56129,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56005,16 +56159,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in VR in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:09.668Z",
-      "updated": "2026-11-17T22:19:11.047",
+      "published": "2026-11-17T21:17:50.247",
+      "updated": "2026-11-18T05:19:10.160",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/569197056"
@@ -56023,12 +56175,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56054,16 +56205,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Omnibox in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:18.753Z",
-      "updated": "2026-11-17T22:19:11.200",
+      "published": "2026-11-17T21:17:50.610",
+      "updated": "2026-11-18T05:19:10.343",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/567673370"
@@ -56072,12 +56221,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56103,16 +56251,14 @@
       "aliases": [],
       "title": "",
       "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:23.923Z",
-      "updated": "2026-11-17T22:19:11.683",
+      "published": "2026-11-17T21:17:51.590",
+      "updated": "2026-11-18T05:19:10.920",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/574788166"
@@ -56121,12 +56267,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56152,16 +56297,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in Session in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:19.759Z",
-      "updated": "2026-11-17T22:19:11.980",
+      "published": "2026-11-17T21:17:52.070",
+      "updated": "2026-11-18T05:19:11.407",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/572721812"
@@ -56170,12 +56313,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56201,16 +56343,14 @@
       "aliases": [],
       "title": "",
       "description": "Incorrect authorization in Omnibox in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:25.566Z",
-      "updated": "2026-11-17T22:19:12.127",
+      "published": "2026-11-17T21:17:53.157",
+      "updated": "2026-11-18T05:19:11.660",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/576129731"
@@ -56219,12 +56359,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56250,16 +56389,14 @@
       "aliases": [],
       "title": "",
       "description": "Use after free in UserEducation in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:26.206Z",
-      "updated": "2026-11-17T22:19:12.423",
+      "published": "2026-11-17T21:17:53.760",
+      "updated": "2026-11-18T05:19:12.120",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
       "cpes": [],
       "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
+      "vendor_products": [],
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/576387815"
@@ -56268,12 +56405,11 @@
       "kev": false,
       "kev_date_added": "",
       "ransomware": false,
-      "ssvc_exploitation": "none",
+      "ssvc_exploitation": "",
       "epss": null,
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -56300,7 +56436,7 @@
       "title": "",
       "description": "Incorrect authorization in Omnibox in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:54.767",
-      "updated": "2026-11-17T22:19:13.010",
+      "updated": "2026-11-18T05:19:13.233",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56346,7 +56482,7 @@
       "title": "",
       "description": "Race condition in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:55.370",
-      "updated": "2026-11-17T22:19:13.153",
+      "updated": "2026-11-18T05:19:13.483",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56392,7 +56528,7 @@
       "title": "",
       "description": "Incorrect authorization in Views in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:55.977",
-      "updated": "2026-11-17T22:19:13.300",
+      "updated": "2026-11-18T05:19:13.670",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56438,7 +56574,7 @@
       "title": "",
       "description": "Use after free in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:56.823",
-      "updated": "2026-11-17T21:17:56.950",
+      "updated": "2026-11-18T05:19:14.270",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56484,7 +56620,7 @@
       "title": "",
       "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:56.990",
-      "updated": "2026-11-17T22:19:13.740",
+      "updated": "2026-11-18T05:19:14.447",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56530,7 +56666,7 @@
       "title": "",
       "description": "Use after free in FedCM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:57.463",
-      "updated": "2026-11-17T22:19:14.033",
+      "updated": "2026-11-18T05:19:14.813",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56576,7 +56712,7 @@
       "title": "",
       "description": "Buffer overflow in Skia in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:58.563",
-      "updated": "2026-11-17T22:19:14.463",
+      "updated": "2026-11-18T05:19:15.347",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56622,7 +56758,7 @@
       "title": "",
       "description": "Use after free in Mojo in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:01.900",
-      "updated": "2026-11-17T22:19:15.210",
+      "updated": "2026-11-18T05:19:16.303",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56668,7 +56804,7 @@
       "title": "",
       "description": "Use after free in Payments in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:03.343",
-      "updated": "2026-11-17T22:19:15.540",
+      "updated": "2026-11-18T05:19:16.697",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56714,7 +56850,7 @@
       "title": "",
       "description": "Use after free in Mojo in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:04.083",
-      "updated": "2026-11-17T22:19:15.727",
+      "updated": "2026-11-18T05:19:16.873",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56760,7 +56896,7 @@
       "title": "",
       "description": "Incorrect authorization in UI in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:04.210",
-      "updated": "2026-11-17T22:19:15.880",
+      "updated": "2026-11-18T05:19:17.070",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56806,7 +56942,7 @@
       "title": "",
       "description": "Use after free in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:04.830",
-      "updated": "2026-11-17T22:19:16.177",
+      "updated": "2026-11-18T05:19:17.420",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56852,7 +56988,7 @@
       "title": "",
       "description": "Use after free in CameraCapture in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:05.687",
-      "updated": "2026-11-17T22:19:17.033",
+      "updated": "2026-11-18T05:19:18.320",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56898,7 +57034,7 @@
       "title": "",
       "description": "Use after free in DeviceBoundSessionCredentials in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:07.020",
-      "updated": "2026-11-17T22:19:17.350",
+      "updated": "2026-11-18T05:19:18.663",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56944,7 +57080,7 @@
       "title": "",
       "description": "Use after free in Proxy in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted file. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:07.487",
-      "updated": "2026-11-17T22:19:17.693",
+      "updated": "2026-11-18T05:19:19.023",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -56990,7 +57126,7 @@
       "title": "",
       "description": "Use after free in Mojo in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:09.213",
-      "updated": "2026-11-17T22:19:18.900",
+      "updated": "2026-11-18T05:19:20.377",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -57036,7 +57172,7 @@
       "title": "",
       "description": "Use after free in FedCM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:09.370",
-      "updated": "2026-11-17T22:19:19.050",
+      "updated": "2026-11-18T05:19:20.537",
       "cvss": 8.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "high",
@@ -57217,6 +57353,56 @@
       "first_seen": "2026-11-12T01:01:55.044889+00:00",
       "matched": [
         "fortinet"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124977",
+      "aliases": [],
+      "title": "Flexible PDF Invoices for WooCommerce & WordPress <= 7.1.2 - Unauthenticated Stored Cross-Site Scripting via Billing Field",
+      "description": "The Flexible PDF Invoices for WooCommerce & WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'billing_address.first_name / extensions.wpdesk-flexible-invoices-checkout._billing_vat_number' parameter in all versions up to, and including, 7.1.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Execution requires an administrator to open the invoice edit page for the attacker's order and interact with (e.g., type into or trigger a change/keyup event on) a field in the customer metabox, at which point the payload stored in billing fields such as first_name or _billing_vat_number is decoded from its entity-escaped input value and passed unsanitized to jQuery .html(). Successful exploitation additionally requires an action by an administrator — the attacker cannot trigger the vulnerability on their own.",
+      "published": "2026-11-18T11:30:39.427Z",
+      "updated": "2026-11-18T11:30:39.427Z",
+      "cvss": 6.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "wpdesk Flexible PDF Invoices for WooCommerce & WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/556b38fd-631b-4900-b5d9-65abcc526892?source=cve",
+        "https://plugins.trac.wordpress.org/browser/flexible-invoices/tags/7.1.2/vendor_prefixed/wpdesk/flexible-invoices-core/assets-src/js/admin.js#L81",
+        "https://plugins.trac.wordpress.org/browser/flexible-invoices/tags/7.1.2/vendor_prefixed/wpdesk/flexible-invoices-core/assets/js/admin.js",
+        "https://plugins.trac.wordpress.org/browser/flexible-invoices/tags/7.1.2/vendor_prefixed/wpdesk/flexible-invoices-core/templates/invoice_edit/meta-box/customer.php#L136",
+        "https://plugins.trac.wordpress.org/changeset/3804918/flexible-invoices/tags/7.1.3"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -78232,6 +78418,104 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-11602",
+      "aliases": [],
+      "title": "FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest] <= 8.0.1 - Missing Authorization to Unauthorized Social App Data Modification via 'fsp_app_redirect' / 'app' Parameters",
+      "description": "The FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest] plugin for WordPress is vulnerable to missing authorization to Unauthorized Social App Data Modification in all versions up to, and including, 8.0.1 This is due to missing authentication, nonce, and capability checks in the `standardFSApp()` function, which is registered on the `wp` action hook and executes on every frontend page load without any login or permission verification. This makes it possible for unauthenticated attackers to insert arbitrary social network app records into the database, or overwrite the OAuth `client_id` and `client_secret` of existing social network connections, by supplying attacker-controlled values via the `fsp_app_redirect` and `app` GET parameters. An attacker can target a specific existing social app record for credential overwrite by supplying matching `social_network` and `slug` values, requiring no knowledge of internal record IDs, which disrupts scheduled social media posts and forces administrators to re-authenticate their connected accounts.",
+      "published": "2026-11-18T11:30:38.705Z",
+      "updated": "2026-11-18T11:30:38.705Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "fs-code FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest]"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4087ac22-6ef8-41fc-b934-c1065cd1d9c3?source=cve",
+        "https://plugins.trac.wordpress.org/browser/fs-poster/trunk/App/Providers/Core/FrontEnd.php#L157"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120735",
+      "aliases": [],
+      "title": "Appointment Booking Plugin <= 5.7.7 - Unauthenticated Sensitive Information Exposure in 'key' Parameter",
+      "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 5.7.7 via the 'key' parameter. This makes it possible for unauthenticated attackers to extract full invoice and receipt records including customer full name, email address, phone number, invoice line items and totals, and the invoice's real access key. This is exploitable via the unauthenticated public routes invoices__view_by_key and transactions__view_receipt_by_key, which apply no ownership, capability, or nonce check before passing the attacker-supplied key into the ORM lookup.",
+      "published": "2026-11-18T11:30:37.976Z",
+      "updated": "2026-11-18T11:30:37.976Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "latepoint Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3306bba8-0f4a-4805-88af-03d0feea44fe?source=cve",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.7/lib/models/model.php#L452",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.7/lib/controllers/invoices_controller.php#L509",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.7/lib/controllers/transactions_controller.php#L54",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.7.7/latepoint.php#L1076",
+        "https://plugins.trac.wordpress.org/changeset/3781718/latepoint/trunk/lib/models/model.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126862",
       "aliases": [],
       "title": "",
@@ -79478,7 +79762,7 @@
       "title": "",
       "description": "Memory overflow in Email OTP authentication can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
       "published": "2026-11-13T04:17:36.417",
-      "updated": "2026-11-17T15:17:28.963",
+      "updated": "2026-11-18T05:18:59.647",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -79793,7 +80077,7 @@
       "title": "",
       "description": "Memory overflow in Endpoint Analysis (EPA/EPAS) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
       "published": "2026-11-13T08:17:15.557",
-      "updated": "2026-11-18T01:17:49.083",
+      "updated": "2026-11-18T05:19:00.053",
       "cvss": 9.3,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -104789,6 +105073,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-127132",
+      "aliases": [],
+      "title": "GamiPress <= 8.1.3 - Authenticated (Subscriber+) SQL Injection via 'name-1[compare]' Parameter",
+      "description": "The GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI plugin for WordPress is vulnerable to generic SQL Injection via the 'name-1[compare]' parameter in all versions up to, and including, 8.1.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires that an administrator has published at least one GamiPress achievement step triggered by a Forminator field-value submission event, as the GamiPress Forminator integration listener is the only path that routes a form submission's raw field array — including the attacker-controlled compare operator — into gamipress_query_logs().",
+      "published": "2026-11-18T11:30:42.781Z",
+      "updated": "2026-11-18T11:30:42.781Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "rubengc GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/82ee9bd1-f415-4ea7-bec0-d0fc4f8bd72d?source=cve",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/includes/functions/logs.php#L397",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/includes/functions/logs.php#L258",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/includes/functions/logs.php#L337",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/includes/functions/logs.php#L344",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/integrations/forminator/includes/triggers.php#L315",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.2/integrations/forminator/includes/listeners.php#L85",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3804653%40gamipress&new=3804653%40gamipress"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-105006",
       "aliases": [],
       "title": "",
@@ -105578,6 +105914,52 @@
         "popularity": 30,
         "cvss": 12.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-12040",
+      "aliases": [],
+      "title": "FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest] <= 8.0.1 - Authenticated (Subscriber+) Server-Side Request Forgery via 'site_url' Parameter",
+      "description": "The FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest] plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 8.0.1 via the 'site_url' parameter. This makes it possible for authenticated attackers, with subscriber-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services. The Guzzle HTTP client is instantiated with TLS certificate verification disabled and redirect following enabled by default, allowing redirect-based SSRF bypasses and enabling internal port scanning via distinguishable server responses.",
+      "published": "2026-11-18T11:30:44.932Z",
+      "updated": "2026-11-18T11:30:44.932Z",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "fs-code FS Poster - WordPress Social media Auto Poster & Scheduler [Facebook, Instagram, Twitter, Pinterest]"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d949d5cc-fc5f-4afe-87cb-9fbbb0d081d4?source=cve",
+        "https://plugins.trac.wordpress.org/browser/fs-poster/trunk/App/SocialNetworks/WordPress/Api/XmlRpc/Api.php#L185"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
       },
       "ai_analysis": ""
     },
@@ -107453,6 +107835,58 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-114938",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Compiler).  Supported versions that are affected are Oracle Java SE: 8u511b33-perf, 17.0.21.0.3, 21.0.13.0.3, 25.0.5.0.3, 27.0.1.0.3; Oracle GraalVM for JDK: 17.0.21.0.3 and  21.0.13.0.3; Oracle GraalVM Enterprise Edition: 21.3.20.0.3. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in takeover of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability can only be exploited by supplying data to APIs in the specified Component without using Untrusted Java Web Start applications or Untrusted Java applets, such as through a web service. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "published": "2026-11-17T22:18:23.777",
+      "updated": "2026-11-18T05:19:00.783",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspunov2026.html",
+        "http://www.openwall.com/lists/oss-security/2026/11/17/31",
+        "https://access.redhat.com/security/cve/cve-2026-114938",
+        "https://calif.io/java4shell",
+        "https://github.com/Azure/azure-functions-java-worker/issues/909",
+        "https://github.com/chainguard-dev/cg-skills/pull/17",
+        "https://github.com/corretto/corretto-27/blob/27.0.1.1.4/CHANGELOG.md",
+        "https://news.ycombinator.com/item?id=50538240",
+        "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T02:54:45.051818+00:00",
+      "matched": [
+        "java"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -109715,6 +110149,177 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-18T02:54:45.051818+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 41.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 16.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130644",
+      "aliases": [],
+      "title": "Ansible-core: ansible-core: ansible-galaxy collection install path traversal via unvalidated artifact-derived collection name allows file writes and directory deletion outside the collections path",
+      "description": "A path traversal flaw was found in ansible-core. When installing a collection with ansible-galaxy collection install, the install destination directory is derived from the namespace and name fields declared inside the collection artifact's own metadata, which are not validated as well-formed collection identifiers or checked for path containment. A malicious collection artifact -- delivered as a local file, a remote URL, a source directory, a git repository, or as a dependency -- can use a crafted name value to redirect the install destination outside the configured collections path, causing ansible-galaxy to delete an existing directory writable by the invoking user and then write attacker-controlled files to that location.",
+      "published": "2026-11-18T03:35:19.969Z",
+      "updated": "2026-11-18T04:17:14.847",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "migration_toolkit_applications:8",
+        "migration_toolkit_virtualization:2",
+        "migration_toolkit_virtualization:5",
+        "service_mesh:3",
+        "acm:2",
+        "ansible_automation_platform:2",
+        "ansible_core:2",
+        "discovery:2",
+        "enterprise_linux:10",
+        "enterprise_linux:8",
+        "enterprise_linux:9",
+        "rhel_cla:2",
+        "openshift:4",
+        "openshift:5",
+        "openstack:17.1",
+        "openstack:18.0",
+        "satellite:6",
+        "rhui:5",
+        "ansible_portal:2",
+        "stf:1.5"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Migration Toolkit for Applications 8",
+        "mta/mta-rhel9-operator",
+        "Red Hat Migration Toolkit for Virtualization",
+        "migration-toolkit-virtualization/mtv-rhel9-operator",
+        "Red Hat OpenShift Service Mesh 3",
+        "openshift-service-mesh/kiali-rhel9-operator",
+        "Red Hat Red Hat Advanced Cluster Management for Kubernetes 2",
+        "rhacm2/volsync-operator-bundle",
+        "rhacm2/volsync-rhel9",
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-24/controller-rhel9-operator",
+        "ansible-automation-platform-24/de-minimal-rhel8",
+        "ansible-automation-platform-24/de-minimal-rhel9",
+        "ansible-automation-platform-24/eda-controller-rhel9-operator",
+        "ansible-automation-platform-24/ee-minimal-rhel8",
+        "ansible-automation-platform-24/ee-minimal-rhel9",
+        "ansible-automation-platform-24/hub-rhel8",
+        "ansible-automation-platform-24/hub-rhel9-operator",
+        "ansible-automation-platform-24/lightspeed-rhel8",
+        "ansible-automation-platform-24/lightspeed-rhel9-operator",
+        "ansible-automation-platform-24/platform-resource-rhel9-operator",
+        "ansible-automation-platform-25/ansible-dev-tools-rhel8",
+        "ansible-automation-platform-25/controller-rhel9-operator",
+        "ansible-automation-platform-25/de-minimal-rhel8",
+        "ansible-automation-platform-25/de-minimal-rhel9",
+        "ansible-automation-platform-25/eda-controller-rhel8",
+        "ansible-automation-platform-25/eda-controller-rhel9-operator",
+        "ansible-automation-platform-25/ee-minimal-rhel8",
+        "ansible-automation-platform-25/ee-minimal-rhel9",
+        "ansible-automation-platform-25/gateway-rhel9-operator",
+        "ansible-automation-platform-25/hub-rhel8",
+        "ansible-automation-platform-25/hub-rhel9-operator",
+        "ansible-automation-platform-25/lightspeed-rhel8",
+        "ansible-automation-platform-25/lightspeed-rhel9-operator",
+        "ansible-automation-platform-25/platform-resource-rhel9-operator",
+        "ansible-automation-platform-26/ansible-dev-tools-rhel9",
+        "ansible-automation-platform-26/controller-rhel9-operator",
+        "ansible-automation-platform-26/de-minimal-rhel9",
+        "ansible-automation-platform-26/de-supported-rhel9",
+        "ansible-automation-platform-26/eda-controller-rhel9",
+        "ansible-automation-platform-26/eda-controller-rhel9-operator",
+        "ansible-automation-platform-26/ee-minimal-rhel9",
+        "ansible-automation-platform-26/ee-supported-rhel9",
+        "ansible-automation-platform-26/gateway-rhel9-operator",
+        "ansible-automation-platform-26/hub-rhel9",
+        "ansible-automation-platform-26/hub-rhel9-operator",
+        "ansible-automation-platform-26/lightspeed-rhel9",
+        "ansible-automation-platform-26/lightspeed-rhel9-operator",
+        "ansible-automation-platform-26/platform-resource-rhel9-operator",
+        "ansible-automation-platform-26/platform-resource-runner-rhel9",
+        "ansible-automation-platform-27/aap-cloud-billing-operator-rhel9",
+        "ansible-automation-platform-27/ansible-devspaces-rhel9",
+        "ansible-automation-platform-27/ansible-dev-tools-rhel9",
+        "ansible-automation-platform-27/controller-rhel9-operator",
+        "ansible-automation-platform-27/de-minimal-rhel9",
+        "ansible-automation-platform-27/de-supported-rhel9",
+        "ansible-automation-platform-27/eda-controller-rhel9",
+        "ansible-automation-platform-27/eda-controller-rhel9-operator",
+        "ansible-automation-platform-27/ee-control-plane-rhel9",
+        "ansible-automation-platform-27/ee-minimal-rhel9",
+        "ansible-automation-platform-27/ee-supported-rhel9",
+        "ansible-automation-platform-27/gateway-rhel9-operator",
+        "ansible-automation-platform-27/hub-rhel9",
+        "ansible-automation-platform-27/hub-rhel9-operator",
+        "ansible-automation-platform-27/lightspeed-rhel9",
+        "ansible-automation-platform-27/lightspeed-rhel9-operator",
+        "ansible-automation-platform-27/metrics-service-rhel9-operator",
+        "ansible-automation-platform-27/platform-resource-rhel9-operator",
+        "ansible-automation-platform-27/platform-resource-runner-rhel9",
+        "ansible-automation-platform-tech-preview/ansible-devspaces-rhel9",
+        "ansible-automation-platform-tech-preview/metrics-service-rhel9-operator",
+        "ansible-core",
+        "Red Hat Red Hat Ansible Automation Platform Ansible Core 2",
+        "ansible-automation-platform/ee-minimal-rhel8",
+        "ansible-automation-platform/ee-minimal-rhel9",
+        "ansible-automation-platform-tech-preview/ee-minimal-rhel8",
+        "ansible-automation-platform-tech-preview/ee-minimal-rhel9",
+        "Red Hat Red Hat Discovery 2",
+        "discovery/discovery-server-rhel9",
+        "Red Hat Red Hat Enterprise Linux 10",
+        "Red Hat Red Hat Enterprise Linux 8",
+        "Red Hat Red Hat Enterprise Linux 9",
+        "Red Hat Red Hat Enterprise Linux command line assistant",
+        "rhel-cla/installer-rhel10",
+        "Red Hat Red Hat OpenShift Container Platform 4",
+        "openshift4/ose-ansible-rhel9-operator",
+        "Red Hat Red Hat OpenShift Container Platform 5",
+        "openshift5/ose-ansible-rhel9-operator",
+        "Red Hat Red Hat OpenStack Platform 17.1",
+        "openstack-ansible-core",
+        "rhosp-rhel9/openstack-neutron-server",
+        "rhosp-rhel9/openstack-tripleoclient",
+        "Red Hat Red Hat OpenStack Platform 18.0",
+        "rhoso-operators/ee-openstack-ansible-ee-rhel9",
+        "Red Hat Red Hat Satellite 6",
+        "Red Hat Red Hat Update Infrastructure 5",
+        "rhui5/installer-tp-rhel9",
+        "rhui5/rhua-tp-rhel9",
+        "Red Hat Self-service automation portal 2",
+        "ansible-automation-platform/bootc-automation-portal-rhel9",
+        "Red Hat Service Telemetry Framework 1.5",
+        "stf/service-telemetry-rhel9-operator",
+        "stf/smart-gateway-rhel9-operator"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-130644",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2574391"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
       "matched": [
         "kubernetes"
       ],
@@ -120188,52 +120793,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-115731",
-      "aliases": [],
-      "title": "Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability",
-      "description": "Perforce Puppet Enterprise contains a deserialization of untrusted data vulnerability in Puppet’s report-processing code that allows a client with any CA-signed agent certificate to execute arbitrary code on the Puppet Server as the service user by submitting a report containing a crafted rich-data type through a PUT request. If the certificate authority automatically signs requests without strong verification, an unauthenticated network attacker can obtain a valid certificate and exploit the vulnerability.",
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Perforce Puppet Enterprise"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-115731"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-17",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00366,
-      "epss_percentile": 0.30882,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 40.1,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "unauth_network": 5,
-        "rce": 5,
-        "kev": 20,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2024-27834",
       "aliases": [],
       "title": "Apple Multiple Products Improper Authentication Vulnerability",
@@ -130441,6 +131000,206 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-76lqmua6x3tk",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in North America",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-18T10:56:57.188Z",
+      "updated": "2026-11-18T10:00:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-18T10:00:00.000Z",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-njt9j3k2zdfw",
+      "aliases": [],
+      "title": "Cloudflare: Network disruption across multiple colocations in India",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-18T08:04:29.059Z",
+      "updated": "2026-11-18T08:46:42.445Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-18T08:46:42.445Z",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-k3r9i5tbre4i",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Paris",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-18T03:39:01.644Z",
+      "updated": "2026-11-18T04:51:31.574Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-18T04:51:31.574Z",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-pi6wgeh78wsn",
+      "aliases": [],
+      "title": "Cloudflare: Elevated 5xx error rates and latency in Mumbai",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-18T04:05:37.087Z",
+      "updated": "2026-11-18T03:04:00.000Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/pi6wgeh78wsn"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-18T03:04:00.000Z",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-github-891rm8181xdf",
+      "aliases": [],
+      "title": "GitHub: Degraded Availability for MAI Code 2 Flash in Copilot",
+      "description": "GitHub の公式ステータスページに掲載された障害",
+      "published": "2026-11-18T09:00:12.808Z",
+      "updated": "2026-11-18T09:34:15.883Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/3sbmvyy2ctyx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:github"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-18T09:34:15.883Z",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "github"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -135512,6 +136271,190 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130655",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Denial of Service via Raw Pixel Decoders",
+      "description": "ImageMagick before 7.1.2-35 contains a denial of service vulnerability in the BGR, CMYK, GRAY, RGB, YCBCR and YUV decoders that allows attackers to crash the application. Attackers can supply a crafted image to these decoders to trigger a crash and disrupt image processing services.",
+      "published": "2026-11-18T11:33:54.719Z",
+      "updated": "2026-11-18T11:33:54.719Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-67p3-xhc7-g797"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130659",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Resource Exhaustion via Unlimited Image Profiles",
+      "description": "ImageMagick before 7.1.2-35 contains a policy bypass vulnerability in various coders that allows attackers to allocate excessive memory by supplying images with many profiles. Attackers can craft images containing a high number of embedded profiles to exhaust memory and cause denial of service, bypassing security policy limits.",
+      "published": "2026-11-18T11:33:55.084Z",
+      "updated": "2026-11-18T11:33:55.084Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-xvqp-rcj6-3h2q"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130661",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Policy Bypass in ASE Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a policy bypass vulnerability in the ASE decoder caused by a missing security policy check. Attackers can supply crafted ASE files that evade configured resource policies to cause excessive memory usage and denial of service.",
+      "published": "2026-11-18T11:33:55.414Z",
+      "updated": "2026-11-18T11:33:55.414Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-x3j8-cjwr-m4pv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130666",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Policy Bypass via XMP Profile",
+      "description": "ImageMagick before 7.1.2-35 contains a policy bypass vulnerability that allows attackers to evade resource limits because a policy check is missing when reading XMP profiles. Attackers can supply an image with a crafted XMP profile to trigger excessive memory usage and cause denial of service.",
+      "published": "2026-11-18T11:33:55.823Z",
+      "updated": "2026-11-18T11:33:55.823Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pp97-v3gv-9vh4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 38.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-99083",
       "aliases": [],
       "title": "",
@@ -139352,6 +140295,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130706",
+      "aliases": [],
+      "title": "NocoDB before 2026.09.0 SQL Injection RCE via Formula Parsed Tree",
+      "description": "NocoDB before 2026.09.0 contains an sql injection vulnerability that allows authenticated Creator or Owner users to inject raw SQL by persisting a crafted formula parsed_tree reused without revalidation. Attackers can bypass the SQLite metadata path guard with an alias to plant the tree, escalating to super administrator or executing OS commands on external PostgreSQL hosts.",
+      "published": "2026-11-18T11:33:59.139Z",
+      "updated": "2026-11-18T11:33:59.139Z",
+      "cvss": 9.4,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nocodb nocodb"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-frqc-xh5h-rrcw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.8,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119923",
       "aliases": [],
       "title": "",
@@ -140338,6 +141327,190 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 7.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130656",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Information Disclosure via MNG Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains an information disclosure vulnerability in the MNG decoder that allows attackers to expose uninitialized memory by supplying a crafted image. Attackers can submit malicious MNG files for processing to leak uninitialized memory contents, potentially revealing sensitive data from the process.",
+      "published": "2026-11-18T11:33:54.987Z",
+      "updated": "2026-11-18T11:33:54.987Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-m2p5-qpx9-5mx6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130658",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Information Disclosure via RLA Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains an information disclosure vulnerability in the RLA decoder that returns images containing uninitialized data. Attackers can supply a crafted RLA image to cause the decoded output to include uninitialized memory, potentially disclosing heap information.",
+      "published": "2026-11-18T11:33:54.988Z",
+      "updated": "2026-11-18T11:33:54.988Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-p58q-7cv7-7w3m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130662",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Use After Free in MSL Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a use after free vulnerability in the MSL decoder that can be triggered when processing crafted MSL image files. Attackers can supply a specially crafted MSL image to cause memory corruption, potentially crashing the application or leading to further compromise.",
+      "published": "2026-11-18T11:33:55.459Z",
+      "updated": "2026-11-18T11:33:55.459Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-mf84-8w53-2f2c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130665",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Use After Free in EXR Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a use after free vulnerability in the EXR decoder that is triggered when a specific memory allocation fails. Attackers can supply crafted EXR images processed under memory pressure to trigger the use after free, causing crashes or memory corruption.",
+      "published": "2026-11-18T11:33:55.728Z",
+      "updated": "2026-11-18T11:33:55.728Z",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v86v-4xf8-xjq4"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -153062,7 +154235,7 @@
       "title": "",
       "description": "Memory overflow in Application Firewall data decompression/inspection can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
       "published": "2026-11-13T08:17:16.220",
-      "updated": "2026-11-17T16:17:37.077",
+      "updated": "2026-11-18T05:19:00.513",
       "cvss": 6.9,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:A/VC:H/VI:H/VA:L/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
@@ -163017,6 +164190,98 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130685",
+      "aliases": [],
+      "title": "vLLM 0.28.0 before 0.33.0 Unauthenticated DoS via Out-of-Range Prompt Token ID",
+      "description": "vLLM from 0.28.0 before 0.33.0 contains an improper input validation vulnerability that allows unauthenticated attackers to crash the shared EngineCore by sending out-of-range prompt token ids when served with --skip-tokenizer-init. Attackers can submit a large positive token id to /v1/completions, /v1/embeddings, or /pooling, bypassing the tokenizer-gated vocab check and causing a fatal embedding index error that denies service to all tenants.",
+      "published": "2026-11-18T11:33:57.307Z",
+      "updated": "2026-11-18T11:33:57.307Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-q9v9-qpjp-fc24"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 32.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130686",
+      "aliases": [],
+      "title": "vLLM 0.6.0 before 0.33.0 Resource Exhaustion via Multi-Image Requests",
+      "description": "vLLM from 0.6.0 before 0.33.0 lacks a request-wide media budget, allowing remote inference clients to exhaust frontend resources by submitting many remote image URLs in one request. Attackers can send a compact request to /v1/messages or /v1/responses that forces downloading and decoding of every image before prompt-length admission, exhausting memory, CPU, and connections.",
+      "published": "2026-11-18T11:33:57.548Z",
+      "updated": "2026-11-18T11:33:57.548Z",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-5r3c-5x4v-8gjh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 32.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113648",
       "aliases": [],
       "title": "",
@@ -164206,7 +165471,7 @@
       "title": "Hive: hive: clusterclaim controller grants cross-tenant hive-claim-owner rbac via user-controlled spec.namespace",
       "description": "A flaw was found in OpenShift Hive. The ClusterClaim controller assigns hive-claim-owner RBAC based on a user-controlled ClusterClaim.spec.namespace and only verifies ClusterPoolRef.ClaimName. A tenant can point a same-named claim at another tenant's ClusterDeployment and obtain get access to that cluster's admin kubeconfig and admin password secrets.",
       "published": "2026-11-18T02:33:54.378Z",
-      "updated": "2026-11-18T02:33:54.378Z",
+      "updated": "2026-11-18T03:17:40.563",
       "cvss": 5.9,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N",
       "severity": "medium",
@@ -164231,7 +165496,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -168318,6 +169584,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130663",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Code Injection via MAGICK, XBM, XPM and UIL Encoders",
+      "description": "ImageMagick before 7.1.2-35 contains a code injection vulnerability in the MAGICK, XBM, XPM and UIL encoders that allows local attackers to inject content via crafted filenames. Attackers with access to the output directory and control over the filename can inject additional headers or code into the generated image source output.",
+      "published": "2026-11-18T11:33:55.484Z",
+      "updated": "2026-11-18T11:33:55.484Z",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-2pc3-3339-3qc9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.8
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-123372",
       "aliases": [
         "GHSA-jf3h-8jvx-vcrg"
@@ -169150,6 +170461,51 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 16.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130654",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Data Tampering in Distributed Pixel Cache",
+      "description": "ImageMagick before 7.1.2-35 contains a data tampering vulnerability in the Distributed Pixel Cache that allows adjacent attackers to modify pixel data in transit between client and server. Attackers who can observe or modify the network path between a configured DPC client and server can tamper with pixel data to alter the resulting image.",
+      "published": "2026-11-18T11:33:54.682Z",
+      "updated": "2026-11-18T11:33:54.682Z",
+      "cvss": 5.1,
+      "cvss_vector": "CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5v9f-r478-x7vx"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.2
       },
       "ai_analysis": ""
     },
@@ -172108,64 +173464,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-128083",
-      "aliases": [
-        "GHSA-63hm-g96r-2m2q"
-      ],
-      "title": "Laravel: Task Output Injection - Concurrency Process",
-      "description": "Laravel is a web application framework. Prior to 12.71.0 and 13.40.0, Laravel's Concurrency::run process driver can treat a forged internal result message in child standard output as framework output. An application route must invoke Concurrency::run, and a task must write attacker-controlled bytes at the start of the child's standard output that form a complete JSON document followed by gzip magic bytes. Under those application-specific conditions, an attacker can forge the internal result message and achieve remote code execution. The affected behavior is not exposed by default and requires application code that routes untrusted input into task output. This issue is fixed in versions 12.71.0 and 13.40.0.",
-      "published": "2026-11-13T18:44:40.992Z",
-      "updated": "2026-11-13T19:19:30.893",
-      "cvss": 2.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L",
-      "severity": "low",
-      "cpes": [],
-      "packages": [
-        "composer:laravel/framework"
-      ],
-      "vendor_products": [
-        "laravel framework"
-      ],
-      "references": [
-        "https://github.com/laravel/framework/security/advisories/GHSA-63hm-g96r-2m2q",
-        "https://github.com/laravel/framework/pull/62297",
-        "https://github.com/laravel/framework/commit/0f904940d176d51db1105cc925136f01bb69e92c",
-        "https://github.com/laravel/framework/commit/c37133b89b30a86eb404537151edd8944e938f0a",
-        "https://github.com/laravel/framework/releases/tag/v12.71.0",
-        "https://github.com/laravel/framework/releases/tag/v13.40.0",
-        "https://github.com/advisories/GHSA-63hm-g96r-2m2q"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd",
-        "ghsa"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-13T23:54:02.959044+00:00",
-      "matched": [
-        "laravel"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 29.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 4.6,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-129512",
       "aliases": [],
       "title": "Apache log4net: AdoNetAppender loses an event whose text the database cannot store",
@@ -172213,6 +173511,366 @@
         "popularity": 14.0,
         "cvss": 10.6,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130651",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Stack Overflow in MSVG Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a stack overflow vulnerability in the MSVG decoder that allows attackers to crash the application by supplying a crafted image. Attackers can submit a malicious image for processing to exhaust the stack and terminate the application, causing denial of service.",
+      "published": "2026-11-18T11:33:54.271Z",
+      "updated": "2026-11-18T11:33:54.271Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h9f8-qmvx-p39m"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130652",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Heap Buffer Over-Read via -copy Operation",
+      "description": "ImageMagick before 7.1.2-35 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated heap memory by triggering the -copy operation. Attackers can supply crafted images or arguments processed with -copy to crash the application or disclose adjacent heap memory contents.",
+      "published": "2026-11-18T11:33:54.649Z",
+      "updated": "2026-11-18T11:33:54.649Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-c764-55gw-gj6c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130653",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Security Policy Bypass via MPC File Decoding",
+      "description": "ImageMagick before 7.1.2-35 contains a policy bypass vulnerability that allows attackers to read from disallowed paths due to a missing policy check when decoding MPC files. Attackers can supply crafted MPC files that reference restricted locations to access files the configured security policy should block.",
+      "published": "2026-11-18T11:33:54.668Z",
+      "updated": "2026-11-18T11:33:54.668Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5jwm-r7f4-4m53"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130657",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Policy Bypass on Windows via Path Separators",
+      "description": "ImageMagick before 7.1.2-35 contains a policy bypass vulnerability on Windows that allows attackers to evade path-based security policies by mixing forward slash and backslash separators. Attackers can supply crafted image file paths using alternate separators to read or write image files that the configured policy is intended to block.",
+      "published": "2026-11-18T11:33:54.985Z",
+      "updated": "2026-11-18T11:33:54.985Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hpjv-7vmp-f58w"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130660",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Heap Buffer Over-Read in MVG Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a heap buffer over-read vulnerability in the MVG decoder that allows attackers to read out-of-bounds memory by supplying a crafted file. Attackers can provide a malicious MVG file for processing to trigger the over-read, causing application crashes or exposure of heap memory contents.",
+      "published": "2026-11-18T11:33:55.324Z",
+      "updated": "2026-11-18T11:33:55.324Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-m9p2-wqc3-mj22"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130667",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Heap Buffer Over-Read in TIFF Decoder",
+      "description": "ImageMagick before 7.1.2-35 contains a heap buffer over-read vulnerability in the TIFF decoder that allows attackers to corrupt heap memory by supplying a crafted TIFF image. Attackers can provide a malicious TIFF file that, when encoded in a specific output format, triggers a heap buffer over-write causing memory corruption.",
+      "published": "2026-11-18T11:33:55.836Z",
+      "updated": "2026-11-18T11:33:55.836Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-gr4q-6v79-qj3g"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130669",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Null Pointer Dereference via -subimage Option",
+      "description": "ImageMagick before 7.1.2-35 contains a null pointer dereference vulnerability that allows attackers to crash the process by using the -subimage option on a single-image list. Attackers can supply input producing an image list with only one image while -subimage is applied, causing a denial of service.",
+      "published": "2026-11-18T11:33:56.016Z",
+      "updated": "2026-11-18T11:33:56.016Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7f2w-c8wf-xvf8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130670",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Heap Buffer Over-Read via BGRO Data Import",
+      "description": "ImageMagick before 7.1.2-35 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory when BGRO image data is imported. Attackers can supply crafted BGRO data for processing to crash the application or leak adjacent heap memory contents.",
+      "published": "2026-11-18T11:33:56.135Z",
+      "updated": "2026-11-18T11:33:56.135Z",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6xcw-8jvx-wh63"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
       },
       "ai_analysis": ""
     },
@@ -175048,6 +176706,96 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130696",
+      "aliases": [],
+      "title": "NocoDB before 2026.10.1 Credential Exposure via Connection Test Endpoint",
+      "description": "NocoDB before 2026.10.1 contains a credential exposure vulnerability in the connection-test endpoint that allows authorized integration users to redirect stored credentials by overriding connection host, port, and user fields. Attackers can point the test at a server they control to capture offline-crackable PostgreSQL md5 or MySQL handshakes and recover the stored database password.",
+      "published": "2026-11-18T11:33:58.432Z",
+      "updated": "2026-11-18T11:33:58.432Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nocodb nocodb"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-jcc2-3vff-7867"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130715",
+      "aliases": [],
+      "title": "NocoDB before 2026.08.0 SQL Injection via Zero-Argument Functions in Column Defaults",
+      "description": "NocoDB before 2026.08.0 contains an sql injection vulnerability that allows authenticated Creator or Owner users to execute database functions by supplying zero-argument function calls as column default values. Attackers can plant functions like version() or inet_server_addr() in PostgreSQL or MySQL column definitions and read results through record APIs, disclosing server addresses, role names, and engine details.",
+      "published": "2026-11-18T11:33:59.769Z",
+      "updated": "2026-11-18T11:33:59.769Z",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "nocodb nocodb"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-4w2w-wj9x-f4fv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-125338",
       "aliases": [],
       "title": "",
@@ -176353,7 +178101,7 @@
       "title": "",
       "description": "An **expression language injection** has been found in the HeaderContentGuard.permit function in publication.py of the content guard in the **Pulpcore** package. The guard is supposed to check a value in a request header. It saves a jq filter and runs that filter against the header when a client asks for content. The filter is not limited to the header, and jq's env builtin also returns the environment of the content process. A low-privileged network attacker or user who can create a header content guard and attach it to a distribution can save a filter that reads that environment. The content request is allowed or denied according to the filter result. Repeating the request lets that attacker or user recover the environment, including Pulp settings held there, such as the Django secret key or the database password.",
       "published": "2026-11-10T23:17:19.997",
-      "updated": "2026-11-12T18:17:19.973",
+      "updated": "2026-11-18T03:17:40.737",
       "cvss": 6.5,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -176362,7 +178110,9 @@
       "vendor_products": [],
       "references": [
         "https://access.redhat.com/security/cve/CVE-2026-123084",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2567260"
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2567260",
+        "https://github.com/advisories/GHSA-mxj6-qp96-8hrw",
+        "https://github.com/pulp/pulpcore/pull/8331"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -176370,7 +178120,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00312,
-      "epss_percentile": 0.24439,
+      "epss_percentile": 0.24472,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -179273,6 +181023,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130684",
+      "aliases": [],
+      "title": "vLLM before 0.33.0 Path Traversal via speculators_config verifier.name_or_path",
+      "description": "vLLM before 0.33.0 contains a path traversal vulnerability that allows malicious model publishers to redirect the served model and tokenizer by setting speculators_config verifier.name_or_path in config.json. Attackers can point this field at another local checkpoint directory to leak its tokenizer vocabulary via unauthenticated /detokenize requests and gain query access to private models.",
+      "published": "2026-11-18T11:33:57.309Z",
+      "updated": "2026-11-18T11:33:57.309Z",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-qrj2-j723-m6w8"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 25.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-125263",
       "aliases": [],
       "title": "",
@@ -181940,6 +183736,96 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130664",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Heap Buffer Overflow via stream Operation",
+      "description": "ImageMagick before 7.1.2-35 contains a heap buffer overflow vulnerability that allows attackers to write beyond allocated heap memory by supplying crafted images. Attackers can provide a crafted set of images processed by the magick stream operation to corrupt heap memory and crash the application.",
+      "published": "2026-11-18T11:33:55.644Z",
+      "updated": "2026-11-18T11:33:55.644Z",
+      "cvss": 2,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-3pf7-cjfr-3fpq"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 24,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130668",
+      "aliases": [],
+      "title": "ImageMagick before 7.1.2-35 Double Free via DPC Compare Metric",
+      "description": "ImageMagick before 7.1.2-35 contains a double free vulnerability that allows attackers to trigger an invalid memory free by using the DPC compare metric. Attackers can supply images for comparison with the DPC metric to corrupt memory and crash the application, causing denial of service.",
+      "published": "2026-11-18T11:33:55.958Z",
+      "updated": "2026-11-18T11:33:55.958Z",
+      "cvss": 2,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-wvfx-g9wq-253w"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 24,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-101610",
       "aliases": [],
       "title": "",
@@ -182294,6 +184180,56 @@
         "popularity": 14.0,
         "cvss": 9.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-128083",
+      "aliases": [],
+      "title": "",
+      "description": "Laravel is a web application framework. Prior to 12.71.0 and 13.40.0, Laravel's Concurrency::run process driver can treat a forged internal result message in child standard output as framework output. An application route must invoke Concurrency::run, and a task must write attacker-controlled bytes at the start of the child's standard output that form a complete JSON document followed by gzip magic bytes. Under those application-specific conditions, an attacker can forge the internal result message and achieve remote code execution. The affected behavior is not exposed by default and requires application code that routes untrusted input into task output. This issue is fixed in versions 12.71.0 and 13.40.0.",
+      "published": "2026-11-13T19:19:30.893",
+      "updated": "2026-11-18T05:19:02.487",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/laravel/framework/commit/0f904940d176d51db1105cc925136f01bb69e92c",
+        "https://github.com/laravel/framework/commit/c37133b89b30a86eb404537151edd8944e938f0a",
+        "https://github.com/laravel/framework/pull/62297",
+        "https://github.com/laravel/framework/releases/tag/v12.71.0",
+        "https://github.com/laravel/framework/releases/tag/v13.40.0",
+        "https://github.com/laravel/framework/security/advisories/GHSA-63hm-g96r-2m2q"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00704,
+      "epss_percentile": 0.53892,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-13T23:54:02.959044+00:00",
+      "matched": [
+        "laravel"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 23.7,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 4.6,
+        "rce": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -183168,6 +185104,53 @@
         "popularity": 10,
         "cvss": 13.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-xgh8-qwjh-q853",
+      "aliases": [],
+      "title": "/v1/systemone bypasses the --trust-request-chat-template gate",
+      "description": "### Summary\r\n\r\nIn affected vLLM releases, `POST /v1/systemone` accepted request-level `chat_template_kwargs` and passed them to the shared HF renderer without calling `validate_chat_template()`. This let callers provide a chat template even when the server’s default trust setting disallowed request-supplied templates.\r\n\r\n### Details\r\n\r\nThe trust gate is OnlineRenderer.validate_chat_template(). It is invoked by the two callers (render_chat, render_responses), not by the shared renderer both of them call (preprocess_chat). /v1/systemone reaches preprocess_chat directly:\r\n\r\n  StructuredDecisionRequest.chat_template_kwargs    protocol.py:42\r\n  -> ServingStructuredDecisions.create_decision     serving.py:110\r\n  -> NextTokenStrategy.read -> _read_request        strategies.py:261\r\n  -> ReadPromptRequest.chat_template_kwargs         protocol.py:95\r\n  -> OnlineRenderer.preprocess_chat                 online_renderer.py:752\r\n  -> HfRenderer -> tokenizer.apply_chat_template(...)\r\n\r\nIn affected releases, the structured-decisions serving path did not call `validate_chat_template()`. The shared `preprocess_chat()` path does not perform template trust validation itself.\r\n\r\nRegistration is unconditional: launchers/api_server/routers.py:32 calls register_structured_decisions_api_router(app) with no flag, and launchers/app.py:45 reaches it from the normal app build path. The endpoint is also listed among the API-key-protected endpoints in docs/usage/security.md.\r\n\r\nScope: init_structured_decisions_state returns early (endpoint answers 501) when select_read_strategy() rejects the architecture, so this only affects models listed in READ_STRATEGIES (strategies.py:812) -- e.g. Qwen3ForCausalLM, Qwen3_5ForConditionalGeneration, Qwen3_5MoeForConditionalGeneration, Lfm2VlForConditionalGeneration, ClefOmniForJointSchema.\r\n\r\n### Impact\r\n\r\nA caller that can reach /v1/systemone controls how the conversation is serialized. The <|im_start|>system block, which an operator normally pins with --chat-template, can be replaced, and special tokens or turn boundaries that message-level validation would not allow can be injected. Default configuration is affected; no flag is needed.\r\n\r\nTo keep the report accurate, two limits:\r\n\r\n- We are not claiming CPU/memory exhaustion. HfRenderer already bounds a single render with VLLM_CHAT_TEMPLATE_RENDER_TIMEOUT (30 s default, renderers/hf.py:992), and that guard is on this code path too.\r\n- We have not tested whether the Jinja sandbox can be escaped, and are not claiming it can be.\r\n\r\nWe think this is best described as a protection-mechanism bypass: the gate is correct, it is simply not reached on this endpoint.\r\n\r\nReported by Haile Du (@revalue-o) and Yuan Luo (@leonnewton), BAAI (Beijing Academy of Artificial Intelligence).\r\n\r\n### Affected and fixed versions\r\n\r\nThe issue affects vLLM 0.32.0rc0 through 0.33.0. Version 0.34.0 applies the template trust check before rendering structured-decision requests.\r\n\r\nA fix for this was introduced in https://github.com/vllm-project/vllm/pull/64503.",
+      "published": "2026-11-18T09:57:27Z",
+      "updated": "2026-11-18T09:57:27Z",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [
+        "pip:vllm"
+      ],
+      "vendor_products": [
+        "vllm-project/vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-xgh8-qwjh-q853"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "repo-advisory"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 23.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.0
       },
       "ai_analysis": ""
     },
@@ -210756,6 +212739,440 @@
       "first_seen": "2026-11-17T20:56:14.977968+00:00",
       "matched": [
         "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126708",
+      "aliases": [],
+      "title": "Unchecked PKCS5_PBKDF2_HMAC() return can authenticate any password",
+      "description": "In Eclipse Mosquitto versions 2.0.0 to 2.0.22 and 2.1.0 to 2.1.2, the return value of password hash functions for sha512-pbkdf2 and legacy sha512 were not checked. Starting with OpenSSL 4.0, sha512-pbkdf2 hashing will fail when using the FIPS provider for passwords shorter than 8 characters. This has the effect that newly created passwords would match against any other password with fewer than 8 characters.",
+      "published": "2026-11-18T09:59:24.842Z",
+      "updated": "2026-11-18T10:16:54.320",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Eclipse Foundation Eclipse Mosquitto"
+      ],
+      "references": [
+        "https://github.com/eclipse-mosquitto/mosquitto/security/advisories/GHSA-878w-672v-qwmf",
+        "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/567",
+        "http://www.openwall.com/lists/oss-security/2026/11/17/16"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99312",
+      "aliases": [],
+      "title": "KVM: x86: Unconditionally reset MMU context when emulating INIT",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: Unconditionally reset MMU context when emulating INIT\n\nForce an MMU reset when emulating an INIT even if paging was already\ndisabled, as the MMU page role includes guest_mode (L2), i.e. an INIT while\nL2 is running with CR0.PG=0 will result in KVM running L1 with a stale MMU\ncontext.\n\nAlternatively, the reset could be scoped strictly to paging being enabled\nor L2 being active, but SMM is also encoded in the page role.  Even though\nit _should_ be impossible for the vCPU to be INIT'd while SMM is active,\nthere's zero value in not handling SMM.  At that point, the only scenario\nwhere KVM _doesn't_ need to reset the MMU context is on an INIT with the\nvCPU running in Real Mode or Unpaged Protect Mode, and while INIT in those\nmodes is somewhat common, it's far from a hot path and re-initializing the\nMMU is not expensive, especially when the role isn't changing (KVM elides\nmost of the re-configuration in that case).\n\nNote, like the Fixes commit, this bug only affects nested SVM as INIT is an\nunconditional intercept on VMX, i.e. it's impossible to emulate INIT while\nL2 is active.\n\nTemporarily keep the guest TLB flush when CR0.PG is being cleared even\nthough it is fully redundant with the flush that is emitted on all INIT\nevents (KVM itself only does RESET when a vCPU is being created, i.e. when\nCR0.PG must be '0').",
+      "published": "2026-11-18T08:42:06.136Z",
+      "updated": "2026-11-18T09:17:45.050",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/f55a3e4e08dc004b4bab7c1e9323d7e7e96e266a",
+        "https://git.kernel.org/stable/c/24f644ea26c2ebb7b14c3baa2aa92d37fde3095f",
+        "https://git.kernel.org/stable/c/d47bae9eb33b3ca0843a0954b7d0cafb354c99b0",
+        "https://git.kernel.org/stable/c/c7c288d178cb0b78d3464a616b16b1aa0b316049"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99313",
+      "aliases": [],
+      "title": "HID: logitech-hidpp: fix race condition when accessing stale stack pointer",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: logitech-hidpp: fix race condition when accessing stale stack pointer\n\nThe driver uses hidpp->send_receive_buf to point to a stack-allocated\nbuffer in the synchronous command path (__do_hidpp_send_message_sync).\nHowever, this pointer is not cleared when the function returns.\n\nIf an event is processed (e.g. by a different thread) while the\nsend_mutex is held by a new command, but before that command has\nupdated send_receive_buf, the handler (hidpp_raw_hidpp_event) will\nobserve that the mutex is locked and dereference the stale pointer.\n\nThis results in an out-of-bounds access on a different thread's kernel\nstack (or a NULL pointer dereference on the very first command).\n\nFix this by:\n1. Clearing hidpp->send_receive_buf to NULL before releasing the mutex\n   in the synchronous command path.\n2. Moving the assignment of the local 'question' and 'answer' pointers\n   inside the mutex_is_locked() block in the handler, and adding\n   a NULL check before dereferencing.",
+      "published": "2026-11-18T08:42:06.681Z",
+      "updated": "2026-11-18T09:17:45.197",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0fe696148d2c6486e52220aab822135ed7d05f38",
+        "https://git.kernel.org/stable/c/88effb7680aea4fc9afaf5780a706f5f30d3de42",
+        "https://git.kernel.org/stable/c/f427383e734e95af923ac470782ad9a3d1f0c276",
+        "https://git.kernel.org/stable/c/8f282d12550e3beaf3fea782b5befa65f78b3c78",
+        "https://git.kernel.org/stable/c/e320e65900f0e3bf2874e6f5091fec29384f4a60",
+        "https://git.kernel.org/stable/c/4ed6f5d94cc86af5e1d4a2f5cdaf565d4d58300d",
+        "https://git.kernel.org/stable/c/e2aaf2d3ad92ac4a8afa6b69ad4c38e7747d3d6e"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99314",
+      "aliases": [],
+      "title": "ALSA: us122l: Add missing NULL check in usb_stream_hwdep_mmap()",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: us122l: Add missing NULL check in usb_stream_hwdep_mmap()\n\nusb_stream_hwdep_mmap() reads us122l->sk.s and dereferences it without\nchecking for NULL.  The stream object is released by usb_stream_free(),\nwhich is reached through us122l_stop() both when the device is\ndisconnected and when us122l_start() fails, and it leaves us122l->sk.s\nset to NULL.  The hwdep file stays usable after that, so a later mmap()\n\n\tKASAN: null-ptr-deref in range [0x0000000000000010-0x0000000000000017]\n\tRIP: 0010:usb_stream_hwdep_mmap+0x107/0x890 sound/usb/usx2y/us122l.c:182\n\ncrashes while reading s->read_size, which sits at offset 0x10.\n\nThat NULL is an expected state for this field: usb_stream_hwdep_vm_fault(),\nusb_stream_hwdep_poll(), usb_stream_hwdep_ioctl(), usb_stream_stop() and\nusb_stream_free() all test it before use.  Only the mmap callback misses\nthe check, so let it return -ENODEV, matching what the other hwdep mapping\nin usx2yhwdeppcm.c does when its shared buffer has not been allocated.",
+      "published": "2026-11-18T08:42:07.299Z",
+      "updated": "2026-11-18T09:17:45.370",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0f128b326d3defab6bf5c33c09e55addd87e74ec",
+        "https://git.kernel.org/stable/c/03d3690ba06713358cd8c89bbec090040c272438",
+        "https://git.kernel.org/stable/c/6fdd96fa2f7a70d61eeed166e520a990c40ff223",
+        "https://git.kernel.org/stable/c/f5d3eb483fed59fc0f3b059b8b6a32cedc922360"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99315",
+      "aliases": [],
+      "title": "ALSA: us122l: Fix NULL dereference at hwdep open and release",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: us122l: Fix NULL dereference at hwdep open and release\n\nusb_stream_hwdep_open() and usb_stream_hwdep_release() pass the result of\nusb_ifnum_to_if() straight to usb_autopm_get_interface() and\nusb_autopm_put_interface(), without checking it for NULL.\n\nusb_ifnum_to_if() returns NULL once the device is gone, since\nusb_disable_device() clears udev->actconfig on disconnect.  The hwdep file\ncan outlive the disconnect: the card is released with\nsnd_card_free_when_closed(), so a process that keeps the character device\nopen reaches the driver's release callback after the USB configuration has\nbeen dropped, and interface_to_usbdev() then dereferences the NULL\ninterface at offsetof(struct device, parent).  The open callback has the\nsame problem when it races with the disconnect.\n\nCheck both lookups and fail the open with -ENODEV; in release, skip the\nruntime PM put when the interface is already gone and still run the rest\nof the per-file cleanup.  Move the us122l->first bookkeeping after the\nchecks so that a failed open no longer leaves a stale file pointer behind.",
+      "published": "2026-11-18T08:42:07.946Z",
+      "updated": "2026-11-18T09:17:45.510",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3be1ac0b73e9bf73eec0000197d0177ebeb3cc79",
+        "https://git.kernel.org/stable/c/57dc5db514ab188a24cb300bda70a1ead3c9e479",
+        "https://git.kernel.org/stable/c/b21aa212c9ba4536e66d65783cc883951c95ba01",
+        "https://git.kernel.org/stable/c/820e0050866942b5498488496462d12c6ce1c7a9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99316",
+      "aliases": [],
+      "title": "ALSA: usx2y: Initialize idle URBs before submitting streams",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usx2y: Initialize idle URBs before submitting streams\n\nusb_stream_start() submits the first two capture and playback URBs and\nonly afterwards assigns sk->idle_inurb, sk->idle_outurb,\nsk->completed_inurb and sk->completed_outurb to the remaining two URBs\nof each direction.\n\nA transfer can complete as soon as usb_submit_urb() has been called, so\nthe completion handler i_capture_start() or i_playback_start() may run\nbefore those pointers are set.  While the stream is still being\nsynchronized (state below usb_stream_sync1), stream_start() then calls\nplayback_prep_freqn(sk, sk->idle_outurb) with sk->idle_outurb still\nNULL, and the packet descriptors are written through that NULL pointer:\n\n  Oops: general protection fault, probably for non-canonical address\n  0xdffffc0000000018: 0000 [#1] SMP KASAN\n  KASAN: null-ptr-deref in range [0x00000000000000c0-0x00000000000000c7]\n  RIP: 0010:playback_prep_freqn+0x11c/0x4a0 sound/usb/usx2y/usb_stream.c:33\n  Call Trace:\n   <IRQ>\n   stream_start+0x5dc/0x8d0 sound/usb/usx2y/usb_stream.c:596\n   i_capture_start+0x3da/0x710 sound/usb/usx2y/usb_stream.c:654\n   __usb_hcd_giveback_urb+0x238/0x550 drivers/usb/core/hcd.c:1657\n   usb_giveback_urb_bh+0x20b/0x530 drivers/usb/core/hcd.c:1691\n   tasklet_hi_action+0xa/0x20 kernel/softirq.c:994\n   handle_softirqs+0x16f/0x440 kernel/softirq.c:645\n   </IRQ>\n\nThe four URBs referenced by these pointers are allocated long before and\ndo not depend on any transfer state, so assign them before the submit\nloop.  Keeping the assignment inside the retry path also restores a\nwell-defined URB rotation when the start frame mismatch handling kills\nand resubmits the streams.",
+      "published": "2026-11-18T08:42:08.606Z",
+      "updated": "2026-11-18T09:17:45.647",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/cc826d8f6074305af7bf1d2b7c13564d194db914",
+        "https://git.kernel.org/stable/c/1f32f490350fae3d64f60b5ab9b02e5254fa0a90",
+        "https://git.kernel.org/stable/c/aa91b5324b5c856e18a9d356df875b29fbedd33a",
+        "https://git.kernel.org/stable/c/ceb0d8c22473933099b46cec70639d0f1f7c68ad"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99317",
+      "aliases": [],
+      "title": "ALSA: hwdep: Serialize DSP load requests",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hwdep: Serialize DSP load requests\n\nThe check of the loaded DSP indices and the call of the driver's\ndsp_load callback in snd_hwdep_dsp_load() are not serialized.  A hwdep\nfile descriptor can be shared among threads, or inherited across fork,\nso two SNDRV_HWDEP_IOCTL_DSP_LOAD requests for the same index can both\nobserve the index as unloaded and enter the driver's callback\nconcurrently, even though the device itself is opened exclusively.\n\nThis breaks the assumption behind hw->dsp_loaded that a firmware index\nis loaded only once.  For example, snd-usb-usx2y hits\nWARN_ON(usx2y->as04.buffer) in usx2y_async_seq04_init() and may\nallocate the US-428 sequence URBs twice.\n\nSerialize the check, the callback invocation and the bookkeeping with a\nper-hwdep mutex, so that the second request returns -EBUSY.",
+      "published": "2026-11-18T08:42:09.208Z",
+      "updated": "2026-11-18T09:17:45.787",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/200bda52a9fd604e13c57d3a548639c13bdfb19c",
+        "https://git.kernel.org/stable/c/3634a1beb0395f02807d41a2edf4288732d3f90e",
+        "https://git.kernel.org/stable/c/1b94ca29b1edbbdb357c2c8a9163d1d1755e4ad2",
+        "https://git.kernel.org/stable/c/aee83c204f80d56b4d55f53acdb8594308ddcd4a"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99318",
+      "aliases": [],
+      "title": "ALSA: bcd2000: Fix use-after-free of MIDI URBs on file close",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: bcd2000: Fix use-after-free of MIDI URBs on file close\n\nbcd2000_disconnect() calls snd_card_disconnect(), which only prevents\nnew opens, and then frees the MIDI URBs.  A rawmidi file that was\nalready open can still be closed afterwards, and its close callback,\nbcd2000_midi_output_close(), calls usb_kill_urb() on midi_out_urb.\n\nThe URB pointers are cleared on disconnect and their accesses are\nserialized with midi_lock, but bcd2000_midi_output_close() reads\nmidi_out_urb without that lock.  The check can therefore pass just\nbefore the pointer is cleared, and usb_kill_urb() then runs on the URB\nthat has already been freed:\n\n  BUG: KASAN: slab-use-after-free in usb_kill_urb+0x74/0x80\n  Read of size 8 at addr ffff8880078e7d40\n   usb_kill_urb\n   bcd2000_midi_output_close\n   close_substream\n   rawmidi_release_priv\n   snd_rawmidi_release\n\n  Allocated by: usb_alloc_urb <- bcd2000_init_midi <- bcd2000_probe\n  Freed by:     usb_free_urb <- bcd2000_midi_free\n                <- bcd2000_disconnect\n\nTake the lock in bcd2000_midi_output_close() and reference the URB with\nusb_get_urb() before releasing it.  The URB then stays valid until\nusb_put_urb() after usb_kill_urb() has returned, even if a disconnect\nfrees it in the meantime.  usb_kill_urb() itself cannot run under\nmidi_lock, as the completion handler takes the same lock.",
+      "published": "2026-11-18T08:42:09.754Z",
+      "updated": "2026-11-18T09:17:45.913",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/791c259be56d05f90f7642df337f209c108003fa",
+        "https://git.kernel.org/stable/c/752eea15d0e67a468e484c1f166cdba694ba6de0",
+        "https://git.kernel.org/stable/c/a4c306eb3ba35a1e7201e25aef7e0537da609e72",
+        "https://git.kernel.org/stable/c/f6c7bb1f0799591a62be75b9bcf84245b4f208b7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99319",
+      "aliases": [],
+      "title": "ALSA: usx2y: Refuse a retried DSP load after a failure",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usx2y: Refuse a retried DSP load after a failure\n\nsnd_usx2y_hwdep_dsp_load() sets up the asynchronous sequence URBs and\nthe interrupt URB when the FPGA firmware image with index 1 is loaded,\nand then creates the ALSA devices.  If usx2y_in04_init() or\nusx2y_create_alsa_devices() fails, the URBs that were already set up\nare left in place.\n\nThe core keeps the index unloaded when the callback fails, so user\nspace may issue the same request again.  The second attempt then enters\nusx2y_async_seq04_init() or usx2y_in04_init() with the URBs still\nallocated and trips WARN_ON(usx2y->as04.buffer) or\nWARN_ON(usx2y->in04_urb).\n\nThe URBs cannot be released at this point: the card may already have\nregistered PCM devices that user space can still open, and the\ndisconnect handler accesses the URBs without holding the DSP lock.\nMark the chip as hung instead, so that a retried request is refused\nwith -ENODEV and the assertions keep their meaning.  The URBs are\nreleased by snd_usx2y_card_private_free() when the card is freed.\n\nA failing usx2y_async_seq04_init() still releases its own URBs, so that\npath remains retryable.",
+      "published": "2026-11-18T08:42:10.332Z",
+      "updated": "2026-11-18T09:17:46.050",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1f9c4b6350ce31e3fccf2a82d47bf35b27167167",
+        "https://git.kernel.org/stable/c/02f8c4fd65f33243ad1f25a98f2af211f9fb7593",
+        "https://git.kernel.org/stable/c/8b21cc8bd182b49415faa24ea9f26b51eea96efb",
+        "https://git.kernel.org/stable/c/1f8101b6adc87a3ddbd51fcb6609251591758026"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
       ],
       "match_type": "keyword",
       "tier": 1,
