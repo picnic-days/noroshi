@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-18T11:43:51.230202+00:00",
+  "last_run": "2026-11-18T19:37:39.448710+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -102,7 +102,13 @@
     "CVE-2026-126846": "2026-11-17T20:56:14.977968+00:00",
     "CVE-2026-126909": "2026-11-17T20:56:14.977968+00:00",
     "GHSA-764m-3ppc-5m73": "2026-11-18T02:54:45.051818+00:00",
-    "GHSA-j2hq-r459-pg6f": "2026-11-18T11:43:51.230202+00:00"
+    "GHSA-j2hq-r459-pg6f": "2026-11-18T11:43:51.230202+00:00",
+    "CVE-2023-54419": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-130910": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-130971": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-131088": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-113425": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-123634": "2026-11-18T19:37:39.448710+00:00"
   },
   "ai_key_checked": "2026-11-18",
   "open_outages": {
@@ -156,7 +162,7 @@
   },
   "digest_sent": "2026-11-18",
   "digest_since": "2026-11-18T02:54:45.051818+00:00",
-  "repo_adv_checked": "2026-11-18T11:43:51.230202+00:00",
+  "repo_adv_checked": "2026-11-18T19:37:39.448710+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -761,7 +767,8 @@
       "https://www.anthropic.com/legal/self-hosted-managed-agents-license",
       "https://www.anthropic.com/research/building-strong-safety-evaluations",
       "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
-      "https://www.anthropic.com/legal/linked-billing-terms"
+      "https://www.anthropic.com/legal/linked-billing-terms",
+      "https://www.anthropic.com/research/claude-black-hole-physics"
     ]
   }
 }
