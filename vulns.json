@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T01:30:25.079345+00:00",
+  "generated_at": "2026-11-19T09:30:39.038435+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -769,6 +769,46 @@
       "level": "critical",
       "score_breakdown": {},
       "ai_analysis": "【状況】npm の UI ライブラリ vant に、2024-12-19 に乗っ取られた npm アカウント（landluck）から悪性版が 10 個公開されました。npm install の後に自動で動く処理（postinstall）で、Linux 向けの暗号通貨マイナー XMRig をダウンロードして実行します。外部の通信先は 80.78.28.72 と ipinfo.io です。実際に被害が出たかは未確認です。悪性版は非推奨になっていますが、今もインストールできます。同じ日に Rspack も同じ手口の被害を受けています。\n\n【原因の部品】npm:vant（youzan/vant）。これを組み込んだ主な製品は未確認です。\n\n【影響範囲】\n・2.13.3〜2.13.5\n・3.6.13〜3.6.15\n・4.9.11〜4.9.14\n（計 10 版）\n修正後のクリーンな版は 2.13.6／3.6.16／4.9.15 です。\n\n【対応策】\n1. 最優先でやること\n・package-lock.json／yarn.lock／pnpm-lock.yaml と CI のログで、上の版を 12/19 以降に入れていないか確認する\n・該当した場合は、その端末と CI ランナーで次を確認する：/tmp/xmrig と /tmp/vant_helper の有無、xmrig のプロセス、上の通信先への通信\n・該当した環境は作り直し、そこに置いていた秘密情報（npm・GitHub・クラウドのトークンなど）を再発行する\n・vant をクリーン版に固定し、lockfile を作り直す\n2. すぐ更新できない場合の回避策\n・npm install --ignore-scripts でインストール時の処理を止める\n・悪性の版をレジストリやプロキシで遮断する\n\n【各告知の関係】\n・vant 開発元（GitHub の discussion #13273）：侵害の公表とクリーン版の公開\n・OpenSSF／GitHub（GHSA-j2hq-r459-pg6f）：悪性パッケージとしての登録\n・Sonatype などのセキュリティ企業：分析記事（注意喚起）\n\n【出典】\nhttps://github.com/advisories/GHSA-j2hq-r459-pg6f\nhttps://thehackernews.com/2024/12/rspack-npm-packages-compromised-with.html"
+    },
+    {
+      "id": "OUT-anthropic-c1kmrkmv5f3d",
+      "aliases": [],
+      "title": "Anthropic Claude: Elevated errors for Claude Mythos 5.2 and Claude Fable 5.2",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-19T09:10:24.815Z",
+      "updated": "2026-11-19T09:10:24.815Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/nlb5fptv28h5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 90.0,
+      "level": "critical",
+      "score_breakdown": {},
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-115252",
@@ -4716,106 +4756,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-113425",
-      "aliases": [],
-      "title": "NGINX ngx_mail_proxy_module vulnerability",
-      "description": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\nImpact:\nA remote unauthenticated attacker may crash an nginx worker process or corrupt its memory, disrupting service. Remote code execution is a potential impact. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-      "published": "2026-11-18T15:23:28.642Z",
-      "updated": "2026-11-18T17:17:27.950",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "F5 NGINX Plus",
-        "F5 NGINX Open Source"
-      ],
-      "references": [
-        "https://my.f5.com/manage/s/article/K000163931"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-18T19:37:39.448710+00:00",
-      "matched": [
-        "nginx"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 73.4,
-      "level": "critical",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5,
-        "tier1_critical": 15
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-123634",
-      "aliases": [],
-      "title": "NGINX resolver vulnerability",
-      "description": "This issue occurs when NGINX Plus or NGINX Open Source is configured as a proxy, the proxied server name includes variables, and a Server Side Includes (SSI) or mirror directive sends a subrequest to a location that resolves the same server name. Under these conditions, a specially crafted HTTP request may cause a use-after-free condition in a worker process. An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR.\n\nImpact: \nAn attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE)\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-      "published": "2026-11-18T15:23:28.277Z",
-      "updated": "2026-11-18T17:17:32.997",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "F5 NGINX Plus",
-        "F5 NGINX Open Source"
-      ],
-      "references": [
-        "https://my.f5.com/manage/s/article/K000163925"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-18T19:37:39.448710+00:00",
-      "matched": [
-        "nginx"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 73.4,
-      "level": "critical",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5,
-        "tier1_critical": 15
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-103882",
       "aliases": [],
       "title": "Acadlix LMS <= 1.1.9 - Unauthenticated Arbitrary File Deletion via 'delete_file_data.file_path' Parameter",
@@ -4930,7 +4870,7 @@
       "title": "",
       "description": "Use after free in Chromoting in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:48.213",
-      "updated": "2026-11-18T21:08:53.440",
+      "updated": "2026-11-19T05:18:33.730",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -6286,7 +6226,7 @@
       "title": "Apache Axis Unsafe Reflection Vulnerability",
       "description": "** UNSUPPORTED WHEN ASSIGNED ** Deserialization of an inbound SOAP fault in Apache Axis 1.x allows unauthenticated remote class instantiation. When a SOAP <Fault> carries a <detail><exceptionName> element, Axis loads the named class and, if a String <data> element is also present, instantiates it through its String constructor before checking that it is an AxisFault. Loading alone runs the class's static initializer. With a suitable class on the application's classpath this leads to remote code execution. The fault is parsed while the engine resolves the target service, before any per-service handler chain runs, so authentication handlers configured on a service do not protect against it. This affects all Apache Axis 1.x versions through 1.4.\n\n\n\nAs Axis 1 has been EOL we recommend you migrate to a different SOAP engine, such as Apache Axis 2/Java. Alternatively you could use a build of Axis with the patch from https://github.com/apache/axis-axis1-java/commit/41f3b4e8d04e310ca81f86b92630ab2c11d608bd applied. The Apache Axis project does not expect to create an Axis 1.x release fixing this problem.",
       "published": "2026-11-06T16:18:59.763",
-      "updated": "2026-11-18T21:18:04.433",
+      "updated": "2026-11-19T05:18:41.280",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -13412,6 +13352,153 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-131001",
+      "aliases": [],
+      "title": "",
+      "description": "Buffer overflow in Video in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:57.110",
+      "updated": "2026-11-19T01:57:59.163",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/573760540"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00401,
+      "epss_percentile": 0.35004,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131005",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:57.583",
+      "updated": "2026-11-19T01:48:41.690",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/568986689"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00366,
+      "epss_percentile": 0.30955,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131008",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in GarbageCollection in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "published": "2026-11-17T21:17:57.950",
+      "updated": "2026-11-19T01:48:02.403",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574686297"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00366,
+      "epss_percentile": 0.30954,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 57.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-118315",
       "aliases": [],
       "title": "",
@@ -19127,6 +19214,153 @@
       "ssvc_exploitation": "",
       "epss": 0.00348,
       "epss_percentile": 0.2895,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 56.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130999",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-17T21:17:56.823",
+      "updated": "2026-11-19T02:12:06.270",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/583617538"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00377,
+      "epss_percentile": 0.32297,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 56.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131000",
+      "aliases": [],
+      "title": "",
+      "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:17:56.990",
+      "updated": "2026-11-19T01:59:32.797",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/562230299"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00403,
+      "epss_percentile": 0.35161,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 56.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131004",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in FedCM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-17T21:17:57.463",
+      "updated": "2026-11-19T01:51:40.893",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/580867132"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00377,
+      "epss_percentile": 0.32296,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -24932,54 +25166,6 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 18.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-121810",
-      "aliases": [],
-      "title": "NGINX ngx_http_v3_module vulnerability",
-      "description": "Description:\nThis issue affects NGINX Plus and NGINX Open Source configurations that use HTTP/3. A remote, unauthenticated attacker can cause a use-after-free condition in the NGINX worker process, leading to a restart. Exploitation also depends on conditions beyond the attacker’s control. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\nImpact:\nThis vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-      "published": "2026-11-18T15:23:29.375Z",
-      "updated": "2026-11-18T17:17:32.020",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "F5 NGINX Plus",
-        "F5 NGINX Open Source"
-      ],
-      "references": [
-        "https://my.f5.com/manage/s/article/K000163927"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-18T19:37:39.448710+00:00",
-      "matched": [
-        "nginx"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 53.4,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 18.4,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -42284,6 +42470,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-109555",
+      "aliases": [],
+      "title": "WP STAGING <= 4.17.0 and WP STAGING Pro <= 6.17.0 - Authenticated (Subscriber+) PHP Object Injection to Remote Code Execution via Database Restore and Staging Reset",
+      "description": "The WP STAGING and WP STAGING Pro plugins for WordPress are vulnerable to PHP Object Injection in all versions up to, and including, 4.17.0 and 6.17.0, respectively, via deserialization of untrusted input during database restore and staging reset. This is due to the database importer treating attacker-controlled text beginning with {WPSTG_BINARY} as trusted internal binary data and decoding its hexadecimal suffix into serialized bytes. This makes it possible for authenticated attackers, with Subscriber-level access and above, to plant a malicious serialized object in their own profile. When an Administrator later performs an ordinary database-including restore or staging reset containing that value, and the restored profile metadata is loaded, either during the restore or in a later request, a built-in POP chain can be used to execute arbitrary code on the server. Additional built-in gadget chains allow arbitrary local file read in both WP STAGING and WP STAGING Pro and arbitrary file deletion in WP STAGING Pro. The attacker does not require Administrator credentials or a copy of a backup, but exploitation does require the later privileged restore or reset.",
+      "published": "2026-11-19T05:33:21.570Z",
+      "updated": "2026-11-19T06:16:53.100",
+      "cvss": 8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "renehermi WP STAGING – Backups & Restore, Migration & Clone Plugin – Cloud Backups, Scheduled Backups",
+        "WPStaging WP STAGING Pro WordPress Backup Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/bf4d6205-3653-4678-86e0-4303a736bb72?source=cve",
+        "https://plugins.trac.wordpress.org/changeset/3753692/wp-staging",
+        "https://wp-staging.com/wp-staging-pro-changelog/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-82418",
       "aliases": [],
       "title": "IBM Watson Speech Services Cartridge is vulnerable to a Use After Free condition in cryptography wheels OpenSSL",
@@ -44143,7 +44379,7 @@
       "title": "",
       "description": "Use after free in Views in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:53.033",
-      "updated": "2026-11-18T20:19:03.240",
+      "updated": "2026-11-19T05:18:34.353",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -44190,7 +44426,7 @@
       "title": "",
       "description": "Use after free in HID in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted Chrome extension. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:18:03.227",
-      "updated": "2026-11-18T20:19:06.503",
+      "updated": "2026-11-19T05:18:35.480",
       "cvss": 9.6,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -47982,6 +48218,96 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-113425",
+      "aliases": [],
+      "title": "",
+      "description": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\nImpact:\nA remote unauthenticated attacker may crash an nginx worker process or corrupt its memory, disrupting service. Remote code execution is a potential impact. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+      "published": "2026-11-18T16:17:59.493",
+      "updated": "2026-11-19T05:18:25.493",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://my.f5.com/manage/s/article/K000163931"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T19:37:39.448710+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123634",
+      "aliases": [],
+      "title": "",
+      "description": "This issue occurs when NGINX Plus or NGINX Open Source is configured as a proxy, the proxied server name includes variables, and a Server Side Includes (SSI) or mirror directive sends a subrequest to a location that resolves the same server name. Under these conditions, a specially crafted HTTP request may cause a use-after-free condition in a worker process. An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR.\n\nImpact: \nAn attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE)\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+      "published": "2026-11-18T16:18:04.353",
+      "updated": "2026-11-19T05:18:30.860",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://my.f5.com/manage/s/article/K000163925"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T19:37:39.448710+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-111820",
       "aliases": [],
       "title": "Analytics Insights <= 6.3.12 - Unauthenticated Stored Cross-Site Scripting via GA4 Realtime Page Title",
@@ -49210,7 +49536,7 @@
       "title": "",
       "description": "Confused deputy in Sync in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: High)",
       "published": "2026-11-17T21:17:47.047",
-      "updated": "2026-11-18T20:19:01.633",
+      "updated": "2026-11-19T05:18:33.413",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -49257,7 +49583,7 @@
       "title": "",
       "description": "Use after free in WebView in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Critical)",
       "published": "2026-11-17T21:17:52.430",
-      "updated": "2026-11-18T20:19:02.787",
+      "updated": "2026-11-19T05:18:33.967",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -49304,7 +49630,7 @@
       "title": "",
       "description": "Use after free in WebView in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:59.463",
-      "updated": "2026-11-18T20:19:05.320",
+      "updated": "2026-11-19T05:18:34.883",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -49351,7 +49677,7 @@
       "title": "",
       "description": "!MISSING CAUSE! in Chromoting in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Low)",
       "published": "2026-11-17T21:18:01.653",
-      "updated": "2026-11-18T20:19:05.920",
+      "updated": "2026-11-19T05:18:35.197",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -49845,144 +50171,6 @@
         "cvss": 13.6,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131001",
-      "aliases": [],
-      "title": "",
-      "description": "Buffer overflow in Video in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:17:57.110",
-      "updated": "2026-11-18T05:19:14.630",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/573760540"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131005",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:17:57.583",
-      "updated": "2026-11-18T05:19:14.980",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/568986689"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131008",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in GarbageCollection in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
-      "published": "2026-11-17T21:17:57.950",
-      "updated": "2026-11-18T05:19:15.153",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574686297"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 48.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -50520,7 +50708,7 @@
       "title": "",
       "description": "Use after free in SignIn in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via UI Interaction. (Chromium security severity: Low)",
       "published": "2026-11-17T21:18:03.937",
-      "updated": "2026-11-18T20:19:06.880",
+      "updated": "2026-11-19T05:18:35.723",
       "cvss": 8.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -50530,6 +50718,53 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/567397860"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00247,
+      "epss_percentile": 0.16096,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 48.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131068",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in DOM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
+      "published": "2026-11-17T21:18:06.300",
+      "updated": "2026-11-19T02:17:19.587",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574789298"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -54704,6 +54939,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130997",
+      "aliases": [],
+      "title": "",
+      "description": "Incomplete cleanup in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:17:56.583",
+      "updated": "2026-11-19T02:14:29.147",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574639084"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00307,
+      "epss_percentile": 0.23841,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108401",
       "aliases": [],
       "title": "",
@@ -58574,144 +58857,6 @@
       "score_breakdown": {
         "popularity": 30,
         "cvss": 17.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130999",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T21:17:56.823",
-      "updated": "2026-11-18T05:19:14.270",
-      "cvss": 8.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/583617538"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 47.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 16.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131000",
-      "aliases": [],
-      "title": "",
-      "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:17:56.990",
-      "updated": "2026-11-18T05:19:14.447",
-      "cvss": 8.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/562230299"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 47.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 16.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131004",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in FedCM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T21:17:57.463",
-      "updated": "2026-11-18T05:19:14.813",
-      "cvss": 8.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/580867132"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 47.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 16.6,
-        "unauth_network": 5,
-        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -82878,12 +83023,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-121810",
+      "aliases": [],
+      "title": "",
+      "description": "Description:\nThis issue affects NGINX Plus and NGINX Open Source configurations that use HTTP/3. A remote, unauthenticated attacker can cause a use-after-free condition in the NGINX worker process, leading to a restart. Exploitation also depends on conditions beyond the attacker’s control. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\nImpact:\nThis vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+      "published": "2026-11-18T16:18:03.763",
+      "updated": "2026-11-19T05:18:30.267",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://my.f5.com/manage/s/article/K000163927"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T19:37:39.448710+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 44.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-123007",
       "aliases": [],
       "title": "",
       "description": "This issue affects NGINX Plus or NGINX Open Source configurations that use HTTP/2. When NGINX processes undisclosed traffic, the flow control window can exceed the allowed threshold, potentially resulting in a heap buffer overflow typically followed by an NGINX worker segmentation fault. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\nImpact: An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or potentially execute code remotely. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
       "published": "2026-11-18T16:18:04.047",
-      "updated": "2026-11-18T21:17:47.557",
+      "updated": "2026-11-19T06:16:53.520",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -82894,13 +83083,13 @@
         "https://my.f5.com/manage/s/article/K000163926",
         "https://access.redhat.com/security/cve/cve-2026-123007",
         "https://cyberscoop.com/nginx-critical-vulnerabilities-exploits/",
+        "https://github.com/Azure/aks-app-routing-operator/issues/623",
         "https://github.com/advisories/GHSA-m4q8-cf44-f42r",
         "https://github.com/chainguard-forks/ingress-nginx/pull/69",
         "https://github.com/nginx/nginx/commit/b89c4100bf6762a45e4a6463eaf4b70368277c94",
         "https://github.com/nginx/nginx/issues/2002",
         "https://github.com/openresty/openresty/issues/1165",
-        "https://news.ycombinator.com/item?id=50547374",
-        "https://nginx.org/en/CHANGES"
+        "https://news.ycombinator.com/item?id=50547374"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -82936,7 +83125,7 @@
       "title": "",
       "description": "When NGINX Plus or NGINX Open Source is configured to use HTTP/2 for client connections and proxy client requests to a backend, a specially crafted request can result in use-after-free in the worker process, if this process is running low on worker_connections. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.\n\n\n\n\nImpact:\n\n\n\nThis vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or may allow a code execution. There is no control plane exposure; this is a data plane issue only.\n\n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
       "published": "2026-11-18T16:18:04.207",
-      "updated": "2026-11-18T23:17:17.253",
+      "updated": "2026-11-19T06:16:53.710",
       "cvss": 9.2,
       "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -82946,14 +83135,14 @@
       "references": [
         "https://my.f5.com/manage/s/article/K000163928",
         "https://access.redhat.com/security/cve/cve-2026-123633",
+        "https://github.com/Azure/aks-app-routing-operator/issues/623",
         "https://github.com/advisories/GHSA-7xxj-p8w5-434q",
         "https://github.com/chainguard-forks/ingress-nginx/pull/68",
         "https://github.com/nginx/nginx/commit/0c87dd1db413e440a4e3ef7ee8acc518509e8809",
         "https://github.com/nginx/nginx/issues/2002",
         "https://github.com/openresty/openresty/issues/1165",
         "https://news.ycombinator.com/item?id=50547374",
-        "https://nginx.org/en/CHANGES",
-        "https://nginx2root.com"
+        "https://nginx.org/en/CHANGES"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -85204,6 +85393,54 @@
       "ssvc_exploitation": "",
       "epss": 0.0025,
       "epss_percentile": 0.16477,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131011",
+      "aliases": [],
+      "title": "",
+      "description": "Use of uninitialized variable in Speech in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:17:58.313",
+      "updated": "2026-11-19T01:44:33.513",
+      "cvss": 4.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/576859257"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0025,
+      "epss_percentile": 0.16478,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -113160,6 +113397,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-131002",
+      "aliases": [],
+      "title": "",
+      "description": "Uninitialized resource in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-17T21:17:57.230",
+      "updated": "2026-11-19T01:54:39.217",
+      "cvss": 3.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
+      "severity": "low",
+      "cpes": [
+        "google:chrome"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/577371168"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00234,
+      "epss_percentile": 0.14463,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 6.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-102870",
       "aliases": [
         "GHSA-g27p-qf6j-c96c"
@@ -125908,10 +126193,10 @@
     {
       "id": "OUT-anthropic-b5cq662qf2wm",
       "aliases": [],
-      "title": "Anthropic Claude: Claude unable to join meetings",
+      "title": "Anthropic Claude: Claude Meetings auto-join limited on the Team plan",
       "description": "Anthropic Claude の公式ステータスページに掲載された障害",
       "published": "2026-11-16T15:10:15.167Z",
-      "updated": "2026-11-16T15:10:15.167Z",
+      "updated": "2026-11-19T02:15:05.834Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -125933,7 +126218,7 @@
         "status:anthropic"
       ],
       "category": "outage",
-      "resolved_at": "",
+      "resolved_at": "2026-11-19T02:15:05.834Z",
       "first_seen": "2026-11-16T19:53:38.184007+00:00",
       "matched": [
         "anthropic"
@@ -135509,9 +135794,9 @@
       "id": "GHSA-96hm-h5v4-92fq",
       "aliases": [],
       "title": "Malicious code in @wppconnect/server (npm)",
-      "description": "@wppconnect/server 2.10.82, a REST server for WhatsApp automation, ships dist/util/diagnostics.js, loaded unconditionally on server start by dist/server.js:18 (2.10.81's dist/server.js does not load it). It collects every environment variable, the files .env, .env.local, .env.production, config.js, config.json and ormconfig.json from the working directory, and the WhatsApp session-token files under tokens/ and wppconnect_tokens/, looks up the machine's public IP at https://api.ipify.org, and uploads the report as a document to the Telegram Bot API (bot 9034051102, chat_id 7343578055, method sendDocument). It waits a random 30 to 240 seconds before sending, sends at most once per 24 hours per machine (a marker file in the temp directory), and does nothing on machines it identifies as CI or a sandbox (CI, GITHUB_ACTIONS and RUNNER_* variables, sandbox-like hostnames). The Telegram endpoint is assembled from base64 parts (dist/util/diagnostics.js:27-33); collection is at lines 113-207 and the upload at 196-233. The same module reaches the server through its dependency @wppconnect-team/wppconnect 2.4.1, which runs it on import.\n\n2.10.82 was published on 2026-11-16 at 03:09 UTC through the project's release workflow; the source line was added in the repository's commit bdddf54 (2026-11-16 02:43 UTC) and removed by pull request #2733 at 03:44 UTC, but 2.10.82 is still served by npm. Anyone who installed or started 2.10.82 should treat the machine's environment variables, those files and its WhatsApp sessions as exposed, rotate the credentials and log the sessions out.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/babba2d7abb676ad6064d956e3cfa9250f5d7581/osv/malicious/npm/@wppconnect/server/MAL-2026-20043.json))\n\n週間ダウンロード数: 約 1,900",
+      "description": "@wppconnect/server 2.10.82, a REST server for WhatsApp automation, ships dist/util/diagnostics.js, loaded unconditionally on server start by dist/server.js:18 (2.10.81's dist/server.js does not load it). It collects every environment variable, the files .env, .env.local, .env.production, config.js, config.json and ormconfig.json from the working directory, and the WhatsApp session-token files under tokens/ and wppconnect_tokens/, looks up the machine's public IP at https://api.ipify.org, and uploads the report as a document to the Telegram Bot API (bot 9034051102, chat_id 7343578055, method sendDocument). It waits a random 30 to 240 seconds before sending, sends at most once per 24 hours per machine (a marker file in the temp directory), and does nothing on machines it identifies as CI or a sandbox (CI, GITHUB_ACTIONS and RUNNER_* variables, sandbox-like hostnames). The Telegram endpoint is assembled from base64 parts (dist/util/diagnostics.js:27-33); collection is at lines 113-207 and the upload at 196-233. The same module reaches the server through its dependency @wppconnect-team/wppconnect 2.4.1, which runs it on import.\n\n2.10.82 was published on 2026-11-16 at 03:09 UTC through the project's release workflow; the source line was added in the repository's commit bdddf54 (2026-11-16 02:43 UTC) and removed by pull request #2733 at 03:44 UTC, but 2.10.82 is still served by npm. Anyone who installed or started 2.10.82 should treat the machine's environment variables, those files and its WhatsApp sessions as exposed, rotate the credentials and log the sessions out.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/babba2d7abb676ad6064d956e3cfa9250f5d7581/osv/malicious/npm/@wppconnect/server/MAL-2026-20043.json))\n\n週間ダウンロード数: 約 2,231",
       "published": "2026-11-17T06:31:51Z",
-      "updated": "2026-11-17T06:31:52Z",
+      "updated": "2026-11-19T09:30:34Z",
       "cvss": null,
       "cvss_vector": "",
       "severity": "",
@@ -136319,7 +136604,7 @@
       "title": "",
       "description": "Race condition in CredentialProvider in Google Chrome on on Windows prior to 158.0.8127.36 allowed a local attacker to potentially execute arbitrary code outside the sandbox via a local program. (Chromium security severity: Medium)",
       "published": "2026-11-17T21:17:57.700",
-      "updated": "2026-11-18T20:19:04.243",
+      "updated": "2026-11-19T05:18:34.657",
       "cvss": 7.0,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -136365,7 +136650,7 @@
       "title": "",
       "description": "Buffer overflow in CrashReporting in Google Chrome on on Windows prior to 158.0.8127.36 allowed a local attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a local program. (Chromium security severity: High)",
       "published": "2026-11-17T21:18:08.803",
-      "updated": "2026-11-18T20:19:07.813",
+      "updated": "2026-11-19T05:18:35.977",
       "cvss": 7.0,
       "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -136559,6 +136844,219 @@
       "first_seen": "2026-11-19T01:30:25.079345+00:00",
       "matched": [
         "npm:@onescience/onecode"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129446",
+      "aliases": [],
+      "title": "WPO365 < 45.4 - Unauthenticated Authentication Bypass via SAML Signature Wrapping",
+      "description": "The WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN) WordPress plugin before 45.4 does not ensure the signature validated on a SAML response covers the element the user identity is read from, allowing unauthenticated attackers to forge a response via signature wrapping and log in as any user, including administrators, when they can supply a single artifact signed by the configured identity provider.",
+      "published": "2026-11-19T06:00:06.656Z",
+      "updated": "2026-11-19T06:16:53.870",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN)"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/b8a29125-d8b5-4a54-be43-fc3aa57a01e3/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "unauth_network": 5,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-sd2sya0mc6df",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Access Issue",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-19T06:48:06.017Z",
+      "updated": "2026-11-19T08:56:14.612Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/sd2sya0mc6df"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-19T08:56:14.612Z",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-5fv6-9w6w-23xh",
+      "aliases": [],
+      "title": "Malicious code in @h1stealthy/gh046-npm-transfer-9421a2 (npm)",
+      "description": "## Source: amazon-inspector (ec2a4a7ce4ac73e7b796fdeb7b7120c5f09866284eb37e3b3a58d254363f2aba)\nThe npm tarball ships directory entries whose names are double-URL-encoded `..` sequences (`%252e%252e/%252e%252e/%252e%252e/tmp/npm-traversal-double_percent`) terminating in a file dropped at `/tmp/npm-traversal-double_percent` outside the package's own install directory. On a tar extractor that single-decodes percent-encoding before applying path-safety checks, extraction of this archive writes attacker-chosen files to absolute filesystem paths on the installer host during `npm install`. The shipped JavaScript is an inert stub and no lifecycle scripts are declared; the attack surface is the archive layout itself, exercised by the package manager's extraction step. Package naming (`@h1stealthy/...-transfer-...`) and the marker payload are consistent with a controlled traversal probe, but the artifact as published is structurally a path-traversal (zip-slip-style) tar against npm clients.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6306efcd2e5165329b81a44593e5176ac396d59b/osv/malicious/npm/@h1stealthy/gh046-npm-transfer-9421a2/MAL-2026-20190.json))\n\n週間ダウンロード数: 約 6,355",
+      "published": "2026-11-19T09:30:34Z",
+      "updated": "2026-11-19T09:30:34Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@h1stealthy/gh046-npm-transfer-9421a2"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-5fv6-9w6w-23xh"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "npm:@h1stealthy/gh046-npm-transfer-9421a2"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-m4p3-qr69-gqjp",
+      "aliases": [],
+      "title": "Malware in kevinx-baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,101",
+      "published": "2026-11-19T05:11:44Z",
+      "updated": "2026-11-19T05:16:00Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:kevinx-baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-m4p3-qr69-gqjp"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "npm:kevinx-baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-wpq7-r76p-73cp",
+      "aliases": [],
+      "title": "Malware in @wanzforme/bails",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,947",
+      "published": "2026-11-19T05:09:19Z",
+      "updated": "2026-11-19T05:15:35Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@wanzforme/bails"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wpq7-r76p-73cp"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
+      "matched": [
+        "npm:@wanzforme/bails"
       ],
       "match_type": "malware",
       "tier": null,
@@ -137623,6 +138121,52 @@
       "ssvc_exploitation": "",
       "epss": 0.00234,
       "epss_percentile": 0.14477,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.6,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131048",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect authorization in GetUserMedia in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:18:03.820",
+      "updated": "2026-11-19T02:17:19.173",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/514409956"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00222,
+      "epss_percentile": 0.12854,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -140286,51 +140830,6 @@
         "cvss": 13.0,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130997",
-      "aliases": [],
-      "title": "",
-      "description": "Incomplete cleanup in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:17:56.583",
-      "updated": "2026-11-17T23:17:56.213",
-      "cvss": 6.5,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574639084"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 39.0,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 13.0,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -146965,6 +147464,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-114952",
+      "aliases": [],
+      "title": "",
+      "description": "Vulnerability in the MySQL Server, MySQL Cluster product of Oracle MySQL (component: Client programs).  Supported versions that are affected are MySQL Server: 8.4.0-8.4.13, 9.7.0-9.7.4, 26.10; MySQL Cluster: 8.0.0-8.0.50, 8.4.0-8.4.13, 9.7.0-9.7.4 and  26.10. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise MySQL Server, MySQL Cluster.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all MySQL Server, MySQL Cluster accessible data as well as  unauthorized access to critical data or complete access to all MySQL Server, MySQL Cluster accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "published": "2026-11-17T22:18:25.530",
+      "updated": "2026-11-19T05:18:27.470",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspunov2026.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00404,
+      "epss_percentile": 0.35359,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-18T02:54:45.051818+00:00",
+      "matched": [
+        "mysql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.3,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-98499",
       "aliases": [],
       "title": "",
@@ -147346,54 +147890,6 @@
         "popularity": 21.0,
         "cvss": 16.2,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-114952",
-      "aliases": [],
-      "title": "",
-      "description": "Vulnerability in the MySQL Server, MySQL Cluster product of Oracle MySQL (component: Client programs).  Supported versions that are affected are MySQL Server: 8.4.0-8.4.13, 9.7.0-9.7.4, 26.10; MySQL Cluster: 8.0.0-8.0.50, 8.4.0-8.4.13, 9.7.0-9.7.4 and  26.10. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise MySQL Server, MySQL Cluster.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all MySQL Server, MySQL Cluster accessible data as well as  unauthorized access to critical data or complete access to all MySQL Server, MySQL Cluster accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "published": "2026-11-17T21:32:07.842Z",
-      "updated": "2026-11-18T00:18:34.357",
-      "cvss": 9.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Oracle Corporation MySQL Server",
-        "Oracle Corporation MySQL Cluster"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cspunov2026.html"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "none",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-18T02:54:45.051818+00:00",
-      "matched": [
-        "mysql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 37.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 18.2,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -148335,6 +148831,512 @@
         "popularity": 20,
         "cvss": 11.8,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130905",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in SVG in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:17:43.990",
+      "updated": "2026-11-19T02:17:16.880",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574376000"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12243,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130922",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in UI in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:46.563",
+      "updated": "2026-11-19T02:17:17.250",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/569010448"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12244,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130939",
+      "aliases": [],
+      "title": "",
+      "description": "Missing authorization in LocalNetworkAccess in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:49.503",
+      "updated": "2026-11-19T02:17:17.827",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/474737096"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00222,
+      "epss_percentile": 0.12853,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130949",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Passwords in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:50.740",
+      "updated": "2026-11-19T02:17:18.220",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/568967707"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12244,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130955",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Mobile in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:51.470",
+      "updated": "2026-11-19T02:17:18.413",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/567765567"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12245,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131009",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:58.077",
+      "updated": "2026-11-19T02:17:18.600",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/514008162"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12242,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131036",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Autofill in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:18:01.530",
+      "updated": "2026-11-19T02:17:18.973",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574502257"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12243,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131058",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof address bar via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:18:05.063",
+      "updated": "2026-11-19T02:17:19.400",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/574907939"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12241,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131080",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in Chromium in Google Chrome on on iOS prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Medium)",
+      "published": "2026-11-17T21:18:07.733",
+      "updated": "2026-11-19T02:17:19.780",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/530046745"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12242,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131085",
+      "aliases": [],
+      "title": "",
+      "description": "Clickjacking in PermissionElement in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:18:08.330",
+      "updated": "2026-11-19T02:17:19.970",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/562909022"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00209,
+      "epss_percentile": 0.11114,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131102",
+      "aliases": [],
+      "title": "",
+      "description": "UI misrepresentation in FileSystem in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:18:10.497",
+      "updated": "2026-11-19T02:17:20.163",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/553154509"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00217,
+      "epss_percentile": 0.12243,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.8,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -154298,7 +155300,7 @@
       "title": "",
       "description": "Improper Handling of Highly Compressed Data (Data Amplification) in esaml_binding in dropbox esaml allows an unauthenticated attacker to exhaust server memory and crash the Erlang VM via a crafted compressed SAMLResponse.\n\nesaml_binding:decode_response/2 base64-decodes the attacker-supplied SAMLResponse, inflates it with zlib:unzip/1 with no bound on the output, then converts the result to a charlist with binary_to_list/1 before parsing. This runs on the SAML consume (ACS) and single-logout endpoints, which accept unauthenticated requests by design, and it runs before any signature check. A small deflate stream reaches a compression ratio near 1000 to 1, so a request body of tens of kilobytes inflates to hundreds of megabytes and then to several gigabytes of list heap, so a few requests exhaust memory and take the node down.\n\nThis issue affects esaml: from 0.1.0 onward.",
       "published": "2026-10-22T09:17:16.827",
-      "updated": "2026-10-30T19:20:19.010",
+      "updated": "2026-11-19T09:18:16.067",
       "cvss": 8.7,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
@@ -154319,8 +155321,8 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00438,
-      "epss_percentile": 0.38078,
+      "epss": 0.0066,
+      "epss_percentile": 0.5229,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -156699,51 +157701,6 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 16.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131011",
-      "aliases": [],
-      "title": "",
-      "description": "Use of uninitialized variable in Speech in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:17:58.313",
-      "updated": "2026-11-18T01:17:54.990",
-      "cvss": 4.7,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/576859257"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 35.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 9.4,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -162120,6 +163077,190 @@
         "popularity": 14.0,
         "cvss": 15.4,
         "rce": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130908",
+      "aliases": [],
+      "title": "",
+      "description": "Missing authorization in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:44.853",
+      "updated": "2026-11-19T02:17:17.067",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/521476204"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00222,
+      "epss_percentile": 0.12852,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130931",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect authorization in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:48.450",
+      "updated": "2026-11-19T02:17:17.440",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/519999855"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00222,
+      "epss_percentile": 0.12853,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130932",
+      "aliases": [],
+      "title": "",
+      "description": "Improper resource exposure in Core in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-17T21:17:48.570",
+      "updated": "2026-11-19T02:17:17.630",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/579027312"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0023,
+      "epss_percentile": 0.13986,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.4,
+        "unauth_network": 5,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130940",
+      "aliases": [],
+      "title": "",
+      "description": "Improper state validation in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+      "published": "2026-11-17T21:17:49.637",
+      "updated": "2026-11-19T02:17:18.020",
+      "cvss": 4.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/568891853"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0023,
+      "epss_percentile": 0.13986,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 34.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.4,
+        "unauth_network": 5,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -169316,51 +170457,6 @@
         "cvss": 13.8,
         "unauth_network": 5,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131002",
-      "aliases": [],
-      "title": "",
-      "description": "Uninitialized resource in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T21:17:57.230",
-      "updated": "2026-11-18T01:17:54.853",
-      "cvss": 3.4,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/577371168"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 32.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 6.8,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -177042,6 +178138,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-131016",
+      "aliases": [],
+      "title": "",
+      "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a local attacker to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+      "published": "2026-11-17T21:17:58.963",
+      "updated": "2026-11-19T02:17:18.790",
+      "cvss": 4.4,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
+        "https://issues.chromium.org/issues/502803648"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00143,
+      "epss_percentile": 0.03653,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-17T20:56:14.977968+00:00",
+      "matched": [
+        "chrome"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 29.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 8.8,
+        "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114148",
       "aliases": [],
       "title": "",
@@ -179395,7 +180536,7 @@
       "title": "",
       "description": "Rapid7 Metasploit Framework versions prior to 6.5.10 suffer from an Improper Access Control issue in the msfdb database initialisation component whereby a PostgreSQL cluster initialised via msfdb init is configured with trust authentication and a world-accessible Unix domain socket in /tmp, allowing any local user on the same host to authenticate as the passwordless postgres superuser and execute arbitrary operating system commands as the msfdb owner. \n\n\nThis issue is fixed in version 6.5.10.",
       "published": "2026-11-18T15:17:41.740",
-      "updated": "2026-11-18T20:19:09.057",
+      "updated": "2026-11-19T05:18:36.230",
       "cvss": 7.8,
       "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "severity": "high",
@@ -185797,50 +186938,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-131068",
-      "aliases": [],
-      "title": "",
-      "description": "Use after free in DOM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
-      "published": "2026-11-17T21:18:06.300",
-      "updated": "2026-11-17T21:18:06.387",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574789298"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 26.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-130595",
       "aliases": [],
       "title": "SQLBot 1.10.0 through 1.10.3 PostgreSQL Dangerous-Function Denylist Bypass via Key Mismatch",
@@ -187363,6 +188460,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-84974",
+      "aliases": [],
+      "title": "",
+      "description": "code16 Sharp is a Laravel-based framework for building content-management and administrative interfaces. Prior to 9.23.0, an authenticated attacker can submit an arbitrary PHP class name through the embed_key parameter to multiple embed API endpoints. The application passes the selected class to the Laravel service container, which invokes the class's __construct() method and recursively instantiates constructor dependencies, potentially causing unauthorized integrity or availability effects. The attacker cannot supply constructor parameter values or invoke an arbitrary method. This issue is fixed in version 9.23.0.",
+      "published": "2026-11-17T18:17:59.280",
+      "updated": "2026-11-19T04:17:28.333",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/code16/sharp/commit/dfafb44b11574e621bf0785f02c32b9866ab9923",
+        "https://github.com/code16/sharp/pull/750",
+        "https://github.com/code16/sharp/releases/tag/v9.23.0",
+        "https://github.com/code16/sharp/security/advisories/GHSA-h24v-f482-8cwf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00428,
+      "epss_percentile": 0.37728,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-12T22:44:16.366619+00:00",
+      "matched": [
+        "laravel"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 24.9,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-130663",
       "aliases": [],
       "title": "",
@@ -187714,55 +188858,6 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 4.8
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-84974",
-      "aliases": [],
-      "title": "code16 Sharp: Arbitrary Class Instantiation via an API parameter",
-      "description": "code16 Sharp is a Laravel-based framework for building content-management and administrative interfaces. Prior to 9.23.0, an authenticated attacker can submit an arbitrary PHP class name through the embed_key parameter to multiple embed API endpoints. The application passes the selected class to the Laravel service container, which invokes the class's __construct() method and recursively instantiates constructor dependencies, potentially causing unauthorized integrity or availability effects. The attacker cannot supply constructor parameter values or invoke an arbitrary method. This issue is fixed in version 9.23.0.",
-      "published": "2026-11-17T17:39:28.225Z",
-      "updated": "2026-11-17T18:17:59.280",
-      "cvss": 5.4,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "code16 sharp"
-      ],
-      "references": [
-        "https://github.com/code16/sharp/security/advisories/GHSA-h24v-f482-8cwf",
-        "https://github.com/code16/sharp/pull/750",
-        "https://github.com/code16/sharp/commit/dfafb44b11574e621bf0785f02c32b9866ab9923",
-        "https://github.com/code16/sharp/releases/tag/v9.23.0"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-12T22:44:16.366619+00:00",
-      "matched": [
-        "laravel"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 24.8,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 10.8
       },
       "ai_analysis": ""
     },
@@ -215346,236 +216441,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-130905",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in SVG in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T20:39:21.777Z",
-      "updated": "2026-11-17T21:17:44.083",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574376000"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130908",
-      "aliases": [],
-      "title": "",
-      "description": "Missing authorization in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:28.603Z",
-      "updated": "2026-11-17T21:17:44.943",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/521476204"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130922",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in UI in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:32.381Z",
-      "updated": "2026-11-17T21:17:46.650",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/569010448"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130931",
-      "aliases": [],
-      "title": "",
-      "description": "Incorrect authorization in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:28.475Z",
-      "updated": "2026-11-17T21:17:48.543",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/519999855"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130932",
-      "aliases": [],
-      "title": "",
-      "description": "Improper resource exposure in Core in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:14.847Z",
-      "updated": "2026-11-17T21:17:48.663",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/579027312"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-130937",
       "aliases": [],
       "title": "",
@@ -215593,190 +216458,6 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/568973728"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130939",
-      "aliases": [],
-      "title": "",
-      "description": "Missing authorization in LocalNetworkAccess in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:26.724Z",
-      "updated": "2026-11-17T21:17:49.600",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/474737096"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130940",
-      "aliases": [],
-      "title": "",
-      "description": "Improper state validation in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-11-17T20:39:09.030Z",
-      "updated": "2026-11-17T21:17:49.737",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/568891853"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130949",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Passwords in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:31.739Z",
-      "updated": "2026-11-17T21:17:50.833",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/568967707"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-130955",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Mobile in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T20:39:31.246Z",
-      "updated": "2026-11-17T21:17:51.560",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/567765567"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -215984,49 +216665,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-131009",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:17:58.077",
-      "updated": "2026-11-17T21:17:58.160",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/514008162"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-131014",
       "aliases": [],
       "title": "",
@@ -216071,264 +216709,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-131016",
-      "aliases": [],
-      "title": "",
-      "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a local attacker to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:17:58.963",
-      "updated": "2026-11-17T21:17:59.060",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/502803648"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131036",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Autofill in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:18:01.530",
-      "updated": "2026-11-17T21:18:01.620",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574502257"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131048",
-      "aliases": [],
-      "title": "",
-      "description": "Incorrect authorization in GetUserMedia in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:18:03.820",
-      "updated": "2026-11-17T21:18:03.903",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/514409956"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131058",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof address bar via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:18:05.063",
-      "updated": "2026-11-17T21:18:05.157",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/574907939"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131080",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in Chromium in Google Chrome on on iOS prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-11-17T21:18:07.733",
-      "updated": "2026-11-17T21:18:07.823",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/530046745"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131085",
-      "aliases": [],
-      "title": "",
-      "description": "Clickjacking in PermissionElement in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:18:08.330",
-      "updated": "2026-11-17T21:18:08.427",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/562909022"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-131091",
       "aliases": [],
       "title": "",
@@ -216344,49 +216724,6 @@
       "references": [
         "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
         "https://issues.chromium.org/issues/574635898"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-17T20:56:14.977968+00:00",
-      "matched": [
-        "chrome"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 21.0,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 21.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-131102",
-      "aliases": [],
-      "title": "",
-      "description": "UI misrepresentation in FileSystem in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
-      "published": "2026-11-17T21:18:10.497",
-      "updated": "2026-11-17T21:18:10.587",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html",
-        "https://issues.chromium.org/issues/553154509"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -216836,6 +217173,54 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-18T11:43:51.230202+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99320",
+      "aliases": [],
+      "title": "ipv6: raw: fix use-after-free in rawv6_send_hdrinc()",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: raw: fix use-after-free in rawv6_send_hdrinc()\n\nrawv6_send_hdrinc() caches the route before handing the skb to\nl3mdev_ip6_out(). The VRF output path may replace skb->dst and release\nthe original route, leaving the cached pointer stale.\n\nThe function later dereferences that pointer for statistics accounting\nand as the output device passed to NF_HOOK(). Its RCU read-side critical\nsection starts after l3mdev_ip6_out(), so it cannot prevent the old route\nfrom being reclaimed in between.\n\nReload the route from the current skb destination after\nl3mdev_ip6_out() returns.\n\nKASAN reports a slab-use-after-free in rawv6_sendmsg(), with the route\nallocated by ip6_dst_alloc(), freed by dst_destroy() from rcu_core(), and\nthe related RCU callback queued from vrf_l3_out().",
+      "published": "2026-11-19T08:09:56.238Z",
+      "updated": "2026-11-19T09:18:18.910",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Linux Linux"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/afb69c90cf62b630bf74c82d7bcfca840db8b076",
+        "https://git.kernel.org/stable/c/3fda55b34d8f1621676f1238728c16033dff1148",
+        "https://git.kernel.org/stable/c/18772182967f9a0160dc7ada43311eab87c3d9ec",
+        "https://git.kernel.org/stable/c/66dfb2cacda7faae614d688943d85e75abf7f586"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T09:30:39.038435+00:00",
       "matched": [
         "linux-kernel"
       ],

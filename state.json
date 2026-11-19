@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-19T01:30:25.079345+00:00",
+  "last_run": "2026-11-19T09:30:39.038435+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -113,15 +113,16 @@
     "CVE-2026-130994": "2026-11-19T01:30:25.079345+00:00",
     "CVE-2026-130996": "2026-11-19T01:30:25.079345+00:00",
     "CVE-2026-131061": "2026-11-19T01:30:25.079345+00:00",
-    "CVE-2026-130929": "2026-11-19T01:30:25.079345+00:00"
+    "CVE-2026-130929": "2026-11-19T01:30:25.079345+00:00",
+    "OUT-anthropic-c1kmrkmv5f3d": "2026-11-19T09:30:39.038435+00:00"
   },
   "ai_key_checked": "2026-11-19",
   "open_outages": {
-    "OUT-anthropic-b5cq662qf2wm": {
-      "title": "Anthropic Claude: Claude unable to join meetings",
+    "OUT-anthropic-c1kmrkmv5f3d": {
+      "title": "Anthropic Claude: Elevated errors for Claude Mythos 5.2 and Claude Fable 5.2",
       "provider": "anthropic",
-      "since": "2026-11-16T19:53:38.184007+00:00",
-      "url": "https://stspg.io/01qq3kzyyqzl"
+      "since": "2026-11-19T09:30:39.038435+00:00",
+      "url": "https://stspg.io/nlb5fptv28h5"
     }
   },
   "eol_notified": {
@@ -167,7 +168,7 @@
   },
   "digest_sent": "2026-11-19",
   "digest_since": "2026-11-19T01:30:25.079345+00:00",
-  "repo_adv_checked": "2026-11-19T01:30:25.079345+00:00",
+  "repo_adv_checked": "2026-11-19T09:30:39.038435+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
