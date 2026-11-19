@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-18T19:37:39.448710+00:00",
+  "last_run": "2026-11-19T01:30:25.079345+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -108,9 +108,14 @@
     "CVE-2026-130971": "2026-11-18T19:37:39.448710+00:00",
     "CVE-2026-131088": "2026-11-18T19:37:39.448710+00:00",
     "CVE-2026-113425": "2026-11-18T19:37:39.448710+00:00",
-    "CVE-2026-123634": "2026-11-18T19:37:39.448710+00:00"
+    "CVE-2026-123634": "2026-11-18T19:37:39.448710+00:00",
+    "CVE-2026-131077": "2026-11-19T01:30:25.079345+00:00",
+    "CVE-2026-130994": "2026-11-19T01:30:25.079345+00:00",
+    "CVE-2026-130996": "2026-11-19T01:30:25.079345+00:00",
+    "CVE-2026-131061": "2026-11-19T01:30:25.079345+00:00",
+    "CVE-2026-130929": "2026-11-19T01:30:25.079345+00:00"
   },
-  "ai_key_checked": "2026-11-18",
+  "ai_key_checked": "2026-11-19",
   "open_outages": {
     "OUT-anthropic-b5cq662qf2wm": {
       "title": "Anthropic Claude: Claude unable to join meetings",
@@ -160,9 +165,9 @@
     "drupal:11.3:30": "2026-11-17",
     "drupal:10.6:30": "2026-11-17"
   },
-  "digest_sent": "2026-11-18",
-  "digest_since": "2026-11-18T02:54:45.051818+00:00",
-  "repo_adv_checked": "2026-11-18T19:37:39.448710+00:00",
+  "digest_sent": "2026-11-19",
+  "digest_since": "2026-11-19T01:30:25.079345+00:00",
+  "repo_adv_checked": "2026-11-19T01:30:25.079345+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -768,7 +773,8 @@
       "https://www.anthropic.com/research/building-strong-safety-evaluations",
       "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
       "https://www.anthropic.com/legal/linked-billing-terms",
-      "https://www.anthropic.com/research/claude-black-hole-physics"
+      "https://www.anthropic.com/research/claude-black-hole-physics",
+      "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
     ]
   }
 }
