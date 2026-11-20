@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-20T08:34:03.912358+00:00",
+  "last_run": "2026-11-20T17:18:39.633097+00:00",
   "notified": {
     "CVE-2026-109618": "2026-10-24T01:40:01.988377+00:00",
     "CVE-2026-109619": "2026-10-24T01:40:01.988377+00:00",
@@ -126,7 +126,8 @@
     "CVE-2026-129474": "2026-11-19T18:40:51.804070+00:00",
     "CVE-2026-129496": "2026-11-19T18:40:51.804070+00:00",
     "CVE-2026-131037": "2026-11-20T00:55:56.096094+00:00",
-    "CVE-2026-131020": "2026-11-20T00:55:56.096094+00:00"
+    "CVE-2026-131020": "2026-11-20T00:55:56.096094+00:00",
+    "CVE-2026-130968": "2026-11-20T17:18:39.633097+00:00"
   },
   "ai_key_checked": "2026-11-20",
   "open_outages": {},
@@ -173,7 +174,7 @@
   },
   "digest_sent": "2026-11-20",
   "digest_since": "2026-11-20T00:55:56.096094+00:00",
-  "repo_adv_checked": "2026-11-20T08:34:03.912358+00:00",
+  "repo_adv_checked": "2026-11-20T17:18:39.633097+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -780,7 +781,8 @@
       "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
       "https://www.anthropic.com/legal/linked-billing-terms",
       "https://www.anthropic.com/research/claude-black-hole-physics",
-      "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+      "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+      "https://www.anthropic.com/news/ipo-close"
     ]
   }
 }
