@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T04:17:50.023329+00:00",
+  "generated_at": "2026-11-21T13:02:22.132392+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -819,6 +819,64 @@
         "exploit_ref": 5
       },
       "ai_analysis": "【状況】WordPressプラグイン「Confection（Confection WordPress Cable）」に、ログインなしでサーバ上で任意のPHPコードを実行される脆弱性（CVE-2026-115252、CVSS 10.0）があります。設定を保存するときに権限確認とnonce（不正リクエスト防止用のトークン）の確認がなく、設定値の1つがそのままPHPファイルに書き込まれて公開されます。WPScanは2026年11月6日に公開し、修正版は出ていません（「No known fix」）。実際の悪用はKEV（米CISAの悪用確認済みリスト）未掲載で、報告も未確認です。攻撃コード（PoC）はWPScanが2027年2月4日に公開する予定です。\n\n【原因の部品】Confectionプラグイン（WordPress.org上の開発者名は getconfection）。単体のプラグインで、他の製品に組み込まれているという情報は未確認です。\n\n【影響範囲】0.4.0〜0.4.7。0.4.7は2023年7月から更新がなく、最新版の0.4.7も影響を受けます。修正版は未確認です。\n\n【対応策】\n1. 全WordPressサイトの管理画面のプラグイン一覧か `wp plugin list` で導入の有無を確認し、入っていれば今日中に無効化して削除してください。修正版がないため、更新では対処できません。\n2. すぐ削除できない場合は、WAFやIP制限で外部からwp-admin（管理画面）とプラグインへのアクセスを遮断してください。導入済みだった場合は侵害を前提に、次を確認してください。\n・プラグインのディレクトリに見覚えのないPHPファイルや改ざんがないか\n・不審な管理者アカウントがないか\n・アクセスログに不審な記録がないか\n不審な点があれば、DBの認証情報、WordPressの鍵、管理者のパスワードを変更してください。\n\n【各告知の関係】\n・WPScan：脆弱性データベースとしての一次公開\n・開発元：アドバイザリも修正版もなく、未確認\n・VulDB、Rapid7：WPScanの内容を転載したDB\n・国内の注意喚起：未確認\n\n【出典】\nhttps://wpscan.com/vulnerability/aebe20c3-bc02-4082-bda8-bbaa01550925/\nhttps://profiles.wordpress.org/getconfection/"
+    },
+    {
+      "id": "CVE-2026-123890",
+      "aliases": [],
+      "title": "VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "description": "VMware vCenter contains an authentication bypass vulnerability in the VMware Directory Service.\nAffected versions: 9.1.x (fixed in 9.1.1.0200); 9.0.x (fixed in 9.0.2.0200); 8.0 (fixed in 8.0 U3m); 5.x (fixed in 5.2.5).\nTelco Cloud Platform 3.0, 4.x, 5.0.x, 5.1.x, 5.2 and Telco Cloud Infrastructure 3.0 are also affected (see KB463116).",
+      "published": "2026-11-19T15:17:25.407",
+      "updated": "2026-11-21T05:18:10.817",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "vmware:cloud_foundation",
+        "vmware:telco_cloud_infrastructure",
+        "vmware:telco_cloud_platform",
+        "vmware:vcenter_server"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Broadcom VMware vCenter"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495",
+        "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere?e=48754805",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123890",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-123890"
+      ],
+      "exploit_ref": true,
+      "kev": true,
+      "kev_date_added": "2026-11-20",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00843,
+      "epss_percentile": 0.58845,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T18:40:51.804070+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 79.7,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "exploit_ref": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-131077",
@@ -6897,6 +6955,61 @@
         "rce": 5,
         "kev": 20,
         "epss": 0.3
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129448",
+      "aliases": [],
+      "title": "Apache Roller Deserialization of Untrusted Data Vulnerability",
+      "description": "Deserialization of Untrusted Data in Apache Roller versions 4.0.0 through 6.1.4 allows an unauthenticated remote attacker to execute arbitrary code. The XML-RPC endpoint accepts vendor extension types and deserializes them before authenticating the requester.\n\nThis is the same vulnerability as CVE-2026-82384, which listed only Apache Roller 6.1.5 as affected. This issue is being actively exploited.\n\nUsers are recommended to upgrade to Apache Roller 6.1.6 or later, which disables the extension types and rejects XML-RPC requests when the XML-RPC feature is disabled.\n\nUsers who cannot upgrade right away should set \"enabledForExtensions\" to \"false\" in WEB-INF/web.xml, or remove the \"/roller-services/xmlrpc\" servlet mapping, and restart Roller. Disabling XML-RPC in the administration UI is not enough, because older versions deserialize the request before checking that setting.",
+      "published": "2026-11-17T11:17:28.190",
+      "updated": "2026-11-21T05:18:11.013",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "apache:roller"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Apache Roller"
+      ],
+      "references": [
+        "https://github.com/apache/roller/pull/171",
+        "https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds",
+        "https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9",
+        "https://www.cve.org/CVERecord?id=CVE-2026-82384",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-129448",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-129448"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-20",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01191,
+      "epss_percentile": 0.68723,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-20T23:22:04.893146+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 59.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -22569,53 +22682,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-123890",
-      "aliases": [],
-      "title": "VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability",
-      "description": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system.",
-      "published": "2026-11-20",
-      "updated": "2026-11-20",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Broadcom VMware vCenter"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-123890"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-20",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00843,
-      "epss_percentile": 0.58845,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-19T18:40:51.804070+00:00",
-      "matched": [
-        "esxi"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 55.1,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-91765",
       "aliases": [],
       "title": "",
@@ -24323,6 +24389,62 @@
         "cvss": 19.6,
         "unauth_network": 5,
         "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119114",
+      "aliases": [],
+      "title": "WP Fastest Cache <= 1.5.4 - Unauthenticated Arbitrary Directory Deletion via Path Traversal via Permalink Path Traversal in singleDeleteCache / delete_next_prev_cache",
+      "description": "The WP Fastest Cache – WordPress Cache Plugin plugin for WordPress is vulnerable to arbitrary directory deletion due to insufficient file path validation in the singleDeleteCache function in all versions up to, and including, 1.5.4 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). Successful exploitation requires either the Custom Permalinks plugin or the GeoDirectory plugin to be co-installed, as these provide the necessary mechanism to write a traversal-bearing permalink value into the database that WP Fastest Cache then consumes without validation.",
+      "published": "2026-11-21T09:31:02.642Z",
+      "updated": "2026-11-21T10:16:50.930",
+      "cvss": 7.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "emrevona WP Fastest Cache – WordPress Cache Plugin"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2925032b-2a0c-43b6-a719-27831be34d19?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L1627",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L1718",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L1501",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L1389",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L2406",
+        "https://plugins.trac.wordpress.org/browser/wp-fastest-cache/tags/1.5.3/wpFastestCache.php#L1517",
+        "https://plugins.trac.wordpress.org/changeset/3780060/wp-fastest-cache/trunk/wpFastestCache.php",
+        "https://plugins.trac.wordpress.org/changeset/3786304/wp-fastest-cache/trunk/wpFastestCache.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.8,
+        "unauth_network": 5,
+        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -52117,6 +52239,112 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-107632",
+      "aliases": [],
+      "title": "Unbounce Landing Pages <= 1.1.6 - Unauthenticated Stored Cross-Site Scripting via REQUEST_URI via Proxy Error Handling",
+      "description": "The Unbounce Landing Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 1.1.6. This is due to insufficient input sanitization and output escaping on the proxy error message that is persisted to the 'ub-proxy-error-message' option: unauthenticated attacker-controlled REQUEST_URI data is concatenated into the error string in UBHTTP::stream_request_curl()/stream_request_wp_remote() and stored via update_option(), then later echoed inside a <textarea> on the Unbounce Pages Diagnostics admin page without any escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user (an administrator viewing the Diagnostics screen) accesses an injected page.",
+      "published": "2026-11-21T09:31:00.770Z",
+      "updated": "2026-11-21T10:16:50.090",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "unbouncewordpress Unbounce Landing Pages"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0cd27f45-26f7-4304-8598-15b538378527?source=cve",
+        "https://plugins.trac.wordpress.org/browser/unbounce/tags/1.1.6/templates/diagnostics.php#L122",
+        "https://plugins.trac.wordpress.org/browser/unbounce/tags/1.1.6/Unbounce-Page.php#L151",
+        "https://plugins.trac.wordpress.org/browser/unbounce/tags/1.1.6/UBHTTP.php#L482",
+        "https://plugins.trac.wordpress.org/browser/unbounce/tags/1.1.6/UBHTTP.php#L285",
+        "https://plugins.trac.wordpress.org/browser/unbounce/tags/1.1.6/Unbounce-Page.php#L57",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3808013%40unbounce&new=3808013%40unbounce"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-132620",
+      "aliases": [],
+      "title": "WPBot <= 9.1 - Unauthenticated Stored Cross-Site Scripting via Chat Message Text",
+      "description": "The WPBot – AI ChatBot for WordPress & Growth Suite: SEO, AI Writer, Email Marketing, Social Media plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'text' parameter in all versions up to, and including, 9.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is triggered when an administrator opens the Chat Sessions screen, at which point the plugin's bundled Bootstrap 3.3.7 affix data-API passes the attacker-controlled data-target attribute value to jQuery as HTML, executing the injected script in the administrator's session.",
+      "published": "2026-11-21T07:45:19.605Z",
+      "updated": "2026-11-21T08:16:39.830",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "quantumcloud WPBot – AI ChatBot for WordPress & Growth Suite: SEO, AI Writer, Email Marketing, Social Media"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e111450-cfaf-42c6-b7a1-86b172e51d9e?source=cve",
+        "https://plugins.trac.wordpress.org/browser/chatbot/tags/9.0/includes/chatbot/src/Sessions/Session_Store.php#L353",
+        "https://plugins.trac.wordpress.org/browser/chatbot/tags/9.0/includes/chatbot/src/Sessions/Session_Store.php#L73",
+        "https://plugins.trac.wordpress.org/browser/chatbot/tags/9.0/includes/chat-sessions/reports/view/partials/view-single-chat.php#L123",
+        "https://plugins.trac.wordpress.org/browser/chatbot/tags/9.0/includes/chatbot/src/Conversation/Message.php#L94",
+        "https://plugins.trac.wordpress.org/browser/chatbot/tags/9.0/includes/chatbot/src/Rest/Routes.php#L146",
+        "https://downloads.wordpress.org/plugin/chatbot.9.2.zip"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-66570",
       "aliases": [],
       "title": "WordPress WordPress File Upload plugin <= 5.2.1 - Cross Site Scripting (XSS) vulnerability",
@@ -66337,6 +66565,62 @@
         "cvss": 10.8,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-124248",
+      "aliases": [],
+      "title": "GPTranslate <= 2.34.17 - Unauthenticated Stored Cross-Site Scripting via Simple HTML DOM Noise Key Collision in HTML DOM Server-Side Translation",
+      "description": "The GPTranslate – Multilingual AI Translation Agent for WordPress: Translate Your Site with AI plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 2.34.17 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the plugin's non-default 'HTML DOM method' to be enabled for server-side translation, and a translation row for the target language-prefixed URL must exist to arm the output buffer that routes page content through the vulnerable Simple HTML DOM parser.",
+      "published": "2026-11-21T11:42:27.415Z",
+      "updated": "2026-11-21T12:16:41.223",
+      "cvss": 5.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "john-dagelmore GPTranslate – Multilingual AI Translation Agent for WordPress: Translate Your Site with AI"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/621a1431-96e4-431e-aa68-586cb76cd29b?source=cve",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/serverside-translations.php#L1986",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/serverside-translations.php#L2392",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/simplehtmldom.php#L1651",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/simplehtmldom.php#L1535",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/simplehtmldom.php#L1668",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/simplehtmldom.php#L415",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/gptranslate.php#L4109",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.34.17/gptranslate.php#L3907",
+        "https://plugins.trac.wordpress.org/browser/gptranslate/tags/2.35/simplehtmldom.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -134577,52 +134861,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-129448",
-      "aliases": [],
-      "title": "Apache Roller Deserialization of Untrusted Data Vulnerability",
-      "description": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions.",
-      "published": "2026-11-20",
-      "updated": "2026-11-20",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Apache Roller"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-129448"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-20",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01191,
-      "epss_percentile": 0.68723,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-20T23:22:04.893146+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 40.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "unauth_network": 5,
-        "rce": 5,
-        "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-54630",
       "aliases": [],
       "title": "",
@@ -154637,7 +154875,7 @@
       "title": "",
       "description": "Key exchange without entity authentication vulnerability in Apache Tomcat allowed an unauthenticated node to join a cluster when the cluster was secured with TLS 1.3 and TLS-PSK.\n\n\n\nThis issue affects Apache Tomcat: 11.0.28-11.0.29, 10.1.62, 9.0.124.\n\n\n\nUsers are recommended to switch to TLS 1.2 and TLS-PSK or upgrade to version 11.0.30, 10.1.63 or 9.0.125 (when released), which fix the issue.",
       "published": "2026-11-19T22:18:04.090",
-      "updated": "2026-11-20T20:17:35.520",
+      "updated": "2026-11-21T05:18:22.160",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -154673,6 +154911,58 @@
         "cvss": 19.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119607",
+      "aliases": [],
+      "title": "Salon Booking System <= 10.31.16 - Missing Authorization to Authenticated (Subscriber+) Arbitrary User Meta Overwrite via 'customer_id' Parameter",
+      "description": "The Salon Booking System – Appointment Booking for Salons, Barbershops & Spas plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 10.31.16. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to overwrite arbitrary users' user meta fields, including the _sln_phone and _sln_sms_prefix meta of administrator accounts, and create bookings attributed to arbitrary users. This is exploitable on default installations because reCAPTCHA is disabled by default, causing the booking endpoint's permission check to return true for any authenticated user without a meaningful authorization gate.",
+      "published": "2026-11-21T05:35:03.579Z",
+      "updated": "2026-11-21T06:16:33.193",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "wordpresschef Salon Booking System – Appointment Booking for Salons, Barbershops & Spas"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d1c31038-6046-48f7-bf65-8e57ef713503?source=cve",
+        "https://plugins.trac.wordpress.org/browser/salon-booking-system/tags/10.31.13/src/SLB_API/Controller/Bookings_Controller.php#L1337",
+        "https://plugins.trac.wordpress.org/browser/salon-booking-system/tags/10.31.13/src/SLB_API/Controller/Bookings_Controller.php#L1561",
+        "https://plugins.trac.wordpress.org/browser/salon-booking-system/tags/10.31.13/src/SLB_API/Controller/Bookings_Controller.php#L997",
+        "https://plugins.trac.wordpress.org/browser/salon-booking-system/tags/10.31.13/src/SLB_API/Controller/Bookings_Controller.php#L941",
+        "https://plugins.trac.wordpress.org/browser/salon-booking-system/tags/10.31.13/src/SLB_API/Controller/Bookings_Controller.php#L1589",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3811703%40salon-booking-system&new=3811703%40salon-booking-system"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.6
       },
       "ai_analysis": ""
     },
@@ -171723,29 +172013,70 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-130007",
-      "aliases": [
-        "GHSA-m932-63jc-4jqq"
+      "id": "CVE-2026-119184",
+      "aliases": [],
+      "title": "Mapster WP Maps < 2.0.7 - Contributor+ Arbitrary Post, Page and Attachment Modification",
+      "description": "The Mapster WP Maps — Mapbox, MapLibre & Google Maps for WordPress plugin before 2.0.7 does not perform any authorization check when saving edits made through its bundled photo-gallery library, allowing any authenticated user with at least Contributor-level access to overwrite the title and content of, and write arbitrary metadata onto, any post, page or media attachment on the site regardless of ownership.",
+      "published": "2026-11-21T06:00:07.454Z",
+      "updated": "2026-11-21T06:16:32.847",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown Mapster WP Maps — Mapbox, MapLibre & Google Maps for WordPress"
       ],
-      "title": "k8s-mcp-server: Missing authentication on default SSE/HTTP transport allows unauthenticated Kubernetes tool execution",
-      "description": "## Summary\nWhen k8s-mcp-server runs in its default SSE transport mode, the MCP `tools/call`\nendpoint is dispatched with no authentication, session token, or Origin check.\nAny client that can reach the listening port can enumerate and invoke the\nserver's Kubernetes tools (including destructive/write tools) without credentials,\nexecuting with the server's configured cluster privileges.\n\n## Affected\nCommit be87a6dd72bb6ec1d4886b8548843b99a4638b12 (Merge PR #130)\nMCP library: github.com/mark3labs/mcp-go v0.57.0\nDefault mode: sse (SERVER_MODE default), default port 8080, bind 0.0.0.0\n\n## Root cause (static trace: handleSSE -> handleMessage -> tools/call)\n- main.go L129: `server.NewSSEServer(s)` is created with no auth option and no\n  contextFunc; L130 `sse.Start(\":\"+port)` binds all interfaces (0.0.0.0).\n- mcp-go sse.go handleSSE (GET /sse): no auth header check; the server mints a\n  sessionId for any caller. The sessionId is a correlation value, not a credential.\n- handleMessage (POST /message): the only gates are method==POST and a loadable\n  sessionId. No Authorization/Bearer/token/Origin/CSRF check before\n  `s.server.HandleMessage(ctx, rawMessage)` dispatches to the tools/call handler.\n- Only `Access-Control-Allow-Origin: *` is present (CORS relaxation, not auth).\nWrite tools (Create/Delete/RolloutRestart, Helm Install/Upgrade/Uninstall/Rollback)\nare all registered unless `-read-only` is set (default readOnly=false).\n\n## Runtime reproduction (no auth headers on any request)\nStarted: `k8s-mcp-server -mode sse -port 8080` with a dummy non-routable\nKUBERNETES_SERVER=https://127.0.0.1:1 (no real cluster touched).\n\n  GET  /sse                         -> HTTP 200; server mints /message?sessionId=93b3...\n  POST /message initialize          -> HTTP 202; result returned over SSE\n  POST /message tools/list          -> HTTP 202; FULL tool list returned (incl. destructive)\n  POST /message tools/call getAPIResources -> HTTP 202; handler EXECUTED:\n        error -32603 \"... Get https://127.0.0.1:1/api...: dial tcp 127.0.0.1:1: connect\"\n\nThe tools/call response is NOT HTTP 401/403 but an in-handler cluster-connection\nerror, proving the RPC passed any authorization gate and reached the\ngetAPIResources handler. With a valid kubeconfig, the same path returns real\ncluster data. `ss -ltnp` confirms LISTEN *:8080 (all interfaces, externally exposed).\n\n## Impact\nAn unauthenticated attacker with network reach to the port can enumerate tools and\ninvoke Kubernetes operations with the server's privileges — cluster read and,\nwith default readOnly=false, state-changing operations (Create/Delete/Helm).\nCWE-306 (Missing Authentication for Critical Function).\n\n## Why this is a defect, not by-design\nDefault mode is HTTP (sse) on 0.0.0.0:8080, containerized deployment is the normal\nscenario, and there is no \"trusted client only\" / auth-required note in the docs.\nMCP HTTP transports are expected to be loopback-only or gated; this one is neither.\n\n## Suggested fix\n- Add an authorization gate before tools/call on the HTTP transports: e.g.\n  WithSSEContextFunc to validate an Authorization bearer/token, or fail-closed\n  when no token is configured in HTTP mode.\n- Default the bind to 127.0.0.1 and require explicit opt-in for external binding.\n- Document that HTTP mode must sit behind an authenticating proxy; recommend STDIO\n  by default.\n\nReproduction was done against the actual built binary and the shipped SSE path\n(not an extract). \n\n## Credit \nbebold6133",
-      "published": "2026-11-19T22:48:33Z",
-      "updated": "2026-11-19T22:48:33Z",
+      "references": [
+        "https://wpscan.com/vulnerability/82a5dc73-0a4b-43f7-8d1b-51ce72a6bda1/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 35,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130007",
+      "aliases": [],
+      "title": "",
+      "description": "k8s-mcp-server manages Kubernetes clusters through the Model Context Protocol. Prior to 1.1.0, SERVER_MODE defaults to SSE, with the listener on 0.0.0.0:8080, but main.go creates the SSE server without an authentication option or context function. The GET /sse handler creates a sessionId that is only a correlation value, and the POST /message handler accepts a loadable sessionId without an authorization or Origin check before dispatching tools/call; consequently, any client able to reach the port can enumerate and invoke registered Kubernetes tools without credentials. Read-only mode is disabled by default, leaving write-capable Kubernetes tools available to run with the server's configured cluster privileges. This issue is fixed in version 1.1.0.",
+      "published": "2026-11-18T17:17:37.917",
+      "updated": "2026-11-21T05:18:11.190",
       "cvss": 7.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H",
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
       "cpes": [],
-      "packages": [
-        "go:github.com/reza-gholizade/k8s-mcp-server"
-      ],
+      "packages": [],
       "vendor_products": [],
       "references": [
-        "https://github.com/advisories/GHSA-m932-63jc-4jqq",
-        "https://github.com/reza-gholizade/k8s-mcp-server/security/advisories/GHSA-m932-63jc-4jqq",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-130007",
+        "https://github.com/reza-gholizade/k8s-mcp-server/commit/817d81005369837e0c034962785851ca4dec9a76",
         "https://github.com/reza-gholizade/k8s-mcp-server/issues/131",
         "https://github.com/reza-gholizade/k8s-mcp-server/pull/134",
-        "https://github.com/reza-gholizade/k8s-mcp-server/commit/817d81005369837e0c034962785851ca4dec9a76"
+        "https://github.com/reza-gholizade/k8s-mcp-server/releases/tag/v1.1.0",
+        "https://github.com/reza-gholizade/k8s-mcp-server/security/advisories/GHSA-m932-63jc-4jqq"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -171753,10 +172084,10 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.0037,
-      "epss_percentile": 0.31603,
+      "epss_percentile": 0.31741,
       "x_mentions": null,
       "sources": [
-        "ghsa"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -181428,7 +181759,7 @@
       "title": "",
       "description": "In Postgres Enterprise Manager (PEM), the pem_agent role, which every PEM agent login inherits, is a member of the PostgreSQL pg_read_server_files and pg_write_server_files roles on the PEM backend database. An attacker who controls any monitored host, and so its PEM agent certificate, can read and write files on the PEM server host as the postgres operating system user. This includes the PEM certificate authority key, which lets the attacker issue certificates for other agents and act as them.\nFrom PEM 10.6.1, PEM agents no longer hold these roles.",
       "published": "2026-11-20T15:17:47.477",
-      "updated": "2026-11-20T17:18:13.220",
+      "updated": "2026-11-21T05:18:21.293",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
@@ -181471,7 +181802,7 @@
       "title": "",
       "description": "In Postgres Enterprise Manager (PEM), several SECURITY DEFINER functions in the pem schema of the PEM backend database are owned by a superuser but do not set a safe search_path. Any PEM user who can connect to the PEM backend database can create objects that these functions use in place of the intended ones, and so run arbitrary SQL with superuser privileges. Temporary objects can be used for this on every supported PostgreSQL version, and objects in the public schema on PostgreSQL 14 backends and backends upgraded from PostgreSQL 14.\nFrom PEM 10.6.1, these functions run with a fixed search_path.",
       "published": "2026-11-20T15:17:47.800",
-      "updated": "2026-11-20T17:18:13.567",
+      "updated": "2026-11-21T05:18:21.860",
       "cvss": 9.4,
       "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "critical",
