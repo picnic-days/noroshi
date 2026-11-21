@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T13:02:22.132392+00:00",
+  "generated_at": "2026-11-21T20:06:32.872233+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -147464,6 +147464,48 @@
       "ai_analysis": ""
     },
     {
+      "id": "GHSA-cxc9-87g6-qrj9",
+      "aliases": [],
+      "title": "Malware in @wppconnect-team/wppconnect",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 9,897",
+      "published": "2026-11-21T13:46:40Z",
+      "updated": "2026-11-21T13:46:41Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@wppconnect-team/wppconnect"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-cxc9-87g6-qrj9"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T20:06:32.872233+00:00",
+      "matched": [
+        "npm:@wppconnect-team/wppconnect"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -167101,6 +167143,103 @@
       "first_seen": "2026-11-20T00:55:56.096094+00:00",
       "matched": [
         "zlib"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134325",
+      "aliases": [],
+      "title": "ArcadeDB before 26.11.1 Unauthenticated Redis Connection Hold Denial of Service",
+      "description": "ArcadeDB before 26.11.1 contains a denial of service vulnerability in the Redis protocol handler, which neither replies to nor closes a pre-authentication connection when it receives an array whose first element is not a string. Unauthenticated attackers can resend such an array just within the 30-second socket idle timeout to hold connections open indefinitely and exhaust RedisNetworkExecutor threads.",
+      "published": "2026-11-21T16:34:45.143Z",
+      "updated": "2026-11-21T17:16:53.847",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ArcadeData arcadedb"
+      ],
+      "references": [
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-9cx8-qjp8-hcmr",
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-hphw-285h-wx93",
+        "https://www.vulncheck.com/advisories/arcadedb-before-26.11.1-unauthenticated-redis-connection-hold-denial-of-service"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T20:06:32.872233+00:00",
+      "matched": [
+        "redis"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134341",
+      "aliases": [],
+      "title": "actix-http 3.0.0 before 3.20.3 Denial of Service via Large-Window Brotli Decompression",
+      "description": "actix-http 3.0.0 before 3.20.3 contains a denial of service vulnerability that allows unauthenticated remote attackers to exhaust memory by sending large-window brotli request bodies. Attackers can send an 850-byte body with Content-Encoding: br declaring a 2^30 window, forcing about 1 GiB of decoder allocation per request and OOM-killing servers.",
+      "published": "2026-11-21T16:34:36.002Z",
+      "updated": "2026-11-21T17:16:55.073",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "actix actix-http"
+      ],
+      "references": [
+        "https://github.com/actix/actix-web/security/advisories/GHSA-7p9w-p5qm-5gc5",
+        "https://www.vulncheck.com/advisories/actix-http-3.0.0-before-3.20.3-denial-of-service-via-large-window-brotli-decompression"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T20:06:32.872233+00:00",
+      "matched": [
+        "brotli"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -195485,6 +195624,102 @@
       "first_seen": "2026-11-20T17:18:39.633097+00:00",
       "matched": [
         "ollama"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134327",
+      "aliases": [],
+      "title": "ArcadeDB before 26.11.1 Schema Information Disclosure via Per-Type ACL Bypass",
+      "description": "ArcadeDB before 26.11.1 contains an authorization bypass vulnerability that allows authenticated users to read schema definitions of denied types through listings ignoring per-type ACLs. Attackers can query the PostgreSQL wire catalog, GraphQL introspection, or MCP get_schema to reveal property names, indexes, inheritance, and materialized view SQL.",
+      "published": "2026-11-21T16:34:44.066Z",
+      "updated": "2026-11-21T17:16:54.013",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ArcadeData arcadedb"
+      ],
+      "references": [
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-vpxw-wqc5-hvvj",
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-48q6-q453-cm77",
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-4mmv-84cq-wpc5",
+        "https://www.vulncheck.com/advisories/arcadedb-before-26.11.1-schema-information-disclosure-via-per-type-acl-bypass"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T20:06:32.872233+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.2,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134360",
+      "aliases": [],
+      "title": "Heym before 0.0.148 Local File Read via Playwright Navigate Step",
+      "description": "Heym before 0.0.148 passes Playwright navigate-step URLs to page.goto() without validating the scheme and runs step-based scripts inside the backend container. A signed-in user who can run workflows can navigate to file:// URLs and use getText to read known-path files such as the Kubernetes ServiceAccount token or Docker secrets.",
+      "published": "2026-11-21T16:34:21.112Z",
+      "updated": "2026-11-21T17:16:57.387",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "heymrun heym"
+      ],
+      "references": [
+        "https://github.com/heymrun/heym/security/advisories/GHSA-hmfh-wpg2-vff4",
+        "https://www.vulncheck.com/advisories/heym-before-0.0.148-local-file-read-via-playwright-navigate-step"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-21T20:06:32.872233+00:00",
+      "matched": [
+        "kubernetes"
       ],
       "match_type": "keyword",
       "tier": 2,
