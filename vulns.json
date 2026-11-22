@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T00:20:48.049818+00:00",
+  "generated_at": "2026-11-22T07:29:17.584340+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -6901,6 +6901,55 @@
         "unauth_network": 5,
         "kev": 20,
         "epss": 11.9
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115560",
+      "aliases": [],
+      "title": "",
+      "description": "Session serializer mismatch can lead to remote code execution.\n\nSession upload progress, when enabled, can store attacker-controlled data in a session key using the php_binary or php_serialize session serializer. If the same session is later read with the php serializer, because session.serialize_handler is changed at runtime or differs between applications sharing a session store, bytes inside the key can be passed to the unserializer. A remote attacker able to submit a multipart upload can inject objects, which may lead to code execution when the reading application contains a suitable gadget chain, or to session corruption or denial of service.\n\nThis issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+      "published": "2026-11-19T15:17:24.610",
+      "updated": "2026-11-22T01:16:52.303",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/php/php-src/security/advisories/GHSA-658j-r8rw-q6mx",
+        "https://access.redhat.com/security/cve/cve-2026-115560",
+        "https://github.com/murrez/php2shell/blob/a8e24f4efab57f67384909d9408e42a74b973bfb/poc.py#L776-L791",
+        "https://ubuntu.com/security/CVE-2026-115560"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.71117,
+      "epss_percentile": 0.99419,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T18:40:51.804070+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 60.1,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 10.7
       },
       "ai_analysis": ""
     },
@@ -43022,56 +43071,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-126714",
-      "aliases": [],
-      "title": "",
-      "description": "Partially overwritten session files can lead to remote code execution.\n\nThe files session save handler, which is the default, writes updated session data into the existing session file without first clearing it. If a write is interrupted, the file can contain the beginning of the new session followed by the end of the old one, and bytes of an ordinary string can later be unserialized as objects. An attacker who can influence the session data, for example through session upload progress, and interrupt a write at a suitable point may inject objects, which can lead to code execution when the application contains a suitable gadget chain. Session data can also be corrupted.\n\nThis issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
-      "published": "2026-11-19T15:17:26.167",
-      "updated": "2026-11-20T15:17:40.600",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/php/php-src/security/advisories/GHSA-fm2m-fjf5-v3cp",
-        "https://bugzilla.suse.com/show_bug.cgi?id=1290690",
-        "https://depthfirst.com/phpAfterShell",
-        "https://github.com/semgrep/detection-scripts/pull/14",
-        "https://ubuntu.com/security/CVE-2026-126714"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.17587,
-      "epss_percentile": 0.97213,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-19T18:40:51.804070+00:00",
-      "matched": [
-        "php"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 52.0,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5,
-        "epss": 2.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-91766",
       "aliases": [],
       "title": "",
@@ -43317,6 +43316,57 @@
         "popularity": 30,
         "kev": 20,
         "epss": 1.5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126714",
+      "aliases": [],
+      "title": "",
+      "description": "Partially overwritten session files can lead to remote code execution.\n\nThe files session save handler, which is the default, writes updated session data into the existing session file without first clearing it. If a write is interrupted, the file can contain the beginning of the new session followed by the end of the old one, and bytes of an ordinary string can later be unserialized as objects. An attacker who can influence the session data, for example through session upload progress, and interrupt a write at a suitable point may inject objects, which can lead to code execution when the application contains a suitable gadget chain. Session data can also be corrupted.\n\nThis issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+      "published": "2026-11-19T15:17:26.167",
+      "updated": "2026-11-22T01:16:52.470",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/php/php-src/security/advisories/GHSA-fm2m-fjf5-v3cp",
+        "https://access.redhat.com/security/cve/cve-2026-126714",
+        "https://bugzilla.suse.com/show_bug.cgi?id=1290690",
+        "https://depthfirst.com/phpaftershell",
+        "https://github.com/semgrep/detection-scripts/pull/14",
+        "https://ubuntu.com/security/CVE-2026-126714"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.13104,
+      "epss_percentile": 0.96448,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T18:40:51.804070+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 51.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 2.0
       },
       "ai_analysis": ""
     },
@@ -46239,6 +46289,55 @@
         "popularity": 30,
         "cvss": 15.6,
         "rce": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129474",
+      "aliases": [],
+      "title": "",
+      "description": "Use-after-free in magic method backtraces can lead to remote code execution.\n\nWhen collecting the arguments of a method call handled by __call() or __callStatic() for a backtrace, PHP can read stale values that may refer to freed memory. If a fatal error such as exceeding memory_limit occurs while an application enters such a call, with fatal_error_backtraces enabled (the default) and zend.exception_ignore_args disabled, a remote attacker who controls enough request data to influence memory allocation may cause memory corruption, crash the PHP worker or, with knowledge of memory addresses, execute arbitrary code. php.ini-production enables zend.exception_ignore_args, which prevents this.\n\nThis issue affects PHP versions 8.5.* before 8.5.13.",
+      "published": "2026-11-19T15:17:28.110",
+      "updated": "2026-11-22T01:16:52.627",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/php/php-src/security/advisories/GHSA-8mjj-2r7p-4hg2",
+        "https://access.redhat.com/security/cve/cve-2026-129474",
+        "https://github.com/murrez/php2shell/blob/a8e24f4efab57f67384909d9408e42a74b973bfb/poc.py#L808-L816",
+        "https://ubuntu.com/security/CVE-2026-129474"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.07248,
+      "epss_percentile": 0.94479,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T18:40:51.804070+00:00",
+      "matched": [
+        "php"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 50.5,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "rce": 5,
+        "epss": 1.1
       },
       "ai_analysis": ""
     },
@@ -51392,96 +51491,6 @@
         "cvss": 9.6,
         "unauth_network": 5,
         "exploit_ref": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-115560",
-      "aliases": [],
-      "title": "",
-      "description": "Session serializer mismatch can lead to remote code execution.\n\nSession upload progress, when enabled, can store attacker-controlled data in a session key using the php_binary or php_serialize session serializer. If the same session is later read with the php serializer, because session.serialize_handler is changed at runtime or differs between applications sharing a session store, bytes inside the key can be passed to the unserializer. A remote attacker able to submit a multipart upload can inject objects, which may lead to code execution when the reading application contains a suitable gadget chain, or to session corruption or denial of service.\n\nThis issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
-      "published": "2026-11-19T15:17:24.610",
-      "updated": "2026-11-20T05:18:38.473",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/php/php-src/security/advisories/GHSA-658j-r8rw-q6mx"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-19T18:40:51.804070+00:00",
-      "matched": [
-        "php"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 49.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-129474",
-      "aliases": [],
-      "title": "",
-      "description": "Use-after-free in magic method backtraces can lead to remote code execution.\n\nWhen collecting the arguments of a method call handled by __call() or __callStatic() for a backtrace, PHP can read stale values that may refer to freed memory. If a fatal error such as exceeding memory_limit occurs while an application enters such a call, with fatal_error_backtraces enabled (the default) and zend.exception_ignore_args disabled, a remote attacker who controls enough request data to influence memory allocation may cause memory corruption, crash the PHP worker or, with knowledge of memory addresses, execute arbitrary code. php.ini-production enables zend.exception_ignore_args, which prevents this.\n\nThis issue affects PHP versions 8.5.* before 8.5.13.",
-      "published": "2026-11-19T15:17:28.110",
-      "updated": "2026-11-20T05:18:41.323",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://github.com/php/php-src/security/advisories/GHSA-8mjj-2r7p-4hg2"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-19T18:40:51.804070+00:00",
-      "matched": [
-        "php"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 49.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 18.4,
-        "unauth_network": 5,
-        "rce": 5
       },
       "ai_analysis": ""
     },
@@ -147509,6 +147518,135 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-132814",
+      "aliases": [],
+      "title": "WPO365 < 45.0 - Unauthenticated Account Takeover via OIDC Audience Verification Bypass",
+      "description": "The WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN) WordPress plugin before 45.0 does not verify that a Microsoft ID token was issued for the site's own application and tenant when multi-tenant sign-in is enabled with an empty list of allowed tenants, allowing unauthenticated attackers to log in as an existing user, including an administrator, with a token Microsoft issued to an application they control.",
+      "published": "2026-11-22T06:00:08.845Z",
+      "updated": "2026-11-22T06:17:11.353",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Unknown WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN)"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/f442b280-573d-43a3-a52b-86dc2571a722/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "unauth_network": 5,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-d2m4kw94ut4f",
+      "aliases": [],
+      "title": "Cloudflare: Network Performance Issues in Chicago datacenter (ORD)",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-22T00:32:59.264Z",
+      "updated": "2026-11-22T01:11:58.075Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/d2m4kw94ut4f"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-22T01:11:58.075Z",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-pgrg-83q3-w7vr",
+      "aliases": [],
+      "title": "Malicious code in aia-b-locator-fe (npm)",
+      "description": "## Source: ossf-package-analysis (30948411c212a86ca2f268ab6c24c23e2e77549ea2cc9663470b2003769a97a3)\nThe OpenSSF Package Analysis project identified 'aia-b-locator-fe' @ 1.0.3 (npm) as malicious.\n\nIt is considered malicious because:\n\n- The package communicates with a domain associated with malicious activity.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/febb95bae8db0f9ed888c0e611dd931a87f4293c/osv/malicious/npm/aia-b-locator-fe/MAL-2026-20320.json))\n\n週間ダウンロード数: 約 1,693",
+      "published": "2026-11-21T03:30:30Z",
+      "updated": "2026-11-22T00:30:25Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:aia-b-locator-fe"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-pgrg-83q3-w7vr"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "npm:aia-b-locator-fe"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -158744,6 +158882,56 @@
         "cvss": 12.6,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134703",
+      "aliases": [],
+      "title": "libexpat through 2.10.0 Isolated High Surrogate via UTF-16 Conversion",
+      "description": "libexpat through 2.10.0 contains an improper Unicode handling vulnerability in DEFINE_UTF16_TO_UTF16 conversion functions in xmltok.c that can split valid surrogate pairs when output space is limited. In XML_UNICODE builds parsing non-native byte order UTF-16 input, attackers can supply crafted documents that deliver lone high surrogates to character data and default handlers.",
+      "published": "2026-11-22T02:01:58.141Z",
+      "updated": "2026-11-22T02:17:09.577",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1519",
+        "https://github.com/libexpat/libexpat/commit/702389c818cb402f2423fa998fa11907d621959f",
+        "https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/lib/xmltok.c",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.10.0-isolated-high-surrogate-via-utf-16-conversion"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -188501,6 +188689,104 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-134656",
+      "aliases": [],
+      "title": "OpenAirInterface CN5G SMF through 2.2.2 Orphaned N7 SM Policy Associations via PDU Release",
+      "description": "OpenAirInterface CN5G SMF through 2.2.2 contains a missing resource release vulnerability in handle_pdu_session_release_sm_context_request() that fails to delete N7 SM policy associations at the PCF. Authenticated UEs can repeatedly establish and release PDU sessions through the AMF-initiated Release SM Context path to accumulate stale associations and exhaust PCF memory.",
+      "published": "2026-11-22T02:03:15.198Z",
+      "updated": "2026-11-22T02:17:01.147",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "openairinterface oai-cn5g-smf"
+      ],
+      "references": [
+        "https://github.com/openairinterface/oai-cn5g-smf/issues/13",
+        "https://github.com/openairinterface/oai-cn5g-smf/commit/9d8e866e972a6a64a9ce3bf6ebd77a9e126f0716",
+        "https://github.com/openairinterface/oai-cn5g-smf/blob/v2.2.2/src/smf_app/smf_context.cpp",
+        "https://www.vulncheck.com/advisories/openairinterface-cn5g-smf-through-2.2.2-orphaned-n7-sm-policy-associations-via-pdu-release"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134657",
+      "aliases": [],
+      "title": "OpenAirInterface CN5G PCF through 2.2.2 Memory Leak via SM Policy Deletion",
+      "description": "OpenAirInterface CN5G PCF through 2.2.2 contains a memory leak vulnerability in pcf_smpc::delete_sm_policy_handler() that leaves stale UE IPv4, SUPI and DNN index entries after association deletion. Attackers can trigger repeated SM policy create and delete cycles over N7 via PDU session establishment and release to grow PCF memory without bound and break association lookups.",
+      "published": "2026-11-22T02:03:13.841Z",
+      "updated": "2026-11-22T02:17:01.307",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "openairinterface oai-cn5g-pcf"
+      ],
+      "references": [
+        "https://github.com/openairinterface/oai-cn5g-pcf/issues/8",
+        "https://github.com/openairinterface/oai-cn5g-pcf/commit/c649f643ec06b2e37069601fc8b732b49d9de77e",
+        "https://github.com/openairinterface/oai-cn5g-pcf/blob/v2.2.2/src/pcf_app/pcf_sm_policy_control.cpp",
+        "https://www.vulncheck.com/advisories/openairinterface-cn5g-pcf-through-2.2.2-memory-leak-via-sm-policy-deletion"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114156",
       "aliases": [
         "GHSA-8w29-6cjc-h6w4"
@@ -201251,6 +201537,56 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-134659",
+      "aliases": [],
+      "title": "OpenAirInterface CN5G AMF before 2.2.2 Stale PDU Session Contexts via SMF Selection Failure",
+      "description": "OpenAirInterface CN5G AMF before 2.2.2 contains a missing resource release vulnerability in amf_sbi::handle_itti_message() that leaves stale PDU session contexts when NRF lookup or SMF selection fails. Authenticated UEs can request PDU sessions while no SMF is selectable, causing deregistration to wait on SMF release timeouts and stall shared NAS processing for other UEs.",
+      "published": "2026-11-22T02:03:10.861Z",
+      "updated": "2026-11-22T02:17:01.633",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "openairinterface oai-cn5g-amf"
+      ],
+      "references": [
+        "https://github.com/openairinterface/oai-cn5g-amf/issues/18",
+        "https://github.com/openairinterface/oai-cn5g-amf/commit/16b3467a0cafdea915f8b6d4b6c307231ff74271",
+        "https://github.com/openairinterface/oai-cn5g-amf/releases/tag/v2.2.2",
+        "https://github.com/openairinterface/oai-cn5g-amf/blob/v2.2.1/src/amf-app/amf_sbi.cpp",
+        "https://www.vulncheck.com/advisories/openairinterface-cn5g-amf-before-2.2.2-stale-pdu-session-contexts-via-smf-selection-failure"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-22T07:29:17.584340+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 24.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 4.6
       },
       "ai_analysis": ""
     },
