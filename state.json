@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-23T10:46:45.783090+00:00",
+  "last_run": "2026-11-23T22:15:47.592639+00:00",
   "notified": {
     "JP-jpcert-at260034": "2026-10-26T15:33:11.752934+00:00",
     "CVE-2026-113078": "2026-10-26T19:59:36.444930+00:00",
@@ -126,17 +126,12 @@
     "CVE-2026-131020": "2026-11-20T00:55:56.096094+00:00",
     "CVE-2026-130968": "2026-11-20T17:18:39.633097+00:00",
     "CVE-2026-123890": "2026-11-20T23:22:04.893146+00:00",
-    "OUT-anthropic-yzs0s90d8fm8": "2026-11-23T10:46:45.783090+00:00"
+    "OUT-anthropic-yzs0s90d8fm8": "2026-11-23T10:46:45.783090+00:00",
+    "CVE-2026-130963": "2026-11-23T22:15:47.592639+00:00",
+    "CVE-2026-130926": "2026-11-23T22:15:47.592639+00:00"
   },
   "ai_key_checked": "2026-11-23",
-  "open_outages": {
-    "OUT-anthropic-yzs0s90d8fm8": {
-      "title": "Anthropic Claude: Elevated errors for multiple models",
-      "provider": "anthropic",
-      "since": "2026-11-23T10:46:45.783090+00:00",
-      "url": "https://stspg.io/q2ptbwdjx31m"
-    }
-  },
+  "open_outages": {},
   "eol_notified": {
     "php:8.2:90": "2026-10-24",
     "dotnet:9:30": "2026-10-24",
@@ -181,7 +176,7 @@
   },
   "digest_sent": "2026-11-23",
   "digest_since": "2026-11-23T01:48:47.897854+00:00",
-  "repo_adv_checked": "2026-11-23T10:46:45.783090+00:00",
+  "repo_adv_checked": "2026-11-23T22:15:47.592639+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -789,7 +784,8 @@
       "https://www.anthropic.com/legal/linked-billing-terms",
       "https://www.anthropic.com/research/claude-black-hole-physics",
       "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
-      "https://www.anthropic.com/news/ipo-close"
+      "https://www.anthropic.com/news/ipo-close",
+      "https://www.anthropic.com/research/working-with-ai"
     ]
   }
 }
