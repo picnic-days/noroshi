@@ -8,14 +8,15 @@ import json
 import os
 from datetime import date
 
-MODEL = "claude-opus-5-5"
+MODEL = "claude-sonnet-5-5"
 MAX_ITEMS = 4  # LINE の吹き出し上限（5）から見出し 1 つを引いた数
 MAX_CONTINUATIONS = 5
 # 障害はステータスページの記載がそのまま状況説明なので分析しない
 ANALYZED = {"vuln", "pki", "malware", "jp-alert", "ai-news"}
-WEB_SEARCH = {"type": "web_search_20260209", "name": "web_search", "max_uses": 8}
+WEB_SEARCH = {"type": "web_search_20260209", "name": "web_search", "max_uses": 4}
 # references にあるアドバイザリを検索を経ずに直接読ませる（会話中に出た URL だけ取得できる）
-WEB_FETCH = {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 8}
+# 取得したページは丸ごと入力トークンになるので、1 ページあたりの量に上限をかける
+WEB_FETCH = {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 4, "max_content_tokens": 8000}
 CVE_PREFIX = "CVE-"
 
 SYSTEM = """あなたは日本企業のセキュリティ担当者を支援する脆弱性アナリストです。
