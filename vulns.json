@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T06:08:19.008814+00:00",
+  "generated_at": "2026-11-24T11:23:00.075852+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -1707,7 +1707,7 @@
       "title": "WP connect Plugins (Various Versions - Unauthenticated Remote Code Execution via Backdoored Software",
       "description": "Several plugins for WordPress published by WP connect (Orders Sync to Airtable for WooCommerce, Add-On for Contact Form 7 to Notion, WP Sync for Notion – Notion to WordPress, Add-On for Contact Form 7 to Airtable, Add-on Brevo for Gravity Forms, and Air WP Sync – Airtable to WordPress) contain embedded malicious code (a backdoor) in the versions listed. The affected releases unconditionally load a backdoor module (includes/airwp-online.php) that runs on every request via the 'init' hook and on a half-hourly WP-Cron event, sends site information (site URL, PHP, WordPress and OS versions, and the server user) to a remote command-and-control server at tascredit-pay.com with TLS certificate verification disabled, and executes the PHP code returned by that server via eval(). The module also accepts queued commands that run shell commands, read, write and delete arbitrary files, query arbitrary database tables, dump the users table including password hashes, drop a webshell into the uploads directory, and install persistent hourly code execution. This makes it possible for unauthenticated attackers in control of the remote server, or able to intercept its traffic, to execute arbitrary code on the server and fully compromise affected sites. All affected plugins have been closed on WordPress.org and no patched versions are available; we strongly recommend uninstalling them and running a complete malware scan.",
       "published": "2026-11-24T05:32:37.733Z",
-      "updated": "2026-11-24T05:32:37.733Z",
+      "updated": "2026-11-24T06:17:08.197",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -1739,7 +1739,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -149893,6 +149894,298 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-idlaxmxz4unz",
+      "aliases": [],
+      "title": "Cloudflare: Increased Errors for Durable Objects in Seattle",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-24T07:25:34.236Z",
+      "updated": "2026-11-24T08:26:20.047Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/idlaxmxz4unz"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-24T08:26:20.047Z",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-g5w4-3w29-8pmv",
+      "aliases": [],
+      "title": "Malicious code in @jexkcode/baileys (npm)",
+      "description": "@jexkcode/baileys is a fork of the Baileys WhatsApp Web library that silently subscribes the installer's own WhatsApp account to WhatsApp Channels chosen by the publisher. When the socket connects, code in lib/Utils/auto-follow.js sends the WhatsApp w:mex FOLLOW query for the channel ID(s) 120363405612723183@newsletter, using the victim's authenticated session and without telling them. Same behaviour as the PhantomSub family (MAL-2026-17342).\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/f8bd377e5c522af8e1a7cf92b0cd17dcdba7a45f/osv/malicious/npm/@jexkcode/baileys/MAL-2026-18850.json))\n\n週間ダウンロード数: 約 1,279",
+      "published": "2026-11-10T00:32:06Z",
+      "updated": "2026-11-24T09:31:47Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@jexkcode/baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-g5w4-3w29-8pmv"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@jexkcode/baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-p7r2-5ppv-hr6g",
+      "aliases": [],
+      "title": "Malicious code in @c1-ease/core (npm)",
+      "description": "## Source: amazon-inspector (97fcefadffcfd5e41abeff4746ebc756b5b0fed7b86728b35cbd0c4a073184ce)\nThe package consists of a no-op Proxy export (index.js) and a beacon module (beacon.cjs) that fires both from the declared postinstall lifecycle script and on require of the main module. The beacon collects installer host identifiers — hostname, install path, current working directory, and node/npm version — and POSTs them as JSON to the hardcoded endpoint https://vmi3699893.contaboserver.net:8787/_ah/dc, with TLS certificate verification disabled (rejectUnauthorized:false). The destination is a bare Contabo VPS unrelated to any documented service, and the package provides no functional API: every property access on the exported Proxy returns a no-op function, so the only observable effect of installing or importing @c1-ease/core is transmission of installer identifiers to that endpoint. The scoped name mimicking a generic compatibility 'core' shim is consistent with dependency-confusion or typo-bait targeting.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6f345a37e909d1a5d831f5d290ca394b0aad1f70/osv/malicious/npm/@c1-ease/core/MAL-2026-20328.json))\n\n週間ダウンロード数: 約 2,216",
+      "published": "2026-11-22T03:31:26Z",
+      "updated": "2026-11-24T06:31:25Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@c1-ease/core"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-p7r2-5ppv-hr6g"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@c1-ease/core"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-v352-9p9c-2wv7",
+      "aliases": [],
+      "title": "Malicious code in @c1-ease/autoloan (npm)",
+      "description": "## Source: amazon-inspector (6cfd8eb78dbbe467272495a7a3ef4392f57d30fe791912d5c2cb0719575c752b)\nThe scoped package name mimics an internal namespace and ships a postinstall beacon plus an import-time trigger. package.json declares scripts.postinstall=\"node beacon.cjs\"; beacon.cjs builds a payload containing hostname, installPath, process.cwd(), and process.version and POSTs it to the hardcoded endpoint https://vmi3699893.contaboserver.net:8787/_ah/dc over HTTPS with certificate validation disabled (rejectUnauthorized: false). index.js (the package main) additionally invokes require('./beacon.cjs').fire() at top level and exports a no-op Proxy so any consumer require()/import of any named export succeeds silently, causing the same POST to fire on every load in build and CI environments. The combination of dependency-confusion naming, auto-fire on both npm install and require, hardcoded non-registry VPS destination, and disabled TLS verification is a supply-chain exfiltration beacon regardless of any self-labeling as authorized research.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6f345a37e909d1a5d831f5d290ca394b0aad1f70/osv/malicious/npm/@c1-ease/autoloan/MAL-2026-20325.json))\n\n週間ダウンロード数: 約 2,127",
+      "published": "2026-11-22T03:31:26Z",
+      "updated": "2026-11-24T06:31:25Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@c1-ease/autoloan"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-v352-9p9c-2wv7"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@c1-ease/autoloan"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-4w4w-phqm-jfpm",
+      "aliases": [],
+      "title": "Malicious code in @c1-ease/commerce (npm)",
+      "description": "## Source: amazon-inspector (bfd04dd69116b1d123a66e4b145a0a2c8a75070d8d250f5de931184b1f0ab58f)\nThe package is a near-empty compatibility shim whose only real behavior is a callback beacon. package.json declares a postinstall hook that runs `node beacon.cjs`, and the main entry `index.js` invokes `beacon.fire()` as a top-level side effect on require. beacon.cjs POSTs host identifiers — `os.hostname()`, the install path (`__dirname`), `process.cwd()`, and `process.version` — to the hardcoded endpoint `https://vmi3699893.contaboserver.net:8787/_ah/dc` with TLS verification explicitly disabled (`rejectUnauthorized: false`). The rest of the module surface is a Proxy returning no-op functions so a consuming build does not crash. The destination is not associated with the `@c1-ease` scope's publisher, the beacon fires without caller opt-in on both install and import, and an in-source comment frames a completed build-with-callback as evidence of reach — consistent with a dependency-confusion / namespace-squat probe against internal `@c1-ease/*` package names.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6f345a37e909d1a5d831f5d290ca394b0aad1f70/osv/malicious/npm/@c1-ease/commerce/MAL-2026-20324.json))\n\n週間ダウンロード数: 約 1,638",
+      "published": "2026-11-22T03:31:26Z",
+      "updated": "2026-11-24T06:30:24Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@c1-ease/commerce"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-4w4w-phqm-jfpm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@c1-ease/commerce"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-q599-9j7q-8xf5",
+      "aliases": [],
+      "title": "Malicious code in @c1-ease/bank (npm)",
+      "description": "## Source: amazon-inspector (15ba6783ba51366782fa289b444f655cd026cc5ac82d3fae5a5e9f256961c954)\nThe package declares a `postinstall` script that runs `node beacon.cjs`, and `index.js` re-invokes the same beacon on require. The beacon collects `os.hostname()`, `__dirname`, `process.cwd()`, the Node version, and the package name and POSTs them as JSON to the hardcoded endpoint `https://vmi3699893.contaboserver.net:8787/_ah/dc`, a bare Contabo VPS unrelated to any declared publisher. TLS certificate verification is explicitly disabled via `rejectUnauthorized: false`. Beyond the beacon, `index.js` exports a Proxy whose every property returns a no-op function; the package advertises itself as a `Compatibility shim` under the `@c1-ease` scope but ships no real functionality, consistent with a dependency-confusion or install-tracking artifact targeting a potentially confusable scope name. Installing or requiring the package causes host identifiers to be sent to an attacker-controlled destination with TLS verification disabled.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6f345a37e909d1a5d831f5d290ca394b0aad1f70/osv/malicious/npm/@c1-ease/bank/MAL-2026-20326.json))\n\n週間ダウンロード数: 約 2,146",
+      "published": "2026-11-22T03:31:26Z",
+      "updated": "2026-11-24T06:30:24Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@c1-ease/bank"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-q599-9j7q-8xf5"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@c1-ease/bank"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-j5h6-446w-9q9c",
+      "aliases": [],
+      "title": "Malicious code in @c1-ease/card (npm)",
+      "description": "## Source: amazon-inspector (cf1ed7404d29e131f0f3008773ffedf222e2df2d27753bd0e35655762dfc5821)\nThe package publishes under the scoped name `@c1-ease/card` with no legitimate functionality: `index.js` exports a Proxy that returns a no-op function for any property access, allowing a victim build that resolves this public package instead of an internal `@c1-ease/*` dependency to continue without crashing. `package.json` declares a `postinstall` hook that runs `node beacon.cjs`, and the same beacon is invoked on `require()` of the module. `beacon.cjs` collects host identifiers — `os.hostname()`, `__dirname` (install path), `process.cwd()`, and `process.version` — and POSTs them as JSON to the hardcoded endpoint `https://vmi3699893.contaboserver.net:8787/_ah/dc`, with TLS certificate validation explicitly disabled via `rejectUnauthorized: false`. The combination of a scoped-namespace squat shim, an install-time and import-time outbound beacon to a third-party Contabo VPS, and disabled TLS validation is the standard dependency-confusion exfiltration shape.\n\n---\n\nCredit: [OpenSSF](https://github.com/ossf/malicious-packages) ([source](https://github.com/ossf/malicious-packages/blob/6f345a37e909d1a5d831f5d290ca394b0aad1f70/osv/malicious/npm/@c1-ease/card/MAL-2026-20327.json))\n\n週間ダウンロード数: 約 2,111",
+      "published": "2026-11-22T03:31:26Z",
+      "updated": "2026-11-24T06:30:24Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@c1-ease/card"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-j5h6-446w-9q9c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "npm:@c1-ease/card"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -249387,6 +249680,106 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-135801",
+      "aliases": [],
+      "title": "Path Rules Enforced in Front of PHP Can Be Bypassed by Appending the Path to the Script Name",
+      "description": "Since the fix for CVE-2025-64500, Request::getPathInfo() strips the script name from the start of the URL. It does so even when the script name is only the start of a longer path segment. With SCRIPT_NAME set to /index.php, a request to /index.phpadmin gets the path info /admin and is routed like /admin. Encoded spellings such as /index%2Ephpadmin or /%69ndex.phpadmin work too. Before that fix, the path info was admin, which no route matched.\n\nRules enforced by Symfony are not affected: access_control and firewalls read the same path info as the router. Rules enforced in front of PHP are. The nginx configuration of the Symfony documentation and the .htaccess file of symfony/apache-pack make /index.php/admin unreachable, but they pass /index.phpadmin to the front controller. So a location /admin block in nginx, a <Location /admin> section in Apache, or a CDN or WAF rule on /admin can be bypassed.\n\nThe script name is now stripped only when it is followed by /, ? or the end of the URL. A request to /index.phpadmin gets the path info /index.phpadmin.",
+      "published": "2026-11-24T08:55:15.124Z",
+      "updated": "2026-11-24T09:17:08.550",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Symfony symfony/http-foundation",
+        "symfony/http-foundation",
+        "Symfony symfony/symfony",
+        "symfony/symfony"
+      ],
+      "references": [
+        "https://symfony.com/cve-2026-135801",
+        "https://github.com/symfony/symfony/security/advisories/GHSA-3h27-hjv7-fqjx",
+        "https://github.com/symfony/symfony/commit/e256536ee7b57a45d69177743c86367e51551122"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-135802",
+      "aliases": [],
+      "title": "Generated URLs Can Point to a Host Chosen by the Client",
+      "description": "When Request::getBaseUrl() does not find the script name at the start of the request URI, it looks for it further into the path. This supports web servers that rewrite every URL to a front controller in a subdirectory. The base URL then kept everything before the script name, and the client chooses that part. A request URI starting with // or /\\ made the base URL start with a host.\n\nWith SCRIPT_NAME=/public/index.php, a request for //evil.example/public/index.php/login is routed to /login, with the base URL //evil.example/public/index.php and the base path //evil.example/public. The URLs generated for that page then point to evil.example:\n- links built with path() and the actions of forms, so a login form sends the credentials of the user to evil.example;\n- redirects to generated URLs, such as the ones of redirectToRoute();\n- assets referenced with a relative path through asset(), so the page can load scripts from evil.example.\n\nThe attacker has to make a user follow a crafted link, such as https://app.example//evil.example/public/index.php/login. framework.trusted_hosts does not help, since the host of the request is the real one.\n\nApplications are affected when their front controller is in a subdirectory and the web server sends it URIs that do not start with that directory. A .htaccess file at the root of the project that rewrites every URL to public/ does that, for instance.\n\nApplications are also affected when the web server sets SCRIPT_NAME to the path of the request. Some nginx configurations do that when they send every request to the front controller without fastcgi_split_path_info. php -S does it too, with a router script outside the document root. A request for /\\evil.example/index.php then gets the base URL /\\evil.example/index.php, which browsers read as a link to evil.example.\n\nThe configurations recommended in the Symfony documentation are not affected.\n\nRequest::getBaseUrl() now returns an empty base URL when the request URI starts with // or /\\.",
+      "published": "2026-11-24T08:55:16.072Z",
+      "updated": "2026-11-24T09:17:08.680",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Symfony symfony/http-foundation",
+        "symfony/http-foundation",
+        "Symfony symfony/symfony",
+        "symfony/symfony"
+      ],
+      "references": [
+        "https://symfony.com/cve-2026-135802",
+        "https://github.com/symfony/symfony/security/advisories/GHSA-5mx8-mwrp-5693",
+        "https://github.com/symfony/symfony/commit/7f1e183847530b7bc1bfbdae63e3f0e20051594b"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 21.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 21.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-77564",
       "aliases": [],
       "title": "",
@@ -261941,51 +262334,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-124851",
-      "aliases": [],
-      "title": "",
-      "description": "An information disclosure vulnerability in Zstandard versions 1.5.1 through 1.5.7 allows specially crafted compressed data to expose the contents of an internal buffer through decompressed output. The buffer is 64 KiB in the default configuration and may contain uninitialized memory or literals from earlier decompressions performed using the same decompression context. An attacker who can submit compressed data and observe the resulting output can recover the buffer's contents.",
-      "published": "2026-11-23T23:20:14.208Z",
-      "updated": "2026-11-24T00:17:28.767",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Facebook Zstandard"
-      ],
-      "references": [
-        "https://www.facebook.com/security/advisories/cve-2026-124851"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-24T06:08:19.008814+00:00",
-      "matched": [
-        "zstd"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 20,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-123862",
       "aliases": [],
       "title": "",
@@ -262327,6 +262675,49 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-124851",
+      "aliases": [],
+      "title": "",
+      "description": "An information disclosure vulnerability in Zstandard versions 1.5.1 through 1.5.7 allows specially crafted compressed data to expose the contents of an internal buffer through decompressed output. The buffer is 64 KiB in the default configuration and may contain uninitialized memory or literals from earlier decompressions performed using the same decompression context. An attacker who can submit compressed data and observe the resulting output can recover the buffer's contents.",
+      "published": "2026-11-24T00:17:28.767",
+      "updated": "2026-11-24T11:17:08.923",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.facebook.com/security/advisories/cve-2026-124851",
+        "http://www.openwall.com/lists/oss-security/2026/11/24/1"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T06:08:19.008814+00:00",
+      "matched": [
+        "zstd"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-121649",
       "aliases": [],
       "title": "",
@@ -262366,6 +262757,98 @@
       "score_breakdown": {
         "popularity": 14.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-96298",
+      "aliases": [],
+      "title": "Apache Texera: Missing authorization on the computing unit workflow websocket",
+      "description": "Missing Authorization vulnerability in the computing unit workflow websocket of Apache Texera (incubating) allows an authenticated user to view workflow results, control workflow executions, and run code in a computing unit they have not been granted. In local JVM and single-node Docker Compose deployments this is possible directly; in Kubernetes deployments it is possible from code running inside another computing unit in the cluster.\n\n\n\nThis issue affects Apache Texera : from 1.1.0 through 1.2.0.\n\n\n\nUsers are recommended to upgrade to version 1.3.0, which fixes the issue. Local JVM and Docker Compose deployments do not provide the full security model and should only be used by trusted users.",
+      "published": "2026-11-24T10:52:57.334Z",
+      "updated": "2026-11-24T11:17:21.617",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache Texera"
+      ],
+      "references": [
+        "https://lists.apache.org/thread/d45hrydn9dpqvdnjpnkx9t6q8fcyzl7y",
+        "http://www.openwall.com/lists/oss-security/2026/11/23/26"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-112788",
+      "aliases": [],
+      "title": "Apache Texera: Missing authentication on the Python virtual environment endpoints in non-Kubernetes deployments",
+      "description": "Missing Authentication for Critical Function in Apache Texera (incubating).\n\n\n\nThe Python virtual environment (PVE) management endpoints of a computing unit are not authenticated by the application itself. In the local JVM and single-node Docker Compose deployments, which place no authenticating gateway in front of the services, these endpoints are reachable without credentials. The Kubernetes deployment gates them at the gateway, so only the Kubernetes deployment provides the full security model described in SECURITY.md.\n\n\n\nThis issue affects Apache Texera (incubating): from 1.1.0 through 1.2.0.\n\n\n\nUsers are recommended to use the Kubernetes deployment, which enforces the full security model, and to upgrade to 1.3.0-incubating, which documents that the local JVM and single-node Docker Compose deployments do not provide the full security model and should only be used by trusted users.",
+      "published": "2026-11-24T10:41:41.819Z",
+      "updated": "2026-11-24T11:17:06.183",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache Texera"
+      ],
+      "references": [
+        "https://lists.apache.org/thread/txzwrypygzpk004m90mg83lonbq3mgvb",
+        "http://www.openwall.com/lists/oss-security/2026/11/23/20"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T11:23:00.075852+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0
       },
       "ai_analysis": ""
     },
