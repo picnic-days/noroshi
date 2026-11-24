@@ -11,7 +11,7 @@
 ---
 
 - 一次情報（CVE.org / NVD / GHSA / CISA KEV / EPSS ほか）を 30 分ごとに収集し、監視リスト（74 製品。組み込み部品のライブラリを含む）と照合してスコアリング
-- critical は LINE に即時通知し、Claude（Opus 5.5 + web search / web fetch）がアドバイザリを読んで状況・原因の部品・影響範囲・対応策・各告知の関係を添える。同じ CVE の告知（部品の開発元、組み込み製品、注意喚起）は 1 件にまとめる
+- critical は LINE に即時通知し、Claude（Sonnet 5.5 + web search / web fetch）がアドバイザリを読んで状況・原因の部品・影響範囲・対応策・各告知の関係を添える。同じ CVE の告知（部品の開発元、組み込み製品、注意喚起）は 1 件にまとめる
 - それ以外は毎朝の日次まとめ（Claude による要点つき）。CVE 以外の事案（CA 事案、障害、悪性パッケージ、国内注意喚起、AI ベンダーの発表、EOL）も同じ経路で扱う
 - 収集・スコアリングは Python 標準ライブラリのみ。状態は `data` ブランチに JSON でコミットするのでサーバ不要
 
@@ -88,8 +88,8 @@ tier1 の未認証 RCE は、KEV や SNS の反応を待たずに critical に�
 
 | 用途 | 呼び出し | 備考 |
 |---|---|---|
-| 緊急案件の分析 | `claude-opus-5-5`、effort medium、`web_search_20260209`（最大 8 回）+ `web_fetch_20260209`（最大 8 回） | 対象は vuln / pki / malware / jp-alert / ai-news（outage は除く）。`pause_turn` は会話を送り直して再開（最大 5 回）。1 通知あたり最大 4 グループ |
-| 日次まとめの要点 | `claude-opus-5-5`、effort low、ツールなし | 一覧（最大 80 件）から 3 行以内 |
+| 緊急案件の分析 | `claude-sonnet-5-5`、effort medium、`web_search_20260209`（最大 4 回）+ `web_fetch_20260209`（最大 4 回、1 ページ 8,000 トークンまで） | 対象は vuln / pki / malware / jp-alert / ai-news（outage は除く）。`pause_turn` は会話を送り直して再開（最大 5 回）。1 通知あたり最大 4 グループ |
+| 日次まとめの要点 | `claude-sonnet-5-5`、effort low、ツールなし | 一覧（最大 80 件）から 3 行以内 |
 
 - 同じ CVE を指す案件（`id` と `aliases`）を `group_by_cve` でまとめ、CVE 本体を主、残りを `related_notices` として 1 回だけ分析する。LINE でも 1 つの吹き出しにする
 - 部品の脆弱性は、開発元の告知・組み込み製品（Node.js、ブラウザなど）の告知・公的機関の注意喚起に分かれて出ることが多いので、プロンプトで告知どうしの関係と組み込み製品への影響を整理させている。出力は【状況】【原因の部品】【影響範囲】【対応策】【各告知の関係】【出典】
