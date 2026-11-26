@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T12:35:30.477756+00:00",
+  "generated_at": "2026-11-26T21:56:55.122207+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -23714,6 +23714,58 @@
         "unauth_network": 5,
         "rce": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126984",
+      "aliases": [],
+      "title": "Pulp_python: pulp_python: pull-through caching fetches a client-supplied url with the remote's credentials",
+      "description": "A **server-side request forgery** flaw has been found in the get_remote_artifact_url() function in pulp_python/app/models.py of the pull-through caching feature in the **pulp_python** package. The function uses the redirect query parameter from the client request as the URL to download. A network attacker or user who can reach the content app of a Python distribution that has a remote can choose that URL. The content app downloads it and returns the response. When the remote has a username and password, the download sends those credentials to the host in the URL. When the remote policy is immediate, the default, or on_demand, the file is saved into the distribution's repository and later clients are served that file. The project name and version come from the file, and the filename comes from the request path. A filename the repository already stores is served from the stored file.",
+      "published": "2026-11-26T15:40:01.953Z",
+      "updated": "2026-11-26T18:17:17.380",
+      "cvss": 10,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Pulp pulp_python",
+        "pulp_python"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-126984",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2584205",
+        "https://github.com/pulp/pulp_python/pull/1429",
+        "https://github.com/pulp/pulp_python/pull/1484",
+        "https://redhat.atlassian.net/browse/PULP-2578"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 55,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 20,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -52716,6 +52768,107 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-21T13:02:22.132392+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-126342",
+      "aliases": [],
+      "title": "WPForms <= 2.0.4 - Unauthenticated Stored Cross-Site Scripting via Multiple Choice 'Other' Option Value on Payment Forms",
+      "description": "The WPForms (Contact Form by WPForms / wpforms-lite) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Multiple Choice field's 'Other' option value on payment forms in all versions up to, and including, 2.0.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a privileged user such as an administrator accesses the injected payment entry on the WPForms > Payments details page. The submitted value is stored via sanitize_text_field(), which preserves a space-separated pseudo-tag (e.g. '< i class=\"wpforms-single-payment-tooltip\" data-tooltip-content=\"&lt;img src=x onerror=...&gt;\">x< /i>') because strip_tags() ignores a '<' followed by whitespace; on the admin Payments entry page the value is output through wp_kses() with the 'post' allowlist, which normalizes it into a live <i> element retaining its class and data-* attributes, and the bundled Tooltipster initialization (contentAsHTML + contentCloning) then renders the attribute's HTML, executing the script on page load without any hover.",
+      "published": "2026-11-26T15:47:54.585Z",
+      "updated": "2026-11-26T16:17:50.590",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "smub WPForms – AI Form Builder for WordPress – Contact Forms, Payment Forms, Survey Form, Quiz & More"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/778cae4c-f864-4f84-9f6a-3ebe0dadec36?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.2.2/includes/fields/class-radio.php#L845",
+        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.2.2/includes/fields/class-radio.php#L896",
+        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.2.2/templates/admin/payments/single/field.php#L23",
+        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.2.2/src/Admin/Payments/Views/Single.php#L1019",
+        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.2.2/includes/fields/class-radio.php#L771",
+        "https://plugins.trac.wordpress.org/changeset/3811507/wpforms-lite/trunk/includes/fields/class-radio.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123827",
+      "aliases": [],
+      "title": "Easy Social Share Buttons for WordPress <= 11.6.1 - Unauthenticated Stored Cross-Site Scripting via 'service' and 'position' Parameters",
+      "description": "The Easy Social Share Buttons for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'position' parameter in all versions up to, and including, 11.6.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload is stored via the unauthenticated wp_ajax_nopriv_ ESSB stat log AJAX action, which performs no nonce or capability check, and executes when the attacker-controlled position value is rendered verbatim into a double-quoted HTML data-* attribute where the unescaped quote allows attribute breakout.",
+      "published": "2026-11-26T14:36:09.753Z",
+      "updated": "2026-11-26T15:17:24.213",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "appscreo Easy Social Share Buttons for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a8fc9604-7a07-40f7-980e-b114194b39d7?source=cve",
+        "https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
       "matched": [
         "wordpress"
       ],
@@ -140967,6 +141120,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120571",
+      "aliases": [],
+      "title": "Maps Plugin using Google Maps for WordPress <= 1.9.9 - Authenticated (Subscriber+) SQL Injection via 'categories' JSON Import Object Keys",
+      "description": "The Maps Plugin using Google Maps for WordPress - WP Google Map plugin for WordPress is vulnerable to SQL Injection via the array keys of the `categories` entries parsed from an imported JSON file in versions up to, and including, 1.9.9 This is due to the wgm_handle_import() function sanitizing only the known-named VALUES (`name`, `icon`) of each category object while passing the attacker-controlled JSON object KEYS directly to `$wpdb->insert()`, which interpolates them as column names into the generated INSERT statement without escaping embedded backticks. This makes it possible for authenticated attackers, with Subscriber-level access and above (when the plugin's own 'Minimum Role for Map Editor' setting has been configured to 'Subscriber', one of five values the plugin's settings UI offers), to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database, including administrator password hashes.",
+      "published": "2026-11-26T12:35:32.270Z",
+      "updated": "2026-11-26T13:16:36.463",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "milonfci Maps Plugin using Google Maps for WordPress – WP Google Map"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d8ccfc35-2a10-4cd8-a7b8-67874b3e6d03?source=cve",
+        "https://plugins.trac.wordpress.org/browser/gmap-embed/tags/1.9.7/includes/Traits/ImportExport.php#L373",
+        "https://plugins.trac.wordpress.org/browser/gmap-embed/tags/1.9.7/includes/Traits/ImportExport.php#L338",
+        "https://plugins.trac.wordpress.org/browser/gmap-embed/tags/1.9.7/includes/Traits/ImportExport.php#L14",
+        "https://plugins.trac.wordpress.org/browser/gmap-embed/tags/1.9.7/includes/Classes/Bootstrap.php#L46",
+        "https://plugins.trac.wordpress.org/changeset/3813974/gmap-embed",
+        "https://plugins.trac.wordpress.org/changeset/3813974/gmap-embed/trunk/includes/Traits/ImportExport.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-112893",
       "aliases": [],
       "title": "",
@@ -155743,6 +155948,217 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137480",
+      "aliases": [],
+      "title": "Traefik 3.7.15 before 3.7.18 Client Certificate Verification Bypass via Ssl-Client Headers",
+      "description": "Traefik 3.7.15 before 3.7.18 and 3.8.0-rc.1 before 3.8.0-rc.2 contains a client certificate authentication bypass in the Kubernetes Ingress NGINX provider because, on hosts shared by multiple Ingresses using auth-tls-secret, Ssl-Client-* headers are built per Ingress while the TLS handshake uses the first Ingress's settings. Unauthenticated remote attackers can obtain Ssl-Client-Verify: SUCCESS with a client-chosen subject and issuer for an unverified certificate, or inject Ssl-Client-* headers directly, presenting forged identities to backends that trust the proxy.",
+      "published": "2026-11-26T16:01:25.851Z",
+      "updated": "2026-11-26T16:17:57.623",
+      "cvss": 7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "traefik traefik"
+      ],
+      "references": [
+        "https://github.com/traefik/traefik/security/advisories/GHSA-ccgh-9g52-6vwg",
+        "https://www.vulncheck.com/advisories/traefik-3.7.15-before-3.7.18-client-certificate-verification-bypass-via-ssl-client-headers"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "nginx",
+        "kubernetes"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 14,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-xiqj67vl5pqm",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Dashboard and Cloudflare API service issues",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-26T16:03:50.006Z",
+      "updated": "2026-11-26T18:17:04.572Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/xiqj67vl5pqm"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-26T18:17:04.572Z",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-filussqshtfq",
+      "aliases": [],
+      "title": "Cloudflare: AI Gateway – Elevated errors for Gemini 4 models using Unified Billing",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-26T14:19:51.141Z",
+      "updated": "2026-11-26T18:07:04.835Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/filussqshtfq"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-26T18:07:04.835Z",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-6crqy1zulybd",
+      "aliases": [],
+      "title": "Cloudflare: Workers AI - Deepseek Flash increased errors",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-26T14:41:21.826Z",
+      "updated": "2026-11-26T14:42:37.764Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/6crqy1zulybd"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-26T14:42:37.764Z",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-wgvm-m2m2-w65x",
+      "aliases": [],
+      "title": "Malware in safeclamp3",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,116",
+      "published": "2026-11-26T13:07:39Z",
+      "updated": "2026-11-26T13:07:40Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:safeclamp3"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-wgvm-m2m2-w65x"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "npm:safeclamp3"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -156624,6 +157040,56 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 14.8,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137571",
+      "aliases": [],
+      "title": "Iceburg CRM through 5.0.0 Information Disclosure via public/v.php phpinfo()",
+      "description": "Iceburg CRM through 5.0.0 contains an information disclosure vulnerability that allows unauthenticated attackers to view server configuration through public/v.php calling phpinfo(). Attackers can request v.php directly, bypassing Laravel routing, to obtain PHP version, extensions, INI settings, DOCUMENT_ROOT, and environment variables.",
+      "published": "2026-11-26T13:13:10.591Z",
+      "updated": "2026-11-26T14:17:25.477",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "iceburgcrm iceburgcrm"
+      ],
+      "references": [
+        "https://github.com/iceburgcrm/iceburgcrm/issues/31",
+        "https://github.com/iceburgcrm/iceburgcrm/blob/v5.0.0/public/v.php",
+        "https://www.vulncheck.com/advisories/iceburg-crm-through-5.0.0-information-disclosure-via-public-v-php-phpinfo"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "php",
+        "laravel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -163484,6 +163950,60 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137562",
+      "aliases": [],
+      "title": "web-token jwt-framework before 3.4.13 Missing Key Length Check in AES Key Wrapping",
+      "description": "web-token jwt-framework before 3.4.13, 4.0.0 before 4.0.9, 4.1.0 before 4.1.11, and 4.2.0 before 4.2.6 does not check oct key length in the AESKW, AESGCMKW, and experimental AESCTR and chacha20-poly1305 key encryption algorithms, so OpenSSL zero-pads short or empty keys. When an application uses an empty key, anyone can unwrap content encryption keys under the all-zero key to read issued tokens and forge accepted ones.",
+      "published": "2026-11-26T15:59:59.329Z",
+      "updated": "2026-11-26T16:18:10.530",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "web-token jwt-library",
+        "web-token jwt-framework",
+        "web-token jwt-experimental",
+        "web-token jwt-encryption",
+        "web-token jwt-encryption-algorithm-aeskw",
+        "web-token jwt-encryption-algorithm-aesgcmkw",
+        "web-token jwt-encryption-algorithm-experimental"
+      ],
+      "references": [
+        "https://github.com/web-token/jwt-framework/security/advisories/GHSA-4mxj-75j2-j8hc",
+        "https://www.vulncheck.com/advisories/web-token-jwt-framework-before-3.4.13-missing-key-length-check-in-aes-key-wrapping"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70116",
       "aliases": [],
       "title": "",
@@ -167571,6 +168091,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137547",
+      "aliases": [],
+      "title": "Coder from 2.39.0 before 2.39.1 Database Password Exposure via API Errors",
+      "description": "Coder before 2.29.27, 2.30.0 before 2.34.19, 2.35.0 before 2.37.11, 2.38.0 before 2.38.7, and 2.39.0 before 2.39.1 returns database connection errors containing a temporary AWS IAM database password in API key middleware responses. During database connection failures, unauthenticated attackers can send a well-formed but invalid API key to obtain the password and access the PostgreSQL database for 15 minutes.",
+      "published": "2026-11-26T16:00:16.045Z",
+      "updated": "2026-11-26T16:18:08.283",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "coder coder"
+      ],
+      "references": [
+        "https://github.com/coder/coder/security/advisories/GHSA-w4m3-qhx8-c649",
+        "https://www.vulncheck.com/advisories/coder-from-2.39.0-before-2.39.1-database-password-exposure-via-api-errors"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-101296",
       "aliases": [],
       "title": "",
@@ -168238,6 +168806,54 @@
         "popularity": 21.0,
         "cvss": 16.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137463",
+      "aliases": [],
+      "title": "HKUDS nanobot 0.1.4 before 0.4.1 TLS Verification Bypass in OpenAI Codex Provider",
+      "description": "HKUDS nanobot from 0.1.4 before 0.4.1 contains an improper certificate validation vulnerability in the OpenAI Codex provider that retries authenticated requests without TLS certificate or hostname verification. Attackers able to intercept the connection can trigger a certificate failure and impersonate the endpoint to steal bearer tokens, read request contents, or alter responses.",
+      "published": "2026-11-26T16:01:45.182Z",
+      "updated": "2026-11-26T16:17:54.673",
+      "cvss": 9.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "HKUDS nanobot"
+      ],
+      "references": [
+        "https://github.com/HKUDS/nanobot/security/advisories/GHSA-mxwj-93g9-cc5r",
+        "https://www.vulncheck.com/advisories/hkuds-nanobot-0.1.4-before-0.4.1-tls-verification-bypass-in-openai-codex-provider"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -177490,6 +178106,54 @@
       "first_seen": "2026-11-21T20:06:32.872233+00:00",
       "matched": [
         "brotli"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137479",
+      "aliases": [],
+      "title": "Traefik from 3.1.0 before 3.7.18 Memory Exhaustion DoS via Compress Middleware",
+      "description": "Traefik 3.1.0 before 3.7.18 and 3.8.0-rc.1 contain a memory exhaustion vulnerability in the Compress middleware, which creates zstd encoders with library default options that retain about 18 MiB of state per response until it is fully written. Unauthenticated remote attackers can open many concurrent requests and read responses slowly to exhaust memory and crash Traefik.",
+      "published": "2026-11-26T16:01:27.011Z",
+      "updated": "2026-11-26T16:17:57.457",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "traefik traefik"
+      ],
+      "references": [
+        "https://github.com/traefik/traefik/security/advisories/GHSA-x5pf-cqh3-2gv8",
+        "https://www.vulncheck.com/advisories/traefik-from-3.1.0-before-3.7.18-memory-exhaustion-dos-via-compress-middleware"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "zstd"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -200415,6 +201079,102 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-126139",
+      "aliases": [],
+      "title": "Docker Sandboxes mount replay follows replaced source ancestors outside the shared directory",
+      "description": "Docker Sandboxes re-resolves saved mount paths when replacing a sandbox container during kit changes or restarting a sandbox. An attacker able to replace a source ancestor in a shared writable workspace with a symlink can redirect another sandbox's mount to a different host directory, exposing its contents and permitting modification through read-write mounts. The destination must remain accessible to the daemon and allowed by policy where enforced. Saved-mount replay during kit replacement was introduced in version 0.35.0; ordinary restart replay was added in version 0.45.0. This saved-mount replay issue is fixed in version 0.54.0.",
+      "published": "2026-11-26T20:41:56.754Z",
+      "updated": "2026-11-26T21:17:15.733",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [
+        "docker:docker_sandboxes"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Docker Docker Sandboxes"
+      ],
+      "references": [
+        "https://docs.docker.com/ai/sandboxes/",
+        "https://docs.docker.com/ai/sandboxes/security/isolation/#hypervisor-isolation"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "docker"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137543",
+      "aliases": [],
+      "title": "LaraDashboard before 1.5.2 SSRF via ai_ollama_base_url and generate-seo endpoint",
+      "description": "LaraDashboard before 1.5.2 contains a server-side request forgery vulnerability that allows authenticated users to reach internal services by abusing the unvalidated ai_ollama_base_url setting. Once a settings.edit user points the Ollama base URL internally, any post.create user can call /admin/ai/generate-seo with provider=ollama to fetch internal data reflected in SEO fields.",
+      "published": "2026-11-26T16:00:21.013Z",
+      "updated": "2026-11-26T16:18:07.557",
+      "cvss": 8.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "laradashboard laradashboard"
+      ],
+      "references": [
+        "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-47pj-m4xp-74g5",
+        "https://www.vulncheck.com/advisories/laradashboard-before-1.5.2-ssrf-via-ai-ollama-base-url-and-generate-seo-endpoint"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "ollama"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 30.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 16.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-114156",
       "aliases": [
         "GHSA-8w29-6cjc-h6w4"
@@ -205056,6 +205816,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137464",
+      "aliases": [],
+      "title": "ImageMagick 7.0.0 before 7.1.2-35 and before 6.9.13-60 Information Disclosure via Distributed Pixel Cache",
+      "description": "ImageMagick 7.0.0 before 7.1.2-35 and before 6.9.13-60 contains an information disclosure vulnerability in the distributed pixel cache server, which transmits pixel and metadata content in cleartext. Attackers who can observe traffic between a DPC client and server can read transmitted image data.",
+      "published": "2026-11-26T16:01:44.028Z",
+      "updated": "2026-11-26T16:17:54.857",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "ImageMagick ImageMagick"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-w67p-4ppm-gmrg",
+        "https://github.com/ImageMagick/ImageMagick/commit/8152030a498f491ff8b70f4323a36d2a652acef6",
+        "https://www.vulncheck.com/advisories/imagemagick-7.0.0-before-7.1.2-35-and-before-6.9.13-60-information-disclosure-via-distributed-pixel-cache"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "imagemagick"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126397",
       "aliases": [],
       "title": "",
@@ -206650,6 +207458,54 @@
         "popularity": 14.0,
         "cvss": 14.8,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137476",
+      "aliases": [],
+      "title": "vLLM 0.3.0 before 0.30.0 Response Amplification via OpenAI Validation Error Handler",
+      "description": "vLLM 0.3.0 before 0.30.0 contains a response amplification vulnerability in the OpenAI-compatible API server's shared RequestValidationError handler, which renders every Pydantic validation error, each of which can include the full offending input, in its HTTP 400 response. Unauthenticated attackers can send a malformed request to endpoints such as POST /v1/responses to trigger a disproportionately large error response that consumes server CPU and memory and can disrupt downstream clients and proxies.",
+      "published": "2026-11-26T16:01:30.449Z",
+      "updated": "2026-11-26T16:17:56.940",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-mwgq-9582-w2vf",
+        "https://www.vulncheck.com/advisories/vllm-0.3.0-before-0.30.0-response-amplification-via-openai-validation-error-handler"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 28.8,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 13.8,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -210167,6 +211023,54 @@
         "popularity": 14.0,
         "cvss": 13.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137477",
+      "aliases": [],
+      "title": "vLLM 0.16.0 before 0.21.0 Cross-User Data Leak via Async Scheduling",
+      "description": "vLLM 0.16.0 before 0.21.0 leaks token data between users when the V1 model runner uses async scheduling with pipeline parallelism, because non-last pipeline ranks never write generated tokens to token_ids_cpu and reset num_tokens_no_spec each step. When the fallback path is triggered, such as by mixed prefill/decode batches, stale tokens from a prior request in the same batch slot become model input and are written to the KV cache, exposing fragments of one user's context in another user's response.",
+      "published": "2026-11-26T16:01:29.339Z",
+      "updated": "2026-11-26T16:17:57.113",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-v97p-wpxp-px84",
+        "https://www.vulncheck.com/advisories/vllm-0.16.0-before-0.21.0-cross-user-data-leak-via-async-scheduling"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 27.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 12.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -214755,6 +215659,58 @@
       "first_seen": "2026-11-26T02:59:15.258772+00:00",
       "matched": [
         "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 24.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 10.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137573",
+      "aliases": [],
+      "title": "KodeRover Zadig before 5.1.0 Missing Authorization in Aslan Kubernetes Resource Handlers",
+      "description": "KodeRover Zadig before 5.1.0 contains a missing authorization vulnerability in aslan environment kube.go handlers that allows authenticated users to query Kubernetes clusters of other projects. Attackers can supply arbitrary clusterID and namespace values to /api/aslan/environment/kube/ routes to enumerate namespaces, nodes, deployments, workloads, canary mappings, and resource names.",
+      "published": "2026-11-26T13:13:08.391Z",
+      "updated": "2026-11-26T14:17:25.787",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "KodeRover Zadig"
+      ],
+      "references": [
+        "https://github.com/koderover/zadig/issues/5038",
+        "https://github.com/koderover/zadig/pull/5091",
+        "https://github.com/koderover/zadig/commit/4dad9e13d45297d72e35200bdb362994b8b36246",
+        "https://github.com/koderover/zadig/releases/tag/v5.1.0",
+        "https://github.com/koderover/zadig/blob/v5.0.0/pkg/microservice/aslan/core/environment/handler/kube.go#L283-L288",
+        "https://hackmd.io/@hieuPenguinnn/zadig-kube-cluster-resource-missing-authz",
+        "https://www.vulncheck.com/advisories/koderover-zadig-before-5.1.0-missing-authorization-in-aslan-kubernetes-resource-handlers"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "kubernetes"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -271582,6 +272538,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-120353",
+      "aliases": [],
+      "title": "Apache Airflow Standard provider, Apache Airflow CNCF Kubernetes provider, Apache Airflow Common SQL provider, Apache Airflow Common Ai provider: Code execution on the worker via Jinja in TaskFlow decorator arguments",
+      "description": "The Apache Airflow TaskFlow decorators @task.bash, @task.sql, @task.analytics, @task.kubernetes_cmd and the common.ai decorators (@task.llm, @task.agent, @task.llm_sql, @task.llm_branch, @task.llm_file_analysis, @task.llm_schema_compare) rendered Jinja templates a second time after the task runner had already rendered them, so any value copied into env, op_args, op_kwargs or the returned prompt, command or SQL was evaluated as a template on the worker. An attacker who can only trigger a Dag run (for example a user with trigger permission supplying run conf), or who controls text that a Dag passes into one of these decorators as an argument or prompt (for example a ticket or a downloaded document), could run arbitrary commands on the worker and read connection passwords and Variables, in any deployment that uses an affected decorator in a Dag that passes such input through env, parameters or prompt. Users are recommended to upgrade apache-airflow-providers-standard to 1.22.0, apache-airflow-providers-cncf-kubernetes to 11.0.0, apache-airflow-providers-common-sql to 3.0.0 and apache-airflow-providers-common-ai to 1.2.0 or later.",
+      "published": "2026-11-26T18:30:32.774Z",
+      "updated": "2026-11-26T19:17:09.037",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Apache Software Foundation Apache Airflow Standard provider",
+        "apache-airflow-providers-standard",
+        "Apache Software Foundation Apache Airflow CNCF Kubernetes provider",
+        "apache-airflow-providers-cncf-kubernetes",
+        "Apache Software Foundation Apache Airflow Common SQL provider",
+        "apache-airflow-providers-common-sql",
+        "Apache Software Foundation Apache Airflow Common Ai provider",
+        "apache-airflow-providers-common-ai"
+      ],
+      "references": [
+        "https://github.com/apache/airflow/pull/76244",
+        "https://lists.apache.org/thread/6szpozm1htzv0cyn11vc6m3pj8xz97nj"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "kubernetes"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 20,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-123862",
       "aliases": [],
       "title": "",
@@ -271970,6 +272979,53 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137475",
+      "aliases": [],
+      "title": "vLLM 0.21.0 before 0.28.0 Cross-Request State Aliasing via thinking_token_budget",
+      "description": "vLLM 0.21.0 before 0.28.0, when using the V1 model runner, contains a state aliasing flaw in ThinkingBudgetStateHolder.sync_batch(), whose SWAP branch copies thinking-budget state to the destination batch row without removing the source entry. Attackers submitting requests with thinking_token_budget can force the reasoning-end token sequence into a concurrent co-batched request's output during a mixed batch reorder.",
+      "published": "2026-11-26T16:01:31.554Z",
+      "updated": "2026-11-26T16:17:56.770",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "vllm-project vllm"
+      ],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-fpch-3xrf-7q96",
+        "https://www.vulncheck.com/advisories/vllm-0.21.0-before-0.28.0-cross-request-state-aliasing-via-thinking-token-budget"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "exact",
+      "tier": 3,
+      "score": 14.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 4.6
       },
       "ai_analysis": ""
     },
@@ -277976,6 +279032,86 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098133",
+      "aliases": [],
+      "title": "SwissSign: OCSP responder does not reject nonces with more than 32 octets",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-26T14:18:09Z",
+      "updated": "2026-11-26T14:18:09Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098133"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098157",
+      "aliases": [],
+      "title": "D-Trust: Final CRLs of six retired subordinate CAs exceed the TLS BR nextUpdate limit",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-26T14:52:43Z",
+      "updated": "2026-11-26T14:52:43Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098157"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
       "matched": [
         "pki"
       ],
