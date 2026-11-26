@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T02:59:15.258772+00:00",
+  "generated_at": "2026-11-26T12:35:30.477756+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -7009,7 +7009,7 @@
       "title": "Mitel MiCollab OS Command Injection Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct a blind command injection attack due to insufficient parameter sanitization. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1864.",
       "published": "2026-11-19T17:18:52.880",
-      "updated": "2026-11-25T21:17:18.063",
+      "updated": "2026-11-26T05:18:21.963",
       "cvss": 10.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
       "severity": "critical",
@@ -7298,7 +7298,7 @@
       "title": "Vates Xen Orchestra Improper Validation of Specified Type of Input Vulnerability",
       "description": "XO (Xen Orchestra) is a solution to visualize, manage, backup and delegate your XCP-ng (or XenServer) infrastructure. Prior to 6.9.2 and 6.10.1, REST cookie parsing turns authenticationToken=j:%7B%7D into {}. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats {} as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated /rest/v0/users/me/authentication_tokens route then returns reusable login token IDs. This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.",
       "published": "2026-11-23T17:17:31.780",
-      "updated": "2026-11-25T21:17:18.503",
+      "updated": "2026-11-26T05:18:22.960",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -7355,7 +7355,7 @@
       "title": "Hewlett Packard Enterprise (HPE) Juniper Session Smart Conductor and Session Smart Router OS Command Injection Vulnerability",
       "description": "An Improper Neutralization of Special Elements used in an OS Command vulnerability in the AutomatedProvisioner in Juniper Networks Session Smart Conductor allows a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID.",
       "published": "2026-10-28T17:17:25.830",
-      "updated": "2026-11-25T18:21:06.383",
+      "updated": "2026-11-26T05:18:07.963",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -7743,7 +7743,7 @@
       "title": "Mitel MiCollab XML Injection Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to leverage pre-staged malicious content to conduct an XML injection attack due to insufficient parameter validation. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1862.",
       "published": "2026-11-19T17:18:51.670",
-      "updated": "2026-11-25T21:17:17.773",
+      "updated": "2026-11-26T05:18:21.160",
       "cvss": 9.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "severity": "critical",
@@ -26090,6 +26090,56 @@
       "first_seen": "2026-11-22T15:41:40.835112+00:00",
       "matched": [
         "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 54.6,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 19.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123903",
+      "aliases": [],
+      "title": "vCenter authentication-bypass vulnerability",
+      "description": "VMware vCenter contains an authentication bypass vulnerability in the VMware Directory Service. Broadcom has evaluated the severity of this issue to be in the Critical severity range with a maximum CVSSv3 base score of 9.8.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:04.976Z",
+      "updated": "2026-11-26T11:17:00.283",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -50938,6 +50988,206 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123904",
+      "aliases": [],
+      "title": "vCenter arbitrary file write vulnerability",
+      "description": "VMware vCenter contains an arbitrary file write vulnerability while processing certain archives. Broadcom has evaluated the severity of this issue to be in the Important severity range with a maximum CVSSv3 base score of 7.5.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:07.044Z",
+      "updated": "2026-11-26T11:17:00.617",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123905",
+      "aliases": [],
+      "title": "vCenter vmdir multiple denial-of-service vulnerabilities",
+      "description": "VMware vCenter contains multiple denial-of-service vulnerabilities in the VMware Directory Service. Broadcom has evaluated the severity of these issues to be in the Important severity range with a maximum CVSSv3 base score of 7.5.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:09.070Z",
+      "updated": "2026-11-26T11:17:00.747",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123906",
+      "aliases": [],
+      "title": "vCenter vmdir multiple denial-of-service vulnerabilities",
+      "description": "VMware vCenter contains multiple denial-of-service vulnerabilities in the VMware Directory Service. Broadcom has evaluated the severity of these issues to be in the Important severity range with a maximum CVSSv3 base score of 7.5.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:11.120Z",
+      "updated": "2026-11-26T11:17:00.873",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123907",
+      "aliases": [],
+      "title": "vCenter vmdir multiple denial-of-service vulnerabilities",
+      "description": "VMware vCenter contains multiple denial-of-service vulnerabilities in the VMware Directory Service. Broadcom has evaluated the severity of these issues to be in the Important severity range with a maximum CVSSv3 base score of 7.5.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:13.162Z",
+      "updated": "2026-11-26T11:17:01.000",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 50.0,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83511",
       "aliases": [],
       "title": "",
@@ -63273,6 +63523,58 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-136224",
+      "aliases": [],
+      "title": "Calculated Fields Form <= 5.6.0.3 - Reflected DOM-Based Cross-Site Scripting via 'x' URL Parameter via Date/Timeslots Field",
+      "description": "The Calculated Fields Form – AI Form Builder for WordPress – Contact, Payment, Quote, Quiz & More plugin for WordPress is vulnerable to Reflected DOM-Based Cross-Site Scripting via the 'x' parameter in all versions up to, and including, 5.6.0.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. Exploitation requires the WordPress site to have a published form configured with a URL-backed text field (using the predefined url.x attribute) wired through a calculated-field equation that calls set_timeslots(); without this non-default form configuration, the vulnerable sink is unreachable.",
+      "published": "2026-11-26T11:32:12.712Z",
+      "updated": "2026-11-26T12:17:12.683",
+      "cvss": 6.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "codepeople Calculated Fields Form – AI Form Builder for WordPress – Contact, Payment, Quote, Quiz & More"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/37e34a46-bb2c-44e1-90f4-4ad09de7bba0?source=cve",
+        "https://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.6.0.0/js/fbuilder-pro-public.jquery.js#L1317",
+        "https://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.6.0.0/js/fields-public/04_fbuilder.timeslots.js#L446",
+        "https://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.6.0.0/js/fields-public/04_fbuilder.timeslots.js#L669",
+        "https://plugins.trac.wordpress.org/browser/calculated-fields-form/tags",
+        "https://plugins.trac.wordpress.org/changeset/3821265/calculated-fields-form/trunk/js/fields-public/04_fbuilder.timeslots.js"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-70005",
       "aliases": [],
       "title": "",
@@ -63595,7 +63897,7 @@
       "title": "Mitel MiCollab Weak Authentication Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker, with knowledge of a specific system-generated random identifier or pre-staged content, to conduct an unauthorized access attack due to improper authentication mechanisms. A successful exploit could allow an attacker to obtain sensitive information. The vulnerability is limited to the affected functionality and does not provide unrestricted access to arbitrary files elsewhere on the system. This is MTLVULN-1863.",
       "published": "2026-11-19T17:18:52.740",
-      "updated": "2026-11-25T21:17:17.920",
+      "updated": "2026-11-26T05:18:21.543",
       "cvss": 5.9,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -77750,7 +78052,7 @@
       "title": "Mitel MiCollab Not Failing Securely Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an authentication bypass attack due to improper handling of authentication. A successful exploit could allow an attacker to bypass authentication and perform unauthorized actions within the context of the application. This is MTLVULN-1877.",
       "published": "2026-11-19T17:18:53.017",
-      "updated": "2026-11-25T21:17:18.210",
+      "updated": "2026-11-26T05:18:22.280",
       "cvss": 5.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
       "severity": "medium",
@@ -88880,7 +89182,7 @@
       "title": "Mitel MiCollab Unrestricted Upload of File with Dangerous Type Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an arbitrary file upload attack due to insufficient file type validation. A successful exploit could allow an attacker to upload arbitrary files to the target system. This is MTLVULN-1861.",
       "published": "2026-11-19T16:21:31.033",
-      "updated": "2026-11-25T21:17:17.630",
+      "updated": "2026-11-26T05:18:20.573",
       "cvss": 5.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
       "severity": "medium",
@@ -88923,6 +89225,58 @@
         "unauth_network": 5,
         "kev": 20,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131687",
+      "aliases": [],
+      "title": "ShopMagic <= 4.9.5 - Unauthenticated Improper Verification of Cryptographic Signature to Guest Impersonation and Arbitrary Guest Profile Modification via 'shopmagic_visitor_<COOKIEHASH>' Cookie",
+      "description": "The ShopMagic – email automation for WordPress plugin for WordPress is vulnerable to Improper Verification of Cryptographic Signature in all versions up to, and including, 4.9.5 Although `CurrentCustomer::encode_tracking_data()` appends an md5 hash to the `shopmagic_visitor_<COOKIEHASH>` cookie to make it tamper-resistant, `CookiePersistence::get_tracking_data()` returns the raw `json_decode()`'d cookie value directly without computing or verifying that hash, leaving the cookie's `user_id`, `email`, and `meta` fields fully under attacker control. This makes it possible for unauthenticated attackers to forge the visitor cookie — which is predictable because its name is derived as `md5(siteurl)` from the public site URL — and submit it to the unprotected `wp_ajax_nopriv_capture_email_url` endpoint (which is registered without a nonce check or capability check) to impersonate any WordPress user including administrators in ShopMagic's customer-identity context, and to overwrite the stored profile metadata — including name, phone number, and billing address — of any existing guest record in `wp_shopmagic_guest` and `wp_shopmagic_guest_meta` via `GuestManager::save()`.",
+      "published": "2026-11-26T09:33:24.111Z",
+      "updated": "2026-11-26T10:17:08.100",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "wpdesk ShopMagic – email automation for WordPress"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d741030b-d906-402c-9017-37b53882d666?source=cve",
+        "https://plugins.trac.wordpress.org/browser/shopmagic-for-woocommerce/tags/4.9.4/src/Frontend/Session/CookiePersistence.php#L52",
+        "https://plugins.trac.wordpress.org/browser/shopmagic-for-woocommerce/tags/4.9.4/src/Customer/Interceptor/SessionCustomerProvider.php#L35",
+        "https://plugins.trac.wordpress.org/browser/shopmagic-for-woocommerce/tags/4.9.4/src/Frontend/Interceptor/PreSubmitData.php#L150",
+        "https://plugins.trac.wordpress.org/browser/shopmagic-for-woocommerce/tags/4.9.4/src/Customer/Guest/GuestManager.php#L34",
+        "https://plugins.trac.wordpress.org/changeset/3817710/shopmagic-for-woocommerce/tags/4.9.6"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -93737,6 +94091,58 @@
         "cvss": 9.4,
         "unauth_network": 5,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-131589",
+      "aliases": [],
+      "title": "AI Engine <= 3.9.4 - Authenticated (Editor+) Limited Arbitrary File Upload via 'url' Parameter",
+      "description": "The AI Engine – MCP Server & AI Chatbot for WordPress, with Claude, ChatGPT & Gemini plugin for WordPress is vulnerable to Limited Arbitrary File Upload in all versions up to, and including, 3.9.4 via the `url` parameter of the `/mwai/v1/helpers/create_image` REST API endpoint. The vulnerability exists because the `add_image_from_url()` function applies the `get_allowed_mime_types()` extension allow-list only on the custom-filename branch; when the request omits a `filename` value, the empty-filename branch derives the stored file's extension directly from the URL basename via `sanitize_file_name()` without any MIME or extension validation, then writes the downloaded response body verbatim to the WordPress uploads directory via `file_put_contents()`. This makes it possible for authenticated attackers with Editor-level access and above to place attacker-controlled HTML, SVG, or JavaScript files into `wp-content/uploads/YYYY/MM/` under an attacker-chosen extension, enabling stored cross-site scripting against any administrator who opens the resulting attachment URL. The download routine accepts any HTTP response whose `Content-Type` header begins with `image/`, a value freely controlled by the attacker-owned origin server, meaning the written content need not be a valid image.",
+      "published": "2026-11-26T09:33:20.315Z",
+      "updated": "2026-11-26T10:17:07.927",
+      "cvss": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "tigroumeow AI Engine – MCP Server & AI Chatbot for WordPress, with Claude, ChatGPT & Gemini"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/02f6619b-eb5e-42ba-b804-9ac2b2dee482?source=cve",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.9.4/classes/services/image.php#L233",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.9.4/classes/services/image.php#L203",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.9.4/classes/services/image.php#L140",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.9.4/classes/rest.php#L1210",
+        "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.9.4/classes/rest.php#L326",
+        "https://plugins.trac.wordpress.org/changeset?old_path=/ai-engine/tags/3.9.4/classes/services/image.php&new_path=/ai-engine/tags/3.9.5/classes/services/image.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 44.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.4
       },
       "ai_analysis": ""
     },
@@ -118022,6 +118428,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123908",
+      "aliases": [],
+      "title": "vCenter local privilege-escalation vulnerability",
+      "description": "VMware vCenter contains a local privilege escalation vulnerability due to a flaw in a vpxd service script. Broadcom has evaluated the severity of this issue to be in the Important severity range with a maximum CVSSv3 base score of 6.7.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:15.225Z",
+      "updated": "2026-11-26T11:17:01.127",
+      "cvss": 6.7,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-85841",
       "aliases": [],
       "title": "",
@@ -121887,6 +122342,112 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-21T04:17:50.023329+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130045",
+      "aliases": [],
+      "title": "WP Optin Wheel <= 1.5.3 - Authenticated (Author+) Stored Cross-Site Scripting via 'custom_fields[options]' Parameter (XML-RPC wp.newPost",
+      "description": "The WP Optin Wheel – Gamified Optin Email Marketing Tool for WordPress and WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_fields[].value (XML-RPC wp.newPost -> post meta 'options' -> JSON->theme)' parameter in all versions up to, and including, 1.5.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload is stored via the XML-RPC wp.newPost endpoint, which bypasses Admin_Controller::sanitize_options() entirely because the CPT inherits default 'post' capabilities, making any Author-level account sufficient to write the malicious 'theme' value.",
+      "published": "2026-11-26T11:32:19.119Z",
+      "updated": "2026-11-26T12:17:09.403",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "maartenbelmans WP Optin Wheel – Gamified Optin Email Marketing Tool for WordPress and WooCommerce"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/c71171f3-fc03-45bc-b78b-c41e36059bd4?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/admin/views/all_wheels.php#L16",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/services/class-wheel-service.php#L114",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/services/class-wheel-service.php#L229",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/controllers/class-admin-controller.php#L142",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/class-wheel-of-fortune.php#L155",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/",
+        "https://plugins.trac.wordpress.org/changeset/3815170/wp-optin-wheel/trunk/admin/views/all_wheels.php"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 12.8
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-130050",
+      "aliases": [],
+      "title": "WP Optin Wheel <= 1.5.3 - Authenticated (Author+) Stored Cross-Site Scripting via 'custom_fields[options]' Parameter",
+      "description": "The WP Optin Wheel – Gamified Optin Email Marketing Tool for WordPress and WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_fields[options] -> fields[].placeholder' parameter in all versions up to, and including, 1.5.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The wof_lite_wheel custom post type inherits standard post capabilities due to an unset capability_type, meaning any Author-level user can publish a malicious wheel via XML-RPC in a single request, exposing every front-end page that renders the wheel to all visitors.",
+      "published": "2026-11-26T11:32:18.753Z",
+      "updated": "2026-11-26T12:17:09.550",
+      "cvss": 6.4,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "maartenbelmans WP Optin Wheel – Gamified Optin Email Marketing Tool for WordPress and WooCommerce"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/bfe6e17f-f1a2-4df6-871a-1afd553d9b18?source=cve",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/public/js/public.min.js#L2",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/services/class-wheel-service.php#L173",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/models/class-wheel-model.php#L82",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/code/views/wheel.php#L24",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/tags/1.5.3/class-wheel-of-fortune.php#L155",
+        "https://plugins.trac.wordpress.org/browser/wp-optin-wheel/",
+        "https://plugins.trac.wordpress.org/changeset/3815170/wp-optin-wheel/trunk/public/js/public.min.js"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
       "matched": [
         "wordpress"
       ],
@@ -140566,6 +141127,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-123909",
+      "aliases": [],
+      "title": "vCenter vDS security policy enforecement failure",
+      "description": "VMware vCenter contains a vulnerability due to a policy enforcement failure in vDS (vSphere Distributed Switch). Broadcom has evaluated the severity of this issue to be in the Moderate severity range with a maximum CVSSv3 base score of 5.2.\nAffected versions:\nVMware vCenter Server 9.1.x.x: fixed in 9.1.2\nVMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300\nVMware vCenter Server 8.0: fixed in 8.0 U3m\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 3.0: fixed in KB463501\nVMware Telco Cloud Platform 4.x: fixed in KB463501\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Telco Cloud Platform 5.2: fixed in KB463501\nVMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+      "published": "2026-11-26T10:08:17.228Z",
+      "updated": "2026-11-26T11:17:01.253",
+      "cvss": 5.2,
+      "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware vCenter Server",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Telco Cloud Infrastructure"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126254",
       "aliases": [],
       "title": "",
@@ -155053,6 +155663,86 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-cloudflare-mkudgr09g9ax",
+      "aliases": [],
+      "title": "Cloudflare: RealTimeKit Recording Delays",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-26T09:26:11.090Z",
+      "updated": "2026-11-26T10:05:20.593Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/mkudgr09g9ax"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-26T10:05:20.593Z",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-qlwszxx4667e",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare Billing Issues",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-26T09:28:58.473Z",
+      "updated": "2026-11-26T09:37:54.438Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/qlwszxx4667e"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-26T09:37:54.438Z",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -156239,6 +156929,56 @@
         "popularity": 21.0,
         "cvss": 18.6,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-123912",
+      "aliases": [],
+      "title": "Out-of-bounds write vulnerability in XHCI USB controller",
+      "description": "VMware ESXi, Workstation, and Fusion contain an out-of-bounds write vulnerability in the XHCI USB controller. Broadcom has evaluated the severity of this issue to be in the Critical severity range with a maximum CVSSv3 base score of 9.3.\nAffected versions:\nVMware ESX 9.1.x.x: fixed in ESXi-9.1.2.0-25946735\nVMware ESX 9.0.x.x: fixed in ESXi-9.0.2.0200-25953133\nVMware ESX 8.0: fixed in ESXi80U3m-25926933\nVMware Cloud Foundation 5.x: fixed in 5.2.5\nVMware Telco Cloud Platform 5.0.x: fixed in KB463501\nVMware Telco Cloud Platform 5.1.x: fixed in KB463501\nVMware Workstation 25H2: fixed in 26H1u1\nVMware Fusion 25H2: fixed in 26H1u1",
+      "published": "2026-11-26T10:08:23.396Z",
+      "updated": "2026-11-26T11:17:01.620",
+      "cvss": 9.3,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "VMware VMware ESX",
+        "VMware VMware Cloud Foundation",
+        "VMware VMware Telco Cloud Platform",
+        "VMware VMware Workstation",
+        "VMware VMware Fusion"
+      ],
+      "references": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "esxi"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 18.6
       },
       "ai_analysis": ""
     },
@@ -162689,6 +163429,57 @@
         "popularity": 20,
         "cvss": 13.6,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-132655",
+      "aliases": [],
+      "title": "GamiPress <= 8.1.7 - Authenticated (Contributor+) Sensitive Information Exposure to Private Log Disclosure via 'gamipress_logs' Shortcode",
+      "description": "The GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 8.1.7 via the 'access' parameter. This makes it possible for authenticated attackers, with contributor-level access and above, to extract private GamiPress log entries belonging to other users, including admin award, revoke, and event-trigger records marked as private.",
+      "published": "2026-11-26T11:32:13.112Z",
+      "updated": "2026-11-26T12:17:10.487",
+      "cvss": 4.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "rubengc GamiPress – Gamification plugin to reward points, badges & ranks in WordPress, now with AI"
+      ],
+      "references": [
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/43a64fe5-0815-4d16-bfd3-a06c08384d6a?source=cve",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.6/includes/shortcodes/gamipress_logs.php#L195",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.6/includes/shortcodes/gamipress_logs.php#L324",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.6/includes/shortcodes/gamipress_logs.php#L267",
+        "https://plugins.trac.wordpress.org/browser/gamipress/tags/8.1.6/includes/custom-tables/logs.php#L63",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3817751%40gamipress&new=3817751%40gamipress"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T12:35:30.477756+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 38.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 8.6
       },
       "ai_analysis": ""
     },
@@ -206210,7 +207001,7 @@
       "title": "ICU4C through 79.1 Use-After-Free and Double Free via ucnv_safeClone",
       "description": "ICU4C through 79.1 contains a use-after-free and double free vulnerability in the x11-compound-text converter because cloning shares the extraInfo block without a safeClone handler. Attackers who control the charset name passed to ucnv_open() in applications calling ucnv_setSubstString() or cloning converters can corrupt the heap, causing crashes and potentially code execution.",
       "published": "2026-11-26T02:50:20.839Z",
-      "updated": "2026-11-26T02:50:20.839Z",
+      "updated": "2026-11-26T03:16:39.523",
       "cvss": 7.3,
       "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
       "severity": "high",
@@ -206235,7 +207026,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
