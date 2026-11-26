@@ -1,8 +1,6 @@
 {
-  "last_run": "2026-11-24T17:46:15.167275+00:00",
+  "last_run": "2026-11-26T02:59:15.258772+00:00",
   "notified": {
-    "JP-jpcert-at260034": "2026-10-26T15:33:11.752934+00:00",
-    "CVE-2026-113078": "2026-10-26T19:59:36.444930+00:00",
     "AI-anthropic-discovering-vulnerabilities-with-claude": "2026-10-27T20:42:26.685313+00:00",
     "CVE-2026-111497": "2026-10-27T20:42:26.685313+00:00",
     "OUT-datadog-z0b1h0ylmhm5": "2026-10-28T17:25:21.367737+00:00",
@@ -131,23 +129,12 @@
     "CVE-2026-130926": "2026-11-23T22:15:47.592639+00:00",
     "CVE-2026-135202": "2026-11-24T06:08:19.008814+00:00",
     "OUT-cloudflare-no721jcnlrbh": "2026-11-24T17:46:15.167275+00:00",
-    "OUT-anthropic-fbvlx4wx4zx5": "2026-11-24T17:46:15.167275+00:00"
+    "OUT-anthropic-fbvlx4wx4zx5": "2026-11-24T17:46:15.167275+00:00",
+    "GHSA-hvqj-jrfw-r9mh": "2026-11-26T02:59:15.258772+00:00",
+    "CVE-2026-134401": "2026-11-26T02:59:15.258772+00:00"
   },
-  "ai_key_checked": "2026-11-24",
-  "open_outages": {
-    "OUT-cloudflare-no721jcnlrbh": {
-      "title": "Cloudflare: Magic Transit Degraded Performance",
-      "provider": "cloudflare",
-      "since": "2026-11-24T17:46:15.167275+00:00",
-      "url": "https://www.cloudflarestatus.com/incidents/no721jcnlrbh"
-    },
-    "OUT-anthropic-fbvlx4wx4zx5": {
-      "title": "Anthropic Claude: Elevated errors for Claude Haiku 5.5",
-      "provider": "anthropic",
-      "since": "2026-11-24T17:46:15.167275+00:00",
-      "url": "https://stspg.io/n7769lzz1dvy"
-    }
-  },
+  "ai_key_checked": "2026-11-26",
+  "open_outages": {},
   "eol_notified": {
     "php:8.2:90": "2026-10-24",
     "dotnet:9:30": "2026-10-24",
@@ -191,11 +178,13 @@
     "angular:20:7": "2026-11-21",
     "redis:8.8:90": "2026-11-24",
     "redis:8.6:7": "2026-11-24",
-    "redis:8.0:7": "2026-11-24"
+    "redis:8.0:7": "2026-11-24",
+    "redis:8.6:0": "2026-11-26",
+    "laravel:12:90": "2026-11-26"
   },
-  "digest_sent": "2026-11-24",
-  "digest_since": "2026-11-24T06:08:19.008814+00:00",
-  "repo_adv_checked": "2026-11-24T17:46:15.167275+00:00",
+  "digest_sent": "2026-11-26",
+  "digest_since": "2026-11-26T02:59:15.258772+00:00",
+  "repo_adv_checked": "2026-11-26T02:59:15.258772+00:00",
   "sitemap_urls": {
     "anthropic": [
       "https://www.anthropic.com/",
@@ -804,7 +793,8 @@
       "https://www.anthropic.com/research/claude-black-hole-physics",
       "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
       "https://www.anthropic.com/news/ipo-close",
-      "https://www.anthropic.com/research/working-with-ai"
+      "https://www.anthropic.com/research/working-with-ai",
+      "https://www.anthropic.com/research/migrating-api-to-rust"
     ]
   }
 }
