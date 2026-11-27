@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T04:15:46.427532+00:00",
+  "generated_at": "2026-11-27T13:57:29.443815+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -5673,6 +5673,59 @@
       "ai_analysis": "【状況】\nCisco ASA/FTDのSSL VPNに脆弱性があり、認証なしで外部から機器を再起動させられます（DoS、CVSS 8.6）。Ciscoは10月に実際の悪用を確認し、CISAも10/29に悪用確認済みの一覧（KEV）に追加しました。被害は機器の停止で、情報漏えいは対象外です。\n\n【原因の部品】\nCisco製のASA/FTDソフトそのものの不具合です（他社部品の組み込み経由ではありません）。\n\n【影響範囲】\n次の2条件を満たす機器が対象です。\n・SSL VPNが有効（webvpn と enable <IF>）\n・トンネルグループに secondary-authentication-server-group（二次認証）が設定されている\n - tunnel-group-list enable があれば全グループを確認\n - なければ DefaultWEBVPNGroup を確認\n\n修正版\n・ASA：9.16.4.104 / 9.18.4.96 / 9.20.4.50 / 9.22.3.200 / 9.23.1.48 / 9.24.1.27 / 9.24.10.1\n・FTD：7.0.11 / 7.2.13 / 7.4.9 / 7.6.7 / 7.7.14 / 10.0.3 / 10.1.1\n\n影響なし：FMC、CDFW、cdFMC、Secure Access\n\n【対応策】\n1. 全ASA/FTDの設定を確認し、該当する機器は修正版へ更新してください（Cisco Software Checkerで確認できます）。原因不明の再起動がなかったかも確認してください。\n2. 回避策はありません。暫定の緩和策は次のとおりです。\n・DefaultWEBVPNGroupで二次認証を使っていない：no tunnel-group-list enable\n・使っている：no secondary-authentication-server-group\n二次認証を外すとVPNの安全性が下がるため、あくまで暫定です。\n\n【各告知の関係】\n・Cisco PSIRT：開発元として修正版を公開\n・CISA：KEVに追加（注意喚起）\n・NVD：CVEの登録情報（本文は取得できず未確認）\n・国内の注意喚起：未確認\n\n【出典】\nhttps://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-tunnel-dos-s6mgkb75\nhttps://www.cisa.gov/news-events/alerts/2026/10/29/cisa-adds-two-known-exploited-vulnerabilities-catalog"
     },
     {
+      "id": "CVE-2026-132165",
+      "aliases": [],
+      "title": "Drupal Core Remote Code Execution Vulnerability",
+      "description": "Missing Authentication for Critical Function vulnerability in Drupal Drupal core allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Drupal core versions: from 0.0.0 to 10.6.22, from 11.0.0 to 11.3.22, from 11.4.0 to 11.4.13.",
+      "published": "2026-11-26T01:17:10.290",
+      "updated": "2026-11-27T13:33:40.050",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "drupal:drupal"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-017",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-132165"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-24",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.11053,
+      "epss_percentile": 0.96627,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 71.3,
+      "level": "critical",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
+        "epss": 1.7
+      },
+      "ai_analysis": "【状況】Drupal core の install.php に欠陥があります(CVE-2026-132165、CVSS 9.8、CISA KEV 掲載)。特定条件下でインストーラから再インストールを試みられ、サイト乗っ取りや RCE につながります。悪用は確認済みです。Drupal は、2026-11-19 19:00 UTC には実サイトで悪用されたとの報告を受けたと追記しています。\n\n【原因の部品】Drupal core(開発元は Drupal Security Team)。ライブラリではなく CMS 本体の問題です。組み込み製品経由の影響は未確認です。Drupal をベースにした他社製品を使っている場合は、各ベンダーの告知を確認してください。\n\n【影響範囲】\n- 10.6.22 未満\n- 11.0.0〜11.3.21\n- 11.4.0〜11.4.12\n- Drupal 8/9、10.5 以前、11.2 以前は EOL で修正なしです。影響の有無は未確認ですが、サポート対象外なので移行が必要です。\n\n【対応策】\n1. 最優先: 次のとおり更新します。\n   - 11.4.x は 11.4.13\n   - 11.3.x は 11.3.22\n   - 10.6.x は 10.6.22\n   あわせて、公開済みサイトに不審な再インストールや改ざん、未知の管理者アカウントや PHP ファイルがないかを確認します。11/19 以降のアクセスログで /core/install.php へのアクセスも確認します。侵害の疑いがあれば、DB と認証情報を再発行します。\n2. 回避策: Drupal 公式の「インストーラ保護手順」に従い、install.php への外部アクセスを遮断します。Web サーバから settings.php への書き込みや権限変更をできなくします。これで悪用経路の一部は緩和されますが、すべてではありません。Drupal Steward の利用者は既知の攻撃経路から保護されますが、更新は必要です。\n\n【各告知の関係】\n- Drupal.org SA-CORE-2026-017:開発元による修正版の告知です。\n- CVE/NVD:同じ件の登録情報です(NVD の詳細は未確認)。\n- CISA KEV:悪用確認の注意喚起です。\n- 国内注意喚起や他ベンダーの告知:未確認です。\n\n【出典】\nhttps://www.drupal.org/sa-core-2026-017\nhttps://www.cve.org/CVERecord?id=CVE-2026-132165"
+    },
+    {
       "id": "CVE-2026-110447",
       "aliases": [],
       "title": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability",
@@ -5846,6 +5899,63 @@
         "rce": 5,
         "kev": 20,
         "epss": 7.5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-133469",
+      "aliases": [],
+      "title": "Vates Xen Orchestra Improper Validation of Specified Type of Input Vulnerability",
+      "description": "XO (Xen Orchestra) is a solution to visualize, manage, backup and delegate your XCP-ng (or XenServer) infrastructure. Prior to 6.9.2 and 6.10.1, REST cookie parsing turns authenticationToken=j:%7B%7D into {}. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats {} as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated /rest/v0/users/me/authentication_tokens route then returns reusable login token IDs. This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.",
+      "published": "2026-11-23T17:17:31.780",
+      "updated": "2026-11-27T13:33:43.420",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "xen-orchestra:xen_orchestra_server",
+        "xen-orchestra:xen_orchestra"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Vates Xen Orchestra"
+      ],
+      "references": [
+        "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062",
+        "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d",
+        "https://github.com/vatesfr/xen-orchestra/pull/10748",
+        "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g",
+        "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133469",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-133469"
+      ],
+      "exploit_ref": true,
+      "kev": true,
+      "kev_date_added": "2026-11-25",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.31768,
+      "epss_percentile": 0.987,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 64.4,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "exploit_ref": 5,
+        "epss": 4.8
       },
       "ai_analysis": ""
     },
@@ -6908,7 +7018,7 @@
       "title": "Mitel MiCollab OS Command Injection Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct a blind command injection attack due to insufficient parameter sanitization. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1864.",
       "published": "2026-11-19T17:18:52.880",
-      "updated": "2026-11-26T05:18:21.963",
+      "updated": "2026-11-27T13:33:49.180",
       "cvss": 10.0,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
       "severity": "critical",
@@ -6930,8 +7040,8 @@
       "kev_date_added": "2026-11-25",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.02546,
-      "epss_percentile": 0.85725,
+      "epss": 0.05628,
+      "epss_percentile": 0.93713,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -6943,7 +7053,7 @@
       "matched": [],
       "match_type": "kev-only",
       "tier": null,
-      "score": 60.4,
+      "score": 60.8,
       "level": "high",
       "score_breakdown": {
         "popularity": 10,
@@ -6951,7 +7061,7 @@
         "unauth_network": 5,
         "rce": 5,
         "kev": 20,
-        "epss": 0.4
+        "epss": 0.8
       },
       "ai_analysis": ""
     },
@@ -7187,63 +7297,6 @@
         "unauth_network": 5,
         "rce": 5,
         "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-133469",
-      "aliases": [],
-      "title": "Vates Xen Orchestra Improper Validation of Specified Type of Input Vulnerability",
-      "description": "XO (Xen Orchestra) is a solution to visualize, manage, backup and delegate your XCP-ng (or XenServer) infrastructure. Prior to 6.9.2 and 6.10.1, REST cookie parsing turns authenticationToken=j:%7B%7D into {}. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats {} as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated /rest/v0/users/me/authentication_tokens route then returns reusable login token IDs. This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.",
-      "published": "2026-11-23T17:17:31.780",
-      "updated": "2026-11-26T05:18:22.960",
-      "cvss": 9.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [
-        "xen-orchestra:xen_orchestra_server",
-        "xen-orchestra:xen_orchestra"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Vates Xen Orchestra"
-      ],
-      "references": [
-        "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062",
-        "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d",
-        "https://github.com/vatesfr/xen-orchestra/pull/10748",
-        "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g",
-        "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133469",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-133469"
-      ],
-      "exploit_ref": true,
-      "kev": true,
-      "kev_date_added": "2026-11-25",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01101,
-      "epss_percentile": 0.65258,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 59.8,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 19.6,
-        "unauth_network": 5,
-        "kev": 20,
-        "exploit_ref": 5,
         "epss": 0.2
       },
       "ai_analysis": ""
@@ -7587,6 +7640,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-133303",
+      "aliases": [],
+      "title": "Mitel MiCollab XML Injection Vulnerability",
+      "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to leverage pre-staged malicious content to conduct an XML injection attack due to insufficient parameter validation. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1862.",
+      "published": "2026-11-19T17:18:51.670",
+      "updated": "2026-11-27T13:33:54.470",
+      "cvss": 9.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "mitel:micollab"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Mitel MiCollab"
+      ],
+      "references": [
+        "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012",
+        "https://accenture.github.io/cyber-intelligence/micollab-exploitation/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-133303"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-25",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01326,
+      "epss_percentile": 0.71078,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 58.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 18.0,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-113329",
       "aliases": [],
       "title": "",
@@ -7632,59 +7738,6 @@
         "unauth_network": 5,
         "rce": 5,
         "exploit_ref": 5,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-133303",
-      "aliases": [],
-      "title": "Mitel MiCollab XML Injection Vulnerability",
-      "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to leverage pre-staged malicious content to conduct an XML injection attack due to insufficient parameter validation. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1862.",
-      "published": "2026-11-19T17:18:51.670",
-      "updated": "2026-11-26T05:18:21.160",
-      "cvss": 9.0,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [
-        "mitel:micollab"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Mitel MiCollab"
-      ],
-      "references": [
-        "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012",
-        "https://accenture.github.io/cyber-intelligence/micollab-exploitation/",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-133303"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-25",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00515,
-      "epss_percentile": 0.37111,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 58.1,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 18.0,
-        "unauth_network": 5,
-        "rce": 5,
-        "kev": 20,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -58656,6 +58709,82 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-115835",
+      "aliases": [],
+      "title": "Sequoia-openpgp: sequoia-openpgp: ascii armor parsing buffers a line without a length limit",
+      "description": "A flaw was found in sequoia-openpgp. The ASCII-armor reader does not limit the length of a line. Parsing an armored message with a very long line can exhaust memory in the process. Memory use follows the input size, with a small constant factor, and is not a classic amplification.",
+      "published": "2026-11-27T08:19:33.863Z",
+      "updated": "2026-11-27T09:17:00.433",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "severity": "medium",
+      "cpes": [
+        "ansible_automation_platform:2",
+        "enterprise_linux:10",
+        "enterprise_linux:9",
+        "hummingbird:1",
+        "openshift:4",
+        "satellite:6",
+        "trusted_profile_analyzer:2",
+        "trusted_profile_analyzer:3"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-26/hub-rhel9",
+        "ansible-automation-platform-27/hub-rhel9",
+        "python3.12-pysequoia",
+        "Red Hat Red Hat Enterprise Linux 10",
+        "rust-podman-sequoia",
+        "rust-rpm-sequoia",
+        "rust-sequoia-sq",
+        "rust-sequoia-sqv",
+        "trustee",
+        "Red Hat Red Hat Enterprise Linux 9",
+        "trustee-guest-components",
+        "Red Hat Red Hat Hardened Images",
+        "Red Hat Red Hat OpenShift Container Platform 4",
+        "kata-containers",
+        "Red Hat Red Hat Satellite 6",
+        "python-pysequoia",
+        "Red Hat Red Hat Trusted Profile Analyzer",
+        "rhtpa/rhtpa-trustification-service-rhel9",
+        "rhtpa/rhtpa-rhel10"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-115835",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2560028"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 48.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-108401",
       "aliases": [],
       "title": "",
@@ -63265,7 +63394,7 @@
       "title": "Mitel MiCollab Weak Authentication Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker, with knowledge of a specific system-generated random identifier or pre-staged content, to conduct an unauthorized access attack due to improper authentication mechanisms. A successful exploit could allow an attacker to obtain sensitive information. The vulnerability is limited to the affected functionality and does not provide unrestricted access to arbitrary files elsewhere on the system. This is MTLVULN-1863.",
       "published": "2026-11-19T17:18:52.740",
-      "updated": "2026-11-26T05:18:21.543",
+      "updated": "2026-11-27T13:33:52.040",
       "cvss": 5.9,
       "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
       "severity": "medium",
@@ -63287,8 +63416,8 @@
       "kev_date_added": "2026-11-25",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00396,
-      "epss_percentile": 0.2537,
+      "epss": 0.00985,
+      "epss_percentile": 0.61187,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -76685,7 +76814,7 @@
       "title": "Mitel MiCollab Not Failing Securely Vulnerability",
       "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an authentication bypass attack due to improper handling of authentication. A successful exploit could allow an attacker to bypass authentication and perform unauthorized actions within the context of the application. This is MTLVULN-1877.",
       "published": "2026-11-19T17:18:53.017",
-      "updated": "2026-11-26T05:18:22.280",
+      "updated": "2026-11-27T13:33:46.453",
       "cvss": 5.3,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
       "severity": "medium",
@@ -76707,8 +76836,113 @@
       "kev_date_added": "2026-11-25",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.00414,
-      "epss_percentile": 0.273,
+      "epss": 0.00832,
+      "epss_percentile": 0.54808,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-99362",
+      "aliases": [],
+      "title": "",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: preflight SEQUENCE replies before accepting a slot\n\nnfsd4_sequence() narrows the reply buffer to the session's cached\nreply limit before it accepts the slot seqid. A client may negotiate\nca_maxresponsesize_cached down to NFSD_MIN_HDR_SEQ_SZ, and\nnfsd4_alloc_slot() then gives every slot a zero-length sl_data[]. A\nCOMPOUND tag can fill that narrowed buffer until it holds the\nSEQUENCE opcode but not the status word that follows.\nnfsd4_encode_operation() returns without running\nnfsd4_encode_sequence(), so cstate.data_offset stays zero. It leaves\nop->status at nfs_ok as well, so the COMPOUND is treated as having\nsucceeded.\n\nnfsd4_store_cache_entry() declines to cache a lone SEQUENCE that\nreturned an error. That test reads the status the operation\nreported, so it passes here. The copy starts at offset zero and\ntakes the whole reply, RPC and COMPOUND headers included, into the\nzero-length sl_data[]. The COMPOUND tag is copied along with it, so\nthe client picks most of the bytes written past the end of the slot:\n\n  BUG: KASAN: slab-out-of-bounds in read_bytes_from_xdr_buf+0x1bc/0x390\n  Write of size 80 at addr ffff888003a549cd by task kunit_try_catch/24\n   __asan_memcpy+0x38/0x60\n   read_bytes_from_xdr_buf+0x1bc/0x390\n   nfsd4_sequence_done+0x5b0/0x810\n   nfs4svc_encode_compoundres+0x1bf/0x240\n\nCheck that the fixed-size SEQUENCE result, plus room for a following\noperation's error status, fits the negotiated limit before narrowing\nthe buffer and consuming the slot seqid. The slot and its reply\ncache are left unchanged, as RFC 8881 Section 2.10.6.1.2 requires of\nan error returned from SEQUENCE.",
+      "published": "2026-11-19T15:17:47.803",
+      "updated": "2026-11-27T11:17:06.913",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://git.kernel.org/stable/c/1a5a227bca6a8a9f9d31230697aeb84c62a21da6",
+        "https://git.kernel.org/stable/c/35ff1a7a7e3835c3e974bc5c45d335897564ceae",
+        "https://git.kernel.org/stable/c/37fc2ec211630360e9aefcaaec8730db964645f2",
+        "https://git.kernel.org/stable/c/6a26c5473bb112d8420ffd48d5331bc5fb5a2065",
+        "https://git.kernel.org/stable/c/aff12e327620258123f847d7d06565f4555c5cb4",
+        "https://git.kernel.org/stable/c/cd303eb29cf34a6780f4c42aca5b8ca4a05a5d59",
+        "https://git.kernel.org/stable/c/ed98b0c57e5e84290c5b35428144ab26778905f3",
+        "https://git.kernel.org/stable/c/fa85acf074f000ad3d1a5ffb703128ff97de983d",
+        "https://lists.debian.org/debian-lts-announce/2026/11/msg00069.html"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00755,
+      "epss_percentile": 0.51366,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-19T18:40:51.804070+00:00",
+      "matched": [
+        "linux-kernel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-133275",
+      "aliases": [],
+      "title": "Mitel MiCollab Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an arbitrary file upload attack due to insufficient file type validation. A successful exploit could allow an attacker to upload arbitrary files to the target system. This is MTLVULN-1861.",
+      "published": "2026-11-19T16:21:31.033",
+      "updated": "2026-11-27T13:33:57.440",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "medium",
+      "cpes": [
+        "mitel:micollab"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Mitel MiCollab"
+      ],
+      "references": [
+        "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012",
+        "https://accenture.github.io/cyber-intelligence/micollab-exploitation/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133275",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-133275"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-25",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00771,
+      "epss_percentile": 0.52058,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -85841,58 +86075,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-99362",
-      "aliases": [],
-      "title": "",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: preflight SEQUENCE replies before accepting a slot\n\nnfsd4_sequence() narrows the reply buffer to the session's cached\nreply limit before it accepts the slot seqid. A client may negotiate\nca_maxresponsesize_cached down to NFSD_MIN_HDR_SEQ_SZ, and\nnfsd4_alloc_slot() then gives every slot a zero-length sl_data[]. A\nCOMPOUND tag can fill that narrowed buffer until it holds the\nSEQUENCE opcode but not the status word that follows.\nnfsd4_encode_operation() returns without running\nnfsd4_encode_sequence(), so cstate.data_offset stays zero. It leaves\nop->status at nfs_ok as well, so the COMPOUND is treated as having\nsucceeded.\n\nnfsd4_store_cache_entry() declines to cache a lone SEQUENCE that\nreturned an error. That test reads the status the operation\nreported, so it passes here. The copy starts at offset zero and\ntakes the whole reply, RPC and COMPOUND headers included, into the\nzero-length sl_data[]. The COMPOUND tag is copied along with it, so\nthe client picks most of the bytes written past the end of the slot:\n\n  BUG: KASAN: slab-out-of-bounds in read_bytes_from_xdr_buf+0x1bc/0x390\n  Write of size 80 at addr ffff888003a549cd by task kunit_try_catch/24\n   __asan_memcpy+0x38/0x60\n   read_bytes_from_xdr_buf+0x1bc/0x390\n   nfsd4_sequence_done+0x5b0/0x810\n   nfs4svc_encode_compoundres+0x1bf/0x240\n\nCheck that the fixed-size SEQUENCE result, plus room for a following\noperation's error status, fits the negotiated limit before narrowing\nthe buffer and consuming the slot seqid. The slot and its reply\ncache are left unchanged, as RFC 8881 Section 2.10.6.1.2 requires of\nan error returned from SEQUENCE.",
-      "published": "2026-11-19T15:17:47.803",
-      "updated": "2026-11-23T08:17:41.020",
-      "cvss": 9.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://git.kernel.org/stable/c/1a5a227bca6a8a9f9d31230697aeb84c62a21da6",
-        "https://git.kernel.org/stable/c/35ff1a7a7e3835c3e974bc5c45d335897564ceae",
-        "https://git.kernel.org/stable/c/37fc2ec211630360e9aefcaaec8730db964645f2",
-        "https://git.kernel.org/stable/c/6a26c5473bb112d8420ffd48d5331bc5fb5a2065",
-        "https://git.kernel.org/stable/c/aff12e327620258123f847d7d06565f4555c5cb4",
-        "https://git.kernel.org/stable/c/cd303eb29cf34a6780f4c42aca5b8ca4a05a5d59",
-        "https://git.kernel.org/stable/c/ed98b0c57e5e84290c5b35428144ab26778905f3",
-        "https://git.kernel.org/stable/c/fa85acf074f000ad3d1a5ffb703128ff97de983d"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00228,
-      "epss_percentile": 0.13695,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-19T18:40:51.804070+00:00",
-      "matched": [
-        "linux-kernel"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 45.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 19.6,
-        "unauth_network": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-99366",
       "aliases": [],
       "title": "",
@@ -87708,58 +87890,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-133275",
-      "aliases": [],
-      "title": "Mitel MiCollab Unrestricted Upload of File with Dangerous Type Vulnerability",
-      "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an arbitrary file upload attack due to insufficient file type validation. A successful exploit could allow an attacker to upload arbitrary files to the target system. This is MTLVULN-1861.",
-      "published": "2026-11-19T16:21:31.033",
-      "updated": "2026-11-26T05:18:20.573",
-      "cvss": 5.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-      "severity": "medium",
-      "cpes": [
-        "mitel:micollab"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Mitel MiCollab"
-      ],
-      "references": [
-        "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012",
-        "https://accenture.github.io/cyber-intelligence/micollab-exploitation/",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133275",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-133275"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-25",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00315,
-      "epss_percentile": 0.1686,
-      "x_mentions": null,
-      "sources": [
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [],
-      "match_type": "kev-only",
-      "tier": null,
-      "score": 45.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 10.6,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-131687",
       "aliases": [],
       "title": "ShopMagic <= 4.9.5 - Unauthenticated Improper Verification of Cryptographic Signature to Guest Impersonation and Arbitrary Guest Profile Modification via 'shopmagic_visitor_<COOKIEHASH>' Cookie",
@@ -87799,6 +87929,82 @@
       "first_seen": "2026-11-26T12:35:30.477756+00:00",
       "matched": [
         "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 10.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115841",
+      "aliases": [],
+      "title": "Sequoia-openpgp: sequoia-openpgp: degenerate dsa keys are accepted on the nettle and openssl backendsa",
+      "description": "A flaw was found in sequoia-openpgp. DSA signature verification does not reject a public key with generator 1 and public value 1 before calling the cryptographic backend. Upstream reports that the Nettle and OpenSSL backends, including the default Nettle build, accept this key. Under that key, a signature can verify for every message. Ordinary DSA keys are not affected. An application is exposed when that degenerate certificate is accepted as authoritative.",
+      "published": "2026-11-27T08:19:36.467Z",
+      "updated": "2026-11-27T09:17:00.813",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [
+        "ansible_automation_platform:2",
+        "enterprise_linux:10",
+        "enterprise_linux:9",
+        "hummingbird:1",
+        "openshift:4",
+        "satellite:6",
+        "trusted_profile_analyzer:2",
+        "trusted_profile_analyzer:3"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-26/hub-rhel9",
+        "ansible-automation-platform-27/hub-rhel9",
+        "python3.12-pysequoia",
+        "Red Hat Red Hat Enterprise Linux 10",
+        "rust-podman-sequoia",
+        "rust-rpm-sequoia",
+        "rust-sequoia-sq",
+        "rust-sequoia-sqv",
+        "trustee",
+        "Red Hat Red Hat Enterprise Linux 9",
+        "trustee-guest-components",
+        "Red Hat Red Hat Hardened Images",
+        "Red Hat Red Hat OpenShift Container Platform 4",
+        "kata-containers",
+        "Red Hat Red Hat Satellite 6",
+        "python-pysequoia",
+        "Red Hat Red Hat Trusted Profile Analyzer",
+        "rhtpa/rhtpa-trustification-service-rhel9",
+        "rhtpa/rhtpa-rhel10"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-115841",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2560041"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "python"
       ],
       "match_type": "exact",
       "tier": 1,
@@ -89119,56 +89325,6 @@
         "popularity": 30,
         "cvss": 15.0,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-132165",
-      "aliases": [],
-      "title": "Drupal core - Highly critical - Remote code execution - SA-CORE-2026-017",
-      "description": "Missing Authentication for Critical Function vulnerability in Drupal Drupal core allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Drupal core versions: from 0.0.0 to 10.6.22, from 11.0.0 to 11.3.22, from 11.4.0 to 11.4.13.",
-      "published": "2026-11-26T00:44:41.628Z",
-      "updated": "2026-11-26T01:17:10.290",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Drupal core",
-        "Drupal Core"
-      ],
-      "references": [
-        "https://www.drupal.org/sa-core-2026-017",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-132165"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-24",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd",
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 45,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "rce": 5,
-        "kev": 20
       },
       "ai_analysis": ""
     },
@@ -124539,6 +124695,129 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-133940",
+      "aliases": [],
+      "title": "JTL-Shop: Database and file backups in export/backup can be downloaded without authentication",
+      "description": "The access rules of JTL-Shop (export/.htaccess and export/backup/.htaccess) release files with the extensions gz and zip for the export directory without withdrawing this release in the subdirectory export/backup, in which the shop stores database dumps and file backups. As a result, backup files in this directory can be downloaded without authentication by anyone who knows or guesses the file name. Up to version 5.5.5 the names of database backups consist only of a timestamp; from version 5.6.0 they contain a random component, which does not replace access control. The backups contain the complete shop database (customer data, orders, password hashes) and, for file backups, files of the shop. The access rules are only evaluated by Apache. On installations where another web server, for example nginx, delivers static files such as gz and zip directly (including nginx in front of Apache), the files remain accessible even with the corrected rules, unless the directory is blocked at server level.",
+      "published": "2026-11-27T08:31:49.575Z",
+      "updated": "2026-11-27T09:17:02.077",
+      "cvss": 8.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "JTL-Software GmbH JTL-Shop"
+      ],
+      "references": [
+        "https://www.jtl-software.com/de/security/sicherheitshinweis-sicherungsdateien-export_backup_abrufbar/"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "nginx"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 16.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115836",
+      "aliases": [],
+      "title": "Sequoia-openpgp: sequoia-openpgp: tolerant ascii armor parsing can select a different block than a strict parser",
+      "description": "A flaw was found in sequoia-openpgp. The default ASCII-armor parser accepts Unicode dash characters in armor framing and ignores leading quote characters. A crafted byte stream can be parsed as one message by this tolerant parser and as a different message by a strict ASCII-armor parser. The strict mode is opt-in; the default parser remains tolerant.",
+      "published": "2026-11-27T08:22:54.074Z",
+      "updated": "2026-11-27T09:17:00.620",
+      "cvss": 3.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "severity": "low",
+      "cpes": [
+        "ansible_automation_platform:2",
+        "enterprise_linux:10",
+        "enterprise_linux:9",
+        "hummingbird:1",
+        "openshift:4",
+        "satellite:6",
+        "trusted_profile_analyzer:2",
+        "trusted_profile_analyzer:3"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-26/hub-rhel9",
+        "ansible-automation-platform-27/hub-rhel9",
+        "python3.12-pysequoia",
+        "Red Hat Red Hat Enterprise Linux 10",
+        "rust-podman-sequoia",
+        "rust-rpm-sequoia",
+        "rust-sequoia-sq",
+        "rust-sequoia-sqv",
+        "trustee",
+        "Red Hat Red Hat Enterprise Linux 9",
+        "trustee-guest-components",
+        "Red Hat Red Hat Hardened Images",
+        "Red Hat Red Hat OpenShift Container Platform 4",
+        "kata-containers",
+        "Red Hat Red Hat Satellite 6",
+        "python-pysequoia",
+        "Red Hat Red Hat Trusted Profile Analyzer",
+        "rhtpa/rhtpa-trustification-service-rhel9",
+        "rhtpa/rhtpa-rhel10"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-115836",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2560029"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 7.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83500",
       "aliases": [],
       "title": "",
@@ -126529,6 +126808,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137940",
+      "aliases": [],
+      "title": "Pillow through 13.1.0 Crash via ImageMath INT32_MIN Division by -1",
+      "description": "Pillow through 13.1.0 contains an integer overflow in the ImageMath integer divide and modulo operators (DIV_I and MOD_I in src/_imagingmath.c), which guard only against a zero divisor, so dividing INT32_MIN by -1 raises a hardware divide exception. Attackers can supply a crafted TIFF that decodes to a mode I image containing INT32_MIN, crashing applications that run an ImageMath divide or modulo with a -1 operand on it.",
+      "published": "2026-11-27T13:43:54.744Z",
+      "updated": "2026-11-27T13:43:54.744Z",
+      "cvss": 5.7,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "python-pillow Pillow",
+        "pillow"
+      ],
+      "references": [
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-rr9w-vmjp-9cg9",
+        "https://github.com/python-pillow/Pillow"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 11.4
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-96865",
       "aliases": [],
       "title": "",
@@ -127989,6 +128315,82 @@
         "popularity": 30,
         "cvss": 11.2,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115834",
+      "aliases": [],
+      "title": "Sequoia-openpgp: sequoia-openpgp: user ids and notation data are displayed without escaping control characters",
+      "description": "A flaw was found in sequoia-openpgp. Display and Debug formatting of User IDs and notation data does not escape control characters. When an application prints those values, a crafted User ID or notation can misrender the identity or alter terminal output.",
+      "published": "2026-11-27T07:47:23.147Z",
+      "updated": "2026-11-27T10:17:27.720",
+      "cvss": 3.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
+      "severity": "low",
+      "cpes": [
+        "ansible_automation_platform:2",
+        "enterprise_linux:10",
+        "enterprise_linux:9",
+        "hummingbird:1",
+        "openshift:4",
+        "satellite:6",
+        "trusted_profile_analyzer:2",
+        "trusted_profile_analyzer:3"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Red Hat Red Hat Ansible Automation Platform 2",
+        "ansible-automation-platform-26/hub-rhel9",
+        "ansible-automation-platform-27/hub-rhel9",
+        "python3.12-pysequoia",
+        "Red Hat Red Hat Enterprise Linux 10",
+        "rust-podman-sequoia",
+        "rust-rpm-sequoia",
+        "rust-sequoia-sq",
+        "rust-sequoia-sqv",
+        "trustee",
+        "Red Hat Red Hat Enterprise Linux 9",
+        "trustee-guest-components",
+        "Red Hat Red Hat Hardened Images",
+        "Red Hat Red Hat OpenShift Container Platform 4",
+        "kata-containers",
+        "Red Hat Red Hat Satellite 6",
+        "python-pysequoia",
+        "Red Hat Red Hat Trusted Profile Analyzer",
+        "rhtpa/rhtpa-trustification-service-rhel9",
+        "rhtpa/rhtpa-rhel10"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-115834",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2560026"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "python"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 41.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 6.2,
+        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -152815,6 +153217,46 @@
       "ai_analysis": ""
     },
     {
+      "id": "OUT-anthropic-0x1yvzkfmmxj",
+      "aliases": [],
+      "title": "Anthropic Claude: Degraded performance for Claude Fable 5.2",
+      "description": "Anthropic Claude の公式ステータスページに掲載された障害",
+      "published": "2026-11-27T10:34:01.804Z",
+      "updated": "2026-11-27T10:49:33.790Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://stspg.io/n4l14k7m49zw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:anthropic"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-27T10:49:33.790Z",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "anthropic"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -165967,6 +166409,55 @@
         "popularity": 20,
         "cvss": 17.0,
         "epss": 0.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137907",
+      "aliases": [],
+      "title": "FFmpeg 3.0 before 8.1.3 Heap Buffer Overflow via boxblur Filter",
+      "description": "FFmpeg 3.0 before 8.1.3 contains a heap buffer overflow vulnerability in libavfilter/vf_boxblur.c because query_formats() accepts pixel formats deeper than 16 bits while the blur temporary buffers hold only 2 bytes per pixel. Attackers can supply crafted 32-bit float media, such as PFM or OpenEXR images, that when processed by the boxblur filter overflow the temporary buffers, crashing applications or possibly executing code.",
+      "published": "2026-11-27T12:15:06.804Z",
+      "updated": "2026-11-27T13:17:25.610",
+      "cvss": 8.5,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/23658",
+        "https://github.com/FFmpeg/FFmpeg/commit/0dac41d2e5e0f4251ed89eedb03a847d5d59ef67",
+        "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavfilter/vf_boxblur.c#L166",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.0
       },
       "ai_analysis": ""
     },
@@ -184209,6 +184700,56 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-135705",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg before 9.1 contains a stack out-of-bounds read vulnerability in ff_h264_parse_framesize() in libavformat/rtpdec_h264.c when parsing an SDP a=framesize attribute lacking a height. Attackers controlling an RTSP server DESCRIBE response or a crafted .sdp file can make atoi() read past the line buffer, crashing clients or parsing stale stack bytes.",
+      "published": "2026-11-24T04:17:27.130",
+      "updated": "2026-11-27T13:34:44.280",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [
+        "ffmpeg:ffmpeg"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtpdec_h264.c#L204",
+        "https://github.com/FFmpeg/FFmpeg/commit/e5fe2cbebcb666bb132ab26d8dacbace383936c7",
+        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-stack-out-of-bounds-read-via-ff-h264-parse-framesize"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00417,
+      "epss_percentile": 0.27657,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T06:08:19.008814+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-116592",
       "aliases": [],
       "title": "",
@@ -187206,23 +187747,23 @@
     {
       "id": "CVE-2026-135713",
       "aliases": [],
-      "title": "FFmpeg before 9.1 NULL Pointer Dereference via MMS-over-TCP ASF Header Handling",
+      "title": "",
       "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in libavformat/mmst.c that allows malicious MMS servers to crash clients by sending malformed ASF headers. Attackers can send an ASF header lacking a packet size or stream properties, causing mms_open() to return success after freeing state and crash on first read.",
-      "published": "2026-11-24T03:14:03.113Z",
-      "updated": "2026-11-24T04:17:28.633",
+      "published": "2026-11-24T04:17:28.513",
+      "updated": "2026-11-27T13:55:45.293",
       "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
-        "https://github.com/FFmpeg/FFmpeg/commit/94c3187ef7384735b2902abb34a95cbe2400a159",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/mmst.c#L570",
         "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/mmst.c#L570",
+        "https://github.com/FFmpeg/FFmpeg/commit/94c3187ef7384735b2902abb34a95cbe2400a159",
         "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-null-pointer-dereference-via-mms-over-tcp-asf-header-handling"
       ],
       "exploit_ref": false,
@@ -187230,11 +187771,10 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00321,
+      "epss_percentile": 0.17543,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -187249,7 +187789,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 20,
-        "cvss": 13.6
+        "cvss": 13.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -187341,6 +187882,102 @@
       "first_seen": "2026-11-26T02:59:15.258772+00:00",
       "matched": [
         "kubernetes"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137905",
+      "aliases": [],
+      "title": "FFmpeg 5.0 before 8.1.3 NULL Pointer Dereference via IMF Asset Map Missing Path",
+      "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in parse_imf_asset_map_from_xml_dom() in libavformat/imfdec.c that does not check for a missing or empty Path element in an asset map Chunk. Attackers can supply a crafted IMF ASSETMAP.xml whose Chunk lacks a Path, passing a NULL URI to the path handling functions and crashing the process.",
+      "published": "2026-11-27T12:14:58.894Z",
+      "updated": "2026-11-27T13:17:25.253",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://github.com/FFmpeg/FFmpeg/commit/0fe4bd4b435b1de950890d37b1e4df7bae3655b1",
+        "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavformat/imfdec.c#L258",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137906",
+      "aliases": [],
+      "title": "FFmpeg 5.0 before 8.1.3 NULL Pointer Dereference via IMF Virtual Track Without Resources",
+      "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in the IMF demuxer in libavformat/imfdec.c because open_virtual_track() accepts a virtual track with no resources. Attackers can supply a crafted IMF Composition Playlist whose virtual track lists no resources, causing set_context_streams_from_tracks() to dereference a NULL resource array and crash the process.",
+      "published": "2026-11-27T12:15:02.785Z",
+      "updated": "2026-11-27T13:17:25.430",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://github.com/FFmpeg/FFmpeg/commit/a76190152d0d1e90f38a761e0a1443c1dcb4e7a8",
+        "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavformat/imfdec.c#L578",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
       ],
       "match_type": "exact",
       "tier": 2,
@@ -192596,6 +193233,104 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137910",
+      "aliases": [],
+      "title": "FFmpeg before 9.1 Out-of-Bounds Read via PCX Encoder Odd-Width Rows",
+      "description": "FFmpeg before 9.1 contains an out-of-bounds read vulnerability in pcx_encode_frame() in libavcodec/pcxenc.c that rounds each row up to an even number of bytes and run-length encodes that many bytes from the input frame. Attackers who control the width of images encoded to PCX by an application that supplies tightly packed frames can make the encoder read past the end of the frame buffer, crashing the application or leaking heap contents into the output image.",
+      "published": "2026-11-27T12:15:17.809Z",
+      "updated": "2026-11-27T13:17:26.170",
+      "cvss": 5.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25690",
+        "https://github.com/FFmpeg/FFmpeg/commit/b47e96b4eb50fef52cf1a9c7b0100a34cc05cce0",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/pcxenc.c#L134",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.6
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137911",
+      "aliases": [],
+      "title": "FFmpeg before 9.1 Out-of-Bounds Read via XWD Encoder Scanline Padding",
+      "description": "FFmpeg before 9.1 contains an out-of-bounds read vulnerability in xwd_encode_frame() in libavcodec/xwdenc.c that copies each RGB24 or BGR24 row using the padded XWD scanline size instead of the pixel row size. Attackers who control the width of video encoded to XWD by an application that supplies tightly packed frames can make the encoder read past the frame buffer, crashing the application or leaking heap contents into the output image.",
+      "published": "2026-11-27T12:15:20.017Z",
+      "updated": "2026-11-27T13:17:26.357",
+      "cvss": 5.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25690",
+        "https://github.com/FFmpeg/FFmpeg/commit/f26d201dd87f36e89ab77b5f689765604c9b06bc",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/xwdenc.c#L207",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 31.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.6
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-0328",
       "aliases": [],
       "title": "",
@@ -193968,6 +194703,103 @@
       "score_breakdown": {
         "popularity": 14.0,
         "cvss": 17.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137908",
+      "aliases": [],
+      "title": "FFmpeg 7.1 before 9.1 Memory Leak via libsvtav1 Dolby Vision Encoding",
+      "description": "FFmpeg 7.1 before 9.1 contains a memory leak vulnerability in eb_receive_packet() in libavcodec/libsvtav1.c that returns without unreferencing the queued input frame when eb_send_frame() fails. Attackers can supply crafted video in which some frames lack Dolby Vision metadata to an SVT-AV1 encode with Dolby Vision RPU coding enabled, leaking each rejected frame's buffers or aborting in av_frame_move_ref() in builds with assertions enabled.",
+      "published": "2026-11-27T12:15:10.309Z",
+      "updated": "2026-11-27T13:17:25.790",
+      "cvss": 5.7,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25416",
+        "https://github.com/FFmpeg/FFmpeg/commit/c67ac1bc34440829de4ef3b9d15206bb095eed11",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/libsvtav1.c#L666",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 31.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.4
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137909",
+      "aliases": [],
+      "title": "FFmpeg before 9.1 NULL Pointer Dereference via XSUB Encoder Empty Subtitles",
+      "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in xsub_encode() in libavcodec/xsubenc.c that only warns when a subtitle has no rectangles and then dereferences rects[0]. Attackers can supply crafted PGS or DVB subtitles that decode to empty subtitle events, crashing applications that pass decoded subtitles directly to the XSUB encoder.",
+      "published": "2026-11-27T12:15:14.318Z",
+      "updated": "2026-11-27T13:17:25.973",
+      "cvss": 5.7,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "FFmpeg FFmpeg"
+      ],
+      "references": [
+        "https://github.com/FFmpeg/FFmpeg/commit/c4a4d5f72a7d89de23043415a0a45090c51c502a",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/xsubenc.c#L136",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 31.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 11.4
       },
       "ai_analysis": ""
     },
@@ -205409,54 +206241,6 @@
         "popularity": 10,
         "cvss": 13.0,
         "exploit_ref": 5,
-        "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-135705",
-      "aliases": [],
-      "title": "",
-      "description": "FFmpeg before 9.1 contains a stack out-of-bounds read vulnerability in ff_h264_parse_framesize() in libavformat/rtpdec_h264.c when parsing an SDP a=framesize attribute lacking a height. Attackers controlling an RTSP server DESCRIBE response or a crafted .sdp file can make atoi() read past the line buffer, crashing clients or parsing stale stack bytes.",
-      "published": "2026-11-24T04:17:27.130",
-      "updated": "2026-11-24T13:17:29.267",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtpdec_h264.c#L204",
-        "https://github.com/FFmpeg/FFmpeg/commit/e5fe2cbebcb666bb132ab26d8dacbace383936c7",
-        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-stack-out-of-bounds-read-via-ff-h264-parse-framesize"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00171,
-      "epss_percentile": 0.06405,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-24T06:08:19.008814+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 27.8,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 13.8,
         "epss": 0.0
       },
       "ai_analysis": ""
@@ -260261,6 +261045,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-77679",
+      "aliases": [],
+      "title": "epiphany: path traversal in WebExtension XPI extraction (ZIP slip)",
+      "description": "A path traversal (ZIP slip) vulnerability exists in Epiphany when installing WebExtension packages from .xpi files.\n\nIn src/webextension/ephy-web-extension-manager.c, the decompress_xpi_thread() function extracts XPI archives (ZIP format) to disk using libarchive. For each archive entry, the output path is built by concatenating the intended extraction directory with the raw pathname from the archive:\n\n    full_path = g_build_filename(path, archive_entry_pathname(entry), NULL);\n    archive_entry_set_pathname(entry, full_path);\n    ret = archive_write_header(ext, entry);\n\nThe libarchive extraction options did not include ARCHIVE_EXTRACT_SECURE_NODOTDOT or ARCHIVE_EXTRACT_SECURE_SYMLINKS. As a result, archive entries containing parent-directory traversal sequences (for example \"../../../../../.bashrc\") are written outside the intended web_extensions extraction directory.\n\nA malicious .xpi file can therefore overwrite arbitrary files writable by the user running Epiphany, such as ~/.bashrc, ~/.config/autostart/*.desktop, or ~/.ssh/authorized_keys. This can lead to persistent code execution on subsequent shell startup or GNOME login.\n\nExploitation requires the victim to install or open a crafted .xpi file. The reporter notes that opening an XPI can trigger extraction even when the WebExtensions feature is not enabled by default.\n\nAffected versions: Epiphany >= 47.rc.\nFixed upstream in epiphany 50.6 and 49.9 via merge request !2143, which adds ARCHIVE_EXTRACT_SECURE_NODOTDOT and ARCHIVE_EXTRACT_SECURE_SYMLINKS to archive_write_disk_set_options().\nUpstream report: https://gitlab.gnome.org/GNOME/epiphany/-/issues/2922",
+      "published": "2026-11-27T06:22:55.615Z",
+      "updated": "2026-11-27T07:17:03.323",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "GNOME Epiphany",
+        "epiphany"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-77679",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2520891",
+        "https://gitlab.gnome.org/GNOME/epiphany/-/issues/2922",
+        "https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2143"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "libarchive"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 14.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "MOZ-CA-2086471",
       "aliases": [],
       "title": "certSIGN: Root CRL validity set to 12 month instead of less",
@@ -266130,6 +266963,166 @@
       "category": "pki",
       "resolved_at": "",
       "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098419",
+      "aliases": [],
+      "title": "SHECA: Insufficient Qualifying Embedded SCTs in Some SHECA TLS Subscriber Certificates with Validity Periods Exceeding 180 Days",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-27T04:49:37Z",
+      "updated": "2026-11-27T04:49:37Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098419"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098518",
+      "aliases": [],
+      "title": "PostSignum: CCADB Policy Not Referenced in CP/CPS",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-27T11:30:15Z",
+      "updated": "2026-11-27T11:30:15Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098518"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098542",
+      "aliases": [],
+      "title": "PostSignum CRL Findings: authorityKeyIdentifier Encoding and nextUpdate Interval",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-27T12:52:42Z",
+      "updated": "2026-11-27T12:52:58Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098542"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "pki"
+      ],
+      "match_type": "pki",
+      "tier": null,
+      "score": 10.0,
+      "level": "low",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "MOZ-CA-2098580",
+      "aliases": [],
+      "title": "PostSignum: ST Attribute Contains Country Code",
+      "description": "Mozilla CA Program に報告された認証局事案（CA Certificate Compliance、状態 UNCONFIRMED）。分類: ",
+      "published": "2026-11-27T13:33:23Z",
+      "updated": "2026-11-27T13:34:44Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2098580"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "mozilla-ca"
+      ],
+      "category": "pki",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
       "matched": [
         "pki"
       ],
