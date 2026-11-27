@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T13:57:29.443815+00:00",
+  "generated_at": "2026-11-27T22:43:42.036481+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -5678,7 +5678,7 @@
       "title": "Drupal Core Remote Code Execution Vulnerability",
       "description": "Missing Authentication for Critical Function vulnerability in Drupal Drupal core allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Drupal core versions: from 0.0.0 to 10.6.22, from 11.0.0 to 11.3.22, from 11.4.0 to 11.4.13.",
       "published": "2026-11-26T01:17:10.290",
-      "updated": "2026-11-27T13:33:40.050",
+      "updated": "2026-11-27T15:25:22.903",
       "cvss": 9.8,
       "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "severity": "critical",
@@ -5691,6 +5691,7 @@
       ],
       "references": [
         "https://www.drupal.org/sa-core-2026-017",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-132165",
         "https://nvd.nist.gov/vuln/detail/CVE-2026-132165"
       ],
       "exploit_ref": false,
@@ -5698,8 +5699,8 @@
       "kev_date_added": "2026-11-24",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": 0.11053,
-      "epss_percentile": 0.96627,
+      "epss": 0.08381,
+      "epss_percentile": 0.95738,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -5713,7 +5714,7 @@
       ],
       "match_type": "exact",
       "tier": 2,
-      "score": 71.3,
+      "score": 70.9,
       "level": "critical",
       "score_breakdown": {
         "popularity": 20,
@@ -5721,9 +5722,9 @@
         "unauth_network": 5,
         "rce": 5,
         "kev": 20,
-        "epss": 1.7
+        "epss": 1.3
       },
-      "ai_analysis": "【状況】Drupal core の install.php に欠陥があります(CVE-2026-132165、CVSS 9.8、CISA KEV 掲載)。特定条件下でインストーラから再インストールを試みられ、サイト乗っ取りや RCE につながります。悪用は確認済みです。Drupal は、2026-11-19 19:00 UTC には実サイトで悪用されたとの報告を受けたと追記しています。\n\n【原因の部品】Drupal core(開発元は Drupal Security Team)。ライブラリではなく CMS 本体の問題です。組み込み製品経由の影響は未確認です。Drupal をベースにした他社製品を使っている場合は、各ベンダーの告知を確認してください。\n\n【影響範囲】\n- 10.6.22 未満\n- 11.0.0〜11.3.21\n- 11.4.0〜11.4.12\n- Drupal 8/9、10.5 以前、11.2 以前は EOL で修正なしです。影響の有無は未確認ですが、サポート対象外なので移行が必要です。\n\n【対応策】\n1. 最優先: 次のとおり更新します。\n   - 11.4.x は 11.4.13\n   - 11.3.x は 11.3.22\n   - 10.6.x は 10.6.22\n   あわせて、公開済みサイトに不審な再インストールや改ざん、未知の管理者アカウントや PHP ファイルがないかを確認します。11/19 以降のアクセスログで /core/install.php へのアクセスも確認します。侵害の疑いがあれば、DB と認証情報を再発行します。\n2. 回避策: Drupal 公式の「インストーラ保護手順」に従い、install.php への外部アクセスを遮断します。Web サーバから settings.php への書き込みや権限変更をできなくします。これで悪用経路の一部は緩和されますが、すべてではありません。Drupal Steward の利用者は既知の攻撃経路から保護されますが、更新は必要です。\n\n【各告知の関係】\n- Drupal.org SA-CORE-2026-017:開発元による修正版の告知です。\n- CVE/NVD:同じ件の登録情報です(NVD の詳細は未確認)。\n- CISA KEV:悪用確認の注意喚起です。\n- 国内注意喚起や他ベンダーの告知:未確認です。\n\n【出典】\nhttps://www.drupal.org/sa-core-2026-017\nhttps://www.cve.org/CVERecord?id=CVE-2026-132165"
+      "ai_analysis": ""
     },
     {
       "id": "CVE-2026-110447",
@@ -5903,6 +5904,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-136716",
+      "aliases": [],
+      "title": "Drupal Core Improper Check for Unusual or Exceptional Conditions Vulnerability",
+      "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
+      "published": "2026-11-26T01:17:10.517",
+      "updated": "2026-11-27T21:17:13.487",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "drupal:drupal"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-019",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-136716",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-136716"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01212,
+      "epss_percentile": 0.68449,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 64.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-133469",
       "aliases": [],
       "title": "Vates Xen Orchestra Improper Validation of Specified Type of Input Vulnerability",
@@ -5935,7 +5989,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.31768,
-      "epss_percentile": 0.987,
+      "epss_percentile": 0.98701,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -7041,7 +7095,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.05628,
-      "epss_percentile": 0.93713,
+      "epss_percentile": 0.9372,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -7668,7 +7722,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.01326,
-      "epss_percentile": 0.71078,
+      "epss_percentile": 0.71112,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -17774,69 +17828,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-119969",
-      "aliases": [],
-      "title": "Graphic Fonts Remote Code Execution Vulnerability",
-      "description": "Heap-based buffer overflow in Graphic Fonts allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T18:23:49.539Z",
-      "updated": "2026-11-10T18:23:49.539Z",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119969"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 57.6,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-122171",
       "aliases": [],
       "title": "Microsoft XPS Document Converter Remote Code Execution Vulnerability",
@@ -21866,258 +21857,6 @@
       ],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119952"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 56.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119962",
-      "aliases": [],
-      "title": "Windows CredSSP Remote Code Execution Vulnerability",
-      "description": "Double free in Windows Cred SSProvider Protocol allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T18:23:46.313Z",
-      "updated": "2026-11-10T18:23:46.313Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119962"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 56.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119963",
-      "aliases": [],
-      "title": "Windows Message Queuing Remote Code Execution Vulnerability",
-      "description": "Double free in Windows Message Queuing allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T18:23:46.832Z",
-      "updated": "2026-11-10T18:23:46.832Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119963"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 56.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119964",
-      "aliases": [],
-      "title": "Windows Message Queuing Remote Code Execution Vulnerability",
-      "description": "Double free in Windows Message Queuing allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T18:23:47.286Z",
-      "updated": "2026-11-10T18:23:47.286Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119964"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 56.2,
-      "level": "high",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 16.2,
-        "unauth_network": 5,
-        "rce": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119967",
-      "aliases": [],
-      "title": "Windows Message Queuing Queue Manager Remote Code Execution Vulnerability",
-      "description": "Use after free in Windows Message Queuing Queue Manager allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T18:23:48.950Z",
-      "updated": "2026-11-10T18:23:48.950Z",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119967"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -30098,6 +29837,65 @@
         "cvss": 17.6,
         "unauth_network": 5,
         "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119969",
+      "aliases": [],
+      "title": "",
+      "description": "Heap-based buffer overflow in Graphic Fonts allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:21.770",
+      "updated": "2026-11-27T20:43:44.793",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119969"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00837,
+      "epss_percentile": 0.551,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.7,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -43118,6 +42916,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-134987",
+      "aliases": [],
+      "title": "WordPress WordPress File Upload plugin <= 5.3.1 - Arbitrary File Deletion vulnerability",
+      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Nickboss WordPress File Upload wp-file-upload allows Path Traversal.This issue affects WordPress File Upload: from n/a through 5.3.1.",
+      "published": "2026-11-27T14:00:16.152Z",
+      "updated": "2026-11-27T17:17:41.107",
+      "cvss": 8.6,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "Nickboss WordPress File Upload",
+        "wp-file-upload"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/wp-file-upload/vulnerability/wordpress-wordpress-file-upload-plugin-5-3-1-arbitrary-file-deletion-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "none",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 52.2,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-128067",
       "aliases": [
         "GHSA-xcvg-w56q-r89m"
@@ -43578,6 +43424,242 @@
         "popularity": 30,
         "cvss": 16.4,
         "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119962",
+      "aliases": [],
+      "title": "",
+      "description": "Double free in Windows Cred SSProvider Protocol allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:20.650",
+      "updated": "2026-11-27T20:48:38.367",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119962"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00723,
+      "epss_percentile": 0.49914,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119963",
+      "aliases": [],
+      "title": "",
+      "description": "Double free in Windows Message Queuing allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:20.860",
+      "updated": "2026-11-27T20:47:55.927",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119963"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00723,
+      "epss_percentile": 0.49914,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119964",
+      "aliases": [],
+      "title": "",
+      "description": "Double free in Windows Message Queuing allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:21.067",
+      "updated": "2026-11-27T20:46:47.240",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119964"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00723,
+      "epss_percentile": 0.49915,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119967",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Message Queuing Queue Manager allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:21.573",
+      "updated": "2026-11-27T20:44:33.543",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119967"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00723,
+      "epss_percentile": 0.49916,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
       },
       "ai_analysis": ""
     },
@@ -44156,6 +44238,65 @@
       "category": "vuln",
       "resolved_at": "",
       "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 51.3,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 16.2,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119961",
+      "aliases": [],
+      "title": "",
+      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Internet Information Services allows an unauthorized attacker to execute code over a network.",
+      "published": "2026-11-10T19:20:20.437",
+      "updated": "2026-11-27T20:49:13.097",
+      "cvss": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119961"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00554,
+      "epss_percentile": 0.39963,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
       "matched": [
         "windows"
       ],
@@ -52666,6 +52807,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-135923",
+      "aliases": [],
+      "title": "WordPress AWP Classifieds plugin <= 4.4.10 - Cross Site Scripting (XSS) vulnerability",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPTasty AWP Classifieds another-wordpress-classifieds-plugin allows Stored XSS.This issue affects AWP Classifieds: from n/a through 4.4.10.",
+      "published": "2026-11-27T14:00:16.828Z",
+      "updated": "2026-11-27T14:17:04.220",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "WPTasty AWP Classifieds",
+        "another-wordpress-classifieds-plugin"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/another-wordpress-classifieds-plugin/vulnerability/wordpress-awp-classifieds-plugin-4-4-10-cross-site-scripting-xss-vulnerability?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 49.2,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 14.2,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-119849",
       "aliases": [],
       "title": "Virtual Hard Disk (VHD) Miniport Driver Remote Code Execution Vulnerability",
@@ -60671,6 +60860,62 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119925",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Text Services Framework allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-11-10T19:20:14.303",
+      "updated": "2026-11-27T14:24:06.097",
+      "cvss": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119925"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00341,
+      "epss_percentile": 0.2007,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 47.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 17.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-95960",
       "aliases": [],
       "title": "",
@@ -61078,64 +61323,6 @@
       ],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119916"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 47.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 17.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119925",
-      "aliases": [],
-      "title": "Windows Text Services Framework Elevation of Privilege Vulnerability",
-      "description": "Out-of-bounds read in Windows Text Services Framework allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T18:23:27.923Z",
-      "updated": "2026-11-10T18:23:27.923Z",
-      "cvss": 8.8,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119925"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -63417,7 +63604,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00985,
-      "epss_percentile": 0.61187,
+      "epss_percentile": 0.6122,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -76837,7 +77024,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00832,
-      "epss_percentile": 0.54808,
+      "epss_percentile": 0.54848,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -76942,7 +77129,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00771,
-      "epss_percentile": 0.52058,
+      "epss_percentile": 0.52094,
       "x_mentions": null,
       "sources": [
         "nvd",
@@ -76961,6 +77148,188 @@
         "cvss": 10.6,
         "unauth_network": 5,
         "kev": 20,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-119929",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-11-10T19:20:14.683",
+      "updated": "2026-11-27T14:25:36.900",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119929"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00341,
+      "epss_percentile": 0.2007,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-95942",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-11-10T19:21:46.600",
+      "updated": "2026-11-27T14:29:25.753",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:365_copilot",
+        "microsoft:microsoft_365",
+        "microsoft:office_2021",
+        "microsoft:office_2024",
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-95942"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00341,
+      "epss_percentile": 0.20065,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-95953",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+      "published": "2026-11-10T19:21:49.290",
+      "updated": "2026-11-27T14:32:20.453",
+      "cvss": 7.8,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "cpes": [
+        "microsoft:365_copilot",
+        "microsoft:microsoft_365",
+        "microsoft:office_2021",
+        "microsoft:office_2024",
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-95953"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00341,
+      "epss_percentile": 0.20066,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 45.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 15.6,
         "epss": 0.1
       },
       "ai_analysis": ""
@@ -80827,67 +81196,6 @@
       ],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119917"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 45.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 15.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119929",
-      "aliases": [],
-      "title": "Windows Installer Elevation of Privilege Vulnerability",
-      "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T18:23:29.103Z",
-      "updated": "2026-11-10T18:23:29.103Z",
-      "cvss": 7.8,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119929"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -87942,82 +88250,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-115841",
-      "aliases": [],
-      "title": "Sequoia-openpgp: sequoia-openpgp: degenerate dsa keys are accepted on the nettle and openssl backendsa",
-      "description": "A flaw was found in sequoia-openpgp. DSA signature verification does not reject a public key with generator 1 and public value 1 before calling the cryptographic backend. Upstream reports that the Nettle and OpenSSL backends, including the default Nettle build, accept this key. Under that key, a signature can verify for every message. Ordinary DSA keys are not affected. An application is exposed when that degenerate certificate is accepted as authoritative.",
-      "published": "2026-11-27T08:19:36.467Z",
-      "updated": "2026-11-27T09:17:00.813",
-      "cvss": 5.3,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
-      "severity": "medium",
-      "cpes": [
-        "ansible_automation_platform:2",
-        "enterprise_linux:10",
-        "enterprise_linux:9",
-        "hummingbird:1",
-        "openshift:4",
-        "satellite:6",
-        "trusted_profile_analyzer:2",
-        "trusted_profile_analyzer:3"
-      ],
-      "packages": [],
-      "vendor_products": [
-        "Red Hat Red Hat Ansible Automation Platform 2",
-        "ansible-automation-platform-26/hub-rhel9",
-        "ansible-automation-platform-27/hub-rhel9",
-        "python3.12-pysequoia",
-        "Red Hat Red Hat Enterprise Linux 10",
-        "rust-podman-sequoia",
-        "rust-rpm-sequoia",
-        "rust-sequoia-sq",
-        "rust-sequoia-sqv",
-        "trustee",
-        "Red Hat Red Hat Enterprise Linux 9",
-        "trustee-guest-components",
-        "Red Hat Red Hat Hardened Images",
-        "Red Hat Red Hat OpenShift Container Platform 4",
-        "kata-containers",
-        "Red Hat Red Hat Satellite 6",
-        "python-pysequoia",
-        "Red Hat Red Hat Trusted Profile Analyzer",
-        "rhtpa/rhtpa-trustification-service-rhel9",
-        "rhtpa/rhtpa-rhel10"
-      ],
-      "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-115841",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2560041"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-27T13:57:29.443815+00:00",
-      "matched": [
-        "python"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 45.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 10.6,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-126862",
       "aliases": [],
       "title": "",
@@ -88889,23 +89121,22 @@
     {
       "id": "CVE-2026-119960",
       "aliases": [],
-      "title": "Windows Hyper-V Elevation of Privilege Vulnerability",
+      "title": "",
       "description": "Use of uninitialized resource in Windows Hyper-V allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T18:23:45.279Z",
-      "updated": "2026-11-10T18:23:45.279Z",
+      "published": "2026-11-10T19:20:20.277",
+      "updated": "2026-11-27T20:53:27.543",
       "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
+      "cpes": [
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119960"
       ],
@@ -88914,11 +89145,11 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00282,
+      "epss_percentile": 0.13305,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -88932,31 +89163,30 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 30,
-        "cvss": 15.0
+        "cvss": 15.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
     {
       "id": "CVE-2026-119966",
       "aliases": [],
-      "title": "Windows Graphics Kernel Elevation of Privilege Vulnerability",
+      "title": "",
       "description": "Integer overflow or wraparound in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T18:23:48.325Z",
-      "updated": "2026-11-10T18:23:48.325Z",
+      "published": "2026-11-10T19:20:21.417",
+      "updated": "2026-11-27T20:45:15.870",
       "cvss": 7.5,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2025"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119966"
       ],
@@ -88965,11 +89195,11 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00282,
+      "epss_percentile": 0.13305,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -88983,7 +89213,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 30,
-        "cvss": 15.0
+        "cvss": 15.0,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -112247,6 +112478,64 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119918",
+      "aliases": [],
+      "title": "",
+      "description": "Use after free in Windows Kernel allows an unauthorized attacker to elevate privileges with a physical attack.",
+      "published": "2026-11-10T19:20:13.620",
+      "updated": "2026-11-27T14:22:53.123",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_10_1607",
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119918"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00448,
+      "epss_percentile": 0.30798,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-96863",
       "aliases": [],
       "title": "",
@@ -112849,67 +113138,6 @@
       ],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119885"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 43.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 13.6
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119918",
-      "aliases": [],
-      "title": "Windows Kernel Elevation of Privilege Vulnerability",
-      "description": "Use after free in Windows Kernel allows an unauthorized attacker to elevate privileges with a physical attack.",
-      "published": "2026-11-10T18:23:26.383Z",
-      "updated": "2026-11-10T18:23:26.383Z",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1607",
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119918"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -119254,6 +119482,53 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-130828",
+      "aliases": [],
+      "title": "WordPress AWP Classifieds plugin <= 4.4.10 - Cross Site Scripting (XSS) vulnerability",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPTasty AWP Classifieds another-wordpress-classifieds-plugin allows Stored XSS.This issue affects AWP Classifieds: from n/a through 4.4.10.",
+      "published": "2026-11-27T16:00:25.113Z",
+      "updated": "2026-11-27T16:18:03.280",
+      "cvss": 6.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "WPTasty AWP Classifieds",
+        "another-wordpress-classifieds-plugin"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/another-wordpress-classifieds-plugin/vulnerability/wordpress-awp-classifieds-plugin-4-4-10-cross-site-scripting-xss-vulnerability-2?_s_id=cve"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "wordpress"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 43.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 13.0
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-96981",
       "aliases": [],
       "title": "",
@@ -119940,25 +120215,23 @@
     {
       "id": "CVE-2026-119965",
       "aliases": [],
-      "title": "Windows Kernel Elevation of Privilege Vulnerability",
+      "title": "",
       "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
-      "published": "2026-11-10T18:23:47.805Z",
-      "updated": "2026-11-10T18:23:47.805Z",
+      "published": "2026-11-10T19:20:21.257",
+      "updated": "2026-11-27T20:46:05.773",
       "cvss": 6.4,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C",
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
+      "cpes": [
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119965"
       ],
@@ -119967,11 +120240,11 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00282,
+      "epss_percentile": 0.13304,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -119985,7 +120258,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 30,
-        "cvss": 12.8
+        "cvss": 12.8,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -124818,6 +125092,55 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137992",
+      "aliases": [],
+      "title": "libexpat through 2.11.0 Denial of Service via defineAttribute Duplicate Declarations",
+      "description": "libexpat through 2.11.0 contains a denial of service vulnerability in defineAttribute() of lib/xmlparse.c that fails to detect duplicate non-ID #IMPLIED or #REQUIRED attribute declarations. Attackers can supply a crafted XML document with repeated ATTLIST declarations in an internal DTD subset to cause quadratic CPU consumption in storeAtts() during parsing.",
+      "published": "2026-11-27T16:10:25.225Z",
+      "updated": "2026-11-27T17:17:58.323",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1537",
+        "https://github.com/libexpat/libexpat/blob/R_2_11_0/expat/lib/xmlparse.c#L8218-L8280",
+        "https://www.vulncheck.com/advisories/libexpat-through-2.11.0-denial-of-service-via-defineattribute-duplicate-declarations"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 42.4,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 17.4,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-83500",
       "aliases": [],
       "title": "",
@@ -126813,7 +127136,7 @@
       "title": "Pillow through 13.1.0 Crash via ImageMath INT32_MIN Division by -1",
       "description": "Pillow through 13.1.0 contains an integer overflow in the ImageMath integer divide and modulo operators (DIV_I and MOD_I in src/_imagingmath.c), which guard only against a zero divisor, so dividing INT32_MIN by -1 raises a hardware divide exception. Attackers can supply a crafted TIFF that decodes to a mode I image containing INT32_MIN, crashing applications that run an ImageMath divide or modulo with a -1 operand on it.",
       "published": "2026-11-27T13:43:54.744Z",
-      "updated": "2026-11-27T13:43:54.744Z",
+      "updated": "2026-11-27T14:17:05.130",
       "cvss": 5.7,
       "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
       "severity": "medium",
@@ -126836,7 +127159,8 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "cve.org",
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -138565,31 +138889,28 @@
     {
       "id": "CVE-2026-119959",
       "aliases": [],
-      "title": "Windows Hyper-V Spoofing Vulnerability",
+      "title": "",
       "description": "Improper access control in Windows Hyper-V allows an authorized attacker to perform spoofing locally.",
-      "published": "2026-11-10T18:20:41.905Z",
-      "updated": "2026-11-10T18:20:41.905Z",
+      "published": "2026-11-10T19:20:20.073",
+      "updated": "2026-11-27T20:50:40.003",
       "cvss": 5.3,
-      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N/E:U/RL:O/RC:C",
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows 10 Version 1809",
-        "Microsoft Windows 10 Version 21H2",
-        "Microsoft Windows 10 Version 22H2",
-        "Microsoft Windows 11 version 23H2",
-        "Microsoft Windows 11 Version 23H2",
-        "Microsoft Windows 11 Version 24H2",
-        "Microsoft Windows 11 Version 25H2",
-        "Microsoft Windows 11 version 26H1",
-        "Microsoft Windows 11 Version 26H2",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
+      "cpes": [
+        "microsoft:windows_10_1809",
+        "microsoft:windows_10_21h2",
+        "microsoft:windows_10_22h2",
+        "microsoft:windows_11_23h2",
+        "microsoft:windows_11_24h2",
+        "microsoft:windows_11_25h2",
+        "microsoft:windows_11_26h1",
+        "microsoft:windows_11_26h2",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119959"
       ],
@@ -138598,11 +138919,11 @@
       "kev_date_added": "",
       "ransomware": false,
       "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
+      "epss": 0.00305,
+      "epss_percentile": 0.15649,
       "x_mentions": null,
       "sources": [
-        "cve.org"
+        "nvd"
       ],
       "category": "vuln",
       "resolved_at": "",
@@ -138616,7 +138937,8 @@
       "level": "medium",
       "score_breakdown": {
         "popularity": 30,
-        "cvss": 10.6
+        "cvss": 10.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -153257,6 +153579,311 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-119970",
+      "aliases": [],
+      "title": "",
+      "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+      "published": "2026-11-10T19:20:21.960",
+      "updated": "2026-11-27T20:42:46.557",
+      "cvss": 4.9,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "cpes": [
+        "microsoft:windows_server_2016",
+        "microsoft:windows_server_2019",
+        "microsoft:windows_server_2022",
+        "microsoft:windows_server_2025"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119970"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01004,
+      "epss_percentile": 0.61939,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-10T18:41:19.148184+00:00",
+      "matched": [
+        "windows"
+      ],
+      "match_type": "exact",
+      "tier": 1,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 30,
+        "cvss": 9.8,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-120705",
+      "aliases": [],
+      "title": "OSGeo GeoServer XML Injection Vulnerability",
+      "description": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
+      "published": "2026-11-27",
+      "updated": "2026-11-27",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OSGeo GeoServer"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-120705"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-129243",
+      "aliases": [],
+      "title": "OSGeo GeoServer Incorrect Authorization Vulnerability",
+      "description": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
+      "published": "2026-11-27",
+      "updated": "2026-11-27",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "OSGeo GeoServer"
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-129243"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [],
+      "match_type": "kev-only",
+      "tier": null,
+      "score": 40,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 10,
+        "unauth_network": 5,
+        "rce": 5,
+        "kev": 20
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-955xa7dtx0ca",
+      "aliases": [],
+      "title": "Cloudflare: Cloudflare University website unavailable",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-27T14:49:03.546Z",
+      "updated": "2026-11-27T15:05:32.622Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-27T15:05:32.622Z",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-ghh3-pr6h-wmpw",
+      "aliases": [],
+      "title": "Malware in @randev404/baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,134",
+      "published": "2026-11-27T15:59:58Z",
+      "updated": "2026-11-27T15:59:58Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@randev404/baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-ghh3-pr6h-wmpw"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "npm:@randev404/baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-xf6c-v2mp-cw3j",
+      "aliases": [],
+      "title": "Malware in @kingorwot/my-baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,619",
+      "published": "2026-11-27T15:45:52Z",
+      "updated": "2026-11-27T15:45:53Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@kingorwot/my-baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-xf6c-v2mp-cw3j"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "npm:@kingorwot/my-baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "GHSA-hj86-h9x2-wvwf",
+      "aliases": [],
+      "title": "Malware in @elfhkry666/baileys",
+      "description": "Any computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n週間ダウンロード数: 約 1,066",
+      "published": "2026-11-27T14:07:19Z",
+      "updated": "2026-11-27T14:07:26Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [
+        "npm:@elfhkry666/baileys"
+      ],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/advisories/GHSA-hj86-h9x2-wvwf"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "ghsa-malware"
+      ],
+      "category": "malware",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "npm:@elfhkry666/baileys"
+      ],
+      "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-63011",
       "aliases": [],
       "title": "",
@@ -153643,6 +154270,54 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137571",
+      "aliases": [],
+      "title": "",
+      "description": "Iceburg CRM through 5.0.0 contains an information disclosure vulnerability that allows unauthenticated attackers to view server configuration through public/v.php calling phpinfo(). Attackers can request v.php directly, bypassing Laravel routing, to obtain PHP version, extensions, INI settings, DOCUMENT_ROOT, and environment variables.",
+      "published": "2026-11-26T14:17:25.477",
+      "updated": "2026-11-27T17:17:55.020",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/iceburgcrm/iceburgcrm/blob/v5.0.0/public/v.php",
+        "https://github.com/iceburgcrm/iceburgcrm/issues/31",
+        "https://www.vulncheck.com/advisories/iceburg-crm-through-5.0.0-information-disclosure-via-public-v-php-phpinfo"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00593,
+      "epss_percentile": 0.42394,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "php",
+        "laravel"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 39.9,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-129538",
       "aliases": [],
       "title": "",
@@ -153880,57 +154555,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-119970",
-      "aliases": [],
-      "title": "Windows DNS Information Disclosure Vulnerability",
-      "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
-      "published": "2026-11-10T18:23:49.995Z",
-      "updated": "2026-11-10T18:23:49.995Z",
-      "cvss": 4.9,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N/E:U/RL:O/RC:C",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Microsoft Windows Server 2016",
-        "Microsoft Windows Server 2016 (Server Core installation)",
-        "Microsoft Windows Server 2019",
-        "Microsoft Windows Server 2019 (Server Core installation)",
-        "Microsoft Windows Server 2022",
-        "Microsoft Windows Server 2025",
-        "Microsoft Windows Server 2025 (Server Core installation)"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119970"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "windows"
-      ],
-      "match_type": "exact",
-      "tier": 1,
-      "score": 39.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 30,
-        "cvss": 9.8
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-119971",
       "aliases": [],
       "title": "Windows DNS Server Information Disclosure Vulnerability",
@@ -154030,56 +154654,6 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 14.8,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-137571",
-      "aliases": [],
-      "title": "Iceburg CRM through 5.0.0 Information Disclosure via public/v.php phpinfo()",
-      "description": "Iceburg CRM through 5.0.0 contains an information disclosure vulnerability that allows unauthenticated attackers to view server configuration through public/v.php calling phpinfo(). Attackers can request v.php directly, bypassing Laravel routing, to obtain PHP version, extensions, INI settings, DOCUMENT_ROOT, and environment variables.",
-      "published": "2026-11-26T13:13:10.591Z",
-      "updated": "2026-11-26T14:17:25.477",
-      "cvss": 6.9,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "iceburgcrm iceburgcrm"
-      ],
-      "references": [
-        "https://github.com/iceburgcrm/iceburgcrm/issues/31",
-        "https://github.com/iceburgcrm/iceburgcrm/blob/v5.0.0/public/v.php",
-        "https://www.vulncheck.com/advisories/iceburg-crm-through-5.0.0-information-disclosure-via-public-v-php-phpinfo"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T21:56:55.122207+00:00",
-      "matched": [
-        "php",
-        "laravel"
-      ],
-      "match_type": "keyword",
-      "tier": 1,
-      "score": 39.8,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 21.0,
-        "cvss": 13.8,
         "unauth_network": 5
       },
       "ai_analysis": ""
@@ -164551,6 +165125,107 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-77230",
+      "aliases": [],
+      "title": "",
+      "description": "Camunda 8.8.0 before 8.8.47, 8.9.0 before 8.9.29, 8.10.0 before 8.10.10, and 8.11.0-alpha1 contain an insecure deserialization vulnerability in the persistent web session feature, which stores session attributes as Java-serialized data in secondary storage and deserializes them via an ObjectInputStream without an ObjectInputFilter. Attackers with write access to the web session index, such as an unauthenticated Elasticsearch cluster deployed via Camunda's docker-compose files, can plant a crafted serialized object and trigger deserialization by presenting a matching session cookie, which combined with a gadget chain like the bundled Commons Collections 3.1-RC1 library can lead to code execution as the Camunda service account.",
+      "published": "2026-11-25T19:17:39.077",
+      "updated": "2026-11-27T17:18:00.340",
+      "cvss": 9.2,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "critical",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/camunda/camunda/commit/5870c91d4ec8c2dae96db60f3261daed2273baf2",
+        "https://github.com/camunda/camunda/commit/82b490cd41a685118b63a378d8963334711b7d8d",
+        "https://github.com/camunda/camunda/commit/aaf0498ec37dc9b43dbbab2616f3bf5303f911ce",
+        "https://github.com/camunda/camunda/commit/fc363d6d0fc7999463f23d98700b292af1737916",
+        "https://github.com/camunda/camunda/releases/tag/8.10.10",
+        "https://github.com/camunda/camunda/releases/tag/8.8.47",
+        "https://github.com/camunda/camunda/releases/tag/8.9.29",
+        "https://www.vulncheck.com/advisories/camunda-8-insecure-deserialization-via-web-session-storage"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01629,
+      "epss_percentile": 0.7663,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "elasticsearch"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 18.4,
+        "unauth_network": 5,
+        "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137951",
+      "aliases": [],
+      "title": "libexpat 2.6.0 through 2.11.0 Out-of-Bounds Read via storeSelfEntityValue",
+      "description": "libexpat 2.6.0 through 2.11.0 built with XML_GE=0 and XML_UNICODE contains an out-of-bounds read in storeSelfEntityValue() because narrow string literals are treated as wide strings. Attackers can supply an XML document whose DOCTYPE declares a general entity to expose adjacent static memory through the entity value or crash the parser.",
+      "published": "2026-11-27T15:22:32.977Z",
+      "updated": "2026-11-27T16:18:07.123",
+      "cvss": 6.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "libexpat libexpat"
+      ],
+      "references": [
+        "https://github.com/libexpat/libexpat/pull/1534",
+        "https://github.com/libexpat/libexpat/blob/bbdb35e85b68284cb20ad8876c56e9b80175babb/expat/lib/xmlparse.c#L8042-L8054",
+        "https://www.vulncheck.com/advisories/libexpat-2.6.0-through-2.11.0-out-of-bounds-read-via-storeselfentityvalue"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "expat"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 37.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 12.6,
+        "unauth_network": 5
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-128014",
       "aliases": [],
       "title": "",
@@ -164791,60 +165466,6 @@
       "score_breakdown": {
         "popularity": 20,
         "cvss": 17.4
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-77230",
-      "aliases": [],
-      "title": "Camunda 8 Insecure Deserialization via Web Session Storage",
-      "description": "Camunda 8.8.0 before 8.8.47, 8.9.0 before 8.9.29, 8.10.0 before 8.10.10, and 8.11.0-alpha1 contain an insecure deserialization vulnerability in the persistent web session feature, which stores session attributes as Java-serialized data in secondary storage and deserializes them via an ObjectInputStream without an ObjectInputFilter. Attackers with write access to the web session index, such as an unauthenticated Elasticsearch cluster deployed via Camunda's docker-compose files, can plant a crafted serialized object and trigger deserialization by presenting a matching session cookie, which combined with a gadget chain like the bundled Commons Collections 3.1-RC1 library can lead to code execution as the Camunda service account.",
-      "published": "2026-11-25T18:26:12.953Z",
-      "updated": "2026-11-25T19:17:39.077",
-      "cvss": 9.2,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-      "severity": "critical",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Camunda Camunda 8"
-      ],
-      "references": [
-        "https://github.com/camunda/camunda/commit/aaf0498ec37dc9b43dbbab2616f3bf5303f911ce",
-        "https://github.com/camunda/camunda/commit/82b490cd41a685118b63a378d8963334711b7d8d",
-        "https://github.com/camunda/camunda/commit/fc363d6d0fc7999463f23d98700b292af1737916",
-        "https://github.com/camunda/camunda/commit/5870c91d4ec8c2dae96db60f3261daed2273baf2",
-        "https://github.com/camunda/camunda/releases/tag/8.10.10",
-        "https://github.com/camunda/camunda/releases/tag/8.9.29",
-        "https://github.com/camunda/camunda/releases/tag/8.8.47",
-        "https://www.vulncheck.com/advisories/camunda-8-insecure-deserialization-via-web-session-storage"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "elasticsearch"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 37.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 18.4,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -166415,23 +167036,23 @@
     {
       "id": "CVE-2026-137907",
       "aliases": [],
-      "title": "FFmpeg 3.0 before 8.1.3 Heap Buffer Overflow via boxblur Filter",
+      "title": "",
       "description": "FFmpeg 3.0 before 8.1.3 contains a heap buffer overflow vulnerability in libavfilter/vf_boxblur.c because query_formats() accepts pixel formats deeper than 16 bits while the blur temporary buffers hold only 2 bytes per pixel. Attackers can supply crafted 32-bit float media, such as PFM or OpenEXR images, that when processed by the boxblur filter overflow the temporary buffers, crashing applications or possibly executing code.",
-      "published": "2026-11-27T12:15:06.804Z",
-      "updated": "2026-11-27T13:17:25.610",
+      "published": "2026-11-27T13:17:25.483",
+      "updated": "2026-11-27T17:21:30.633",
       "cvss": 8.5,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/23658",
-        "https://github.com/FFmpeg/FFmpeg/commit/0dac41d2e5e0f4251ed89eedb03a847d5d59ef67",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavfilter/vf_boxblur.c#L166",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/0dac41d2e5e0f4251ed89eedb03a847d5d59ef67"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -166442,7 +167063,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -167473,6 +168093,52 @@
         "cvss": 17.6,
         "rce": 5,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-115841",
+      "aliases": [],
+      "title": "",
+      "description": "A flaw was found in sequoia-openpgp. DSA signature verification does not reject a public key with generator 1 and public value 1 before calling the cryptographic backend. Upstream reports that the Nettle and OpenSSL backends, including the default Nettle build, accept this key. Under that key, a signature can verify for every message. Ordinary DSA keys are not affected. An application is exposed when that degenerate certificate is accepted as authoritative.",
+      "published": "2026-11-27T09:17:00.687",
+      "updated": "2026-11-27T17:17:35.850",
+      "cvss": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-115841",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2560041"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0014,
+      "epss_percentile": 0.01664,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T13:57:29.443815+00:00",
+      "matched": [
+        "openssl"
+      ],
+      "match_type": "keyword",
+      "tier": 1,
+      "score": 36.6,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 21.0,
+        "cvss": 10.6,
+        "unauth_network": 5,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -174290,6 +174956,52 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-137479",
+      "aliases": [],
+      "title": "",
+      "description": "Traefik 3.1.0 before 3.7.18 and 3.8.0-rc.1 contain a memory exhaustion vulnerability in the Compress middleware, which creates zstd encoders with library default options that retain about 18 MiB of state per response until it is fully written. Unauthenticated remote attackers can open many concurrent requests and read responses slowly to exhaust memory and crash Traefik.",
+      "published": "2026-11-26T16:17:57.333",
+      "updated": "2026-11-27T17:17:51.143",
+      "cvss": 8.7,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/traefik/traefik/security/advisories/GHSA-x5pf-cqh3-2gv8",
+        "https://www.vulncheck.com/advisories/traefik-from-3.1.0-before-3.7.18-memory-exhaustion-dos-via-compress-middleware"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00753,
+      "epss_percentile": 0.51299,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "zstd"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 36.5,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 17.4,
+        "unauth_network": 5,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-120866",
       "aliases": [],
       "title": "",
@@ -174565,54 +175277,6 @@
       "first_seen": "2026-11-21T20:06:32.872233+00:00",
       "matched": [
         "brotli"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 36.4,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 17.4,
-        "unauth_network": 5
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-137479",
-      "aliases": [],
-      "title": "Traefik from 3.1.0 before 3.7.18 Memory Exhaustion DoS via Compress Middleware",
-      "description": "Traefik 3.1.0 before 3.7.18 and 3.8.0-rc.1 contain a memory exhaustion vulnerability in the Compress middleware, which creates zstd encoders with library default options that retain about 18 MiB of state per response until it is fully written. Unauthenticated remote attackers can open many concurrent requests and read responses slowly to exhaust memory and crash Traefik.",
-      "published": "2026-11-26T16:01:27.011Z",
-      "updated": "2026-11-26T16:17:57.457",
-      "cvss": 8.7,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "traefik traefik"
-      ],
-      "references": [
-        "https://github.com/traefik/traefik/security/advisories/GHSA-x5pf-cqh3-2gv8",
-        "https://www.vulncheck.com/advisories/traefik-from-3.1.0-before-3.7.18-memory-exhaustion-dos-via-compress-middleware"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T21:56:55.122207+00:00",
-      "matched": [
-        "zstd"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -176921,50 +177585,6 @@
         "cvss": 16.2,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-119961",
-      "aliases": [],
-      "title": "",
-      "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Internet Information Services allows an unauthorized attacker to execute code over a network.",
-      "published": "2026-11-10T19:20:20.437",
-      "updated": "2026-11-10T19:20:20.570",
-      "cvss": 8.1,
-      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119961"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-10T18:41:19.148184+00:00",
-      "matched": [
-        "iis"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 35.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 16.2,
-        "unauth_network": 5
       },
       "ai_analysis": ""
     },
@@ -184727,7 +185347,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00417,
-      "epss_percentile": 0.27657,
+      "epss_percentile": 0.27688,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -185811,6 +186431,106 @@
       "ssvc_exploitation": "",
       "epss": 0.00412,
       "epss_percentile": 0.27014,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T06:08:19.008814+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-135715",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in the AVIF muxer in libavformat/movenc.c that allows attackers to crash the application through streams with unknown pixel formats. Attackers can supply a crafted input whose video stream is stream-copied to AVIF, causing unchecked av_pix_fmt_desc_get() results to be dereferenced, resulting in denial of service.",
+      "published": "2026-11-24T04:17:28.853",
+      "updated": "2026-11-27T14:15:09.573",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [
+        "ffmpeg:ffmpeg"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24932",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/movenc.c#L6286",
+        "https://github.com/FFmpeg/FFmpeg/commit/6fdfafa31a535c5a6b50712ee85f59c0a7a02bd4",
+        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-null-pointer-dereference-in-avif-muxer-via-movenc-c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00412,
+      "epss_percentile": 0.2705,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T06:08:19.008814+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 33.7,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-135721",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg before 9.1 contains an infinite loop vulnerability in ff_rtp_send_vc2hq() in libavformat/rtpenc_vc2hq.c that accepts a Dirac next parse offset of zero. Attackers can supply crafted Dirac/VC-2 video remuxed to the RTP muxer, causing the parsing pointer to never advance and consume CPU indefinitely.",
+      "published": "2026-11-24T04:17:29.850",
+      "updated": "2026-11-27T14:21:12.127",
+      "cvss": 6.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [
+        "ffmpeg:ffmpeg"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtpenc_vc2hq.c#L150",
+        "https://github.com/FFmpeg/FFmpeg/commit/7a4da23a852b88f2b29187a0c908dc0b911612f9",
+        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-infinite-loop-via-ff-rtp-send-vc2hq-in-rtpenc-vc2hq-c"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.0041,
+      "epss_percentile": 0.26886,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -187772,7 +188492,7 @@
       "ransomware": false,
       "ssvc_exploitation": "",
       "epss": 0.00321,
-      "epss_percentile": 0.17543,
+      "epss_percentile": 0.17574,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -187896,22 +188616,22 @@
     {
       "id": "CVE-2026-137905",
       "aliases": [],
-      "title": "FFmpeg 5.0 before 8.1.3 NULL Pointer Dereference via IMF Asset Map Missing Path",
+      "title": "",
       "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in parse_imf_asset_map_from_xml_dom() in libavformat/imfdec.c that does not check for a missing or empty Path element in an asset map Chunk. Attackers can supply a crafted IMF ASSETMAP.xml whose Chunk lacks a Path, passing a NULL URI to the path handling functions and crashing the process.",
-      "published": "2026-11-27T12:14:58.894Z",
-      "updated": "2026-11-27T13:17:25.253",
+      "published": "2026-11-27T13:17:25.120",
+      "updated": "2026-11-27T16:22:53.413",
       "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
-        "https://github.com/FFmpeg/FFmpeg/commit/0fe4bd4b435b1de950890d37b1e4df7bae3655b1",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavformat/imfdec.c#L258",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/0fe4bd4b435b1de950890d37b1e4df7bae3655b1"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -187922,7 +188642,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -187944,22 +188663,22 @@
     {
       "id": "CVE-2026-137906",
       "aliases": [],
-      "title": "FFmpeg 5.0 before 8.1.3 NULL Pointer Dereference via IMF Virtual Track Without Resources",
+      "title": "",
       "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in the IMF demuxer in libavformat/imfdec.c because open_virtual_track() accepts a virtual track with no resources. Attackers can supply a crafted IMF Composition Playlist whose virtual track lists no resources, causing set_context_streams_from_tracks() to dereference a NULL resource array and crash the process.",
-      "published": "2026-11-27T12:15:02.785Z",
-      "updated": "2026-11-27T13:17:25.430",
+      "published": "2026-11-27T13:17:25.303",
+      "updated": "2026-11-27T16:29:22.383",
       "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
-        "https://github.com/FFmpeg/FFmpeg/commit/a76190152d0d1e90f38a761e0a1443c1dcb4e7a8",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n8.1.2/libavformat/imfdec.c#L578",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/a76190152d0d1e90f38a761e0a1443c1dcb4e7a8"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -187970,7 +188689,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -189133,54 +189851,6 @@
         "popularity": 21.0,
         "cvss": 12.2,
         "epss": 0.0
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-67209",
-      "aliases": [],
-      "title": "metasfresh through 5.175 SQL Injection via tableName Parameter in DebugRestController",
-      "description": "metasfresh through 5.175 contains a SQL injection vulnerability in the stressTest_massCacheInvalidation handler of DebugRestController, which concatenates the caller-supplied tableName request parameter into SELECT statements without parameterization or validation and only checks that the caller is authenticated. Authenticated WebUI users with any role can send GET requests to /rest/api/debug/stressTest/massCacheInvalidation with SQL in the tableName parameter to run time-based and error-based blind queries against the PostgreSQL database, extracting sensitive ERP data such as user credentials and financial records while also degrading availability through sleep payloads.",
-      "published": "2026-11-25T20:54:50.555Z",
-      "updated": "2026-11-25T21:17:20.190",
-      "cvss": 7.1,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N",
-      "severity": "high",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "metasfresh metasfresh"
-      ],
-      "references": [
-        "https://github.com/metasfresh/metasfresh/issues/27725",
-        "https://www.vulncheck.com/advisories/metasfresh-through-5.175-sql-injection-via-tablename-parameter-in-debugrestcontroller"
-      ],
-      "exploit_ref": true,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "postgresql"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 33.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 14.2,
-        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -193086,56 +193756,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-137067",
-      "aliases": [],
-      "title": "GNOME libxml2 2.9.10 through 2.15.4 Use-After-Free via xmlValidatePopElement",
-      "description": "GNOME libxml2 2.9.10 through 2.15.4 contains a use-after-free vulnerability in xmlValidatePopElement because xmlCtxtReset frees the DTD without popping stale validation states. Attackers supplying an XML document ending inside an element to an application reusing a DTD-validating xmlTextReader can trigger heap reads, causing crashes and limited heap disclosure via error messages.",
-      "published": "2026-11-25T19:33:09.295Z",
-      "updated": "2026-11-25T20:18:41.467",
-      "cvss": 5.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "GNOME libxml2"
-      ],
-      "references": [
-        "https://gitlab.gnome.org/GNOME/libxml2/-/issues/1163",
-        "https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/503",
-        "https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/xmlreader.c#L4714-L4830",
-        "https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/xmlreader.c#L2201-L2238",
-        "https://www.vulncheck.com/advisories/gnome-libxml2-2.9.10-through-2.15.4-use-after-free-via-xmlvalidatepopelement"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "libxml2"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 31.6,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "cvss": 11.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-137072",
       "aliases": [],
       "title": "GNOME libxml2 2.9.10 through 2.15.4 Use-After-Free in xmlValidatePopElement",
@@ -193235,23 +193855,23 @@
     {
       "id": "CVE-2026-137910",
       "aliases": [],
-      "title": "FFmpeg before 9.1 Out-of-Bounds Read via PCX Encoder Odd-Width Rows",
+      "title": "",
       "description": "FFmpeg before 9.1 contains an out-of-bounds read vulnerability in pcx_encode_frame() in libavcodec/pcxenc.c that rounds each row up to an even number of bytes and run-length encodes that many bytes from the input frame. Attackers who control the width of images encoded to PCX by an application that supplies tightly packed frames can make the encoder read past the end of the frame buffer, crashing the application or leaking heap contents into the output image.",
-      "published": "2026-11-27T12:15:17.809Z",
-      "updated": "2026-11-27T13:17:26.170",
+      "published": "2026-11-27T13:17:26.047",
+      "updated": "2026-11-27T17:20:51.500",
       "cvss": 5.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25690",
-        "https://github.com/FFmpeg/FFmpeg/commit/b47e96b4eb50fef52cf1a9c7b0100a34cc05cce0",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/pcxenc.c#L134",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/b47e96b4eb50fef52cf1a9c7b0100a34cc05cce0"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -193262,7 +193882,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -193284,23 +193903,23 @@
     {
       "id": "CVE-2026-137911",
       "aliases": [],
-      "title": "FFmpeg before 9.1 Out-of-Bounds Read via XWD Encoder Scanline Padding",
+      "title": "",
       "description": "FFmpeg before 9.1 contains an out-of-bounds read vulnerability in xwd_encode_frame() in libavcodec/xwdenc.c that copies each RGB24 or BGR24 row using the padded XWD scanline size instead of the pixel row size. Attackers who control the width of video encoded to XWD by an application that supplies tightly packed frames can make the encoder read past the frame buffer, crashing the application or leaking heap contents into the output image.",
-      "published": "2026-11-27T12:15:20.017Z",
-      "updated": "2026-11-27T13:17:26.357",
+      "published": "2026-11-27T13:17:26.230",
+      "updated": "2026-11-27T17:20:44.937",
       "cvss": 5.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25690",
-        "https://github.com/FFmpeg/FFmpeg/commit/f26d201dd87f36e89ab77b5f689765604c9b06bc",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/xwdenc.c#L207",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/f26d201dd87f36e89ab77b5f689765604c9b06bc"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -193311,7 +193930,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -194709,23 +195327,23 @@
     {
       "id": "CVE-2026-137908",
       "aliases": [],
-      "title": "FFmpeg 7.1 before 9.1 Memory Leak via libsvtav1 Dolby Vision Encoding",
+      "title": "",
       "description": "FFmpeg 7.1 before 9.1 contains a memory leak vulnerability in eb_receive_packet() in libavcodec/libsvtav1.c that returns without unreferencing the queued input frame when eb_send_frame() fails. Attackers can supply crafted video in which some frames lack Dolby Vision metadata to an SVT-AV1 encode with Dolby Vision RPU coding enabled, leaking each rejected frame's buffers or aborting in av_frame_move_ref() in builds with assertions enabled.",
-      "published": "2026-11-27T12:15:10.309Z",
-      "updated": "2026-11-27T13:17:25.790",
+      "published": "2026-11-27T13:17:25.660",
+      "updated": "2026-11-27T17:21:21.980",
       "cvss": 5.7,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
         "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25416",
-        "https://github.com/FFmpeg/FFmpeg/commit/c67ac1bc34440829de4ef3b9d15206bb095eed11",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/libsvtav1.c#L666",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/c67ac1bc34440829de4ef3b9d15206bb095eed11"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -194736,7 +195354,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -194758,22 +195375,22 @@
     {
       "id": "CVE-2026-137909",
       "aliases": [],
-      "title": "FFmpeg before 9.1 NULL Pointer Dereference via XSUB Encoder Empty Subtitles",
+      "title": "",
       "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in xsub_encode() in libavcodec/xsubenc.c that only warns when a subtitle has no rectangles and then dereferences rects[0]. Attackers can supply crafted PGS or DVB subtitles that decode to empty subtitle events, crashing applications that pass decoded subtitles directly to the XSUB encoder.",
-      "published": "2026-11-27T12:15:14.318Z",
-      "updated": "2026-11-27T13:17:25.973",
+      "published": "2026-11-27T13:17:25.843",
+      "updated": "2026-11-27T15:17:18.417",
       "cvss": 5.7,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
       "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "FFmpeg FFmpeg"
+      "cpes": [
+        "ffmpeg:ffmpeg"
       ],
+      "packages": [],
+      "vendor_products": [],
       "references": [
-        "https://github.com/FFmpeg/FFmpeg/commit/c4a4d5f72a7d89de23043415a0a45090c51c502a",
+        "https://github.com/FFmpeg/FFmpeg",
         "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/xsubenc.c#L136",
-        "https://github.com/FFmpeg/FFmpeg"
+        "https://github.com/FFmpeg/FFmpeg/commit/c4a4d5f72a7d89de23043415a0a45090c51c502a"
       ],
       "exploit_ref": false,
       "kev": false,
@@ -194784,7 +195401,6 @@
       "epss_percentile": null,
       "x_mentions": null,
       "sources": [
-        "cve.org",
         "nvd"
       ],
       "category": "vuln",
@@ -199202,6 +199818,56 @@
       "ssvc_exploitation": "",
       "epss": 0.00415,
       "epss_percentile": 0.27428,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-24T06:08:19.008814+00:00",
+      "matched": [
+        "ffmpeg"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 29.7,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 9.6,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-135714",
+      "aliases": [],
+      "title": "",
+      "description": "FFmpeg before 9.1 contains an information disclosure vulnerability in amf_get_field_value2() in libavformat/rtmppkt.c that NUL-terminates truncated AMF strings at the declared length instead of bytes read. A malicious RTMP server, or connecting client in listen mode, can send truncated onStatus or _error strings to leak uninitialized stack memory through log messages.",
+      "published": "2026-11-24T04:17:28.677",
+      "updated": "2026-11-27T14:12:21.610",
+      "cvss": 4.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [
+        "ffmpeg:ffmpeg"
+      ],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtmppkt.c#L554",
+        "https://github.com/FFmpeg/FFmpeg/commit/09282853e82a1a881e7e5b061030063f48df2b95",
+        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-uninitialized-stack-memory-disclosure-via-rtmp-amf-strings"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00415,
+      "epss_percentile": 0.27466,
       "x_mentions": null,
       "sources": [
         "nvd"
@@ -204895,6 +205561,51 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-67209",
+      "aliases": [],
+      "title": "",
+      "description": "metasfresh through 5.175 contains a SQL injection vulnerability in the stressTest_massCacheInvalidation handler of DebugRestController, which concatenates the caller-supplied tableName request parameter into SELECT statements without parameterization or validation and only checks that the caller is authenticated. Authenticated WebUI users with any role can send GET requests to /rest/api/debug/stressTest/massCacheInvalidation with SQL in the tableName parameter to run time-based and error-based blind queries against the PostgreSQL database, extracting sensitive ERP data such as user credentials and financial records while also degrading availability through sleep payloads.",
+      "published": "2026-11-25T21:17:20.063",
+      "updated": "2026-11-27T17:17:59.907",
+      "cvss": 7.1,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "high",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/metasfresh/metasfresh/issues/27725",
+        "https://www.vulncheck.com/advisories/metasfresh-through-5.175-sql-injection-via-tablename-parameter-in-debugrestcontroller"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00386,
+      "epss_percentile": 0.24434,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 28.3,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 14.2,
+        "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-127077",
       "aliases": [],
       "title": "",
@@ -206433,102 +207144,6 @@
       "first_seen": "2026-10-27T20:42:26.685313+00:00",
       "matched": [
         "mcp"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 27.7,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 13.6,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-135715",
-      "aliases": [],
-      "title": "",
-      "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in the AVIF muxer in libavformat/movenc.c that allows attackers to crash the application through streams with unknown pixel formats. Attackers can supply a crafted input whose video stream is stream-copied to AVIF, causing unchecked av_pix_fmt_desc_get() results to be dereferenced, resulting in denial of service.",
-      "published": "2026-11-24T04:17:28.853",
-      "updated": "2026-11-24T17:18:40.080",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24932",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/movenc.c#L6286",
-        "https://github.com/FFmpeg/FFmpeg/commit/6fdfafa31a535c5a6b50712ee85f59c0a7a02bd4",
-        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-null-pointer-dereference-in-avif-muxer-via-movenc-c"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.00412,
-      "epss_percentile": 0.27014,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-24T06:08:19.008814+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 27.7,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 13.6,
-        "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-135721",
-      "aliases": [],
-      "title": "",
-      "description": "FFmpeg before 9.1 contains an infinite loop vulnerability in ff_rtp_send_vc2hq() in libavformat/rtpenc_vc2hq.c that accepts a Dirac next parse offset of zero. Attackers can supply crafted Dirac/VC-2 video remuxed to the RTP muxer, causing the parsing pointer to never advance and consume CPU indefinitely.",
-      "published": "2026-11-24T04:17:29.850",
-      "updated": "2026-11-24T17:18:40.510",
-      "cvss": 6.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtpenc_vc2hq.c#L150",
-        "https://github.com/FFmpeg/FFmpeg/commit/7a4da23a852b88f2b29187a0c908dc0b911612f9",
-        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-infinite-loop-via-ff-rtp-send-vc2hq-in-rtpenc-vc2hq-c"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.0041,
-      "epss_percentile": 0.26849,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-24T06:08:19.008814+00:00",
-      "matched": [
-        "ffmpeg"
       ],
       "match_type": "keyword",
       "tier": 2,
@@ -209307,6 +209922,59 @@
       "ai_analysis": ""
     },
     {
+      "id": "CVE-2026-138032",
+      "aliases": [],
+      "title": "WhoDB 0.88.0 before 0.132.0 MCP Read-Only Bypass via Server-Side File Writes",
+      "description": "WhoDB from 0.88.0 before 0.132.0 contains an access control bypass in the MCP whodb_query tool, letting callers run file-writing statements without approval because the sqlguard keyword classifier omits INTO, OUTFILE and DUMPFILE. MCP clients or prompt-injected models can execute PostgreSQL lo_export or MySQL SELECT INTO OUTFILE to create files on the database host and create tables, bypassing confirmation and read-only modes.",
+      "published": "2026-11-27T19:15:14.326Z",
+      "updated": "2026-11-27T20:18:18.980",
+      "cvss": 6,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [
+        "clidey whodb"
+      ],
+      "references": [
+        "https://github.com/clidey/whodb/security/advisories/GHSA-6mr5-wx6p-65fg",
+        "https://github.com/clidey/whodb/security/advisories/GHSA-pvf2-6h4x-r24j",
+        "https://github.com/clidey/whodb/commit/9de47fb365dda639aded842ec332cdc399b9939b",
+        "https://github.com/clidey/whodb/releases/tag/0.132.0",
+        "https://github.com/clidey/whodb/blob/0.131.0/cli/pkg/mcp/tools.go#L585-L620",
+        "https://github.com/clidey/whodb/blob/0.131.0/cli/pkg/mcp/validation.go#L115-L145",
+        "https://github.com/clidey/whodb/blob/0.131.0/core/src/sqlguard/classify.go#L81-L97",
+        "https://www.vulncheck.com/advisories/whodb-0.88.0-before-0.132.0-mcp-read-only-bypass-via-server-side-file-writes"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-27T22:43:42.036481+00:00",
+      "matched": [
+        "postgresql"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 26.0,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 12
+      },
+      "ai_analysis": ""
+    },
+    {
       "id": "CVE-2026-126395",
       "aliases": [],
       "title": "",
@@ -209579,6 +210247,54 @@
         "popularity": 21.0,
         "cvss": 4.6,
         "epss": 0.1
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137067",
+      "aliases": [],
+      "title": "",
+      "description": "GNOME libxml2 2.9.10 through 2.15.4 contains a use-after-free vulnerability in xmlValidatePopElement because xmlCtxtReset frees the DTD without popping stale validation states. Attackers supplying an XML document ending inside an element to an application reusing a DTD-validating xmlTextReader can trigger heap reads, causing crashes and limited heap disclosure via error messages.",
+      "published": "2026-11-25T20:18:41.467",
+      "updated": "2026-11-27T17:17:47.777",
+      "cvss": 5.8,
+      "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "medium",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/xmlreader.c#L2201-L2238",
+        "https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/xmlreader.c#L4714-L4830",
+        "https://gitlab.gnome.org/GNOME/libxml2/-/issues/1163",
+        "https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/503",
+        "https://www.vulncheck.com/advisories/gnome-libxml2-2.9.10-through-2.15.4-use-after-free-via-xmlvalidatepopelement"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00194,
+      "epss_percentile": 0.05207,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "libxml2"
+      ],
+      "match_type": "keyword",
+      "tier": 2,
+      "score": 25.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 14.0,
+        "cvss": 11.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -213503,54 +214219,6 @@
         "cvss": 4.6,
         "unauth_network": 5,
         "epss": 0.1
-      },
-      "ai_analysis": ""
-    },
-    {
-      "id": "CVE-2026-135714",
-      "aliases": [],
-      "title": "",
-      "description": "FFmpeg before 9.1 contains an information disclosure vulnerability in amf_get_field_value2() in libavformat/rtmppkt.c that NUL-terminates truncated AMF strings at the declared length instead of bytes read. A malicious RTMP server, or connecting client in listen mode, can send truncated onStatus or _error strings to leak uninitialized stack memory through log messages.",
-      "published": "2026-11-24T04:17:28.677",
-      "updated": "2026-11-24T13:17:29.570",
-      "cvss": 4.8,
-      "cvss_vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-      "severity": "medium",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [],
-      "references": [
-        "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24916",
-        "https://github.com/FFmpeg/FFmpeg",
-        "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/rtmppkt.c#L554",
-        "https://github.com/FFmpeg/FFmpeg/commit/09282853e82a1a881e7e5b061030063f48df2b95",
-        "https://www.vulncheck.com/advisories/ffmpeg-before-9.1-uninitialized-stack-memory-disclosure-via-rtmp-amf-strings"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.0017,
-      "epss_percentile": 0.06315,
-      "x_mentions": null,
-      "sources": [
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-24T06:08:19.008814+00:00",
-      "matched": [
-        "ffmpeg"
-      ],
-      "match_type": "keyword",
-      "tier": 2,
-      "score": 23.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 14.0,
-        "cvss": 9.6,
-        "epss": 0.0
       },
       "ai_analysis": ""
     },
@@ -260421,51 +261089,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-136716",
-      "aliases": [],
-      "title": "Drupal core - Highly critical - Access bypass - SA-CORE-2026-019",
-      "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
-      "published": "2026-11-26T00:44:43.920Z",
-      "updated": "2026-11-26T01:17:10.517",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Drupal core"
-      ],
-      "references": [
-        "https://www.drupal.org/sa-core-2026-019"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 20,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 20
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-120353",
       "aliases": [],
       "title": "Apache Airflow Standard provider, Apache Airflow CNCF Kubernetes provider, Apache Airflow Common SQL provider, Apache Airflow Common Ai provider: Code execution on the worker via Jinja in TaskFlow decorator arguments",
@@ -260911,53 +261534,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-137475",
-      "aliases": [],
-      "title": "vLLM 0.21.0 before 0.28.0 Cross-Request State Aliasing via thinking_token_budget",
-      "description": "vLLM 0.21.0 before 0.28.0, when using the V1 model runner, contains a state aliasing flaw in ThinkingBudgetStateHolder.sync_batch(), whose SWAP branch copies thinking-budget state to the destination batch row without removing the source entry. Attackers submitting requests with thinking_token_budget can force the reasoning-end token sequence into a concurrent co-batched request's output during a mixed batch reorder.",
-      "published": "2026-11-26T16:01:31.554Z",
-      "updated": "2026-11-26T16:17:56.770",
-      "cvss": 2.3,
-      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
-      "severity": "low",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "vllm-project vllm"
-      ],
-      "references": [
-        "https://github.com/vllm-project/vllm/security/advisories/GHSA-fpch-3xrf-7q96",
-        "https://www.vulncheck.com/advisories/vllm-0.21.0-before-0.28.0-cross-request-state-aliasing-via-thinking-token-budget"
-      ],
-      "exploit_ref": false,
-      "kev": false,
-      "kev_date_added": "",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": null,
-      "epss_percentile": null,
-      "x_mentions": null,
-      "sources": [
-        "cve.org",
-        "nvd"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T21:56:55.122207+00:00",
-      "matched": [
-        "vllm"
-      ],
-      "match_type": "exact",
-      "tier": 3,
-      "score": 14.6,
-      "level": "low",
-      "score_breakdown": {
-        "popularity": 10,
-        "cvss": 4.6
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-124851",
       "aliases": [],
       "title": "",
@@ -261090,6 +261666,51 @@
       "level": "low",
       "score_breakdown": {
         "popularity": 14.0
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-137475",
+      "aliases": [],
+      "title": "",
+      "description": "vLLM 0.21.0 before 0.28.0, when using the V1 model runner, contains a state aliasing flaw in ThinkingBudgetStateHolder.sync_batch(), whose SWAP branch copies thinking-budget state to the destination batch row without removing the source entry. Attackers submitting requests with thinking_token_budget can force the reasoning-end token sequence into a concurrent co-batched request's output during a mixed batch reorder.",
+      "published": "2026-11-26T16:17:56.647",
+      "updated": "2026-11-27T17:17:51.003",
+      "cvss": 2.3,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+      "severity": "low",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://github.com/vllm-project/vllm/security/advisories/GHSA-fpch-3xrf-7q96",
+        "https://www.vulncheck.com/advisories/vllm-0.21.0-before-0.28.0-cross-request-state-aliasing-via-thinking-token-budget"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.00281,
+      "epss_percentile": 0.13234,
+      "x_mentions": null,
+      "sources": [
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T21:56:55.122207+00:00",
+      "matched": [
+        "vllm"
+      ],
+      "match_type": "keyword",
+      "tier": 3,
+      "score": 11.6,
+      "level": "low",
+      "score_breakdown": {
+        "popularity": 7.0,
+        "cvss": 4.6,
+        "epss": 0.0
       },
       "ai_analysis": ""
     },
