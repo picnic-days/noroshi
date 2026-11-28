@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-28T04:17:41.917896+00:00",
+  "generated_at": "2026-11-28T13:39:17.067033+00:00",
   "items": [
     {
       "id": "CVE-2026-109618",
@@ -5847,6 +5847,59 @@
         "rce": 5,
         "kev": 20,
         "epss": 7.5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-136716",
+      "aliases": [],
+      "title": "Drupal Core Improper Check for Unusual or Exceptional Conditions Vulnerability",
+      "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
+      "published": "2026-11-26T01:17:10.517",
+      "updated": "2026-11-28T05:17:40.107",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cpes": [
+        "drupal:drupal"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "Drupal Core"
+      ],
+      "references": [
+        "https://www.drupal.org/sa-core-2026-019",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-136716",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-136716"
+      ],
+      "exploit_ref": false,
+      "kev": true,
+      "kev_date_added": "2026-11-27",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": 0.01212,
+      "epss_percentile": 0.68449,
+      "x_mentions": null,
+      "sources": [
+        "nvd",
+        "kev"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-26T02:59:15.258772+00:00",
+      "matched": [
+        "drupal"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 64.8,
+      "level": "high",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 19.6,
+        "unauth_network": 5,
+        "kev": 20,
+        "epss": 0.2
       },
       "ai_analysis": ""
     },
@@ -80918,53 +80971,6 @@
       "ai_analysis": ""
     },
     {
-      "id": "CVE-2026-136716",
-      "aliases": [],
-      "title": "Drupal Core Improper Check for Unusual or Exceptional Conditions Vulnerability",
-      "description": "Drupal Core contains an improper check for unusual or exceptional conditions vulnerability that allows an unauthenticated remote attacker to take over a site via the exposed Drupal installer when the site is in one of the affected unusual or incomplete installation states.",
-      "published": "2026-11-27",
-      "updated": "2026-11-27",
-      "cvss": null,
-      "cvss_vector": "",
-      "severity": "",
-      "cpes": [],
-      "packages": [],
-      "vendor_products": [
-        "Drupal Core"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-136716"
-      ],
-      "exploit_ref": false,
-      "kev": true,
-      "kev_date_added": "2026-11-27",
-      "ransomware": false,
-      "ssvc_exploitation": "",
-      "epss": 0.01212,
-      "epss_percentile": 0.68449,
-      "x_mentions": null,
-      "sources": [
-        "kev"
-      ],
-      "category": "vuln",
-      "resolved_at": "",
-      "first_seen": "2026-11-26T02:59:15.258772+00:00",
-      "matched": [
-        "drupal"
-      ],
-      "match_type": "exact",
-      "tier": 2,
-      "score": 45.2,
-      "level": "medium",
-      "score_breakdown": {
-        "popularity": 20,
-        "unauth_network": 5,
-        "kev": 20,
-        "epss": 0.2
-      },
-      "ai_analysis": ""
-    },
-    {
       "id": "CVE-2026-105296",
       "aliases": [],
       "title": "",
@@ -100214,6 +100220,118 @@
         "unauth_network": 5,
         "rce": 5,
         "epss": 0.2
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-138050",
+      "aliases": [],
+      "title": "OpenAirInterface oai-cn5g-udr Nudr_DR mysql_db.cpp sql injection",
+      "description": "A weakness has been identified in OpenAirInterface oai-cn5g-udr up to 2.2.2. This vulnerability affects unknown code of the file src/udr_app/database/mysql_db.cpp of the component Nudr_DR. Executing a manipulation of the argument ueId can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure.",
+      "published": "2026-11-28T13:15:22.390Z",
+      "updated": "2026-11-28T13:15:22.390Z",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P",
+      "severity": "medium",
+      "cpes": [
+        "openairinterface:oai-cn5g-udr"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "OpenAirInterface oai-cn5g-udr"
+      ],
+      "references": [
+        "https://vuldb.com/vuln/444965",
+        "https://vuldb.com/vuln/444965/cti",
+        "https://vuldb.com/cve/CVE-2026-138050",
+        "https://vuldb.com/submit/1068458",
+        "https://github.com/openairinterface/oai-cn5g-udr/issues/8",
+        "https://github.com/openairinterface/oai-cn5g-udr/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-28T13:39:17.067033+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "exploit_ref": 5
+      },
+      "ai_analysis": ""
+    },
+    {
+      "id": "CVE-2026-138049",
+      "aliases": [],
+      "title": "OpenAirInterface oai-cn5g-nrf NRF nrf_client.cpp notify_subscribed_event null pointer dereference",
+      "description": "A security flaw has been discovered in OpenAirInterface oai-cn5g-nrf up to 2.2.1. This affects the function notify_subscribed_event of the file src/nrf_app/nrf_client.cpp of the component NRF. Performing a manipulation results in null pointer dereference. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 2.2.2 is able to mitigate this issue. The patch is named 2065c6f80ca9ffdacc0064e768db90d04d9d6ca8. It is advisable to upgrade the affected component.",
+      "published": "2026-11-28T13:00:22.744Z",
+      "updated": "2026-11-28T13:17:04.057",
+      "cvss": 6.9,
+      "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P",
+      "severity": "medium",
+      "cpes": [
+        "openairinterface:oai-cn5g-nrf"
+      ],
+      "packages": [],
+      "vendor_products": [
+        "OpenAirInterface oai-cn5g-nrf"
+      ],
+      "references": [
+        "https://vuldb.com/vuln/444964",
+        "https://vuldb.com/vuln/444964/cti",
+        "https://vuldb.com/cve/CVE-2026-138049",
+        "https://vuldb.com/submit/1068455",
+        "https://github.com/openairinterface/oai-cn5g-nrf/issues/7",
+        "https://github.com/openairinterface/oai-cn5g-nrf/pull/8",
+        "https://github.com/openairinterface/oai-cn5g-nrf/commit/2065c6f80ca9ffdacc0064e768db90d04d9d6ca8",
+        "https://github.com/openairinterface/oai-cn5g-nrf/releases/tag/v2.2.2",
+        "https://github.com/openairinterface/oai-cn5g-nrf/"
+      ],
+      "exploit_ref": true,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "cve.org",
+        "nvd"
+      ],
+      "category": "vuln",
+      "resolved_at": "",
+      "first_seen": "2026-11-28T13:39:17.067033+00:00",
+      "matched": [
+        "openai-tools"
+      ],
+      "match_type": "exact",
+      "tier": 2,
+      "score": 43.8,
+      "level": "medium",
+      "score_breakdown": {
+        "popularity": 20,
+        "cvss": 13.8,
+        "unauth_network": 5,
+        "exploit_ref": 5
       },
       "ai_analysis": ""
     },
@@ -139512,6 +139630,86 @@
         "npm:@elfhkry666/baileys"
       ],
       "match_type": "malware",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-27xnfvjy0n6j",
+      "aliases": [],
+      "title": "Cloudflare: Email Delivery Delays",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-28T07:21:21.338Z",
+      "updated": "2026-11-28T09:23:38.704Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/27xnfvjy0n6j"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-28T09:23:38.704Z",
+      "first_seen": "2026-11-28T13:39:17.067033+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
+      "tier": null,
+      "score": 40.0,
+      "level": "medium",
+      "score_breakdown": {},
+      "ai_analysis": ""
+    },
+    {
+      "id": "OUT-cloudflare-j7ihgms4mvhb",
+      "aliases": [],
+      "title": "Cloudflare: Elevated Errors for Cloudflare Workers Subrequests",
+      "description": "Cloudflare の公式ステータスページに掲載された障害",
+      "published": "2026-11-28T04:45:43.228Z",
+      "updated": "2026-11-28T05:38:42.819Z",
+      "cvss": null,
+      "cvss_vector": "",
+      "severity": "",
+      "cpes": [],
+      "packages": [],
+      "vendor_products": [],
+      "references": [
+        "https://www.cloudflarestatus.com/incidents/j7ihgms4mvhb"
+      ],
+      "exploit_ref": false,
+      "kev": false,
+      "kev_date_added": "",
+      "ransomware": false,
+      "ssvc_exploitation": "",
+      "epss": null,
+      "epss_percentile": null,
+      "x_mentions": null,
+      "sources": [
+        "status:cloudflare"
+      ],
+      "category": "outage",
+      "resolved_at": "2026-11-28T05:38:42.819Z",
+      "first_seen": "2026-11-28T13:39:17.067033+00:00",
+      "matched": [
+        "cloudflare"
+      ],
+      "match_type": "status",
       "tier": null,
       "score": 40.0,
       "level": "medium",
